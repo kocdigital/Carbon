@@ -1,0 +1,5 @@
+C:\Users\02484376\source\repos\Carbon Framework\Carbon.WebApplication.Extensions\bin\Debug\netstandard2.0\Carbon.WebApplication.Extensions.deps.json
+C:\Users\02484376\source\repos\Carbon Framework\Carbon.WebApplication.Extensions\bin\Debug\netstandard2.0\Carbon.WebApplication.Extensions.dll
+C:\Users\02484376\source\repos\Carbon Framework\Carbon.WebApplication.Extensions\obj\Debug\netstandard2.0\Carbon.WebApplication.Extensions.csprojAssemblyReference.cache
+C:\Users\02484376\source\repos\Carbon Framework\Carbon.WebApplication.Extensions\obj\Debug\netstandard2.0\Carbon.WebApplication.Extensions.AssemblyInfoInputs.cache
+C:\Users\02484376\source\repos\Carbon Framework\Carbon.WebApplication.Extensions\obj\Debug\netstandard2.0\Carbon.WebApplication.Extensions.AssemblyInfo.cs

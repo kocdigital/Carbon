@@ -1,0 +1,11 @@
+C:\Users\02484376\source\repos\Carbon Framework\Carbon.WebApplication.Extensions\obj\Debug\netstandard2.1\Carbon.WebApplication.Extensions.csprojAssemblyReference.cache
+C:\Users\02484376\source\repos\Carbon Framework\Carbon.WebApplication.Extensions\obj\Debug\netstandard2.1\Carbon.WebApplication.Extensions.AssemblyInfoInputs.cache
+C:\Users\02484376\source\repos\Carbon Framework\Carbon.WebApplication.Extensions\obj\Debug\netstandard2.1\Carbon.WebApplication.Extensions.AssemblyInfo.cs
+C:\Users\02484376\source\repos\Carbon Framework\Carbon.WebApplication.Extensions\bin\Debug\netstandard2.1\Carbon.WebApplication.Extensions.deps.json
+C:\Users\02484376\source\repos\Carbon Framework\Carbon.WebApplication.Extensions\bin\Debug\netstandard2.1\Carbon.WebApplication.Extensions.dll
+C:\Users\02484376\source\repos\Carbon Framework\Carbon.WebApplication.Extensions\bin\Debug\netstandard2.1\Carbon.WebApplication.Extensions.pdb
+C:\Users\02484376\source\repos\Carbon Framework\Carbon.WebApplication.Extensions\bin\Debug\netstandard2.1\Carbon.Common.dll
+C:\Users\02484376\source\repos\Carbon Framework\Carbon.WebApplication.Extensions\bin\Debug\netstandard2.1\Carbon.Common.pdb
+C:\Users\02484376\source\repos\Carbon Framework\Carbon.WebApplication.Extensions\obj\Debug\netstandard2.1\Carbon.WebApplication.Extensions.csproj.CopyComplete
+C:\Users\02484376\source\repos\Carbon Framework\Carbon.WebApplication.Extensions\obj\Debug\netstandard2.1\Carbon.WebApplication.Extensions.dll
+C:\Users\02484376\source\repos\Carbon Framework\Carbon.WebApplication.Extensions\obj\Debug\netstandard2.1\Carbon.WebApplication.Extensions.pdb
