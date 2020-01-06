@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Serilog;
 using System;
@@ -16,34 +15,24 @@ namespace Carbon.WebApplication
                     var assemblyName = typeof(TStartup).Assembly.GetName().Name;
                     var currentEnviroment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
                     var consulAddress = Environment.GetEnvironmentVariable("CONSUL_ADDRESS");
-                    var configurationBuilder = new ConfigurationBuilder()
-                        .AddJsonFile("appsettings.json")
-                        .AddJsonFile($"appsettings.{currentEnviroment}.json", optional: true)
-                        .AddEnvironmentVariables();
 
-                    var consulEnabled = !string.IsNullOrEmpty(consulAddress);
-
-                    if (consulEnabled)
+                    webBuilder.ConfigureAppConfiguration((c) =>
                     {
-                        configurationBuilder.AddConsul(
-                            $"{assemblyName}/{currentEnviroment}", (options) =>
-                            {
-                                options.ConsulConfigurationOptions =
-                                    cco => { cco.Address = new Uri(consulAddress); };
-                                options.Optional = false;
-                                options.ReloadOnChange = true;
-                                options.OnLoadException = exceptionContext => { exceptionContext.Ignore = false; };
-                            });
-                    }
+                        var consulEnabled = !string.IsNullOrEmpty(consulAddress);
 
-                    var configuration = configurationBuilder.Build();
+                        if (consulEnabled)
+                        {
+                            c.AddConsul(
+                                $"{assemblyName}/{currentEnviroment}", (options) =>
+                                {
+                                    options.ConsulConfigurationOptions = cco => { cco.Address = new Uri(consulAddress); };
+                                    options.Optional = false;
+                                    options.ReloadOnChange = true;
+                                    options.OnLoadException = exceptionContext => { exceptionContext.Ignore = false; };
+                                });
+                        }
+                    });
 
-                    Log.Logger = new LoggerConfiguration()
-                                        .ReadFrom.Configuration(configuration)
-                                        .CreateLogger();
-
-                    Log.Information($"Starting {assemblyName} - {currentEnviroment} - ConsulEnabled : {consulEnabled}");
-              
                     webBuilder.UseStartup<TStartup>();
                     webBuilder.UseSerilog();
                 });
