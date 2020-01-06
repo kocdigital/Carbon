@@ -1,0 +1,11 @@
+C:\Users\02484376\source\repos\Carbon Framework\Carbon.WebApplication\bin\Debug\netcoreapp3.1\Carbon.WebApplication.deps.json
+C:\Users\02484376\source\repos\Carbon Framework\Carbon.WebApplication\bin\Debug\netcoreapp3.1\Carbon.WebApplication.dll
+C:\Users\02484376\source\repos\Carbon Framework\Carbon.WebApplication\obj\Debug\netcoreapp3.1\Carbon.WebApplication.csprojAssemblyReference.cache
+C:\Users\02484376\source\repos\Carbon Framework\Carbon.WebApplication\obj\Debug\netcoreapp3.1\Carbon.WebApplication.AssemblyInfoInputs.cache
+C:\Users\02484376\source\repos\Carbon Framework\Carbon.WebApplication\obj\Debug\netcoreapp3.1\Carbon.WebApplication.AssemblyInfo.cs
+C:\Users\02484376\source\repos\Carbon Framework\Carbon.WebApplication\bin\Debug\netcoreapp3.1\Carbon.Common.dll
+C:\Users\02484376\source\repos\Carbon Framework\Carbon.WebApplication\bin\Debug\netcoreapp3.1\Carbon.Common.pdb
+C:\Users\02484376\source\repos\Carbon Framework\Carbon.WebApplication\obj\Debug\netcoreapp3.1\Carbon.WebApplication.csproj.CopyComplete
+C:\Users\02484376\source\repos\Carbon Framework\Carbon.WebApplication\bin\Debug\netcoreapp3.1\Carbon.WebApplication.pdb
+C:\Users\02484376\source\repos\Carbon Framework\Carbon.WebApplication\obj\Debug\netcoreapp3.1\Carbon.WebApplication.dll
+C:\Users\02484376\source\repos\Carbon Framework\Carbon.WebApplication\obj\Debug\netcoreapp3.1\Carbon.WebApplication.pdb

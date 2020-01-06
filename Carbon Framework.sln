@@ -3,19 +3,23 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29418.71
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Carbon.Domain.Abstractions", "Carbon.Domain.Abstractions\Carbon.Domain.Abstractions.csproj", "{1353BC6E-5373-4E94-A1B4-A825D79EF2BA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Carbon.Domain.Abstractions", "Carbon.Domain.Abstractions\Carbon.Domain.Abstractions.csproj", "{1353BC6E-5373-4E94-A1B4-A825D79EF2BA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Carbon.ExceptionHandling.Abstractions", "Carbon.ExceptionHandling\Carbon.ExceptionHandling.Abstractions.csproj", "{33F7B856-E12C-4CDC-9652-49E327BDBA75}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Carbon.ExceptionHandling.Abstractions", "Carbon.ExceptionHandling\Carbon.ExceptionHandling.Abstractions.csproj", "{33F7B856-E12C-4CDC-9652-49E327BDBA75}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Carbon.Domain.EntityFrameworkCore", "Carbon.Domain.EntityFrameworkCore.Extensions\Carbon.Domain.EntityFrameworkCore.csproj", "{1A3D66AB-24FD-49CD-B85F-920F7AD560D6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Carbon.Domain.EntityFrameworkCore", "Carbon.Domain.EntityFrameworkCore.Extensions\Carbon.Domain.EntityFrameworkCore.csproj", "{1A3D66AB-24FD-49CD-B85F-920F7AD560D6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Carbon.WebApplication.Extensions", "Carbon.WebApplication.Extensions\Carbon.WebApplication.Extensions.csproj", "{924C3708-CDDE-429B-AE45-D651646B1BFB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Carbon.ConsoleApplication.Extensions", "Carbon.ConsoleApplication.Extensions\Carbon.ConsoleApplication.Extensions.csproj", "{D92D38A5-923A-4CE0-83B2-4578383EEC70}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Carbon.ConsoleApplication.Extensions", "Carbon.ConsoleApplication.Extensions\Carbon.ConsoleApplication.Extensions.csproj", "{D92D38A5-923A-4CE0-83B2-4578383EEC70}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Carbon.PagedList", "Carbon.PagedList\Carbon.PagedList.csproj", "{82AAE197-20F9-44C9-9B86-D4673A8899A8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Carbon.PagedList", "Carbon.PagedList\Carbon.PagedList.csproj", "{82AAE197-20F9-44C9-9B86-D4673A8899A8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Carbon.Common", "Carbon.Common\Carbon.Common.csproj", "{7C51DD99-5243-40D9-BFB5-9E1F4DA4056B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Carbon.Common", "Carbon.Common\Carbon.Common.csproj", "{7C51DD99-5243-40D9-BFB5-9E1F4DA4056B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Carbon.Cassandra.Abstractions", "Carbon.Cassandra.Abstractions\Carbon.Cassandra.Abstractions.csproj", "{DDB8BA33-1C43-42E8-86C1-AC52E761C60F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Carbon.Cassandra", "Carbon.Cassandra\Carbon.Cassandra.csproj", "{A795014C-0488-46E0-AA48-857F16BCA814}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Carbon.WebApplication", "Carbon.WebApplication\Carbon.WebApplication.csproj", "{7B9A4FAA-8D00-4A21-8EE6-6909A9152863}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,10 +39,6 @@ Global
 		{1A3D66AB-24FD-49CD-B85F-920F7AD560D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1A3D66AB-24FD-49CD-B85F-920F7AD560D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1A3D66AB-24FD-49CD-B85F-920F7AD560D6}.Release|Any CPU.Build.0 = Release|Any CPU
-		{924C3708-CDDE-429B-AE45-D651646B1BFB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{924C3708-CDDE-429B-AE45-D651646B1BFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{924C3708-CDDE-429B-AE45-D651646B1BFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{924C3708-CDDE-429B-AE45-D651646B1BFB}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D92D38A5-923A-4CE0-83B2-4578383EEC70}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D92D38A5-923A-4CE0-83B2-4578383EEC70}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D92D38A5-923A-4CE0-83B2-4578383EEC70}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -51,6 +51,18 @@ Global
 		{7C51DD99-5243-40D9-BFB5-9E1F4DA4056B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7C51DD99-5243-40D9-BFB5-9E1F4DA4056B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7C51DD99-5243-40D9-BFB5-9E1F4DA4056B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DDB8BA33-1C43-42E8-86C1-AC52E761C60F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DDB8BA33-1C43-42E8-86C1-AC52E761C60F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DDB8BA33-1C43-42E8-86C1-AC52E761C60F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DDB8BA33-1C43-42E8-86C1-AC52E761C60F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A795014C-0488-46E0-AA48-857F16BCA814}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A795014C-0488-46E0-AA48-857F16BCA814}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A795014C-0488-46E0-AA48-857F16BCA814}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A795014C-0488-46E0-AA48-857F16BCA814}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7B9A4FAA-8D00-4A21-8EE6-6909A9152863}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B9A4FAA-8D00-4A21-8EE6-6909A9152863}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B9A4FAA-8D00-4A21-8EE6-6909A9152863}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B9A4FAA-8D00-4A21-8EE6-6909A9152863}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

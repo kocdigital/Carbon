@@ -1,0 +1,11 @@
+C:\Users\02484376\source\repos\Carbon Framework\Carbon.Cassandra\bin\Debug\netstandard2.0\Carbon.Cassandra.deps.json
+C:\Users\02484376\source\repos\Carbon Framework\Carbon.Cassandra\bin\Debug\netstandard2.0\Carbon.Cassandra.dll
+C:\Users\02484376\source\repos\Carbon Framework\Carbon.Cassandra\bin\Debug\netstandard2.0\Carbon.Cassandra.Abstractions.dll
+C:\Users\02484376\source\repos\Carbon Framework\Carbon.Cassandra\bin\Debug\netstandard2.0\Carbon.Cassandra.Abstractions.pdb
+C:\Users\02484376\source\repos\Carbon Framework\Carbon.Cassandra\obj\Debug\netstandard2.0\Carbon.Cassandra.csprojAssemblyReference.cache
+C:\Users\02484376\source\repos\Carbon Framework\Carbon.Cassandra\obj\Debug\netstandard2.0\Carbon.Cassandra.AssemblyInfoInputs.cache
+C:\Users\02484376\source\repos\Carbon Framework\Carbon.Cassandra\obj\Debug\netstandard2.0\Carbon.Cassandra.AssemblyInfo.cs
+C:\Users\02484376\source\repos\Carbon Framework\Carbon.Cassandra\obj\Debug\netstandard2.0\Carbon.Cassandra.csproj.CopyComplete
+C:\Users\02484376\source\repos\Carbon Framework\Carbon.Cassandra\bin\Debug\netstandard2.0\Carbon.Cassandra.pdb
+C:\Users\02484376\source\repos\Carbon Framework\Carbon.Cassandra\obj\Debug\netstandard2.0\Carbon.Cassandra.dll
+C:\Users\02484376\source\repos\Carbon Framework\Carbon.Cassandra\obj\Debug\netstandard2.0\Carbon.Cassandra.pdb
