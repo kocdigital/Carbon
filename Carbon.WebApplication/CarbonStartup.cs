@@ -19,7 +19,6 @@ namespace Carbon.WebApplication
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
         public IServiceProvider ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
@@ -58,5 +57,8 @@ namespace Carbon.WebApplication
                 endpoints.MapControllers();
             });
         }
+
+        public abstract void ConfigureDependencies(IServiceCollection services);
+        public abstract void ConfigureRequestPipeline(IApplicationBuilder app, IWebHostEnvironment env);
     }
 }

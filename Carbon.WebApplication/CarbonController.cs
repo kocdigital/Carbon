@@ -51,7 +51,7 @@ namespace Carbon.WebApplication
             return Ok(entity);
         }
 
-        public void AddParameter(string key, IList<Orderable> ordination, int pageSize, int pageIndex)
+        private void AddParameter(string key, IList<Orderable> ordination, int pageSize, int pageIndex)
         {
             var builder = new StringBuilder();
 
