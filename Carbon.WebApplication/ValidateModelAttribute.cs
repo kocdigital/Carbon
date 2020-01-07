@@ -19,7 +19,6 @@ namespace Carbon.WebApplication
 
                 context.Result = new BadRequestObjectResult(problemDetails);
                 //context.Result = new BadRequestObjectResult(context.ModelState);
-
             }
         }
     }

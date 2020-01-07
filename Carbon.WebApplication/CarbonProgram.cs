@@ -18,6 +18,8 @@ namespace Carbon.WebApplication
 
                     webBuilder.ConfigureAppConfiguration((c) =>
                     {
+                        #region Consul Configuration
+
                         var consulEnabled = !string.IsNullOrEmpty(consulAddress);
 
                         if (consulEnabled)
@@ -30,7 +32,9 @@ namespace Carbon.WebApplication
                                     options.ReloadOnChange = true;
                                     options.OnLoadException = exceptionContext => { exceptionContext.Ignore = false; };
                                 });
-                        }
+                        } 
+
+                        #endregion
                     });
 
                     webBuilder.UseStartup<TStartup>();

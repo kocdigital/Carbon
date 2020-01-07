@@ -14,9 +14,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\02484376\\source\\repos\\Carbon Framework\\Carbon.ConsoleApplication.Extensions\\Carbon.ConsoleApplication.Extensions.csproj",
-      "projectName": "Carbon.ConsoleApplication.Extensions",
-      "projectPath": "C:\\Users\\02484376\\source\\repos\\Carbon Framework\\Carbon.ConsoleApplication.Extensions\\Carbon.ConsoleApplication.Extensions.csproj",
+      "projectUniqueName": "C:\\Users\\02484376\\source\\repos\\Carbon Framework\\Carbon.ConsoleApplication.Extensions\\Carbon.ConsoleApplication.csproj",
+      "projectName": "Carbon.ConsoleApplication",
+      "projectPath": "C:\\Users\\02484376\\source\\repos\\Carbon Framework\\Carbon.ConsoleApplication.Extensions\\Carbon.ConsoleApplication.csproj",
       "packagesPath": "C:\\Users\\02484376\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\02484376\\source\\repos\\Carbon Framework\\Carbon.ConsoleApplication.Extensions\\obj\\",
       "projectStyle": "PackageReference",
