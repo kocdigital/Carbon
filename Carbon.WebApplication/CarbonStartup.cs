@@ -1,5 +1,4 @@
-﻿using Carbon.Common;
-using FluentValidation.AspNetCore;
+﻿using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -8,13 +7,16 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using Serilog;
 using System;
-using Winton.Extensions.Configuration.Consul;
+using System.Linq;
 
 namespace Carbon.WebApplication
 {
 
+
+
     public abstract class CarbonStartup<TStartup> where TStartup : class
     {
+        private string MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
         private SwaggerSettings _swaggerSettings;
         protected CarbonStartup(IConfiguration configuration)
         {
@@ -27,12 +29,16 @@ namespace Carbon.WebApplication
         public IServiceProvider ConfigureServices(IServiceCollection services)
         {
             Log.Logger = new LoggerConfiguration().ReadFrom.Configuration(Configuration).CreateLogger();
+            services.Configure<CorsPolicySettings>(Configuration.GetSection("CorsPolicy"));
 
+            services.AddOptions();
             services.AddControllers();
             services.Configure<SwaggerSettings>(Configuration.GetSection("Swagger"));
             services.AddSingleton(Configuration);
 
-            _swaggerSettings = Configuration.GetSection("Swagger").Get<SwaggerSettings>();
+            #region Swagger Settings
+
+            var _swaggerSettings = Configuration.GetSection("Swagger").Get<SwaggerSettings>();
 
             if (_swaggerSettings == null)
                 throw new ArgumentNullException("Swagger settings cannot be empty!");
@@ -45,19 +51,42 @@ namespace Carbon.WebApplication
                 }
             });
 
-            services.AddMvc()
-                .AddFluentValidation(fvc => fvc.RegisterValidatorsFromAssemblyContaining<TStartup>());
+            #endregion
+
+            #region Cors Policy Settings
+
+            var corsSettings = Configuration.GetSection("CorsPolicy").Get<CorsPolicySettings>();
+
+            if (corsSettings != null && corsSettings.Origins != null && corsSettings.Origins.Count > 0)
+            {
+                services.AddCors(options =>
+                {
+                    options.AddPolicy(MyAllowSpecificOrigins,
+                    builder =>
+                    {
+                        builder.WithOrigins(corsSettings.Origins.ToArray())
+                               .AllowAnyHeader()
+                               .AllowAnyMethod()
+                               .AllowCredentials();
+                    });
+                });
+
+            } 
+
+            #endregion
+
+            services.AddMvc(options =>
+            {
+                options.Filters.Add(typeof(HttpGlobalExceptionFilter));
+            })
+            .AddFluentValidation(fvc => fvc.RegisterValidatorsFromAssemblyContaining<TStartup>());
 
             return services.BuildServiceProvider();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            // Enable middleware to serve generated Swagger as a JSON endpoint.
             app.UseSwagger();
-
-            // Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.),
-            // specifying the Swagger JSON endpoint.
             app.UseSwaggerUI(c =>
             {
                 c.SwaggerEndpoint(_swaggerSettings.EndpointUrl, _swaggerSettings.EndpointName);

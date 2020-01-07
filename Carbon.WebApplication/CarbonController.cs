@@ -5,9 +5,10 @@ using System.Text;
 
 namespace Carbon.WebApplication
 {
+    [ValidateModel]
     public abstract class CarbonController : ControllerBase
     {
-        public OkObjectResult CarbonOk<T>(T entity)
+        public OkObjectResult PagedOk<T>(T entity)
         {
             if (typeof(IPageableDto).IsAssignableFrom(typeof(T)))
             {
