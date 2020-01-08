@@ -21,6 +21,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Carbon.Common\Carbon.Common.csproj" />
+    <ProjectReference Include="..\Carbon.ExceptionHandling\Carbon.ExceptionHandling.Abstractions.csproj" />
   </ItemGroup>
 
 </Project>
