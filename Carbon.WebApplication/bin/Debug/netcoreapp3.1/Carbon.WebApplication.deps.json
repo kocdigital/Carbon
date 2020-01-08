@@ -16,6 +16,9 @@
           "Microsoft.OpenApi": "1.1.4",
           "Newtonsoft.Json": "12.0.3",
           "Serilog.AspNetCore": "3.2.0",
+          "Serilog.Sinks.Console": "3.1.1",
+          "Serilog.Sinks.File": "4.1.0",
+          "Serilog.Sinks.RollingFile": "3.3.0",
           "Swashbuckle.AspNetCore": "5.0.0-rc4",
           "Winton.Extensions.Configuration.Consul": "3.0.0"
         },
@@ -774,7 +777,7 @@
           "Serilog.Settings.Configuration": "3.1.0",
           "Serilog.Sinks.Console": "3.1.1",
           "Serilog.Sinks.Debug": "1.0.1",
-          "Serilog.Sinks.File": "4.0.0"
+          "Serilog.Sinks.File": "4.1.0"
         },
         "runtime": {
           "lib/netstandard2.0/Serilog.AspNetCore.dll": {
@@ -860,21 +863,32 @@
           }
         }
       },
-      "Serilog.Sinks.File/4.0.0": {
+      "Serilog.Sinks.File/4.1.0": {
         "dependencies": {
           "Serilog": "2.8.0",
-          "System.IO": "4.3.0",
           "System.IO.FileSystem": "4.3.0",
-          "System.IO.FileSystem.Primitives": "4.3.0",
-          "System.Runtime.InteropServices": "4.3.0",
           "System.Text.Encoding.Extensions": "4.3.0",
-          "System.Threading": "4.3.0",
           "System.Threading.Timer": "4.3.0"
         },
         "runtime": {
-          "lib/netstandard1.3/Serilog.Sinks.File.dll": {
+          "lib/netstandard2.0/Serilog.Sinks.File.dll": {
             "assemblyVersion": "2.0.0.0",
-            "fileVersion": "4.0.0.0"
+            "fileVersion": "4.1.0.0"
+          }
+        }
+      },
+      "Serilog.Sinks.RollingFile/3.3.0": {
+        "dependencies": {
+          "Serilog.Sinks.File": "4.1.0",
+          "System.IO": "4.3.0",
+          "System.IO.FileSystem.Primitives": "4.3.0",
+          "System.Runtime.InteropServices": "4.3.0",
+          "System.Text.Encoding.Extensions": "4.3.0"
+        },
+        "runtime": {
+          "lib/netstandard1.3/Serilog.Sinks.RollingFile.dll": {
+            "assemblyVersion": "2.0.0.0",
+            "fileVersion": "3.3.0.0"
           }
         }
       },
@@ -2484,12 +2498,19 @@
       "path": "serilog.sinks.debug/1.0.1",
       "hashPath": "serilog.sinks.debug.1.0.1.nupkg.sha512"
     },
-    "Serilog.Sinks.File/4.0.0": {
+    "Serilog.Sinks.File/4.1.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-vBj43RkAbeP1dzoPFR2+LfV5GevDRPDq6265JJBv223lMvT9rfdwe/S/I9ow7aZSLYKfw4qPDw6NW8YwjbDbvg==",
-      "path": "serilog.sinks.file/4.0.0",
-      "hashPath": "serilog.sinks.file.4.0.0.nupkg.sha512"
+      "sha512": "sha512-U0b34w+ZikbqWEZ3ui7BdzxY/19zwrdhLtI3o6tfmLdD3oXxg7n2TZJjwCCTlKPgRuYic9CBWfrZevbb70mTaw==",
+      "path": "serilog.sinks.file/4.1.0",
+      "hashPath": "serilog.sinks.file.4.1.0.nupkg.sha512"
+    },
+    "Serilog.Sinks.RollingFile/3.3.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-2lT5X1r3GH4P0bRWJfhA7etGl8Q2Ipw9AACvtAHWRUSpYZ42NGVyHoVs2ALBZ/cAkkS+tA4jl80Zie144eLQPg==",
+      "path": "serilog.sinks.rollingfile/3.3.0",
+      "hashPath": "serilog.sinks.rollingfile.3.3.0.nupkg.sha512"
     },
     "Swashbuckle.AspNetCore/5.0.0-rc4": {
       "type": "package",

@@ -1490,23 +1490,35 @@
           "lib/netstandard2.0/Serilog.Sinks.Debug.dll": {}
         }
       },
-      "Serilog.Sinks.File/4.0.0": {
+      "Serilog.Sinks.File/4.1.0": {
         "type": "package",
         "dependencies": {
           "Serilog": "2.5.0",
-          "System.IO": "4.1.0",
           "System.IO.FileSystem": "4.0.1",
-          "System.IO.FileSystem.Primitives": "4.0.1",
-          "System.Runtime.InteropServices": "4.1.0",
           "System.Text.Encoding.Extensions": "4.0.11",
-          "System.Threading": "4.0.11",
           "System.Threading.Timer": "4.0.1"
         },
         "compile": {
-          "lib/netstandard1.3/Serilog.Sinks.File.dll": {}
+          "lib/netstandard2.0/Serilog.Sinks.File.dll": {}
         },
         "runtime": {
-          "lib/netstandard1.3/Serilog.Sinks.File.dll": {}
+          "lib/netstandard2.0/Serilog.Sinks.File.dll": {}
+        }
+      },
+      "Serilog.Sinks.RollingFile/3.3.0": {
+        "type": "package",
+        "dependencies": {
+          "Serilog.Sinks.File": "3.2.0",
+          "System.IO": "4.1.0",
+          "System.IO.FileSystem.Primitives": "4.0.1",
+          "System.Runtime.InteropServices": "4.1.0",
+          "System.Text.Encoding.Extensions": "4.0.11"
+        },
+        "compile": {
+          "lib/netstandard1.3/Serilog.Sinks.RollingFile.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.3/Serilog.Sinks.RollingFile.dll": {}
         }
       },
       "Swashbuckle.AspNetCore/5.0.0-rc4": {
@@ -4580,18 +4592,38 @@
         "serilog.sinks.debug.nuspec"
       ]
     },
-    "Serilog.Sinks.File/4.0.0": {
-      "sha512": "vBj43RkAbeP1dzoPFR2+LfV5GevDRPDq6265JJBv223lMvT9rfdwe/S/I9ow7aZSLYKfw4qPDw6NW8YwjbDbvg==",
+    "Serilog.Sinks.File/4.1.0": {
+      "sha512": "U0b34w+ZikbqWEZ3ui7BdzxY/19zwrdhLtI3o6tfmLdD3oXxg7n2TZJjwCCTlKPgRuYic9CBWfrZevbb70mTaw==",
       "type": "package",
-      "path": "serilog.sinks.file/4.0.0",
+      "path": "serilog.sinks.file/4.1.0",
       "files": [
         ".nupkg.metadata",
+        ".signature.p7s",
         "lib/net45/Serilog.Sinks.File.dll",
+        "lib/net45/Serilog.Sinks.File.pdb",
         "lib/net45/Serilog.Sinks.File.xml",
         "lib/netstandard1.3/Serilog.Sinks.File.dll",
+        "lib/netstandard1.3/Serilog.Sinks.File.pdb",
         "lib/netstandard1.3/Serilog.Sinks.File.xml",
-        "serilog.sinks.file.4.0.0.nupkg.sha512",
+        "lib/netstandard2.0/Serilog.Sinks.File.dll",
+        "lib/netstandard2.0/Serilog.Sinks.File.pdb",
+        "lib/netstandard2.0/Serilog.Sinks.File.xml",
+        "serilog.sinks.file.4.1.0.nupkg.sha512",
         "serilog.sinks.file.nuspec"
+      ]
+    },
+    "Serilog.Sinks.RollingFile/3.3.0": {
+      "sha512": "2lT5X1r3GH4P0bRWJfhA7etGl8Q2Ipw9AACvtAHWRUSpYZ42NGVyHoVs2ALBZ/cAkkS+tA4jl80Zie144eLQPg==",
+      "type": "package",
+      "path": "serilog.sinks.rollingfile/3.3.0",
+      "files": [
+        ".nupkg.metadata",
+        "lib/net45/Serilog.Sinks.RollingFile.dll",
+        "lib/net45/Serilog.Sinks.RollingFile.xml",
+        "lib/netstandard1.3/Serilog.Sinks.RollingFile.dll",
+        "lib/netstandard1.3/Serilog.Sinks.RollingFile.xml",
+        "serilog.sinks.rollingfile.3.3.0.nupkg.sha512",
+        "serilog.sinks.rollingfile.nuspec"
       ]
     },
     "Swashbuckle.AspNetCore/5.0.0-rc4": {
@@ -8450,6 +8482,9 @@
       "Microsoft.OpenApi >= 1.1.4",
       "Newtonsoft.Json >= 12.0.3",
       "Serilog.AspNetCore >= 3.2.0",
+      "Serilog.Sinks.Console >= 3.1.1",
+      "Serilog.Sinks.File >= 4.1.0",
+      "Serilog.Sinks.RollingFile >= 3.3.0",
       "Swashbuckle.AspNetCore >= 5.0.0-rc4",
       "Winton.Extensions.Configuration.Consul >= 3.0.0"
     ]
@@ -8527,6 +8562,18 @@
           "Serilog.AspNetCore": {
             "target": "Package",
             "version": "[3.2.0, )"
+          },
+          "Serilog.Sinks.Console": {
+            "target": "Package",
+            "version": "[3.1.1, )"
+          },
+          "Serilog.Sinks.File": {
+            "target": "Package",
+            "version": "[4.1.0, )"
+          },
+          "Serilog.Sinks.RollingFile": {
+            "target": "Package",
+            "version": "[3.3.0, )"
           },
           "Swashbuckle.AspNetCore": {
             "target": "Package",

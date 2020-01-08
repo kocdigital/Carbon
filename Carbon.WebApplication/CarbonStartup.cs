@@ -1,4 +1,5 @@
-﻿using FluentValidation.AspNetCore;
+﻿using Carbon.Common;
+using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -11,9 +12,6 @@ using System.Linq;
 
 namespace Carbon.WebApplication
 {
-
-
-
     public abstract class CarbonStartup<TStartup> where TStartup : class
     {
         private string MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
@@ -21,24 +19,33 @@ namespace Carbon.WebApplication
         protected CarbonStartup(IConfiguration configuration)
         {
             Configuration = configuration;
-
         }
 
         public IConfiguration Configuration { get; }
 
-        public IServiceProvider ConfigureServices(IServiceCollection services)
+        public void ConfigureServices(IServiceCollection services)
         {
-            Log.Logger = new LoggerConfiguration().ReadFrom.Configuration(Configuration).CreateLogger();
-            services.Configure<CorsPolicySettings>(Configuration.GetSection("CorsPolicy"));
-
             services.AddOptions();
             services.AddControllers();
+            services.Configure<SerilogSettings>(Configuration.GetSection("Serilog"));
+            services.Configure<CorsPolicySettings>(Configuration.GetSection("CorsPolicy"));
             services.Configure<SwaggerSettings>(Configuration.GetSection("Swagger"));
             services.AddSingleton(Configuration);
 
+            #region Serilog Settings
+
+            var _serilogSettings = Configuration.GetSection("Serilog").Get<SerilogSettings>();
+
+            if (_serilogSettings == null)
+                throw new ArgumentNullException("Serilog settings cannot be empty!");
+ 
+            Log.Logger = new LoggerConfiguration().ReadFrom.Configuration(Configuration).CreateLogger();
+       
+            #endregion
+
             #region Swagger Settings
 
-            var _swaggerSettings = Configuration.GetSection("Swagger").Get<SwaggerSettings>();
+            _swaggerSettings = Configuration.GetSection("Swagger").Get<SwaggerSettings>();
 
             if (_swaggerSettings == null)
                 throw new ArgumentNullException("Swagger settings cannot be empty!");
@@ -81,7 +88,7 @@ namespace Carbon.WebApplication
             })
             .AddFluentValidation(fvc => fvc.RegisterValidatorsFromAssemblyContaining<TStartup>());
 
-            return services.BuildServiceProvider();
+            ConfigureDependencies(services);
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -106,6 +113,8 @@ namespace Carbon.WebApplication
             {
                 endpoints.MapControllers();
             });
+
+            ConfigureRequestPipeline(app, env);
         }
 
         public abstract void ConfigureDependencies(IServiceCollection services);
