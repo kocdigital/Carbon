@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Net;
 
 namespace Carbon.WebApplication
@@ -48,7 +49,7 @@ namespace Carbon.WebApplication
 
             if (_env.IsDevelopment())
             {
-                apiResponse.Messages.Add(context.Exception.ToString());
+                apiResponse.Messages.Add(context.Exception.Demystify().ToString());
             }
 
             context.Result = new InternalServerErrorObjectResult(apiResponse);

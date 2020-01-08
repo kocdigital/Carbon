@@ -56,3 +56,6 @@ C:\Users\02484376\source\repos\Carbon Framework\demos\Carbon.Demo.WebApplication
 C:\Users\02484376\source\repos\Carbon Framework\demos\Carbon.Demo.WebApplication\obj\Debug\netcoreapp3.1\Carbon.Demo.WebApplication.dll
 C:\Users\02484376\source\repos\Carbon Framework\demos\Carbon.Demo.WebApplication\obj\Debug\netcoreapp3.1\Carbon.Demo.WebApplication.pdb
 C:\Users\02484376\source\repos\Carbon Framework\demos\Carbon.Demo.WebApplication\bin\Debug\netcoreapp3.1\Serilog.Sinks.RollingFile.dll
+C:\Users\02484376\source\repos\Carbon Framework\demos\Carbon.Demo.WebApplication\bin\Debug\netcoreapp3.1\Ben.Demystifier.dll
+C:\Users\02484376\source\repos\Carbon Framework\demos\Carbon.Demo.WebApplication\bin\Debug\netcoreapp3.1\Carbon.ExceptionHandling.Abstractions.dll
+C:\Users\02484376\source\repos\Carbon Framework\demos\Carbon.Demo.WebApplication\bin\Debug\netcoreapp3.1\Carbon.ExceptionHandling.Abstractions.pdb

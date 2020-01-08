@@ -315,6 +315,20 @@
           "Carbon.Demo.WebApplication.dll": {}
         }
       },
+      "Ben.Demystifier/0.1.4": {
+        "dependencies": {
+          "System.Reflection.Metadata": "1.5.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Ben.Demystifier.dll": {
+            "assemblyVersion": "0.1.0.0",
+            "fileVersion": "0.1.4.21"
+          }
+        },
+        "compile": {
+          "lib/netstandard2.0/Ben.Demystifier.dll": {}
+        }
+      },
       "Consul/0.7.2.6": {
         "dependencies": {
           "NETStandard.Library": "1.6.1",
@@ -725,7 +739,7 @@
           "System.Linq": "4.3.0",
           "System.Linq.Expressions": "4.3.0",
           "System.Reflection": "4.3.0",
-          "System.Reflection.Metadata": "1.4.2",
+          "System.Reflection.Metadata": "1.5.0",
           "System.Resources.ResourceManager": "4.3.0",
           "System.Runtime": "4.3.0",
           "System.Runtime.Extensions": "4.3.0",
@@ -1386,7 +1400,7 @@
           "System.IO": "4.3.0",
           "System.IO.FileSystem": "4.3.0",
           "System.IO.FileSystem.Primitives": "4.3.0",
-          "System.Reflection.Metadata": "1.4.2",
+          "System.Reflection.Metadata": "1.5.0",
           "System.Runtime": "4.3.0",
           "System.Runtime.Extensions": "4.3.0",
           "System.Runtime.InteropServices": "4.3.0"
@@ -1396,7 +1410,7 @@
         "dependencies": {
           "System.IO.FileSystem": "4.3.0",
           "System.Reflection": "4.3.0",
-          "System.Reflection.Metadata": "1.4.2",
+          "System.Reflection.Metadata": "1.5.0",
           "System.Runtime": "4.3.0"
         }
       },
@@ -1683,26 +1697,7 @@
           "System.Runtime": "4.3.0"
         }
       },
-      "System.Reflection.Metadata/1.4.2": {
-        "dependencies": {
-          "System.Collections": "4.3.0",
-          "System.Collections.Immutable": "1.3.1",
-          "System.Diagnostics.Debug": "4.3.0",
-          "System.IO": "4.3.0",
-          "System.IO.Compression": "4.3.0",
-          "System.Linq": "4.3.0",
-          "System.Reflection": "4.3.0",
-          "System.Reflection.Extensions": "4.3.0",
-          "System.Reflection.Primitives": "4.3.0",
-          "System.Resources.ResourceManager": "4.3.0",
-          "System.Runtime": "4.3.0",
-          "System.Runtime.Extensions": "4.3.0",
-          "System.Runtime.InteropServices": "4.3.0",
-          "System.Text.Encoding": "4.3.0",
-          "System.Text.Encoding.Extensions": "4.3.0",
-          "System.Threading": "4.3.0"
-        }
-      },
+      "System.Reflection.Metadata/1.5.0": {},
       "System.Reflection.Primitives/4.3.0": {
         "dependencies": {
           "Microsoft.NETCore.Platforms": "2.0.0",
@@ -2105,9 +2100,22 @@
           "Carbon.Common.dll": {}
         }
       },
+      "Carbon.ExceptionHandling.Abstractions/1.0.0": {
+        "dependencies": {
+          "Ben.Demystifier": "0.1.4",
+          "Newtonsoft.Json": "12.0.3"
+        },
+        "runtime": {
+          "Carbon.ExceptionHandling.Abstractions.dll": {}
+        },
+        "compile": {
+          "Carbon.ExceptionHandling.Abstractions.dll": {}
+        }
+      },
       "Carbon.WebApplication/1.0.0": {
         "dependencies": {
           "Carbon.Common": "1.0.0",
+          "Carbon.ExceptionHandling.Abstractions": "1.0.0",
           "FluentValidation.AspNetCore": "8.6.1",
           "Microsoft.AspNetCore.Mvc": "2.2.0",
           "Microsoft.AspNetCore.Mvc.Core": "2.2.5",
@@ -3828,6 +3836,13 @@
       "serviceable": false,
       "sha512": ""
     },
+    "Ben.Demystifier/0.1.4": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-+t5j6MizCTkWh1oZm9RdLIJfEWYRIPFBDe7E+H0pqjAzHbRm6oyhm5Rsf8kPGQZXNdDur9YwkSyXUe7eAIRbLw==",
+      "path": "ben.demystifier/0.1.4",
+      "hashPath": "ben.demystifier.0.1.4.nupkg.sha512"
+    },
     "Consul/0.7.2.6": {
       "type": "package",
       "serviceable": true,
@@ -4885,12 +4900,12 @@
       "path": "system.reflection.extensions/4.3.0",
       "hashPath": "system.reflection.extensions.4.3.0.nupkg.sha512"
     },
-    "System.Reflection.Metadata/1.4.2": {
+    "System.Reflection.Metadata/1.5.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-KYPNMDrLB2R+G5JJiJ2fjBpihtktKVIjsirmyyv+VDo5rQkIR9BWeCYM1wDSzbQatWNZ/NQfPsQyTB1Ui3qBfQ==",
-      "path": "system.reflection.metadata/1.4.2",
-      "hashPath": "system.reflection.metadata.1.4.2.nupkg.sha512"
+      "sha512": "sha512-423hF/x1/1/aBT6hjgrp8RH2zdKOd1iTujlHisSesTW/cgv1ixUitfk23ZknVzItMm6jnwp9CBwI2P3r9jpitw==",
+      "path": "system.reflection.metadata/1.5.0",
+      "hashPath": "system.reflection.metadata.1.5.0.nupkg.sha512"
     },
     "System.Reflection.Primitives/4.3.0": {
       "type": "package",
@@ -5166,6 +5181,11 @@
       "hashPath": "winton.extensions.configuration.consul.3.0.0.nupkg.sha512"
     },
     "Carbon.Common/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Carbon.ExceptionHandling.Abstractions/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
