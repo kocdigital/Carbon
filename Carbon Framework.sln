@@ -27,6 +27,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Carbon.Demo.WebApplication"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "demos", "demos", "{ECB8C495-D13E-4360-AD95-B3DACE26EF77}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Carbon.FluentValidation", "Carbon.FluentValidation\Carbon.FluentValidation.csproj", "{FA58827A-B548-4498-9A4E-7E1BB0F9C242}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -73,6 +75,10 @@ Global
 		{55EB676E-1EE3-4728-967C-4CA0452667EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{55EB676E-1EE3-4728-967C-4CA0452667EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{55EB676E-1EE3-4728-967C-4CA0452667EA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FA58827A-B548-4498-9A4E-7E1BB0F9C242}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA58827A-B548-4498-9A4E-7E1BB0F9C242}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FA58827A-B548-4498-9A4E-7E1BB0F9C242}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FA58827A-B548-4498-9A4E-7E1BB0F9C242}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

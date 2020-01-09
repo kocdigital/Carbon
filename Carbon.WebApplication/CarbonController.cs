@@ -5,7 +5,6 @@ using System.Text;
 
 namespace Carbon.WebApplication
 {
-    [ValidateModel]
     public abstract class CarbonController : ControllerBase
     {
         public OkObjectResult PagedOk<T>(T entity)

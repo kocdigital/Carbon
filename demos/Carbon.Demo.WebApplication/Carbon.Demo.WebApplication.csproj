@@ -1,10 +1,18 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Carbon.Cassandra.Abstractions\Carbon.Cassandra.Abstractions.csproj" />
+    <ProjectReference Include="..\..\Carbon.Cassandra\Carbon.Cassandra.csproj" />
+    <ProjectReference Include="..\..\Carbon.Common\Carbon.Common.csproj" />
+    <ProjectReference Include="..\..\Carbon.ConsoleApplication.Extensions\Carbon.ConsoleApplication.csproj" />
+    <ProjectReference Include="..\..\Carbon.Domain.Abstractions\Carbon.Domain.Abstractions.csproj" />
+    <ProjectReference Include="..\..\Carbon.Domain.EntityFrameworkCore.Extensions\Carbon.Domain.EntityFrameworkCore.csproj" />
+    <ProjectReference Include="..\..\Carbon.ExceptionHandling\Carbon.ExceptionHandling.Abstractions.csproj" />
+    <ProjectReference Include="..\..\Carbon.PagedList\Carbon.PagedList.csproj" />
     <ProjectReference Include="..\..\Carbon.WebApplication\Carbon.WebApplication.csproj" />
   </ItemGroup>
 

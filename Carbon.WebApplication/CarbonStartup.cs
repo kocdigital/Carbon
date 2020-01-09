@@ -2,6 +2,8 @@
 using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -78,15 +80,24 @@ namespace Carbon.WebApplication
                     });
                 });
 
-            } 
+            }
 
             #endregion
 
+            services.AddHealthChecks();
             services.AddMvc(options =>
             {
+                options.Filters.Add(typeof(ValidateModelFilter));
                 options.Filters.Add(typeof(HttpGlobalExceptionFilter));
-            })
-            .AddFluentValidation(fvc => fvc.RegisterValidatorsFromAssemblyContaining<TStartup>());
+            }).AddFluentValidation(fv => {
+                fv.RunDefaultMvcValidationAfterFluentValidationExecutes = false;
+                fv.RegisterValidatorsFromAssemblyContaining<TStartup>();
+            });
+
+            services.Configure<ApiBehaviorOptions>(options =>
+            {
+                options.SuppressModelStateInvalidFilter = true;
+            });
 
             ConfigureDependencies(services);
         }
@@ -110,6 +121,7 @@ namespace Carbon.WebApplication
             app.UseAuthorization();
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapHealthChecks("/health");
                 endpoints.MapControllers();
             });
 
