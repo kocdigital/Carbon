@@ -97,7 +97,6 @@ namespace Carbon.WebApplication
             app.UseSwaggerUI(c =>
             {
                 c.SwaggerEndpoint(_swaggerSettings.EndpointUrl, _swaggerSettings.EndpointName);
-                c.RoutePrefix = _swaggerSettings.RoutePrefix;
             });
 
             if (env.IsDevelopment())
