@@ -3089,6 +3089,7 @@
         "dependencies": {
           "Carbon.Common": "1.0.0",
           "Carbon.ExceptionHandling.Abstractions": "1.0.0",
+          "Carbon.PagedList": "1.0.0",
           "FluentValidation.AspNetCore": "8.6.1",
           "Microsoft.AspNetCore.Mvc": "2.2.0",
           "Microsoft.AspNetCore.Mvc.Core": "2.2.5",

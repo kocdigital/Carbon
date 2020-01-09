@@ -5,3 +5,4 @@ C:\Users\02484376\source\repos\Carbon Framework\Carbon.PagedList\obj\Debug\netst
 C:\Users\02484376\source\repos\Carbon Framework\Carbon.PagedList\obj\Debug\netstandard2.1\Carbon.PagedList.AssemblyInfo.cs
 C:\Users\02484376\source\repos\Carbon Framework\Carbon.PagedList\obj\Debug\netstandard2.1\Carbon.PagedList.dll
 C:\Users\02484376\source\repos\Carbon Framework\Carbon.PagedList\obj\Debug\netstandard2.1\Carbon.PagedList.pdb
+C:\Users\02484376\source\repos\Carbon Framework\Carbon.PagedList\obj\Debug\netstandard2.1\Carbon.PagedList.csprojAssemblyReference.cache

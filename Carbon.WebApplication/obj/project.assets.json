@@ -2923,6 +2923,16 @@
         "runtime": {
           "bin/placeholder/Carbon.ExceptionHandling.Abstractions.dll": {}
         }
+      },
+      "Carbon.PagedList/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.1",
+        "compile": {
+          "bin/placeholder/Carbon.PagedList.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Carbon.PagedList.dll": {}
+        }
       }
     }
   },
@@ -8522,12 +8532,18 @@
       "type": "project",
       "path": "../Carbon.ExceptionHandling/Carbon.ExceptionHandling.Abstractions.csproj",
       "msbuildProject": "../Carbon.ExceptionHandling/Carbon.ExceptionHandling.Abstractions.csproj"
+    },
+    "Carbon.PagedList/1.0.0": {
+      "type": "project",
+      "path": "../Carbon.PagedList/Carbon.PagedList.csproj",
+      "msbuildProject": "../Carbon.PagedList/Carbon.PagedList.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
       "Carbon.Common >= 1.0.0",
       "Carbon.ExceptionHandling.Abstractions >= 1.0.0",
+      "Carbon.PagedList >= 1.0.0",
       "FluentValidation.AspNetCore >= 8.6.1",
       "Microsoft.AspNetCore.Mvc >= 2.2.0",
       "Microsoft.AspNetCore.Mvc.Core >= 2.2.5",
@@ -8578,6 +8594,9 @@
             },
             "C:\\Users\\02484376\\source\\repos\\Carbon Framework\\Carbon.ExceptionHandling\\Carbon.ExceptionHandling.Abstractions.csproj": {
               "projectPath": "C:\\Users\\02484376\\source\\repos\\Carbon Framework\\Carbon.ExceptionHandling\\Carbon.ExceptionHandling.Abstractions.csproj"
+            },
+            "C:\\Users\\02484376\\source\\repos\\Carbon Framework\\Carbon.PagedList\\Carbon.PagedList.csproj": {
+              "projectPath": "C:\\Users\\02484376\\source\\repos\\Carbon Framework\\Carbon.PagedList\\Carbon.PagedList.csproj"
             }
           }
         }

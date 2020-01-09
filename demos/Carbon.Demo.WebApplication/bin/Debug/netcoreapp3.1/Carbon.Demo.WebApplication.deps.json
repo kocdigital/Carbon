@@ -2271,18 +2271,6 @@
           "Carbon.ExceptionHandling.Abstractions.dll": {}
         }
       },
-      "Carbon.FluentValidation/1.0.0": {
-        "dependencies": {
-          "FluentValidation": "8.6.1",
-          "FluentValidation.AspNetCore": "8.6.1"
-        },
-        "runtime": {
-          "Carbon.FluentValidation.dll": {}
-        },
-        "compile": {
-          "Carbon.FluentValidation.dll": {}
-        }
-      },
       "Carbon.PagedList/1.0.0": {
         "runtime": {
           "Carbon.PagedList.dll": {}
@@ -2295,7 +2283,7 @@
         "dependencies": {
           "Carbon.Common": "1.0.0",
           "Carbon.ExceptionHandling.Abstractions": "1.0.0",
-          "Carbon.FluentValidation": "1.0.0",
+          "Carbon.PagedList": "1.0.0",
           "FluentValidation.AspNetCore": "8.6.1",
           "Microsoft.AspNetCore.Mvc": "2.2.0",
           "Microsoft.AspNetCore.Mvc.Core": "2.2.5",
@@ -5440,11 +5428,6 @@
       "sha512": ""
     },
     "Carbon.ExceptionHandling.Abstractions/1.0.0": {
-      "type": "project",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "Carbon.FluentValidation/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

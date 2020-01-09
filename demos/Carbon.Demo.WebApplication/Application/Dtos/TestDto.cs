@@ -1,9 +1,8 @@
-﻿using Carbon.FluentValidation;
-using FluentValidation;
+﻿using FluentValidation;
 
 namespace Carbon.Demo.WebApplication.Application.Dtos
 {
-    public class TestDtoValidator : BaseModelValidator<TestDto>
+    public class TestDtoValidator : AbstractValidator<TestDto>
     {
         public TestDtoValidator()
         {
