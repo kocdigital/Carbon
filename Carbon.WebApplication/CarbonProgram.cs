@@ -24,14 +24,22 @@ namespace Carbon.WebApplication
 
                         if (consulEnabled)
                         {
-                            c.AddConsul(
-                                $"{assemblyName}/{currentEnviroment}", (options) =>
-                                {
-                                    options.ConsulConfigurationOptions = cco => { cco.Address = new Uri(consulAddress); };
-                                    options.Optional = false;
-                                    options.ReloadOnChange = true;
-                                    options.OnLoadException = exceptionContext => { exceptionContext.Ignore = false; };
-                                });
+                            try
+                            {
+                                c.AddConsul(
+                                            $"{assemblyName}/{currentEnviroment}", (options) =>
+                                            {
+                                                options.ConsulConfigurationOptions = cco => { cco.Address = new Uri(consulAddress); };
+                                                options.Optional = false;
+                                                options.ReloadOnChange = true;
+                                                options.OnLoadException = exceptionContext => { exceptionContext.Ignore = false; };
+                                            });
+                            }
+                            catch(Exception)
+                            {
+                                throw new ArgumentNullException($"Consul configuration not found! {$"{assemblyName}/{currentEnviroment}"} Please add it on {consulAddress} and try again!");
+                            }
+
                         } 
 
                         #endregion
