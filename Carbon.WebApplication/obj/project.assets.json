@@ -77,6 +77,19 @@
           "lib/netstandard2.0/FluentValidation.DependencyInjectionExtensions.dll": {}
         }
       },
+      "HybridModelBinding/0.17.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNetCore.Mvc.Abstractions": "2.1.1",
+          "Microsoft.AspNetCore.Mvc.Core": "2.1.1"
+        },
+        "compile": {
+          "lib/netstandard2.0/HybridModelBinding.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/HybridModelBinding.dll": {}
+        }
+      },
       "Microsoft.AspNetCore.Antiforgery/2.2.0": {
         "type": "package",
         "dependencies": {
@@ -3025,6 +3038,19 @@
         "fluentvalidation.dependencyinjectionextensions.nuspec",
         "lib/netstandard2.0/FluentValidation.DependencyInjectionExtensions.dll",
         "lib/netstandard2.0/FluentValidation.DependencyInjectionExtensions.xml"
+      ]
+    },
+    "HybridModelBinding/0.17.0": {
+      "sha512": "XjM69ryI+tTb2D2FFyu9QsxednuMVkVjvHjYdHm5LNtzsz3UdlSgd4KuHMX9Ht8MAxQHAYcDSUN+YJTsD8RuYA==",
+      "type": "package",
+      "path": "hybridmodelbinding/0.17.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "hybridmodelbinding.0.17.0.nupkg.sha512",
+        "hybridmodelbinding.nuspec",
+        "lib/net451/HybridModelBinding.dll",
+        "lib/netstandard2.0/HybridModelBinding.dll"
       ]
     },
     "Microsoft.AspNetCore.Antiforgery/2.2.0": {
@@ -8545,6 +8571,7 @@
       "Carbon.ExceptionHandling.Abstractions >= 1.0.0",
       "Carbon.PagedList >= 1.0.0",
       "FluentValidation.AspNetCore >= 8.6.1",
+      "HybridModelBinding >= 0.17.0",
       "Microsoft.AspNetCore.Mvc >= 2.2.0",
       "Microsoft.AspNetCore.Mvc.Core >= 2.2.5",
       "Microsoft.Extensions.DependencyInjection >= 3.1.0",
@@ -8563,7 +8590,7 @@
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
-    "version": "1.0.4",
+    "version": "1.0.5",
     "restore": {
       "projectUniqueName": "C:\\Users\\02484376\\source\\repos\\Carbon Framework\\Carbon.WebApplication\\Carbon.WebApplication.csproj",
       "projectName": "Carbon.WebApplication",
@@ -8583,6 +8610,7 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "http://bellatrix:8080/tfs/KocDigitalCollection/_packaging/CarbonFramework/nuget/v3/index.json": {},
         "http://bellatrix:8080/tfs/KocDigitalCollection/_packaging/CosmosNugetServerv1/nuget/v3/index.json": {},
         "https://api.nuget.org/v3/index.json": {}
       },
@@ -8613,6 +8641,10 @@
           "FluentValidation.AspNetCore": {
             "target": "Package",
             "version": "[8.6.1, )"
+          },
+          "HybridModelBinding": {
+            "target": "Package",
+            "version": "[0.17.0, )"
           },
           "Microsoft.AspNetCore.Mvc": {
             "target": "Package",

@@ -32,7 +32,7 @@
           "Carbon.Domain.EntityFrameworkCore": "1.0.0",
           "Carbon.ExceptionHandling.Abstractions": "1.0.0",
           "Carbon.PagedList": "1.0.0",
-          "Carbon.WebApplication": "1.0.0",
+          "Carbon.WebApplication": "1.0.5",
           "Microsoft.AspNetCore.Antiforgery.Reference": "3.1.0.0",
           "Microsoft.AspNetCore.Authentication.Abstractions.Reference": "3.1.0.0",
           "Microsoft.AspNetCore.Authentication.Cookies": "3.1.0.0",
@@ -421,6 +421,21 @@
         },
         "compile": {
           "lib/netstandard2.0/FluentValidation.DependencyInjectionExtensions.dll": {}
+        }
+      },
+      "HybridModelBinding/0.17.0": {
+        "dependencies": {
+          "Microsoft.AspNetCore.Mvc.Abstractions": "2.2.0",
+          "Microsoft.AspNetCore.Mvc.Core": "2.2.5"
+        },
+        "runtime": {
+          "lib/netstandard2.0/HybridModelBinding.dll": {
+            "assemblyVersion": "0.17.0.0",
+            "fileVersion": "0.17.0.0"
+          }
+        },
+        "compile": {
+          "lib/netstandard2.0/HybridModelBinding.dll": {}
         }
       },
       "Microsoft.AspNetCore.Antiforgery/2.2.0": {
@@ -2294,12 +2309,13 @@
           "Carbon.PagedList.dll": {}
         }
       },
-      "Carbon.WebApplication/1.0.0": {
+      "Carbon.WebApplication/1.0.5": {
         "dependencies": {
           "Carbon.Common": "1.0.0",
           "Carbon.ExceptionHandling.Abstractions": "1.0.0",
           "Carbon.PagedList": "1.0.0",
           "FluentValidation.AspNetCore": "8.6.1",
+          "HybridModelBinding": "0.17.0",
           "Microsoft.AspNetCore.Mvc": "2.2.0",
           "Microsoft.AspNetCore.Mvc.Core": "2.2.5",
           "Microsoft.Extensions.DependencyInjection": "3.1.0",
@@ -4061,6 +4077,13 @@
       "path": "fluentvalidation.dependencyinjectionextensions/8.6.1",
       "hashPath": "fluentvalidation.dependencyinjectionextensions.8.6.1.nupkg.sha512"
     },
+    "HybridModelBinding/0.17.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-XjM69ryI+tTb2D2FFyu9QsxednuMVkVjvHjYdHm5LNtzsz3UdlSgd4KuHMX9Ht8MAxQHAYcDSUN+YJTsD8RuYA==",
+      "path": "hybridmodelbinding/0.17.0",
+      "hashPath": "hybridmodelbinding.0.17.0.nupkg.sha512"
+    },
     "Microsoft.AspNetCore.Antiforgery/2.2.0": {
       "type": "package",
       "serviceable": true,
@@ -5459,7 +5482,7 @@
       "serviceable": false,
       "sha512": ""
     },
-    "Carbon.WebApplication/1.0.0": {
+    "Carbon.WebApplication/1.0.5": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

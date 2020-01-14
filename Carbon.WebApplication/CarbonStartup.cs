@@ -3,7 +3,6 @@ using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -19,7 +18,7 @@ namespace Carbon.WebApplication
         private string MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
         private SwaggerSettings _swaggerSettings;
         private bool _useAuthentication;
-        private bool _useAutherization;
+        private bool _useAuthorization;
 
         public IWebHostEnvironment Environment { get; }
         public IConfiguration Configuration { get; }
@@ -36,12 +35,12 @@ namespace Carbon.WebApplication
             Environment = environment;
             _useAuthentication = useAuthentication;
         }
-        protected CarbonStartup(IConfiguration configuration, IWebHostEnvironment environment, bool useAuthentication, bool useAutherization)
+        protected CarbonStartup(IConfiguration configuration, IWebHostEnvironment environment, bool useAuthentication, bool useAuthorization)
         {
             Configuration = configuration;
             Environment = environment;
             _useAuthentication = useAuthentication;
-            _useAutherization = useAutherization;
+            _useAuthorization = useAuthorization;
         }
 
         public void ConfigureServices(IServiceCollection services)
@@ -111,7 +110,7 @@ namespace Carbon.WebApplication
             }).AddFluentValidation(fv => {
                 fv.RunDefaultMvcValidationAfterFluentValidationExecutes = false;
                 fv.RegisterValidatorsFromAssemblyContaining<TStartup>();
-            });
+            }).AddHybridModelBinder();
 
             services.Configure<ApiBehaviorOptions>(options =>
             {
@@ -146,7 +145,7 @@ namespace Carbon.WebApplication
                 app.UseAuthentication();
             }
 
-            if (_useAutherization)
+            if (_useAuthorization)
             {
                 app.UseAuthorization();
             }
