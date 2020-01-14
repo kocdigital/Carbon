@@ -8,7 +8,7 @@ namespace Carbon.WebApplication
 {
     public abstract class CarbonController : ControllerBase
     {
-        public OkResult Ok<T>(T value)
+        public OkObjectResult ResponseOk<T>(T value)
         {
             var result = new ApiResponse<T>()
             {
