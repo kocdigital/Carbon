@@ -5,3 +5,4 @@ C:\Users\02484376\source\repos\Carbon Framework\Carbon.Common\obj\Debug\netstand
 C:\Users\02484376\source\repos\Carbon Framework\Carbon.Common\obj\Debug\netstandard2.1\Carbon.Common.AssemblyInfo.cs
 C:\Users\02484376\source\repos\Carbon Framework\Carbon.Common\obj\Debug\netstandard2.1\Carbon.Common.dll
 C:\Users\02484376\source\repos\Carbon Framework\Carbon.Common\obj\Debug\netstandard2.1\Carbon.Common.pdb
+C:\Users\02484376\source\repos\Carbon Framework\Carbon.Common\obj\Debug\netstandard2.1\Carbon.Common.csprojAssemblyReference.cache

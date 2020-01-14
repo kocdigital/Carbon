@@ -21,24 +21,28 @@ namespace Carbon.WebApplication
         private bool _useAuthentication;
         private bool _useAutherization;
 
-        protected CarbonStartup(IConfiguration configuration, IWebHostEnvironment Environment)
+        public IWebHostEnvironment Environment { get; }
+        public IConfiguration Configuration { get; }
+
+        protected CarbonStartup(IConfiguration configuration, IWebHostEnvironment environment)
         {
             Configuration = configuration;
+            Environment = environment;
         }
 
-        protected CarbonStartup(IConfiguration configuration, IWebHostEnvironment Environment, bool useAuthentication)
+        protected CarbonStartup(IConfiguration configuration, IWebHostEnvironment environment, bool useAuthentication)
         {
             Configuration = configuration;
+            Environment = environment;
             _useAuthentication = useAuthentication;
         }
-        protected CarbonStartup(IConfiguration configuration, IWebHostEnvironment Environment, bool useAuthentication, bool useAutherization)
+        protected CarbonStartup(IConfiguration configuration, IWebHostEnvironment environment, bool useAuthentication, bool useAutherization)
         {
             Configuration = configuration;
+            Environment = environment;
             _useAuthentication = useAuthentication;
             _useAutherization = useAutherization;
         }
-
-        public IConfiguration Configuration { get; }
 
         public void ConfigureServices(IServiceCollection services)
         {

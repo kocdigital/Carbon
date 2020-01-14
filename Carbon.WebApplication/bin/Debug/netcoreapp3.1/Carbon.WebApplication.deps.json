@@ -6,7 +6,7 @@
   "compilationOptions": {},
   "targets": {
     ".NETCoreApp,Version=v3.1": {
-      "Carbon.WebApplication/1.0.0": {
+      "Carbon.WebApplication/1.0.4": {
         "dependencies": {
           "Carbon.Common": "1.0.0",
           "Carbon.ExceptionHandling.Abstractions": "1.0.0",
@@ -1734,7 +1734,7 @@
     }
   },
   "libraries": {
-    "Carbon.WebApplication/1.0.0": {
+    "Carbon.WebApplication/1.0.4": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

@@ -1,6 +1,4 @@
-using Carbon.Demo.WebApplication.Application.Dtos;
 using Carbon.WebApplication;
-using FluentValidation;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -10,7 +8,7 @@ namespace Carbon.Demo.WebApplication
 {
     public class Startup : CarbonStartup<Startup>
     {
-        public Startup(IConfiguration configuration) : base(configuration, true, true)
+        public Startup(IConfiguration configuration, IWebHostEnvironment environment) : base(configuration, environment)
         {
         }
 
