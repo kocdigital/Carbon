@@ -20,24 +20,22 @@ namespace Carbon.WebApplication
         private SwaggerSettings _swaggerSettings;
         private bool _useAuthentication;
         private bool _useAutherization;
-        private bool v;
 
-        protected CarbonStartup(IConfiguration configuration, bool useAuthentication, bool useAutherization)
+        protected CarbonStartup(IConfiguration configuration, IWebHostEnvironment Environment)
+        {
+            Configuration = configuration;
+        }
+
+        protected CarbonStartup(IConfiguration configuration, IWebHostEnvironment Environment, bool useAuthentication)
+        {
+            Configuration = configuration;
+            _useAuthentication = useAuthentication;
+        }
+        protected CarbonStartup(IConfiguration configuration, IWebHostEnvironment Environment, bool useAuthentication, bool useAutherization)
         {
             Configuration = configuration;
             _useAuthentication = useAuthentication;
             _useAutherization = useAutherization;
-        }
-
-        protected CarbonStartup(IConfiguration configuration)
-        {
-            Configuration = configuration;
-        }
-
-        protected CarbonStartup(IConfiguration configuration, bool v)
-        {
-            Configuration = configuration;
-            this.v = v;
         }
 
         public IConfiguration Configuration { get; }
