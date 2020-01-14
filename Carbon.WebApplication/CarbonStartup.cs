@@ -117,15 +117,18 @@ namespace Carbon.WebApplication
 
             app.UseSerilogRequestLogging();
 
+            app.UseStaticFiles();
             app.UseRouting();
+
+            ConfigureRequestPipeline(app, env);
+
             app.UseAuthorization();
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapHealthChecks("/health");
                 endpoints.MapControllers();
+                endpoints.MapDefaultControllerRoute();
             });
-
-            ConfigureRequestPipeline(app, env);
         }
 
         public abstract void ConfigureDependencies(IServiceCollection services);
