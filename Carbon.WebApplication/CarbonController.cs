@@ -8,6 +8,41 @@ namespace Carbon.WebApplication
 {
     public abstract class CarbonController : ControllerBase
     {
+        public OkResult Ok<T>(T value)
+        {
+            var result = new ApiResponse<T>()
+            {
+                Data = value
+            };
+
+            return Ok(result);
+        }
+
+        public CreatedAtActionResult UpdatedOk<T>(string actionName, object routeValues, T value)
+        {
+            var result = new ApiResponse<T>()
+            {
+                Data = value
+            };
+
+            return CreatedAtAction(actionName, routeValues, result);
+        }
+
+        public OkResult DeletedOk<T>()
+        {
+            return Ok();
+        }
+
+        public CreatedAtActionResult CreatedOk<T>(string actionName, object routeValues, T value)
+        {
+            var result = new ApiResponse<T>()
+            {
+                Data = value
+            };
+
+            return CreatedAtAction(actionName, routeValues, result);
+        }
+
         public OkObjectResult PagedOk<T>(T entity)
         {
             if (typeof(IPagedList).IsAssignableFrom(typeof(T)))
@@ -45,7 +80,6 @@ namespace Carbon.WebApplication
                     {
                         AddParameter("X-Paging-Next-Link", orderableDto.Orderables, pageable.PageSize, pageable.PageNumber + 1);
                     }
-
                 }
             }
 
@@ -86,6 +120,5 @@ namespace Carbon.WebApplication
             headerParameterLink = $"{Request.Scheme}://{Request.Host}{Request.Path}{headerParameterLink}";
             Response.Headers.Add(key, headerParameterLink);
         }
-
     }
 }
