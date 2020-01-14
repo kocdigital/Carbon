@@ -28,7 +28,7 @@ namespace Carbon.WebApplication
             return CreatedAtAction(actionName, routeValues, result);
         }
 
-        public OkResult DeletedOk<T>()
+        public OkResult DeletedOk()
         {
             return Ok();
         }
