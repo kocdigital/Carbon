@@ -10,7 +10,7 @@ namespace Carbon.Demo.WebApplication
 {
     public class Startup : CarbonStartup<Startup>
     {
-        public Startup(IConfiguration configuration) : base(configuration)
+        public Startup(IConfiguration configuration) : base(configuration, true, true)
         {
         }
 

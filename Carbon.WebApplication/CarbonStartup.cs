@@ -18,9 +18,26 @@ namespace Carbon.WebApplication
     {
         private string MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
         private SwaggerSettings _swaggerSettings;
+        private bool _useAuthentication;
+        private bool _useAutherization;
+        private bool v;
+
+        protected CarbonStartup(IConfiguration configuration, bool useAuthentication, bool useAutherization)
+        {
+            Configuration = configuration;
+            _useAuthentication = useAuthentication;
+            _useAutherization = useAutherization;
+        }
+
         protected CarbonStartup(IConfiguration configuration)
         {
             Configuration = configuration;
+        }
+
+        protected CarbonStartup(IConfiguration configuration, bool v)
+        {
+            Configuration = configuration;
+            this.v = v;
         }
 
         public IConfiguration Configuration { get; }
@@ -122,7 +139,16 @@ namespace Carbon.WebApplication
 
             ConfigureRequestPipeline(app, env);
 
-            app.UseAuthorization();
+            if (_useAuthentication)
+            {
+                app.UseAuthentication();
+            }
+
+            if (_useAutherization)
+            {
+                app.UseAuthorization();
+            }
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapHealthChecks("/health");
