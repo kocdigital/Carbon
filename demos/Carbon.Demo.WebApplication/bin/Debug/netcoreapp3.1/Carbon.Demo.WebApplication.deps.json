@@ -32,7 +32,7 @@
           "Carbon.Domain.EntityFrameworkCore": "1.0.0",
           "Carbon.ExceptionHandling.Abstractions": "1.0.0",
           "Carbon.PagedList": "1.0.0",
-          "Carbon.WebApplication": "1.0.5",
+          "Carbon.WebApplication": "1.0.8",
           "Microsoft.AspNetCore.Antiforgery.Reference": "3.1.0.0",
           "Microsoft.AspNetCore.Authentication.Abstractions.Reference": "3.1.0.0",
           "Microsoft.AspNetCore.Authentication.Cookies": "3.1.0.0",
@@ -2309,7 +2309,7 @@
           "Carbon.PagedList.dll": {}
         }
       },
-      "Carbon.WebApplication/1.0.5": {
+      "Carbon.WebApplication/1.0.8": {
         "dependencies": {
           "Carbon.Common": "1.0.0",
           "Carbon.ExceptionHandling.Abstractions": "1.0.0",
@@ -5482,7 +5482,7 @@
       "serviceable": false,
       "sha512": ""
     },
-    "Carbon.WebApplication/1.0.5": {
+    "Carbon.WebApplication/1.0.8": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

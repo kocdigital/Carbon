@@ -8,7 +8,8 @@ namespace Carbon.WebApplication
 {
     public abstract class CarbonController : ControllerBase
     {
-        public OkObjectResult ResponseOk<T>(T value)
+        [ApiExplorerSettings(IgnoreApi = true)]
+        protected OkObjectResult ResponseOk<T>(T value)
         {
             var result = new ApiResponse<T>()
             {
@@ -18,7 +19,8 @@ namespace Carbon.WebApplication
             return Ok(result);
         }
 
-        public CreatedAtActionResult UpdatedOk<T>(string actionName, object routeValues, T value)
+        [ApiExplorerSettings(IgnoreApi = true)]
+        protected CreatedAtActionResult UpdatedOk<T>(string actionName, object routeValues, T value)
         {
             var result = new ApiResponse<T>()
             {
@@ -28,12 +30,14 @@ namespace Carbon.WebApplication
             return CreatedAtAction(actionName, routeValues, result);
         }
 
-        public OkResult DeletedOk()
+        [ApiExplorerSettings(IgnoreApi = true)]
+        protected NoContentResult DeletedOk()
         {
-            return Ok();
+            return NoContent();
         }
 
-        public CreatedAtActionResult CreatedOk<T>(string actionName, object routeValues, T value)
+        [ApiExplorerSettings(IgnoreApi = true)]
+        protected CreatedAtActionResult CreatedOk<T>(string actionName, object routeValues, T value)
         {
             var result = new ApiResponse<T>()
             {
@@ -42,8 +46,9 @@ namespace Carbon.WebApplication
 
             return CreatedAtAction(actionName, routeValues, result);
         }
-
-        public OkObjectResult PagedOk<T>(T entity)
+        
+        [ApiExplorerSettings(IgnoreApi = true)]
+        protected OkObjectResult PagedOk<T>(T entity)
         {
             if (typeof(IPagedList).IsAssignableFrom(typeof(T)))
             {
@@ -86,7 +91,7 @@ namespace Carbon.WebApplication
             return Ok(entity);
         }
 
-        private void AddParameter(string key, IList<Orderable> ordination, int pageSize, int pageIndex)
+        protected void AddParameter(string key, IList<Orderable> ordination, int pageSize, int pageIndex)
         {
             var builder = new StringBuilder();
 
