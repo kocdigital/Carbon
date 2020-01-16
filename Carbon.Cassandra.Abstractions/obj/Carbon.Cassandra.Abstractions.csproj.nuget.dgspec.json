@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\02484376\\source\\repos\\Carbon Framework\\Carbon.Cassandra.Abstractions\\Carbon.Cassandra.Abstractions.csproj": {}
+    "C:\\GitRepos\\Carbon\\Carbon.Cassandra.Abstractions\\Carbon.Cassandra.Abstractions.csproj": {}
   },
   "projects": {
-    "C:\\Users\\02484376\\source\\repos\\Carbon Framework\\Carbon.Cassandra.Abstractions\\Carbon.Cassandra.Abstractions.csproj": {
+    "C:\\GitRepos\\Carbon\\Carbon.Cassandra.Abstractions\\Carbon.Cassandra.Abstractions.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\02484376\\source\\repos\\Carbon Framework\\Carbon.Cassandra.Abstractions\\Carbon.Cassandra.Abstractions.csproj",
+        "projectUniqueName": "C:\\GitRepos\\Carbon\\Carbon.Cassandra.Abstractions\\Carbon.Cassandra.Abstractions.csproj",
         "projectName": "Carbon.Cassandra.Abstractions",
-        "projectPath": "C:\\Users\\02484376\\source\\repos\\Carbon Framework\\Carbon.Cassandra.Abstractions\\Carbon.Cassandra.Abstractions.csproj",
-        "packagesPath": "C:\\Users\\02484376\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\02484376\\source\\repos\\Carbon Framework\\Carbon.Cassandra.Abstractions\\obj\\",
+        "projectPath": "C:\\GitRepos\\Carbon\\Carbon.Cassandra.Abstractions\\Carbon.Cassandra.Abstractions.csproj",
+        "packagesPath": "C:\\Users\\02484784\\.nuget\\packages\\",
+        "outputPath": "C:\\GitRepos\\Carbon\\Carbon.Cassandra.Abstractions\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\02484376\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\02484784\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -27,7 +27,11 @@
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "http://bellatrix:8080/tfs/KocDigitalCollection/_packaging/CarbonFramework/nuget/v3/index.json": {},
           "http://bellatrix:8080/tfs/KocDigitalCollection/_packaging/CosmosNugetServerv1/nuget/v3/index.json": {},
-          "https://api.nuget.org/v3/index.json": {}
+          "http://nuget.packages.iotp360.kocsistem.com.tr/nuget": {},
+          "http://nuget.packages.kocsistem.com.tr/nuget": {},
+          "http://packagesource": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://dotnet.myget.org/F/aspnetcore-dev/api/v3/index.json": {}
         },
         "frameworks": {
           "netstandard2.0": {

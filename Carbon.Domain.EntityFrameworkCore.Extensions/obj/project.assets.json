@@ -894,23 +894,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\02484376\\.nuget\\packages\\": {},
+    "C:\\Users\\02484784\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\02484376\\source\\repos\\Carbon Framework\\Carbon.Domain.EntityFrameworkCore.Extensions\\Carbon.Domain.EntityFrameworkCore.csproj",
+      "projectUniqueName": "C:\\GitRepos\\Carbon\\Carbon.Domain.EntityFrameworkCore.Extensions\\Carbon.Domain.EntityFrameworkCore.csproj",
       "projectName": "Carbon.Domain.EntityFrameworkCore",
-      "projectPath": "C:\\Users\\02484376\\source\\repos\\Carbon Framework\\Carbon.Domain.EntityFrameworkCore.Extensions\\Carbon.Domain.EntityFrameworkCore.csproj",
-      "packagesPath": "C:\\Users\\02484376\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\02484376\\source\\repos\\Carbon Framework\\Carbon.Domain.EntityFrameworkCore.Extensions\\obj\\",
+      "projectPath": "C:\\GitRepos\\Carbon\\Carbon.Domain.EntityFrameworkCore.Extensions\\Carbon.Domain.EntityFrameworkCore.csproj",
+      "packagesPath": "C:\\Users\\02484784\\.nuget\\packages\\",
+      "outputPath": "C:\\GitRepos\\Carbon\\Carbon.Domain.EntityFrameworkCore.Extensions\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\02484376\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\02484784\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -920,13 +920,17 @@
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "http://bellatrix:8080/tfs/KocDigitalCollection/_packaging/CarbonFramework/nuget/v3/index.json": {},
         "http://bellatrix:8080/tfs/KocDigitalCollection/_packaging/CosmosNugetServerv1/nuget/v3/index.json": {},
-        "https://api.nuget.org/v3/index.json": {}
+        "http://nuget.packages.iotp360.kocsistem.com.tr/nuget": {},
+        "http://nuget.packages.kocsistem.com.tr/nuget": {},
+        "http://packagesource": {},
+        "https://api.nuget.org/v3/index.json": {},
+        "https://dotnet.myget.org/F/aspnetcore-dev/api/v3/index.json": {}
       },
       "frameworks": {
         "netstandard2.1": {
           "projectReferences": {
-            "C:\\Users\\02484376\\source\\repos\\Carbon Framework\\Carbon.Domain.Abstractions\\Carbon.Domain.Abstractions.csproj": {
-              "projectPath": "C:\\Users\\02484376\\source\\repos\\Carbon Framework\\Carbon.Domain.Abstractions\\Carbon.Domain.Abstractions.csproj"
+            "C:\\GitRepos\\Carbon\\Carbon.Domain.Abstractions\\Carbon.Domain.Abstractions.csproj": {
+              "projectPath": "C:\\GitRepos\\Carbon\\Carbon.Domain.Abstractions\\Carbon.Domain.Abstractions.csproj"
             }
           }
         }
