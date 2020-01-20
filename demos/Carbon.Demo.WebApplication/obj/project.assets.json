@@ -106,6 +106,18 @@
           "lib/netstandard2.0/HybridModelBinding.dll": {}
         }
       },
+      "Mapster/4.1.1": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.CSharp": "4.5.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/Mapster.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Mapster.dll": {}
+        }
+      },
       "Microsoft.AspNetCore.Antiforgery/2.2.0": {
         "type": "package",
         "dependencies": {
@@ -3034,11 +3046,12 @@
           "bin/placeholder/Carbon.Cassandra.Abstractions.dll": {}
         }
       },
-      "Carbon.Common/1.0.0": {
+      "Carbon.Common/1.0.1": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.1",
         "dependencies": {
-          "FluentValidation.AspNetCore": "8.6.1"
+          "FluentValidation.AspNetCore": "8.6.1",
+          "Mapster": "4.1.1"
         },
         "compile": {
           "bin/placeholder/Carbon.Common.dll": {}
@@ -3113,7 +3126,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v3.1",
         "dependencies": {
-          "Carbon.Common": "1.0.0",
+          "Carbon.Common": "1.0.1",
           "Carbon.ExceptionHandling.Abstractions": "1.0.0",
           "Carbon.PagedList": "1.0.0",
           "FluentValidation.AspNetCore": "8.6.1",
@@ -3261,6 +3274,21 @@
         "hybridmodelbinding.nuspec",
         "lib/net451/HybridModelBinding.dll",
         "lib/netstandard2.0/HybridModelBinding.dll"
+      ]
+    },
+    "Mapster/4.1.1": {
+      "sha512": "mx4e5faOzMZTeP0zXQJ8m7p1Z4Myxh430nEgWqHAhsPdPCh/Y1S5CZvnk9MI4iBTgqrcWAztUS57DEfzJlG2Rw==",
+      "type": "package",
+      "path": "mapster/4.1.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net40/Mapster.dll",
+        "lib/net45/Mapster.dll",
+        "lib/netstandard1.3/Mapster.dll",
+        "lib/netstandard2.0/Mapster.dll",
+        "mapster.4.1.1.nupkg.sha512",
+        "mapster.nuspec"
       ]
     },
     "Microsoft.AspNetCore.Antiforgery/2.2.0": {
@@ -8918,7 +8946,7 @@
       "path": "../../Carbon.Cassandra.Abstractions/Carbon.Cassandra.Abstractions.csproj",
       "msbuildProject": "../../Carbon.Cassandra.Abstractions/Carbon.Cassandra.Abstractions.csproj"
     },
-    "Carbon.Common/1.0.0": {
+    "Carbon.Common/1.0.1": {
       "type": "project",
       "path": "../../Carbon.Common/Carbon.Common.csproj",
       "msbuildProject": "../../Carbon.Common/Carbon.Common.csproj"
@@ -8958,7 +8986,7 @@
     ".NETCoreApp,Version=v3.1": [
       "Carbon.Cassandra >= 1.0.0",
       "Carbon.Cassandra.Abstractions >= 1.0.0",
-      "Carbon.Common >= 1.0.0",
+      "Carbon.Common >= 1.0.1",
       "Carbon.ConsoleApplication >= 1.0.0",
       "Carbon.Domain.Abstractions >= 1.0.0",
       "Carbon.Domain.EntityFrameworkCore >= 1.0.0",

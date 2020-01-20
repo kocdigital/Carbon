@@ -145,7 +145,7 @@
       }
     },
     "C:\\Users\\02484376\\source\\repos\\Carbon Framework\\Carbon.Common\\Carbon.Common.csproj": {
-      "version": "1.0.0",
+      "version": "1.0.1",
       "restore": {
         "projectUniqueName": "C:\\Users\\02484376\\source\\repos\\Carbon Framework\\Carbon.Common\\Carbon.Common.csproj",
         "projectName": "Carbon.Common",
@@ -186,6 +186,10 @@
             "FluentValidation.AspNetCore": {
               "target": "Package",
               "version": "[8.6.1, )"
+            },
+            "Mapster": {
+              "target": "Package",
+              "version": "[4.1.1, )"
             }
           },
           "imports": [

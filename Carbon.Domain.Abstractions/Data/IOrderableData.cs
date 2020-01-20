@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace Carbon.Domain.Abstractions.Data
 {
@@ -9,9 +7,4 @@ namespace Carbon.Domain.Abstractions.Data
         public IList<Orderable> Orderables { get; set; }
     }
 
-    public class Orderable
-    {
-        public string Value { get; set; }
-        public bool IsAscending { get; set; }
-    }
 }
