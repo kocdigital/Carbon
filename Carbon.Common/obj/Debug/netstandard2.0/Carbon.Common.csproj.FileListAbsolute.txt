@@ -1,3 +1,0 @@
-C:\Users\02484376\source\repos\Carbon Framework\Carbon.Common\obj\Debug\netstandard2.0\Carbon.Common.csprojAssemblyReference.cache
-C:\Users\02484376\source\repos\Carbon Framework\Carbon.Common\obj\Debug\netstandard2.0\Carbon.Common.AssemblyInfoInputs.cache
-C:\Users\02484376\source\repos\Carbon Framework\Carbon.Common\obj\Debug\netstandard2.0\Carbon.Common.AssemblyInfo.cs

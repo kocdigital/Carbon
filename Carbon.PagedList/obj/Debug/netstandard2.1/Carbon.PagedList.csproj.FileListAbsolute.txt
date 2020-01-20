@@ -1,8 +1,0 @@
-C:\Users\02484376\source\repos\Carbon Framework\Carbon.PagedList\bin\Debug\netstandard2.1\Carbon.PagedList.deps.json
-C:\Users\02484376\source\repos\Carbon Framework\Carbon.PagedList\bin\Debug\netstandard2.1\Carbon.PagedList.dll
-C:\Users\02484376\source\repos\Carbon Framework\Carbon.PagedList\bin\Debug\netstandard2.1\Carbon.PagedList.pdb
-C:\Users\02484376\source\repos\Carbon Framework\Carbon.PagedList\obj\Debug\netstandard2.1\Carbon.PagedList.AssemblyInfoInputs.cache
-C:\Users\02484376\source\repos\Carbon Framework\Carbon.PagedList\obj\Debug\netstandard2.1\Carbon.PagedList.AssemblyInfo.cs
-C:\Users\02484376\source\repos\Carbon Framework\Carbon.PagedList\obj\Debug\netstandard2.1\Carbon.PagedList.dll
-C:\Users\02484376\source\repos\Carbon Framework\Carbon.PagedList\obj\Debug\netstandard2.1\Carbon.PagedList.pdb
-C:\Users\02484376\source\repos\Carbon Framework\Carbon.PagedList\obj\Debug\netstandard2.1\Carbon.PagedList.csprojAssemblyReference.cache

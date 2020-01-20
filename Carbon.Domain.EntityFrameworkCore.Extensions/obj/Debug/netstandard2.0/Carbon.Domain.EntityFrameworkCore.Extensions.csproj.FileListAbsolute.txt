@@ -1,5 +1,0 @@
-C:\Users\02484376\source\repos\Carbon Framework\Carbon.Domain.EntityFrameworkCore.Extensions\bin\Debug\netstandard2.0\Carbon.Domain.EntityFrameworkCore.Extensions.deps.json
-C:\Users\02484376\source\repos\Carbon Framework\Carbon.Domain.EntityFrameworkCore.Extensions\bin\Debug\netstandard2.0\Carbon.Domain.EntityFrameworkCore.Extensions.dll
-C:\Users\02484376\source\repos\Carbon Framework\Carbon.Domain.EntityFrameworkCore.Extensions\obj\Debug\netstandard2.0\Carbon.Domain.EntityFrameworkCore.Extensions.csprojAssemblyReference.cache
-C:\Users\02484376\source\repos\Carbon Framework\Carbon.Domain.EntityFrameworkCore.Extensions\obj\Debug\netstandard2.0\Carbon.Domain.EntityFrameworkCore.Extensions.AssemblyInfoInputs.cache
-C:\Users\02484376\source\repos\Carbon Framework\Carbon.Domain.EntityFrameworkCore.Extensions\obj\Debug\netstandard2.0\Carbon.Domain.EntityFrameworkCore.Extensions.AssemblyInfo.cs

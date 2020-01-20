@@ -24,7 +24,7 @@ namespace Carbon.WebApplication
         }
         public void OnException(ExceptionContext context)
         {
-            context.HttpContext.Request.Headers.TryGetValue("x-idetifier", out var requestIdentifier);
+            context.HttpContext.Request.Headers.TryGetValue("x-identifier", out var requestIdentifier);
 
             _logger.LogError(new EventId(context.Exception.HResult),
                 context.Exception,

@@ -1,8 +1,0 @@
-C:\Users\02484376\source\repos\Carbon Framework\Carbon.ExceptionHandling\bin\Debug\netstandard2.0\Carbon.ExceptionHandling.Abstractions.deps.json
-C:\Users\02484376\source\repos\Carbon Framework\Carbon.ExceptionHandling\bin\Debug\netstandard2.0\Carbon.ExceptionHandling.Abstractions.dll
-C:\Users\02484376\source\repos\Carbon Framework\Carbon.ExceptionHandling\bin\Debug\netstandard2.0\Carbon.ExceptionHandling.Abstractions.pdb
-C:\Users\02484376\source\repos\Carbon Framework\Carbon.ExceptionHandling\obj\Debug\netstandard2.0\Carbon.ExceptionHandling.Abstractions.csprojAssemblyReference.cache
-C:\Users\02484376\source\repos\Carbon Framework\Carbon.ExceptionHandling\obj\Debug\netstandard2.0\Carbon.ExceptionHandling.Abstractions.AssemblyInfoInputs.cache
-C:\Users\02484376\source\repos\Carbon Framework\Carbon.ExceptionHandling\obj\Debug\netstandard2.0\Carbon.ExceptionHandling.Abstractions.AssemblyInfo.cs
-C:\Users\02484376\source\repos\Carbon Framework\Carbon.ExceptionHandling\obj\Debug\netstandard2.0\Carbon.ExceptionHandling.Abstractions.dll
-C:\Users\02484376\source\repos\Carbon Framework\Carbon.ExceptionHandling\obj\Debug\netstandard2.0\Carbon.ExceptionHandling.Abstractions.pdb
