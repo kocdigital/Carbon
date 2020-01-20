@@ -295,7 +295,11 @@
         },
         "frameworks": {
           "netstandard2.1": {
-            "projectReferences": {}
+            "projectReferences": {
+              "C:\\Users\\02484376\\source\\repos\\Carbon Framework\\Carbon.Common\\Carbon.Common.csproj": {
+                "projectPath": "C:\\Users\\02484376\\source\\repos\\Carbon Framework\\Carbon.Common\\Carbon.Common.csproj"
+              }
+            }
           }
         },
         "warningProperties": {

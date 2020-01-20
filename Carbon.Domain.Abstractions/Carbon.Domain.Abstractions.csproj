@@ -12,4 +12,8 @@
     <Folder Include="Model\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Carbon.Common\Carbon.Common.csproj" />
+  </ItemGroup>
+
 </Project>
