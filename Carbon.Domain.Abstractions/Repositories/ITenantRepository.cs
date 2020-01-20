@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Carbon.Domain.Abstractions.Repositories
 {
-    public interface ITenantRepository<T> where T: IMayHaveTenant, IMustHaveTenant
+    public interface ITenantRepository<T> where T: IMustHaveTenant
     {
         Task<T> GetByIdAsync(Guid id, Guid tenantId);
         Task<T> AddAsync(T entity);
