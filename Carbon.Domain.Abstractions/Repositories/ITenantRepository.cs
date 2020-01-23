@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 
 namespace Carbon.Domain.Abstractions.Repositories
 {
-    public interface ITenantRepository<T, TKey> where T: IMustHaveTenant
+    public interface ITenantRepository<T> where T : IMustHaveTenant
     {
-        Task<T> GetByIdAsync(TKey id, Guid tenantId);
+        Task<T> GetByIdAsync(Guid id, Guid tenantId);
         Task<T> AddAsync(T entity);
         Task<T> UpdateAsync(T entity);
-        Task<T> DeleteAsync(TKey id, Guid tenantId);
-        Task<List<T>> GetAllAsync();
+        Task<T> DeleteAsync(Guid id, Guid tenantId);
+        Task<List<T>> GetAllAsync(Guid tenantId);
 
 
         Task<List<T>> CreateRangeAsync(IEnumerable<T> entities);
@@ -21,9 +21,9 @@ namespace Carbon.Domain.Abstractions.Repositories
         Task<List<T>> DeleteRangeAsync(IEnumerable<T> entities);
 
 
-        Task<T> Get(Expression<Func<T, bool>> predicate);
-        IQueryable<T> Query();
-        IQueryable<T> QueryAsNoTracking();
+        Task<T> Get(Guid tenantId, Expression<Func<T, bool>> predicate);
+        IQueryable<T> Query(Guid tenantId);
+        IQueryable<T> QueryAsNoTracking(Guid tenantId);
         Task<int> SaveChangesAsync();
     }
 }

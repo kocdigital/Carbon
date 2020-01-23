@@ -7,70 +7,109 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
+using System.Transactions;
 
 namespace Carbon.Domain.EntityFrameworkCore
 {
-    public abstract class EFTenantRepository<TEntity, TKey, TContext> : ITenantRepository<TEntity, TKey> where TEntity : class, IMustHaveTenant
+    public abstract class EFTenantRepository<TEntity, TContext> : ITenantRepository<TEntity> where TEntity : class, IEntity, IMustHaveTenant
                                                                                                          where TContext : DbContext
     {
-        public Task<TEntity> AddAsync(TEntity entity)
+        public readonly TContext context;
+        public EFTenantRepository(TContext context)
         {
-            throw new NotImplementedException();
+            this.context = context;
         }
 
-        public Task<List<TEntity>> CreateRangeAsync(IEnumerable<TEntity> entities)
+        public async Task<TEntity> GetByIdAsync(Guid id, Guid tenantId)
         {
-            throw new NotImplementedException();
+            return await context.Set<TEntity>().FirstOrDefaultAsync(x => x.Id == id && x.TenantId == tenantId);
         }
 
-        public Task<TEntity> DeleteAsync(TKey id, Guid tenantId)
+        public async Task<TEntity> AddAsync(TEntity entity)
         {
-            throw new NotImplementedException();
+            context.Set<TEntity>().Add(entity);
+            await context.SaveChangesAsync();
+            return entity;
+        }
+        public async Task<TEntity> UpdateAsync(TEntity entity)
+        {
+            context.Entry(entity).State = EntityState.Modified;
+            await context.SaveChangesAsync();
+            return entity;
         }
 
-        public Task<List<TEntity>> DeleteRangeAsync(IEnumerable<TEntity> entities)
+        public async Task<TEntity> DeleteAsync(Guid id, Guid tenantId)
         {
-            throw new NotImplementedException();
+            var entity = await context.Set<TEntity>().FirstOrDefaultAsync(x => x.Id == id && x.TenantId == tenantId);
+            if (entity == null)
+            {
+                return entity;
+            }
+
+            context.Set<TEntity>().Remove(entity);
+            await context.SaveChangesAsync();
+            return entity;
         }
 
-        public Task<TEntity> Get(Expression<Func<TEntity, bool>> predicate)
+        public async Task<List<TEntity>> GetAllAsync(Guid tenantId)
         {
-            throw new NotImplementedException();
+            return await context.Set<TEntity>().Where(x => x.TenantId == tenantId).ToListAsync();
         }
 
-        public Task<List<TEntity>> GetAllAsync()
+        public async Task<List<TEntity>> CreateRangeAsync(IEnumerable<TEntity> entities)
         {
-            throw new NotImplementedException();
+            context.Set<TEntity>().AddRange(entities);
+            await context.SaveChangesAsync();
+            return entities.ToList();
         }
 
-        public Task<TEntity> GetByIdAsync(TKey id, Guid tenantId)
+        public async Task<List<TEntity>> UpdateRangeAsync(IEnumerable<TEntity> entities)
         {
-            throw new NotImplementedException();
+            context.Set<TEntity>().UpdateRange(entities);
+            await context.SaveChangesAsync();
+            return entities.ToList();
         }
 
-        public IQueryable<TEntity> Query()
+
+        public async Task<List<TEntity>> DeleteRangeAsync(IEnumerable<TEntity> entities)
         {
-            throw new NotImplementedException();
+            context.Set<TEntity>().RemoveRange(entities);
+            await context.SaveChangesAsync();
+            return entities.ToList();
         }
 
-        public IQueryable<TEntity> QueryAsNoTracking()
+        public async Task<TEntity> Get(Guid tenantId, Expression<Func<TEntity, bool>> predicate)
         {
-            throw new NotImplementedException();
+            return await context.Set<TEntity>().AsQueryable().Where(x => x.TenantId == tenantId).FirstOrDefaultAsync(predicate);
         }
 
-        public Task<int> SaveChangesAsync()
+        public IQueryable<TEntity> Query(Guid tenantId)
         {
-            throw new NotImplementedException();
+            return context.Set<TEntity>().Where(c => c.TenantId == tenantId);
         }
 
-        public Task<TEntity> UpdateAsync(TEntity entity)
+        public IQueryable<TEntity> QueryAsNoTracking(Guid tenantId)
         {
-            throw new NotImplementedException();
+            using (new TransactionScope(
+                    TransactionScopeOption.Required,
+                    new TransactionOptions
+                    {
+                        IsolationLevel = IsolationLevel.ReadUncommitted
+                    }))
+            {
+                // query
+                return context.Set<TEntity>().Where(c => c.TenantId == tenantId).AsNoTracking();
+
+            }
         }
 
-        public Task<List<TEntity>> UpdateRangeAsync(IEnumerable<TEntity> entities)
+        public async Task<int> SaveChangesAsync()
         {
-            throw new NotImplementedException();
+            return await context.SaveChangesAsync();
         }
+
+
+
+
     }
 }

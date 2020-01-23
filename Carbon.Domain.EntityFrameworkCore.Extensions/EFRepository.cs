@@ -12,7 +12,7 @@ using System.Transactions;
 namespace Carbon.Domain.EntityFrameworkCore
 {
 
-    public abstract class EFRepository<TEntity, TKey, TContext> : IRepository<TEntity, TKey>
+    public abstract class EFRepository<TEntity, TKey, TContext> : IRepository<TEntity>
                                                                                     where TEntity : class, IEntity
                                                                                     where TContext : DbContext
     {
@@ -22,154 +22,96 @@ namespace Carbon.Domain.EntityFrameworkCore
             this.context = context;
         }
 
-        public Task<TEntity> AddAsync(TEntity entity)
+
+
+        public virtual async Task<TEntity> GetByIdAsync(Guid id)
         {
-            throw new NotImplementedException();
+            return await context.Set<TEntity>().FindAsync(id);
         }
 
-        public Task<List<TEntity>> CreateRangeAsync(IEnumerable<TEntity> entities)
+        public virtual async Task<TEntity> AddAsync(TEntity entity)
         {
-            throw new NotImplementedException();
+            context.Set<TEntity>().Add(entity);
+            await context.SaveChangesAsync();
+            return entity;
+        }
+        public virtual async Task<TEntity> UpdateAsync(TEntity entity)
+        {
+            context.Entry(entity).State = EntityState.Modified;
+            await context.SaveChangesAsync();
+            return entity;
         }
 
-        public Task<TEntity> DeleteAsync(TKey id)
+        public virtual async Task<TEntity> DeleteAsync(Guid id)
         {
-            throw new NotImplementedException();
+            var entity = await context.Set<TEntity>().FindAsync(id);
+            if (entity == null)
+            {
+                return entity;
+            }
+
+            context.Set<TEntity>().Remove(entity);
+            await context.SaveChangesAsync();
+
+            return entity;
         }
 
-        public Task<List<TEntity>> DeleteRangeAsync(IEnumerable<TEntity> entities)
+
+        public virtual async Task<List<TEntity>> GetAllAsync()
         {
-            throw new NotImplementedException();
+            return await context.Set<TEntity>().ToListAsync();
         }
 
-        public Task<TEntity> Get(Expression<Func<TEntity, bool>> predicate)
+
+        public virtual async Task<List<TEntity>> CreateRangeAsync(IEnumerable<TEntity> entities)
         {
-            throw new NotImplementedException();
+            context.Set<TEntity>().AddRange(entities);
+            await context.SaveChangesAsync();
+            return entities.ToList();
         }
 
-        public Task<List<TEntity>> GetAllAsync()
+        public virtual async Task<List<TEntity>> UpdateRangeAsync(IEnumerable<TEntity> entities)
         {
-            throw new NotImplementedException();
+            context.Set<TEntity>().UpdateRange(entities);
+            await context.SaveChangesAsync();
+            return entities.ToList();
         }
 
-        public Task<TEntity> GetByIdAsync(TKey id)
+        public virtual async Task<List<TEntity>> DeleteRangeAsync(IEnumerable<TEntity> entities)
         {
-            throw new NotImplementedException();
+            context.Set<TEntity>().RemoveRange(entities);
+            await context.SaveChangesAsync();
+            return entities.ToList();
         }
 
-        public IQueryable<TEntity> Query()
+        public virtual async Task<TEntity> Get(Expression<Func<TEntity, bool>> predicate)
         {
-            throw new NotImplementedException();
+            return await context.Set<TEntity>().AsQueryable().FirstOrDefaultAsync(predicate);
         }
 
-        public IQueryable<TEntity> QueryAsNoTracking()
+        public virtual IQueryable<TEntity> Query()
         {
-            throw new NotImplementedException();
+            return context.Set<TEntity>();
         }
 
-        public Task<int> SaveChangesAsync()
+        public virtual IQueryable<TEntity> QueryAsNoTracking()
         {
-            throw new NotImplementedException();
+            using (new TransactionScope(
+                    TransactionScopeOption.Required,
+                    new TransactionOptions
+                    {
+                        IsolationLevel = IsolationLevel.ReadUncommitted
+                    }))
+            {
+                // query
+                return context.Set<TEntity>().AsNoTracking();
+
+            }
         }
 
-        public Task<TEntity> UpdateAsync(TEntity entity)
+        public async Task<int> SaveChangesAsync()
         {
-            throw new NotImplementedException();
+            return await context.SaveChangesAsync();
         }
-
-        public Task<List<TEntity>> UpdateRangeAsync(IEnumerable<TEntity> entities)
-        {
-            throw new NotImplementedException();
-        }
-
-        //public virtual async Task<TEntity> GetByIdAsync(Guid id)
-        //{
-        //    return await context.Set<TEntity>().FindAsync(id);
-        //}
-
-        //public virtual async Task<TEntity> AddAsync(TEntity entity)
-        //{
-        //    context.Set<TEntity>().Add(entity);
-        //    await context.SaveChangesAsync();
-        //    return entity;
-        //}
-        //public virtual async Task<TEntity> UpdateAsync(TEntity entity)
-        //{
-        //    context.Entry(entity).State = EntityState.Modified;
-        //    await context.SaveChangesAsync();
-        //    return entity;
-        //}
-
-        //public virtual async Task<TEntity> DeleteAsync(Guid id)
-        //{
-        //    var entity = await context.Set<TEntity>().FindAsync(id);
-        //    if (entity == null)
-        //    {
-        //        return entity;
-        //    }
-
-        //    context.Set<TEntity>().Remove(entity);
-        //    await context.SaveChangesAsync();
-
-        //    return entity;
-        //}
-
-
-        //public virtual async Task<List<TEntity>> GetAllAsync()
-        //{
-        //    return await context.Set<TEntity>().ToListAsync();
-        //}
-
-
-        //public virtual async Task<List<TEntity>> CreateRangeAsync(IEnumerable<TEntity> entities)
-        //{
-        //    context.Set<TEntity>().AddRange(entities);
-        //    await context.SaveChangesAsync();
-        //    return entities.ToList();
-        //}
-
-        //public virtual async Task<List<TEntity>> UpdateRangeAsync(IEnumerable<TEntity> entities)
-        //{
-        //    context.Set<TEntity>().UpdateRange(entities);
-        //    await context.SaveChangesAsync();
-        //    return entities.ToList();
-        //}
-
-        //public virtual async Task<List<TEntity>> DeleteRangeAsync(IEnumerable<TEntity> entities)
-        //{
-        //    context.Set<TEntity>().RemoveRange(entities);
-        //    await context.SaveChangesAsync();
-        //    return entities.ToList();
-        //}
-
-        //public virtual async Task<TEntity> Get(Expression<Func<TEntity, bool>> predicate)
-        //{
-        //    return await context.Set<TEntity>().AsQueryable().FirstOrDefaultAsync(predicate);
-        //}
-
-        //public virtual IQueryable<TEntity> Query()
-        //{
-        //    return context.Set<TEntity>();
-        //}
-
-        //public virtual IQueryable<TEntity> QueryAsNoTracking()
-        //{
-        //    using (new TransactionScope(
-        //            TransactionScopeOption.Required,
-        //            new TransactionOptions
-        //            {
-        //                IsolationLevel = IsolationLevel.ReadUncommitted
-        //            }))
-        //    {
-        //        // query
-        //        return context.Set<TEntity>().AsNoTracking();
-
-        //    }
-        //}
-
-        //public async Task<int> SaveChangesAsync()
-        //{
-        //    return await context.SaveChangesAsync();
-        //}
     }
 }
