@@ -10,8 +10,8 @@ using System.Threading.Tasks;
 
 namespace Carbon.Domain.EntityFrameworkCore
 {
-    public abstract class EFTenantRepository<TEntity, TContext> : ITenantRepository<TEntity, Guid> where TEntity : class, IMustHaveTenant
-                                                                                                   where TContext : DbContext
+    public abstract class EFTenantRepository<TEntity, TKey, TContext> : ITenantRepository<TEntity, TKey> where TEntity : class, IMustHaveTenant
+                                                                                                         where TContext : DbContext
     {
         public Task<TEntity> AddAsync(TEntity entity)
         {
@@ -23,7 +23,7 @@ namespace Carbon.Domain.EntityFrameworkCore
             throw new NotImplementedException();
         }
 
-        public Task<TEntity> DeleteAsync(Guid id, Guid tenantId)
+        public Task<TEntity> DeleteAsync(TKey id, Guid tenantId)
         {
             throw new NotImplementedException();
         }
@@ -43,7 +43,7 @@ namespace Carbon.Domain.EntityFrameworkCore
             throw new NotImplementedException();
         }
 
-        public Task<TEntity> GetByIdAsync(Guid id, Guid tenantId)
+        public Task<TEntity> GetByIdAsync(TKey id, Guid tenantId)
         {
             throw new NotImplementedException();
         }

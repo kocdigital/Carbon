@@ -12,7 +12,7 @@ using System.Transactions;
 namespace Carbon.Domain.EntityFrameworkCore
 {
 
-    public abstract class EFRepository<TEntity, TContext> : IRepository<TEntity, Guid>
+    public abstract class EFRepository<TEntity, TKey, TContext> : IRepository<TEntity, TKey>
                                                                                     where TEntity : class, IEntity
                                                                                     where TContext : DbContext
     {
@@ -32,7 +32,7 @@ namespace Carbon.Domain.EntityFrameworkCore
             throw new NotImplementedException();
         }
 
-        public Task<TEntity> DeleteAsync(Guid id)
+        public Task<TEntity> DeleteAsync(TKey id)
         {
             throw new NotImplementedException();
         }
@@ -52,7 +52,7 @@ namespace Carbon.Domain.EntityFrameworkCore
             throw new NotImplementedException();
         }
 
-        public Task<TEntity> GetByIdAsync(Guid id)
+        public Task<TEntity> GetByIdAsync(TKey id)
         {
             throw new NotImplementedException();
         }
