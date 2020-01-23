@@ -261,7 +261,7 @@
       }
     },
     "C:\\Users\\02484578\\Desktop\\CarbonFW\\CarbonFW\\Carbon\\Carbon.Domain.Abstractions\\Carbon.Domain.Abstractions.csproj": {
-      "version": "1.0.2",
+      "version": "1.0.3",
       "restore": {
         "projectUniqueName": "C:\\Users\\02484578\\Desktop\\CarbonFW\\CarbonFW\\Carbon\\Carbon.Domain.Abstractions\\Carbon.Domain.Abstractions.csproj",
         "projectName": "Carbon.Domain.Abstractions",
@@ -326,7 +326,7 @@
       }
     },
     "C:\\Users\\02484578\\Desktop\\CarbonFW\\CarbonFW\\Carbon\\Carbon.Domain.EntityFrameworkCore.Extensions\\Carbon.Domain.EntityFrameworkCore.csproj": {
-      "version": "1.0.0",
+      "version": "1.0.1",
       "restore": {
         "projectUniqueName": "C:\\Users\\02484578\\Desktop\\CarbonFW\\CarbonFW\\Carbon\\Carbon.Domain.EntityFrameworkCore.Extensions\\Carbon.Domain.EntityFrameworkCore.csproj",
         "projectName": "Carbon.Domain.EntityFrameworkCore",
