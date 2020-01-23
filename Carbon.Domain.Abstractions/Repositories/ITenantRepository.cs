@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 
 namespace Carbon.Domain.Abstractions.Repositories
 {
-    public interface ITenantRepository<T> where T: IMustHaveTenant
+    public interface ITenantRepository<T, TKey> where T: IMustHaveTenant
     {
-        Task<T> GetByIdAsync(Guid id, Guid tenantId);
+        Task<T> GetByIdAsync(TKey id, Guid tenantId);
         Task<T> AddAsync(T entity);
         Task<T> UpdateAsync(T entity);
-        Task<T> DeleteAsync(Guid id, Guid tenantId);
+        Task<T> DeleteAsync(TKey id, Guid tenantId);
         Task<List<T>> GetAllAsync();
 
 
