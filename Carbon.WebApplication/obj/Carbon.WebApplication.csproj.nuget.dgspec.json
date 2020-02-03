@@ -196,7 +196,7 @@
       }
     },
     "C:\\Users\\02484376\\source\\repos\\Carbon Framework\\Carbon.WebApplication\\Carbon.WebApplication.csproj": {
-      "version": "1.0.11",
+      "version": "1.0.13",
       "restore": {
         "projectUniqueName": "C:\\Users\\02484376\\source\\repos\\Carbon Framework\\Carbon.WebApplication\\Carbon.WebApplication.csproj",
         "projectName": "Carbon.WebApplication",
@@ -290,7 +290,7 @@
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
-              "version": "[5.0.0-rc4, )"
+              "version": "[5.0.0, )"
             },
             "Swashbuckle.AspNetCore.Swagger": {
               "target": "Package",
