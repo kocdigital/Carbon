@@ -83,7 +83,7 @@ namespace Carbon.WebApplication
                             "JWT Authorization header using the Bearer scheme. \r\n\r\n Enter 'Bearer' [space] and then your token in the text input below.\r\n\r\nExample: \"Bearer 12345abcdef\"",
                         Name = "Authorization",
                         In = ParameterLocation.Header,
-                        Type = SecuritySchemeType.ApiKey,
+                        Type = SecuritySchemeType.OAuth2,
                         Scheme = "Bearer"
                     });
                     c.AddSecurityRequirement(new OpenApiSecurityRequirement()
