@@ -15,7 +15,19 @@ namespace Carbon.WebApplication
         {
             public string DocumentName { get; set; }
             public OpenApiInformation OpenApiInfo { get; set; }
+            public OpenApiSecurity Security { get; set; }
         }
+        public class OpenApiSecurity
+        {
+            public IList<OpenApiScope> Scopes { get; set; }
+        }
+
+        public class OpenApiScope
+        {
+            public string Key { get; set; }
+            public string Description { get; set; }
+        }
+
         public class OpenApiInformation
         {
             public string Title { get; set; }

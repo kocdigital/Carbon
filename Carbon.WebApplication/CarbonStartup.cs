@@ -60,9 +60,9 @@ namespace Carbon.WebApplication
 
             if (_serilogSettings == null)
                 throw new ArgumentNullException("Serilog settings cannot be empty!");
- 
+
             Log.Logger = new LoggerConfiguration().ReadFrom.Configuration(Configuration).CreateLogger();
-       
+
             #endregion
 
             #region Swagger Settings
@@ -77,39 +77,34 @@ namespace Carbon.WebApplication
                 foreach (var doc in _swaggerSettings.Documents)
                 {
                     c.SwaggerDoc(doc.DocumentName, new OpenApiInfo { Title = doc.OpenApiInfo.Title, Version = doc.OpenApiInfo.Version, Description = doc.OpenApiInfo.Description });
-                    c.AddSecurityDefinition("oauth2", new OpenApiSecurityScheme
+
+                    if (doc.Security != null)
                     {
-                        Type = SecuritySchemeType.OAuth2,
-                        Flows = new OpenApiOAuthFlows
+
+                        c.AddSecurityDefinition("oauth2", new OpenApiSecurityScheme
                         {
-                            Implicit = new OpenApiOAuthFlow()
+                            Type = SecuritySchemeType.OAuth2,
+                            Flows = new OpenApiOAuthFlows
                             {
-                                AuthorizationUrl = new Uri(_swaggerSettings.EndpointUrl + "connect/authorize", UriKind.Absolute),                                           
-                                Scopes = new Dictionary<string, string>
+                                Implicit = new OpenApiOAuthFlow()
                                 {
-                                    { "Platform360.IdentityServer.Users.API", "Access operations" }
+                                    AuthorizationUrl = new Uri(_swaggerSettings.EndpointAddress + "/connect/authorize", UriKind.Absolute),
+                                    Scopes = doc.Security.Scopes.ToDictionary(x => x.Key, x => x.Description)
                                 }
                             }
-                        }
-                    });
-                    //c.AddSecurityRequirement(new OpenApiSecurityRequirement()
-                    //{
-                    //    {
-                    //        new OpenApiSecurityScheme
-                    //        {
-                    //            Reference = new OpenApiReference
-                    //            {
-                    //                Type = ReferenceType.SecurityScheme,
-                    //                Id = "Bearer"
-                    //            },
-                    //            Scheme = "oauth2",
-                    //            Name = "Bearer",
-                    //            In = ParameterLocation.Header,
+                        });
 
-                    //        },
-                    //        new List<string>()
-                    //    }
-                    //});
+                        c.AddSecurityRequirement(new OpenApiSecurityRequirement
+                        {
+                            {
+                                new OpenApiSecurityScheme
+                                {
+                                    Reference = new OpenApiReference { Type = ReferenceType.SecurityScheme, Id = "oauth2" }
+                                },
+                                doc.Security.Scopes.Select(x => x.Key).ToArray()
+                            }
+                        });
+                    }
                 }
             });
 
@@ -142,7 +137,8 @@ namespace Carbon.WebApplication
             {
                 options.Filters.Add(typeof(ValidateModelFilter));
                 options.Filters.Add(typeof(HttpGlobalExceptionFilter));
-            }).AddFluentValidation(fv => {
+            }).AddFluentValidation(fv =>
+            {
                 fv.RunDefaultMvcValidationAfterFluentValidationExecutes = false;
                 fv.RegisterValidatorsFromAssemblyContaining<TStartup>();
             }).AddHybridModelBinder();
