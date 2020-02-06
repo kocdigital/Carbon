@@ -8,9 +8,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using Serilog;
-using Swashbuckle.AspNetCore.Swagger;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 
 namespace Carbon.WebApplication
@@ -52,6 +50,7 @@ namespace Carbon.WebApplication
             services.Configure<SerilogSettings>(Configuration.GetSection("Serilog"));
             services.Configure<CorsPolicySettings>(Configuration.GetSection("CorsPolicy"));
             services.Configure<SwaggerSettings>(Configuration.GetSection("Swagger"));
+            services.Configure<JWTSettings>(Configuration.GetSection("JWT"));
             services.AddSingleton(Configuration);
 
             #region Serilog Settings
@@ -62,51 +61,6 @@ namespace Carbon.WebApplication
                 throw new ArgumentNullException("Serilog settings cannot be empty!");
 
             Log.Logger = new LoggerConfiguration().ReadFrom.Configuration(Configuration).CreateLogger();
-
-            #endregion
-
-            #region Swagger Settings
-
-            _swaggerSettings = Configuration.GetSection("Swagger").Get<SwaggerSettings>();
-
-            if (_swaggerSettings == null)
-                throw new ArgumentNullException("Swagger settings cannot be empty!");
-
-            services.AddSwaggerGen(c =>
-            {
-                foreach (var doc in _swaggerSettings.Documents)
-                {
-                    c.SwaggerDoc(doc.DocumentName, new OpenApiInfo { Title = doc.OpenApiInfo.Title, Version = doc.OpenApiInfo.Version, Description = doc.OpenApiInfo.Description });
-
-                    if (doc.Security != null)
-                    {
-
-                        c.AddSecurityDefinition("oauth2", new OpenApiSecurityScheme
-                        {
-                            Type = SecuritySchemeType.OAuth2,
-                            Flows = new OpenApiOAuthFlows
-                            {
-                                Implicit = new OpenApiOAuthFlow()
-                                {
-                                    AuthorizationUrl = new Uri(_swaggerSettings.EndpointAddress + "/connect/authorize", UriKind.Absolute),
-                                    Scopes = doc.Security.Scopes.ToDictionary(x => x.Key, x => x.Description)
-                                }
-                            }
-                        });
-
-                        c.AddSecurityRequirement(new OpenApiSecurityRequirement
-                        {
-                            {
-                                new OpenApiSecurityScheme
-                                {
-                                    Reference = new OpenApiReference { Type = ReferenceType.SecurityScheme, Id = "oauth2" }
-                                },
-                                doc.Security.Scopes.Select(x => x.Key).ToArray()
-                            }
-                        });
-                    }
-                }
-            });
 
             #endregion
 
@@ -149,6 +103,50 @@ namespace Carbon.WebApplication
             });
 
             ConfigureDependencies(services);
+
+            #region Swagger Settings
+
+            _swaggerSettings = Configuration.GetSection("Swagger").Get<SwaggerSettings>();
+
+            if (_swaggerSettings == null)
+                throw new ArgumentNullException("Swagger settings cannot be empty!");
+
+            services.AddSwaggerGen(c =>
+            {
+                foreach (var doc in _swaggerSettings.Documents)
+                {
+                    c.SwaggerDoc(doc.DocumentName, new OpenApiInfo { Title = doc.OpenApiInfo.Title, Version = doc.OpenApiInfo.Version, Description = doc.OpenApiInfo.Description });
+
+                    if (doc.Security != null)
+                    {
+                        c.AddSecurityDefinition("oauth2", new OpenApiSecurityScheme
+                        {
+                            Type = SecuritySchemeType.OAuth2,
+                            Flows = new OpenApiOAuthFlows
+                            {
+                                Implicit = new OpenApiOAuthFlow()
+                                {
+                                    AuthorizationUrl = new Uri(_swaggerSettings.EndpointAddress + "/connect/authorize", UriKind.Absolute),
+                                    Scopes = doc.Security.Scopes?.ToDictionary(x => x.Key, x => x.Description)
+                                }
+                            }
+                        });
+
+                        c.AddSecurityRequirement(new OpenApiSecurityRequirement
+                        {
+                            {
+                                new OpenApiSecurityScheme
+                                {
+                                    Reference = new OpenApiReference { Type = ReferenceType.SecurityScheme, Id = "oauth2" }
+                                },
+                                doc.Security.Scopes.Select(x => x.Key).ToArray()
+                            }
+                        });
+                    }
+                }
+            });
+
+            #endregion
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
