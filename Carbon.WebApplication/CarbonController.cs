@@ -48,7 +48,7 @@ namespace Carbon.WebApplication
         }
         
         [ApiExplorerSettings(IgnoreApi = true)]
-        protected OkObjectResult PagedOk<T>(T entity)
+        protected OkObjectResult PagedOk<T>(ICollection<T> entity)
         {
             if (typeof(IPagedList).IsAssignableFrom(typeof(T)))
             {
