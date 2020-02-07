@@ -15,17 +15,19 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Carbon.PagedList", "Carbon.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Carbon.Common", "Carbon.Common\Carbon.Common.csproj", "{7C51DD99-5243-40D9-BFB5-9E1F4DA4056B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Carbon.Cassandra.Abstractions", "Carbon.Cassandra.Abstractions\Carbon.Cassandra.Abstractions.csproj", "{DDB8BA33-1C43-42E8-86C1-AC52E761C60F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Carbon.Cassandra.Abstractions", "Carbon.Cassandra.Abstractions\Carbon.Cassandra.Abstractions.csproj", "{DDB8BA33-1C43-42E8-86C1-AC52E761C60F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Carbon.Cassandra", "Carbon.Cassandra\Carbon.Cassandra.csproj", "{A795014C-0488-46E0-AA48-857F16BCA814}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Carbon.Cassandra", "Carbon.Cassandra\Carbon.Cassandra.csproj", "{A795014C-0488-46E0-AA48-857F16BCA814}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Carbon.WebApplication", "Carbon.WebApplication\Carbon.WebApplication.csproj", "{7B9A4FAA-8D00-4A21-8EE6-6909A9152863}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Carbon.WebApplication", "Carbon.WebApplication\Carbon.WebApplication.csproj", "{7B9A4FAA-8D00-4A21-8EE6-6909A9152863}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{C22416E6-A406-44C9-9347-D6E9826FE6F9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Carbon.Demo.WebApplication", "demos\Carbon.Demo.WebApplication\Carbon.Demo.WebApplication.csproj", "{55EB676E-1EE3-4728-967C-4CA0452667EA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Carbon.Demo.WebApplication", "demos\Carbon.Demo.WebApplication\Carbon.Demo.WebApplication.csproj", "{55EB676E-1EE3-4728-967C-4CA0452667EA}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "demos", "demos", "{ECB8C495-D13E-4360-AD95-B3DACE26EF77}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Carbon.WebApplication.EntityFrameworkCore", "Carbon.WebApplication.EntityFrameworkCore\Carbon.WebApplication.EntityFrameworkCore.csproj", "{D21B58AC-8D3E-4BE4-8D3F-4129686BDAE1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -73,6 +75,10 @@ Global
 		{55EB676E-1EE3-4728-967C-4CA0452667EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{55EB676E-1EE3-4728-967C-4CA0452667EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{55EB676E-1EE3-4728-967C-4CA0452667EA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D21B58AC-8D3E-4BE4-8D3F-4129686BDAE1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D21B58AC-8D3E-4BE4-8D3F-4129686BDAE1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D21B58AC-8D3E-4BE4-8D3F-4129686BDAE1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D21B58AC-8D3E-4BE4-8D3F-4129686BDAE1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
