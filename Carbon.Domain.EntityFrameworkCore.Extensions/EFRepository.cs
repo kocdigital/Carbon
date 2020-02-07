@@ -12,7 +12,7 @@ using System.Transactions;
 namespace Carbon.Domain.EntityFrameworkCore
 {
 
-    public abstract class EFRepository<TEntity, TKey, TContext> : IRepository<TEntity>
+    public abstract class EFRepository<TEntity, TContext> : IRepository<TEntity>
                                                                                     where TEntity : class, IEntity
                                                                                     where TContext : DbContext
     {
@@ -103,7 +103,6 @@ namespace Carbon.Domain.EntityFrameworkCore
                         IsolationLevel = IsolationLevel.ReadUncommitted
                     }))
             {
-                // query
                 return context.Set<TEntity>().AsNoTracking();
 
             }
