@@ -8,7 +8,7 @@ namespace Carbon.WebApplication
 {
     public static class IHostBuilderExtensions
     {
-        public static IHostBuilder ActivateCarbonFeatures(IHostBuilder hostBuilder)
+        public static IHostBuilder AddCarbonFeatures(this IHostBuilder hostBuilder)
         {
             hostBuilder.ConfigureWebHost(webBuilder =>
             {

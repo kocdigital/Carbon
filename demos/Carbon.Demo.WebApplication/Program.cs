@@ -4,11 +4,18 @@ using Microsoft.Extensions.Hosting;
 
 namespace Carbon.Demo.WebApplication
 {
-    public class Program : CarbonProgram<Startup>
+    public class Program
     {
         public static void Main(string[] args)
         {
-            CreateHostBuilder(args).Build().Run();
+            CreateHostBuilder(args).AddCarbonFeatures().Build().Run();
         }
+
+        public static IHostBuilder CreateHostBuilder(string[] args) =>
+    Host.CreateDefaultBuilder(args)
+        .ConfigureWebHostDefaults(webBuilder =>
+        {
+            webBuilder.UseStartup<Startup>();
+        });
     }
 }
