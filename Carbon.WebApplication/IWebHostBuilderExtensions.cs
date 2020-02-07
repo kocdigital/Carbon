@@ -11,7 +11,7 @@ namespace Carbon.WebApplication
     {
         public static void UseCarbonFeatures<TStartup>(this IWebHostBuilder builder)
         {
-            var assemblyName = typeof(TStartup).Assembly;
+            var assemblyName = typeof(TStartup).Assembly.FullName;
             var currentEnviroment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
             var consulAddress = Environment.GetEnvironmentVariable("CONSUL_ADDRESS");
 
