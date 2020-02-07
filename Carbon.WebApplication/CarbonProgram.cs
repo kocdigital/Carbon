@@ -6,39 +6,43 @@ using Winton.Extensions.Configuration.Consul;
 
 namespace Carbon.WebApplication
 {
-    public abstract class CarbonProgram<TStartup> where TStartup : class
+    public static class IHostBuilderExtensions
     {
-        public static IHostBuilder CreateHostBuilder(string[] args) =>
-            Host.CreateDefaultBuilder(args)
-                .ConfigureWebHostDefaults(webBuilder =>
+        public static IHostBuilder ActivateCarbonFeatures(IHostBuilder hostBuilder)
+        {
+            hostBuilder.ConfigureWebHost(webBuilder =>
+            {
+                var assemblyName = typeof(Host).Assembly.GetName().Name;
+                var currentEnviroment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
+                var consulAddress = Environment.GetEnvironmentVariable("CONSUL_ADDRESS");
+
+                webBuilder.ConfigureAppConfiguration((c) =>
                 {
-                    var assemblyName = typeof(TStartup).Assembly.GetName().Name;
-                    var currentEnviroment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
-                    var consulAddress = Environment.GetEnvironmentVariable("CONSUL_ADDRESS");
+                    #region Consul Configuration
 
-                    webBuilder.ConfigureAppConfiguration((c) =>
+                    var consulEnabled = !string.IsNullOrEmpty(consulAddress);
+
+                    if (consulEnabled)
                     {
-                        #region Consul Configuration
+                        c.AddConsul(
+                                    $"{assemblyName}/{currentEnviroment}", (options) =>
+                                    {
+                                        options.ConsulConfigurationOptions = cco => { cco.Address = new Uri(consulAddress); };
+                                        options.Optional = false;
+                                        options.ReloadOnChange = true;
+                                        options.OnLoadException = exceptionContext => { exceptionContext.Ignore = false; };
+                                    });
+                    }
 
-                        var consulEnabled = !string.IsNullOrEmpty(consulAddress);
-
-                        if (consulEnabled)
-                        {
-                            c.AddConsul(
-                                        $"{assemblyName}/{currentEnviroment}", (options) =>
-                                        {
-                                            options.ConsulConfigurationOptions = cco => { cco.Address = new Uri(consulAddress); };
-                                            options.Optional = false;
-                                            options.ReloadOnChange = true;
-                                            options.OnLoadException = exceptionContext => { exceptionContext.Ignore = false; };
-                                        });
-                        } 
-
-                        #endregion
-                    });
-
-                    webBuilder.UseStartup<TStartup>();
-                    webBuilder.UseSerilog();
+                    #endregion
                 });
+
+                webBuilder.UseSerilog();
+
+            });
+
+            return hostBuilder;
+        }
     }
+
 }
