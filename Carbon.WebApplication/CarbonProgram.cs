@@ -8,7 +8,7 @@ namespace Carbon.WebApplication
 {
     public static class IHostBuilderExtensions
     {
-        public static void UseCarbonFeatures<TStartup>(this IWebHostBuilder builder) where TStartup : class
+        public static void UseCarbonFeatures(this IWebHostBuilder builder)
         {
             var assemblyName = typeof(Host).Assembly.GetName().Name;
             var currentEnviroment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
