@@ -8,14 +8,14 @@ namespace Carbon.Demo.WebApplication
     {
         public static void Main(string[] args)
         {
-            CreateHostBuilder(args).AddCarbonFeatures().Build().Run();
+            CreateHostBuilder(args).Build().Run();
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
     Host.CreateDefaultBuilder(args)
         .ConfigureWebHostDefaults(webBuilder =>
         {
-            webBuilder.UseStartup<Startup>();
+            webBuilder.UseCarbonStartup<Startup>();
         });
     }
 }

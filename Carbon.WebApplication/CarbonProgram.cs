@@ -8,41 +8,38 @@ namespace Carbon.WebApplication
 {
     public static class IHostBuilderExtensions
     {
-        public static IHostBuilder AddCarbonFeatures(this IHostBuilder hostBuilder)
+        public static IWebHostBuilder UseCarbonStartup<TStartup>(this IWebHostBuilder builder) where TStartup : class
         {
-            hostBuilder.ConfigureWebHost(webBuilder =>
+            var assemblyName = typeof(Host).Assembly.GetName().Name;
+            var currentEnviroment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
+            var consulAddress = Environment.GetEnvironmentVariable("CONSUL_ADDRESS");
+
+            builder.ConfigureAppConfiguration((c) =>
             {
-                var assemblyName = typeof(Host).Assembly.GetName().Name;
-                var currentEnviroment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
-                var consulAddress = Environment.GetEnvironmentVariable("CONSUL_ADDRESS");
+                #region Consul Configuration
 
-                webBuilder.ConfigureAppConfiguration((c) =>
+                var consulEnabled = !string.IsNullOrEmpty(consulAddress);
+
+                if (consulEnabled)
                 {
-                    #region Consul Configuration
+                    c.AddConsul(
+                                $"{assemblyName}/{currentEnviroment}", (options) =>
+                                {
+                                    options.ConsulConfigurationOptions = cco => { cco.Address = new Uri(consulAddress); };
+                                    options.Optional = false;
+                                    options.ReloadOnChange = true;
+                                    options.OnLoadException = exceptionContext => { exceptionContext.Ignore = false; };
+                                });
+                }
 
-                    var consulEnabled = !string.IsNullOrEmpty(consulAddress);
-
-                    if (consulEnabled)
-                    {
-                        c.AddConsul(
-                                    $"{assemblyName}/{currentEnviroment}", (options) =>
-                                    {
-                                        options.ConsulConfigurationOptions = cco => { cco.Address = new Uri(consulAddress); };
-                                        options.Optional = false;
-                                        options.ReloadOnChange = true;
-                                        options.OnLoadException = exceptionContext => { exceptionContext.Ignore = false; };
-                                    });
-                    }
-
-                    #endregion
-                });
-
-                webBuilder.UseSerilog();
-
+                #endregion
             });
 
-            return hostBuilder;
+            builder.UseSerilog();
+            builder.UseStartup<TStartup>();
+            return builder;
         }
+
     }
 
 }
