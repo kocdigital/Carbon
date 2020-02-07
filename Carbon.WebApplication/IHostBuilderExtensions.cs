@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Hosting;
 using Serilog;
 using System;
+using System.Reflection;
 using Winton.Extensions.Configuration.Consul;
 
 namespace Carbon.WebApplication
@@ -10,7 +11,7 @@ namespace Carbon.WebApplication
     {
         public static void UseCarbonFeatures(this IWebHostBuilder builder)
         {
-            var assemblyName = typeof(Host).Assembly.GetName().Name;
+            var assemblyName = Assembly.GetExecutingAssembly();
             var currentEnviroment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
             var consulAddress = Environment.GetEnvironmentVariable("CONSUL_ADDRESS");
 
