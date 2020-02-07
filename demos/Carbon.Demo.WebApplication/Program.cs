@@ -15,7 +15,7 @@ namespace Carbon.Demo.WebApplication
     Host.CreateDefaultBuilder(args)
         .ConfigureWebHostDefaults(webBuilder =>
         {
-            webBuilder.UseCarbonFeatures();
+            webBuilder.UseCarbonFeatures<Startup>();
             webBuilder.UseStartup<Startup>();
         });
     }
