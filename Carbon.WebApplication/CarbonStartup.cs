@@ -91,6 +91,10 @@ namespace Carbon.WebApplication
             {
                 options.Filters.Add(typeof(ValidateModelFilter));
                 options.Filters.Add(typeof(HttpGlobalExceptionFilter));
+            }).AddJsonOptions(
+            options =>
+            {
+                options.JsonSerializerOptions.IgnoreNullValues = true;
             }).AddFluentValidation(fv =>
             {
                 fv.RunDefaultMvcValidationAfterFluentValidationExecutes = false;
