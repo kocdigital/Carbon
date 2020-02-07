@@ -8,7 +8,7 @@ namespace Carbon.WebApplication
 {
     public static class IHostBuilderExtensions
     {
-        public static IWebHostBuilder UseCarbonStartup<TStartup>(this IWebHostBuilder builder) where TStartup : class
+        public static void UseCarbonFeatures<TStartup>(this IWebHostBuilder builder) where TStartup : class
         {
             var assemblyName = typeof(Host).Assembly.GetName().Name;
             var currentEnviroment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
@@ -36,8 +36,6 @@ namespace Carbon.WebApplication
             });
 
             builder.UseSerilog();
-            builder.UseStartup<TStartup>();
-            return builder;
         }
 
     }
