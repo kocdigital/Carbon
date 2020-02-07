@@ -7,11 +7,11 @@ using Winton.Extensions.Configuration.Consul;
 
 namespace Carbon.WebApplication
 {
-    public static class IHostBuilderExtensions
+    public static class IWebHostBuilderExtensions
     {
-        public static void UseCarbonFeatures(this IWebHostBuilder builder)
+        public static void UseCarbonFeatures<TStartup>(this IWebHostBuilder builder)
         {
-            var assemblyName = Assembly.GetExecutingAssembly();
+            var assemblyName = typeof(TStartup).Assembly;
             var currentEnviroment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
             var consulAddress = Environment.GetEnvironmentVariable("CONSUL_ADDRESS");
 
