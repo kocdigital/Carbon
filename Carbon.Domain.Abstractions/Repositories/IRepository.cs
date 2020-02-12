@@ -11,7 +11,7 @@ namespace Carbon.Domain.Abstractions.Repositories
     public interface IRepository<T> where T : class, IEntity
     {
         Task<T> GetByIdAsync(Guid id);
-        Task<T> AddAsync(T entity);
+        Task<T> CreateAsync(T entity);
         Task<T> UpdateAsync(T entity);
         Task<T> DeleteAsync(Guid id);
         Task<List<T>> GetAllAsync();
