@@ -25,7 +25,7 @@ namespace Carbon.Domain.EntityFrameworkCore
             return await context.Set<TEntity>().FirstOrDefaultAsync(x => x.Id == id && x.TenantId == tenantId);
         }
 
-        public async Task<TEntity> AddAsync(TEntity entity)
+        public async Task<TEntity> CreateAsync(TEntity entity)
         {
             context.Set<TEntity>().Add(entity);
             await context.SaveChangesAsync();
