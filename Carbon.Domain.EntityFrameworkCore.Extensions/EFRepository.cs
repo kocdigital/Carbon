@@ -29,7 +29,7 @@ namespace Carbon.Domain.EntityFrameworkCore
             return await context.Set<TEntity>().FindAsync(id);
         }
 
-        public virtual async Task<TEntity> AddAsync(TEntity entity)
+        public virtual async Task<TEntity> CreateAsync(TEntity entity)
         {
             context.Set<TEntity>().Add(entity);
             await context.SaveChangesAsync();
@@ -112,5 +112,6 @@ namespace Carbon.Domain.EntityFrameworkCore
         {
             return await context.SaveChangesAsync();
         }
+
     }
 }
