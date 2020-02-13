@@ -27,7 +27,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Carbon.Demo.WebApplication"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "demos", "demos", "{ECB8C495-D13E-4360-AD95-B3DACE26EF77}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Carbon.WebApplication.EntityFrameworkCore", "Carbon.WebApplication.EntityFrameworkCore\Carbon.WebApplication.EntityFrameworkCore.csproj", "{D21B58AC-8D3E-4BE4-8D3F-4129686BDAE1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Carbon.WebApplication.EntityFrameworkCore", "Carbon.WebApplication.EntityFrameworkCore\Carbon.WebApplication.EntityFrameworkCore.csproj", "{D21B58AC-8D3E-4BE4-8D3F-4129686BDAE1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Carbon.PagedList.EntityFrameworkCore", "Carbon.PagedList.EntityFrameworkCore\Carbon.PagedList.EntityFrameworkCore.csproj", "{2BAAF760-68D4-4198-998C-EDADFC7BA22F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -79,6 +81,10 @@ Global
 		{D21B58AC-8D3E-4BE4-8D3F-4129686BDAE1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D21B58AC-8D3E-4BE4-8D3F-4129686BDAE1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D21B58AC-8D3E-4BE4-8D3F-4129686BDAE1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2BAAF760-68D4-4198-998C-EDADFC7BA22F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2BAAF760-68D4-4198-998C-EDADFC7BA22F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2BAAF760-68D4-4198-998C-EDADFC7BA22F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2BAAF760-68D4-4198-998C-EDADFC7BA22F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
