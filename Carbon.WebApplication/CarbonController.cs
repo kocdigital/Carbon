@@ -46,45 +46,42 @@ namespace Carbon.WebApplication
 
             return CreatedAtAction(actionName, routeValues, result);
         }
-        
+
         [ApiExplorerSettings(IgnoreApi = true)]
         protected OkObjectResult PagedListOk<T>(IPagedList<T> entity)
         {
-            if (typeof(IPagedList).IsAssignableFrom(typeof(T)))
+            IPagedList pageable = entity;
+            Response.Headers.Add("X-Paging-PageIndex", pageable.PageNumber.ToString());
+            Response.Headers.Add("X-Paging-PageSize", pageable.PageSize.ToString());
+            Response.Headers.Add("X-Paging-PageCount", pageable.PageCount.ToString());
+            Response.Headers.Add("X-Paging-TotalRecordCount", pageable.TotalItemCount.ToString());
+
+            IOrderableDto orderableDto = null;
+            if (typeof(IOrderableDto).IsAssignableFrom(typeof(T)))
             {
-                IPagedList pageable = (IPagedList)entity;
-                Response.Headers.Add("X-Paging-PageIndex", pageable.PageNumber.ToString());
-                Response.Headers.Add("X-Paging-PageSize", pageable.PageSize.ToString());
-                Response.Headers.Add("X-Paging-PageCount", pageable.PageCount.ToString());
-                Response.Headers.Add("X-Paging-TotalRecordCount", pageable.TotalItemCount.ToString());
+                orderableDto = (IOrderableDto)entity;
+            }
 
-                IOrderableDto orderableDto = null;
-                if (typeof(IOrderableDto).IsAssignableFrom(typeof(T)))
+            if (orderableDto == null)
+            {
+                if (pageable.PageNumber > 1)
                 {
-                    orderableDto = (IOrderableDto)entity;
+                    AddParameter("X-Paging-Previous-Link", null, pageable.PageSize, pageable.PageNumber - 1);
                 }
-
-                if (orderableDto == null)
+                if (pageable.PageNumber * pageable.PageSize < pageable.TotalItemCount)
                 {
-                    if (pageable.PageNumber > 1)
-                    {
-                        AddParameter("X-Paging-Previous-Link", null, pageable.PageSize, pageable.PageNumber - 1);
-                    }
-                    if (pageable.PageNumber * pageable.PageSize < pageable.TotalItemCount)
-                    {
-                        AddParameter("X-Paging-Next-Link", null, pageable.PageSize, pageable.PageNumber + 1);
-                    }
+                    AddParameter("X-Paging-Next-Link", null, pageable.PageSize, pageable.PageNumber + 1);
                 }
-                else
+            }
+            else
+            {
+                if (pageable.PageNumber > 1)
                 {
-                    if (pageable.PageNumber > 1)
-                    {
-                        AddParameter("X-Paging-Previous-Link", orderableDto.Orderables, pageable.PageSize, pageable.PageNumber - 1);
-                    }
-                    if (pageable.PageNumber * pageable.PageSize < pageable.PageNumber)
-                    {
-                        AddParameter("X-Paging-Next-Link", orderableDto.Orderables, pageable.PageSize, pageable.PageNumber + 1);
-                    }
+                    AddParameter("X-Paging-Previous-Link", orderableDto.Orderables, pageable.PageSize, pageable.PageNumber - 1);
+                }
+                if (pageable.PageNumber * pageable.PageSize < pageable.PageNumber)
+                {
+                    AddParameter("X-Paging-Next-Link", orderableDto.Orderables, pageable.PageSize, pageable.PageNumber + 1);
                 }
             }
 
