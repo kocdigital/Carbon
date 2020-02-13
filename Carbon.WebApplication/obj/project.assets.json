@@ -3133,7 +3133,7 @@
           "bin/placeholder/Carbon.ExceptionHandling.Abstractions.dll": {}
         }
       },
-      "Carbon.PagedList/1.0.0": {
+      "Carbon.PagedList/1.0.1": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.1",
         "dependencies": {
@@ -9078,7 +9078,7 @@
       "path": "../Carbon.ExceptionHandling/Carbon.ExceptionHandling.Abstractions.csproj",
       "msbuildProject": "../Carbon.ExceptionHandling/Carbon.ExceptionHandling.Abstractions.csproj"
     },
-    "Carbon.PagedList/1.0.0": {
+    "Carbon.PagedList/1.0.1": {
       "type": "project",
       "path": "../Carbon.PagedList/Carbon.PagedList.csproj",
       "msbuildProject": "../Carbon.PagedList/Carbon.PagedList.csproj"
@@ -9088,7 +9088,7 @@
     ".NETCoreApp,Version=v3.1": [
       "Carbon.Common >= 1.0.2",
       "Carbon.ExceptionHandling.Abstractions >= 1.0.0",
-      "Carbon.PagedList >= 1.0.0",
+      "Carbon.PagedList >= 1.0.1",
       "FluentValidation.AspNetCore >= 8.6.1",
       "HybridModelBinding >= 0.17.0",
       "Microsoft.AspNetCore.Authentication.JwtBearer >= 3.1.1",
