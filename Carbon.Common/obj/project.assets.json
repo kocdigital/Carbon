@@ -7683,7 +7683,7 @@
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
-    "version": "1.0.1",
+    "version": "1.0.2",
     "restore": {
       "projectUniqueName": "C:\\Users\\02484376\\source\\repos\\Carbon Framework\\Carbon.Common\\Carbon.Common.csproj",
       "projectName": "Carbon.Common",

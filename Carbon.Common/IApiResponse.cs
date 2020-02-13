@@ -4,10 +4,11 @@ namespace Carbon.Common
 {
     public interface IApiResponse
     {
-        List<string> Messages { get; set; }
-        int? ErrorCode { get; set; }
+        IList<string> Messages { get; }
+        int? ErrorCode { get; }
         bool IsSuccess { get; }
-        string Identifier { get; set; }
+        string Identifier { get; }
+        void AddMessage(string message);
     }
 
 

@@ -1,11 +1,9 @@
 ﻿using Carbon.Common;
 using Carbon.ExceptionHandling.Abstractions;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Net;
 
@@ -30,21 +28,19 @@ namespace Carbon.WebApplication
                 context.Exception,
                 context.Exception.Message);
 
-            var apiResponse = new ApiResponse<object>();
+            var apiResponse = new ApiResponse<object>(requestIdentifier);
 
             if (context.Exception.GetType() == typeof(CarbonException))
             {
                 var exception = (CarbonException)context.Exception;
 
-                apiResponse.Messages = new List<string> { context.Exception.Message };
-                apiResponse.Identifier = requestIdentifier;
-                apiResponse.ErrorCode = exception.ErrorCode;
+                apiResponse.AddMessage(context.Exception.Message);
+                apiResponse.SetErrorCode(exception.ErrorCode);
             }
             else
             {
-                apiResponse.Messages = new List<string> { context.Exception.Message };
-                apiResponse.Identifier = requestIdentifier;
-                apiResponse.ErrorCode = GeneralServerErrorCode;
+                apiResponse.AddMessage(context.Exception.Message);
+                apiResponse.SetErrorCode(GeneralServerErrorCode);
             }
 
             if (_env.IsDevelopment())

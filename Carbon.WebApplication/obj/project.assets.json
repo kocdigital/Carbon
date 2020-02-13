@@ -3105,7 +3105,7 @@
           "lib/netstandard2.0/Winton.Extensions.Configuration.Consul.dll": {}
         }
       },
-      "Carbon.Common/1.0.1": {
+      "Carbon.Common/1.0.2": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.1",
         "dependencies": {
@@ -9068,7 +9068,7 @@
         "winton.extensions.configuration.consul.nuspec"
       ]
     },
-    "Carbon.Common/1.0.1": {
+    "Carbon.Common/1.0.2": {
       "type": "project",
       "path": "../Carbon.Common/Carbon.Common.csproj",
       "msbuildProject": "../Carbon.Common/Carbon.Common.csproj"
@@ -9086,7 +9086,7 @@
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
-      "Carbon.Common >= 1.0.1",
+      "Carbon.Common >= 1.0.2",
       "Carbon.ExceptionHandling.Abstractions >= 1.0.0",
       "Carbon.PagedList >= 1.0.0",
       "FluentValidation.AspNetCore >= 8.6.1",
@@ -9112,7 +9112,7 @@
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
-    "version": "1.0.28",
+    "version": "1.0.29",
     "restore": {
       "projectUniqueName": "C:\\Users\\02484376\\source\\repos\\Carbon Framework\\Carbon.WebApplication\\Carbon.WebApplication.csproj",
       "projectName": "Carbon.WebApplication",
