@@ -22,7 +22,7 @@ namespace Carbon.PagedList
         /// <summary>
         /// 	The subset of items contained only within this one page of the superset.
         /// </summary>
-        public List<T> Subset = new List<T>();
+        protected List<T> Subset = new List<T>();
         
         /// <summary>
         /// Initializes a new instance of the <see cref="PagedList{T}"/> class that divides the supplied superset into subsets the size of the supplied pageSize. The instance then only containes the objects contained in the subset specified by index.
