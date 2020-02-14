@@ -21,7 +21,7 @@ namespace Carbon.Domain.Abstractions.Repositories
         Task<List<T>> DeleteRangeAsync(IEnumerable<T> entities);
 
 
-        Task<T> Get(Guid tenantId, Expression<Func<T, bool>> predicate);
+        Task<T> GetAsync(Guid tenantId, Expression<Func<T, bool>> predicate);
         IQueryable<T> Query(Guid tenantId);
         IQueryable<T> QueryAsNoTracking(Guid tenantId);
         Task<int> SaveChangesAsync();

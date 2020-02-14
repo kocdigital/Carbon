@@ -84,7 +84,7 @@ namespace Carbon.Domain.EntityFrameworkCore
             return entities.ToList();
         }
 
-        public virtual async Task<TEntity> Get(Expression<Func<TEntity, bool>> predicate)
+        public virtual async Task<TEntity> GetAsync(Expression<Func<TEntity, bool>> predicate)
         {
             return await context.Set<TEntity>().AsQueryable().FirstOrDefaultAsync(predicate);
         }

@@ -22,7 +22,7 @@ namespace Carbon.Domain.Abstractions.Repositories
         Task<List<T>> DeleteRangeAsync(IEnumerable<T> entities);
 
 
-        Task<T> Get(Expression<Func<T, bool>> predicate);
+        Task<T> GetAsync(Expression<Func<T, bool>> predicate);
         IQueryable<T> Query();
         IQueryable<T> QueryAsNoTracking();
         Task<int> SaveChangesAsync();

@@ -3584,7 +3584,7 @@
           "bin/placeholder/Carbon.ConsoleApplication.dll": {}
         }
       },
-      "Carbon.Domain.Abstractions/1.0.4": {
+      "Carbon.Domain.Abstractions/1.0.5": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.1",
         "dependencies": {
@@ -3602,7 +3602,7 @@
         "type": "project",
         "framework": ".NETStandard,Version=v2.1",
         "dependencies": {
-          "Carbon.Domain.Abstractions": "1.0.4",
+          "Carbon.Domain.Abstractions": "1.0.5",
           "Microsoft.EntityFrameworkCore": "3.1.0",
           "Microsoft.EntityFrameworkCore.Relational": "3.1.0",
           "Microsoft.EntityFrameworkCore.SqlServer": "3.1.0"
@@ -10464,7 +10464,7 @@
       "path": "../../Carbon.ConsoleApplication.Extensions/Carbon.ConsoleApplication.csproj",
       "msbuildProject": "../../Carbon.ConsoleApplication.Extensions/Carbon.ConsoleApplication.csproj"
     },
-    "Carbon.Domain.Abstractions/1.0.4": {
+    "Carbon.Domain.Abstractions/1.0.5": {
       "type": "project",
       "path": "../../Carbon.Domain.Abstractions/Carbon.Domain.Abstractions.csproj",
       "msbuildProject": "../../Carbon.Domain.Abstractions/Carbon.Domain.Abstractions.csproj"
@@ -10496,7 +10496,7 @@
       "Carbon.Cassandra.Abstractions >= 1.0.0",
       "Carbon.Common >= 1.0.2",
       "Carbon.ConsoleApplication >= 1.0.0",
-      "Carbon.Domain.Abstractions >= 1.0.4",
+      "Carbon.Domain.Abstractions >= 1.0.5",
       "Carbon.Domain.EntityFrameworkCore >= 1.0.7",
       "Carbon.ExceptionHandling.Abstractions >= 1.0.0",
       "Carbon.PagedList >= 1.0.1",

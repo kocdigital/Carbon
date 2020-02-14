@@ -78,7 +78,7 @@ namespace Carbon.Domain.EntityFrameworkCore
             return entities.ToList();
         }
 
-        public async Task<TEntity> Get(Guid tenantId, Expression<Func<TEntity, bool>> predicate)
+        public async Task<TEntity> GetAsync(Guid tenantId, Expression<Func<TEntity, bool>> predicate)
         {
             return await context.Set<TEntity>().AsQueryable().Where(x => x.TenantId == tenantId).FirstOrDefaultAsync(predicate);
         }
