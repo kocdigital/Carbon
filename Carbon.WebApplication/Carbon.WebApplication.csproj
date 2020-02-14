@@ -2,10 +2,10 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <Version>1.0.31</Version>
+    <Version>1.0.32</Version>
     <Description>Base for web applications</Description>
-    <AssemblyVersion>1.0.31.0</AssemblyVersion>
-    <FileVersion>1.0.30.0</FileVersion>
+    <AssemblyVersion>1.0.32.0</AssemblyVersion>
+    <FileVersion>1.0.32.0</FileVersion>
   </PropertyGroup>
 
   <ItemGroup>
@@ -24,6 +24,7 @@
     <PackageReference Include="Serilog.Sinks.RollingFile" Version="3.3.0" />
 	<PackageReference Include="Swashbuckle.AspNetCore" Version="5.0.0" />
 	<PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="5.0.0" />
+	<PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="5.0.0" />
 	<PackageReference Include="Winton.Extensions.Configuration.Consul" Version="3.0.0" />
   </ItemGroup>
 

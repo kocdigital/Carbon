@@ -117,6 +117,7 @@ namespace Carbon.WebApplication
 
             services.AddSwaggerGen(c =>
             {
+                c.OperationFilter<HybridOperationFilter>();
                 foreach (var doc in _swaggerSettings.Documents)
                 {
                     c.SwaggerDoc(doc.DocumentName, new OpenApiInfo { Title = doc.OpenApiInfo.Title, Version = doc.OpenApiInfo.Version, Description = doc.OpenApiInfo.Description });

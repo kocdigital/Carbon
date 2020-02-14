@@ -9104,6 +9104,7 @@
       "Serilog.Sinks.RollingFile >= 3.3.0",
       "Swashbuckle.AspNetCore >= 5.0.0",
       "Swashbuckle.AspNetCore.Swagger >= 5.0.0",
+      "Swashbuckle.AspNetCore.SwaggerGen >= 5.0.0",
       "Winton.Extensions.Configuration.Consul >= 3.0.0"
     ]
   },
@@ -9112,7 +9113,7 @@
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
-    "version": "1.0.31",
+    "version": "1.0.32",
     "restore": {
       "projectUniqueName": "C:\\Users\\02484376\\source\\repos\\Carbon Framework\\Carbon.WebApplication\\Carbon.WebApplication.csproj",
       "projectName": "Carbon.WebApplication",
@@ -9217,6 +9218,10 @@
             "version": "[5.0.0, )"
           },
           "Swashbuckle.AspNetCore.Swagger": {
+            "target": "Package",
+            "version": "[5.0.0, )"
+          },
+          "Swashbuckle.AspNetCore.SwaggerGen": {
             "target": "Package",
             "version": "[5.0.0, )"
           },

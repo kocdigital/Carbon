@@ -3641,7 +3641,7 @@
           "bin/placeholder/Carbon.PagedList.dll": {}
         }
       },
-      "Carbon.WebApplication/1.0.31": {
+      "Carbon.WebApplication/1.0.32": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v3.1",
         "dependencies": {
@@ -3663,6 +3663,7 @@
           "Serilog.Sinks.RollingFile": "3.3.0",
           "Swashbuckle.AspNetCore": "5.0.0",
           "Swashbuckle.AspNetCore.Swagger": "5.0.0",
+          "Swashbuckle.AspNetCore.SwaggerGen": "5.0.0",
           "Winton.Extensions.Configuration.Consul": "3.0.0"
         },
         "compile": {
@@ -10484,7 +10485,7 @@
       "path": "../../Carbon.PagedList/Carbon.PagedList.csproj",
       "msbuildProject": "../../Carbon.PagedList/Carbon.PagedList.csproj"
     },
-    "Carbon.WebApplication/1.0.31": {
+    "Carbon.WebApplication/1.0.32": {
       "type": "project",
       "path": "../../Carbon.WebApplication/Carbon.WebApplication.csproj",
       "msbuildProject": "../../Carbon.WebApplication/Carbon.WebApplication.csproj"
@@ -10500,7 +10501,7 @@
       "Carbon.Domain.EntityFrameworkCore >= 1.0.8",
       "Carbon.ExceptionHandling.Abstractions >= 1.0.0",
       "Carbon.PagedList >= 1.0.1",
-      "Carbon.WebApplication >= 1.0.31"
+      "Carbon.WebApplication >= 1.0.32"
     ]
   },
   "packageFolders": {
