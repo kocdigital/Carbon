@@ -4,14 +4,14 @@ namespace Carbon.Common
 {
     public class ApiResponse<T> : IApiResponse
     {
-        public ApiResponse()
+        public ApiResponse(ApiStatusCode statusCode)
         {
-
+            StatusCode = statusCode;
         }
-        public ApiResponse(string identifier, ApiStatusCode statusCode)
+
+        public ApiResponse(string identifier, ApiStatusCode statusCode) : this(statusCode)
         {
             Identifier = identifier;
-            StatusCode = statusCode;
         }
         public ApiResponse(string identifier, ApiStatusCode statusCode, int errorCode) : this(identifier, statusCode)
         {

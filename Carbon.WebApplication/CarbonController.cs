@@ -11,7 +11,7 @@ namespace Carbon.WebApplication
         [ApiExplorerSettings(IgnoreApi = true)]
         protected OkObjectResult ResponseOk<T>(T value)
         {
-            var result = new ApiResponse<T>();
+            var result = new ApiResponse<T>(ApiStatusCode.Accepted);
             result.SetData(value);
 
             return Ok(result);
@@ -20,22 +20,23 @@ namespace Carbon.WebApplication
         [ApiExplorerSettings(IgnoreApi = true)]
         protected CreatedAtActionResult UpdatedOk<T>(string actionName, object routeValues, T value)
         {
-            var result = new ApiResponse<T>();
+            var result = new ApiResponse<T>(ApiStatusCode.Accepted);
             result.SetData(value);
 
             return CreatedAtAction(actionName, routeValues, result);
         }
 
         [ApiExplorerSettings(IgnoreApi = true)]
-        protected NoContentResult DeletedOk()
+        protected OkObjectResult DeletedOk()
         {
-            return NoContent();
+            var result = new ApiResponse<object>(ApiStatusCode.Accepted);
+            return Ok(result);
         }
 
         [ApiExplorerSettings(IgnoreApi = true)]
         protected CreatedAtActionResult CreatedOk<T>(string actionName, object routeValues, T value)
         {
-            var result = new ApiResponse<T>();
+            var result = new ApiResponse<T>(ApiStatusCode.Accepted);
             result.SetData(value);
 
             return CreatedAtAction(actionName, routeValues, result);
@@ -79,7 +80,10 @@ namespace Carbon.WebApplication
                 }
             }
 
-            return Ok(entity);
+            var result = new ApiResponse<IPagedList<T>>(ApiStatusCode.Accepted);
+            result.SetData(entity);
+
+            return Ok(result);
         }
 
         protected void AddParameter(string key, IList<Orderable> ordination, int pageSize, int pageIndex)

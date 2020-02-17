@@ -3,7 +3,6 @@
     public enum ApiStatusCode
     {
         Accepted = 2000,
-        Created = 2001,
         BadRequest = 4000,
         UnAuthorized = 4001,
         NotFound = 4004,        
