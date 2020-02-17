@@ -11,10 +11,8 @@ namespace Carbon.WebApplication
         [ApiExplorerSettings(IgnoreApi = true)]
         protected OkObjectResult ResponseOk<T>(T value)
         {
-            var result = new ApiResponse<T>()
-            {
-                Data = value
-            };
+            var result = new ApiResponse<T>();
+            result.SetData(value);
 
             return Ok(result);
         }
@@ -22,10 +20,8 @@ namespace Carbon.WebApplication
         [ApiExplorerSettings(IgnoreApi = true)]
         protected CreatedAtActionResult UpdatedOk<T>(string actionName, object routeValues, T value)
         {
-            var result = new ApiResponse<T>()
-            {
-                Data = value
-            };
+            var result = new ApiResponse<T>();
+            result.SetData(value);
 
             return CreatedAtAction(actionName, routeValues, result);
         }
@@ -39,10 +35,8 @@ namespace Carbon.WebApplication
         [ApiExplorerSettings(IgnoreApi = true)]
         protected CreatedAtActionResult CreatedOk<T>(string actionName, object routeValues, T value)
         {
-            var result = new ApiResponse<T>()
-            {
-                Data = value
-            };
+            var result = new ApiResponse<T>();
+            result.SetData(value);
 
             return CreatedAtAction(actionName, routeValues, result);
         }

@@ -5,6 +5,7 @@ namespace Carbon.Common
     public interface IApiResponse
     {
         IList<string> Messages { get; }
+        ApiStatusCode StatusCode { get; }
         int? ErrorCode { get; }
         bool IsSuccess { get; }
         string Identifier { get; }

@@ -28,7 +28,7 @@ namespace Carbon.WebApplication
                 context.Exception,
                 context.Exception.Message);
 
-            var apiResponse = new ApiResponse<object>(requestIdentifier);
+            var apiResponse = new ApiResponse<object>(requestIdentifier, ApiStatusCode.InternalServerError);
 
             if (context.Exception.GetType() == typeof(CarbonException))
             {
