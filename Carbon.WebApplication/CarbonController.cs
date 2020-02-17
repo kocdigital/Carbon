@@ -13,7 +13,7 @@ namespace Carbon.WebApplication
     {
 
         [ApiExplorerSettings(IgnoreApi = true)]
-        protected ObjectResult ResponseResult<T>(T value) where T : ApiResponse<T>
+        protected ObjectResult ResponseResult<T>(T value) where T : IApiResponse
         {
             var httpStatusCode = value.StatusCode.GetHttpStatusCode();
             return StatusCode((int)httpStatusCode, value);
