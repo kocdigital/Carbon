@@ -12,12 +12,11 @@ namespace Carbon.Demo.WebApplication
     {
         public Startup(IConfiguration configuration, IWebHostEnvironment environment) : base(configuration, environment)
         {
-
+            AddOperationFilter<ComposerHeaderFilter>();
         }
 
         public override void ConfigureDependencies(IServiceCollection services)
         {
-
         }
 
         public override void ConfigureRequestPipeline(IApplicationBuilder app, IWebHostEnvironment env)

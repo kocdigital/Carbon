@@ -2,7 +2,6 @@
 
 namespace Carbon.WebApplication
 {
-
     public class SwaggerSettings
     {
         public string EndpointAddress { get; set; }

@@ -8,7 +8,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using Serilog;
+using Swashbuckle.AspNetCore.SwaggerGen;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Carbon.WebApplication
@@ -22,6 +24,16 @@ namespace Carbon.WebApplication
 
         public IWebHostEnvironment Environment { get; }
         public IConfiguration Configuration { get; }
+        protected IList<FilterDescriptor> _filterDescriptors = new List<FilterDescriptor>();
+
+        public void AddOperationFilter<T>(params object[] args) where T : IOperationFilter
+        {
+            _filterDescriptors.Add(new FilterDescriptor()
+            {
+                Type = typeof(T),
+                Arguments = args
+            });
+        }
 
         protected CarbonStartup(IConfiguration configuration, IWebHostEnvironment environment)
         {
@@ -118,6 +130,8 @@ namespace Carbon.WebApplication
             services.AddSwaggerGen(c =>
             {
                 c.OperationFilter<HybridOperationFilter>();
+                c.OperationFilterDescriptors.AddRange(_filterDescriptors);
+
                 foreach (var doc in _swaggerSettings.Documents)
                 {
                     c.SwaggerDoc(doc.DocumentName, new OpenApiInfo { Title = doc.OpenApiInfo.Title, Version = doc.OpenApiInfo.Version, Description = doc.OpenApiInfo.Description });
