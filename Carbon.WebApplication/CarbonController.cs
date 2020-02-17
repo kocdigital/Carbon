@@ -3,7 +3,6 @@ using Carbon.PagedList;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
-using System.Net;
 using System.Text;
 
 namespace Carbon.WebApplication
@@ -17,14 +16,6 @@ namespace Carbon.WebApplication
         {
             var httpStatusCode = value.StatusCode.GetHttpStatusCode();
             return StatusCode((int)httpStatusCode, value);
-        }
-
-        private string GetRequestIdentifier()
-        {
-            if (Request.Headers.TryGetValue("x-identifier", out var requestIdentifier))
-                return requestIdentifier;
-
-            return Guid.NewGuid().ToString();
         }
 
         [ApiExplorerSettings(IgnoreApi = true)]
@@ -139,5 +130,14 @@ namespace Carbon.WebApplication
             headerParameterLink = $"{Request.Scheme}://{Request.Host}{Request.Path}{headerParameterLink}";
             Response.Headers.Add(key, headerParameterLink);
         }
+
+        private string GetRequestIdentifier()
+        {
+            if (Request.Headers.TryGetValue("x-identifier", out var requestIdentifier))
+                return requestIdentifier;
+
+            return Guid.NewGuid().ToString();
+        }
+
     }
 }
