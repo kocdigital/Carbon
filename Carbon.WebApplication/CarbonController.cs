@@ -1,13 +1,23 @@
 ﻿using Carbon.Common;
 using Carbon.PagedList;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
+using System.Net;
 using System.Text;
 
 namespace Carbon.WebApplication
 {
+
     public abstract class CarbonController : ControllerBase
     {
+        [ApiExplorerSettings(IgnoreApi = true)]
+        protected ObjectResult ResponseResult<T>(T value) where T : ApiResponse<T>
+        {
+            var httpStatusCode = value.StatusCode.GetHttpStatusCode();
+            return StatusCode((int)httpStatusCode, value);
+        }
+
         [ApiExplorerSettings(IgnoreApi = true)]
         protected OkObjectResult ResponseOk<T>(T value)
         {
