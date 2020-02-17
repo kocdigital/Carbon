@@ -11,6 +11,7 @@ namespace Carbon.WebApplication
 
     public abstract class CarbonController : ControllerBase
     {
+
         [ApiExplorerSettings(IgnoreApi = true)]
         protected ObjectResult ResponseResult<T>(T value) where T : ApiResponse<T>
         {
@@ -18,10 +19,18 @@ namespace Carbon.WebApplication
             return StatusCode((int)httpStatusCode, value);
         }
 
+        private string GetRequestIdentifier()
+        {
+            if (Request.Headers.TryGetValue("x-identifier", out var requestIdentifier))
+                return requestIdentifier;
+
+            return Guid.NewGuid().ToString();
+        }
+
         [ApiExplorerSettings(IgnoreApi = true)]
         protected OkObjectResult ResponseOk<T>(T value)
         {
-            var result = new ApiResponse<T>(ApiStatusCode.Accepted);
+            var result = new ApiResponse<T>(GetRequestIdentifier(), ApiStatusCode.Accepted);
             result.SetData(value);
 
             return Ok(result);
@@ -30,7 +39,7 @@ namespace Carbon.WebApplication
         [ApiExplorerSettings(IgnoreApi = true)]
         protected CreatedAtActionResult UpdatedOk<T>(string actionName, object routeValues, T value)
         {
-            var result = new ApiResponse<T>(ApiStatusCode.Accepted);
+            var result = new ApiResponse<T>(GetRequestIdentifier(), ApiStatusCode.Accepted);
             result.SetData(value);
 
             return CreatedAtAction(actionName, routeValues, result);
@@ -39,14 +48,14 @@ namespace Carbon.WebApplication
         [ApiExplorerSettings(IgnoreApi = true)]
         protected OkObjectResult DeletedOk()
         {
-            var result = new ApiResponse<object>(ApiStatusCode.Accepted);
+            var result = new ApiResponse<object>(GetRequestIdentifier(), ApiStatusCode.Accepted);
             return Ok(result);
         }
 
         [ApiExplorerSettings(IgnoreApi = true)]
         protected CreatedAtActionResult CreatedOk<T>(string actionName, object routeValues, T value)
         {
-            var result = new ApiResponse<T>(ApiStatusCode.Accepted);
+            var result = new ApiResponse<T>(GetRequestIdentifier(), ApiStatusCode.Accepted);
             result.SetData(value);
 
             return CreatedAtAction(actionName, routeValues, result);
@@ -90,7 +99,7 @@ namespace Carbon.WebApplication
                 }
             }
 
-            var result = new ApiResponse<IPagedList<T>>(ApiStatusCode.Accepted);
+            var result = new ApiResponse<IPagedList<T>>(GetRequestIdentifier(), ApiStatusCode.Accepted);
             result.SetData(entity);
 
             return Ok(result);

@@ -13,7 +13,7 @@ namespace Carbon.WebApplication
     {
         private readonly IWebHostEnvironment _env;
         private readonly ILogger<HttpGlobalExceptionFilter> _logger;
-        private const int GeneralServerErrorCode = 5000;
+        private const int GeneralServerErrorCode = (int)ApiStatusCode.InternalServerError;
 
         public HttpGlobalExceptionFilter(IWebHostEnvironment env, ILogger<HttpGlobalExceptionFilter> logger)
         {
