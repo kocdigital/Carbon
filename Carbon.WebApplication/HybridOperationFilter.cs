@@ -5,8 +5,6 @@ using System.Linq;
 
 namespace Carbon.WebApplication
 {
-
-
     public class HybridOperationFilter : IOperationFilter
     {
         public void Apply(OpenApiOperation operation, OperationFilterContext context)
