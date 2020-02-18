@@ -8,7 +8,7 @@ namespace Carbon.WebApplication.HttpAtrributes
     [ProducesResponseType((int)HttpStatusCode.BadRequest)]
     [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
     [ProducesResponseType((int)HttpStatusCode.Unauthorized)]
-    public class HttpGetCarbonAtrribute : HttpGetAttribute
+    public class HttpGetCarbonAttribute : HttpGetAttribute
     {
 
     }
