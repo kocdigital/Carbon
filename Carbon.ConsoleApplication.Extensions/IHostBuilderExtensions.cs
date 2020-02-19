@@ -8,6 +8,7 @@ using Winton.Extensions.Configuration.Consul;
 
 namespace Carbon.ConsoleApplication
 {
+
     public static class IHostBuilderExtensions
     {
         private static IHostBuilder UseFeatures<TProgram>(IHostBuilder builder, Action<HostBuilderContext, IConfigurationBuilder> configureApp, Action<HostBuilderContext, IServiceCollection> configureServices) where TProgram : class

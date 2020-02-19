@@ -1,5 +1,4 @@
 ﻿using Carbon.ConsoleApplication;
-using Microsoft.Extensions.Hosting;
 using System.Threading.Tasks;
 
 namespace Carbon.Demo.ConsoleApplication
@@ -8,7 +7,9 @@ namespace Carbon.Demo.ConsoleApplication
     {
         public static async Task Main()
         {
-            await new HostBuilder().UseCarbonFeatures<Program>().RunConsoleAsync();
+            await HostManager.RunAsync<Program>();
+
+            System.Console.WriteLine("Hello World");
         }
     }
 }
