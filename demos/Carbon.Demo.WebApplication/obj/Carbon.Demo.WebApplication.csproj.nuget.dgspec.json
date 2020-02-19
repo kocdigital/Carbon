@@ -145,7 +145,7 @@
       }
     },
     "C:\\Users\\02484376\\source\\repos\\Carbon Framework\\Carbon.Common\\Carbon.Common.csproj": {
-      "version": "1.1.0",
+      "version": "1.1.1",
       "restore": {
         "projectUniqueName": "C:\\Users\\02484376\\source\\repos\\Carbon Framework\\Carbon.Common\\Carbon.Common.csproj",
         "projectName": "Carbon.Common",
@@ -183,10 +183,6 @@
       "frameworks": {
         "netstandard2.1": {
           "dependencies": {
-            "FluentValidation.AspNetCore": {
-              "target": "Package",
-              "version": "[8.6.1, )"
-            },
             "Mapster": {
               "target": "Package",
               "version": "[4.1.1, )"
@@ -212,7 +208,7 @@
       }
     },
     "C:\\Users\\02484376\\source\\repos\\Carbon Framework\\Carbon.ConsoleApplication.Extensions\\Carbon.ConsoleApplication.csproj": {
-      "version": "1.0.0",
+      "version": "1.0.2",
       "restore": {
         "projectUniqueName": "C:\\Users\\02484376\\source\\repos\\Carbon Framework\\Carbon.ConsoleApplication.Extensions\\Carbon.ConsoleApplication.csproj",
         "projectName": "Carbon.ConsoleApplication",
@@ -238,7 +234,11 @@
         },
         "frameworks": {
           "netstandard2.1": {
-            "projectReferences": {}
+            "projectReferences": {
+              "C:\\Users\\02484376\\source\\repos\\Carbon Framework\\Carbon.Common\\Carbon.Common.csproj": {
+                "projectPath": "C:\\Users\\02484376\\source\\repos\\Carbon Framework\\Carbon.Common\\Carbon.Common.csproj"
+              }
+            }
           }
         },
         "warningProperties": {
@@ -249,6 +249,36 @@
       },
       "frameworks": {
         "netstandard2.1": {
+          "dependencies": {
+            "Microsoft.Extensions.Configuration": {
+              "target": "Package",
+              "version": "[3.1.0, )"
+            },
+            "Microsoft.Extensions.Configuration.EnvironmentVariables": {
+              "target": "Package",
+              "version": "[3.1.0, )"
+            },
+            "Serilog.AspNetCore": {
+              "target": "Package",
+              "version": "[3.2.0, )"
+            },
+            "Serilog.Sinks.Console": {
+              "target": "Package",
+              "version": "[3.1.1, )"
+            },
+            "Serilog.Sinks.ElasticSearch": {
+              "target": "Package",
+              "version": "[8.0.1, )"
+            },
+            "Serilog.Sinks.File": {
+              "target": "Package",
+              "version": "[4.1.0, )"
+            },
+            "Winton.Extensions.Configuration.Consul": {
+              "target": "Package",
+              "version": "[3.0.1, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -547,7 +577,7 @@
       }
     },
     "C:\\Users\\02484376\\source\\repos\\Carbon Framework\\Carbon.WebApplication\\Carbon.WebApplication.csproj": {
-      "version": "1.1.4",
+      "version": "1.1.5",
       "restore": {
         "projectUniqueName": "C:\\Users\\02484376\\source\\repos\\Carbon Framework\\Carbon.WebApplication\\Carbon.WebApplication.csproj",
         "projectName": "Carbon.WebApplication",

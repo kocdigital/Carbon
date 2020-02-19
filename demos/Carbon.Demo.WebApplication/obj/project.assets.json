@@ -1003,6 +1003,18 @@
           "lib/netcoreapp3.1/Microsoft.Extensions.Configuration.Binder.dll": {}
         }
       },
+      "Microsoft.Extensions.Configuration.EnvironmentVariables/3.1.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.Configuration": "3.1.0"
+        },
+        "compile": {
+          "lib/netcoreapp3.1/Microsoft.Extensions.Configuration.EnvironmentVariables.dll": {}
+        },
+        "runtime": {
+          "lib/netcoreapp3.1/Microsoft.Extensions.Configuration.EnvironmentVariables.dll": {}
+        }
+      },
       "Microsoft.Extensions.Configuration.FileExtensions/3.0.0": {
         "type": "package",
         "dependencies": {
@@ -3517,7 +3529,7 @@
           "lib/netstandard1.3/System.Xml.XPath.XDocument.dll": {}
         }
       },
-      "Winton.Extensions.Configuration.Consul/3.0.0": {
+      "Winton.Extensions.Configuration.Consul/3.0.1": {
         "type": "package",
         "dependencies": {
           "Consul": "0.7.2.6",
@@ -3560,11 +3572,10 @@
           "bin/placeholder/Carbon.Cassandra.Abstractions.dll": {}
         }
       },
-      "Carbon.Common/1.1.0": {
+      "Carbon.Common/1.1.1": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.1",
         "dependencies": {
-          "FluentValidation.AspNetCore": "8.6.1",
           "Mapster": "4.1.1"
         },
         "compile": {
@@ -3574,9 +3585,19 @@
           "bin/placeholder/Carbon.Common.dll": {}
         }
       },
-      "Carbon.ConsoleApplication/1.0.0": {
+      "Carbon.ConsoleApplication/1.0.2": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.1",
+        "dependencies": {
+          "Carbon.Common": "1.1.1",
+          "Microsoft.Extensions.Configuration": "3.1.0",
+          "Microsoft.Extensions.Configuration.EnvironmentVariables": "3.1.0",
+          "Serilog.AspNetCore": "3.2.0",
+          "Serilog.Sinks.Console": "3.1.1",
+          "Serilog.Sinks.ElasticSearch": "8.0.1",
+          "Serilog.Sinks.File": "4.1.0",
+          "Winton.Extensions.Configuration.Consul": "3.0.1"
+        },
         "compile": {
           "bin/placeholder/Carbon.ConsoleApplication.dll": {}
         },
@@ -3588,7 +3609,7 @@
         "type": "project",
         "framework": ".NETStandard,Version=v2.1",
         "dependencies": {
-          "Carbon.Common": "1.1.0",
+          "Carbon.Common": "1.1.1",
           "System.ComponentModel.Annotations": "4.7.0"
         },
         "compile": {
@@ -3641,11 +3662,11 @@
           "bin/placeholder/Carbon.PagedList.dll": {}
         }
       },
-      "Carbon.WebApplication/1.1.4": {
+      "Carbon.WebApplication/1.1.5": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v3.1",
         "dependencies": {
-          "Carbon.Common": "1.1.0",
+          "Carbon.Common": "1.1.1",
           "Carbon.ExceptionHandling.Abstractions": "1.0.0",
           "Carbon.PagedList": "1.0.1",
           "FluentValidation.AspNetCore": "8.6.1",
@@ -4808,6 +4829,22 @@
         "lib/netstandard2.0/Microsoft.Extensions.Configuration.Binder.xml",
         "microsoft.extensions.configuration.binder.3.1.0.nupkg.sha512",
         "microsoft.extensions.configuration.binder.nuspec",
+        "packageIcon.png"
+      ]
+    },
+    "Microsoft.Extensions.Configuration.EnvironmentVariables/3.1.0": {
+      "sha512": "WryksPlAFFRMWIGpFwDDbrVSD/kSO7P7fRRzBHh6vEIrgflsM8tpPCcgIvKszH4fz4vcuapih9RMdiiJ2VS7aw==",
+      "type": "package",
+      "path": "microsoft.extensions.configuration.environmentvariables/3.1.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/netcoreapp3.1/Microsoft.Extensions.Configuration.EnvironmentVariables.dll",
+        "lib/netcoreapp3.1/Microsoft.Extensions.Configuration.EnvironmentVariables.xml",
+        "lib/netstandard2.0/Microsoft.Extensions.Configuration.EnvironmentVariables.dll",
+        "lib/netstandard2.0/Microsoft.Extensions.Configuration.EnvironmentVariables.xml",
+        "microsoft.extensions.configuration.environmentvariables.3.1.0.nupkg.sha512",
+        "microsoft.extensions.configuration.environmentvariables.nuspec",
         "packageIcon.png"
       ]
     },
@@ -10429,19 +10466,20 @@
         "system.xml.xpath.xdocument.nuspec"
       ]
     },
-    "Winton.Extensions.Configuration.Consul/3.0.0": {
-      "sha512": "r0N90Sdv/nuClRRXcIpCH1pWKdieukOUohTtUVP0g14kmz4ISWC1vz5kz98rKJu+riegMs/pbWdosLzfL5/M9A==",
+    "Winton.Extensions.Configuration.Consul/3.0.1": {
+      "sha512": "Np8F1mSKzt58dbWmtTkU+mVAX4Lgwh9/1QPh0raD61y9jyrB8aS4C1KUaeDUwXb0bm13R7prADAa+qipGWTGnA==",
       "type": "package",
-      "path": "winton.extensions.configuration.consul/3.0.0",
+      "path": "winton.extensions.configuration.consul/3.0.1",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "LICENSE",
+        "icon.jpg",
         "lib/net461/Winton.Extensions.Configuration.Consul.dll",
         "lib/net461/Winton.Extensions.Configuration.Consul.xml",
         "lib/netstandard2.0/Winton.Extensions.Configuration.Consul.dll",
         "lib/netstandard2.0/Winton.Extensions.Configuration.Consul.xml",
-        "winton.extensions.configuration.consul.3.0.0.nupkg.sha512",
+        "winton.extensions.configuration.consul.3.0.1.nupkg.sha512",
         "winton.extensions.configuration.consul.nuspec"
       ]
     },
@@ -10455,12 +10493,12 @@
       "path": "../../Carbon.Cassandra.Abstractions/Carbon.Cassandra.Abstractions.csproj",
       "msbuildProject": "../../Carbon.Cassandra.Abstractions/Carbon.Cassandra.Abstractions.csproj"
     },
-    "Carbon.Common/1.1.0": {
+    "Carbon.Common/1.1.1": {
       "type": "project",
       "path": "../../Carbon.Common/Carbon.Common.csproj",
       "msbuildProject": "../../Carbon.Common/Carbon.Common.csproj"
     },
-    "Carbon.ConsoleApplication/1.0.0": {
+    "Carbon.ConsoleApplication/1.0.2": {
       "type": "project",
       "path": "../../Carbon.ConsoleApplication.Extensions/Carbon.ConsoleApplication.csproj",
       "msbuildProject": "../../Carbon.ConsoleApplication.Extensions/Carbon.ConsoleApplication.csproj"
@@ -10485,7 +10523,7 @@
       "path": "../../Carbon.PagedList/Carbon.PagedList.csproj",
       "msbuildProject": "../../Carbon.PagedList/Carbon.PagedList.csproj"
     },
-    "Carbon.WebApplication/1.1.4": {
+    "Carbon.WebApplication/1.1.5": {
       "type": "project",
       "path": "../../Carbon.WebApplication/Carbon.WebApplication.csproj",
       "msbuildProject": "../../Carbon.WebApplication/Carbon.WebApplication.csproj"
@@ -10495,13 +10533,13 @@
     ".NETCoreApp,Version=v3.1": [
       "Carbon.Cassandra >= 1.0.0",
       "Carbon.Cassandra.Abstractions >= 1.0.0",
-      "Carbon.Common >= 1.1.0",
-      "Carbon.ConsoleApplication >= 1.0.0",
+      "Carbon.Common >= 1.1.1",
+      "Carbon.ConsoleApplication >= 1.0.2",
       "Carbon.Domain.Abstractions >= 1.0.5",
       "Carbon.Domain.EntityFrameworkCore >= 1.0.8",
       "Carbon.ExceptionHandling.Abstractions >= 1.0.0",
       "Carbon.PagedList >= 1.0.1",
-      "Carbon.WebApplication >= 1.1.4"
+      "Carbon.WebApplication >= 1.1.5"
     ]
   },
   "packageFolders": {
