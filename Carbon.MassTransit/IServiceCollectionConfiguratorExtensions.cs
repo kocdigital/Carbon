@@ -28,12 +28,12 @@ namespace Carbon.MassTransit
 
                 if (massTransitSettings.BusType == MassTransitBusType.RabbitMQ)
                 {
-                    if(massTransitSettings.RabbitMQ == null)
-                        throw new ArgumentNullException(nameof(massTransitSettings.RabbitMQ));
+                    if(massTransitSettings.RabbitMq == null)
+                        throw new ArgumentNullException(nameof(massTransitSettings.RabbitMq));
 
                     return Bus.Factory.CreateUsingRabbitMq(x =>
                     {
-                        x.Host(massTransitSettings.RabbitMQ);
+                        x.Host(massTransitSettings.RabbitMq);
 
                         configurator(provider, x);
                     });
