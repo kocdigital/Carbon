@@ -1,55 +1,63 @@
 ﻿using MassTransit;
 using MassTransit.Azure.ServiceBus.Core;
+using System;
 using MassTransit.ExtensionsDependencyInjectionIntegration;
+using Microsoft.Extensions.Configuration;
 using MassTransit.RabbitMqTransport;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Options;
-using System;
+using Microsoft.Extensions.Hosting;
 
 namespace Carbon.MassTransit
 {
     public static class IServiceCollectionConfiguratorExtensions
     {
-        private static MassTransitSettings GetMassTransitSettings(IServiceProvider provider)
+        public static void AddMassTransitBus(this IServiceCollection services, Action<IServiceCollectionConfigurator> configurator)
         {
-            var massTransitSettings = provider.GetService<IOptions<MassTransitSettings>>().Value;
+            services.AddSingleton<IHostedService, MassTransitHostedService>();
+            services.AddMassTransit(configurator);
+        }
+
+        public static void AddBus(this IServiceCollectionConfigurator serviceCollection, 
+                                       IConfiguration configuration, Action<IServiceProvider, 
+                                       IRabbitMqBusFactoryConfigurator> configurator)
+        {
+            var massTransitSettings = configuration.GetSection("MassTransit").Get<MassTransitSettings>();
 
             if (massTransitSettings == null)
                 throw new ArgumentNullException(nameof(massTransitSettings));
 
-            return massTransitSettings;
-        }
-
-        public static void UseRabbitMqBus(this IServiceCollectionConfigurator serviceCollection, Action<IServiceProvider, IRabbitMqBusFactoryConfigurator> configurator)
-        {
-            serviceCollection.AddBus(provider =>
+            if (massTransitSettings.BusType == MassTransitBusType.RabbitMQ)
             {
-                var massTransitSettings = GetMassTransitSettings(provider);
+                if (massTransitSettings.RabbitMq == null)
+                    throw new ArgumentNullException(nameof(massTransitSettings.RabbitMq));
 
-                if (massTransitSettings.BusType == MassTransitBusType.RabbitMQ)
+                serviceCollection.AddBus(provider =>
                 {
-                    if(massTransitSettings.RabbitMq == null)
-                        throw new ArgumentNullException(nameof(massTransitSettings.RabbitMq));
-
                     return Bus.Factory.CreateUsingRabbitMq(x =>
                     {
                         x.Host(massTransitSettings.RabbitMq);
 
                         configurator(provider, x);
                     });
-                }
-
-                return null;
-            });
+                });
+            }
         }
 
-        public static void UseServiceBus(this IServiceCollectionConfigurator serviceCollection, Action<IServiceProvider, IServiceBusBusFactoryConfigurator> configurator)
+        public static void AddBus(this IServiceCollectionConfigurator serviceCollection, 
+                                       IConfiguration configuration, Action<IServiceProvider, 
+                                       IServiceBusBusFactoryConfigurator> configurator)
         {
-            serviceCollection.AddBus(provider =>
-            {
-                var massTransitSettings = GetMassTransitSettings(provider);
+            var massTransitSettings = configuration.GetSection("MassTransit").Get<MassTransitSettings>();
 
-                if (massTransitSettings.BusType == MassTransitBusType.AzureServiceBus)
+            if (massTransitSettings == null)
+                throw new ArgumentNullException(nameof(massTransitSettings));
+
+            if (massTransitSettings.BusType == MassTransitBusType.AzureServiceBus)
+            {
+                if (massTransitSettings.ServiceBus == null)
+                    throw new ArgumentNullException(nameof(massTransitSettings.ServiceBus));
+
+                serviceCollection.AddBus(provider =>
                 {
                     return Bus.Factory.CreateUsingAzureServiceBus(x =>
                     {
@@ -59,7 +67,7 @@ namespace Carbon.MassTransit
                         {
                             c.RetryLimit = busSettings.RetryLimit == 0 ? 1 : busSettings.RetryLimit;
 
-                            if(busSettings.OperationTimeout != TimeSpan.Zero)
+                            if (busSettings.OperationTimeout != TimeSpan.Zero)
                                 c.OperationTimeout = busSettings.OperationTimeout;
                             if (busSettings.RetryMaxBackoff != TimeSpan.Zero)
                                 c.RetryMaxBackoff = busSettings.RetryMaxBackoff;
@@ -73,10 +81,8 @@ namespace Carbon.MassTransit
 
                         configurator(provider, x);
                     });
-                }
-
-                return null;
-            });
+                });
+            }
         }
     }
 }
