@@ -37,8 +37,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Carbon.Demo.ConsoleApplicat
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "templates", "templates", "{D90DEEBA-BBAE-48A2-AD9D-69E18808B3B0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Carbon.Template.WebApplication.API-v3.1", "templates\Carbon.Template.WebApplication.API-v3.1\Carbon.Template.WebApplication.API-v3.1.csproj", "{1E9380D1-ECEA-4BFB-8B15-AD5011097A84}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Carbon.MassTransit", "Carbon.MassTransit\Carbon.MassTransit.csproj", "{4E873D6E-07DA-4525-9748-0F17F252CF77}"
 EndProject
 Global
@@ -103,10 +101,6 @@ Global
 		{3764F610-9435-4392-8D09-8392C6F9DC1D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3764F610-9435-4392-8D09-8392C6F9DC1D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3764F610-9435-4392-8D09-8392C6F9DC1D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1E9380D1-ECEA-4BFB-8B15-AD5011097A84}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1E9380D1-ECEA-4BFB-8B15-AD5011097A84}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1E9380D1-ECEA-4BFB-8B15-AD5011097A84}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1E9380D1-ECEA-4BFB-8B15-AD5011097A84}.Release|Any CPU.Build.0 = Release|Any CPU
 		{4E873D6E-07DA-4525-9748-0F17F252CF77}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{4E873D6E-07DA-4525-9748-0F17F252CF77}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4E873D6E-07DA-4525-9748-0F17F252CF77}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -118,7 +112,6 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{55EB676E-1EE3-4728-967C-4CA0452667EA} = {ECB8C495-D13E-4360-AD95-B3DACE26EF77}
 		{3764F610-9435-4392-8D09-8392C6F9DC1D} = {ECB8C495-D13E-4360-AD95-B3DACE26EF77}
-		{1E9380D1-ECEA-4BFB-8B15-AD5011097A84} = {D90DEEBA-BBAE-48A2-AD9D-69E18808B3B0}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C0D2C443-9946-4077-A654-1B47F8842F19}

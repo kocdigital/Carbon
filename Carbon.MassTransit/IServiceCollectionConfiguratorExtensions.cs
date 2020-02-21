@@ -53,7 +53,7 @@ namespace Carbon.MassTransit
                 {
                     return Bus.Factory.CreateUsingAzureServiceBus(x =>
                     {
-                        x.Host(massTransitSettings.AzureServiceBus);
+                        x.Host(massTransitSettings.ServiceBus);
 
                         configurator(provider, x);
                     });
