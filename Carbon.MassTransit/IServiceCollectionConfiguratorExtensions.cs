@@ -17,7 +17,7 @@ namespace Carbon.MassTransit
             services.AddMassTransit(configurator);
         }
 
-        public static void AddBus(this IServiceCollectionConfigurator serviceCollection, 
+        public static void AddRabbitMqBus(this IServiceCollectionConfigurator serviceCollection, 
                                        IConfiguration configuration, Action<IServiceProvider, 
                                        IRabbitMqBusFactoryConfigurator> configurator)
         {
@@ -84,7 +84,7 @@ namespace Carbon.MassTransit
             }
         }
 
-        public static void AddBus(this IServiceCollectionConfigurator serviceCollection, 
+        public static void AddServiceBus(this IServiceCollectionConfigurator serviceCollection, 
                                        IConfiguration configuration, Action<IServiceProvider, 
                                        IServiceBusBusFactoryConfigurator> configurator)
         {
