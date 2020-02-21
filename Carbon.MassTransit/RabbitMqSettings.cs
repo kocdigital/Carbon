@@ -45,13 +45,7 @@ namespace Carbon.MassTransit
 
         public string ClientProvidedName { get; set; }
 
-        public Uri HostAddress
-        {
-            get
-            {
-                return new Uri($"rabbitmq://{Host}");
-            }
-        }
+        public Uri HostAddress { get; set; }
 
         public bool PublisherConfirmation { get; set; }
 

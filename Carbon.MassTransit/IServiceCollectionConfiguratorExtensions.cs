@@ -33,9 +33,50 @@ namespace Carbon.MassTransit
 
                 serviceCollection.AddBus(provider =>
                 {
+                    var busSettings = massTransitSettings.RabbitMq;
+
                     return Bus.Factory.CreateUsingRabbitMq(x =>
                     {
-                        x.Host(massTransitSettings.RabbitMq);
+                        x.Host(busSettings.Host, (c) =>
+                        {
+                            if(!string.IsNullOrEmpty(busSettings.Username))
+                                c.Username(busSettings.Username);
+                            if (!string.IsNullOrEmpty(busSettings.Password))
+                                c.Password(busSettings.Password);
+
+                            c.PublisherConfirmation = busSettings.PublisherConfirmation;
+                           
+                            if (busSettings.RequestedChannelMax > 0)
+                                c.RequestedChannelMax(busSettings.RequestedChannelMax);
+
+                            if (busSettings.RequestedConnectionTimeout > 0)
+                                c.RequestedConnectionTimeout(busSettings.RequestedConnectionTimeout);
+
+                            if(busSettings.Heartbeat > 0)
+                                c.Heartbeat(busSettings.Heartbeat);
+
+                            if (busSettings.ClusterMembers != null && busSettings.ClusterMembers.Length > 0)
+                                c.UseCluster((cluster) =>
+                                {
+                                    cluster.ClusterMembers = busSettings.ClusterMembers;
+                                });
+
+                            if (busSettings.Ssl)
+                            {
+                                c.UseSsl((s) =>
+                                {
+                                    s.UseCertificateAsAuthenticationIdentity = busSettings.UseClientCertificateAsAuthenticationIdentity;
+                                    s.ServerName = busSettings.SslServerName;
+                                    s.Protocol = busSettings.SslProtocol;
+                                    s.Certificate = busSettings.ClientCertificate;
+                                    s.CertificatePassphrase = busSettings.ClientCertificatePassphrase;
+                                    s.CertificatePath = busSettings.ClientCertificatePath;
+                                    s.CertificateSelectionCallback = busSettings.CertificateSelectionCallback;
+                                });
+                            }
+
+
+                        });
 
                         configurator(provider, x);
                     });
