@@ -33,6 +33,8 @@ namespace Carbon.MassTransit
 
                     return Bus.Factory.CreateUsingRabbitMq(x =>
                     {
+
+
                         x.Host(massTransitSettings.RabbitMq);
 
                         configurator(provider, x);
@@ -53,7 +55,17 @@ namespace Carbon.MassTransit
                 {
                     return Bus.Factory.CreateUsingAzureServiceBus(x =>
                     {
-                        x.Host(massTransitSettings.ServiceBus);
+                        var busSettings = massTransitSettings.ServiceBus;
+
+                        x.Host(massTransitSettings.ServiceBus.ConnectionString, (c) =>
+                        {
+                            c.RetryLimit = busSettings.RetryLimit;
+                            c.OperationTimeout = busSettings.OperationTimeout;
+                            c.RetryMaxBackoff = busSettings.RetryMaxBackoff;
+                            c.RetryMinBackoff = busSettings.RetryMinBackoff;
+                            c.TokenProvider = busSettings.TokenProvider;
+                            c.TransportType = busSettings.TransportType;
+                        });
 
                         configurator(provider, x);
                     });

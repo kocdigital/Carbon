@@ -7,7 +7,7 @@ namespace Carbon.MassTransit
 {
     public class ServiceBusSettings : ServiceBusHostSettings
     {
-        public Uri ServiceUri { get; set; }
+        public string ConnectionString { get; set; }
 
         public ITokenProvider TokenProvider { get; set; }
 
@@ -20,5 +20,7 @@ namespace Carbon.MassTransit
         public int RetryLimit { get; set; }
 
         public TransportType TransportType { get; set; }
+
+        public Uri ServiceUri { get; set; }
     }
 }
