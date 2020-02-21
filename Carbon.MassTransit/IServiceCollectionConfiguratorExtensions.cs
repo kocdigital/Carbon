@@ -62,6 +62,5 @@ namespace Carbon.MassTransit
                 return null;
             });
         }
-
     }
 }
