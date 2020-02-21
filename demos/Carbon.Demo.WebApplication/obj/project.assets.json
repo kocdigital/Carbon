@@ -3716,7 +3716,7 @@
           "bin/placeholder/Carbon.Common.dll": {}
         }
       },
-      "Carbon.ConsoleApplication/1.0.5": {
+      "Carbon.ConsoleApplication/1.0.6": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.1",
         "dependencies": {
@@ -10824,7 +10824,7 @@
       "path": "../../Carbon.Common/Carbon.Common.csproj",
       "msbuildProject": "../../Carbon.Common/Carbon.Common.csproj"
     },
-    "Carbon.ConsoleApplication/1.0.5": {
+    "Carbon.ConsoleApplication/1.0.6": {
       "type": "project",
       "path": "../../Carbon.ConsoleApplication.Extensions/Carbon.ConsoleApplication.csproj",
       "msbuildProject": "../../Carbon.ConsoleApplication.Extensions/Carbon.ConsoleApplication.csproj"
@@ -10860,7 +10860,7 @@
       "Carbon.Cassandra >= 1.0.0",
       "Carbon.Cassandra.Abstractions >= 1.0.0",
       "Carbon.Common >= 1.1.1",
-      "Carbon.ConsoleApplication >= 1.0.5",
+      "Carbon.ConsoleApplication >= 1.0.6",
       "Carbon.Domain.Abstractions >= 1.0.5",
       "Carbon.Domain.EntityFrameworkCore >= 1.0.8",
       "Carbon.ExceptionHandling.Abstractions >= 1.0.0",

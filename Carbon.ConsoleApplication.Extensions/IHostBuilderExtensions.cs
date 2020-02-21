@@ -46,7 +46,7 @@ namespace Carbon.ConsoleApplication
                 if (_serilogSettings == null)
                     throw new ArgumentNullException("Serilog settings cannot be empty!");
 
-                Log.Logger = new LoggerConfiguration().ReadFrom.Configuration(h.Configuration).CreateLogger();
+                Log.Logger = new LoggerConfiguration().ReadFrom.Configuration(configuration).CreateLogger();
 
                 configureApp?.Invoke(h, c);
 
