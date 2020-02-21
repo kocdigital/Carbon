@@ -21,6 +21,6 @@ namespace Carbon.MassTransit
 
         public TransportType TransportType { get; set; }
 
-        public Uri ServiceUri { get; set; }
+        public Uri ServiceUri { get;  }
     }
 }

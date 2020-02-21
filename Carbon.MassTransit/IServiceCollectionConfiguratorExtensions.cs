@@ -33,8 +33,6 @@ namespace Carbon.MassTransit
 
                     return Bus.Factory.CreateUsingRabbitMq(x =>
                     {
-
-
                         x.Host(massTransitSettings.RabbitMq);
 
                         configurator(provider, x);
@@ -59,11 +57,17 @@ namespace Carbon.MassTransit
 
                         x.Host(massTransitSettings.ServiceBus.ConnectionString, (c) =>
                         {
-                            c.RetryLimit = busSettings.RetryLimit;
-                            c.OperationTimeout = busSettings.OperationTimeout;
-                            c.RetryMaxBackoff = busSettings.RetryMaxBackoff;
-                            c.RetryMinBackoff = busSettings.RetryMinBackoff;
-                            c.TokenProvider = busSettings.TokenProvider;
+                            c.RetryLimit = busSettings.RetryLimit == 0 ? 1 : busSettings.RetryLimit;
+
+                            if(busSettings.OperationTimeout != TimeSpan.Zero)
+                                c.OperationTimeout = busSettings.OperationTimeout;
+                            if (busSettings.RetryMaxBackoff != TimeSpan.Zero)
+                                c.RetryMaxBackoff = busSettings.RetryMaxBackoff;
+                            if (busSettings.RetryMinBackoff != TimeSpan.Zero)
+                                c.RetryMinBackoff = busSettings.RetryMinBackoff;
+                            if (busSettings.TokenProvider != null)
+                                c.TokenProvider = busSettings.TokenProvider;
+
                             c.TransportType = busSettings.TransportType;
                         });
 
