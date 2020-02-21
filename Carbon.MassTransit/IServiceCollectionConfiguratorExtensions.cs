@@ -20,7 +20,7 @@ namespace Carbon.MassTransit
             return massTransitSettings;
         }
 
-        public static void UseRabbitMqBus(this IServiceCollectionConfigurator serviceCollection, Action<IRabbitMqBusFactoryConfigurator> configurator)
+        public static void UseRabbitMqBus(this IServiceCollectionConfigurator serviceCollection, Action<IServiceProvider, IRabbitMqBusFactoryConfigurator> configurator)
         {
             serviceCollection.AddBus(provider =>
             {
@@ -35,7 +35,7 @@ namespace Carbon.MassTransit
                     {
                         x.Host(massTransitSettings.RabbitMQ);
 
-                        configurator(x);
+                        configurator(provider, x);
                     });
                 }
 
@@ -43,7 +43,7 @@ namespace Carbon.MassTransit
             });
         }
 
-        public static void UseServiceBus(this IServiceCollectionConfigurator serviceCollection, Action<IServiceBusBusFactoryConfigurator> configurator)
+        public static void UseServiceBus(this IServiceCollectionConfigurator serviceCollection, Action<IServiceProvider, IServiceBusBusFactoryConfigurator> configurator)
         {
             serviceCollection.AddBus(provider =>
             {
@@ -55,7 +55,7 @@ namespace Carbon.MassTransit
                     {
                         x.Host(massTransitSettings.AzureServiceBus);
 
-                        configurator(x);
+                        configurator(provider, x);
                     });
                 }
 
