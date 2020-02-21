@@ -18,7 +18,7 @@ namespace Carbon.Demo.ConsoleApplication
             var host = new HostBuilder()
                     .UseCarbonConfigureServices<Program>((hostContext, services) =>
                     {
-                        services.AddMassTransit(cfg =>
+                        services.AddMassTransitBus(cfg =>
                         {
                             cfg.AddConsumer<FlightPurchasedConsumer>();
 
@@ -50,8 +50,6 @@ namespace Carbon.Demo.ConsoleApplication
                                 });
                             });
                         });
-
-                        services.AddSingleton<IHostedService, MassTransitConsoleHostedService>();
                     });
 
             await host.RunConsoleAsync();
