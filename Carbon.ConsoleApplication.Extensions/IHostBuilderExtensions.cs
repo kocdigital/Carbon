@@ -8,7 +8,6 @@ using Winton.Extensions.Configuration.Consul;
 
 namespace Carbon.ConsoleApplication
 {
-
     public static class IHostBuilderExtensions
     {
         private static IHostBuilder UseFeatures<TProgram>(IHostBuilder builder, Action<HostBuilderContext, IConfigurationBuilder> configureApp, Action<HostBuilderContext, IServiceCollection> configureServices) where TProgram : class
@@ -59,36 +58,15 @@ namespace Carbon.ConsoleApplication
             return builder.UseSerilog();
         }
 
-        //
-        // Summary:
-        //     Add app.{}.settings, consul and serilog by default 
-        public static IHostBuilder UseCarbonFeatures<TProgram>(this IHostBuilder builder) where TProgram : class
-        {
-            return UseFeatures<TProgram>(builder, null, null);
-        }
-
-        //
-        // Summary:
-        //     Add app.{}.settings, consul and serilog by default and configure services
-        public static IHostBuilder UseCarbonFeatures<TProgram>(this IHostBuilder builder, Action<HostBuilderContext, IServiceCollection> configureServices) where TProgram : class
+        public static IHostBuilder UseCarbonConfigureServices<TProgram>(this IHostBuilder builder, Action<HostBuilderContext, IServiceCollection> configureServices) where TProgram : class
         {
             return UseFeatures<TProgram>(builder, null, configureServices);
         }
 
-        //
-        // Summary:
-        //     Add app.{}.settings, consul and serilog by default and configure applications
-        public static IHostBuilder UseCarbonFeatures<TProgram>(this IHostBuilder builder, Action<HostBuilderContext, IConfigurationBuilder> configureApp) where TProgram : class
+        public static IHostBuilder UseCarbonConfigureApplication<TProgram>(this IHostBuilder builder, Action<HostBuilderContext, IConfigurationBuilder> configureApp) where TProgram : class
         {
             return UseFeatures<TProgram>(builder, configureApp, null);
         }
 
-        //
-        // Summary:
-        //     Add app.{}.settings, consul and serilog by default and configure applications & services
-        public static IHostBuilder UseCarbonFeatures<TProgram>(this IHostBuilder builder, Action<HostBuilderContext, IConfigurationBuilder> configureApp, Action<HostBuilderContext, IServiceCollection> configureServices) where TProgram : class
-        {
-            return UseFeatures<TProgram>(builder, configureApp, configureServices);
-        }
     }
 }

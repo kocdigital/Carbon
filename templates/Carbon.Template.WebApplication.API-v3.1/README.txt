@@ -1,0 +1,1 @@
+﻿dotnet new -u C:\Users\02484376\source\repos\Carbon Framework\templates\Carbon.Template.WebApplication.API-v3.1

@@ -10,22 +10,20 @@ namespace Carbon.ConsoleApplication
     {
         public static async Task RunAsync<TProgram>(Action<HostBuilderContext, IConfigurationBuilder> configureApp, Action<HostBuilderContext, IServiceCollection> configureServices) where TProgram : class
         {
-            await new HostBuilder().UseCarbonFeatures<TProgram>(configureApp, configureServices).RunConsoleAsync();
+            await new HostBuilder().UseCarbonConfigureApplication<TProgram>(configureApp)
+                                   .UseCarbonConfigureServices<TProgram>(configureServices)
+                                   .RunConsoleAsync();
         }
 
         public static async Task RunAsync<TProgram>(Action<HostBuilderContext, IConfigurationBuilder> configureApp) where TProgram : class
         {
-            await new HostBuilder().UseCarbonFeatures<TProgram>(configureApp).RunConsoleAsync();
+            await new HostBuilder().UseCarbonConfigureApplication<TProgram>(configureApp).RunConsoleAsync();
         }
 
         public static async Task RunAsync<TProgram>(Action<HostBuilderContext, IServiceCollection> configureServices) where TProgram : class
         {
-            await new HostBuilder().UseCarbonFeatures<TProgram>(configureServices).RunConsoleAsync();
+            await new HostBuilder().UseCarbonConfigureServices<TProgram>(configureServices).RunConsoleAsync();
         }
 
-        public static async Task RunAsync<TProgram>() where TProgram : class
-        {
-            await new HostBuilder().UseCarbonFeatures<TProgram>().RunConsoleAsync();
-        }
     }
 }

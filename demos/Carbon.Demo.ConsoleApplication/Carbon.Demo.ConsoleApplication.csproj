@@ -29,6 +29,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Carbon.ConsoleApplication.Extensions\Carbon.ConsoleApplication.csproj" />
+    <ProjectReference Include="..\..\Carbon.MassTransit\Carbon.MassTransit.csproj" />
   </ItemGroup>
 
 </Project>

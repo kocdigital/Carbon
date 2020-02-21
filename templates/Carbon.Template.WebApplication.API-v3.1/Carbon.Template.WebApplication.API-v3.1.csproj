@@ -1,0 +1,36 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <RootNamespace>Carbon.Template.WebApplication.API_v3._1</RootNamespace>
+	<LangVersion>8.0</LangVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include=".template.config\template.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Application\Dtos\Validators\" />
+    <Folder Include="Domain\Data\" />
+    <Folder Include="Domain\Entities\" />
+    <Folder Include="Domain\Exceptions\" />
+    <Folder Include="Domain\Services\" />
+    <Folder Include="Domain\Repositories\" />
+    <Folder Include="Infrastructure\Contexts\EntityConfigurations\" />
+    <Folder Include="Infrastructure\Migrations\" />
+    <Folder Include="Infrastructure\Repositories\" />
+    <Folder Include="working\templates\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Carbon.Common" Version="1.1.1" />
+    <PackageReference Include="Carbon.Domain.Abstractions" Version="1.0.5" />
+    <PackageReference Include="Carbon.ExceptionHandling.Abstractions" Version="1.0.0" />
+    <PackageReference Include="Carbon.PagedList" Version="1.0.1" />
+    <PackageReference Include="Carbon.PagedList.Mapster" Version="1.0.1" />
+    <PackageReference Include="Carbon.WebApplication" Version="1.1.5" />
+  </ItemGroup>
+
+
+</Project>
