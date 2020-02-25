@@ -28,9 +28,9 @@ namespace Carbon.WebApplication
                         operation.RequestBody = new OpenApiRequestBody
                         {
                             Content = new Dictionary<string, OpenApiMediaType>
-                        {
-                            { "application/json", hybridMediaType }
-                        },
+                            {
+                                { "application/json", hybridMediaType }
+                            },
                             Required = isRequired
                         };
                     }

@@ -22,8 +22,6 @@ namespace Carbon.Domain.EntityFrameworkCore
             this.context = context;
         }
 
-
-
         public virtual async Task<TEntity> GetByIdAsync(Guid id)
         {
             return await context.Set<TEntity>().FindAsync(id);

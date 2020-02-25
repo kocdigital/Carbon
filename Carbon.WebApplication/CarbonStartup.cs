@@ -62,7 +62,7 @@ namespace Carbon.WebApplication
             services.Configure<SerilogSettings>(Configuration.GetSection("Serilog"));
             services.Configure<CorsPolicySettings>(Configuration.GetSection("CorsPolicy"));
             services.Configure<SwaggerSettings>(Configuration.GetSection("Swagger"));
-            services.Configure<JWTSettings>(Configuration.GetSection("JWT"));
+            services.Configure<JwtSettings>(Configuration.GetSection("JwtSettings"));
             services.AddSingleton(Configuration);
 
             #region Serilog Settings
@@ -129,7 +129,7 @@ namespace Carbon.WebApplication
 
             services.AddSwaggerGen(c =>
             {
-                c.OperationFilter<HybridOperationFilter>();
+                //c.OperationFilter<HybridOperationFilter>();
                 c.OperationFilterDescriptors.AddRange(_filterDescriptors);
 
                 foreach (var doc in _swaggerSettings.Documents)
