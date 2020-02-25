@@ -129,7 +129,7 @@ namespace Carbon.WebApplication
 
             services.AddSwaggerGen(c =>
             {
-                //c.OperationFilter<HybridOperationFilter>();
+                c.OperationFilter<HybridOperationFilter>();
                 c.OperationFilterDescriptors.AddRange(_filterDescriptors);
 
                 foreach (var doc in _swaggerSettings.Documents)

@@ -9,9 +9,11 @@ namespace Carbon.WebApplication
     {
         public void Apply(OpenApiOperation operation, OperationFilterContext context)
         {
-            var hybridParameters = context.ApiDescription.ParameterDescriptions
-                .Where(x => x.Source.Id == "Hybrid")
-                .Select(x => new { name = x.Name }).ToList();
+            var hybridParameters = context.ApiDescription
+                                          .ParameterDescriptions
+                                          .Where(x => x.Source.Id == "Hybrid")
+                                          .Select(x => new { name = x.Name })
+                                          .ToList();
 
             for (var i = 0; i < operation.Parameters.Count; i++)
             {
