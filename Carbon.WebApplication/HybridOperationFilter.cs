@@ -2,6 +2,7 @@
 using Swashbuckle.AspNetCore.SwaggerGen;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 
 namespace Carbon.WebApplication
 {
@@ -14,6 +15,9 @@ namespace Carbon.WebApplication
                                           .Where(x => x.Source.Id == "Hybrid")
                                           .Select(x => new { name = x.Name })
                                           .ToList();
+
+            if (context.ApiDescription.HttpMethod == "GET" || context.ApiDescription.HttpMethod == "DELETE")
+                return;
 
             for (var i = 0; i < operation.Parameters.Count; i++)
             {
