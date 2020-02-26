@@ -9,7 +9,7 @@ namespace Carbon.WebApplication
     {
         public static IServiceCollection AddBearerAuthentication(this IServiceCollection services, IConfiguration configuration)
         {
-            var jwtSettings = configuration.GetSection("JwtBearer").Get<JwtSettings>();
+            var jwtSettings = configuration.GetSection("JwtSettings").Get<JwtSettings>();
 
             if (jwtSettings == null)
                 throw new ArgumentNullException("JwtBearer Settings cannot be empty!");
