@@ -3121,7 +3121,7 @@
           "lib/netstandard2.0/Winton.Extensions.Configuration.Consul.dll": {}
         }
       },
-      "Carbon.Common/1.1.1": {
+      "Carbon.Common/1.1.2": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.1",
         "dependencies": {
@@ -9105,7 +9105,7 @@
         "winton.extensions.configuration.consul.nuspec"
       ]
     },
-    "Carbon.Common/1.1.1": {
+    "Carbon.Common/1.1.2": {
       "type": "project",
       "path": "../Carbon.Common/Carbon.Common.csproj",
       "msbuildProject": "../Carbon.Common/Carbon.Common.csproj"
@@ -9123,7 +9123,7 @@
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
-      "Carbon.Common >= 1.1.1",
+      "Carbon.Common >= 1.1.2",
       "Carbon.ExceptionHandling.Abstractions >= 1.0.0",
       "Carbon.PagedList >= 1.0.1",
       "FluentValidation.AspNetCore >= 8.6.1",
@@ -9151,7 +9151,7 @@
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
-    "version": "1.2.0",
+    "version": "1.2.2",
     "restore": {
       "projectUniqueName": "C:\\Users\\02484376\\source\\repos\\Carbon Framework\\Carbon.WebApplication\\Carbon.WebApplication.csproj",
       "projectName": "Carbon.WebApplication",
@@ -9173,7 +9173,7 @@
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "http://bellatrix:8080/tfs/KocDigitalCollection/_packaging/CarbonFramework/nuget/v3/index.json": {},
         "http://bellatrix:8080/tfs/KocDigitalCollection/_packaging/CosmosNugetServerv1/nuget/v3/index.json": {},
-        "https://api.nuget.org/v3/index.json": {}
+        "http://bellatrix:8080/tfs/KocDigitalCollection/_packaging/Platform360Core/nuget/v3/index.json": {}
       },
       "frameworks": {
         "netcoreapp3.1": {

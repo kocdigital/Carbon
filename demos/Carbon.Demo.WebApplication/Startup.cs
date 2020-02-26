@@ -17,6 +17,7 @@ namespace Carbon.Demo.WebApplication
 
         public override void ConfigureDependencies(IServiceCollection services)
         {
+
         }
 
         public override void ConfigureRequestPipeline(IApplicationBuilder app, IWebHostEnvironment env)
