@@ -1,5 +1,6 @@
 ﻿using Carbon.Common;
 using FluentValidation.AspNetCore;
+using Mapster;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -67,6 +68,8 @@ namespace Carbon.WebApplication
             services.Configure<SwaggerSettings>(Configuration.GetSection("Swagger"));
             services.Configure<JwtSettings>(Configuration.GetSection("JwtSettings"));
             services.AddSingleton(Configuration);
+
+            TypeAdapterConfig.GlobalSettings.Default.PreserveReference(true);
 
             #region Serilog Settings
 
