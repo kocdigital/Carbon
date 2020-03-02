@@ -18,7 +18,6 @@ namespace Carbon.WebApplication
             {
                 RuleFor(x => ((IPageableDto)x).PageIndex).GreaterThanOrEqualTo(1);
                 RuleFor(x => ((IPageableDto)x).PageSize).InclusiveBetween(10, 250);
-
             }
         }
     }
