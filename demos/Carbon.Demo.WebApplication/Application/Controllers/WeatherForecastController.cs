@@ -1,8 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
+using System.Threading.Tasks;
 using Carbon.Demo.WebApplication.Application.Dtos;
+using Carbon.HttpClients;
 using Carbon.WebApplication;
+using HybridModelBinding;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
@@ -17,11 +21,15 @@ namespace Carbon.Demo.WebApplication.Controllers
             "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
         };
 
+        private readonly WebapiClient _webapiClient;
         private readonly ILogger<WeatherForecastController> _logger;
+        private readonly IHttpClientFactory _httpClientFactory;
 
-        public WeatherForecastController(ILogger<WeatherForecastController> logger)
+        public WeatherForecastController(ILogger<WeatherForecastController> logger, WebapiClient webapiClient, IHttpClientFactory httpClientFactory)
         {
+            _httpClientFactory = httpClientFactory;
             _logger = logger;
+            _webapiClient = webapiClient;
         }
 
         [HttpGet]
@@ -45,8 +53,13 @@ namespace Carbon.Demo.WebApplication.Controllers
         }
 
         [HttpPost]
-        public IEnumerable<WeatherForecast> Validate([FromBody]TestDto dto)
+        public async Task<IEnumerable<WeatherForecast>> Validate([FromHybrid]TestDto dto)
         {
+                var response = await _webapiClient.Client.GetAsync("https://localhost:5001/weatherforecast");
+
+                var content = response.Content.ReadAsStringAsync();
+        
+
             var rng = new Random();
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast
             {

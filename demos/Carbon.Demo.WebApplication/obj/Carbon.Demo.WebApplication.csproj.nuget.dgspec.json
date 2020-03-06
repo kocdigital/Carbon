@@ -208,7 +208,7 @@
       }
     },
     "C:\\Users\\02484376\\source\\repos\\Carbon Framework\\Carbon.ConsoleApplication.Extensions\\Carbon.ConsoleApplication.csproj": {
-      "version": "1.0.6",
+      "version": "1.1.0",
       "restore": {
         "projectUniqueName": "C:\\Users\\02484376\\source\\repos\\Carbon Framework\\Carbon.ConsoleApplication.Extensions\\Carbon.ConsoleApplication.csproj",
         "projectName": "Carbon.ConsoleApplication",
@@ -517,6 +517,72 @@
         }
       }
     },
+    "C:\\Users\\02484376\\source\\repos\\Carbon Framework\\Carbon.HttpClient\\Carbon.HttpClient.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\02484376\\source\\repos\\Carbon Framework\\Carbon.HttpClient\\Carbon.HttpClient.csproj",
+        "projectName": "Carbon.HttpClient",
+        "projectPath": "C:\\Users\\02484376\\source\\repos\\Carbon Framework\\Carbon.HttpClient\\Carbon.HttpClient.csproj",
+        "packagesPath": "C:\\Users\\02484376\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\02484376\\source\\repos\\Carbon Framework\\Carbon.HttpClient\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\02484376\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "http://bellatrix:8080/tfs/KocDigitalCollection/_packaging/CarbonFramework/nuget/v3/index.json": {},
+          "http://bellatrix:8080/tfs/KocDigitalCollection/_packaging/CosmosNugetServerv1/nuget/v3/index.json": {},
+          "http://bellatrix:8080/tfs/KocDigitalCollection/_packaging/Platform360Core/nuget/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "dependencies": {
+            "Microsoft.AspNetCore.HeaderPropagation": {
+              "target": "Package",
+              "version": "[3.1.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.100\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
     "C:\\Users\\02484376\\source\\repos\\Carbon Framework\\Carbon.PagedList\\Carbon.PagedList.csproj": {
       "version": "1.0.1",
       "restore": {
@@ -581,7 +647,7 @@
       }
     },
     "C:\\Users\\02484376\\source\\repos\\Carbon Framework\\Carbon.WebApplication\\Carbon.WebApplication.csproj": {
-      "version": "1.2.4",
+      "version": "1.2.6",
       "restore": {
         "projectUniqueName": "C:\\Users\\02484376\\source\\repos\\Carbon Framework\\Carbon.WebApplication\\Carbon.WebApplication.csproj",
         "projectName": "Carbon.WebApplication",
@@ -614,6 +680,9 @@
               "C:\\Users\\02484376\\source\\repos\\Carbon Framework\\Carbon.ExceptionHandling\\Carbon.ExceptionHandling.Abstractions.csproj": {
                 "projectPath": "C:\\Users\\02484376\\source\\repos\\Carbon Framework\\Carbon.ExceptionHandling\\Carbon.ExceptionHandling.Abstractions.csproj"
               },
+              "C:\\Users\\02484376\\source\\repos\\Carbon Framework\\Carbon.HttpClient\\Carbon.HttpClient.csproj": {
+                "projectPath": "C:\\Users\\02484376\\source\\repos\\Carbon Framework\\Carbon.HttpClient\\Carbon.HttpClient.csproj"
+              },
               "C:\\Users\\02484376\\source\\repos\\Carbon Framework\\Carbon.PagedList\\Carbon.PagedList.csproj": {
                 "projectPath": "C:\\Users\\02484376\\source\\repos\\Carbon Framework\\Carbon.PagedList\\Carbon.PagedList.csproj"
               }
@@ -641,6 +710,10 @@
               "target": "Package",
               "version": "[3.1.1, )"
             },
+            "Microsoft.AspNetCore.HeaderPropagation": {
+              "target": "Package",
+              "version": "[3.1.1, )"
+            },
             "Microsoft.AspNetCore.Mvc": {
               "target": "Package",
               "version": "[2.2.0, )"
@@ -655,7 +728,7 @@
             },
             "Microsoft.Extensions.DependencyInjection": {
               "target": "Package",
-              "version": "[3.1.0, )"
+              "version": "[3.1.1, )"
             },
             "Microsoft.OpenApi": {
               "target": "Package",

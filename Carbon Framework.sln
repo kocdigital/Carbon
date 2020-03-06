@@ -33,11 +33,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Carbon.PagedList.EntityFram
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Carbon.PagedList.Mapster", "Carbon.PagedList.Mapster\Carbon.PagedList.Mapster.csproj", "{F593B998-3CDB-4144-AE11-A857C7C296D1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Carbon.Demo.ConsoleApplication", "demos\Carbon.Demo.ConsoleApplication\Carbon.Demo.ConsoleApplication.csproj", "{3764F610-9435-4392-8D09-8392C6F9DC1D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Carbon.Demo.ConsoleApplication", "demos\Carbon.Demo.ConsoleApplication\Carbon.Demo.ConsoleApplication.csproj", "{3764F610-9435-4392-8D09-8392C6F9DC1D}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "templates", "templates", "{D90DEEBA-BBAE-48A2-AD9D-69E18808B3B0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Carbon.MassTransit", "Carbon.MassTransit\Carbon.MassTransit.csproj", "{4E873D6E-07DA-4525-9748-0F17F252CF77}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Carbon.MassTransit", "Carbon.MassTransit\Carbon.MassTransit.csproj", "{4E873D6E-07DA-4525-9748-0F17F252CF77}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Carbon.HttpClient", "Carbon.HttpClient\Carbon.HttpClient.csproj", "{B0819129-5CFA-4DF4-81F9-09A1D727E2AB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -105,6 +107,10 @@ Global
 		{4E873D6E-07DA-4525-9748-0F17F252CF77}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4E873D6E-07DA-4525-9748-0F17F252CF77}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4E873D6E-07DA-4525-9748-0F17F252CF77}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B0819129-5CFA-4DF4-81F9-09A1D727E2AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B0819129-5CFA-4DF4-81F9-09A1D727E2AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B0819129-5CFA-4DF4-81F9-09A1D727E2AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B0819129-5CFA-4DF4-81F9-09A1D727E2AB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

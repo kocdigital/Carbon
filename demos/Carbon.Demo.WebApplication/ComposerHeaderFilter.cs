@@ -13,7 +13,7 @@ namespace Carbon.Demo.WebApplication
 
             operation.Parameters.Add(new OpenApiParameter
             {
-                Name = "x-tenantId",
+                Name = "TenantId",
                 In = ParameterLocation.Header,
                 Schema = new OpenApiSchema() { Type = "string" },
                 Required = true // set to false if this is optional
@@ -27,7 +27,7 @@ namespace Carbon.Demo.WebApplication
             });
             operation.Parameters.Add(new OpenApiParameter
             {
-                Name = "x-transactionId",
+                Name = "TransactionId",
                 In = ParameterLocation.Header,
                 Schema = new OpenApiSchema() { Type = "string" },
                 Required = true // set to false if this is optional

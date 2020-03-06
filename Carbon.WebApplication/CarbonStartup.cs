@@ -179,6 +179,7 @@ namespace Carbon.WebApplication
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            app.UseHeaderPropagation();
             app.UseSwagger();
             app.UseSwaggerUI(c =>
             {

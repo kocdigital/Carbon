@@ -81,7 +81,7 @@ namespace Carbon.Demo.ConsoleApplication
             Console.WriteLine("Hello World");
 
             var host = new HostBuilder()
-                    .UseCarbonConfigureServices<Program>((hostContext, services) =>
+                    .AddCarbonServices<Program>((hostContext, services) =>
                     {
                         services.AddTransient<ITestService, TestService>();
                         services.AddMassTransitBus(cfg =>
@@ -118,6 +118,10 @@ namespace Carbon.Demo.ConsoleApplication
                         });
 
                         services.AddHostedService<MyHostedService>();
+                    })
+                    .UseCarbonServices((serviceProvider) =>
+                    {
+                        
                     });
 
             await host.RunConsoleAsync();

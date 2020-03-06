@@ -47,7 +47,7 @@ namespace Carbon.ConsoleApplication
                     throw new ArgumentNullException("Serilog settings cannot be empty!");
 
                 Log.Logger = new LoggerConfiguration().ReadFrom.Configuration(configuration).CreateLogger();
-
+    
                 configureApp?.Invoke(h, c);
 
             }).ConfigureServices((h, s) =>
@@ -55,15 +55,33 @@ namespace Carbon.ConsoleApplication
                 configureServices?.Invoke(h, s);
             });
 
+            AppDomain.CurrentDomain.UnhandledException += UnhandledExceptionTrapper;
+
             return builder.UseSerilog();
         }
 
-        public static IHostBuilder UseCarbonConfigureServices<TProgram>(this IHostBuilder builder, Action<HostBuilderContext, IServiceCollection> configureServices) where TProgram : class
+        static void UnhandledExceptionTrapper(object sender, UnhandledExceptionEventArgs e)
+        {
+            Log.Logger.Error("Unhandled exception occured!", e);
+        }
+
+        public static IHostBuilder AddCarbonServices<TProgram>(this IHostBuilder builder, Action<HostBuilderContext, IServiceCollection> configureServices) where TProgram : class
         {
             return UseFeatures<TProgram>(builder, null, configureServices);
         }
 
-        public static IHostBuilder UseCarbonConfigureApplication<TProgram>(this IHostBuilder builder, Action<HostBuilderContext, IConfigurationBuilder> configureApp) where TProgram : class
+        public static IHostBuilder UseCarbonServices(this IHostBuilder builder, Action<IServiceProvider> configureServiceProviders)
+        {
+            builder.ConfigureServices((h, s) =>
+            {
+                var serviceProvider = s.BuildServiceProvider();
+                configureServiceProviders(serviceProvider);
+            });
+
+            return builder;
+        }
+
+        public static IHostBuilder AddCarbonConfiguration<TProgram>(this IHostBuilder builder, Action<HostBuilderContext, IConfigurationBuilder> configureApp) where TProgram : class
         {
             return UseFeatures<TProgram>(builder, configureApp, null);
         }

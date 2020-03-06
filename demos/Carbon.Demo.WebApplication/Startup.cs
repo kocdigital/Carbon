@@ -1,10 +1,9 @@
-using Carbon.Demo.WebApplication.Application.Dtos;
 using Carbon.WebApplication;
-using FluentValidation;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Carbon.HttpClients;
 
 namespace Carbon.Demo.WebApplication
 {
@@ -17,7 +16,10 @@ namespace Carbon.Demo.WebApplication
 
         public override void ConfigureDependencies(IServiceCollection services)
         {
+            services.AddHttpClientWithHeaderPropagation(x =>
+            {
 
+            });
         }
 
         public override void ConfigureRequestPipeline(IApplicationBuilder app, IWebHostEnvironment env)
