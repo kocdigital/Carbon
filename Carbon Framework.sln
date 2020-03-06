@@ -41,6 +41,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Carbon.MassTransit", "Carbo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Carbon.HttpClient", "Carbon.HttpClient\Carbon.HttpClient.csproj", "{B0819129-5CFA-4DF4-81F9-09A1D727E2AB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Carbon.MassTransit.Abstractions", "Carbon.MassTransit.Abstractions\Carbon.MassTransit.Abstractions.csproj", "{652FE57C-B364-40DD-B083-B5EDBA95C9E6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -111,6 +113,10 @@ Global
 		{B0819129-5CFA-4DF4-81F9-09A1D727E2AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B0819129-5CFA-4DF4-81F9-09A1D727E2AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B0819129-5CFA-4DF4-81F9-09A1D727E2AB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{652FE57C-B364-40DD-B083-B5EDBA95C9E6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{652FE57C-B364-40DD-B083-B5EDBA95C9E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{652FE57C-B364-40DD-B083-B5EDBA95C9E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{652FE57C-B364-40DD-B083-B5EDBA95C9E6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
