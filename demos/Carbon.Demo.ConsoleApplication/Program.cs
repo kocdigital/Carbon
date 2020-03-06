@@ -119,7 +119,7 @@ namespace Carbon.Demo.ConsoleApplication
 
                         services.AddHostedService<MyHostedService>();
                     })
-                    .UseCarbonServices((serviceProvider) =>
+                    .UseServiceProvider((serviceProvider) =>
                     {
                         
                     });
