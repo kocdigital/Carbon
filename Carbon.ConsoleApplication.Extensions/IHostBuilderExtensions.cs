@@ -70,7 +70,7 @@ namespace Carbon.ConsoleApplication
             return UseFeatures<TProgram>(builder, null, configureServices);
         }
 
-        public static IHostBuilder UseCarbonServices(this IHostBuilder builder, Action<IServiceProvider> configureServiceProviders)
+        public static IHostBuilder UseServiceProvider(this IHostBuilder builder, Action<IServiceProvider> configureServiceProviders)
         {
             builder.ConfigureServices((h, s) =>
             {
