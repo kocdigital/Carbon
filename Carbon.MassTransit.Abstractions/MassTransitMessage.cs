@@ -2,18 +2,18 @@
 
 namespace Carbon.MassTransit.Abstractions
 {
-    public class MassTransitMessage<TContent, TMessage>
+    public class MassTransitMessage<TType, TContent>
     {
         public MassTransitMessage()
         {
 
         }
-        public MassTransitMessage(TContent message)
+        public MassTransitMessage(TContent content)
         {
-            Message = message;
-            MessageType = new List<string>() { $"urn:message:{typeof(TMessage).FullName.Replace(".", ":")}" };
+            Content = content;
+            MessageType = new List<string>() { $"urn:message:{typeof(TType).FullName.Replace(".", ":")}" };
         }
         public List<string> MessageType { get; set; }
-        public TContent Message { get; set; }
+        public TContent Content { get; set; }
     }
 }
