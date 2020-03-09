@@ -7,7 +7,7 @@ namespace Carbon.MassTransit.Abstractions
         public MassTransitMessage(T message)
         {
             Message = message;
-            MessageType = new List<string>() { $"urn:message:{typeof(T).FullName.Replace(".", ":")}:" };
+            MessageType = new List<string>() { $"urn:message:{typeof(T).Namespace.Replace(".", ":")}:{typeof(T).Name}" };
         }
         public List<string> MessageType { get; }
         public T Message { get; }
