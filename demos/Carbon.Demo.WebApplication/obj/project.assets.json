@@ -3856,7 +3856,7 @@
           "bin/placeholder/Carbon.PagedList.dll": {}
         }
       },
-      "Carbon.WebApplication/1.2.7": {
+      "Carbon.WebApplication/1.2.8": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v3.1",
         "dependencies": {
@@ -10971,7 +10971,7 @@
       "path": "../../Carbon.PagedList/Carbon.PagedList.csproj",
       "msbuildProject": "../../Carbon.PagedList/Carbon.PagedList.csproj"
     },
-    "Carbon.WebApplication/1.2.7": {
+    "Carbon.WebApplication/1.2.8": {
       "type": "project",
       "path": "../../Carbon.WebApplication/Carbon.WebApplication.csproj",
       "msbuildProject": "../../Carbon.WebApplication/Carbon.WebApplication.csproj"
@@ -10987,7 +10987,7 @@
       "Carbon.Domain.EntityFrameworkCore >= 1.0.8",
       "Carbon.ExceptionHandling.Abstractions >= 1.0.0",
       "Carbon.PagedList >= 1.0.1",
-      "Carbon.WebApplication >= 1.2.7"
+      "Carbon.WebApplication >= 1.2.8"
     ]
   },
   "packageFolders": {
@@ -11014,10 +11014,7 @@
         "netcoreapp3.1"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "http://bellatrix:8080/tfs/KocDigitalCollection/_packaging/CarbonFramework/nuget/v3/index.json": {},
-        "http://bellatrix:8080/tfs/KocDigitalCollection/_packaging/CosmosNugetServerv1/nuget/v3/index.json": {},
-        "http://bellatrix:8080/tfs/KocDigitalCollection/_packaging/Platform360Core/nuget/v3/index.json": {}
+        "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "netcoreapp3.1": {

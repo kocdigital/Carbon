@@ -23,6 +23,8 @@ namespace Carbon.WebApplication
     {
         private string MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
         private SwaggerSettings _swaggerSettings;
+        private CorsPolicySettings _corsPolicySettings;
+
         private bool _useAuthentication;
         private bool _useAuthorization;
 
@@ -84,16 +86,16 @@ namespace Carbon.WebApplication
 
             #region Cors Policy Settings
 
-            var corsSettings = Configuration.GetSection("CorsPolicy").Get<CorsPolicySettings>();
+            _corsPolicySettings = Configuration.GetSection("CorsPolicy").Get<CorsPolicySettings>();
 
-            if (corsSettings != null && corsSettings.Origins != null && corsSettings.Origins.Count > 0)
+            if (_corsPolicySettings != null && _corsPolicySettings.Origins != null && _corsPolicySettings.Origins.Count > 0)
             {
                 services.AddCors(options =>
                 {
                     options.AddPolicy(MyAllowSpecificOrigins,
                     builder =>
                     {
-                        builder.WithOrigins(corsSettings.Origins.ToArray())
+                        builder.WithOrigins(_corsPolicySettings.Origins.ToArray())
                                .AllowAnyHeader()
                                .AllowAnyMethod()
                                .AllowCredentials();
@@ -206,6 +208,13 @@ namespace Carbon.WebApplication
             if (_useAuthorization)
             {
                 app.UseAuthorization();
+            }
+
+            if(_corsPolicySettings != null && 
+               _corsPolicySettings.Origins != null &&
+               _corsPolicySettings.Origins.Count > 0)
+            {
+                app.UseCors(MyAllowSpecificOrigins);
             }
 
             app.UseEndpoints(endpoints =>
