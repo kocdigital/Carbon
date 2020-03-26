@@ -5,6 +5,7 @@ using Microsoft.Azure.ServiceBus.Primitives;
 
 namespace Carbon.MassTransit
 {
+
     public class ServiceBusSettings : ServiceBusHostSettings
     {
         public string ConnectionString { get; set; }
