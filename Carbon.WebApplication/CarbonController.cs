@@ -31,7 +31,7 @@ namespace Carbon.WebApplication
         [ApiExplorerSettings(IgnoreApi = true)]
         protected ObjectResult ResponseNotFound<T>(T value)
         {
-            var result = new ApiResponse<T>(GetRequestIdentifier(), ApiStatusCode.Conflict);
+            var result = new ApiResponse<T>(GetRequestIdentifier(), ApiStatusCode.NotFound);
             result.SetData(value);
 
             return ResponseResult(result);
