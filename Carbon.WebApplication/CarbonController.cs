@@ -20,7 +20,7 @@ namespace Carbon.WebApplication
         }
 
         [ApiExplorerSettings(IgnoreApi = true)]
-        protected ObjectResult ResponseResultConflict<T>(T value)
+        protected ObjectResult ResponseConflict<T>(T value)
         {
             var result = new ApiResponse<T>(GetRequestIdentifier(), ApiStatusCode.Conflict);
             result.SetData(value);
@@ -29,7 +29,7 @@ namespace Carbon.WebApplication
         }
 
         [ApiExplorerSettings(IgnoreApi = true)]
-        protected ObjectResult ResponseResultNotFound<T>(T value)
+        protected ObjectResult ResponseNotFound<T>(T value)
         {
             var result = new ApiResponse<T>(GetRequestIdentifier(), ApiStatusCode.Conflict);
             result.SetData(value);
