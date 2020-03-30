@@ -3813,7 +3813,7 @@
           "bin/placeholder/Carbon.Domain.EntityFrameworkCore.dll": {}
         }
       },
-      "Carbon.ExceptionHandling.Abstractions/1.0.0": {
+      "Carbon.ExceptionHandling.Abstractions/1.0.2": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.1",
         "dependencies": {
@@ -3856,12 +3856,12 @@
           "bin/placeholder/Carbon.PagedList.dll": {}
         }
       },
-      "Carbon.WebApplication/1.3.0": {
+      "Carbon.WebApplication/1.3.1": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v3.1",
         "dependencies": {
           "Carbon.Common": "1.1.3",
-          "Carbon.ExceptionHandling.Abstractions": "1.0.0",
+          "Carbon.ExceptionHandling.Abstractions": "1.0.2",
           "Carbon.HttpClient": "1.0.0",
           "Carbon.PagedList": "1.0.1",
           "FluentValidation.AspNetCore": "8.6.1",
@@ -10956,7 +10956,7 @@
       "path": "../../Carbon.Domain.EntityFrameworkCore.Extensions/Carbon.Domain.EntityFrameworkCore.csproj",
       "msbuildProject": "../../Carbon.Domain.EntityFrameworkCore.Extensions/Carbon.Domain.EntityFrameworkCore.csproj"
     },
-    "Carbon.ExceptionHandling.Abstractions/1.0.0": {
+    "Carbon.ExceptionHandling.Abstractions/1.0.2": {
       "type": "project",
       "path": "../../Carbon.ExceptionHandling/Carbon.ExceptionHandling.Abstractions.csproj",
       "msbuildProject": "../../Carbon.ExceptionHandling/Carbon.ExceptionHandling.Abstractions.csproj"
@@ -10971,7 +10971,7 @@
       "path": "../../Carbon.PagedList/Carbon.PagedList.csproj",
       "msbuildProject": "../../Carbon.PagedList/Carbon.PagedList.csproj"
     },
-    "Carbon.WebApplication/1.3.0": {
+    "Carbon.WebApplication/1.3.1": {
       "type": "project",
       "path": "../../Carbon.WebApplication/Carbon.WebApplication.csproj",
       "msbuildProject": "../../Carbon.WebApplication/Carbon.WebApplication.csproj"
@@ -10985,9 +10985,9 @@
       "Carbon.ConsoleApplication >= 1.1.2",
       "Carbon.Domain.Abstractions >= 1.0.5",
       "Carbon.Domain.EntityFrameworkCore >= 1.0.8",
-      "Carbon.ExceptionHandling.Abstractions >= 1.0.0",
+      "Carbon.ExceptionHandling.Abstractions >= 1.0.2",
       "Carbon.PagedList >= 1.0.1",
-      "Carbon.WebApplication >= 1.3.0"
+      "Carbon.WebApplication >= 1.3.1"
     ]
   },
   "packageFolders": {

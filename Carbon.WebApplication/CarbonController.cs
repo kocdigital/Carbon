@@ -3,6 +3,7 @@ using Carbon.PagedList;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
+using System.Net;
 using System.Text;
 
 namespace Carbon.WebApplication
@@ -16,6 +17,15 @@ namespace Carbon.WebApplication
         {
             var httpStatusCode = value.StatusCode.GetHttpStatusCode();
             return StatusCode((int)httpStatusCode, value);
+        }
+
+        [ApiExplorerSettings(IgnoreApi = true)]
+        protected ObjectResult ResponseConflictResult<T>(T value) where T : IApiResponse
+        {
+            var result = new ApiResponse<T>(GetRequestIdentifier(), ApiStatusCode.Conflict);
+            result.SetData(value);
+
+            return ResponseResult(result);
         }
 
         [ApiExplorerSettings(IgnoreApi = true)]
