@@ -20,7 +20,16 @@ namespace Carbon.WebApplication
         }
 
         [ApiExplorerSettings(IgnoreApi = true)]
-        protected ObjectResult ResponseConflictResult<T>(T value) where T : IApiResponse
+        protected ObjectResult ResponseConflictResult<T>(T value)
+        {
+            var result = new ApiResponse<T>(GetRequestIdentifier(), ApiStatusCode.Conflict);
+            result.SetData(value);
+
+            return ResponseResult(result);
+        }
+
+        [ApiExplorerSettings(IgnoreApi = true)]
+        protected ObjectResult ResponseNotFoundResult<T>(T value)
         {
             var result = new ApiResponse<T>(GetRequestIdentifier(), ApiStatusCode.Conflict);
             result.SetData(value);
