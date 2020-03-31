@@ -2,6 +2,6 @@
 {
     public interface IHaveState
     {
-        EntityStatus Status { get; set; }
+        EntityStatus State { get; set; }
     }
 }
