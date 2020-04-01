@@ -22,13 +22,13 @@ namespace Carbon.WebApplication
         }
         public void OnException(ExceptionContext context)
         {
-            context.HttpContext.Request.Headers.TryGetValue("x-identifier", out var requestIdentifier);
+            context.HttpContext.Request.Headers.TryGetValue("X-CorrelationId", out var correlationId);
 
             _logger.LogError(new EventId(context.Exception.HResult),
                 context.Exception,
                 context.Exception.Message);
 
-            var apiResponse = new ApiResponse<object>(requestIdentifier, ApiStatusCode.InternalServerError);
+            var apiResponse = new ApiResponse<object>(correlationId, ApiStatusCode.InternalServerError);
 
             if (context.Exception.GetType() == typeof(CarbonException))
             {

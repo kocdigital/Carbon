@@ -18,10 +18,10 @@ namespace Carbon.WebApplication
         {
             if (!context.ModelState.IsValid)
             {
-                context.HttpContext.Request.Headers.TryGetValue("x-identifier", out var requestIdentifier);
+                context.HttpContext.Request.Headers.TryGetValue("X-CorrelationId", out var correlationId);
 
                 var messages = new ValidationProblemDetails(context.ModelState).Errors.SelectMany(x => x.Value).ToList();
-                var apiResponse = new ApiResponse<object>(requestIdentifier, ApiStatusCode.BadRequest, GeneralClientErrorCode, messages);
+                var apiResponse = new ApiResponse<object>(correlationId, ApiStatusCode.BadRequest, GeneralClientErrorCode, messages);
                 
                 context.Result = new BadRequestObjectResult(apiResponse);
             }

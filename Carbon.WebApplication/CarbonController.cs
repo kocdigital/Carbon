@@ -152,7 +152,7 @@ namespace Carbon.WebApplication
 
         private string GetRequestIdentifier()
         {
-            if (Request.Headers.TryGetValue("x-identifier", out var requestIdentifier))
+            if (Request.Headers.TryGetValue("X-CorrelationId", out var requestIdentifier))
                 return requestIdentifier;
 
             return Guid.NewGuid().ToString();
