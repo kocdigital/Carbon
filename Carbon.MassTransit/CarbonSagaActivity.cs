@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using Automatonymous;
 using GreenPipes;
+using MassTransit;
 using Microsoft.Extensions.Logging;
 
 namespace Carbon.MassTransit
@@ -9,9 +10,11 @@ namespace Carbon.MassTransit
     public abstract class CarbonSagaActivity<T> : Activity<T>
     {
         private readonly ILogger<T> _logger;
-        public CarbonSagaActivity(ILogger<T> logger)
+        private readonly ConsumeContext _context;
+        public CarbonSagaActivity(ILogger<T> logger, ConsumeContext context)
         {
             _logger = logger;
+            _context = context;
         }
         public void Accept(StateMachineVisitor visitor)
         {
