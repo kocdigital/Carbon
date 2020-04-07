@@ -1,4 +1,5 @@
 ﻿using Carbon.Common;
+using Carbon.Redis;
 using FluentValidation.AspNetCore;
 using Mapster;
 using Microsoft.AspNetCore.Builder;
@@ -88,21 +89,21 @@ namespace Carbon.WebApplication
 
             _corsPolicySettings = Configuration.GetSection("CorsPolicy").Get<CorsPolicySettings>();
 
-            if (_corsPolicySettings != null && _corsPolicySettings.Origins != null && _corsPolicySettings.Origins.Count > 0)
-            {
-                services.AddCors(options =>
-                {
-                    options.AddPolicy(MyAllowSpecificOrigins,
-                    builder =>
-                    {
-                        builder.WithOrigins(_corsPolicySettings.Origins.ToArray())
-                               .AllowAnyHeader()
-                               .AllowAnyMethod()
-                               .AllowCredentials();
-                    });
-                });
+            //if (_corsPolicySettings != null && _corsPolicySettings.Origins != null && _corsPolicySettings.Origins.Count > 0)
+            //{
+            //    services.AddCors(options =>
+            //    {
+            //        options.AddPolicy(MyAllowSpecificOrigins,
+            //        builder =>
+            //        {
+            //            builder.WithOrigins(_corsPolicySettings.Origins.ToArray())
+            //                   .AllowAnyHeader()
+            //                   .AllowAnyMethod()
+            //                   .AllowCredentials();
+            //        });
+            //    });
 
-            }
+            //}
 
             #endregion
 
@@ -128,7 +129,7 @@ namespace Carbon.WebApplication
             {
                 options.SuppressModelStateInvalidFilter = true;
             });
-
+            services.AddRedisPersister(Configuration);
             ConfigureDependencies(services);
 
             #region Swagger Settings

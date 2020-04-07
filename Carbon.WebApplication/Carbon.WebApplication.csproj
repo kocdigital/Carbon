@@ -35,6 +35,7 @@
     <ProjectReference Include="..\Carbon.ExceptionHandling\Carbon.ExceptionHandling.Abstractions.csproj" />
     <ProjectReference Include="..\Carbon.HttpClient\Carbon.HttpClient.csproj" />
     <ProjectReference Include="..\Carbon.PagedList\Carbon.PagedList.csproj" />
+    <ProjectReference Include="..\Carbon.Redis\Carbon.Redis.csproj" />
   </ItemGroup>
 
 </Project>
