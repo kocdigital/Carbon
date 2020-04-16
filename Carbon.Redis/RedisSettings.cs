@@ -1,5 +1,4 @@
-﻿using Carbon.Redis.Abstractions;
-using Microsoft.Extensions.Options;
+﻿using Microsoft.Extensions.Options;
 using System.Collections.Generic;
 
 namespace Carbon.Redis

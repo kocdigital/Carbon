@@ -1,5 +1,4 @@
-﻿using Carbon.Redis.Abstractions;
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 using StackExchange.Redis;
@@ -26,8 +25,7 @@ namespace Carbon.Redis
             services.AddSingleton(redisSettings);
             if (redisSettings.Value.Enabled)
             {
-                services.AddSingleton<IRedisRepository, RedisRepository>();
-              
+
 
                 var configurationOptions = new ConfigurationOptions
                 {
@@ -48,14 +46,15 @@ namespace Carbon.Redis
                 };
                 try
                 {
-                    
+
                     var redis = ConnectionMultiplexer.Connect(configurationOptions);
-                   
+
                     if (redis.IsConnected)
                     {
                         services.AddSingleton<IConnectionMultiplexer>(redis);
-                        services.AddSingleton(s => redis.GetDatabase(redisSettings.Value.DefaultDatabase));
-                       
+                        var db = redis.GetDatabase(redisSettings.Value.DefaultDatabase);
+                        services.AddSingleton(s => db);
+                        _ = db.StringSet("redisKeyLength", redisSettings.Value.KeyLength);
                     }
                     else
                     {

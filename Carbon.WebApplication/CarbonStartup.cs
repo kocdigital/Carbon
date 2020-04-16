@@ -1,5 +1,4 @@
 ﻿using Carbon.Common;
-using Carbon.Redis;
 using FluentValidation.AspNetCore;
 using Mapster;
 using Microsoft.AspNetCore.Builder;
@@ -129,7 +128,7 @@ namespace Carbon.WebApplication
             {
                 options.SuppressModelStateInvalidFilter = true;
             });
-            services.AddRedisPersister(Configuration);
+   
             ConfigureDependencies(services);
 
             #region Swagger Settings

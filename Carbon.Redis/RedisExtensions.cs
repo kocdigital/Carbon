@@ -1,211 +1,178 @@
-﻿using FastMember;
-using Newtonsoft.Json;
-using StackExchange.Redis;
+﻿using StackExchange.Redis;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.Serialization;
+using System.Threading.Tasks;
 
 namespace Carbon.Redis
 {
-    public static class RedisExtensions
+    public static class RedisExtension
     {
-        public static string ConvertObjectToJson(this object obj)
-        {
-            if (obj == null)
-            {
-                return string.Empty;
-            }
-
-            return JsonConvert.SerializeObject(obj);
-        }
         /// <summary>
-        /// Converts json to given object type.
+        /// If you want to delete multiple key, use this method. <br>Returns:</br>
+        /// <br><list type="bullet"><item><term>removedKeys</term></item><br><item><term>couldNotBeRemovedKeys</term></item></br></list> </br>
         /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="key">Cache Key</param>
-        /// <returns></returns>
-        public static T ConvertJsonToObject<T>(this IDatabase database, string key)
+        /// <param name="keyPattern">It represents cache key</param>
+        /// <see cref="https://redis.io/topics/data-types-intro"/>
+        public static (List<string> removedKeys, List<string> couldNotBeRemovedKeys) RemoveKeysByPattern(this IDatabase _redisDb, string keyPattern, IConnectionMultiplexer _connectionMultiplexer)
         {
-            try
+            var server = _connectionMultiplexer.GetServer(_connectionMultiplexer.GetEndPoints().First());
+
+            var keys = server.Keys(pattern: keyPattern).ToList();
+
+            var removedKeys = new List<string>();
+            var couldNotBeRemovedKeys = new List<string>();
+            //todo: batch delete
+            foreach (var key in keys)
             {
-                var value = database.StringGet(key);
-                if (!value.IsNull)
-                    return JsonConvert.DeserializeObject<T>(value);
-                else
+                if (_redisDb.KeyDelete(key))
                 {
-                    return default;
-                }
-            }
-            catch (Exception ex)
-            {
-
-                throw ex;
-            }
-
-        }
-        /// <summary>
-        /// Converts instance of an object to hash entry list.
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="instance">The instance.</param>
-        /// <returns></returns>
-        /// <seealso cref="https://gist.github.com/ajai8085/364d076e7070c1677d1075467ae720e2#file-stackexchangeredisextensions-cs"/>
-        public static IEnumerable<HashEntry> ConvertToHashEntryList<T>(this T instance) where T : new()
-        {
-            var acessor = TypeAccessor.Create(typeof(T));
-            var members = acessor.GetMembers();
-
-            for (var index = 0; index < members.Count; index++)
-            {
-                var member = members[index];
-                if (member.IsDefined(typeof(IgnoreDataMemberAttribute)))
-                {
-                    continue;
-                }
-                var type = member.Type;
-
-                if (!type.IsValueType)//ATM supports only value types
-                {
-                    if (type != typeof(string))
-                    {
-                        continue;
-                    }
-                }
-
-                var underlyingType = Nullable.GetUnderlyingType(type);
-                var effectiveType = underlyingType ?? type;
-
-                var val = acessor[instance, member.Name];
-
-                if (val != null)
-                {
-                    if (effectiveType == typeof(DateTime))
-                    {
-                        var date = (DateTime)val;
-                        if (date.Kind == DateTimeKind.Utc)
-                        {
-
-                            yield return new HashEntry(member.Name, $"{date.Ticks}|UTC");
-                        }
-                        else
-                        {
-                            yield return new HashEntry(member.Name, $"{date.Ticks}|LOC");
-                        }
-                    }
-                    else
-                    {
-                        yield return new HashEntry(member.Name, val.ToString());
-                    }
-                }
-            }
-        }
-
-        /// <summary>
-        /// Converts from hash entry list and create instance of type T.
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="entries">The entries returned from StackExchange.redis.</param>
-        /// <returns>Instance of Type T </returns>
-        /// <see cref="https://gist.github.com/ajai8085/364d076e7070c1677d1075467ae720e2#file-stackexchangeredisextensions-cs"/>
-        public static T ConvertFromHashEntryList<T>(this IEnumerable<HashEntry> entries) where T : new()
-        {
-            var acessor = TypeAccessor.Create(typeof(T));
-            var instance = new T();
-            var hashEntries = entries as HashEntry[] ?? entries.ToArray();
-            var members = acessor.GetMembers();
-            for (var index = 0; index < members.Count; index++)
-            {
-                var member = members[index];
-
-                if (member.IsDefined(typeof(IgnoreDataMemberAttribute)))
-                {
-                    continue;
-                }
-
-                var type = member.Type;
-
-                if (!type.IsValueType) //ATM supports only value types
-                {
-                    if (type != typeof(string))
-                    {
-                        continue;
-                    }
-                }
-                var underlyingType = Nullable.GetUnderlyingType(type);
-                var effectiveType = underlyingType ?? type;
-
-
-                var entry = hashEntries.FirstOrDefault(e => e.Name.ToString().Equals(member.Name));
-
-                if (entry.Equals(new HashEntry()))
-                {
-                    continue;
-                }
-
-                var value = entry.Value.ToString();
-
-                if (string.IsNullOrEmpty(value))
-                {
-                    continue;
-                }
-
-                if (effectiveType == typeof(DateTime))
-                {
-                    if (value.EndsWith("|UTC"))
-                    {
-                        value = value.TrimEnd("|UTC".ToCharArray());
-                        DateTime date;
-
-                        long ticks;
-                        if (long.TryParse(value, out ticks))
-                        {
-                            date = new DateTime(ticks);
-                            acessor[instance, member.Name] = DateTime.SpecifyKind(date, DateTimeKind.Utc);
-                        }
-                    }
-                    else
-                    {
-                        value = value.TrimEnd("|LOC".ToCharArray());
-                        DateTime date;
-                        long ticks;
-                        if (long.TryParse(value, out ticks))
-                        {
-                            date = new DateTime(ticks);
-                            acessor[instance, member.Name] = DateTime.SpecifyKind(date, DateTimeKind.Local);
-                        }
-                    }
-
+                    removedKeys.Add(key);
                 }
                 else
                 {
-
-                    if (member.Type == typeof(Guid))
-                    {
-                        acessor[instance, member.Name] = Guid.Parse(entry.Value.ToString());
-                    }
-                    else  if (member.Type.BaseType == typeof(Enum))
-                    {
-                        acessor[instance, member.Name] = Enum.Parse(member.Type, entry.Value.ToString());
-                    }
-                    else
-                    acessor[instance, member.Name] = Convert.ChangeType(entry.Value.ToString(), member.Type);
+                    couldNotBeRemovedKeys.Add(key);
                 }
             }
-            return instance;
+            return (removedKeys, couldNotBeRemovedKeys);
+        }
+        public static (T, string) GetComplexObject<T>(this IDatabase _redisDb, string key)
+        {
+            var keyLength = GetKeyLength(_redisDb);
+            var (isValid, error) = key.IsKeyValid(keyLength);
+            if (!isValid)
+            {
+                return (default, error);
+            }
+            return (_redisDb.ConvertJsonToObject<T>(key), null);
+        }
+        /// <summary>
+        /// If you want to insert a complex object  to cache, use this method. For this method the object should contains another child object or list of object.
+        /// The key <strong>should be less than 1024 byte</strong> 
+        /// and 
+        /// key should contains <strong>':'</strong> character between meaningful seperations. 
+        /// The sample key is <strong>object-type:id:field(user:100:password)</strong>
+        /// </summary>
+        /// <param name="key">It represents cache key</param>
+        /// <param name="data">It represents cache object value</param>
+        /// <returns>  </returns>
+        /// <see cref="https://redis.io/topics/data-types-intro"/>
+        public async static Task<(bool, string)> SetComplexObject<T>(this IDatabase _redisDb, string key, T data, TimeSpan? expiry = null)
+        {
+            var keyLength = GetKeyLength(_redisDb);
+            var (isValid, error) = key.IsKeyValid(keyLength);
+            if (!isValid)
+            {
+                return (false, error);
+            }
+
+            return (await _redisDb.StringSetAsync(key, data.ConvertObjectToJson(), expiry), null);
+        }
+      
+        public async static Task<(string, string)> GetBasicValueAsync(this IDatabase _redisDb, string key)
+        {
+
+            var keyLength = GetKeyLength(_redisDb);
+            var (isValid, error) = key.IsKeyValid(keyLength);
+            if (!isValid)
+            {
+                return (null, error);
+            }
+            return (await _redisDb.StringGetAsync(key), null);
+        }
+        /// <summary>
+        /// If you want to insert basic type (string, integer, boolean ext. ) value to cache, use this method. <br>The key <strong>should be less than 1024 byte</strong> 
+        /// and 
+        /// key should contains <strong>':'</strong> character between meaningful seperations. </br>
+        /// <br>The sample key is <strong>object-type:id:field(user:100:password)</strong></br> 
+        /// <br>Another sample is <strong>"Fault:{0}:FaultDetail:{1}"</strong> if we want to delete FaultDetails of a Fault, it becomes easier with this pattern.</br>
+        /// <br><see cref="https://redis.io/topics/data-types-intro"/></br>
+        /// </summary>
+        /// <param name="key">It represents cache key</param>
+        /// <param name="value">It represents cache string value</param>
+        /// <returns>  </returns>
+        /// <see cref="https://redis.io/topics/data-types-intro"/>
+        public async static Task<(bool, string)> SetBasicValueAsync(this IDatabase _redisDb, string key, string value, TimeSpan? expiry = null)
+        {
+            var keyLength = GetKeyLength(_redisDb);
+            var (isValid, error) = key.IsKeyValid(keyLength);
+            if (!isValid)
+            {
+                return (false, error);
+            }
+            return (await _redisDb.StringSetAsync(key, value, expiry), null);
+        }
+        /// <summary>
+        /// If you want to insert a simple object  to cache, use this method. For this method the object shouldn't contains another child object or list of object.
+        /// The key <strong>should be less than 1024 byte</strong> 
+        /// and 
+        /// key should contains <strong>':'</strong> character between meaningful seperations. 
+        /// The sample key is <strong>object-type:id:field(user:100:password)</strong>
+        /// <br>Another sample is <strong>"Fault:{0}:FaultDetail:{1}"</strong> if we want to delete FaultDetails of a Fault, it becomes easier with this pattern.</br>
+        /// <br>If there is no error is returns null</br>
+        /// </summary>
+        /// <param name="key">It represents cache key</param>
+        /// <param name="value">It represents cache object value</param>
+        /// <returns>  </returns>
+        /// <see cref="https://redis.io/topics/data-types-intro"/>
+        public async static Task<string> SetSimpleObjectAsync<T>(this IDatabase _redisDb, string key, T value, DateTime? expiry = null) where T : new()
+        {
+            var keyLength = GetKeyLength(_redisDb);
+            var (isValid, error) = key.IsKeyValid(keyLength);
+            if (!isValid)
+            {
+                return error;
+            }
+            var propList = value.ConvertToHashEntryList();
+            var lst = propList.ToArray();
+            await _redisDb.HashSetAsync(key, lst);
+            if (expiry.HasValue)
+            {
+                var isExpireSet = await _redisDb.KeyExpireAsync(key, expiry);
+                if (!isExpireSet)
+                {
+                    return $"Expire date ( {expiry} ) couldn't set";
+                }
+            }
+            return null;
+        }
+        public static (T, string) GetSimpleObject<T>(this IDatabase _redisDb, string key) where T : new()
+        {
+            var keyLength = GetKeyLength(_redisDb);
+            var (isValid, error) = key.IsKeyValid(keyLength);
+            if (!isValid)
+            {
+                return (default, error);
+            }
+            var hash = _redisDb.HashGetAll(key).ToList();
+            if (hash.Any())
+            {
+                return (hash.ConvertFromHashEntryList<T>(), null);
+            }
+            return (default, null);
+        }
+        public async static Task<(bool, string)> RemoveKey(this IDatabase _redisDb, string key)
+        {
+            var keyLength = GetKeyLength(_redisDb);
+            var (isValid, error) = key.IsKeyValid(keyLength);
+            if (!isValid)
+            {
+                return (false, error);
+            }
+            return (await _redisDb.KeyDeleteAsync(key), null);
         }
 
-        public static (bool isValid, string error) IsKeyValid(this string key, int keyLength)
+        private static int GetKeyLength(this IDatabase db)
         {
-            if (key.Length > keyLength)
+            var keyLength = RedisSettingConstants.KeyLength;
+            var value = db.StringGet("redisKeyLength");
+            if (value.HasValue && !value.IsNullOrEmpty && value != 0)
             {
-                return (false, $"key lenght should be smaller than {keyLength}");
+                keyLength = (int)value;
             }
-            if (!key.Contains(":"))
-            {
-                return (false, "key should contains ':' character between meaningful seperations. The sample key is object-type:id:field(user:100:password)");
-            }
-            return (true, null);
+
+            return keyLength;
         }
     }
+
 }

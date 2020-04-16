@@ -12,8 +12,4 @@
     <PackageReference Include="StackExchange.Redis" Version="2.1.30" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\Carbon.Redis.Abstractions\Carbon.Redis.Abstractions.csproj" />
-  </ItemGroup>
-
 </Project>

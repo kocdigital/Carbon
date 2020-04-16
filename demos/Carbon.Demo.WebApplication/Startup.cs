@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Carbon.HttpClients;
+using Carbon.Redis;
 
 namespace Carbon.Demo.WebApplication
 {
@@ -20,6 +21,7 @@ namespace Carbon.Demo.WebApplication
             {
 
             });
+            services.AddRedisPersister(Configuration);
         }
 
         public override void ConfigureRequestPipeline(IApplicationBuilder app, IWebHostEnvironment env)

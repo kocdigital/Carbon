@@ -1,8 +1,7 @@
 ﻿using System.Collections.Generic;
 
-namespace Carbon.Redis.Abstractions
+namespace Carbon.Redis
 {
-   
     public interface IRedisSettings
     {
         IList<string> EndPoints { get; set; }

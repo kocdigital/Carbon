@@ -1,6 +1,7 @@
-﻿using Carbon.Redis.Abstractions;
+﻿using Carbon.Redis;
 using Carbon.WebApplication;
 using Microsoft.AspNetCore.Mvc;
+using StackExchange.Redis;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -11,10 +12,12 @@ namespace Carbon.Demo.WebApplication.Application.Controllers
     [ApiController]
     public class RedisController : CarbonController
     {
-        private readonly IRedisRepository _redis;
-        public RedisController(IRedisRepository redis)
+        private readonly IDatabase _redis;
+        private readonly IConnectionMultiplexer _connectionMultiplexer;
+        public RedisController(IDatabase redis, IConnectionMultiplexer connectionMultiplexer)
         {
             _redis = redis;
+            _connectionMultiplexer = connectionMultiplexer;
         }
 
 
@@ -38,9 +41,9 @@ namespace Carbon.Demo.WebApplication.Application.Controllers
                 Home = new List<Home>() { home, homeForSummer }
             };
 
-            var (setStringIsSuccess, setStringError) = await _redis.StringSetAsync(string.Format(CacheKey.HomeAddressById, home.Id), home.Address);
+            var (setStringIsSuccess, setStringError) = await _redis.SetBasicValueAsync(string.Format(CacheKey.HomeAddressById, home.Id), home.Address);
 
-            var (getStringData, getStringerror) = await _redis.StringGetAsync(string.Format(CacheKey.HomeAddressById, home.Id));
+            var (getStringData, getStringerror) = await _redis.GetBasicValueAsync(string.Format(CacheKey.HomeAddressById, home.Id));
 
 
 
@@ -62,7 +65,7 @@ namespace Carbon.Demo.WebApplication.Application.Controllers
             var (setComplexIsSuccess1, setComplexError1) = await _redis.SetComplexObject(string.Format(CacheKey.CustomerById, customer2.Id), customer);
             var (isDeleted, errorRemove) = await _redis.RemoveKey(string.Format(CacheKey.CustomerById, customer2.Id));
 
-            var (removedList, couldNotBeRemoved) = _redis.RemoveKeysByPattern(string.Format(CacheKey.CustomerHome, customer.Id, "*"));
+            var (removedList, couldNotBeRemoved) = _redis.RemoveKeysByPattern(string.Format(CacheKey.CustomerHome, customer.Id, "*"), _connectionMultiplexer);
             return null;
         }
 
