@@ -48,7 +48,8 @@ namespace Carbon.Common
             { HttpStatusCode.NotFound, ApiStatusCode.NotFound},
             { HttpStatusCode.RequestTimeout, ApiStatusCode.RequestTimeout },
             { HttpStatusCode.Unauthorized, ApiStatusCode.UnAuthorized },
-            { HttpStatusCode.Forbidden, ApiStatusCode.UnAuthorized }
+            { HttpStatusCode.Forbidden, ApiStatusCode.UnAuthorized },
+            { HttpStatusCode.InternalServerError, ApiStatusCode.InternalServerError }
         };
 
         public static HttpStatusCode GetHttpStatusCode(ApiStatusCode apiStatusCode)
