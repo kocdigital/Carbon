@@ -44,12 +44,16 @@ namespace Carbon.Common
             { HttpStatusCode.HttpVersionNotSupported, ApiStatusCode.InternalServerError },
             { HttpStatusCode.NotImplemented, ApiStatusCode.InternalServerError },
             { HttpStatusCode.BadGateway, ApiStatusCode.InternalServerError },
+            { HttpStatusCode.InternalServerError, ApiStatusCode.InternalServerError },
+            { HttpStatusCode.LoopDetected, ApiStatusCode.InternalServerError },
+            { HttpStatusCode.InsufficientStorage, ApiStatusCode.InternalServerError },
+            { HttpStatusCode.VariantAlsoNegotiates, ApiStatusCode.InternalServerError },
 
             { HttpStatusCode.NotFound, ApiStatusCode.NotFound},
             { HttpStatusCode.RequestTimeout, ApiStatusCode.RequestTimeout },
             { HttpStatusCode.Unauthorized, ApiStatusCode.UnAuthorized },
             { HttpStatusCode.Forbidden, ApiStatusCode.UnAuthorized },
-            { HttpStatusCode.InternalServerError, ApiStatusCode.InternalServerError }
+            
         };
 
         public static HttpStatusCode GetHttpStatusCode(ApiStatusCode apiStatusCode)
