@@ -63,7 +63,7 @@ namespace Carbon.WebApplication
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddHeaderPropagation();
+            
             services.AddOptions();
             services.AddControllers();
             services.Configure<SerilogSettings>(Configuration.GetSection("Serilog"));
@@ -129,6 +129,7 @@ namespace Carbon.WebApplication
             {
                 options.SuppressModelStateInvalidFilter = true;
             });
+            services.AddHeaderPropagation();
 
             ConfigureDependencies(services);
 
