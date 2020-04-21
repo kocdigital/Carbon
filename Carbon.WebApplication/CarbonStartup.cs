@@ -128,7 +128,8 @@ namespace Carbon.WebApplication
             {
                 options.SuppressModelStateInvalidFilter = true;
             });
-   
+            services.AddHeaderPropagation();
+
             ConfigureDependencies(services);
 
             #region Swagger Settings
