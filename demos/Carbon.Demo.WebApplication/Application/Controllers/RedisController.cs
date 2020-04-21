@@ -69,7 +69,6 @@ namespace Carbon.Demo.WebApplication.Application.Controllers
             return null;
         }
 
-
         public class Customer
         {
             public Customer()
