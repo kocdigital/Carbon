@@ -47,6 +47,13 @@ namespace Carbon.WebApplication
         }
 
         [ApiExplorerSettings(IgnoreApi = true)]
+        protected OkObjectResult ResponseOk()
+        {
+            var result = new ApiResponse<object>(GetRequestIdentifier(), ApiStatusCode.Accepted);
+            return Ok(result);
+        }
+
+        [ApiExplorerSettings(IgnoreApi = true)]
         protected CreatedAtActionResult UpdatedOk<T>(string actionName, object routeValues, T value)
         {
             var result = new ApiResponse<T>(GetRequestIdentifier(), ApiStatusCode.Accepted);
