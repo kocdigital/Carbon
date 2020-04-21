@@ -14,7 +14,7 @@ namespace Carbon.Demo.WebApplication
             AddOperationFilter<ComposerHeaderFilter>();
         }
 
-        public override void ConfigureDependencies(IServiceCollection services)
+        public override void CustomConfigureServices(IServiceCollection services)
         {
             services.AddHttpClientWithHeaderPropagation(x =>
             {
@@ -22,7 +22,7 @@ namespace Carbon.Demo.WebApplication
             });
         }
 
-        public override void ConfigureRequestPipeline(IApplicationBuilder app, IWebHostEnvironment env)
+        public override void CustomConfigure(IApplicationBuilder app, IWebHostEnvironment env)
         {
 
         }

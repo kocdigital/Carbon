@@ -63,7 +63,7 @@ namespace Carbon.WebApplication
 
         public void ConfigureServices(IServiceCollection services)
         {
-            
+            services.AddHeaderPropagation();
             services.AddOptions();
             services.AddControllers();
             services.Configure<SerilogSettings>(Configuration.GetSection("Serilog"));
@@ -129,9 +129,8 @@ namespace Carbon.WebApplication
             {
                 options.SuppressModelStateInvalidFilter = true;
             });
-            services.AddHeaderPropagation();
 
-            ConfigureDependencies(services);
+            CustomConfigureServices(services);
 
             #region Swagger Settings
 
@@ -200,7 +199,7 @@ namespace Carbon.WebApplication
             app.UseStaticFiles();
             app.UseRouting();
 
-            ConfigureRequestPipeline(app, env);
+            CustomConfigure(app, env);
 
             if (_useAuthentication)
             {
@@ -227,7 +226,7 @@ namespace Carbon.WebApplication
             });
         }
 
-        public abstract void ConfigureDependencies(IServiceCollection services);
-        public abstract void ConfigureRequestPipeline(IApplicationBuilder app, IWebHostEnvironment env);
+        public abstract void CustomConfigureServices(IServiceCollection services);
+        public abstract void CustomConfigure(IApplicationBuilder app, IWebHostEnvironment env);
     }
 }

@@ -40,7 +40,7 @@ namespace Carbon.WebApplication
         [ApiExplorerSettings(IgnoreApi = true)]
         protected OkObjectResult ResponseOk<T>(T value)
         {
-            var result = new ApiResponse<T>(GetRequestIdentifier(), ApiStatusCode.Accepted);
+            var result = new ApiResponse<T>(GetRequestIdentifier(), ApiStatusCode.Ok);
             result.SetData(value);
 
             return Ok(result);
@@ -49,14 +49,14 @@ namespace Carbon.WebApplication
         [ApiExplorerSettings(IgnoreApi = true)]
         protected OkObjectResult ResponseOk()
         {
-            var result = new ApiResponse<object>(GetRequestIdentifier(), ApiStatusCode.Accepted);
+            var result = new ApiResponse<object>(GetRequestIdentifier(), ApiStatusCode.Ok);
             return Ok(result);
         }
 
         [ApiExplorerSettings(IgnoreApi = true)]
         protected CreatedAtActionResult UpdatedOk<T>(string actionName, object routeValues, T value)
         {
-            var result = new ApiResponse<T>(GetRequestIdentifier(), ApiStatusCode.Accepted);
+            var result = new ApiResponse<T>(GetRequestIdentifier(), ApiStatusCode.Ok);
             result.SetData(value);
 
             return CreatedAtAction(actionName, routeValues, result);
@@ -65,14 +65,14 @@ namespace Carbon.WebApplication
         [ApiExplorerSettings(IgnoreApi = true)]
         protected OkObjectResult DeletedOk()
         {
-            var result = new ApiResponse<object>(GetRequestIdentifier(), ApiStatusCode.Accepted);
+            var result = new ApiResponse<object>(GetRequestIdentifier(), ApiStatusCode.Ok);
             return Ok(result);
         }
 
         [ApiExplorerSettings(IgnoreApi = true)]
         protected CreatedAtActionResult CreatedOk<T>(string actionName, object routeValues, T value)
         {
-            var result = new ApiResponse<T>(GetRequestIdentifier(), ApiStatusCode.Accepted);
+            var result = new ApiResponse<T>(GetRequestIdentifier(), ApiStatusCode.Ok);
             result.SetData(value);
 
             return CreatedAtAction(actionName, routeValues, result);
@@ -116,7 +116,7 @@ namespace Carbon.WebApplication
                 }
             }
 
-            var result = new ApiResponse<IPagedList<T>>(GetRequestIdentifier(), ApiStatusCode.Accepted);
+            var result = new ApiResponse<IPagedList<T>>(GetRequestIdentifier(), ApiStatusCode.Ok);
             result.SetData(entity);
 
             return Ok(result);
