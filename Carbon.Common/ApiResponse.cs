@@ -29,7 +29,7 @@ namespace Carbon.Common
         {
             get
             {
-                return ErrorCode == null && StatusCode == ApiStatusCode.Accepted;
+                return ErrorCode == null && StatusCode == ApiStatusCode.OK;
             }
         }
         public string Identifier { get; private set; }

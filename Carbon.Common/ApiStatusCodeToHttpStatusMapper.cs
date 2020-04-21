@@ -8,7 +8,7 @@ namespace Carbon.Common
     {
         public static IDictionary<ApiStatusCode, HttpStatusCode> ApiStatusCodes = new Dictionary<ApiStatusCode, HttpStatusCode>
         {
-            { ApiStatusCode.Accepted, HttpStatusCode.OK },
+            { ApiStatusCode.OK, HttpStatusCode.OK },
             { ApiStatusCode.BadRequest, HttpStatusCode.BadRequest },
             { ApiStatusCode.Conflict, HttpStatusCode.Conflict },
             { ApiStatusCode.InternalServerError, HttpStatusCode.InternalServerError },
@@ -19,9 +19,9 @@ namespace Carbon.Common
 
         public static IDictionary<HttpStatusCode, ApiStatusCode> HttpStatusCodes = new Dictionary<HttpStatusCode, ApiStatusCode>
         {
-            { HttpStatusCode.OK, ApiStatusCode.Accepted },
-            { HttpStatusCode.Created, ApiStatusCode.Accepted },
-            { HttpStatusCode.NoContent, ApiStatusCode.Accepted },
+            { HttpStatusCode.OK, ApiStatusCode.OK },
+            { HttpStatusCode.Created, ApiStatusCode.OK },
+            { HttpStatusCode.NoContent, ApiStatusCode.OK },
 
             { HttpStatusCode.BadRequest, ApiStatusCode.BadRequest },
             { HttpStatusCode.UpgradeRequired, ApiStatusCode.BadRequest },
