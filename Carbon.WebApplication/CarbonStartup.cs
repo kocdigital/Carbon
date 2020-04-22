@@ -129,6 +129,7 @@ namespace Carbon.WebApplication
             {
                 options.SuppressModelStateInvalidFilter = true;
             });
+            services.AddHeaderPropagation();
 
             CustomConfigureServices(services);
 
