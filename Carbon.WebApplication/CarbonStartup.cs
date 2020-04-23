@@ -122,6 +122,7 @@ namespace Carbon.WebApplication
                 options.SerializerSettings.ContractResolver = new DefaultContractResolver();
                 options.SerializerSettings.PreserveReferencesHandling = PreserveReferencesHandling.None;
                 options.SerializerSettings.Converters.Add(new StringEnumConverter());
+                options.SerializerSettings.NullValueHandling = NullValueHandling.Ignore;
             }).AddFluentValidation(fv =>
             {
                 fv.RunDefaultMvcValidationAfterFluentValidationExecutes = false;
