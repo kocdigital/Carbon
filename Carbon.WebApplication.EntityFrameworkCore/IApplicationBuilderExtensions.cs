@@ -10,9 +10,7 @@ namespace Carbon.WebApplication.EntityFrameworkCore
         {
             using (var serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
             {
-                serviceScope.ServiceProvider.GetRequiredService<TContext>().Database.Migrate();
                 var context = serviceScope.ServiceProvider.GetRequiredService<TContext>();
-
                 context.Database.Migrate();
             }
         }
