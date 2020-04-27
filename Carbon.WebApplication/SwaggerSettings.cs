@@ -4,8 +4,9 @@ namespace Carbon.WebApplication
 {
     public class SwaggerSettings
     {
-        public string EndpointAddress { get; set; }
+        public string AuthorizationUrl { get; set; }
         public string EndpointUrl { get; set; }
+        public string EndpointPath { get; set; }
         public string EndpointName { get; set; }
         
         public IList<SwaggerDocument> Documents { get; set; }

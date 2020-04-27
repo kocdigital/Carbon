@@ -162,7 +162,7 @@ namespace Carbon.WebApplication
                             {
                                 Implicit = new OpenApiOAuthFlow()
                                 {
-                                    AuthorizationUrl = new Uri(_swaggerSettings.EndpointAddress + "/connect/authorize", UriKind.Absolute),
+                                    AuthorizationUrl = new Uri(_swaggerSettings.AuthorizationUrl + "/connect/authorize", UriKind.Absolute),
                                     Scopes = doc.Security.Scopes?.ToDictionary(x => x.Key, x => x.Description)
                                 }
                             }
@@ -191,7 +191,8 @@ namespace Carbon.WebApplication
             app.UseSwagger();
             app.UseSwaggerUI(c =>
             {
-                c.SwaggerEndpoint(_swaggerSettings.EndpointUrl, _swaggerSettings.EndpointName);
+                c.OAuth2RedirectUrl($"{_swaggerSettings.EndpointUrl}/swagger/oauth2-redirect.html");
+                c.SwaggerEndpoint(_swaggerSettings.EndpointPath, _swaggerSettings.EndpointName);
             });
 
             if (env.IsDevelopment())
