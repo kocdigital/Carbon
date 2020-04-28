@@ -159,7 +159,9 @@ namespace Carbon.WebApplication
 
         private string GetRequestIdentifier()
         {
-            if (Request.Headers.TryGetValue("X-CorrelationId", out var requestIdentifier))
+            if (Request != null && 
+                Request.Headers != null && 
+                Request.Headers.TryGetValue("X-CorrelationId", out var requestIdentifier))
                 return requestIdentifier;
 
             return Guid.NewGuid().ToString();

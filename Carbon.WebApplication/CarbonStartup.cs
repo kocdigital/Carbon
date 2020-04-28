@@ -162,7 +162,7 @@ namespace Carbon.WebApplication
                             {
                                 Implicit = new OpenApiOAuthFlow()
                                 {
-                                    AuthorizationUrl = new Uri(_swaggerSettings.AuthorizationUrl + "/connect/authorize", UriKind.Absolute),
+                                    AuthorizationUrl = new Uri(doc.Security.AuthorizationUrl + "/connect/authorize", UriKind.Absolute),
                                     Scopes = doc.Security.Scopes?.ToDictionary(x => x.Key, x => x.Description)
                                 }
                             }
