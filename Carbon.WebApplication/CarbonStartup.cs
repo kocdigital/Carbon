@@ -225,6 +225,7 @@ namespace Carbon.WebApplication
                 {
                     foreach (var claim in principal.Claims)
                     {
+                        context.Request.Headers.TryAdd($"X-{claim.Type}", claim.Value);
                         Console.WriteLine($"CLAIM TYPE: {claim.Type}; CLAIM VALUE: {claim.Value}");
                     }
 
