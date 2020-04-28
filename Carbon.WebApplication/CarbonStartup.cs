@@ -1,4 +1,5 @@
 ﻿using Carbon.Common;
+using Carbon.WebApplication.Middlewares;
 using FluentValidation.AspNetCore;
 using Mapster;
 using Microsoft.AspNetCore.Builder;
@@ -206,6 +207,7 @@ namespace Carbon.WebApplication
 
             app.UseStaticFiles();
             app.UseRouting();
+            app.UseBearerTokenInRequestDto();
 
             CustomConfigure(app, env);
 

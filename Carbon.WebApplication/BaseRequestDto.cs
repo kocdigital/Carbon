@@ -1,7 +1,7 @@
 ﻿
 
 using Carbon.Common;
-using HybridModelBinding;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Text.Json.Serialization;
 
@@ -10,7 +10,15 @@ namespace Carbon.WebApplication
     public abstract class BaseRequestDto : IRequestDto
     {
         [JsonIgnore]
-        [HybridBindProperty(Source.Header)]
+        [FromHeader]
+        public string TenantId { get; set; }
+
+        [JsonIgnore]
+        [FromHeader]
+        public string ClientId { get; set; }
+
+        [JsonIgnore]
+        [FromHeader]
         public Guid CorrelationId { get; set; }
     }
 }
