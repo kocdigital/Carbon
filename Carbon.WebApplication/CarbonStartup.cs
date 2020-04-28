@@ -16,6 +16,7 @@ using Serilog;
 using Swashbuckle.AspNetCore.SwaggerGen;
 using System;
 using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 
 namespace Carbon.WebApplication
@@ -204,9 +205,12 @@ namespace Carbon.WebApplication
             app.UseSerilogRequestLogging();
             app.Use(async (context, next) =>
             {
-                var accessToken = context.Request.Headers[HeaderNames.Authorization];
+                var jwtToken = context.Request.Headers[HeaderNames.Authorization];
 
-                var principal = context.Request.HttpContext.User;
+                var handler = new JwtSecurityTokenHandler();
+                var token = handler.ReadJwtToken(jwtToken);
+
+                
 
                 Console.WriteLine("*******************************************************************************");
                 Console.WriteLine("*******************************************************************************");
@@ -221,9 +225,9 @@ namespace Carbon.WebApplication
                 Console.WriteLine("*******************************************************************************");
                 Console.WriteLine("*******************************************************************************");
                 Console.WriteLine("*******************************************************************************");
-                if (principal?.Claims != null)
+                if (token.Claims != null)
                 {
-                    foreach (var claim in principal.Claims)
+                    foreach (var claim in token.Claims)
                     {
                         context.Request.Headers.TryAdd($"X-{claim.Type}", claim.Value);
                         Console.WriteLine($"CLAIM TYPE: {claim.Type}; CLAIM VALUE: {claim.Value}");
@@ -232,7 +236,7 @@ namespace Carbon.WebApplication
                 }
                 Console.WriteLine("*******************************************************************************");
                 Console.WriteLine("*******************************************************************************");
-                Console.WriteLine(accessToken.ToString());
+                Console.WriteLine(jwtToken.ToString());
                 Console.WriteLine("*******************************************************************************");
                 Console.WriteLine("*******************************************************************************");
                 Console.WriteLine("*******************************************************************************");
