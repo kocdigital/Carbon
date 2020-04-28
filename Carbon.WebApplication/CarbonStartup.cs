@@ -205,6 +205,9 @@ namespace Carbon.WebApplication
             app.Use(async (context, next) =>
             {
                 var accessToken = context.Request.Headers[HeaderNames.Authorization];
+
+                var principal = context.Request.HttpContext.User;
+
                 Console.WriteLine("*******************************************************************************");
                 Console.WriteLine("*******************************************************************************");
                 Console.WriteLine("*******************************************************************************");
@@ -218,6 +221,14 @@ namespace Carbon.WebApplication
                 Console.WriteLine("*******************************************************************************");
                 Console.WriteLine("*******************************************************************************");
                 Console.WriteLine("*******************************************************************************");
+                if (principal?.Claims != null)
+                {
+                    foreach (var claim in principal.Claims)
+                    {
+                        Console.WriteLine($"CLAIM TYPE: {claim.Type}; CLAIM VALUE: {claim.Value}");
+                    }
+
+                }
                 Console.WriteLine("*******************************************************************************");
                 Console.WriteLine("*******************************************************************************");
                 Console.WriteLine(accessToken.ToString());
