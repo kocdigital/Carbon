@@ -4,7 +4,6 @@ namespace Carbon.WebApplication
 {
     public class SwaggerSettings
     {
-        public string AuthorizationUrl { get; set; }
         public string EndpointUrl { get; set; }
         public string EndpointPath { get; set; }
         public string EndpointName { get; set; }
@@ -20,6 +19,7 @@ namespace Carbon.WebApplication
         }
         public class OpenApiSecurity
         {
+            public string AuthorizationUrl { get; set; }
             public IList<OpenApiScope> Scopes { get; set; }
         }
 
