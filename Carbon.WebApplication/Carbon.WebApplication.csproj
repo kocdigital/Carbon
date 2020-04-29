@@ -2,10 +2,13 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <Version>1.6.3</Version>
+    <Version>1.6.4</Version>
     <Description>
 
       Framework for web apis
+
+      1.6.4 Change Set
+      - Only if bearer token is set, then TenantId and ClientId headers cannot set manually. 
 
       1.6.3 Change Set
       - BaseRequestDto'ya yeni 2 property (TenantId, ClientId) eklendi ve bunların Bearer AccessToken ile otomatik olarak maplenmesi sağlandı
@@ -17,8 +20,8 @@
       - Swagger configurasyonunda AuthorizationUrl key'i ana root kısmında Security key'i altına alındı
       - ResponseOk kısmında Unit Testlerde null exception hatası verme sorunu düzeltildi.
     </Description>
-    <AssemblyVersion>1.6.3.0</AssemblyVersion>
-    <FileVersion>1.6.3.0</FileVersion>
+    <AssemblyVersion>1.6.4.0</AssemblyVersion>
+    <FileVersion>1.6.4.0</FileVersion>
   </PropertyGroup>
 
   <ItemGroup>

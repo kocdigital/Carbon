@@ -23,15 +23,15 @@ namespace Carbon.WebApplication.Middlewares
         {
             var authorizationTokens = httpContext.Request.Headers[HeaderNames.Authorization];
 
-            httpContext.Request.Headers.Remove("TenantId");
-            httpContext.Request.Headers.Remove("ClientId");
-
             if (authorizationTokens.Count > 0)
             {
                 var bearerToken = authorizationTokens.FirstOrDefault(x => x.Contains(BearerHeaderName));
 
                 if (bearerToken != null)
                 {
+                    httpContext.Request.Headers.Remove("TenantId");
+                    httpContext.Request.Headers.Remove("ClientId");
+
                     var rawToken = bearerToken.Replace($"{BearerHeaderName} ", "");
                     var securityToken = new JwtSecurityToken(rawToken);
 
