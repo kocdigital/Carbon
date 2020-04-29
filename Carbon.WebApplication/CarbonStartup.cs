@@ -207,7 +207,6 @@ namespace Carbon.WebApplication
 
             app.UseStaticFiles();
             app.UseRouting();
-            app.UseBearerTokenInRequestDto();
 
             CustomConfigure(app, env);
 

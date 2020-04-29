@@ -2,10 +2,13 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <Version>1.6.4</Version>
+    <Version>1.6.5</Version>
     <Description>
 
       Framework for web apis
+    
+      1.6.5
+      - app.UseBearerTokenInRequestDto(); bunun kullanımını isteğe bağlı hale getirip, Default startupdan çıkardık
 
       1.6.4 Change Set
       - Only if bearer token is set, then TenantId and ClientId headers cannot set manually. 
@@ -20,8 +23,8 @@
       - Swagger configurasyonunda AuthorizationUrl key'i ana root kısmında Security key'i altına alındı
       - ResponseOk kısmında Unit Testlerde null exception hatası verme sorunu düzeltildi.
     </Description>
-    <AssemblyVersion>1.6.4.0</AssemblyVersion>
-    <FileVersion>1.6.4.0</FileVersion>
+    <AssemblyVersion>1.6.5.0</AssemblyVersion>
+    <FileVersion>1.6.5.0</FileVersion>
   </PropertyGroup>
 
   <ItemGroup>
