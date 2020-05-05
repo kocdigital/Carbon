@@ -92,17 +92,34 @@ namespace Carbon.WebApplication
 
             _corsPolicySettings = Configuration.GetSection("CorsPolicy").Get<CorsPolicySettings>();
 
-            if (_corsPolicySettings != null && _corsPolicySettings.Origins != null && _corsPolicySettings.Origins.Count > 0)
+            if (_corsPolicySettings != null)
             {
                 services.AddCors(options =>
                 {
                     options.AddPolicy(MyAllowSpecificOrigins,
                     builder =>
                     {
-                        builder.WithOrigins(_corsPolicySettings.Origins.ToArray())
-                               .AllowAnyHeader()
-                               .AllowAnyMethod()
-                               .AllowCredentials();
+                        builder.AllowCredentials();
+                        
+                
+                        if(_corsPolicySettings.AllowAnyHeaders)
+                        {
+                            builder.AllowAnyHeader();
+                        }
+
+                        if(_corsPolicySettings.AllowAnyMethods)
+                        {
+                            builder.AllowAnyMethod();
+                        }
+
+                        if(_corsPolicySettings.AllowAnyOrigin)
+                        {
+                            builder.AllowAnyOrigin();
+                        }else if(_corsPolicySettings.Origins != null && _corsPolicySettings.Origins.Count > 0)
+                        {
+                            builder.WithOrigins(_corsPolicySettings.Origins.ToArray());
+                        }
+
                     });
                 });
 
