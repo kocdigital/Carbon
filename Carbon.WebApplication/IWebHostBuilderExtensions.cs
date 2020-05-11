@@ -13,11 +13,13 @@ namespace Carbon.WebApplication
 {
     public static class IWebHostBuilderExtensions
     {
-        public static void UseCarbonFeatures<TStartup>(this IWebHostBuilder builder,string[]additionalConsulKeys=null) where TStartup : class
+        public static void UseCarbonFeatures<TStartup>(this IWebHostBuilder builder) where TStartup : class
         {
             var assemblyName = typeof(TStartup).Assembly.GetName().Name;
             var currentEnviroment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
             var consulAddress = Environment.GetEnvironmentVariable("CONSUL_ADDRESS");
+
+            var consulKeys = Environment.GetEnvironmentVariable(assemblyName + "_CONSUL_KEYS");
 
             builder.ConfigureAppConfiguration((c) =>
             {
@@ -36,9 +38,11 @@ namespace Carbon.WebApplication
                                     options.OnLoadException = exceptionContext => { exceptionContext.Ignore = false; };
                                 });
 
-                    if(additionalConsulKeys!=null &&  additionalConsulKeys.Length>0)
+                    if (!string.IsNullOrEmpty(consulKeys))
                     {
-                        foreach (var additionalConsulKey in additionalConsulKeys)
+
+                        var array = consulKeys.Split(',').ToArray();
+                        foreach (var additionalConsulKey in array)
                         {
                             c.AddConsul(
                                $"{additionalConsulKey}/{currentEnviroment}", (options) =>
@@ -52,7 +56,7 @@ namespace Carbon.WebApplication
                     }
                 }
 
-       
+
 
                 #endregion
             });
