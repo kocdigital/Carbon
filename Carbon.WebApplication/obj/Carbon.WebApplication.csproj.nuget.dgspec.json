@@ -63,7 +63,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.300-preview-015115\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.300-preview-015135\\RuntimeIdentifierGraph.json"
         }
       }
     },
@@ -130,7 +130,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.300-preview-015115\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.300-preview-015135\\RuntimeIdentifierGraph.json"
         }
       }
     },
@@ -176,6 +176,14 @@
             "Microsoft.AspNetCore.HeaderPropagation": {
               "target": "Package",
               "version": "[3.1.1, )"
+            },
+            "zipkin4net": {
+              "target": "Package",
+              "version": "[1.5.0, )"
+            },
+            "zipkin4net.middleware.aspnetcore": {
+              "target": "Package",
+              "version": "[1.5.0, )"
             }
           },
           "imports": [
@@ -196,7 +204,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.300-preview-015115\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.300-preview-015135\\RuntimeIdentifierGraph.json"
         }
       }
     },
@@ -259,7 +267,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.300-preview-015115\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.300-preview-015135\\RuntimeIdentifierGraph.json"
         }
       }
     },
@@ -347,6 +355,10 @@
               "target": "Package",
               "version": "[3.1.1, )"
             },
+            "Microsoft.Net.Http": {
+              "target": "Package",
+              "version": "[2.2.29, )"
+            },
             "Microsoft.OpenApi": {
               "target": "Package",
               "version": "[1.1.4, )"
@@ -390,6 +402,14 @@
             "Winton.Extensions.Configuration.Consul": {
               "target": "Package",
               "version": "[3.0.0, )"
+            },
+            "zipkin4net": {
+              "target": "Package",
+              "version": "[1.5.0, )"
+            },
+            "zipkin4net.middleware.aspnetcore": {
+              "target": "Package",
+              "version": "[1.5.0, )"
             }
           },
           "imports": [
@@ -410,7 +430,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.300-preview-015115\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.300-preview-015135\\RuntimeIdentifierGraph.json"
         }
       }
     }
