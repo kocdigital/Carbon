@@ -19,7 +19,7 @@ namespace Carbon.WebApplication
             var currentEnviroment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
             var consulAddress = Environment.GetEnvironmentVariable("CONSUL_ADDRESS");
 
-            var consulKeys = Environment.GetEnvironmentVariable(assemblyName + "_CONSUL_KEYS");
+            var consulKeysValue = Environment.GetEnvironmentVariable(assemblyName + "_CONSUL_KEYS");
 
             builder.ConfigureAppConfiguration((c) =>
             {
@@ -29,23 +29,14 @@ namespace Carbon.WebApplication
 
                 if (consulEnabled)
                 {
-                    c.AddConsul(
-                                $"{assemblyName}/{currentEnviroment}", (options) =>
-                                {
-                                    options.ConsulConfigurationOptions = cco => { cco.Address = new Uri(consulAddress); };
-                                    options.Optional = false;
-                                    options.ReloadOnChange = true;
-                                    options.OnLoadException = exceptionContext => { exceptionContext.Ignore = false; };
-                                });
 
-                    if (!string.IsNullOrEmpty(consulKeys))
+                    if (!string.IsNullOrEmpty(consulKeysValue))
                     {
-
-                        var array = consulKeys.Split(',').ToArray();
-                        foreach (var additionalConsulKey in array)
+                        var consulKeys = consulKeysValue.Split(',').ToArray();
+                        foreach (var consulKey in consulKeys)
                         {
                             c.AddConsul(
-                               $"{additionalConsulKey}/{currentEnviroment}", (options) =>
+                               $"{consulKey}/{currentEnviroment}", (options) =>
                                {
                                    options.ConsulConfigurationOptions = cco => { cco.Address = new Uri(consulAddress); };
                                    options.Optional = false;
@@ -53,6 +44,17 @@ namespace Carbon.WebApplication
                                    options.OnLoadException = exceptionContext => { exceptionContext.Ignore = false; };
                                });
                         }
+                    }
+                    else
+                    {
+                        c.AddConsul(
+                                    $"{assemblyName}/{currentEnviroment}", (options) =>
+                                    {
+                                        options.ConsulConfigurationOptions = cco => { cco.Address = new Uri(consulAddress); };
+                                        options.Optional = false;
+                                        options.ReloadOnChange = true;
+                                        options.OnLoadException = exceptionContext => { exceptionContext.Ignore = false; };
+                                    });
                     }
                 }
 

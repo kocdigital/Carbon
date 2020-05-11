@@ -4557,7 +4557,7 @@
           "bin/placeholder/Carbon.Redis.dll": {}
         }
       },
-      "Carbon.WebApplication/1.6.7": {
+      "Carbon.WebApplication/1.6.8": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v3.1",
         "dependencies": {
@@ -12842,7 +12842,7 @@
       "path": "../../Carbon.Redis/Carbon.Redis.csproj",
       "msbuildProject": "../../Carbon.Redis/Carbon.Redis.csproj"
     },
-    "Carbon.WebApplication/1.6.7": {
+    "Carbon.WebApplication/1.6.8": {
       "type": "project",
       "path": "../../Carbon.WebApplication/Carbon.WebApplication.csproj",
       "msbuildProject": "../../Carbon.WebApplication/Carbon.WebApplication.csproj"
@@ -12859,7 +12859,7 @@
       "Carbon.ExceptionHandling.Abstractions >= 1.0.4",
       "Carbon.PagedList >= 1.0.3",
       "Carbon.Redis >= 1.0.0",
-      "Carbon.WebApplication >= 1.6.7",
+      "Carbon.WebApplication >= 1.6.8",
       "Microsoft.EntityFrameworkCore.Tools >= 3.1.0-preview1.19506.2",
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 3.1.0-preview1-19509-03"
     ]
