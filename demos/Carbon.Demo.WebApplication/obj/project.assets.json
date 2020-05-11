@@ -4509,7 +4509,7 @@
           "bin/placeholder/Carbon.ExceptionHandling.Abstractions.dll": {}
         }
       },
-      "Carbon.HttpClient/1.0.2": {
+      "Carbon.HttpClient/1.0.3": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v3.1",
         "dependencies": {
@@ -4563,7 +4563,7 @@
         "dependencies": {
           "Carbon.Common": "1.1.5",
           "Carbon.ExceptionHandling.Abstractions": "1.0.4",
-          "Carbon.HttpClient": "1.0.2",
+          "Carbon.HttpClient": "1.0.3",
           "Carbon.PagedList": "1.0.3",
           "FluentValidation.AspNetCore": "8.6.1",
           "HybridModelBinding": "0.17.0",
@@ -12827,7 +12827,7 @@
       "path": "../../Carbon.ExceptionHandling/Carbon.ExceptionHandling.Abstractions.csproj",
       "msbuildProject": "../../Carbon.ExceptionHandling/Carbon.ExceptionHandling.Abstractions.csproj"
     },
-    "Carbon.HttpClient/1.0.2": {
+    "Carbon.HttpClient/1.0.3": {
       "type": "project",
       "path": "../../Carbon.HttpClient/Carbon.HttpClient.csproj",
       "msbuildProject": "../../Carbon.HttpClient/Carbon.HttpClient.csproj"

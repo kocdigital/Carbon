@@ -2,7 +2,10 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <Version>1.0.2</Version>
+    <Version>1.0.3</Version>
+    <FileVersion>1.0.3.0</FileVersion>
+    <PackageReleaseNotes>v1.0.3
+-zipkin4net HTTPClient Added. Use it via injecting TraceableHttpClient() Object</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>
