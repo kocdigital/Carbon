@@ -12,13 +12,13 @@ namespace Carbon.Demo.WebApplication
         }
 
 
-        private static string[] ConsulKeys = new string[] { "OneM2M.Common.Constants" };
+       // private static string[] ConsulKeys = new string[] { "OneM2M.Common.Constants" };
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
     Host.CreateDefaultBuilder(args)
         .ConfigureWebHostDefaults(webBuilder =>
         {
-            webBuilder.UseCarbonFeatures<Startup>(ConsulKeys);
+            webBuilder.UseCarbonFeatures<Startup>();
             webBuilder.UseStartup<Startup>();
         });
     }

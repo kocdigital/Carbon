@@ -21,7 +21,7 @@ namespace Carbon.Demo.WebApplication
             {
 
             });
-            services.AddRedisPersister(Configuration);
+           // services.AddRedisPersister(Configuration);
         }
 
         public override void CustomConfigure(IApplicationBuilder app, IWebHostEnvironment env)
