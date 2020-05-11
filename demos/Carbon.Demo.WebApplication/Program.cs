@@ -11,11 +11,14 @@ namespace Carbon.Demo.WebApplication
             CreateHostBuilder(args).Build().Run();
         }
 
+
+        private static string[] ConsulKeys = new string[] { "OneM2M.Common.Constants" };
+
         public static IHostBuilder CreateHostBuilder(string[] args) =>
     Host.CreateDefaultBuilder(args)
         .ConfigureWebHostDefaults(webBuilder =>
         {
-            webBuilder.UseCarbonFeatures<Startup>();
+            webBuilder.UseCarbonFeatures<Startup>(ConsulKeys);
             webBuilder.UseStartup<Startup>();
         });
     }
