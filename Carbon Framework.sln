@@ -45,6 +45,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Carbon.MassTransit.Abstract
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Carbon.Redis", "Carbon.Redis\Carbon.Redis.csproj", "{CCAC7E7E-B062-4C1D-87D8-02BC3C91CEFF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Carbon.Zipkin4Net", "Carbon.Zipkin4Net\Carbon.Zipkin4Net.csproj", "{E7722AB4-FF70-42F6-9D8A-9DCA38466A1B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -123,6 +125,10 @@ Global
 		{CCAC7E7E-B062-4C1D-87D8-02BC3C91CEFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CCAC7E7E-B062-4C1D-87D8-02BC3C91CEFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CCAC7E7E-B062-4C1D-87D8-02BC3C91CEFF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E7722AB4-FF70-42F6-9D8A-9DCA38466A1B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E7722AB4-FF70-42F6-9D8A-9DCA38466A1B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E7722AB4-FF70-42F6-9D8A-9DCA38466A1B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E7722AB4-FF70-42F6-9D8A-9DCA38466A1B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
