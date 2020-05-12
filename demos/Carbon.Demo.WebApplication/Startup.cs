@@ -6,11 +6,21 @@ using Microsoft.Extensions.DependencyInjection;
 using Carbon.HttpClients;
 using Carbon.Redis;
 using Carbon.Zipkin4Net;
+using System.Net.Http;
 
 namespace Carbon.Demo.WebApplication
 {
     public class Startup : CarbonStartup<Startup>
     {
+        public class CustomWebApiClient:WebapiClient
+        {
+            public CustomWebApiClient(HttpClient c) : base(c)
+            {
+
+            }
+        }
+
+
         public Startup(IConfiguration configuration, IWebHostEnvironment environment) : base(configuration, environment)
         {
             AddOperationFilter<ComposerHeaderFilter>();
@@ -27,14 +37,13 @@ namespace Carbon.Demo.WebApplication
             }, Environment, "OneM2MClient");
 
 
-            services.AddHttpClientWithZipkinTracing(c =>
+            services.AddHttpClientWithZipkinTracing<CustomWebApiClient>(c =>
             {
                 c.DefaultRequestHeaders.Add("CustomBiHeader", "CustomBiValue");
                 c.BaseAddress = new System.Uri("http://custombaseaddres.com");
             }, Environment);
 
 
-            services.AddHttpClient("OneM2MClient");
             // services.AddRedisPersister(Configuration);
         }
 

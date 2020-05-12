@@ -16,7 +16,7 @@ namespace Carbon.HttpClients
         }
 
 
-        public static void AddHttpClientWithZipkinTracing<T>(this IServiceCollection services, Action<HttpClient> c, IWebHostEnvironment env) where T : class
+        public static void AddHttpClientWithZipkinTracing<T>(this IServiceCollection services, Action<HttpClient> c, IWebHostEnvironment env) where T : WebapiClient
         {
             services.AddHttpClient<T>(c).AddHttpMessageHandler(provider =>
                  TracingHandler.WithoutInnerHandler(provider.GetService<IConfiguration>()[env.ApplicationName]));
