@@ -9,9 +9,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.HeaderPropagation" Version="3.1.1" />
-    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="zipkin4net" Version="1.5.0" />
+    <PackageReference Include="zipkin4net.middleware.aspnetcore" Version="1.5.0" />
+  </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Carbon.HttpClient\Carbon.HttpClient.csproj" />
   </ItemGroup>
 
 </Project>

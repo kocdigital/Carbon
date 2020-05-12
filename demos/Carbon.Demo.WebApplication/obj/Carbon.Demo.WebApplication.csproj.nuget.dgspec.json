@@ -559,14 +559,6 @@
             "Microsoft.AspNetCore.HeaderPropagation": {
               "target": "Package",
               "version": "[3.1.1, )"
-            },
-            "zipkin4net": {
-              "target": "Package",
-              "version": "[1.5.0, )"
-            },
-            "zipkin4net.middleware.aspnetcore": {
-              "target": "Package",
-              "version": "[1.5.0, )"
             }
           },
           "imports": [
@@ -897,6 +889,80 @@
         }
       }
     },
+    "C:\\Users\\02484578\\Desktop\\CarbonFW\\Carbon\\Carbon.Zipkin4Net\\Carbon.Zipkin4Net.csproj": {
+      "version": "1.0.3",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\02484578\\Desktop\\CarbonFW\\Carbon\\Carbon.Zipkin4Net\\Carbon.Zipkin4Net.csproj",
+        "projectName": "Carbon.Zipkin4Net",
+        "projectPath": "C:\\Users\\02484578\\Desktop\\CarbonFW\\Carbon\\Carbon.Zipkin4Net\\Carbon.Zipkin4Net.csproj",
+        "packagesPath": "C:\\Users\\02484578\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\02484578\\Desktop\\CarbonFW\\Carbon\\Carbon.Zipkin4Net\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\02484578\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "http://bellatrix:8080/tfs/KocDigitalCollection/_packaging/CarbonFramework/nuget/v3/index.json": {},
+          "http://bellatrix:8080/tfs/KocDigitalCollection/_packaging/CosmosNugetServerv1/nuget/v3/index.json": {},
+          "http://bellatrix:8080/tfs/KocDigitalCollection/_packaging/Platform360Core/nuget/v3/index.json": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {
+              "C:\\Users\\02484578\\Desktop\\CarbonFW\\Carbon\\Carbon.HttpClient\\Carbon.HttpClient.csproj": {
+                "projectPath": "C:\\Users\\02484578\\Desktop\\CarbonFW\\Carbon\\Carbon.HttpClient\\Carbon.HttpClient.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "dependencies": {
+            "zipkin4net": {
+              "target": "Package",
+              "version": "[1.5.0, )"
+            },
+            "zipkin4net.middleware.aspnetcore": {
+              "target": "Package",
+              "version": "[1.5.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.300-preview-015135\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
     "C:\\Users\\02484578\\Desktop\\CarbonFW\\Carbon\\demos\\Carbon.Demo.WebApplication\\Carbon.Demo.WebApplication.csproj": {
       "version": "1.0.0",
       "restore": {
@@ -954,6 +1020,9 @@
               },
               "C:\\Users\\02484578\\Desktop\\CarbonFW\\Carbon\\Carbon.WebApplication\\Carbon.WebApplication.csproj": {
                 "projectPath": "C:\\Users\\02484578\\Desktop\\CarbonFW\\Carbon\\Carbon.WebApplication\\Carbon.WebApplication.csproj"
+              },
+              "C:\\Users\\02484578\\Desktop\\CarbonFW\\Carbon\\Carbon.Zipkin4Net\\Carbon.Zipkin4Net.csproj": {
+                "projectPath": "C:\\Users\\02484578\\Desktop\\CarbonFW\\Carbon\\Carbon.Zipkin4Net\\Carbon.Zipkin4Net.csproj"
               }
             }
           }

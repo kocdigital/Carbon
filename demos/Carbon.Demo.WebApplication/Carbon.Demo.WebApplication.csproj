@@ -23,6 +23,7 @@
     <ProjectReference Include="..\..\Carbon.PagedList\Carbon.PagedList.csproj" />
     <ProjectReference Include="..\..\Carbon.Redis\Carbon.Redis.csproj" />
     <ProjectReference Include="..\..\Carbon.WebApplication\Carbon.WebApplication.csproj" />
+    <ProjectReference Include="..\..\Carbon.Zipkin4Net\Carbon.Zipkin4Net.csproj" />
   </ItemGroup>
 
   <ItemGroup>

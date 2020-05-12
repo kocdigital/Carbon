@@ -96,14 +96,7 @@ namespace Carbon.WebApplication
             #endregion
 
 
-            #region Zipkin4NetSettings
-            var zipkin4NetUrl = Configuration.GetSection("Zipkin4NetUrl").Value;
-            if (!string.IsNullOrEmpty(zipkin4NetUrl))
-            {
-                services.AddHttpClientWithZipkinTracing(Environment, zipkin4NetUrl);
-            }
 
-            #endregion
             #region Cors Policy Settings
 
             _corsPolicySettings = Configuration.GetSection("CorsPolicy").Get<CorsPolicySettings>();
@@ -224,25 +217,7 @@ namespace Carbon.WebApplication
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            #region Zipkin4NetSettings
-            var zipkin4NetUrl = Configuration.GetSection("Zipkin4NetUrl").Value;
-            if (!string.IsNullOrEmpty(zipkin4NetUrl))
-            {
-                var loggerFactory = app.ApplicationServices.GetService<ILoggerFactory>();
-                var lifetime = app.ApplicationServices.GetService<IApplicationLifetime>();
-                lifetime.ApplicationStarted.Register(() =>
-                {
-                    TraceManager.SamplingRate = 1.0f;
-                    var logger = new TracingLogger(loggerFactory, "zipkin4net");
-                    var httpSender = new HttpZipkinSender(zipkin4NetUrl, "application /json");
-                    var tracer = new ZipkinTracer(httpSender, new JSONSpanSerializer());
-                    TraceManager.RegisterTracer(tracer);
-                    TraceManager.Start(logger);
-                });
-                lifetime.ApplicationStopped.Register(() => TraceManager.Stop());
-                app.UseTracing(Environment.ApplicationName);
-            }
-            #endregion
+
 
             app.UseHeaderPropagation();
             app.UseSwagger();

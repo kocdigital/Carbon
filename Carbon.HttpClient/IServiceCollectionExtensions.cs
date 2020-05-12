@@ -1,10 +1,9 @@
 ﻿using Microsoft.AspNetCore.HeaderPropagation;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
+using System.Data.SqlTypes;
 using System.Net.Http;
-using zipkin4net.Transport.Http;
 
 namespace Carbon.HttpClients
 {
@@ -18,21 +17,12 @@ namespace Carbon.HttpClients
         public HttpClient Client { get; }
     }
 
-    public class TraceableHttpClient
-    {
-        public TraceableHttpClient(HttpClient client)
-        {
-            Client = client;
-        }
-
-        public HttpClient Client { get; }
-    }
-
-
     public static class IServiceCollectionExtensions
     {
+
         public static void AddHttpClientWithHeaderPropagation(this IServiceCollection services, Action<HeaderPropagationOptions> configureHeaderPropagation)
         {
+
             services.AddHeaderPropagation(o =>
             {
                 o.Headers.Add("x-request-id", "6161613434343");
@@ -45,12 +35,6 @@ namespace Carbon.HttpClients
             });
 
             services.AddHttpClient<WebapiClient>().AddHeaderPropagation(o => o.Headers.Add("x-request-id", "6161613434343"));
-        }
-
-        public static void AddHttpClientWithZipkinTracing(this IServiceCollection services, IWebHostEnvironment env, string zipkinUrl)
-        {
-            services.AddHttpClient<TraceableHttpClient>().AddHttpMessageHandler(provider =>
-                TracingHandler.WithoutInnerHandler(provider.GetService<IConfiguration>()[env.ApplicationName])); ;
         }
     }
 }

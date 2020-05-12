@@ -24,20 +24,17 @@ namespace Carbon.Demo.WebApplication.Controllers
         private readonly WebapiClient _webapiClient;
         private readonly ILogger<WeatherForecastController> _logger;
         private readonly IHttpClientFactory _httpClientFactory;
-        private readonly TraceableHttpClient _zipkinFactory;
 
-        public WeatherForecastController(ILogger<WeatherForecastController> logger, WebapiClient webapiClient, IHttpClientFactory httpClientFactory, TraceableHttpClient zipkinFactory)
+        public WeatherForecastController(ILogger<WeatherForecastController> logger, WebapiClient webapiClient, IHttpClientFactory httpClientFactory)
         {
             _httpClientFactory = httpClientFactory;
             _logger = logger;
             _webapiClient = webapiClient;
-            _zipkinFactory = zipkinFactory;
         }
 
         [HttpGet]
         public IEnumerable<WeatherForecast> Get()
         {
-            var k = _zipkinFactory.Client.GetAsync("http://google.com").Result;
             var rng = new Random();
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast
             {
