@@ -4509,7 +4509,7 @@
           "bin/placeholder/Carbon.ExceptionHandling.Abstractions.dll": {}
         }
       },
-      "Carbon.HttpClient/1.0.3": {
+      "Carbon.HttpClient/1.0.4": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v3.1",
         "dependencies": {
@@ -4555,13 +4555,13 @@
           "bin/placeholder/Carbon.Redis.dll": {}
         }
       },
-      "Carbon.WebApplication/1.6.8": {
+      "Carbon.WebApplication/1.6.9": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v3.1",
         "dependencies": {
           "Carbon.Common": "1.1.5",
           "Carbon.ExceptionHandling.Abstractions": "1.0.4",
-          "Carbon.HttpClient": "1.0.3",
+          "Carbon.HttpClient": "1.0.4",
           "Carbon.PagedList": "1.0.3",
           "FluentValidation.AspNetCore": "8.6.1",
           "HybridModelBinding": "0.17.0",
@@ -4600,7 +4600,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v3.1",
         "dependencies": {
-          "Carbon.HttpClient": "1.0.3",
+          "Carbon.HttpClient": "1.0.4",
           "zipkin4net": "1.5.0",
           "zipkin4net.middleware.aspnetcore": "1.5.0"
         },
@@ -12843,7 +12843,7 @@
       "path": "../../Carbon.ExceptionHandling/Carbon.ExceptionHandling.Abstractions.csproj",
       "msbuildProject": "../../Carbon.ExceptionHandling/Carbon.ExceptionHandling.Abstractions.csproj"
     },
-    "Carbon.HttpClient/1.0.3": {
+    "Carbon.HttpClient/1.0.4": {
       "type": "project",
       "path": "../../Carbon.HttpClient/Carbon.HttpClient.csproj",
       "msbuildProject": "../../Carbon.HttpClient/Carbon.HttpClient.csproj"
@@ -12858,7 +12858,7 @@
       "path": "../../Carbon.Redis/Carbon.Redis.csproj",
       "msbuildProject": "../../Carbon.Redis/Carbon.Redis.csproj"
     },
-    "Carbon.WebApplication/1.6.8": {
+    "Carbon.WebApplication/1.6.9": {
       "type": "project",
       "path": "../../Carbon.WebApplication/Carbon.WebApplication.csproj",
       "msbuildProject": "../../Carbon.WebApplication/Carbon.WebApplication.csproj"
@@ -12880,7 +12880,7 @@
       "Carbon.ExceptionHandling.Abstractions >= 1.0.4",
       "Carbon.PagedList >= 1.0.3",
       "Carbon.Redis >= 1.0.0",
-      "Carbon.WebApplication >= 1.6.8",
+      "Carbon.WebApplication >= 1.6.9",
       "Carbon.Zipkin4Net >= 1.0.4",
       "Microsoft.EntityFrameworkCore.Tools >= 3.1.0-preview1.19506.2",
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 3.1.0-preview1-19509-03"
