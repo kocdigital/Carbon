@@ -29,8 +29,8 @@
       - Swagger configurasyonunda AuthorizationUrl key'i ana root kısmında Security key'i altına alındı
       - ResponseOk kısmında Unit Testlerde null exception hatası verme sorunu düzeltildi.
     </Description>
-    <AssemblyVersion>1.6.8.0</AssemblyVersion>
-    <FileVersion>1.6.7.0</FileVersion>
+    <AssemblyVersion>1.6.9.0</AssemblyVersion>
+    <FileVersion>1.6.9.0</FileVersion>
   </PropertyGroup>
 
   <ItemGroup>
