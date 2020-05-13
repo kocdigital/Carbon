@@ -518,7 +518,7 @@
       }
     },
     "C:\\Users\\02484578\\Desktop\\CarbonFW\\Carbon\\Carbon.HttpClient\\Carbon.HttpClient.csproj": {
-      "version": "1.0.3",
+      "version": "1.0.4",
       "restore": {
         "projectUniqueName": "C:\\Users\\02484578\\Desktop\\CarbonFW\\Carbon\\Carbon.HttpClient\\Carbon.HttpClient.csproj",
         "projectName": "Carbon.HttpClient",
@@ -727,7 +727,7 @@
       }
     },
     "C:\\Users\\02484578\\Desktop\\CarbonFW\\Carbon\\Carbon.WebApplication\\Carbon.WebApplication.csproj": {
-      "version": "1.6.8",
+      "version": "1.6.9",
       "restore": {
         "projectUniqueName": "C:\\Users\\02484578\\Desktop\\CarbonFW\\Carbon\\Carbon.WebApplication\\Carbon.WebApplication.csproj",
         "projectName": "Carbon.WebApplication",
