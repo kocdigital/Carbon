@@ -37,11 +37,7 @@ namespace Carbon.Demo.WebApplication
             }, Environment, "OneM2MClient");
 
 
-            services.AddHttpClientWithZipkinTracing<CustomWebApiClient>(c =>
-            {
-                c.DefaultRequestHeaders.Add("CustomBiHeader", "CustomBiValue");
-                c.BaseAddress = new System.Uri("http://custombaseaddres.com");
-            }, Environment);
+
 
 
             // services.AddRedisPersister(Configuration);

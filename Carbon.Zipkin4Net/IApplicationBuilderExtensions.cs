@@ -26,8 +26,9 @@ namespace Carbon.Zipkin4Net
                 {
                     TraceManager.SamplingRate = 1.0f;
                     var logger = new TracingLogger(loggerFactory, "zipkin4net");
-                    var httpSender = new HttpZipkinSender(zipkin4NetUrl, "application /json");
+                    var httpSender = new HttpZipkinSender(zipkin4NetUrl, "application/json");
                     var tracer = new ZipkinTracer(httpSender, new JSONSpanSerializer());
+
                     TraceManager.RegisterTracer(tracer);
                     TraceManager.Start(logger);
                 });
