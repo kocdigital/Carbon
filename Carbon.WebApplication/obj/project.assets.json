@@ -10078,7 +10078,7 @@
     "C:\\Microsoft\\Xamarin\\NuGet\\": {}
   },
   "project": {
-    "version": "1.6.15",
+    "version": "1.6.16",
     "restore": {
       "projectUniqueName": "C:\\Projects\\Carbon\\Carbon.WebApplication\\Carbon.WebApplication.csproj",
       "projectName": "Carbon.WebApplication",

@@ -5,7 +5,6 @@ namespace Carbon.Common
 {
     public class HttpApiResponse<T> : ApiResponse<T>
     {
-
         public HttpApiResponse(string identifier, HttpStatusCode statusCode) : base(identifier, statusCode.GetApiStatusCode())
         {
            

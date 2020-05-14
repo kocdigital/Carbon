@@ -102,7 +102,24 @@ namespace Carbon.WebApplication
                     options.AddPolicy(MyAllowSpecificOrigins,
                         builder =>
                         {
-                            builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
+                            if (_corsPolicySettings.AllowAnyOrigin)
+                            {
+                                builder = builder.AllowAnyOrigin();
+                            }
+                            else if (_corsPolicySettings.Origins != null && _corsPolicySettings.Origins.Count > 0)
+                            {
+                                builder = builder.WithOrigins(_corsPolicySettings.Origins.ToArray());
+                            }
+
+                            if (_corsPolicySettings.AllowAnyMethods)
+                            {
+                                builder = builder.AllowAnyMethod();
+                            }
+
+                            if (_corsPolicySettings.AllowAnyHeaders)
+                            {
+                                builder = builder.AllowAnyHeader();
+                            }
                         });
                 });
 

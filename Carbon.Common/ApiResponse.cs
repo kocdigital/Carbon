@@ -4,6 +4,10 @@ namespace Carbon.Common
 {
     public class ApiResponse<T> : IApiResponse
     {
+        private ApiResponse()
+        {
+
+        }
         public ApiResponse(string identifier, ApiStatusCode statusCode)
         {
             StatusCode = statusCode;

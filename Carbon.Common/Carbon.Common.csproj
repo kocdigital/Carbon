@@ -2,7 +2,12 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
-    <Version>1.1.5</Version>
+    <Version>1.1.6</Version>
+	  <Description>
+
+		  1.1.6
+		  - ApiResponse parameterless private constructor added for deserialization
+	  </Description>
   </PropertyGroup>
 
   <ItemGroup>
