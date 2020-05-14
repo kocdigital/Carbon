@@ -90,8 +90,6 @@ namespace Carbon.WebApplication
 
             #endregion
 
-
-
             #region Cors Policy Settings
 
             _corsPolicySettings = Configuration.GetSection("CorsPolicy").Get<CorsPolicySettings>();
@@ -242,9 +240,7 @@ namespace Carbon.WebApplication
                 app.UseAuthorization();
             }
 
-            if(_corsPolicySettings != null && 
-               _corsPolicySettings.Origins != null &&
-               _corsPolicySettings.Origins.Count > 0)
+            if(_corsPolicySettings != null && (_corsPolicySettings.AllowAnyOrigin || (_corsPolicySettings.Origins != null && _corsPolicySettings.Origins.Count > 0)))
             {
                 app.UseCors(MyAllowSpecificOrigins);
             }
