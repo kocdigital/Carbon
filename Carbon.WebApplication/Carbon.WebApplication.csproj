@@ -2,9 +2,10 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <Version>1.6.17</Version>
+    <Version>1.6.18</Version>
     <Description>
-    
+    1.6.18
+	 - Parameterless constructor added to ApiResponse
 	1.6.14
 	 - Cors Bugfix
       Framework for web apis
