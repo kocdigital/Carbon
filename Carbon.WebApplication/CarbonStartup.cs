@@ -94,37 +94,63 @@ namespace Carbon.WebApplication
 
             _corsPolicySettings = Configuration.GetSection("CorsPolicy").Get<CorsPolicySettings>();
 
-            if (_corsPolicySettings != null)
+            #region Cors Policy Settings
+
+            _corsPolicySettings = Configuration.GetSection("CorsPolicy").Get<CorsPolicySettings>();
+
+            if (_corsPolicySettings != null && _corsPolicySettings.Origins != null && _corsPolicySettings.Origins.Count > 0)
             {
                 services.AddCors(options =>
                 {
                     options.AddPolicy(MyAllowSpecificOrigins,
                     builder =>
                     {
-                        builder = builder.AllowCredentials();
-                        
-                        if(_corsPolicySettings.AllowAnyHeaders)
-                        {
-                            builder = builder.AllowAnyHeader();
-                        }
-
-                        if (_corsPolicySettings.AllowAnyMethods)
-                        {
-                            builder = builder.AllowAnyMethod();
-                        }
-
-                        if (_corsPolicySettings.AllowAnyOrigin)
-                        {
-                            builder = builder.AllowAnyOrigin();
-                        }else if(_corsPolicySettings.Origins != null && _corsPolicySettings.Origins.Count > 0)
-                        {
-                            builder = builder.WithOrigins(_corsPolicySettings.Origins.ToArray());
-                        }
-
+                        builder.WithOrigins(_corsPolicySettings.Origins.ToArray())
+                               .AllowAnyHeader()
+                               .AllowAnyMethod()
+                               .AllowCredentials();
                     });
                 });
 
             }
+
+            #endregion
+
+            //if (_corsPolicySettings != null)
+            //{
+            //    services.AddCors(options =>
+            //    {
+            //        options.AddPolicy(MyAllowSpecificOrigins,
+            //        builder =>
+            //        {
+            //            builder.WithOrigins(_corsPolicySettings.Origins.ToArray())
+            //           .AllowAnyHeader()
+            //           .AllowAnyMethod()
+            //           .AllowCredentials();
+            //            //builder = builder.AllowCredentials();
+
+            //            //if(_corsPolicySettings.AllowAnyHeaders)
+            //            //{
+            //            //    builder = builder.AllowAnyHeader();
+            //            //}
+
+            //            //if (_corsPolicySettings.AllowAnyMethods)
+            //            //{
+            //            //    builder = builder.AllowAnyMethod();
+            //            //}
+
+            //            //if (_corsPolicySettings.AllowAnyOrigin)
+            //            //{
+            //            //    builder = builder.AllowAnyOrigin();
+            //            //}else if(_corsPolicySettings.Origins != null && _corsPolicySettings.Origins.Count > 0)
+            //            //{
+            //            //    builder = builder.WithOrigins(_corsPolicySettings.Origins.ToArray());
+            //            //}
+
+            //        });
+            //    });
+
+            //}
 
             #endregion
 
