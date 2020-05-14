@@ -95,8 +95,6 @@ namespace Carbon.WebApplication
 
             _corsPolicySettings = Configuration.GetSection("CorsPolicy").Get<CorsPolicySettings>();
 
-            #region Cors Policy Settings
-
             if (_corsPolicySettings != null)
             {
                 services.AddCors(options =>
