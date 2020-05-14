@@ -21,6 +21,7 @@ using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
+using System.Text.Json;
 
 namespace Carbon.WebApplication
 {
@@ -96,64 +97,21 @@ namespace Carbon.WebApplication
 
             #region Cors Policy Settings
 
-            _corsPolicySettings = Configuration.GetSection("CorsPolicy").Get<CorsPolicySettings>();
-
-            if (_corsPolicySettings != null && _corsPolicySettings.Origins != null && _corsPolicySettings.Origins.Count > 0)
+            if (_corsPolicySettings != null)
             {
                 services.AddCors(options =>
                 {
                     options.AddPolicy(MyAllowSpecificOrigins,
-                    builder =>
-                    {
-                        builder.WithOrigins(_corsPolicySettings.Origins.ToArray())
-                               .AllowAnyHeader()
-                               .AllowAnyMethod()
-                               .AllowCredentials();
-                    });
+                        builder =>
+                        {
+                            builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
+                        });
                 });
 
             }
 
             #endregion
-
-            //if (_corsPolicySettings != null)
-            //{
-            //    services.AddCors(options =>
-            //    {
-            //        options.AddPolicy(MyAllowSpecificOrigins,
-            //        builder =>
-            //        {
-            //            builder.WithOrigins(_corsPolicySettings.Origins.ToArray())
-            //           .AllowAnyHeader()
-            //           .AllowAnyMethod()
-            //           .AllowCredentials();
-            //            //builder = builder.AllowCredentials();
-
-            //            //if(_corsPolicySettings.AllowAnyHeaders)
-            //            //{
-            //            //    builder = builder.AllowAnyHeader();
-            //            //}
-
-            //            //if (_corsPolicySettings.AllowAnyMethods)
-            //            //{
-            //            //    builder = builder.AllowAnyMethod();
-            //            //}
-
-            //            //if (_corsPolicySettings.AllowAnyOrigin)
-            //            //{
-            //            //    builder = builder.AllowAnyOrigin();
-            //            //}else if(_corsPolicySettings.Origins != null && _corsPolicySettings.Origins.Count > 0)
-            //            //{
-            //            //    builder = builder.WithOrigins(_corsPolicySettings.Origins.ToArray());
-            //            //}
-
-            //        });
-            //    });
-
-            //}
-
-            #endregion
-
+            
             services.AddHealthChecks();
             services.AddMvc(options =>
             {
@@ -234,8 +192,6 @@ namespace Carbon.WebApplication
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-
-
             app.UseHeaderPropagation();
             app.UseSwagger();
             app.UseSwaggerUI(c =>
