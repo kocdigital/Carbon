@@ -14,7 +14,9 @@
       "launchBrowser": true,
       "launchUrl": "weatherforecast",
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "Carbon.Demo.WebApplication_CONSUL_KEYS": "Value",
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "CONSUL_ADDRESS": "http://localhost:8500"
       }
     },
     "Carbon.Demo.WebApplication": {

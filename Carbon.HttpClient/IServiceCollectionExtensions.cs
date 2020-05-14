@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.HeaderPropagation;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using System;
+using System.Data.SqlTypes;
 using System.Net.Http;
 
 namespace Carbon.HttpClients
@@ -17,8 +19,10 @@ namespace Carbon.HttpClients
 
     public static class IServiceCollectionExtensions
     {
+
         public static void AddHttpClientWithHeaderPropagation(this IServiceCollection services, Action<HeaderPropagationOptions> configureHeaderPropagation)
         {
+
             services.AddHeaderPropagation(o =>
             {
                 o.Headers.Add("x-request-id", "6161613434343");
@@ -30,7 +34,7 @@ namespace Carbon.HttpClients
                 o.Headers.Add("x-ot-span-context");
             });
 
-            services.AddHttpClient<WebapiClient>().AddHeaderPropagation(o => o.Headers.Add("x-request-id", "6161613434343")); 
+            services.AddHttpClient<WebapiClient>().AddHeaderPropagation(o => o.Headers.Add("x-request-id", "6161613434343"));
         }
     }
 }

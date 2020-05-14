@@ -53,12 +53,12 @@ namespace Carbon.Demo.WebApplication.Controllers
         }
 
         [HttpPost]
-        public async Task<IEnumerable<WeatherForecast>> Validate([FromHybrid]TestDto dto)
+        public async Task<IEnumerable<WeatherForecast>> Validate([FromHybrid] TestDto dto)
         {
-                var response = await _webapiClient.Client.GetAsync("https://localhost:5001/weatherforecast");
+            var response = await _webapiClient.Client.GetAsync("https://localhost:5001/weatherforecast");
 
-                var content = response.Content.ReadAsStringAsync();
-        
+            var content = response.Content.ReadAsStringAsync();
+
 
             var rng = new Random();
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast

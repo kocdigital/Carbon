@@ -1,4 +1,5 @@
 ﻿using Carbon.Common;
+using Carbon.HttpClients;
 using Carbon.WebApplication.Middlewares;
 using FluentValidation.AspNetCore;
 using Mapster;
@@ -8,6 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 using Microsoft.Net.Http.Headers;
 using Microsoft.OpenApi.Models;
 using Newtonsoft.Json;
@@ -88,6 +90,8 @@ namespace Carbon.WebApplication
 
             #endregion
 
+
+
             #region Cors Policy Settings
 
             _corsPolicySettings = Configuration.GetSection("CorsPolicy").Get<CorsPolicySettings>();
@@ -106,12 +110,12 @@ namespace Carbon.WebApplication
                             builder = builder.AllowAnyHeader();
                         }
 
-                        if(_corsPolicySettings.AllowAnyMethods)
+                        if (_corsPolicySettings.AllowAnyMethods)
                         {
                             builder = builder.AllowAnyMethod();
                         }
 
-                        if(_corsPolicySettings.AllowAnyOrigin)
+                        if (_corsPolicySettings.AllowAnyOrigin)
                         {
                             builder = builder.AllowAnyOrigin();
                         }else if(_corsPolicySettings.Origins != null && _corsPolicySettings.Origins.Count > 0)
@@ -206,6 +210,8 @@ namespace Carbon.WebApplication
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+
+
             app.UseHeaderPropagation();
             app.UseSwagger();
             app.UseSwaggerUI(c =>

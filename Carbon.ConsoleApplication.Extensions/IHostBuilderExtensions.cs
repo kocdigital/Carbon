@@ -39,7 +39,13 @@ namespace Carbon.ConsoleApplication
 
                 #endregion
 
+
+
                 var configuration = c.Build();
+
+            
+
+
 
                 var _serilogSettings = configuration.GetSection("Serilog").Get<SerilogSettings>();
 
@@ -47,7 +53,7 @@ namespace Carbon.ConsoleApplication
                     throw new ArgumentNullException("Serilog settings cannot be empty!");
 
                 Log.Logger = new LoggerConfiguration().ReadFrom.Configuration(configuration).CreateLogger();
-    
+
                 configureApp?.Invoke(h, c);
 
             }).ConfigureServices((h, s) =>
