@@ -4525,7 +4525,7 @@
           "bin/placeholder/Carbon.Redis.dll": {}
         }
       },
-      "Carbon.WebApplication/1.6.14": {
+      "Carbon.WebApplication/1.6.15": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v3.1",
         "dependencies": {
@@ -4539,6 +4539,7 @@
           "Microsoft.AspNetCore.HeaderPropagation": "3.1.1",
           "Microsoft.AspNetCore.Mvc": "2.2.0",
           "Microsoft.AspNetCore.Mvc.Core": "2.2.5",
+          "Microsoft.AspNetCore.Mvc.Formatters.Json": "2.2.0",
           "Microsoft.AspNetCore.Mvc.NewtonsoftJson": "3.1.2",
           "Microsoft.Extensions.DependencyInjection": "3.1.1",
           "Microsoft.OpenApi": "1.1.4",
@@ -12720,7 +12721,7 @@
       "path": "../../Carbon.Redis/Carbon.Redis.csproj",
       "msbuildProject": "../../Carbon.Redis/Carbon.Redis.csproj"
     },
-    "Carbon.WebApplication/1.6.14": {
+    "Carbon.WebApplication/1.6.15": {
       "type": "project",
       "path": "../../Carbon.WebApplication/Carbon.WebApplication.csproj",
       "msbuildProject": "../../Carbon.WebApplication/Carbon.WebApplication.csproj"
@@ -12742,7 +12743,7 @@
       "Carbon.ExceptionHandling.Abstractions >= 1.0.4",
       "Carbon.PagedList >= 1.0.3",
       "Carbon.Redis >= 1.0.0",
-      "Carbon.WebApplication >= 1.6.14",
+      "Carbon.WebApplication >= 1.6.15",
       "Carbon.Zipkin4Net >= 1.0.6",
       "Microsoft.EntityFrameworkCore.Tools >= 3.1.0-preview1.19506.2",
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 3.1.0-preview1-19509-03"
