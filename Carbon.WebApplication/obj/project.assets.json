@@ -10274,7 +10274,7 @@
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
-    "version": "1.6.18",
+    "version": "1.6.19",
     "restore": {
       "projectUniqueName": "D:\\Development\\Carbon\\Carbon.WebApplication\\Carbon.WebApplication.csproj",
       "projectName": "Carbon.WebApplication",
