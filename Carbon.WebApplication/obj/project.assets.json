@@ -48,18 +48,22 @@
           "lib/netstandard1.3/Consul.dll": {}
         }
       },
-      "Elasticsearch.Net/7.0.0": {
+      "Elasticsearch.Net/6.0.0": {
         "type": "package",
         "dependencies": {
-          "System.Buffers": "4.5.0",
-          "System.Reflection.Emit": "4.3.0",
-          "System.Reflection.Emit.Lightweight": "4.3.0"
+          "Microsoft.CSharp": "4.3.0",
+          "NETStandard.Library": "1.6.0",
+          "System.Collections.Specialized": "4.3.0",
+          "System.ComponentModel.TypeConverter": "4.3.0",
+          "System.Dynamic.Runtime": "4.3.0",
+          "System.Reflection.TypeExtensions": "4.3.0",
+          "System.Runtime.Serialization.Primitives": "4.3.0"
         },
         "compile": {
-          "lib/netstandard2.0/Elasticsearch.Net.dll": {}
+          "lib/netstandard1.3/Elasticsearch.Net.dll": {}
         },
         "runtime": {
-          "lib/netstandard2.0/Elasticsearch.Net.dll": {}
+          "lib/netstandard1.3/Elasticsearch.Net.dll": {}
         }
       },
       "FluentValidation/8.6.1": {
@@ -1733,16 +1737,18 @@
           "lib/netstandard1.1/Serilog.Formatting.Compact.dll": {}
         }
       },
-      "Serilog.Formatting.Elasticsearch/8.0.1": {
+      "Serilog.Formatting.Elasticsearch/7.1.0": {
         "type": "package",
         "dependencies": {
-          "Serilog": "2.8.0"
+          "Elasticsearch.Net": "6.0.0",
+          "NETStandard.Library": "1.6.0",
+          "Serilog": "2.6.0"
         },
         "compile": {
-          "lib/netstandard2.0/Serilog.Formatting.Elasticsearch.dll": {}
+          "lib/netstandard1.3/Serilog.Formatting.Elasticsearch.dll": {}
         },
         "runtime": {
-          "lib/netstandard2.0/Serilog.Formatting.Elasticsearch.dll": {}
+          "lib/netstandard1.3/Serilog.Formatting.Elasticsearch.dll": {}
         }
       },
       "Serilog.Settings.Configuration/3.1.0": {
@@ -1787,23 +1793,22 @@
           "lib/netstandard2.0/Serilog.Sinks.Debug.dll": {}
         }
       },
-      "Serilog.Sinks.Elasticsearch/8.0.1": {
+      "Serilog.Sinks.Elasticsearch/7.1.0": {
         "type": "package",
         "dependencies": {
-          "Elasticsearch.Net": "7.0.0",
-          "Microsoft.CSharp": "4.5.0",
-          "Serilog": "2.8.0",
+          "Elasticsearch.Net": "6.0.0",
+          "NETStandard.Library": "1.6.0",
+          "Serilog": "2.6.0",
           "Serilog.Formatting.Compact": "1.0.0",
-          "Serilog.Formatting.Elasticsearch": "8.0.1",
+          "Serilog.Formatting.Elasticsearch": "7.1.0",
           "Serilog.Sinks.File": "4.0.0",
-          "Serilog.Sinks.PeriodicBatching": "2.1.1",
-          "System.Diagnostics.DiagnosticSource": "4.5.1"
+          "Serilog.Sinks.PeriodicBatching": "2.1.1"
         },
         "compile": {
-          "lib/netstandard2.0/Serilog.Sinks.Elasticsearch.dll": {}
+          "lib/netstandard1.3/Serilog.Sinks.Elasticsearch.dll": {}
         },
         "runtime": {
-          "lib/netstandard2.0/Serilog.Sinks.Elasticsearch.dll": {}
+          "lib/netstandard1.3/Serilog.Sinks.Elasticsearch.dll": {}
         }
       },
       "Serilog.Sinks.File/4.1.0": {
@@ -2002,6 +2007,18 @@
           "lib/netstandard1.3/System.Collections.Specialized.dll": {}
         }
       },
+      "System.ComponentModel/4.3.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Runtime": "4.3.0"
+        },
+        "compile": {
+          "ref/netstandard1.0/System.ComponentModel.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.3/System.ComponentModel.dll": {}
+        }
+      },
       "System.ComponentModel.Annotations/4.7.0": {
         "type": "package",
         "compile": {
@@ -2009,6 +2026,46 @@
         },
         "runtime": {
           "lib/netstandard2.1/System.ComponentModel.Annotations.dll": {}
+        }
+      },
+      "System.ComponentModel.Primitives/4.3.0": {
+        "type": "package",
+        "dependencies": {
+          "System.ComponentModel": "4.3.0",
+          "System.Resources.ResourceManager": "4.3.0",
+          "System.Runtime": "4.3.0"
+        },
+        "compile": {
+          "ref/netstandard1.0/System.ComponentModel.Primitives.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.0/System.ComponentModel.Primitives.dll": {}
+        }
+      },
+      "System.ComponentModel.TypeConverter/4.3.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Collections": "4.3.0",
+          "System.Collections.NonGeneric": "4.3.0",
+          "System.Collections.Specialized": "4.3.0",
+          "System.ComponentModel": "4.3.0",
+          "System.ComponentModel.Primitives": "4.3.0",
+          "System.Globalization": "4.3.0",
+          "System.Linq": "4.3.0",
+          "System.Reflection": "4.3.0",
+          "System.Reflection.Extensions": "4.3.0",
+          "System.Reflection.Primitives": "4.3.0",
+          "System.Reflection.TypeExtensions": "4.3.0",
+          "System.Resources.ResourceManager": "4.3.0",
+          "System.Runtime": "4.3.0",
+          "System.Runtime.Extensions": "4.3.0",
+          "System.Threading": "4.3.0"
+        },
+        "compile": {
+          "ref/netstandard1.5/System.ComponentModel.TypeConverter.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.5/System.ComponentModel.TypeConverter.dll": {}
         }
       },
       "System.Console/4.3.0": {
@@ -2555,7 +2612,7 @@
           "System.Runtime": "4.3.0"
         },
         "compile": {
-          "ref/netstandard1.1/System.Reflection.Emit.dll": {}
+          "ref/netstandard1.1/_._": {}
         },
         "runtime": {
           "lib/netstandard1.3/System.Reflection.Emit.dll": {}
@@ -2569,7 +2626,7 @@
           "System.Runtime": "4.3.0"
         },
         "compile": {
-          "ref/netstandard1.0/System.Reflection.Emit.ILGeneration.dll": {}
+          "ref/netstandard1.0/_._": {}
         },
         "runtime": {
           "lib/netstandard1.3/System.Reflection.Emit.ILGeneration.dll": {}
@@ -2584,7 +2641,7 @@
           "System.Runtime": "4.3.0"
         },
         "compile": {
-          "ref/netstandard1.0/System.Reflection.Emit.Lightweight.dll": {}
+          "ref/netstandard1.0/_._": {}
         },
         "runtime": {
           "lib/netstandard1.3/System.Reflection.Emit.Lightweight.dll": {}
@@ -3448,7 +3505,7 @@
           "lib/netstandard1.6/zipkin4net.middleware.aspnetcore.dll": {}
         }
       },
-      "Carbon.Common/1.1.5": {
+      "Carbon.Common/1.1.6": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.1",
         "dependencies": {
@@ -3461,7 +3518,7 @@
           "bin/placeholder/Carbon.Common.dll": {}
         }
       },
-      "Carbon.ExceptionHandling.Abstractions/1.0.4": {
+      "Carbon.ExceptionHandling.Abstractions/1.0.5": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.1",
         "dependencies": {
@@ -3475,7 +3532,7 @@
           "bin/placeholder/Carbon.ExceptionHandling.Abstractions.dll": {}
         }
       },
-      "Carbon.HttpClient/1.0.4": {
+      "Carbon.HttpClient/1.0.5": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v3.1",
         "dependencies": {
@@ -3491,7 +3548,7 @@
           "Microsoft.AspNetCore.App"
         ]
       },
-      "Carbon.PagedList/1.0.3": {
+      "Carbon.PagedList/1.0.4": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.1",
         "dependencies": {
@@ -3562,20 +3619,21 @@
         "lib/netstandard1.3/Consul.dll"
       ]
     },
-    "Elasticsearch.Net/7.0.0": {
-      "sha512": "2rLkJUu0c6xh/IVGRcIlvsZSA6pv9ach2K3xuTZpWcaB6WHFdIW/ot+cmyALF4SFvk6uKHPesUN5M3Pd8wI86g==",
+    "Elasticsearch.Net/6.0.0": {
+      "sha512": "z98PpOqlLQ9nJPTyFgBdXSrFu9ywgZhPpmqDUyvJgCd2x1lzD0wKz+2gL1ETZpLsTJokFfJCW7JyOxSwPtFeuQ==",
       "type": "package",
-      "path": "elasticsearch.net/7.0.0",
+      "path": "elasticsearch.net/6.0.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "elasticsearch.net.7.0.0.nupkg.sha512",
+        "elasticsearch.net.6.0.0.nupkg.sha512",
         "elasticsearch.net.nuspec",
-        "lib/net461/Elasticsearch.Net.dll",
-        "lib/net461/Elasticsearch.Net.xml",
-        "lib/netstandard2.0/Elasticsearch.Net.dll",
-        "lib/netstandard2.0/Elasticsearch.Net.xml",
-        "license.txt"
+        "lib/net45/Elasticsearch.Net.dll",
+        "lib/net45/Elasticsearch.Net.xml",
+        "lib/net46/Elasticsearch.Net.dll",
+        "lib/net46/Elasticsearch.Net.xml",
+        "lib/netstandard1.3/Elasticsearch.Net.dll",
+        "lib/netstandard1.3/Elasticsearch.Net.xml"
       ]
     },
     "FluentValidation/8.6.1": {
@@ -5274,12 +5332,11 @@
       ]
     },
     "runtime.fedora.24-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.0": {
-      "sha512": "c3YNH1GQJbfIPJeCnr4avseugSqPrxwIqzthYyZDN6EuOyNOzq+y2KSUfRcXauya1sF4foESTgwM5e1A8arAKw==",
+      "sha512": "LdIvj7Bi2jiaNTqY/ezZGVXHe1KI5fjLSI026O1TjVzsmdgTP/zTF+f3nwHCjwttyhsPBEiswv0PekimPWZwWg==",
       "type": "package",
       "path": "runtime.fedora.24-x64.runtime.native.system.security.cryptography.openssl/4.3.0",
       "files": [
         ".nupkg.metadata",
-        ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "runtime.fedora.24-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",
@@ -5302,12 +5359,11 @@
       ]
     },
     "runtime.native.System.IO.Compression/4.3.0": {
-      "sha512": "INBPonS5QPEgn7naufQFXJEp3zX6L4bwHgJ/ZH78aBTpeNfQMtf7C6VrAFhlq2xxWBveIOWyFzQjJ8XzHMhdOQ==",
+      "sha512": "b+V9JC/Ii3sR659flBeaBJww111425tgjcDS1k+hqV4sGh9FALRDBvJnDtQ895gAzpPTUOFDHdqaZ2Et7BpZMg==",
       "type": "package",
       "path": "runtime.native.system.io.compression/4.3.0",
       "files": [
         ".nupkg.metadata",
-        ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "lib/netstandard1.0/_._",
@@ -5386,12 +5442,11 @@
       ]
     },
     "runtime.osx.10.10-x64.runtime.native.System.Security.Cryptography.Apple/4.3.0": {
-      "sha512": "kVXCuMTrTlxq4XOOMAysuNwsXWpYeboGddNGpIgNSZmv1b6r/s/DPk0fYMB7Q5Qo4bY68o48jt4T4y5BVecbCQ==",
+      "sha512": "Kh9W4agE0r/hK8AX1LvyQI2NrKHBL8pO0gRoDTdDb0LL6Ta1Z2OtFx3lOaAE0ZpCUc/dt9Wzs3rA7a3IsKdOVA==",
       "type": "package",
       "path": "runtime.osx.10.10-x64.runtime.native.system.security.cryptography.apple/4.3.0",
       "files": [
         ".nupkg.metadata",
-        ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "runtime.osx.10.10-x64.runtime.native.system.security.cryptography.apple.4.3.0.nupkg.sha512",
@@ -5428,12 +5483,11 @@
       ]
     },
     "runtime.ubuntu.14.04-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.0": {
-      "sha512": "ytoewC6wGorL7KoCAvRfsgoJPJbNq+64k2SqW6JcOAebWsFUvCCYgfzQMrnpvPiEl4OrblUlhF2ji+Q1+SVLrQ==",
+      "sha512": "JGc0pAWRE8lB4Ucygk2pYSKbUPLlAIq6Bczf5/WF2D/VKJEPtYlVUMxk8fbl1zRfTWzSHi+VcFZlaPlWiNxeKg==",
       "type": "package",
       "path": "runtime.ubuntu.14.04-x64.runtime.native.system.security.cryptography.openssl/4.3.0",
       "files": [
         ".nupkg.metadata",
-        ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "runtime.ubuntu.14.04-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",
@@ -5548,10 +5602,10 @@
         "serilog.formatting.compact.nuspec"
       ]
     },
-    "Serilog.Formatting.Elasticsearch/8.0.1": {
-      "sha512": "qESo5i71iCmp8X4Mk9R77mXNUZIPFfoXnaCkeY7AsbVGZHB8wBr0FDgFWi53oOdFJbX/grxUt6XTliO/EvMOgw==",
+    "Serilog.Formatting.Elasticsearch/7.1.0": {
+      "sha512": "+SON7TMYrMjlSnRMRk1FsgQBEh7Skbks8ey/vnx7AZQGWPeGtGecj2nx7vHgXw4cueEAmEwailV3qV11so3mYw==",
       "type": "package",
-      "path": "serilog.formatting.elasticsearch/8.0.1",
+      "path": "serilog.formatting.elasticsearch/7.1.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -5559,9 +5613,7 @@
         "lib/net45/Serilog.Formatting.Elasticsearch.xml",
         "lib/netstandard1.3/Serilog.Formatting.Elasticsearch.dll",
         "lib/netstandard1.3/Serilog.Formatting.Elasticsearch.xml",
-        "lib/netstandard2.0/Serilog.Formatting.Elasticsearch.dll",
-        "lib/netstandard2.0/Serilog.Formatting.Elasticsearch.xml",
-        "serilog.formatting.elasticsearch.8.0.1.nupkg.sha512",
+        "serilog.formatting.elasticsearch.7.1.0.nupkg.sha512",
         "serilog.formatting.elasticsearch.nuspec"
       ]
     },
@@ -5617,18 +5669,18 @@
         "serilog.sinks.debug.nuspec"
       ]
     },
-    "Serilog.Sinks.Elasticsearch/8.0.1": {
-      "sha512": "fEYO1BzAeiBlKcpDqE4GLw/vwJVmzOR8tSPq8I+2S/ytEXeAp/rMfOCOx0N7a4HohlEAyVytXVrfK+h4E+eRQA==",
+    "Serilog.Sinks.Elasticsearch/7.1.0": {
+      "sha512": "nkDSCAIua6nB91g5hLlKyKA9ou9jqNaejkNWSpMBCl63H92OicWbduRxdZv4JpEntqQSOmJds0JjKpN5DCX5hA==",
       "type": "package",
-      "path": "serilog.sinks.elasticsearch/8.0.1",
+      "path": "serilog.sinks.elasticsearch/7.1.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "lib/net461/Serilog.Sinks.Elasticsearch.dll",
-        "lib/net461/Serilog.Sinks.Elasticsearch.xml",
-        "lib/netstandard2.0/Serilog.Sinks.Elasticsearch.dll",
-        "lib/netstandard2.0/Serilog.Sinks.Elasticsearch.xml",
-        "serilog.sinks.elasticsearch.8.0.1.nupkg.sha512",
+        "lib/net45/Serilog.Sinks.Elasticsearch.dll",
+        "lib/net45/Serilog.Sinks.Elasticsearch.xml",
+        "lib/netstandard1.3/Serilog.Sinks.Elasticsearch.dll",
+        "lib/netstandard1.3/Serilog.Sinks.Elasticsearch.xml",
+        "serilog.sinks.elasticsearch.7.1.0.nupkg.sha512",
         "serilog.sinks.elasticsearch.nuspec"
       ]
     },
@@ -6022,12 +6074,11 @@
       ]
     },
     "System.Collections.Specialized/4.3.0": {
-      "sha512": "Epx8PoVZR0iuOnJJDzp7pWvdfMMOAvpUo95pC4ScH2mJuXkKA2Y4aR3cG9qt2klHgSons1WFh4kcGW7cSXvrxg==",
+      "sha512": "NoPBj0ykejqAWW4p4gGtrrL+3c84ZLSvGnHgq422ew1Rj4WKj1FA8/BCybqC111EtgcqUl6ZJNFYYS22HLgbjA==",
       "type": "package",
       "path": "system.collections.specialized/4.3.0",
       "files": [
         ".nupkg.metadata",
-        ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "lib/MonoAndroid10/_._",
@@ -6058,6 +6109,64 @@
         "ref/xamarinwatchos10/_._",
         "system.collections.specialized.4.3.0.nupkg.sha512",
         "system.collections.specialized.nuspec"
+      ]
+    },
+    "System.ComponentModel/4.3.0": {
+      "sha512": "VyGn1jGRZVfxnh8EdvDCi71v3bMXrsu8aYJOwoV7SNDLVhiEqwP86pPMyRGsDsxhXAm2b3o9OIqeETfN5qfezw==",
+      "type": "package",
+      "path": "system.componentmodel/4.3.0",
+      "files": [
+        ".nupkg.metadata",
+        "ThirdPartyNotices.txt",
+        "dotnet_library_license.txt",
+        "lib/MonoAndroid10/_._",
+        "lib/MonoTouch10/_._",
+        "lib/net45/_._",
+        "lib/netcore50/System.ComponentModel.dll",
+        "lib/netstandard1.3/System.ComponentModel.dll",
+        "lib/portable-net45+win8+wp8+wpa81/_._",
+        "lib/win8/_._",
+        "lib/wp80/_._",
+        "lib/wpa81/_._",
+        "lib/xamarinios10/_._",
+        "lib/xamarinmac20/_._",
+        "lib/xamarintvos10/_._",
+        "lib/xamarinwatchos10/_._",
+        "ref/MonoAndroid10/_._",
+        "ref/MonoTouch10/_._",
+        "ref/net45/_._",
+        "ref/netcore50/System.ComponentModel.dll",
+        "ref/netcore50/System.ComponentModel.xml",
+        "ref/netcore50/de/System.ComponentModel.xml",
+        "ref/netcore50/es/System.ComponentModel.xml",
+        "ref/netcore50/fr/System.ComponentModel.xml",
+        "ref/netcore50/it/System.ComponentModel.xml",
+        "ref/netcore50/ja/System.ComponentModel.xml",
+        "ref/netcore50/ko/System.ComponentModel.xml",
+        "ref/netcore50/ru/System.ComponentModel.xml",
+        "ref/netcore50/zh-hans/System.ComponentModel.xml",
+        "ref/netcore50/zh-hant/System.ComponentModel.xml",
+        "ref/netstandard1.0/System.ComponentModel.dll",
+        "ref/netstandard1.0/System.ComponentModel.xml",
+        "ref/netstandard1.0/de/System.ComponentModel.xml",
+        "ref/netstandard1.0/es/System.ComponentModel.xml",
+        "ref/netstandard1.0/fr/System.ComponentModel.xml",
+        "ref/netstandard1.0/it/System.ComponentModel.xml",
+        "ref/netstandard1.0/ja/System.ComponentModel.xml",
+        "ref/netstandard1.0/ko/System.ComponentModel.xml",
+        "ref/netstandard1.0/ru/System.ComponentModel.xml",
+        "ref/netstandard1.0/zh-hans/System.ComponentModel.xml",
+        "ref/netstandard1.0/zh-hant/System.ComponentModel.xml",
+        "ref/portable-net45+win8+wp8+wpa81/_._",
+        "ref/win8/_._",
+        "ref/wp80/_._",
+        "ref/wpa81/_._",
+        "ref/xamarinios10/_._",
+        "ref/xamarinmac20/_._",
+        "ref/xamarintvos10/_._",
+        "ref/xamarinwatchos10/_._",
+        "system.componentmodel.4.3.0.nupkg.sha512",
+        "system.componentmodel.nuspec"
       ]
     },
     "System.ComponentModel.Annotations/4.7.0": {
@@ -6147,6 +6256,96 @@
         "system.componentmodel.annotations.nuspec",
         "useSharedDesignerContext.txt",
         "version.txt"
+      ]
+    },
+    "System.ComponentModel.Primitives/4.3.0": {
+      "sha512": "j8GUkCpM8V4d4vhLIIoBLGey2Z5bCkMVNjEZseyAlm4n5arcsJOeI3zkUP+zvZgzsbLTYh4lYeP/ZD/gdIAPrw==",
+      "type": "package",
+      "path": "system.componentmodel.primitives/4.3.0",
+      "files": [
+        ".nupkg.metadata",
+        "ThirdPartyNotices.txt",
+        "dotnet_library_license.txt",
+        "lib/MonoAndroid10/_._",
+        "lib/MonoTouch10/_._",
+        "lib/net45/System.ComponentModel.Primitives.dll",
+        "lib/netstandard1.0/System.ComponentModel.Primitives.dll",
+        "lib/xamarinios10/_._",
+        "lib/xamarinmac20/_._",
+        "lib/xamarintvos10/_._",
+        "lib/xamarinwatchos10/_._",
+        "ref/MonoAndroid10/_._",
+        "ref/MonoTouch10/_._",
+        "ref/net45/System.ComponentModel.Primitives.dll",
+        "ref/netstandard1.0/System.ComponentModel.Primitives.dll",
+        "ref/netstandard1.0/System.ComponentModel.Primitives.xml",
+        "ref/netstandard1.0/de/System.ComponentModel.Primitives.xml",
+        "ref/netstandard1.0/es/System.ComponentModel.Primitives.xml",
+        "ref/netstandard1.0/fr/System.ComponentModel.Primitives.xml",
+        "ref/netstandard1.0/it/System.ComponentModel.Primitives.xml",
+        "ref/netstandard1.0/ja/System.ComponentModel.Primitives.xml",
+        "ref/netstandard1.0/ko/System.ComponentModel.Primitives.xml",
+        "ref/netstandard1.0/ru/System.ComponentModel.Primitives.xml",
+        "ref/netstandard1.0/zh-hans/System.ComponentModel.Primitives.xml",
+        "ref/netstandard1.0/zh-hant/System.ComponentModel.Primitives.xml",
+        "ref/xamarinios10/_._",
+        "ref/xamarinmac20/_._",
+        "ref/xamarintvos10/_._",
+        "ref/xamarinwatchos10/_._",
+        "system.componentmodel.primitives.4.3.0.nupkg.sha512",
+        "system.componentmodel.primitives.nuspec"
+      ]
+    },
+    "System.ComponentModel.TypeConverter/4.3.0": {
+      "sha512": "16pQ6P+EdhcXzPiEK4kbA953Fu0MNG2ovxTZU81/qsCd1zPRsKc3uif5NgvllCY598k6bI0KUyKW8fanlfaDQg==",
+      "type": "package",
+      "path": "system.componentmodel.typeconverter/4.3.0",
+      "files": [
+        ".nupkg.metadata",
+        "ThirdPartyNotices.txt",
+        "dotnet_library_license.txt",
+        "lib/MonoAndroid10/_._",
+        "lib/MonoTouch10/_._",
+        "lib/net45/System.ComponentModel.TypeConverter.dll",
+        "lib/net462/System.ComponentModel.TypeConverter.dll",
+        "lib/netstandard1.0/System.ComponentModel.TypeConverter.dll",
+        "lib/netstandard1.5/System.ComponentModel.TypeConverter.dll",
+        "lib/xamarinios10/_._",
+        "lib/xamarinmac20/_._",
+        "lib/xamarintvos10/_._",
+        "lib/xamarinwatchos10/_._",
+        "ref/MonoAndroid10/_._",
+        "ref/MonoTouch10/_._",
+        "ref/net45/System.ComponentModel.TypeConverter.dll",
+        "ref/net462/System.ComponentModel.TypeConverter.dll",
+        "ref/netstandard1.0/System.ComponentModel.TypeConverter.dll",
+        "ref/netstandard1.0/System.ComponentModel.TypeConverter.xml",
+        "ref/netstandard1.0/de/System.ComponentModel.TypeConverter.xml",
+        "ref/netstandard1.0/es/System.ComponentModel.TypeConverter.xml",
+        "ref/netstandard1.0/fr/System.ComponentModel.TypeConverter.xml",
+        "ref/netstandard1.0/it/System.ComponentModel.TypeConverter.xml",
+        "ref/netstandard1.0/ja/System.ComponentModel.TypeConverter.xml",
+        "ref/netstandard1.0/ko/System.ComponentModel.TypeConverter.xml",
+        "ref/netstandard1.0/ru/System.ComponentModel.TypeConverter.xml",
+        "ref/netstandard1.0/zh-hans/System.ComponentModel.TypeConverter.xml",
+        "ref/netstandard1.0/zh-hant/System.ComponentModel.TypeConverter.xml",
+        "ref/netstandard1.5/System.ComponentModel.TypeConverter.dll",
+        "ref/netstandard1.5/System.ComponentModel.TypeConverter.xml",
+        "ref/netstandard1.5/de/System.ComponentModel.TypeConverter.xml",
+        "ref/netstandard1.5/es/System.ComponentModel.TypeConverter.xml",
+        "ref/netstandard1.5/fr/System.ComponentModel.TypeConverter.xml",
+        "ref/netstandard1.5/it/System.ComponentModel.TypeConverter.xml",
+        "ref/netstandard1.5/ja/System.ComponentModel.TypeConverter.xml",
+        "ref/netstandard1.5/ko/System.ComponentModel.TypeConverter.xml",
+        "ref/netstandard1.5/ru/System.ComponentModel.TypeConverter.xml",
+        "ref/netstandard1.5/zh-hans/System.ComponentModel.TypeConverter.xml",
+        "ref/netstandard1.5/zh-hant/System.ComponentModel.TypeConverter.xml",
+        "ref/xamarinios10/_._",
+        "ref/xamarinmac20/_._",
+        "ref/xamarintvos10/_._",
+        "ref/xamarinwatchos10/_._",
+        "system.componentmodel.typeconverter.4.3.0.nupkg.sha512",
+        "system.componentmodel.typeconverter.nuspec"
       ]
     },
     "System.Console/4.3.0": {
@@ -8498,12 +8697,11 @@
       ]
     },
     "System.Runtime.Serialization.Primitives/4.3.0": {
-      "sha512": "Wz+0KOukJGAlXjtKr+5Xpuxf8+c8739RI1C+A2BoQZT+wMCCoMDDdO8/4IRHfaVINqL78GO8dW8G2lW/e45Mcw==",
+      "sha512": "2Z5t70a2SwMsfQDp9KOclaZNyQhfIga2gppq9lIUDM1A4ohTshn4JqT7ir8bvIhXgorWKYDAr6rPzEbi/nTGKg==",
       "type": "package",
       "path": "system.runtime.serialization.primitives/4.3.0",
       "files": [
         ".nupkg.metadata",
-        ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "lib/MonoAndroid10/_._",
@@ -8717,12 +8915,11 @@
       ]
     },
     "System.Security.Cryptography.Csp/4.3.0": {
-      "sha512": "X4s/FCkEUnRGnwR3aSfVIkldBmtURMhmexALNTwpjklzxWU7yjMk7GHLKOZTNkgnWnE0q7+BCf9N2LVRWxewaA==",
+      "sha512": "yO2k5o+Z+DiFRBvvB9vdRRAGHi6bm02M9OWXfCqQ8K0UxD3Woc3svQheZfb7PoTEFs0kGacO0IzzMWsb6Mkeow==",
       "type": "package",
       "path": "system.security.cryptography.csp/4.3.0",
       "files": [
         ".nupkg.metadata",
-        ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "lib/MonoAndroid10/_._",
@@ -8790,12 +8987,11 @@
       ]
     },
     "System.Security.Cryptography.OpenSsl/4.3.0": {
-      "sha512": "h4CEgOgv5PKVF/HwaHzJRiVboL2THYCou97zpmhjghx5frc7fIvlkY1jL+lnIQyChrJDMNEXS6r7byGif8Cy4w==",
+      "sha512": "vOYy7Jv9KsG3ld2hLt0GoERd82SZi4BelrbXLwI9yFBYX7kpbvUCWYo4eyevk47cuJXZ9ZLVAryANcc7iY71aA==",
       "type": "package",
       "path": "system.security.cryptography.openssl/4.3.0",
       "files": [
         ".nupkg.metadata",
-        ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "lib/netstandard1.6/System.Security.Cryptography.OpenSsl.dll",
@@ -9077,12 +9273,11 @@
       ]
     },
     "System.Text.Encoding.CodePages/4.3.0": {
-      "sha512": "IRiEFUa5b/Gs5Egg8oqBVoywhtOeaO2KOx3j0RfcYY/raxqBuEK7NXRDgOwtYM8qbi+7S4RPXUbNt+ZxyY0/NQ==",
+      "sha512": "6ENnyNU7cdmUVYblQ9GzLuJlLs9HWyoSInm+JZyCBHFUTaSQZolLIdGSZWGw5VOhjbFop+u/pU0AbKiHQKheqw==",
       "type": "package",
       "path": "system.text.encoding.codepages/4.3.0",
       "files": [
         ".nupkg.metadata",
-        ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "lib/MonoAndroid10/_._",
@@ -10022,22 +10217,22 @@
         "zipkin4net.middleware.aspnetcore.nuspec"
       ]
     },
-    "Carbon.Common/1.1.5": {
+    "Carbon.Common/1.1.6": {
       "type": "project",
       "path": "../Carbon.Common/Carbon.Common.csproj",
       "msbuildProject": "../Carbon.Common/Carbon.Common.csproj"
     },
-    "Carbon.ExceptionHandling.Abstractions/1.0.4": {
+    "Carbon.ExceptionHandling.Abstractions/1.0.5": {
       "type": "project",
       "path": "../Carbon.ExceptionHandling/Carbon.ExceptionHandling.Abstractions.csproj",
       "msbuildProject": "../Carbon.ExceptionHandling/Carbon.ExceptionHandling.Abstractions.csproj"
     },
-    "Carbon.HttpClient/1.0.4": {
+    "Carbon.HttpClient/1.0.5": {
       "type": "project",
       "path": "../Carbon.HttpClient/Carbon.HttpClient.csproj",
       "msbuildProject": "../Carbon.HttpClient/Carbon.HttpClient.csproj"
     },
-    "Carbon.PagedList/1.0.3": {
+    "Carbon.PagedList/1.0.4": {
       "type": "project",
       "path": "../Carbon.PagedList/Carbon.PagedList.csproj",
       "msbuildProject": "../Carbon.PagedList/Carbon.PagedList.csproj"
@@ -10045,10 +10240,10 @@
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
-      "Carbon.Common >= 1.1.5",
-      "Carbon.ExceptionHandling.Abstractions >= 1.0.4",
-      "Carbon.HttpClient >= 1.0.4",
-      "Carbon.PagedList >= 1.0.3",
+      "Carbon.Common >= 1.1.6",
+      "Carbon.ExceptionHandling.Abstractions >= 1.0.5",
+      "Carbon.HttpClient >= 1.0.5",
+      "Carbon.PagedList >= 1.0.4",
       "FluentValidation.AspNetCore >= 8.6.1",
       "HybridModelBinding >= 0.17.0",
       "Microsoft.AspNetCore.Authentication.JwtBearer >= 3.1.1",
@@ -10062,7 +10257,7 @@
       "Newtonsoft.Json >= 12.0.3",
       "Serilog.AspNetCore >= 3.2.0",
       "Serilog.Sinks.Console >= 3.1.1",
-      "Serilog.Sinks.ElasticSearch >= 8.0.1",
+      "Serilog.Sinks.ElasticSearch >= 7.1.0",
       "Serilog.Sinks.File >= 4.1.0",
       "Serilog.Sinks.RollingFile >= 3.3.0",
       "Swashbuckle.AspNetCore >= 5.0.0",
@@ -10074,23 +10269,25 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\02484376\\.nuget\\packages\\": {},
-    "C:\\Microsoft\\Xamarin\\NuGet\\": {}
+    "C:\\Users\\02484819\\.nuget\\packages\\": {},
+    "C:\\Microsoft\\Xamarin\\NuGet\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
-    "version": "1.6.16",
+    "version": "1.6.19",
     "restore": {
-      "projectUniqueName": "C:\\Projects\\Carbon\\Carbon.WebApplication\\Carbon.WebApplication.csproj",
+      "projectUniqueName": "D:\\Development\\Carbon\\Carbon.WebApplication\\Carbon.WebApplication.csproj",
       "projectName": "Carbon.WebApplication",
-      "projectPath": "C:\\Projects\\Carbon\\Carbon.WebApplication\\Carbon.WebApplication.csproj",
-      "packagesPath": "C:\\Users\\02484376\\.nuget\\packages\\",
-      "outputPath": "C:\\Projects\\Carbon\\Carbon.WebApplication\\obj\\",
+      "projectPath": "D:\\Development\\Carbon\\Carbon.WebApplication\\Carbon.WebApplication.csproj",
+      "packagesPath": "C:\\Users\\02484819\\.nuget\\packages\\",
+      "outputPath": "D:\\Development\\Carbon\\Carbon.WebApplication\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Microsoft\\Xamarin\\NuGet\\"
+        "C:\\Microsoft\\Xamarin\\NuGet\\",
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\02484376\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\02484819\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
@@ -10106,17 +10303,17 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "C:\\Projects\\Carbon\\Carbon.Common\\Carbon.Common.csproj": {
-              "projectPath": "C:\\Projects\\Carbon\\Carbon.Common\\Carbon.Common.csproj"
+            "D:\\Development\\Carbon\\Carbon.Common\\Carbon.Common.csproj": {
+              "projectPath": "D:\\Development\\Carbon\\Carbon.Common\\Carbon.Common.csproj"
             },
-            "C:\\Projects\\Carbon\\Carbon.ExceptionHandling\\Carbon.ExceptionHandling.Abstractions.csproj": {
-              "projectPath": "C:\\Projects\\Carbon\\Carbon.ExceptionHandling\\Carbon.ExceptionHandling.Abstractions.csproj"
+            "D:\\Development\\Carbon\\Carbon.ExceptionHandling\\Carbon.ExceptionHandling.Abstractions.csproj": {
+              "projectPath": "D:\\Development\\Carbon\\Carbon.ExceptionHandling\\Carbon.ExceptionHandling.Abstractions.csproj"
             },
-            "C:\\Projects\\Carbon\\Carbon.HttpClient\\Carbon.HttpClient.csproj": {
-              "projectPath": "C:\\Projects\\Carbon\\Carbon.HttpClient\\Carbon.HttpClient.csproj"
+            "D:\\Development\\Carbon\\Carbon.HttpClient\\Carbon.HttpClient.csproj": {
+              "projectPath": "D:\\Development\\Carbon\\Carbon.HttpClient\\Carbon.HttpClient.csproj"
             },
-            "C:\\Projects\\Carbon\\Carbon.PagedList\\Carbon.PagedList.csproj": {
-              "projectPath": "C:\\Projects\\Carbon\\Carbon.PagedList\\Carbon.PagedList.csproj"
+            "D:\\Development\\Carbon\\Carbon.PagedList\\Carbon.PagedList.csproj": {
+              "projectPath": "D:\\Development\\Carbon\\Carbon.PagedList\\Carbon.PagedList.csproj"
             }
           }
         }
@@ -10184,7 +10381,7 @@
           },
           "Serilog.Sinks.ElasticSearch": {
             "target": "Package",
-            "version": "[8.0.1, )"
+            "version": "[7.1.0, )"
           },
           "Serilog.Sinks.File": {
             "target": "Package",
@@ -10237,7 +10434,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.100\\RuntimeIdentifierGraph.json"
       }
     }
   }

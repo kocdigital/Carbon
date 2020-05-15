@@ -4401,7 +4401,7 @@
           "bin/placeholder/Carbon.Cassandra.Abstractions.dll": {}
         }
       },
-      "Carbon.Common/1.1.5": {
+      "Carbon.Common/1.1.6": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.1",
         "dependencies": {
@@ -4414,11 +4414,11 @@
           "bin/placeholder/Carbon.Common.dll": {}
         }
       },
-      "Carbon.ConsoleApplication/1.1.4": {
+      "Carbon.ConsoleApplication/1.1.5": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.1",
         "dependencies": {
-          "Carbon.Common": "1.1.5",
+          "Carbon.Common": "1.1.6",
           "Microsoft.Extensions.Configuration": "3.1.0",
           "Microsoft.Extensions.Configuration.EnvironmentVariables": "3.1.0",
           "Microsoft.Extensions.Hosting": "3.1.0",
@@ -4435,11 +4435,11 @@
           "bin/placeholder/Carbon.ConsoleApplication.dll": {}
         }
       },
-      "Carbon.Domain.Abstractions/1.0.9": {
+      "Carbon.Domain.Abstractions/1.1.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.1",
         "dependencies": {
-          "Carbon.Common": "1.1.5",
+          "Carbon.Common": "1.1.6",
           "System.ComponentModel.Annotations": "4.7.0"
         },
         "compile": {
@@ -4449,11 +4449,11 @@
           "bin/placeholder/Carbon.Domain.Abstractions.dll": {}
         }
       },
-      "Carbon.Domain.EntityFrameworkCore/1.0.10": {
+      "Carbon.Domain.EntityFrameworkCore/1.0.11": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.1",
         "dependencies": {
-          "Carbon.Domain.Abstractions": "1.0.9",
+          "Carbon.Domain.Abstractions": "1.1.0",
           "Microsoft.EntityFrameworkCore": "3.1.0",
           "Microsoft.EntityFrameworkCore.Relational": "3.1.0",
           "Microsoft.EntityFrameworkCore.SqlServer": "3.1.0"
@@ -4465,7 +4465,7 @@
           "bin/placeholder/Carbon.Domain.EntityFrameworkCore.dll": {}
         }
       },
-      "Carbon.ExceptionHandling.Abstractions/1.0.4": {
+      "Carbon.ExceptionHandling.Abstractions/1.0.5": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.1",
         "dependencies": {
@@ -4479,7 +4479,7 @@
           "bin/placeholder/Carbon.ExceptionHandling.Abstractions.dll": {}
         }
       },
-      "Carbon.HttpClient/1.0.4": {
+      "Carbon.HttpClient/1.0.5": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v3.1",
         "dependencies": {
@@ -4495,7 +4495,7 @@
           "Microsoft.AspNetCore.App"
         ]
       },
-      "Carbon.PagedList/1.0.3": {
+      "Carbon.PagedList/1.0.4": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.1",
         "dependencies": {
@@ -4525,14 +4525,14 @@
           "bin/placeholder/Carbon.Redis.dll": {}
         }
       },
-      "Carbon.WebApplication/1.6.16": {
+      "Carbon.WebApplication/1.6.19": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v3.1",
         "dependencies": {
-          "Carbon.Common": "1.1.5",
-          "Carbon.ExceptionHandling.Abstractions": "1.0.4",
-          "Carbon.HttpClient": "1.0.4",
-          "Carbon.PagedList": "1.0.3",
+          "Carbon.Common": "1.1.6",
+          "Carbon.ExceptionHandling.Abstractions": "1.0.5",
+          "Carbon.HttpClient": "1.0.5",
+          "Carbon.PagedList": "1.0.4",
           "FluentValidation.AspNetCore": "8.6.1",
           "HybridModelBinding": "0.17.0",
           "Microsoft.AspNetCore.Authentication.JwtBearer": "3.1.1",
@@ -4546,7 +4546,7 @@
           "Newtonsoft.Json": "12.0.3",
           "Serilog.AspNetCore": "3.2.0",
           "Serilog.Sinks.Console": "3.1.1",
-          "Serilog.Sinks.ElasticSearch": "8.0.1",
+          "Serilog.Sinks.ElasticSearch": "7.1.0",
           "Serilog.Sinks.File": "4.1.0",
           "Serilog.Sinks.RollingFile": "3.3.0",
           "Swashbuckle.AspNetCore": "5.0.0",
@@ -4566,11 +4566,11 @@
           "Microsoft.AspNetCore.App"
         ]
       },
-      "Carbon.Zipkin4Net/1.0.6": {
+      "Carbon.Zipkin4Net/1.0.7": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v3.1",
         "dependencies": {
-          "Carbon.HttpClient": "1.0.4",
+          "Carbon.HttpClient": "1.0.5",
           "zipkin4net": "1.5.0",
           "zipkin4net.middleware.aspnetcore": "1.5.0"
         },
@@ -7290,12 +7290,11 @@
       ]
     },
     "runtime.fedora.24-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.0": {
-      "sha512": "c3YNH1GQJbfIPJeCnr4avseugSqPrxwIqzthYyZDN6EuOyNOzq+y2KSUfRcXauya1sF4foESTgwM5e1A8arAKw==",
+      "sha512": "LdIvj7Bi2jiaNTqY/ezZGVXHe1KI5fjLSI026O1TjVzsmdgTP/zTF+f3nwHCjwttyhsPBEiswv0PekimPWZwWg==",
       "type": "package",
       "path": "runtime.fedora.24-x64.runtime.native.system.security.cryptography.openssl/4.3.0",
       "files": [
         ".nupkg.metadata",
-        ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "runtime.fedora.24-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",
@@ -7332,12 +7331,11 @@
       ]
     },
     "runtime.native.System.IO.Compression/4.3.0": {
-      "sha512": "INBPonS5QPEgn7naufQFXJEp3zX6L4bwHgJ/ZH78aBTpeNfQMtf7C6VrAFhlq2xxWBveIOWyFzQjJ8XzHMhdOQ==",
+      "sha512": "b+V9JC/Ii3sR659flBeaBJww111425tgjcDS1k+hqV4sGh9FALRDBvJnDtQ895gAzpPTUOFDHdqaZ2Et7BpZMg==",
       "type": "package",
       "path": "runtime.native.system.io.compression/4.3.0",
       "files": [
         ".nupkg.metadata",
-        ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "lib/netstandard1.0/_._",
@@ -7416,12 +7414,11 @@
       ]
     },
     "runtime.osx.10.10-x64.runtime.native.System.Security.Cryptography.Apple/4.3.0": {
-      "sha512": "kVXCuMTrTlxq4XOOMAysuNwsXWpYeboGddNGpIgNSZmv1b6r/s/DPk0fYMB7Q5Qo4bY68o48jt4T4y5BVecbCQ==",
+      "sha512": "Kh9W4agE0r/hK8AX1LvyQI2NrKHBL8pO0gRoDTdDb0LL6Ta1Z2OtFx3lOaAE0ZpCUc/dt9Wzs3rA7a3IsKdOVA==",
       "type": "package",
       "path": "runtime.osx.10.10-x64.runtime.native.system.security.cryptography.apple/4.3.0",
       "files": [
         ".nupkg.metadata",
-        ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "runtime.osx.10.10-x64.runtime.native.system.security.cryptography.apple.4.3.0.nupkg.sha512",
@@ -7458,12 +7455,11 @@
       ]
     },
     "runtime.ubuntu.14.04-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.0": {
-      "sha512": "ytoewC6wGorL7KoCAvRfsgoJPJbNq+64k2SqW6JcOAebWsFUvCCYgfzQMrnpvPiEl4OrblUlhF2ji+Q1+SVLrQ==",
+      "sha512": "JGc0pAWRE8lB4Ucygk2pYSKbUPLlAIq6Bczf5/WF2D/VKJEPtYlVUMxk8fbl1zRfTWzSHi+VcFZlaPlWiNxeKg==",
       "type": "package",
       "path": "runtime.ubuntu.14.04-x64.runtime.native.system.security.cryptography.openssl/4.3.0",
       "files": [
         ".nupkg.metadata",
-        ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "runtime.ubuntu.14.04-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",
@@ -8114,12 +8110,11 @@
       ]
     },
     "System.Collections.Specialized/4.3.0": {
-      "sha512": "Epx8PoVZR0iuOnJJDzp7pWvdfMMOAvpUo95pC4ScH2mJuXkKA2Y4aR3cG9qt2klHgSons1WFh4kcGW7cSXvrxg==",
+      "sha512": "NoPBj0ykejqAWW4p4gGtrrL+3c84ZLSvGnHgq422ew1Rj4WKj1FA8/BCybqC111EtgcqUl6ZJNFYYS22HLgbjA==",
       "type": "package",
       "path": "system.collections.specialized/4.3.0",
       "files": [
         ".nupkg.metadata",
-        ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "lib/MonoAndroid10/_._",
@@ -11084,12 +11079,11 @@
       ]
     },
     "System.Runtime.Serialization.Primitives/4.3.0": {
-      "sha512": "Wz+0KOukJGAlXjtKr+5Xpuxf8+c8739RI1C+A2BoQZT+wMCCoMDDdO8/4IRHfaVINqL78GO8dW8G2lW/e45Mcw==",
+      "sha512": "2Z5t70a2SwMsfQDp9KOclaZNyQhfIga2gppq9lIUDM1A4ohTshn4JqT7ir8bvIhXgorWKYDAr6rPzEbi/nTGKg==",
       "type": "package",
       "path": "system.runtime.serialization.primitives/4.3.0",
       "files": [
         ".nupkg.metadata",
-        ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "lib/MonoAndroid10/_._",
@@ -11307,12 +11301,11 @@
       ]
     },
     "System.Security.Cryptography.Csp/4.3.0": {
-      "sha512": "X4s/FCkEUnRGnwR3aSfVIkldBmtURMhmexALNTwpjklzxWU7yjMk7GHLKOZTNkgnWnE0q7+BCf9N2LVRWxewaA==",
+      "sha512": "yO2k5o+Z+DiFRBvvB9vdRRAGHi6bm02M9OWXfCqQ8K0UxD3Woc3svQheZfb7PoTEFs0kGacO0IzzMWsb6Mkeow==",
       "type": "package",
       "path": "system.security.cryptography.csp/4.3.0",
       "files": [
         ".nupkg.metadata",
-        ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "lib/MonoAndroid10/_._",
@@ -11380,12 +11373,11 @@
       ]
     },
     "System.Security.Cryptography.OpenSsl/4.3.0": {
-      "sha512": "h4CEgOgv5PKVF/HwaHzJRiVboL2THYCou97zpmhjghx5frc7fIvlkY1jL+lnIQyChrJDMNEXS6r7byGif8Cy4w==",
+      "sha512": "vOYy7Jv9KsG3ld2hLt0GoERd82SZi4BelrbXLwI9yFBYX7kpbvUCWYo4eyevk47cuJXZ9ZLVAryANcc7iY71aA==",
       "type": "package",
       "path": "system.security.cryptography.openssl/4.3.0",
       "files": [
         ".nupkg.metadata",
-        ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "lib/netstandard1.6/System.Security.Cryptography.OpenSsl.dll",
@@ -12681,37 +12673,37 @@
       "path": "../../Carbon.Cassandra.Abstractions/Carbon.Cassandra.Abstractions.csproj",
       "msbuildProject": "../../Carbon.Cassandra.Abstractions/Carbon.Cassandra.Abstractions.csproj"
     },
-    "Carbon.Common/1.1.5": {
+    "Carbon.Common/1.1.6": {
       "type": "project",
       "path": "../../Carbon.Common/Carbon.Common.csproj",
       "msbuildProject": "../../Carbon.Common/Carbon.Common.csproj"
     },
-    "Carbon.ConsoleApplication/1.1.4": {
+    "Carbon.ConsoleApplication/1.1.5": {
       "type": "project",
       "path": "../../Carbon.ConsoleApplication.Extensions/Carbon.ConsoleApplication.csproj",
       "msbuildProject": "../../Carbon.ConsoleApplication.Extensions/Carbon.ConsoleApplication.csproj"
     },
-    "Carbon.Domain.Abstractions/1.0.9": {
+    "Carbon.Domain.Abstractions/1.1.0": {
       "type": "project",
       "path": "../../Carbon.Domain.Abstractions/Carbon.Domain.Abstractions.csproj",
       "msbuildProject": "../../Carbon.Domain.Abstractions/Carbon.Domain.Abstractions.csproj"
     },
-    "Carbon.Domain.EntityFrameworkCore/1.0.10": {
+    "Carbon.Domain.EntityFrameworkCore/1.0.11": {
       "type": "project",
       "path": "../../Carbon.Domain.EntityFrameworkCore.Extensions/Carbon.Domain.EntityFrameworkCore.csproj",
       "msbuildProject": "../../Carbon.Domain.EntityFrameworkCore.Extensions/Carbon.Domain.EntityFrameworkCore.csproj"
     },
-    "Carbon.ExceptionHandling.Abstractions/1.0.4": {
+    "Carbon.ExceptionHandling.Abstractions/1.0.5": {
       "type": "project",
       "path": "../../Carbon.ExceptionHandling/Carbon.ExceptionHandling.Abstractions.csproj",
       "msbuildProject": "../../Carbon.ExceptionHandling/Carbon.ExceptionHandling.Abstractions.csproj"
     },
-    "Carbon.HttpClient/1.0.4": {
+    "Carbon.HttpClient/1.0.5": {
       "type": "project",
       "path": "../../Carbon.HttpClient/Carbon.HttpClient.csproj",
       "msbuildProject": "../../Carbon.HttpClient/Carbon.HttpClient.csproj"
     },
-    "Carbon.PagedList/1.0.3": {
+    "Carbon.PagedList/1.0.4": {
       "type": "project",
       "path": "../../Carbon.PagedList/Carbon.PagedList.csproj",
       "msbuildProject": "../../Carbon.PagedList/Carbon.PagedList.csproj"
@@ -12721,12 +12713,12 @@
       "path": "../../Carbon.Redis/Carbon.Redis.csproj",
       "msbuildProject": "../../Carbon.Redis/Carbon.Redis.csproj"
     },
-    "Carbon.WebApplication/1.6.16": {
+    "Carbon.WebApplication/1.6.19": {
       "type": "project",
       "path": "../../Carbon.WebApplication/Carbon.WebApplication.csproj",
       "msbuildProject": "../../Carbon.WebApplication/Carbon.WebApplication.csproj"
     },
-    "Carbon.Zipkin4Net/1.0.6": {
+    "Carbon.Zipkin4Net/1.0.7": {
       "type": "project",
       "path": "../../Carbon.Zipkin4Net/Carbon.Zipkin4Net.csproj",
       "msbuildProject": "../../Carbon.Zipkin4Net/Carbon.Zipkin4Net.csproj"
@@ -12736,37 +12728,39 @@
     ".NETCoreApp,Version=v3.1": [
       "Carbon.Cassandra >= 1.0.0",
       "Carbon.Cassandra.Abstractions >= 1.0.0",
-      "Carbon.Common >= 1.1.5",
-      "Carbon.ConsoleApplication >= 1.1.4",
-      "Carbon.Domain.Abstractions >= 1.0.9",
-      "Carbon.Domain.EntityFrameworkCore >= 1.0.10",
-      "Carbon.ExceptionHandling.Abstractions >= 1.0.4",
-      "Carbon.PagedList >= 1.0.3",
+      "Carbon.Common >= 1.1.6",
+      "Carbon.ConsoleApplication >= 1.1.5",
+      "Carbon.Domain.Abstractions >= 1.1.0",
+      "Carbon.Domain.EntityFrameworkCore >= 1.0.11",
+      "Carbon.ExceptionHandling.Abstractions >= 1.0.5",
+      "Carbon.PagedList >= 1.0.4",
       "Carbon.Redis >= 1.0.0",
-      "Carbon.WebApplication >= 1.6.16",
-      "Carbon.Zipkin4Net >= 1.0.6",
+      "Carbon.WebApplication >= 1.6.19",
+      "Carbon.Zipkin4Net >= 1.0.7",
       "Microsoft.EntityFrameworkCore.Tools >= 3.1.0-preview1.19506.2",
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 3.1.0-preview1-19509-03"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\02484376\\.nuget\\packages\\": {},
-    "C:\\Microsoft\\Xamarin\\NuGet\\": {}
+    "C:\\Users\\02484819\\.nuget\\packages\\": {},
+    "C:\\Microsoft\\Xamarin\\NuGet\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Projects\\Carbon\\demos\\Carbon.Demo.WebApplication\\Carbon.Demo.WebApplication.csproj",
+      "projectUniqueName": "D:\\Development\\Carbon\\demos\\Carbon.Demo.WebApplication\\Carbon.Demo.WebApplication.csproj",
       "projectName": "Carbon.Demo.WebApplication",
-      "projectPath": "C:\\Projects\\Carbon\\demos\\Carbon.Demo.WebApplication\\Carbon.Demo.WebApplication.csproj",
-      "packagesPath": "C:\\Users\\02484376\\.nuget\\packages\\",
-      "outputPath": "C:\\Projects\\Carbon\\demos\\Carbon.Demo.WebApplication\\obj\\",
+      "projectPath": "D:\\Development\\Carbon\\demos\\Carbon.Demo.WebApplication\\Carbon.Demo.WebApplication.csproj",
+      "packagesPath": "C:\\Users\\02484819\\.nuget\\packages\\",
+      "outputPath": "D:\\Development\\Carbon\\demos\\Carbon.Demo.WebApplication\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Microsoft\\Xamarin\\NuGet\\"
+        "C:\\Microsoft\\Xamarin\\NuGet\\",
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\02484376\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\02484819\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
@@ -12782,38 +12776,38 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "C:\\Projects\\Carbon\\Carbon.Cassandra.Abstractions\\Carbon.Cassandra.Abstractions.csproj": {
-              "projectPath": "C:\\Projects\\Carbon\\Carbon.Cassandra.Abstractions\\Carbon.Cassandra.Abstractions.csproj"
+            "D:\\Development\\Carbon\\Carbon.Cassandra.Abstractions\\Carbon.Cassandra.Abstractions.csproj": {
+              "projectPath": "D:\\Development\\Carbon\\Carbon.Cassandra.Abstractions\\Carbon.Cassandra.Abstractions.csproj"
             },
-            "C:\\Projects\\Carbon\\Carbon.Cassandra\\Carbon.Cassandra.csproj": {
-              "projectPath": "C:\\Projects\\Carbon\\Carbon.Cassandra\\Carbon.Cassandra.csproj"
+            "D:\\Development\\Carbon\\Carbon.Cassandra\\Carbon.Cassandra.csproj": {
+              "projectPath": "D:\\Development\\Carbon\\Carbon.Cassandra\\Carbon.Cassandra.csproj"
             },
-            "C:\\Projects\\Carbon\\Carbon.Common\\Carbon.Common.csproj": {
-              "projectPath": "C:\\Projects\\Carbon\\Carbon.Common\\Carbon.Common.csproj"
+            "D:\\Development\\Carbon\\Carbon.Common\\Carbon.Common.csproj": {
+              "projectPath": "D:\\Development\\Carbon\\Carbon.Common\\Carbon.Common.csproj"
             },
-            "C:\\Projects\\Carbon\\Carbon.ConsoleApplication.Extensions\\Carbon.ConsoleApplication.csproj": {
-              "projectPath": "C:\\Projects\\Carbon\\Carbon.ConsoleApplication.Extensions\\Carbon.ConsoleApplication.csproj"
+            "D:\\Development\\Carbon\\Carbon.ConsoleApplication.Extensions\\Carbon.ConsoleApplication.csproj": {
+              "projectPath": "D:\\Development\\Carbon\\Carbon.ConsoleApplication.Extensions\\Carbon.ConsoleApplication.csproj"
             },
-            "C:\\Projects\\Carbon\\Carbon.Domain.Abstractions\\Carbon.Domain.Abstractions.csproj": {
-              "projectPath": "C:\\Projects\\Carbon\\Carbon.Domain.Abstractions\\Carbon.Domain.Abstractions.csproj"
+            "D:\\Development\\Carbon\\Carbon.Domain.Abstractions\\Carbon.Domain.Abstractions.csproj": {
+              "projectPath": "D:\\Development\\Carbon\\Carbon.Domain.Abstractions\\Carbon.Domain.Abstractions.csproj"
             },
-            "C:\\Projects\\Carbon\\Carbon.Domain.EntityFrameworkCore.Extensions\\Carbon.Domain.EntityFrameworkCore.csproj": {
-              "projectPath": "C:\\Projects\\Carbon\\Carbon.Domain.EntityFrameworkCore.Extensions\\Carbon.Domain.EntityFrameworkCore.csproj"
+            "D:\\Development\\Carbon\\Carbon.Domain.EntityFrameworkCore.Extensions\\Carbon.Domain.EntityFrameworkCore.csproj": {
+              "projectPath": "D:\\Development\\Carbon\\Carbon.Domain.EntityFrameworkCore.Extensions\\Carbon.Domain.EntityFrameworkCore.csproj"
             },
-            "C:\\Projects\\Carbon\\Carbon.ExceptionHandling\\Carbon.ExceptionHandling.Abstractions.csproj": {
-              "projectPath": "C:\\Projects\\Carbon\\Carbon.ExceptionHandling\\Carbon.ExceptionHandling.Abstractions.csproj"
+            "D:\\Development\\Carbon\\Carbon.ExceptionHandling\\Carbon.ExceptionHandling.Abstractions.csproj": {
+              "projectPath": "D:\\Development\\Carbon\\Carbon.ExceptionHandling\\Carbon.ExceptionHandling.Abstractions.csproj"
             },
-            "C:\\Projects\\Carbon\\Carbon.PagedList\\Carbon.PagedList.csproj": {
-              "projectPath": "C:\\Projects\\Carbon\\Carbon.PagedList\\Carbon.PagedList.csproj"
+            "D:\\Development\\Carbon\\Carbon.PagedList\\Carbon.PagedList.csproj": {
+              "projectPath": "D:\\Development\\Carbon\\Carbon.PagedList\\Carbon.PagedList.csproj"
             },
-            "C:\\Projects\\Carbon\\Carbon.Redis\\Carbon.Redis.csproj": {
-              "projectPath": "C:\\Projects\\Carbon\\Carbon.Redis\\Carbon.Redis.csproj"
+            "D:\\Development\\Carbon\\Carbon.Redis\\Carbon.Redis.csproj": {
+              "projectPath": "D:\\Development\\Carbon\\Carbon.Redis\\Carbon.Redis.csproj"
             },
-            "C:\\Projects\\Carbon\\Carbon.WebApplication\\Carbon.WebApplication.csproj": {
-              "projectPath": "C:\\Projects\\Carbon\\Carbon.WebApplication\\Carbon.WebApplication.csproj"
+            "D:\\Development\\Carbon\\Carbon.WebApplication\\Carbon.WebApplication.csproj": {
+              "projectPath": "D:\\Development\\Carbon\\Carbon.WebApplication\\Carbon.WebApplication.csproj"
             },
-            "C:\\Projects\\Carbon\\Carbon.Zipkin4Net\\Carbon.Zipkin4Net.csproj": {
-              "projectPath": "C:\\Projects\\Carbon\\Carbon.Zipkin4Net\\Carbon.Zipkin4Net.csproj"
+            "D:\\Development\\Carbon\\Carbon.Zipkin4Net\\Carbon.Zipkin4Net.csproj": {
+              "projectPath": "D:\\Development\\Carbon\\Carbon.Zipkin4Net\\Carbon.Zipkin4Net.csproj"
             }
           }
         }
@@ -12856,7 +12850,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.100\\RuntimeIdentifierGraph.json"
       }
     }
   },
