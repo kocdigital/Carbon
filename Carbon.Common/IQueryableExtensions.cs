@@ -58,19 +58,23 @@ namespace Carbon.Common
             {
                 foreach (var item in ordination)
                 {
+                    var property = query.ElementType.GetProperty(item.Value);
+                    if (property == null) continue;
+
                     if (item.IsAscending)
                     {
-                        query.OrderBy(x => item.Value);
+                        query = query.OrderBy(x => property.GetValue(x));
                     }
                     else
                     {
-                        query.OrderByDescending(x => item.Value);
+                        query = query.OrderByDescending(x => property.GetValue(x));
                     }
                 }
             }
 
             return query;
         }
+
 
     }
 }
