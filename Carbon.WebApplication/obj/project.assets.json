@@ -3505,7 +3505,7 @@
           "lib/netstandard1.6/zipkin4net.middleware.aspnetcore.dll": {}
         }
       },
-      "Carbon.Common/1.1.7": {
+      "Carbon.Common/1.1.8": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.1",
         "dependencies": {
@@ -10238,7 +10238,7 @@
         "zipkin4net.middleware.aspnetcore.nuspec"
       ]
     },
-    "Carbon.Common/1.1.7": {
+    "Carbon.Common/1.1.8": {
       "type": "project",
       "path": "../Carbon.Common/Carbon.Common.csproj",
       "msbuildProject": "../Carbon.Common/Carbon.Common.csproj"
@@ -10261,7 +10261,7 @@
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
-      "Carbon.Common >= 1.1.7",
+      "Carbon.Common >= 1.1.8",
       "Carbon.ExceptionHandling.Abstractions >= 1.0.6",
       "Carbon.HttpClient >= 1.0.6",
       "Carbon.PagedList >= 1.0.5",

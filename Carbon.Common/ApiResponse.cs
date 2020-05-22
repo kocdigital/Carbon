@@ -21,14 +21,15 @@ namespace Carbon.Common
         {
             Messages = messages;
         }
+
         public ApiResponse(string identifier, ApiStatusCode statusCode, int errorCode, IList<string> messages) : this(identifier, statusCode, errorCode)
         {
             Messages = messages; 
         }
-        public T Data { get; private set; }
-        public IList<string> Messages { get; private set; }
-        public int? ErrorCode { get; private set; }
-        public ApiStatusCode StatusCode { get; private set; }
+        public T Data { get; set; }
+        public IList<string> Messages { get; set; }
+        public int? ErrorCode { get; set; }
+        public ApiStatusCode StatusCode { get; set; }
         public bool IsSuccess
         {
             get
@@ -36,7 +37,7 @@ namespace Carbon.Common
                 return ErrorCode == null && StatusCode == ApiStatusCode.OK;
             }
         }
-        public string Identifier { get; private set; }
+        public string Identifier { get; set; }
 
         public void SetData(T data)
         {

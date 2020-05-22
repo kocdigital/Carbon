@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
-    <Version>1.1.7</Version>
+    <Version>1.1.8</Version>
 	  <Description>
 		  1.1.7
 		  - OrderBy BugFix

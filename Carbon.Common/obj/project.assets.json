@@ -120,7 +120,7 @@
     "C:\\Microsoft\\Xamarin\\NuGet\\": {}
   },
   "project": {
-    "version": "1.1.7",
+    "version": "1.1.8",
     "restore": {
       "projectUniqueName": "C:\\Projects\\Carbon\\Carbon.Common\\Carbon.Common.csproj",
       "projectName": "Carbon.Common",
