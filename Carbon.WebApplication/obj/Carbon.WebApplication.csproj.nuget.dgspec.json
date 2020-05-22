@@ -5,7 +5,7 @@
   },
   "projects": {
     "C:\\Projects\\Carbon\\Carbon.Common\\Carbon.Common.csproj": {
-      "version": "1.1.6",
+      "version": "1.1.7",
       "restore": {
         "projectUniqueName": "C:\\Projects\\Carbon\\Carbon.Common\\Carbon.Common.csproj",
         "projectName": "Carbon.Common",
@@ -69,7 +69,7 @@
       }
     },
     "C:\\Projects\\Carbon\\Carbon.ExceptionHandling\\Carbon.ExceptionHandling.Abstractions.csproj": {
-      "version": "1.0.5",
+      "version": "1.0.6",
       "restore": {
         "projectUniqueName": "C:\\Projects\\Carbon\\Carbon.ExceptionHandling\\Carbon.ExceptionHandling.Abstractions.csproj",
         "projectName": "Carbon.ExceptionHandling.Abstractions",
@@ -137,7 +137,7 @@
       }
     },
     "C:\\Projects\\Carbon\\Carbon.HttpClient\\Carbon.HttpClient.csproj": {
-      "version": "1.0.5",
+      "version": "1.0.6",
       "restore": {
         "projectUniqueName": "C:\\Projects\\Carbon\\Carbon.HttpClient\\Carbon.HttpClient.csproj",
         "projectName": "Carbon.HttpClient",
@@ -204,7 +204,7 @@
       }
     },
     "C:\\Projects\\Carbon\\Carbon.PagedList\\Carbon.PagedList.csproj": {
-      "version": "1.0.4",
+      "version": "1.0.5",
       "restore": {
         "projectUniqueName": "C:\\Projects\\Carbon\\Carbon.PagedList\\Carbon.PagedList.csproj",
         "projectName": "Carbon.PagedList",
@@ -268,11 +268,7 @@
       }
     },
     "C:\\Projects\\Carbon\\Carbon.WebApplication\\Carbon.WebApplication.csproj": {
-<<<<<<< Updated upstream
-      "version": "1.6.18",
-=======
       "version": "1.6.19",
->>>>>>> Stashed changes
       "restore": {
         "projectUniqueName": "C:\\Projects\\Carbon\\Carbon.WebApplication\\Carbon.WebApplication.csproj",
         "projectName": "Carbon.WebApplication",
@@ -378,7 +374,7 @@
             },
             "Serilog.Sinks.ElasticSearch": {
               "target": "Package",
-              "version": "[8.0.1, )"
+              "version": "[7.1.0, )"
             },
             "Serilog.Sinks.File": {
               "target": "Package",

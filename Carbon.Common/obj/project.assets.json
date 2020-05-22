@@ -116,25 +116,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\02484819\\.nuget\\packages\\": {},
-    "C:\\Microsoft\\Xamarin\\NuGet\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Users\\02484376\\.nuget\\packages\\": {},
+    "C:\\Microsoft\\Xamarin\\NuGet\\": {}
   },
   "project": {
-    "version": "1.1.6",
+    "version": "1.1.7",
     "restore": {
-      "projectUniqueName": "D:\\Development\\Carbon\\Carbon.Common\\Carbon.Common.csproj",
+      "projectUniqueName": "C:\\Projects\\Carbon\\Carbon.Common\\Carbon.Common.csproj",
       "projectName": "Carbon.Common",
-      "projectPath": "D:\\Development\\Carbon\\Carbon.Common\\Carbon.Common.csproj",
-      "packagesPath": "C:\\Users\\02484819\\.nuget\\packages\\",
-      "outputPath": "D:\\Development\\Carbon\\Carbon.Common\\obj\\",
+      "projectPath": "C:\\Projects\\Carbon\\Carbon.Common\\Carbon.Common.csproj",
+      "packagesPath": "C:\\Users\\02484376\\.nuget\\packages\\",
+      "outputPath": "C:\\Projects\\Carbon\\Carbon.Common\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Microsoft\\Xamarin\\NuGet\\",
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        "C:\\Microsoft\\Xamarin\\NuGet\\"
       ],
       "configFilePaths": [
-        "C:\\Users\\02484819\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\02484376\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
@@ -181,7 +179,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.100\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
       }
     }
   }

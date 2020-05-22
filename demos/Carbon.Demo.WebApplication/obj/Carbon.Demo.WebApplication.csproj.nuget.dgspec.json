@@ -4,153 +4,8 @@
     "C:\\Projects\\Carbon\\demos\\Carbon.Demo.WebApplication\\Carbon.Demo.WebApplication.csproj": {}
   },
   "projects": {
-<<<<<<< Updated upstream
-=======
-    "C:\\Projects\\Carbon\\Carbon.Cassandra.Abstractions\\Carbon.Cassandra.Abstractions.csproj": {
-      "version": "1.0.0",
-      "restore": {
-        "projectUniqueName": "C:\\Projects\\Carbon\\Carbon.Cassandra.Abstractions\\Carbon.Cassandra.Abstractions.csproj",
-        "projectName": "Carbon.Cassandra.Abstractions",
-        "projectPath": "C:\\Projects\\Carbon\\Carbon.Cassandra.Abstractions\\Carbon.Cassandra.Abstractions.csproj",
-        "packagesPath": "C:\\Users\\02484376\\.nuget\\packages\\",
-        "outputPath": "C:\\Projects\\Carbon\\Carbon.Cassandra.Abstractions\\obj\\",
-        "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Microsoft\\Xamarin\\NuGet\\"
-        ],
-        "configFilePaths": [
-          "C:\\Users\\02484376\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
-        ],
-        "originalTargetFrameworks": [
-          "netstandard2.0"
-        ],
-        "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "http://bellatrix:8080/tfs/KocDigitalCollection/_packaging/CarbonFramework/nuget/v3/index.json": {},
-          "http://bellatrix:8080/tfs/KocDigitalCollection/_packaging/Platform360Core/nuget/v3/index.json": {},
-          "https://api.nuget.org/v3/index.json": {}
-        },
-        "frameworks": {
-          "netstandard2.0": {
-            "projectReferences": {}
-          }
-        },
-        "warningProperties": {
-          "warnAsError": [
-            "NU1605"
-          ]
-        }
-      },
-      "frameworks": {
-        "netstandard2.0": {
-          "dependencies": {
-            "CassandraCSharpDriver": {
-              "target": "Package",
-              "version": "[3.12.0, )"
-            },
-            "NETStandard.Library": {
-              "suppressParent": "All",
-              "target": "Package",
-              "version": "[2.0.3, )",
-              "autoReferenced": true
-            }
-          },
-          "imports": [
-            "net461",
-            "net462",
-            "net47",
-            "net471",
-            "net472",
-            "net48"
-          ],
-          "assetTargetFallback": true,
-          "warn": true,
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
-        }
-      }
-    },
-    "C:\\Projects\\Carbon\\Carbon.Cassandra\\Carbon.Cassandra.csproj": {
-      "version": "1.0.0",
-      "restore": {
-        "projectUniqueName": "C:\\Projects\\Carbon\\Carbon.Cassandra\\Carbon.Cassandra.csproj",
-        "projectName": "Carbon.Cassandra",
-        "projectPath": "C:\\Projects\\Carbon\\Carbon.Cassandra\\Carbon.Cassandra.csproj",
-        "packagesPath": "C:\\Users\\02484376\\.nuget\\packages\\",
-        "outputPath": "C:\\Projects\\Carbon\\Carbon.Cassandra\\obj\\",
-        "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Microsoft\\Xamarin\\NuGet\\"
-        ],
-        "configFilePaths": [
-          "C:\\Users\\02484376\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
-        ],
-        "originalTargetFrameworks": [
-          "netstandard2.0"
-        ],
-        "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "http://bellatrix:8080/tfs/KocDigitalCollection/_packaging/CarbonFramework/nuget/v3/index.json": {},
-          "http://bellatrix:8080/tfs/KocDigitalCollection/_packaging/Platform360Core/nuget/v3/index.json": {},
-          "https://api.nuget.org/v3/index.json": {}
-        },
-        "frameworks": {
-          "netstandard2.0": {
-            "projectReferences": {
-              "C:\\Projects\\Carbon\\Carbon.Cassandra.Abstractions\\Carbon.Cassandra.Abstractions.csproj": {
-                "projectPath": "C:\\Projects\\Carbon\\Carbon.Cassandra.Abstractions\\Carbon.Cassandra.Abstractions.csproj"
-              }
-            }
-          }
-        },
-        "warningProperties": {
-          "warnAsError": [
-            "NU1605"
-          ]
-        }
-      },
-      "frameworks": {
-        "netstandard2.0": {
-          "dependencies": {
-            "Microsoft.Extensions.Configuration": {
-              "target": "Package",
-              "version": "[3.1.0, )"
-            },
-            "Microsoft.Extensions.Configuration.Binder": {
-              "target": "Package",
-              "version": "[3.1.0, )"
-            },
-            "Microsoft.Extensions.Options": {
-              "target": "Package",
-              "version": "[3.1.0, )"
-            },
-            "NETStandard.Library": {
-              "suppressParent": "All",
-              "target": "Package",
-              "version": "[2.0.3, )",
-              "autoReferenced": true
-            }
-          },
-          "imports": [
-            "net461",
-            "net462",
-            "net47",
-            "net471",
-            "net472",
-            "net48"
-          ],
-          "assetTargetFallback": true,
-          "warn": true,
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
-        }
-      }
-    },
->>>>>>> Stashed changes
     "C:\\Projects\\Carbon\\Carbon.Common\\Carbon.Common.csproj": {
-      "version": "1.1.6",
+      "version": "1.1.7",
       "restore": {
         "projectUniqueName": "C:\\Projects\\Carbon\\Carbon.Common\\Carbon.Common.csproj",
         "projectName": "Carbon.Common",
@@ -214,7 +69,7 @@
       }
     },
     "C:\\Projects\\Carbon\\Carbon.ConsoleApplication.Extensions\\Carbon.ConsoleApplication.csproj": {
-      "version": "1.1.5",
+      "version": "1.1.6",
       "restore": {
         "projectUniqueName": "C:\\Projects\\Carbon\\Carbon.ConsoleApplication.Extensions\\Carbon.ConsoleApplication.csproj",
         "projectName": "Carbon.ConsoleApplication",
@@ -310,7 +165,7 @@
       }
     },
     "C:\\Projects\\Carbon\\Carbon.Domain.Abstractions\\Carbon.Domain.Abstractions.csproj": {
-      "version": "1.1.0",
+      "version": "1.1.1",
       "restore": {
         "projectUniqueName": "C:\\Projects\\Carbon\\Carbon.Domain.Abstractions\\Carbon.Domain.Abstractions.csproj",
         "projectName": "Carbon.Domain.Abstractions",
@@ -378,7 +233,7 @@
       }
     },
     "C:\\Projects\\Carbon\\Carbon.Domain.EntityFrameworkCore.Extensions\\Carbon.Domain.EntityFrameworkCore.csproj": {
-      "version": "1.0.11",
+      "version": "1.0.12",
       "restore": {
         "projectUniqueName": "C:\\Projects\\Carbon\\Carbon.Domain.EntityFrameworkCore.Extensions\\Carbon.Domain.EntityFrameworkCore.csproj",
         "projectName": "Carbon.Domain.EntityFrameworkCore",
@@ -460,7 +315,7 @@
       }
     },
     "C:\\Projects\\Carbon\\Carbon.ExceptionHandling\\Carbon.ExceptionHandling.Abstractions.csproj": {
-      "version": "1.0.5",
+      "version": "1.0.6",
       "restore": {
         "projectUniqueName": "C:\\Projects\\Carbon\\Carbon.ExceptionHandling\\Carbon.ExceptionHandling.Abstractions.csproj",
         "projectName": "Carbon.ExceptionHandling.Abstractions",
@@ -528,7 +383,7 @@
       }
     },
     "C:\\Projects\\Carbon\\Carbon.HttpClient\\Carbon.HttpClient.csproj": {
-      "version": "1.0.5",
+      "version": "1.0.6",
       "restore": {
         "projectUniqueName": "C:\\Projects\\Carbon\\Carbon.HttpClient\\Carbon.HttpClient.csproj",
         "projectName": "Carbon.HttpClient",
@@ -595,7 +450,7 @@
       }
     },
     "C:\\Projects\\Carbon\\Carbon.PagedList\\Carbon.PagedList.csproj": {
-      "version": "1.0.4",
+      "version": "1.0.5",
       "restore": {
         "projectUniqueName": "C:\\Projects\\Carbon\\Carbon.PagedList\\Carbon.PagedList.csproj",
         "projectName": "Carbon.PagedList",
@@ -740,11 +595,7 @@
       }
     },
     "C:\\Projects\\Carbon\\Carbon.WebApplication\\Carbon.WebApplication.csproj": {
-<<<<<<< Updated upstream
-      "version": "1.6.18",
-=======
       "version": "1.6.19",
->>>>>>> Stashed changes
       "restore": {
         "projectUniqueName": "C:\\Projects\\Carbon\\Carbon.WebApplication\\Carbon.WebApplication.csproj",
         "projectName": "Carbon.WebApplication",
@@ -850,7 +701,7 @@
             },
             "Serilog.Sinks.ElasticSearch": {
               "target": "Package",
-              "version": "[8.0.1, )"
+              "version": "[7.1.0, )"
             },
             "Serilog.Sinks.File": {
               "target": "Package",
@@ -908,7 +759,7 @@
       }
     },
     "C:\\Projects\\Carbon\\Carbon.Zipkin4Net\\Carbon.Zipkin4Net.csproj": {
-      "version": "1.0.7",
+      "version": "1.0.8",
       "restore": {
         "projectUniqueName": "C:\\Projects\\Carbon\\Carbon.Zipkin4Net\\Carbon.Zipkin4Net.csproj",
         "projectName": "Carbon.Zipkin4Net",
@@ -1011,15 +862,6 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-<<<<<<< Updated upstream
-=======
-              "C:\\Projects\\Carbon\\Carbon.Cassandra.Abstractions\\Carbon.Cassandra.Abstractions.csproj": {
-                "projectPath": "C:\\Projects\\Carbon\\Carbon.Cassandra.Abstractions\\Carbon.Cassandra.Abstractions.csproj"
-              },
-              "C:\\Projects\\Carbon\\Carbon.Cassandra\\Carbon.Cassandra.csproj": {
-                "projectPath": "C:\\Projects\\Carbon\\Carbon.Cassandra\\Carbon.Cassandra.csproj"
-              },
->>>>>>> Stashed changes
               "C:\\Projects\\Carbon\\Carbon.Common\\Carbon.Common.csproj": {
                 "projectPath": "C:\\Projects\\Carbon\\Carbon.Common\\Carbon.Common.csproj"
               },
