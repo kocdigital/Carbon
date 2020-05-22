@@ -13,8 +13,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Carbon.Cassandra.Abstractions\Carbon.Cassandra.Abstractions.csproj" />
-    <ProjectReference Include="..\..\Carbon.Cassandra\Carbon.Cassandra.csproj" />
     <ProjectReference Include="..\..\Carbon.Common\Carbon.Common.csproj" />
     <ProjectReference Include="..\..\Carbon.ConsoleApplication.Extensions\Carbon.ConsoleApplication.csproj" />
     <ProjectReference Include="..\..\Carbon.Domain.Abstractions\Carbon.Domain.Abstractions.csproj" />
