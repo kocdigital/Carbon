@@ -268,7 +268,11 @@
       }
     },
     "C:\\Projects\\Carbon\\Carbon.WebApplication\\Carbon.WebApplication.csproj": {
+<<<<<<< Updated upstream
       "version": "1.6.18",
+=======
+      "version": "1.6.19",
+>>>>>>> Stashed changes
       "restore": {
         "projectUniqueName": "C:\\Projects\\Carbon\\Carbon.WebApplication\\Carbon.WebApplication.csproj",
         "projectName": "Carbon.WebApplication",

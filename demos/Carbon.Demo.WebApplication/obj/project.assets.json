@@ -4561,10 +4561,7 @@
         },
         "runtime": {
           "bin/placeholder/Carbon.WebApplication.dll": {}
-        },
-        "frameworkReferences": [
-          "Microsoft.AspNetCore.App"
-        ]
+        }
       },
       "Carbon.Zipkin4Net/1.0.6": {
         "type": "project",

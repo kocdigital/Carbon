@@ -2,8 +2,11 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <Version>1.6.18</Version>
+    <Version>1.6.19</Version>
     <Description>
+    1.6.19
+	 - ApiResponse default constructor added
+	 - OrderBy function fixed
     1.6.18
 	 - Parameterless constructor added to ApiResponse
 	1.6.14
