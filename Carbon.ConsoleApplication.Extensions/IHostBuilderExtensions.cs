@@ -39,13 +39,7 @@ namespace Carbon.ConsoleApplication
 
                 #endregion
 
-
-
                 var configuration = c.Build();
-
-            
-
-
 
                 var _serilogSettings = configuration.GetSection("Serilog").Get<SerilogSettings>();
 
@@ -80,6 +74,7 @@ namespace Carbon.ConsoleApplication
         {
             builder.ConfigureServices((h, s) =>
             {
+                s.AddSingleton<IErrorCodes, NullErrorCodes>();
                 var serviceProvider = s.BuildServiceProvider();
                 configureServiceProviders(serviceProvider);
             });

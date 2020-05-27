@@ -14,11 +14,13 @@ namespace Carbon.WebApplication
         private readonly IWebHostEnvironment _env;
         private readonly ILogger<HttpGlobalExceptionFilter> _logger;
         private const int GeneralServerErrorCode = (int)ApiStatusCode.InternalServerError;
+        private readonly IErrorCodes _errorCodes;
 
-        public HttpGlobalExceptionFilter(IWebHostEnvironment env, ILogger<HttpGlobalExceptionFilter> logger)
+        public HttpGlobalExceptionFilter(IWebHostEnvironment env, ILogger<HttpGlobalExceptionFilter> logger, IErrorCodes errorCodes)
         {
             _env = env;
             _logger = logger;
+            _errorCodes = errorCodes;
         }
         public void OnException(ExceptionContext context)
         {
@@ -30,16 +32,31 @@ namespace Carbon.WebApplication
 
             var apiResponse = new ApiResponse<object>(correlationId, ApiStatusCode.InternalServerError);
 
-            if (context.Exception.GetType() == typeof(CarbonException))
+            if (context.Exception is CarbonException)
             {
                 var exception = (CarbonException)context.Exception;
 
-                apiResponse.AddMessage(context.Exception.Message);
+                var message = _errorCodes.GetMessage(exception.ErrorCode);
+
+                if(!string.IsNullOrEmpty(message))
+                {
+                    apiResponse.AddMessage(message);
+                }
+
+                if(!string.IsNullOrEmpty(context.Exception.Message))
+                {
+                    apiResponse.AddMessage(context.Exception.Message);
+                }
+
                 apiResponse.SetErrorCode(exception.ErrorCode);
             }
             else
             {
-                apiResponse.AddMessage(context.Exception.Message);
+                if (!string.IsNullOrEmpty(context.Exception.Message))
+                {
+                    apiResponse.AddMessage(context.Exception.Message);
+                }
+
                 apiResponse.SetErrorCode(GeneralServerErrorCode);
             }
 

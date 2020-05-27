@@ -5,7 +5,7 @@
   },
   "projects": {
     "C:\\Projects\\Carbon\\Carbon.Common\\Carbon.Common.csproj": {
-      "version": "1.1.8",
+      "version": "1.1.9",
       "restore": {
         "projectUniqueName": "C:\\Projects\\Carbon\\Carbon.Common\\Carbon.Common.csproj",
         "projectName": "Carbon.Common",
@@ -69,7 +69,7 @@
       }
     },
     "C:\\Projects\\Carbon\\Carbon.ConsoleApplication.Extensions\\Carbon.ConsoleApplication.csproj": {
-      "version": "1.1.6",
+      "version": "1.1.7",
       "restore": {
         "projectUniqueName": "C:\\Projects\\Carbon\\Carbon.ConsoleApplication.Extensions\\Carbon.ConsoleApplication.csproj",
         "projectName": "Carbon.ConsoleApplication",
@@ -165,7 +165,7 @@
       }
     },
     "C:\\Projects\\Carbon\\Carbon.Domain.Abstractions\\Carbon.Domain.Abstractions.csproj": {
-      "version": "1.1.1",
+      "version": "1.1.2",
       "restore": {
         "projectUniqueName": "C:\\Projects\\Carbon\\Carbon.Domain.Abstractions\\Carbon.Domain.Abstractions.csproj",
         "projectName": "Carbon.Domain.Abstractions",
@@ -233,7 +233,7 @@
       }
     },
     "C:\\Projects\\Carbon\\Carbon.Domain.EntityFrameworkCore.Extensions\\Carbon.Domain.EntityFrameworkCore.csproj": {
-      "version": "1.0.12",
+      "version": "1.0.13",
       "restore": {
         "projectUniqueName": "C:\\Projects\\Carbon\\Carbon.Domain.EntityFrameworkCore.Extensions\\Carbon.Domain.EntityFrameworkCore.csproj",
         "projectName": "Carbon.Domain.EntityFrameworkCore",
@@ -315,7 +315,7 @@
       }
     },
     "C:\\Projects\\Carbon\\Carbon.ExceptionHandling\\Carbon.ExceptionHandling.Abstractions.csproj": {
-      "version": "1.0.6",
+      "version": "1.0.7",
       "restore": {
         "projectUniqueName": "C:\\Projects\\Carbon\\Carbon.ExceptionHandling\\Carbon.ExceptionHandling.Abstractions.csproj",
         "projectName": "Carbon.ExceptionHandling.Abstractions",
@@ -383,7 +383,7 @@
       }
     },
     "C:\\Projects\\Carbon\\Carbon.HttpClient\\Carbon.HttpClient.csproj": {
-      "version": "1.0.6",
+      "version": "1.0.7",
       "restore": {
         "projectUniqueName": "C:\\Projects\\Carbon\\Carbon.HttpClient\\Carbon.HttpClient.csproj",
         "projectName": "Carbon.HttpClient",
@@ -450,7 +450,7 @@
       }
     },
     "C:\\Projects\\Carbon\\Carbon.PagedList\\Carbon.PagedList.csproj": {
-      "version": "1.0.5",
+      "version": "1.0.6",
       "restore": {
         "projectUniqueName": "C:\\Projects\\Carbon\\Carbon.PagedList\\Carbon.PagedList.csproj",
         "projectName": "Carbon.PagedList",
@@ -595,7 +595,7 @@
       }
     },
     "C:\\Projects\\Carbon\\Carbon.WebApplication\\Carbon.WebApplication.csproj": {
-      "version": "1.6.20",
+      "version": "1.6.22",
       "restore": {
         "projectUniqueName": "C:\\Projects\\Carbon\\Carbon.WebApplication\\Carbon.WebApplication.csproj",
         "projectName": "Carbon.WebApplication",
@@ -758,81 +758,6 @@
         }
       }
     },
-    "C:\\Projects\\Carbon\\Carbon.Zipkin4Net\\Carbon.Zipkin4Net.csproj": {
-      "version": "1.0.8",
-      "restore": {
-        "projectUniqueName": "C:\\Projects\\Carbon\\Carbon.Zipkin4Net\\Carbon.Zipkin4Net.csproj",
-        "projectName": "Carbon.Zipkin4Net",
-        "projectPath": "C:\\Projects\\Carbon\\Carbon.Zipkin4Net\\Carbon.Zipkin4Net.csproj",
-        "packagesPath": "C:\\Users\\02484376\\.nuget\\packages\\",
-        "outputPath": "C:\\Projects\\Carbon\\Carbon.Zipkin4Net\\obj\\",
-        "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Microsoft\\Xamarin\\NuGet\\"
-        ],
-        "configFilePaths": [
-          "C:\\Users\\02484376\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
-        ],
-        "originalTargetFrameworks": [
-          "netcoreapp3.1"
-        ],
-        "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "http://bellatrix:8080/tfs/KocDigitalCollection/_packaging/CarbonFramework/nuget/v3/index.json": {},
-          "http://bellatrix:8080/tfs/KocDigitalCollection/_packaging/Platform360Core/nuget/v3/index.json": {},
-          "https://api.nuget.org/v3/index.json": {}
-        },
-        "frameworks": {
-          "netcoreapp3.1": {
-            "projectReferences": {
-              "C:\\Projects\\Carbon\\Carbon.HttpClient\\Carbon.HttpClient.csproj": {
-                "projectPath": "C:\\Projects\\Carbon\\Carbon.HttpClient\\Carbon.HttpClient.csproj"
-              }
-            }
-          }
-        },
-        "warningProperties": {
-          "warnAsError": [
-            "NU1605"
-          ]
-        }
-      },
-      "frameworks": {
-        "netcoreapp3.1": {
-          "dependencies": {
-            "zipkin4net": {
-              "target": "Package",
-              "version": "[1.5.0, )"
-            },
-            "zipkin4net.middleware.aspnetcore": {
-              "target": "Package",
-              "version": "[1.5.0, )"
-            }
-          },
-          "imports": [
-            "net461",
-            "net462",
-            "net47",
-            "net471",
-            "net472",
-            "net48"
-          ],
-          "assetTargetFallback": true,
-          "warn": true,
-          "frameworkReferences": {
-            "Microsoft.AspNetCore.App": {
-              "privateAssets": "none"
-            },
-            "Microsoft.NETCore.App": {
-              "privateAssets": "all"
-            }
-          },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
-        }
-      }
-    },
     "C:\\Projects\\Carbon\\demos\\Carbon.Demo.WebApplication\\Carbon.Demo.WebApplication.csproj": {
       "version": "1.0.0",
       "restore": {
@@ -885,9 +810,6 @@
               },
               "C:\\Projects\\Carbon\\Carbon.WebApplication\\Carbon.WebApplication.csproj": {
                 "projectPath": "C:\\Projects\\Carbon\\Carbon.WebApplication\\Carbon.WebApplication.csproj"
-              },
-              "C:\\Projects\\Carbon\\Carbon.Zipkin4Net\\Carbon.Zipkin4Net.csproj": {
-                "projectPath": "C:\\Projects\\Carbon\\Carbon.Zipkin4Net\\Carbon.Zipkin4Net.csproj"
               }
             }
           }
@@ -906,10 +828,6 @@
               "suppressParent": "All",
               "target": "Package",
               "version": "[3.1.0-preview1.19506.2, )"
-            },
-            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
-              "target": "Package",
-              "version": "[3.1.0-preview1-19509-03, )"
             }
           },
           "imports": [

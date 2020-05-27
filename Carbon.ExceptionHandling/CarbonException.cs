@@ -12,7 +12,7 @@ namespace Carbon.ExceptionHandling.Abstractions
 
         public CarbonException()
         {
-
+            ErrorCode = 5000;
         }
 
         public CarbonException(int code)

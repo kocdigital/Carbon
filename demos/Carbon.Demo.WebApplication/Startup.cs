@@ -4,9 +4,9 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Carbon.HttpClients;
-using Carbon.Redis;
-using Carbon.Zipkin4Net;
 using System.Net.Http;
+using System.Collections.Generic;
+using Carbon.Common;
 
 namespace Carbon.Demo.WebApplication
 {
@@ -28,24 +28,34 @@ namespace Carbon.Demo.WebApplication
 
         public override void CustomConfigureServices(IServiceCollection services)
         {
-
-
-            services.AddHttpClientWithZipkinTracing(c =>
+            services.AddHttpClientWithHeaderPropagation((x) =>
             {
-                c.DefaultRequestHeaders.Add("CustomBiHeader", "CustomBiValue");
-                c.BaseAddress = new System.Uri("http://custombaseaddres.com");
-            }, Environment, "OneM2MClient");
 
+            });
 
+            var values = new List<ErrorCode>
+            {
+                new ErrorCode(100,  "ErrorCode1"),
+                new ErrorCode(101,  "ErrorCode2"),
+                new ErrorCode(102,  "ErrorCode3"),
+                new ErrorCode(103,  "ErrorCode4"),
+                new ErrorCode(104,  "ErrorCode5"),
+            };
 
+            services.AddErrorCodes(values);
 
+            //services.AddHttpClientWithZipkinTracing(c =>
+            //{
+            //    c.DefaultRequestHeaders.Add("CustomBiHeader", "CustomBiValue");
+            //    c.BaseAddress = new System.Uri("http://custombaseaddres.com");
+            //}, Environment, "OneM2MClient");
 
             // services.AddRedisPersister(Configuration);
         }
 
         public override void CustomConfigure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            app.UseZipkin(env, Configuration);
+            //app.UseZipkin(env, Configuration);
         }
     }
 }

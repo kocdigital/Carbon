@@ -1,6 +1,4 @@
 ﻿using Carbon.Common;
-using Carbon.HttpClients;
-using Carbon.WebApplication.Middlewares;
 using FluentValidation.AspNetCore;
 using Mapster;
 using Microsoft.AspNetCore.Builder;
@@ -9,8 +7,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using Microsoft.Net.Http.Headers;
 using Microsoft.OpenApi.Models;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
@@ -19,9 +15,7 @@ using Serilog;
 using Swashbuckle.AspNetCore.SwaggerGen;
 using System;
 using System.Collections.Generic;
-using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
-using System.Text.Json;
 
 namespace Carbon.WebApplication
 {
@@ -70,6 +64,8 @@ namespace Carbon.WebApplication
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddHeaderPropagation();
+
+            services.AddSingleton<IErrorCodes, NullErrorCodes>();
             services.AddOptions();
             services.AddControllers();
             services.Configure<SerilogSettings>(Configuration.GetSection("Serilog"));
