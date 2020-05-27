@@ -3,41 +3,35 @@ using System;
 
 namespace Carbon.Demo.WebApplication
 {
-    public class MyTestException : CarbonException
+    public enum MyErrorCodes
+    {
+        Blabla = 1,
+        TiraTira = 2
+    }
+
+    public class MyTestException : CarbonException<MyErrorCodes>
     {
         public MyTestException()
         {
         }
 
-        public MyTestException(int code) : base(code)
+        public MyTestException(MyErrorCodes code) : base(code)
         {
         }
 
-        public MyTestException(int code, object model) : base(code, model)
+        public MyTestException(MyErrorCodes code, object model) : base(code, model)
         {
         }
 
-        public MyTestException(int code, params object[] arguments) : base(code, arguments)
+        public MyTestException(MyErrorCodes code, params object[] arguments) : base(code, arguments)
         {
         }
 
-        public MyTestException(string message, params object[] args) : base(message, args)
+        public MyTestException(Exception innerException, MyErrorCodes code) : base(innerException, code)
         {
         }
 
-        public MyTestException(Exception innerException, int code) : base(innerException, code)
-        {
-        }
-
-        public MyTestException(int code, string message, params object[] args) : base(code, message, args)
-        {
-        }
-
-        public MyTestException(Exception innerException, string message, params object[] args) : base(innerException, message, args)
-        {
-        }
-
-        public MyTestException(Exception innerException, int code, string message, params object[] args) : base(innerException, code, message, args)
+        public MyTestException(Exception innerException, MyErrorCodes code, params object[] args) : base(innerException, code, args)
         {
         }
     }

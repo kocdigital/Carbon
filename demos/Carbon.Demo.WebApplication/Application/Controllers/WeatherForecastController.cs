@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
+using Carbon.Common;
 using Carbon.Demo.WebApplication.Application.Dtos;
 using Carbon.HttpClients;
 using Carbon.WebApplication;
@@ -35,8 +36,7 @@ namespace Carbon.Demo.WebApplication.Controllers
         [HttpGet]
         public IEnumerable<WeatherForecast> Get()
         {
-
-            throw new MyTestException(101, "Lalalala hata fırladı", new WeatherForecast());
+            throw new MyTestException(MyErrorCodes.Blabla);
 
             var rng = new Random();
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast

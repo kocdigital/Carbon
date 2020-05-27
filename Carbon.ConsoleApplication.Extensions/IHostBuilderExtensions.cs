@@ -74,7 +74,6 @@ namespace Carbon.ConsoleApplication
         {
             builder.ConfigureServices((h, s) =>
             {
-                s.AddSingleton<IErrorCodes, NullErrorCodes>();
                 var serviceProvider = s.BuildServiceProvider();
                 configureServiceProviders(serviceProvider);
             });

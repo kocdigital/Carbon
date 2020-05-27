@@ -65,7 +65,6 @@ namespace Carbon.WebApplication
         {
             services.AddHeaderPropagation();
 
-            services.AddSingleton<IErrorCodes, NullErrorCodes>();
             services.AddOptions();
             services.AddControllers();
             services.Configure<SerilogSettings>(Configuration.GetSection("Serilog"));

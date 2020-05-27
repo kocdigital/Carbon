@@ -33,17 +33,6 @@ namespace Carbon.Demo.WebApplication
 
             });
 
-            var values = new List<ErrorCode>
-            {
-                new ErrorCode(100,  "ErrorCode1"),
-                new ErrorCode(101,  "ErrorCode2"),
-                new ErrorCode(102,  "ErrorCode3"),
-                new ErrorCode(103,  "ErrorCode4"),
-                new ErrorCode(104,  "ErrorCode5"),
-            };
-
-            services.AddErrorCodes(values);
-
             //services.AddHttpClientWithZipkinTracing(c =>
             //{
             //    c.DefaultRequestHeaders.Add("CustomBiHeader", "CustomBiValue");

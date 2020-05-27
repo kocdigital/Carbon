@@ -2,8 +2,11 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <Version>1.6.22</Version>
+    <Version>1.6.23</Version>
     <Description>
+    1.6.23
+	 - Generic CarbonException which takes enum added
+	 - ErrorCodes removed
     1.6.22
 	 - ErrorCodes structure added. Exception will show the errorcode message. 
 	 - ErrorCode demo usage also added to Carbon.Demo.WebApplication

@@ -11,12 +11,6 @@ namespace Carbon.WebApplication
 
     public static class ServiceCollectionExtensions
     {
-        public static IServiceCollection AddErrorCodes(this IServiceCollection services, IList<ErrorCode> errorCodes)
-        {
-            var errors = new ErrorCodes(errorCodes);
-            services.AddSingleton<IErrorCodes>(errors);
-            return services;
-        }
         public static IServiceCollection AddBearerAuthentication(this IServiceCollection services, IConfiguration configuration)
         {
             var jwtSettings = configuration.GetSection("JwtSettings").Get<JwtSettings>();
