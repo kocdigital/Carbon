@@ -11,7 +11,7 @@ namespace Carbon.WebApplication
     {
         [JsonIgnore]
         [FromHeader]
-        public string TenantId { get; set; }
+        public Guid TenantId { get; set; }
 
         [JsonIgnore]
         [FromHeader]

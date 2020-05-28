@@ -3,7 +3,7 @@ using Automatonymous;
 
 namespace Carbon.MassTransit
 {
-    public abstract class CarbonStateMachinaInstance : SagaStateMachineInstance
+    public abstract class CarbonStateMachineInstance : SagaStateMachineInstance
     {
         public Guid CorrelationId { get; set; }
         public int CurrentState { get; set; }

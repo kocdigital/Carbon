@@ -3518,7 +3518,7 @@
           "bin/placeholder/Carbon.Common.dll": {}
         }
       },
-      "Carbon.ExceptionHandling.Abstractions/1.0.7": {
+      "Carbon.ExceptionHandling.Abstractions/1.0.8": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.1",
         "dependencies": {
@@ -3532,7 +3532,7 @@
           "bin/placeholder/Carbon.ExceptionHandling.Abstractions.dll": {}
         }
       },
-      "Carbon.HttpClient/1.0.7": {
+      "Carbon.HttpClient/1.0.8": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v3.1",
         "dependencies": {
@@ -3548,7 +3548,7 @@
           "Microsoft.AspNetCore.App"
         ]
       },
-      "Carbon.PagedList/1.0.6": {
+      "Carbon.PagedList/1.0.7": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.1",
         "dependencies": {
@@ -10243,17 +10243,17 @@
       "path": "../Carbon.Common/Carbon.Common.csproj",
       "msbuildProject": "../Carbon.Common/Carbon.Common.csproj"
     },
-    "Carbon.ExceptionHandling.Abstractions/1.0.7": {
+    "Carbon.ExceptionHandling.Abstractions/1.0.8": {
       "type": "project",
       "path": "../Carbon.ExceptionHandling/Carbon.ExceptionHandling.Abstractions.csproj",
       "msbuildProject": "../Carbon.ExceptionHandling/Carbon.ExceptionHandling.Abstractions.csproj"
     },
-    "Carbon.HttpClient/1.0.7": {
+    "Carbon.HttpClient/1.0.8": {
       "type": "project",
       "path": "../Carbon.HttpClient/Carbon.HttpClient.csproj",
       "msbuildProject": "../Carbon.HttpClient/Carbon.HttpClient.csproj"
     },
-    "Carbon.PagedList/1.0.6": {
+    "Carbon.PagedList/1.0.7": {
       "type": "project",
       "path": "../Carbon.PagedList/Carbon.PagedList.csproj",
       "msbuildProject": "../Carbon.PagedList/Carbon.PagedList.csproj"
@@ -10262,9 +10262,9 @@
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
       "Carbon.Common >= 1.1.10",
-      "Carbon.ExceptionHandling.Abstractions >= 1.0.7",
-      "Carbon.HttpClient >= 1.0.7",
-      "Carbon.PagedList >= 1.0.6",
+      "Carbon.ExceptionHandling.Abstractions >= 1.0.8",
+      "Carbon.HttpClient >= 1.0.8",
+      "Carbon.PagedList >= 1.0.7",
       "FluentValidation.AspNetCore >= 8.6.1",
       "HybridModelBinding >= 0.17.0",
       "Microsoft.AspNetCore.Authentication.JwtBearer >= 3.1.1",
@@ -10294,7 +10294,7 @@
     "C:\\Microsoft\\Xamarin\\NuGet\\": {}
   },
   "project": {
-    "version": "1.6.22",
+    "version": "1.6.24",
     "restore": {
       "projectUniqueName": "C:\\Projects\\Carbon\\Carbon.WebApplication\\Carbon.WebApplication.csproj",
       "projectName": "Carbon.WebApplication",

@@ -69,7 +69,7 @@
       }
     },
     "C:\\Projects\\Carbon\\Carbon.ExceptionHandling\\Carbon.ExceptionHandling.Abstractions.csproj": {
-      "version": "1.0.7",
+      "version": "1.0.8",
       "restore": {
         "projectUniqueName": "C:\\Projects\\Carbon\\Carbon.ExceptionHandling\\Carbon.ExceptionHandling.Abstractions.csproj",
         "projectName": "Carbon.ExceptionHandling.Abstractions",
@@ -137,7 +137,7 @@
       }
     },
     "C:\\Projects\\Carbon\\Carbon.HttpClient\\Carbon.HttpClient.csproj": {
-      "version": "1.0.7",
+      "version": "1.0.8",
       "restore": {
         "projectUniqueName": "C:\\Projects\\Carbon\\Carbon.HttpClient\\Carbon.HttpClient.csproj",
         "projectName": "Carbon.HttpClient",
@@ -204,7 +204,7 @@
       }
     },
     "C:\\Projects\\Carbon\\Carbon.PagedList\\Carbon.PagedList.csproj": {
-      "version": "1.0.6",
+      "version": "1.0.7",
       "restore": {
         "projectUniqueName": "C:\\Projects\\Carbon\\Carbon.PagedList\\Carbon.PagedList.csproj",
         "projectName": "Carbon.PagedList",
@@ -268,7 +268,7 @@
       }
     },
     "C:\\Projects\\Carbon\\Carbon.WebApplication\\Carbon.WebApplication.csproj": {
-      "version": "1.6.22",
+      "version": "1.6.24",
       "restore": {
         "projectUniqueName": "C:\\Projects\\Carbon\\Carbon.WebApplication\\Carbon.WebApplication.csproj",
         "projectName": "Carbon.WebApplication",
