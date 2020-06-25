@@ -4053,7 +4053,7 @@
           "lib/netstandard1.6/zipkin4net.middleware.aspnetcore.dll": {}
         }
       },
-      "Carbon.Common/1.1.10": {
+      "Carbon.Common/1.1.11": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.1",
         "dependencies": {
@@ -4070,7 +4070,7 @@
         "type": "project",
         "framework": ".NETStandard,Version=v2.1",
         "dependencies": {
-          "Carbon.Common": "1.1.10",
+          "Carbon.Common": "1.1.11",
           "Microsoft.Extensions.Configuration": "3.1.0",
           "Microsoft.Extensions.Configuration.EnvironmentVariables": "3.1.0",
           "Microsoft.Extensions.Hosting": "3.1.0",
@@ -4087,11 +4087,11 @@
           "bin/placeholder/Carbon.ConsoleApplication.dll": {}
         }
       },
-      "Carbon.Domain.Abstractions/1.1.3": {
+      "Carbon.Domain.Abstractions/1.1.4": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.1",
         "dependencies": {
-          "Carbon.Common": "1.1.10",
+          "Carbon.Common": "1.1.11",
           "System.ComponentModel.Annotations": "4.7.0"
         },
         "compile": {
@@ -4105,7 +4105,7 @@
         "type": "project",
         "framework": ".NETStandard,Version=v2.1",
         "dependencies": {
-          "Carbon.Domain.Abstractions": "1.1.3",
+          "Carbon.Domain.Abstractions": "1.1.4",
           "Microsoft.EntityFrameworkCore": "3.1.0",
           "Microsoft.EntityFrameworkCore.Relational": "3.1.0",
           "Microsoft.EntityFrameworkCore.SqlServer": "3.1.0"
@@ -4177,11 +4177,11 @@
           "bin/placeholder/Carbon.Redis.dll": {}
         }
       },
-      "Carbon.WebApplication/1.6.24": {
+      "Carbon.WebApplication/1.6.25": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v3.1",
         "dependencies": {
-          "Carbon.Common": "1.1.10",
+          "Carbon.Common": "1.1.11",
           "Carbon.ExceptionHandling.Abstractions": "1.0.8",
           "Carbon.HttpClient": "1.0.8",
           "Carbon.PagedList": "1.0.7",
@@ -11859,7 +11859,7 @@
         "zipkin4net.middleware.aspnetcore.nuspec"
       ]
     },
-    "Carbon.Common/1.1.10": {
+    "Carbon.Common/1.1.11": {
       "type": "project",
       "path": "../../Carbon.Common/Carbon.Common.csproj",
       "msbuildProject": "../../Carbon.Common/Carbon.Common.csproj"
@@ -11869,7 +11869,7 @@
       "path": "../../Carbon.ConsoleApplication.Extensions/Carbon.ConsoleApplication.csproj",
       "msbuildProject": "../../Carbon.ConsoleApplication.Extensions/Carbon.ConsoleApplication.csproj"
     },
-    "Carbon.Domain.Abstractions/1.1.3": {
+    "Carbon.Domain.Abstractions/1.1.4": {
       "type": "project",
       "path": "../../Carbon.Domain.Abstractions/Carbon.Domain.Abstractions.csproj",
       "msbuildProject": "../../Carbon.Domain.Abstractions/Carbon.Domain.Abstractions.csproj"
@@ -11899,7 +11899,7 @@
       "path": "../../Carbon.Redis/Carbon.Redis.csproj",
       "msbuildProject": "../../Carbon.Redis/Carbon.Redis.csproj"
     },
-    "Carbon.WebApplication/1.6.24": {
+    "Carbon.WebApplication/1.6.25": {
       "type": "project",
       "path": "../../Carbon.WebApplication/Carbon.WebApplication.csproj",
       "msbuildProject": "../../Carbon.WebApplication/Carbon.WebApplication.csproj"
@@ -11907,37 +11907,36 @@
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
-      "Carbon.Common >= 1.1.10",
+      "Carbon.Common >= 1.1.11",
       "Carbon.ConsoleApplication >= 1.1.8",
-      "Carbon.Domain.Abstractions >= 1.1.3",
+      "Carbon.Domain.Abstractions >= 1.1.4",
       "Carbon.Domain.EntityFrameworkCore >= 1.0.14",
       "Carbon.ExceptionHandling.Abstractions >= 1.0.8",
       "Carbon.PagedList >= 1.0.7",
       "Carbon.Redis >= 1.0.0",
-      "Carbon.WebApplication >= 1.6.24",
+      "Carbon.WebApplication >= 1.6.25",
       "Microsoft.EntityFrameworkCore.Tools >= 3.1.0-preview1.19506.2"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\02484376\\.nuget\\packages\\": {},
-    "C:\\Microsoft\\Xamarin\\NuGet\\": {}
+    "C:\\Users\\02485129\\.nuget\\packages\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Projects\\Carbon\\demos\\Carbon.Demo.WebApplication\\Carbon.Demo.WebApplication.csproj",
+      "projectUniqueName": "C:\\Users\\02485129\\Source\\Repos\\Carbon\\demos\\Carbon.Demo.WebApplication\\Carbon.Demo.WebApplication.csproj",
       "projectName": "Carbon.Demo.WebApplication",
-      "projectPath": "C:\\Projects\\Carbon\\demos\\Carbon.Demo.WebApplication\\Carbon.Demo.WebApplication.csproj",
-      "packagesPath": "C:\\Users\\02484376\\.nuget\\packages\\",
-      "outputPath": "C:\\Projects\\Carbon\\demos\\Carbon.Demo.WebApplication\\obj\\",
+      "projectPath": "C:\\Users\\02485129\\Source\\Repos\\Carbon\\demos\\Carbon.Demo.WebApplication\\Carbon.Demo.WebApplication.csproj",
+      "packagesPath": "C:\\Users\\02485129\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\02485129\\Source\\Repos\\Carbon\\demos\\Carbon.Demo.WebApplication\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Microsoft\\Xamarin\\NuGet\\"
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\02484376\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        "C:\\Users\\02485129\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.1"
@@ -11946,34 +11945,35 @@
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "http://bellatrix:8080/tfs/KocDigitalCollection/_packaging/CarbonFramework/nuget/v3/index.json": {},
         "http://bellatrix:8080/tfs/KocDigitalCollection/_packaging/Platform360Core/nuget/v3/index.json": {},
-        "https://api.nuget.org/v3/index.json": {}
+        "https://api.nuget.org/v3/index.json": {},
+        "https://dotnet.myget.org/F/roslyn/api/v3/index.json": {}
       },
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "C:\\Projects\\Carbon\\Carbon.Common\\Carbon.Common.csproj": {
-              "projectPath": "C:\\Projects\\Carbon\\Carbon.Common\\Carbon.Common.csproj"
+            "C:\\Users\\02485129\\Source\\Repos\\Carbon\\Carbon.Common\\Carbon.Common.csproj": {
+              "projectPath": "C:\\Users\\02485129\\Source\\Repos\\Carbon\\Carbon.Common\\Carbon.Common.csproj"
             },
-            "C:\\Projects\\Carbon\\Carbon.ConsoleApplication.Extensions\\Carbon.ConsoleApplication.csproj": {
-              "projectPath": "C:\\Projects\\Carbon\\Carbon.ConsoleApplication.Extensions\\Carbon.ConsoleApplication.csproj"
+            "C:\\Users\\02485129\\Source\\Repos\\Carbon\\Carbon.ConsoleApplication.Extensions\\Carbon.ConsoleApplication.csproj": {
+              "projectPath": "C:\\Users\\02485129\\Source\\Repos\\Carbon\\Carbon.ConsoleApplication.Extensions\\Carbon.ConsoleApplication.csproj"
             },
-            "C:\\Projects\\Carbon\\Carbon.Domain.Abstractions\\Carbon.Domain.Abstractions.csproj": {
-              "projectPath": "C:\\Projects\\Carbon\\Carbon.Domain.Abstractions\\Carbon.Domain.Abstractions.csproj"
+            "C:\\Users\\02485129\\Source\\Repos\\Carbon\\Carbon.Domain.Abstractions\\Carbon.Domain.Abstractions.csproj": {
+              "projectPath": "C:\\Users\\02485129\\Source\\Repos\\Carbon\\Carbon.Domain.Abstractions\\Carbon.Domain.Abstractions.csproj"
             },
-            "C:\\Projects\\Carbon\\Carbon.Domain.EntityFrameworkCore.Extensions\\Carbon.Domain.EntityFrameworkCore.csproj": {
-              "projectPath": "C:\\Projects\\Carbon\\Carbon.Domain.EntityFrameworkCore.Extensions\\Carbon.Domain.EntityFrameworkCore.csproj"
+            "C:\\Users\\02485129\\Source\\Repos\\Carbon\\Carbon.Domain.EntityFrameworkCore.Extensions\\Carbon.Domain.EntityFrameworkCore.csproj": {
+              "projectPath": "C:\\Users\\02485129\\Source\\Repos\\Carbon\\Carbon.Domain.EntityFrameworkCore.Extensions\\Carbon.Domain.EntityFrameworkCore.csproj"
             },
-            "C:\\Projects\\Carbon\\Carbon.ExceptionHandling\\Carbon.ExceptionHandling.Abstractions.csproj": {
-              "projectPath": "C:\\Projects\\Carbon\\Carbon.ExceptionHandling\\Carbon.ExceptionHandling.Abstractions.csproj"
+            "C:\\Users\\02485129\\Source\\Repos\\Carbon\\Carbon.ExceptionHandling\\Carbon.ExceptionHandling.Abstractions.csproj": {
+              "projectPath": "C:\\Users\\02485129\\Source\\Repos\\Carbon\\Carbon.ExceptionHandling\\Carbon.ExceptionHandling.Abstractions.csproj"
             },
-            "C:\\Projects\\Carbon\\Carbon.PagedList\\Carbon.PagedList.csproj": {
-              "projectPath": "C:\\Projects\\Carbon\\Carbon.PagedList\\Carbon.PagedList.csproj"
+            "C:\\Users\\02485129\\Source\\Repos\\Carbon\\Carbon.PagedList\\Carbon.PagedList.csproj": {
+              "projectPath": "C:\\Users\\02485129\\Source\\Repos\\Carbon\\Carbon.PagedList\\Carbon.PagedList.csproj"
             },
-            "C:\\Projects\\Carbon\\Carbon.Redis\\Carbon.Redis.csproj": {
-              "projectPath": "C:\\Projects\\Carbon\\Carbon.Redis\\Carbon.Redis.csproj"
+            "C:\\Users\\02485129\\Source\\Repos\\Carbon\\Carbon.Redis\\Carbon.Redis.csproj": {
+              "projectPath": "C:\\Users\\02485129\\Source\\Repos\\Carbon\\Carbon.Redis\\Carbon.Redis.csproj"
             },
-            "C:\\Projects\\Carbon\\Carbon.WebApplication\\Carbon.WebApplication.csproj": {
-              "projectPath": "C:\\Projects\\Carbon\\Carbon.WebApplication\\Carbon.WebApplication.csproj"
+            "C:\\Users\\02485129\\Source\\Repos\\Carbon\\Carbon.WebApplication\\Carbon.WebApplication.csproj": {
+              "projectPath": "C:\\Users\\02485129\\Source\\Repos\\Carbon\\Carbon.WebApplication\\Carbon.WebApplication.csproj"
             }
           }
         }
