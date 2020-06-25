@@ -1,24 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\02485129\\Source\\Repos\\Carbon\\Carbon.WebApplication\\Carbon.WebApplication.csproj": {}
+    "C:\\Projects\\Carbon\\Carbon.WebApplication\\Carbon.WebApplication.csproj": {}
   },
   "projects": {
-    "C:\\Users\\02485129\\Source\\Repos\\Carbon\\Carbon.Common\\Carbon.Common.csproj": {
-      "version": "1.1.6",
+    "C:\\Projects\\Carbon\\Carbon.Common\\Carbon.Common.csproj": {
+      "version": "1.1.10",
       "restore": {
-        "projectUniqueName": "C:\\Users\\02485129\\Source\\Repos\\Carbon\\Carbon.Common\\Carbon.Common.csproj",
+        "projectUniqueName": "C:\\Projects\\Carbon\\Carbon.Common\\Carbon.Common.csproj",
         "projectName": "Carbon.Common",
-        "projectPath": "C:\\Users\\02485129\\Source\\Repos\\Carbon\\Carbon.Common\\Carbon.Common.csproj",
-        "packagesPath": "C:\\Users\\02485129\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\02485129\\Source\\Repos\\Carbon\\Carbon.Common\\obj\\",
+        "projectPath": "C:\\Projects\\Carbon\\Carbon.Common\\Carbon.Common.csproj",
+        "packagesPath": "C:\\Users\\02484376\\.nuget\\packages\\",
+        "outputPath": "C:\\Projects\\Carbon\\Carbon.Common\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+          "C:\\Microsoft\\Xamarin\\NuGet\\"
         ],
         "configFilePaths": [
-          "C:\\Users\\02485129\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\02484376\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netstandard2.1"
@@ -68,21 +69,22 @@
         }
       }
     },
-    "C:\\Users\\02485129\\Source\\Repos\\Carbon\\Carbon.ExceptionHandling\\Carbon.ExceptionHandling.Abstractions.csproj": {
-      "version": "1.0.5",
+    "C:\\Projects\\Carbon\\Carbon.ExceptionHandling\\Carbon.ExceptionHandling.Abstractions.csproj": {
+      "version": "1.0.8",
       "restore": {
-        "projectUniqueName": "C:\\Users\\02485129\\Source\\Repos\\Carbon\\Carbon.ExceptionHandling\\Carbon.ExceptionHandling.Abstractions.csproj",
+        "projectUniqueName": "C:\\Projects\\Carbon\\Carbon.ExceptionHandling\\Carbon.ExceptionHandling.Abstractions.csproj",
         "projectName": "Carbon.ExceptionHandling.Abstractions",
-        "projectPath": "C:\\Users\\02485129\\Source\\Repos\\Carbon\\Carbon.ExceptionHandling\\Carbon.ExceptionHandling.Abstractions.csproj",
-        "packagesPath": "C:\\Users\\02485129\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\02485129\\Source\\Repos\\Carbon\\Carbon.ExceptionHandling\\obj\\",
+        "projectPath": "C:\\Projects\\Carbon\\Carbon.ExceptionHandling\\Carbon.ExceptionHandling.Abstractions.csproj",
+        "packagesPath": "C:\\Users\\02484376\\.nuget\\packages\\",
+        "outputPath": "C:\\Projects\\Carbon\\Carbon.ExceptionHandling\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+          "C:\\Microsoft\\Xamarin\\NuGet\\"
         ],
         "configFilePaths": [
-          "C:\\Users\\02485129\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\02484376\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netstandard2.1"
@@ -136,21 +138,22 @@
         }
       }
     },
-    "C:\\Users\\02485129\\Source\\Repos\\Carbon\\Carbon.HttpClient\\Carbon.HttpClient.csproj": {
-      "version": "1.0.5",
+    "C:\\Projects\\Carbon\\Carbon.HttpClient\\Carbon.HttpClient.csproj": {
+      "version": "1.0.8",
       "restore": {
-        "projectUniqueName": "C:\\Users\\02485129\\Source\\Repos\\Carbon\\Carbon.HttpClient\\Carbon.HttpClient.csproj",
+        "projectUniqueName": "C:\\Projects\\Carbon\\Carbon.HttpClient\\Carbon.HttpClient.csproj",
         "projectName": "Carbon.HttpClient",
-        "projectPath": "C:\\Users\\02485129\\Source\\Repos\\Carbon\\Carbon.HttpClient\\Carbon.HttpClient.csproj",
-        "packagesPath": "C:\\Users\\02485129\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\02485129\\Source\\Repos\\Carbon\\Carbon.HttpClient\\obj\\",
+        "projectPath": "C:\\Projects\\Carbon\\Carbon.HttpClient\\Carbon.HttpClient.csproj",
+        "packagesPath": "C:\\Users\\02484376\\.nuget\\packages\\",
+        "outputPath": "C:\\Projects\\Carbon\\Carbon.HttpClient\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+          "C:\\Microsoft\\Xamarin\\NuGet\\"
         ],
         "configFilePaths": [
-          "C:\\Users\\02485129\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\02484376\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
@@ -203,21 +206,22 @@
         }
       }
     },
-    "C:\\Users\\02485129\\Source\\Repos\\Carbon\\Carbon.PagedList\\Carbon.PagedList.csproj": {
-      "version": "1.0.4",
+    "C:\\Projects\\Carbon\\Carbon.PagedList\\Carbon.PagedList.csproj": {
+      "version": "1.0.7",
       "restore": {
-        "projectUniqueName": "C:\\Users\\02485129\\Source\\Repos\\Carbon\\Carbon.PagedList\\Carbon.PagedList.csproj",
+        "projectUniqueName": "C:\\Projects\\Carbon\\Carbon.PagedList\\Carbon.PagedList.csproj",
         "projectName": "Carbon.PagedList",
-        "projectPath": "C:\\Users\\02485129\\Source\\Repos\\Carbon\\Carbon.PagedList\\Carbon.PagedList.csproj",
-        "packagesPath": "C:\\Users\\02485129\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\02485129\\Source\\Repos\\Carbon\\Carbon.PagedList\\obj\\",
+        "projectPath": "C:\\Projects\\Carbon\\Carbon.PagedList\\Carbon.PagedList.csproj",
+        "packagesPath": "C:\\Users\\02484376\\.nuget\\packages\\",
+        "outputPath": "C:\\Projects\\Carbon\\Carbon.PagedList\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+          "C:\\Microsoft\\Xamarin\\NuGet\\"
         ],
         "configFilePaths": [
-          "C:\\Users\\02485129\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\02484376\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netstandard2.1"
@@ -267,21 +271,22 @@
         }
       }
     },
-    "C:\\Users\\02485129\\Source\\Repos\\Carbon\\Carbon.WebApplication\\Carbon.WebApplication.csproj": {
-      "version": "1.6.19",
+    "C:\\Projects\\Carbon\\Carbon.WebApplication\\Carbon.WebApplication.csproj": {
+      "version": "1.6.24",
       "restore": {
-        "projectUniqueName": "C:\\Users\\02485129\\Source\\Repos\\Carbon\\Carbon.WebApplication\\Carbon.WebApplication.csproj",
+        "projectUniqueName": "C:\\Projects\\Carbon\\Carbon.WebApplication\\Carbon.WebApplication.csproj",
         "projectName": "Carbon.WebApplication",
-        "projectPath": "C:\\Users\\02485129\\Source\\Repos\\Carbon\\Carbon.WebApplication\\Carbon.WebApplication.csproj",
-        "packagesPath": "C:\\Users\\02485129\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\02485129\\Source\\Repos\\Carbon\\Carbon.WebApplication\\obj\\",
+        "projectPath": "C:\\Projects\\Carbon\\Carbon.WebApplication\\Carbon.WebApplication.csproj",
+        "packagesPath": "C:\\Users\\02484376\\.nuget\\packages\\",
+        "outputPath": "C:\\Projects\\Carbon\\Carbon.WebApplication\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+          "C:\\Microsoft\\Xamarin\\NuGet\\"
         ],
         "configFilePaths": [
-          "C:\\Users\\02485129\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\02484376\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
@@ -296,17 +301,17 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "C:\\Users\\02485129\\Source\\Repos\\Carbon\\Carbon.Common\\Carbon.Common.csproj": {
-                "projectPath": "C:\\Users\\02485129\\Source\\Repos\\Carbon\\Carbon.Common\\Carbon.Common.csproj"
+              "C:\\Projects\\Carbon\\Carbon.Common\\Carbon.Common.csproj": {
+                "projectPath": "C:\\Projects\\Carbon\\Carbon.Common\\Carbon.Common.csproj"
               },
-              "C:\\Users\\02485129\\Source\\Repos\\Carbon\\Carbon.ExceptionHandling\\Carbon.ExceptionHandling.Abstractions.csproj": {
-                "projectPath": "C:\\Users\\02485129\\Source\\Repos\\Carbon\\Carbon.ExceptionHandling\\Carbon.ExceptionHandling.Abstractions.csproj"
+              "C:\\Projects\\Carbon\\Carbon.ExceptionHandling\\Carbon.ExceptionHandling.Abstractions.csproj": {
+                "projectPath": "C:\\Projects\\Carbon\\Carbon.ExceptionHandling\\Carbon.ExceptionHandling.Abstractions.csproj"
               },
-              "C:\\Users\\02485129\\Source\\Repos\\Carbon\\Carbon.HttpClient\\Carbon.HttpClient.csproj": {
-                "projectPath": "C:\\Users\\02485129\\Source\\Repos\\Carbon\\Carbon.HttpClient\\Carbon.HttpClient.csproj"
+              "C:\\Projects\\Carbon\\Carbon.HttpClient\\Carbon.HttpClient.csproj": {
+                "projectPath": "C:\\Projects\\Carbon\\Carbon.HttpClient\\Carbon.HttpClient.csproj"
               },
-              "C:\\Users\\02485129\\Source\\Repos\\Carbon\\Carbon.PagedList\\Carbon.PagedList.csproj": {
-                "projectPath": "C:\\Users\\02485129\\Source\\Repos\\Carbon\\Carbon.PagedList\\Carbon.PagedList.csproj"
+              "C:\\Projects\\Carbon\\Carbon.PagedList\\Carbon.PagedList.csproj": {
+                "projectPath": "C:\\Projects\\Carbon\\Carbon.PagedList\\Carbon.PagedList.csproj"
               }
             }
           }

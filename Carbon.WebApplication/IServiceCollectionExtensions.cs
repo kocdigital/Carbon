@@ -1,11 +1,14 @@
-﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.Mvc;
+﻿using Carbon.Common;
+using Elasticsearch.Net;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
+using System.Collections.Generic;
 
 namespace Carbon.WebApplication
 {
+
     public static class ServiceCollectionExtensions
     {
         public static IServiceCollection AddBearerAuthentication(this IServiceCollection services, IConfiguration configuration)

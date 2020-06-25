@@ -3,7 +3,6 @@ using System;
 
 namespace Carbon.ExceptionHandling.Abstractions
 {
-
     public abstract class CarbonException : Exception
     {
         public int ErrorCode { get; set; }
@@ -12,7 +11,7 @@ namespace Carbon.ExceptionHandling.Abstractions
 
         public CarbonException()
         {
-
+            ErrorCode = 5000;
         }
 
         public CarbonException(int code)

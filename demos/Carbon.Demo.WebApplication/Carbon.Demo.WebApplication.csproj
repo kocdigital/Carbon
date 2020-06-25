@@ -9,12 +9,9 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.0-preview1-19509-03" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Carbon.Cassandra.Abstractions\Carbon.Cassandra.Abstractions.csproj" />
-    <ProjectReference Include="..\..\Carbon.Cassandra\Carbon.Cassandra.csproj" />
     <ProjectReference Include="..\..\Carbon.Common\Carbon.Common.csproj" />
     <ProjectReference Include="..\..\Carbon.ConsoleApplication.Extensions\Carbon.ConsoleApplication.csproj" />
     <ProjectReference Include="..\..\Carbon.Domain.Abstractions\Carbon.Domain.Abstractions.csproj" />
@@ -23,7 +20,6 @@
     <ProjectReference Include="..\..\Carbon.PagedList\Carbon.PagedList.csproj" />
     <ProjectReference Include="..\..\Carbon.Redis\Carbon.Redis.csproj" />
     <ProjectReference Include="..\..\Carbon.WebApplication\Carbon.WebApplication.csproj" />
-    <ProjectReference Include="..\..\Carbon.Zipkin4Net\Carbon.Zipkin4Net.csproj" />
   </ItemGroup>
 
   <ItemGroup>

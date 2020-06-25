@@ -1,24 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\02485129\\Source\\Repos\\Carbon\\Carbon.Common\\Carbon.Common.csproj": {}
+    "C:\\Projects\\Carbon\\Carbon.Common\\Carbon.Common.csproj": {}
   },
   "projects": {
-    "C:\\Users\\02485129\\Source\\Repos\\Carbon\\Carbon.Common\\Carbon.Common.csproj": {
-      "version": "1.1.6",
+    "C:\\Projects\\Carbon\\Carbon.Common\\Carbon.Common.csproj": {
+      "version": "1.1.10",
       "restore": {
-        "projectUniqueName": "C:\\Users\\02485129\\Source\\Repos\\Carbon\\Carbon.Common\\Carbon.Common.csproj",
+        "projectUniqueName": "C:\\Projects\\Carbon\\Carbon.Common\\Carbon.Common.csproj",
         "projectName": "Carbon.Common",
-        "projectPath": "C:\\Users\\02485129\\Source\\Repos\\Carbon\\Carbon.Common\\Carbon.Common.csproj",
-        "packagesPath": "C:\\Users\\02485129\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\02485129\\Source\\Repos\\Carbon\\Carbon.Common\\obj\\",
+        "projectPath": "C:\\Projects\\Carbon\\Carbon.Common\\Carbon.Common.csproj",
+        "packagesPath": "C:\\Users\\02484376\\.nuget\\packages\\",
+        "outputPath": "C:\\Projects\\Carbon\\Carbon.Common\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+          "C:\\Microsoft\\Xamarin\\NuGet\\"
         ],
         "configFilePaths": [
-          "C:\\Users\\02485129\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\02484376\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netstandard2.1"

@@ -15,10 +15,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Carbon.PagedList", "Carbon.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Carbon.Common", "Carbon.Common\Carbon.Common.csproj", "{7C51DD99-5243-40D9-BFB5-9E1F4DA4056B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Carbon.Cassandra.Abstractions", "Carbon.Cassandra.Abstractions\Carbon.Cassandra.Abstractions.csproj", "{DDB8BA33-1C43-42E8-86C1-AC52E761C60F}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Carbon.Cassandra", "Carbon.Cassandra\Carbon.Cassandra.csproj", "{A795014C-0488-46E0-AA48-857F16BCA814}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Carbon.WebApplication", "Carbon.WebApplication\Carbon.WebApplication.csproj", "{7B9A4FAA-8D00-4A21-8EE6-6909A9152863}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{C22416E6-A406-44C9-9347-D6E9826FE6F9}"
@@ -44,8 +40,6 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Carbon.MassTransit.Abstractions", "Carbon.MassTransit.Abstractions\Carbon.MassTransit.Abstractions.csproj", "{652FE57C-B364-40DD-B083-B5EDBA95C9E6}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Carbon.Redis", "Carbon.Redis\Carbon.Redis.csproj", "{CCAC7E7E-B062-4C1D-87D8-02BC3C91CEFF}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Carbon.Zipkin4Net", "Carbon.Zipkin4Net\Carbon.Zipkin4Net.csproj", "{E7722AB4-FF70-42F6-9D8A-9DCA38466A1B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -77,14 +71,6 @@ Global
 		{7C51DD99-5243-40D9-BFB5-9E1F4DA4056B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7C51DD99-5243-40D9-BFB5-9E1F4DA4056B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7C51DD99-5243-40D9-BFB5-9E1F4DA4056B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{DDB8BA33-1C43-42E8-86C1-AC52E761C60F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DDB8BA33-1C43-42E8-86C1-AC52E761C60F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DDB8BA33-1C43-42E8-86C1-AC52E761C60F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DDB8BA33-1C43-42E8-86C1-AC52E761C60F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A795014C-0488-46E0-AA48-857F16BCA814}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A795014C-0488-46E0-AA48-857F16BCA814}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A795014C-0488-46E0-AA48-857F16BCA814}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A795014C-0488-46E0-AA48-857F16BCA814}.Release|Any CPU.Build.0 = Release|Any CPU
 		{7B9A4FAA-8D00-4A21-8EE6-6909A9152863}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{7B9A4FAA-8D00-4A21-8EE6-6909A9152863}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7B9A4FAA-8D00-4A21-8EE6-6909A9152863}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -125,10 +111,6 @@ Global
 		{CCAC7E7E-B062-4C1D-87D8-02BC3C91CEFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CCAC7E7E-B062-4C1D-87D8-02BC3C91CEFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CCAC7E7E-B062-4C1D-87D8-02BC3C91CEFF}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E7722AB4-FF70-42F6-9D8A-9DCA38466A1B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E7722AB4-FF70-42F6-9D8A-9DCA38466A1B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E7722AB4-FF70-42F6-9D8A-9DCA38466A1B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E7722AB4-FF70-42F6-9D8A-9DCA38466A1B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

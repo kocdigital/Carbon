@@ -3505,7 +3505,7 @@
           "lib/netstandard1.6/zipkin4net.middleware.aspnetcore.dll": {}
         }
       },
-      "Carbon.Common/1.1.6": {
+      "Carbon.Common/1.1.10": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.1",
         "dependencies": {
@@ -3518,7 +3518,7 @@
           "bin/placeholder/Carbon.Common.dll": {}
         }
       },
-      "Carbon.ExceptionHandling.Abstractions/1.0.5": {
+      "Carbon.ExceptionHandling.Abstractions/1.0.8": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.1",
         "dependencies": {
@@ -3532,7 +3532,7 @@
           "bin/placeholder/Carbon.ExceptionHandling.Abstractions.dll": {}
         }
       },
-      "Carbon.HttpClient/1.0.5": {
+      "Carbon.HttpClient/1.0.8": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v3.1",
         "dependencies": {
@@ -3548,7 +3548,7 @@
           "Microsoft.AspNetCore.App"
         ]
       },
-      "Carbon.PagedList/1.0.4": {
+      "Carbon.PagedList/1.0.7": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.1",
         "dependencies": {
@@ -3613,6 +3613,7 @@
       "path": "consul/0.7.2.6",
       "files": [
         ".nupkg.metadata",
+        ".signature.p7s",
         "consul.0.7.2.6.nupkg.sha512",
         "consul.nuspec",
         "lib/net45/Consul.dll",
@@ -5598,6 +5599,7 @@
       "path": "serilog.formatting.compact/1.0.0",
       "files": [
         ".nupkg.metadata",
+        ".signature.p7s",
         "lib/net45/Serilog.Formatting.Compact.dll",
         "lib/net45/Serilog.Formatting.Compact.xml",
         "lib/netstandard1.1/Serilog.Formatting.Compact.dll",
@@ -5644,6 +5646,7 @@
       "path": "serilog.sinks.console/3.1.1",
       "files": [
         ".nupkg.metadata",
+        ".signature.p7s",
         "lib/net45/Serilog.Sinks.Console.dll",
         "lib/net45/Serilog.Sinks.Console.xml",
         "lib/netcoreapp1.1/Serilog.Sinks.Console.dll",
@@ -5714,6 +5717,7 @@
       "path": "serilog.sinks.periodicbatching/2.1.1",
       "files": [
         ".nupkg.metadata",
+        ".signature.p7s",
         "lib/net45/Serilog.Sinks.PeriodicBatching.dll",
         "lib/net45/Serilog.Sinks.PeriodicBatching.xml",
         "lib/netstandard1.1/Serilog.Sinks.PeriodicBatching.dll",
@@ -5730,6 +5734,7 @@
       "path": "serilog.sinks.rollingfile/3.3.0",
       "files": [
         ".nupkg.metadata",
+        ".signature.p7s",
         "lib/net45/Serilog.Sinks.RollingFile.dll",
         "lib/net45/Serilog.Sinks.RollingFile.xml",
         "lib/netstandard1.3/Serilog.Sinks.RollingFile.dll",
@@ -6122,6 +6127,7 @@
       "path": "system.componentmodel/4.3.0",
       "files": [
         ".nupkg.metadata",
+        ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "lib/MonoAndroid10/_._",
@@ -6269,6 +6275,7 @@
       "path": "system.componentmodel.primitives/4.3.0",
       "files": [
         ".nupkg.metadata",
+        ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "lib/MonoAndroid10/_._",
@@ -6307,6 +6314,7 @@
       "path": "system.componentmodel.typeconverter/4.3.0",
       "files": [
         ".nupkg.metadata",
+        ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "lib/MonoAndroid10/_._",
@@ -6490,6 +6498,7 @@
       "path": "system.diagnostics.fileversioninfo/4.3.0",
       "files": [
         ".nupkg.metadata",
+        ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "lib/MonoAndroid10/_._",
@@ -7463,6 +7472,7 @@
       "path": "system.net.http.winhttphandler/4.0.0",
       "files": [
         ".nupkg.metadata",
+        ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "lib/net46/System.Net.Http.WinHttpHandler.dll",
@@ -9915,6 +9925,7 @@
       "path": "system.valuetuple/4.3.0",
       "files": [
         ".nupkg.metadata",
+        ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "lib/netstandard1.0/.xml",
@@ -10151,6 +10162,7 @@
       "path": "system.xml.xpath.xdocument/4.3.0",
       "files": [
         ".nupkg.metadata",
+        ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "lib/MonoAndroid10/_._",
@@ -10226,22 +10238,22 @@
         "zipkin4net.middleware.aspnetcore.nuspec"
       ]
     },
-    "Carbon.Common/1.1.6": {
+    "Carbon.Common/1.1.10": {
       "type": "project",
       "path": "../Carbon.Common/Carbon.Common.csproj",
       "msbuildProject": "../Carbon.Common/Carbon.Common.csproj"
     },
-    "Carbon.ExceptionHandling.Abstractions/1.0.5": {
+    "Carbon.ExceptionHandling.Abstractions/1.0.8": {
       "type": "project",
       "path": "../Carbon.ExceptionHandling/Carbon.ExceptionHandling.Abstractions.csproj",
       "msbuildProject": "../Carbon.ExceptionHandling/Carbon.ExceptionHandling.Abstractions.csproj"
     },
-    "Carbon.HttpClient/1.0.5": {
+    "Carbon.HttpClient/1.0.8": {
       "type": "project",
       "path": "../Carbon.HttpClient/Carbon.HttpClient.csproj",
       "msbuildProject": "../Carbon.HttpClient/Carbon.HttpClient.csproj"
     },
-    "Carbon.PagedList/1.0.4": {
+    "Carbon.PagedList/1.0.7": {
       "type": "project",
       "path": "../Carbon.PagedList/Carbon.PagedList.csproj",
       "msbuildProject": "../Carbon.PagedList/Carbon.PagedList.csproj"
@@ -10249,10 +10261,10 @@
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
-      "Carbon.Common >= 1.1.6",
-      "Carbon.ExceptionHandling.Abstractions >= 1.0.5",
-      "Carbon.HttpClient >= 1.0.5",
-      "Carbon.PagedList >= 1.0.4",
+      "Carbon.Common >= 1.1.10",
+      "Carbon.ExceptionHandling.Abstractions >= 1.0.8",
+      "Carbon.HttpClient >= 1.0.8",
+      "Carbon.PagedList >= 1.0.7",
       "FluentValidation.AspNetCore >= 8.6.1",
       "HybridModelBinding >= 0.17.0",
       "Microsoft.AspNetCore.Authentication.JwtBearer >= 3.1.1",
@@ -10278,24 +10290,25 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\02485129\\.nuget\\packages\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Users\\02484376\\.nuget\\packages\\": {},
+    "C:\\Microsoft\\Xamarin\\NuGet\\": {}
   },
   "project": {
-    "version": "1.6.19",
+    "version": "1.6.24",
     "restore": {
-      "projectUniqueName": "C:\\Users\\02485129\\Source\\Repos\\Carbon\\Carbon.WebApplication\\Carbon.WebApplication.csproj",
+      "projectUniqueName": "C:\\Projects\\Carbon\\Carbon.WebApplication\\Carbon.WebApplication.csproj",
       "projectName": "Carbon.WebApplication",
-      "projectPath": "C:\\Users\\02485129\\Source\\Repos\\Carbon\\Carbon.WebApplication\\Carbon.WebApplication.csproj",
-      "packagesPath": "C:\\Users\\02485129\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\02485129\\Source\\Repos\\Carbon\\Carbon.WebApplication\\obj\\",
+      "projectPath": "C:\\Projects\\Carbon\\Carbon.WebApplication\\Carbon.WebApplication.csproj",
+      "packagesPath": "C:\\Users\\02484376\\.nuget\\packages\\",
+      "outputPath": "C:\\Projects\\Carbon\\Carbon.WebApplication\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        "C:\\Microsoft\\Xamarin\\NuGet\\"
       ],
       "configFilePaths": [
-        "C:\\Users\\02485129\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\02484376\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.1"
@@ -10310,17 +10323,17 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "C:\\Users\\02485129\\Source\\Repos\\Carbon\\Carbon.Common\\Carbon.Common.csproj": {
-              "projectPath": "C:\\Users\\02485129\\Source\\Repos\\Carbon\\Carbon.Common\\Carbon.Common.csproj"
+            "C:\\Projects\\Carbon\\Carbon.Common\\Carbon.Common.csproj": {
+              "projectPath": "C:\\Projects\\Carbon\\Carbon.Common\\Carbon.Common.csproj"
             },
-            "C:\\Users\\02485129\\Source\\Repos\\Carbon\\Carbon.ExceptionHandling\\Carbon.ExceptionHandling.Abstractions.csproj": {
-              "projectPath": "C:\\Users\\02485129\\Source\\Repos\\Carbon\\Carbon.ExceptionHandling\\Carbon.ExceptionHandling.Abstractions.csproj"
+            "C:\\Projects\\Carbon\\Carbon.ExceptionHandling\\Carbon.ExceptionHandling.Abstractions.csproj": {
+              "projectPath": "C:\\Projects\\Carbon\\Carbon.ExceptionHandling\\Carbon.ExceptionHandling.Abstractions.csproj"
             },
-            "C:\\Users\\02485129\\Source\\Repos\\Carbon\\Carbon.HttpClient\\Carbon.HttpClient.csproj": {
-              "projectPath": "C:\\Users\\02485129\\Source\\Repos\\Carbon\\Carbon.HttpClient\\Carbon.HttpClient.csproj"
+            "C:\\Projects\\Carbon\\Carbon.HttpClient\\Carbon.HttpClient.csproj": {
+              "projectPath": "C:\\Projects\\Carbon\\Carbon.HttpClient\\Carbon.HttpClient.csproj"
             },
-            "C:\\Users\\02485129\\Source\\Repos\\Carbon\\Carbon.PagedList\\Carbon.PagedList.csproj": {
-              "projectPath": "C:\\Users\\02485129\\Source\\Repos\\Carbon\\Carbon.PagedList\\Carbon.PagedList.csproj"
+            "C:\\Projects\\Carbon\\Carbon.PagedList\\Carbon.PagedList.csproj": {
+              "projectPath": "C:\\Projects\\Carbon\\Carbon.PagedList\\Carbon.PagedList.csproj"
             }
           }
         }

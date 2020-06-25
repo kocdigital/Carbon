@@ -39,13 +39,7 @@ namespace Carbon.ConsoleApplication
 
                 #endregion
 
-
-
                 var configuration = c.Build();
-
-            
-
-
 
                 var _serilogSettings = configuration.GetSection("Serilog").Get<SerilogSettings>();
 
