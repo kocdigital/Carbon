@@ -2,8 +2,9 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <Version>1.6.24</Version>
-    <Description>
+    <Version>1.6.25</Version>
+    <Description>1.6.25
+- Fixed OrderBy extension issue in Carbon.Common
 		1.6.24
 		- TenantId as Guid in BaseRequestDto
 		1.6.23
@@ -43,8 +44,8 @@
 		- Swagger configurasyonunda AuthorizationUrl key'i ana root kısmında Security key'i altına alındı
 		- ResponseOk kısmında Unit Testlerde null exception hatası verme sorunu düzeltildi.
 	</Description>
-    <AssemblyVersion>1.6.9.0</AssemblyVersion>
-    <FileVersion>1.6.9.0</FileVersion>
+    <AssemblyVersion>1.6.25.0</AssemblyVersion>
+    <FileVersion>1.6.25.0</FileVersion>
   </PropertyGroup>
 
   <ItemGroup>

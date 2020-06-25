@@ -8,6 +8,9 @@ using Carbon.MassTransit;
 using RabbitMQ.Client;
 using Microsoft.Extensions.Logging;
 using System.Threading;
+using System.Linq;
+using System.Collections.Generic;
+using Carbon.Common;
 
 namespace Carbon.Demo.ConsoleApplication
 {
@@ -73,6 +76,12 @@ namespace Carbon.Demo.ConsoleApplication
         }
     }
 
+    public class SortObject
+    {
+        public string Name { get; set; }
+        public int Number { get; set; }
+        public double Points { get; set; }
+    }
 
     class Program
     {
@@ -80,7 +89,32 @@ namespace Carbon.Demo.ConsoleApplication
         {
             Console.WriteLine("Hello World");
 
-            var host = new HostBuilder()
+            List<SortObject> petList = new List<SortObject>();
+            petList.Add(new SortObject { Name = "Barley", Number = 8, Points = 3.7 });
+            petList.Add(new SortObject { Name = "Whiskers", Number = 1, Points = 3.13 });
+            petList.Add(new SortObject { Name = "Boots", Number = 1, Points = 3.1 });
+            IQueryable<SortObject> pets = petList.AsQueryable();
+
+            var orderables = new List<Orderable>();
+            orderables.Add(new Orderable
+            {
+                Value = "Name",
+                IsAscending = true
+            });
+            orderables.Add(new Orderable
+            {
+                Value = "Number",
+                IsAscending = false
+            });
+
+            var query = pets.OrderBy(orderables);
+
+            foreach (var pet in query)
+            {
+                Console.WriteLine("{0} - {1} - {2}", pet.Name, pet.Number, pet.Points);
+            }
+
+            /*var host = new HostBuilder()
                     .AddCarbonServices<Program>((hostContext, services) =>
                     {
                         services.AddTransient<ITestService, TestService>();
@@ -118,13 +152,15 @@ namespace Carbon.Demo.ConsoleApplication
                         });
 
                         services.AddHostedService<MyHostedService>();
+                        services.AddHostedService<MyQueryableTestService>();
+
                     })
                     .UseServiceProvider((serviceProvider) =>
                     {
                         
                     });
 
-            await host.RunConsoleAsync();
+            await host.RunConsoleAsync(); */
         }
     }
 }

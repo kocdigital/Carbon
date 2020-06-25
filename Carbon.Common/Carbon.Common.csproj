@@ -2,8 +2,9 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
-    <Version>1.1.10</Version>
-	  <Description>
+    <Version>1.1.11</Version>
+	  <Description>1.1.11
+- Fixed OrderBy extension issue.
 		  1.1.10
 		  - ErrorCodes removed
 		  1.1.9
@@ -14,7 +15,7 @@
 		  - OrderBy BugFix
 		  1.1.6
 		  - ApiResponse parameterless private constructor added for deserialization
-	  </Description>
+	</Description>
   </PropertyGroup>
 
   <ItemGroup>

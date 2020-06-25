@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
+using System.Runtime.CompilerServices;
 
 namespace Carbon.Common
 {
@@ -56,24 +58,39 @@ namespace Carbon.Common
         {
             if (ordination != null)
             {
+                int count = 0;
+                var expression = query.Expression;
+
                 foreach (var item in ordination)
                 {
                     var property = query.ElementType.GetProperty(item.Value);
                     if (property == null) continue;
 
+                    var parameter = Expression.Parameter(typeof(TEntity), "x");
+                    var selector = Expression.PropertyOrField(parameter, item.Value);
+
                     if (item.IsAscending)
                     {
-                        query = query.OrderBy(x => property.GetValue(x));
+                        expression = Expression.Call(typeof(Queryable), "OrderBy",
+                           new Type[] { query.ElementType, selector.Type },
+                           expression, Expression.Quote(Expression.Lambda(selector, parameter)));
+                        count++;
+
                     }
                     else
                     {
-                        query = query.OrderByDescending(x => property.GetValue(x));
+                        expression = Expression.Call(typeof(Queryable), "OrderByDescending",
+                           new Type[] { query.ElementType, selector.Type },
+                           expression, Expression.Quote(Expression.Lambda(selector, parameter)));
+                        count++;
                     }
+
                 }
+                return count > 0 ? query.Provider.CreateQuery<TEntity>(expression) : query;
             }
 
             return query;
+           
         }
-
     }
 }
