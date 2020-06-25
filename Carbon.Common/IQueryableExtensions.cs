@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Runtime.CompilerServices;
 
 namespace Carbon.Common
@@ -55,29 +56,39 @@ namespace Carbon.Common
         //     A new query with the related data included.
         public static IQueryable<TEntity> OrderBy<TEntity>(this IQueryable<TEntity> query, ICollection<Orderable> ordination)
         {
-            var entityList = query.AsEnumerable<TEntity>();
-
             if (ordination != null)
             {
+                int count = 0;
+                var expression = query.Expression;
+
                 foreach (var item in ordination)
                 {
-                    //var property = entityList.ElementAt(0).GetType().GetProperty(item.Value);
                     var property = query.ElementType.GetProperty(item.Value);
                     if (property == null) continue;
 
+                    var parameter = Expression.Parameter(typeof(TEntity), "x");
+                    var selector = Expression.PropertyOrField(parameter, item.Value);
+
                     if (item.IsAscending)
                     {
-                        //query = query.OrderBy(x => property.GetValue(x));
-                        entityList = entityList.OrderBy(x => property.GetValue(x));
+                        expression = Expression.Call(typeof(Queryable), "OrderBy",
+                           new Type[] { query.ElementType, selector.Type },
+                           expression, Expression.Quote(Expression.Lambda(selector, parameter)));
+                        count++;
+
                     }
                     else
                     {
-                        //query = query.OrderByDescending(x => property.GetValue(x));
-                        entityList = entityList.OrderByDescending(x => property.GetValue(x));
+                        expression = Expression.Call(typeof(Queryable), "OrderByDescending",
+                           new Type[] { query.ElementType, selector.Type },
+                           expression, Expression.Quote(Expression.Lambda(selector, parameter)));
+                        count++;
                     }
+
                 }
+                return count > 0 ? query.Provider.CreateQuery<TEntity>(expression) : query;
             }
-            return entityList.AsQueryable<TEntity>();
-        }
+
+            return query;
     }
 }
