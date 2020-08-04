@@ -2,9 +2,12 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <Version>1.6.27</Version>
-    <Description>1.6.25
-- Fixed OrderBy extension issue in Carbon.Common
+    <Version>1.6.26</Version>
+    <Description>
+    1.6.26
+    - Swagger description update and CorrelationId header update.
+    1.6.25
+    - Fixed OrderBy extension issue in Carbon.Common
 		1.6.24
 		- TenantId as Guid in BaseRequestDto
 		1.6.23
@@ -44,8 +47,8 @@
 		- Swagger configurasyonunda AuthorizationUrl key'i ana root kısmında Security key'i altına alındı
 		- ResponseOk kısmında Unit Testlerde null exception hatası verme sorunu düzeltildi.
 	</Description>
-    <AssemblyVersion>1.6.27.0</AssemblyVersion>
-    <FileVersion>1.6.27.0</FileVersion>
+    <AssemblyVersion>1.6.26.0</AssemblyVersion>
+    <FileVersion>1.6.26.0</FileVersion>
   </PropertyGroup>
 
   <ItemGroup>
@@ -66,8 +69,9 @@
     <PackageReference Include="Serilog.Sinks.File" Version="4.1.0" />
     <PackageReference Include="Serilog.Sinks.RollingFile" Version="3.3.0" />
 	<PackageReference Include="Swashbuckle.AspNetCore" Version="5.0.0" />
-	<PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="5.0.0" />
-	<PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="5.0.0" />
+	<PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="5.5.1" />
+	<PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="5.5.1" />
+	<PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="5.5.1" />
 	<PackageReference Include="Winton.Extensions.Configuration.Consul" Version="3.0.0" />
 	<PackageReference Include="zipkin4net" Version="1.5.0" />
 	<PackageReference Include="zipkin4net.middleware.aspnetcore" Version="1.5.0" />

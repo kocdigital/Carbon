@@ -17,8 +17,8 @@ namespace Carbon.MassTransit
             services.AddMassTransit(configurator);
         }
 
-        public static void AddRabbitMqBus(this IServiceCollectionConfigurator serviceCollection, 
-                                       IConfiguration configuration, Action<IServiceProvider, 
+        public static void AddRabbitMqBus(this IServiceCollectionConfigurator serviceCollection,
+                                       IConfiguration configuration, Action<IServiceProvider,
                                        IRabbitMqBusFactoryConfigurator> configurator)
         {
             var massTransitSettings = configuration.GetSection("MassTransit").Get<MassTransitSettings>();
@@ -37,46 +37,46 @@ namespace Carbon.MassTransit
 
                     return Bus.Factory.CreateUsingRabbitMq(x =>
                     {
-                        x.Host(busSettings.Host, (c) =>
-                        {
-                            if(!string.IsNullOrEmpty(busSettings.Username))
-                                c.Username(busSettings.Username);
-                            if (!string.IsNullOrEmpty(busSettings.Password))
-                                c.Password(busSettings.Password);
+                        x.Host(busSettings.Host, busSettings.VirtualHost, (c) =>
+                         {
+                             if (!string.IsNullOrEmpty(busSettings.Username))
+                                 c.Username(busSettings.Username);
+                             if (!string.IsNullOrEmpty(busSettings.Password))
+                                 c.Password(busSettings.Password);
 
-                            c.PublisherConfirmation = busSettings.PublisherConfirmation;
-                           
-                            if (busSettings.RequestedChannelMax > 0)
-                                c.RequestedChannelMax(busSettings.RequestedChannelMax);
+                             c.PublisherConfirmation = busSettings.PublisherConfirmation;
 
-                            if (busSettings.RequestedConnectionTimeout > 0)
-                                c.RequestedConnectionTimeout(busSettings.RequestedConnectionTimeout);
+                             if (busSettings.RequestedChannelMax > 0)
+                                 c.RequestedChannelMax(busSettings.RequestedChannelMax);
 
-                            if(busSettings.Heartbeat > 0)
-                                c.Heartbeat(busSettings.Heartbeat);
+                             if (busSettings.RequestedConnectionTimeout > 0)
+                                 c.RequestedConnectionTimeout(busSettings.RequestedConnectionTimeout);
 
-                            if (busSettings.ClusterMembers != null && busSettings.ClusterMembers.Length > 0)
-                                c.UseCluster((cluster) =>
-                                {
-                                    cluster.ClusterMembers = busSettings.ClusterMembers;
-                                });
+                             if (busSettings.Heartbeat > 0)
+                                 c.Heartbeat(busSettings.Heartbeat);
 
-                            if (busSettings.Ssl)
-                            {
-                                c.UseSsl((s) =>
-                                {
-                                    s.UseCertificateAsAuthenticationIdentity = busSettings.UseClientCertificateAsAuthenticationIdentity;
-                                    s.ServerName = busSettings.SslServerName;
-                                    s.Protocol = busSettings.SslProtocol;
-                                    s.Certificate = busSettings.ClientCertificate;
-                                    s.CertificatePassphrase = busSettings.ClientCertificatePassphrase;
-                                    s.CertificatePath = busSettings.ClientCertificatePath;
-                                    s.CertificateSelectionCallback = busSettings.CertificateSelectionCallback;
-                                });
-                            }
+                             if (busSettings.ClusterMembers != null && busSettings.ClusterMembers.Length > 0)
+                                 c.UseCluster((cluster) =>
+                                 {
+                                     cluster.ClusterMembers = busSettings.ClusterMembers;
+                                 });
+
+                             if (busSettings.Ssl)
+                             {
+                                 c.UseSsl((s) =>
+                                 {
+                                     s.UseCertificateAsAuthenticationIdentity = busSettings.UseClientCertificateAsAuthenticationIdentity;
+                                     s.ServerName = busSettings.SslServerName;
+                                     s.Protocol = busSettings.SslProtocol;
+                                     s.Certificate = busSettings.ClientCertificate;
+                                     s.CertificatePassphrase = busSettings.ClientCertificatePassphrase;
+                                     s.CertificatePath = busSettings.ClientCertificatePath;
+                                     s.CertificateSelectionCallback = busSettings.CertificateSelectionCallback;
+                                 });
+                             }
 
 
-                        });
+                         });
 
                         configurator(provider, x);
                     });
@@ -84,8 +84,8 @@ namespace Carbon.MassTransit
             }
         }
 
-        public static void AddServiceBus(this IServiceCollectionConfigurator serviceCollection, 
-                                       IConfiguration configuration, Action<IServiceProvider, 
+        public static void AddServiceBus(this IServiceCollectionConfigurator serviceCollection,
+                                       IConfiguration configuration, Action<IServiceProvider,
                                        IServiceBusBusFactoryConfigurator> configurator)
         {
             var massTransitSettings = configuration.GetSection("MassTransit").Get<MassTransitSettings>();
