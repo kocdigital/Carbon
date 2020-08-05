@@ -29,11 +29,16 @@ namespace Carbon.WebApplication.Middlewares
 
                 if (bearerToken != null)
                 {
-                    httpContext.Request.Headers.Remove("TenantId");
-                    httpContext.Request.Headers.Remove("ClientId");
-
                     var rawToken = bearerToken.Replace($"{BearerHeaderName} ", "");
                     var securityToken = new JwtSecurityToken(rawToken);
+
+                    if (securityToken.Claims == null || !securityToken.Claims.Where(k => k.Type == "god-user" && k.Value == "true").Any())
+                    {
+                        httpContext.Request.Headers.Remove("TenantId");
+                    }
+                    
+                    httpContext.Request.Headers.Remove("ClientId");
+
 
                     if (securityToken.Claims != null)
                     {

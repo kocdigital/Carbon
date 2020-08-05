@@ -2,8 +2,12 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <Version>1.6.26</Version>
+    <Version>1.6.28</Version>
     <Description>
+    1.6.28
+     - Swagger enable xml feature added.
+    1.6.27
+     -God user support added
     1.6.26
     - Swagger description update and CorrelationId header update.
     1.6.25
@@ -47,8 +51,8 @@
 		- Swagger configurasyonunda AuthorizationUrl key'i ana root kısmında Security key'i altına alındı
 		- ResponseOk kısmında Unit Testlerde null exception hatası verme sorunu düzeltildi.
 	</Description>
-    <AssemblyVersion>1.6.26.0</AssemblyVersion>
-    <FileVersion>1.6.26.0</FileVersion>
+    <AssemblyVersion>1.6.28.0</AssemblyVersion>
+    <FileVersion>1.6.28.0</FileVersion>
   </PropertyGroup>
 
   <ItemGroup>
