@@ -10,6 +10,8 @@ namespace Carbon.WebApplication.Middlewares
         {
             ValuePairs.Add("sub", "ClientId");
             ValuePairs.Add("tenant-id", "TenantId");
+            ValuePairs.Add("god-user", "GodUser");
+
         }
 
         public static bool TryGetValue(string key, out string mappedKey)
