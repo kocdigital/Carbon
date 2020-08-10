@@ -7,6 +7,7 @@ namespace Carbon.WebApplication
         public string EndpointUrl { get; set; }
         public string EndpointPath { get; set; }
         public string EndpointName { get; set; }
+        public bool EnableXml { get; set; }
         
         public IList<SwaggerDocument> Documents { get; set; }
         public string RoutePrefix { get; internal set; }

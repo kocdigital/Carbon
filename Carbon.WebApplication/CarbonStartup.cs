@@ -168,10 +168,13 @@ namespace Carbon.WebApplication
                 foreach (var doc in _swaggerSettings.Documents)
                 {
                     c.SwaggerDoc(doc.DocumentName, new OpenApiInfo { Title = doc.OpenApiInfo.Title, Version = doc.OpenApiInfo.Version, Description = doc.OpenApiInfo.Description });
-                    var xmlFile = $"{_swaggerSettings.EndpointName}.xml";
-                    var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
-                    c.IncludeXmlComments(xmlPath);
-                    c.EnableAnnotations();
+                    if(_swaggerSettings.EnableXml)
+                    {
+                        var xmlFile = $"{_swaggerSettings.EndpointName}.xml";
+                        var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+                        c.IncludeXmlComments(xmlPath);
+                        c.EnableAnnotations();
+                    }
                     if (doc.Security != null)
                     {
                         c.AddSecurityDefinition("oauth2", new OpenApiSecurityScheme
@@ -212,9 +215,6 @@ namespace Carbon.WebApplication
             {
                 c.OAuth2RedirectUrl($"{_swaggerSettings.EndpointUrl}/swagger/oauth2-redirect.html");
                 c.SwaggerEndpoint(_swaggerSettings.EndpointPath, _swaggerSettings.EndpointName);
-                c.OAuthClientId(_swaggerSettings.EndpointName);
-                c.OAuthAppName("Swagger UI");
-                c.DocExpansion(Swashbuckle.AspNetCore.SwaggerUI.DocExpansion.None);
             });
 
             if (env.IsDevelopment())
