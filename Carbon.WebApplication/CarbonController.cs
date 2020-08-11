@@ -175,6 +175,7 @@ namespace Carbon.WebApplication
             return Guid.NewGuid().ToString();
         }
 
+        [ApiExplorerSettings(IgnoreApi = true)]
         [Obsolete("This method is obsolete. Usage for only apis dependant to P360Controller")]
         protected OkObjectResult PagedOk<T>(T TEntity, OrdinatedPageDto ordinatedPageDto, int totalCount)
         {
@@ -206,7 +207,6 @@ namespace Carbon.WebApplication
     }
 
     [Obsolete("This class is obsolete. Usage for only apis dependant to P360Controller")]
-
     public class Ordination
     {
         public string Value { get; set; }
