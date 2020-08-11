@@ -4,6 +4,7 @@ namespace Carbon.ExceptionHandling.Abstractions
 {
     public abstract class CarbonException<T> : CarbonException where T : IConvertible
     {
+        public T Code { get; set; }
         public CarbonException() : base()
         {
             if (!typeof(T).IsEnum)
