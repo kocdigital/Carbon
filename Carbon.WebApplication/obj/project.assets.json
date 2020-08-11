@@ -3530,7 +3530,7 @@
           "bin/placeholder/Carbon.Common.dll": {}
         }
       },
-      "Carbon.ExceptionHandling.Abstractions/1.0.9": {
+      "Carbon.ExceptionHandling.Abstractions/1.0.10": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.1",
         "dependencies": {
@@ -10270,7 +10270,7 @@
       "path": "../Carbon.Common/Carbon.Common.csproj",
       "msbuildProject": "../Carbon.Common/Carbon.Common.csproj"
     },
-    "Carbon.ExceptionHandling.Abstractions/1.0.9": {
+    "Carbon.ExceptionHandling.Abstractions/1.0.10": {
       "type": "project",
       "path": "../Carbon.ExceptionHandling/Carbon.ExceptionHandling.Abstractions.csproj",
       "msbuildProject": "../Carbon.ExceptionHandling/Carbon.ExceptionHandling.Abstractions.csproj"
@@ -10289,7 +10289,7 @@
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
       "Carbon.Common >= 1.1.11",
-      "Carbon.ExceptionHandling.Abstractions >= 1.0.9",
+      "Carbon.ExceptionHandling.Abstractions >= 1.0.10",
       "Carbon.HttpClient >= 1.0.8",
       "Carbon.PagedList >= 1.0.7",
       "FluentValidation.AspNetCore >= 8.6.1",
