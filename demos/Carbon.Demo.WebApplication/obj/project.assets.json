@@ -4129,7 +4129,7 @@
           "bin/placeholder/Carbon.Domain.EntityFrameworkCore.dll": {}
         }
       },
-      "Carbon.ExceptionHandling.Abstractions/1.0.9": {
+      "Carbon.ExceptionHandling.Abstractions/1.0.10": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.1",
         "dependencies": {
@@ -4194,7 +4194,7 @@
         "framework": ".NETCoreApp,Version=v3.1",
         "dependencies": {
           "Carbon.Common": "1.1.11",
-          "Carbon.ExceptionHandling.Abstractions": "1.0.9",
+          "Carbon.ExceptionHandling.Abstractions": "1.0.10",
           "Carbon.HttpClient": "1.0.8",
           "Carbon.PagedList": "1.0.7",
           "FluentValidation.AspNetCore": "8.6.1",
@@ -11907,7 +11907,7 @@
       "path": "../../Carbon.Domain.EntityFrameworkCore.Extensions/Carbon.Domain.EntityFrameworkCore.csproj",
       "msbuildProject": "../../Carbon.Domain.EntityFrameworkCore.Extensions/Carbon.Domain.EntityFrameworkCore.csproj"
     },
-    "Carbon.ExceptionHandling.Abstractions/1.0.9": {
+    "Carbon.ExceptionHandling.Abstractions/1.0.10": {
       "type": "project",
       "path": "../../Carbon.ExceptionHandling/Carbon.ExceptionHandling.Abstractions.csproj",
       "msbuildProject": "../../Carbon.ExceptionHandling/Carbon.ExceptionHandling.Abstractions.csproj"
@@ -11939,7 +11939,7 @@
       "Carbon.ConsoleApplication >= 1.1.8",
       "Carbon.Domain.Abstractions >= 1.1.4",
       "Carbon.Domain.EntityFrameworkCore >= 1.0.14",
-      "Carbon.ExceptionHandling.Abstractions >= 1.0.9",
+      "Carbon.ExceptionHandling.Abstractions >= 1.0.10",
       "Carbon.PagedList >= 1.0.7",
       "Carbon.Redis >= 1.0.0",
       "Carbon.WebApplication >= 1.6.29",
