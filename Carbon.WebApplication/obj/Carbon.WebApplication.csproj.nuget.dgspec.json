@@ -69,7 +69,7 @@
       }
     },
     "C:\\Users\\02484829\\source\\repos\\Carbon\\Carbon.ExceptionHandling\\Carbon.ExceptionHandling.Abstractions.csproj": {
-      "version": "1.0.8",
+      "version": "1.0.10",
       "restore": {
         "projectUniqueName": "C:\\Users\\02484829\\source\\repos\\Carbon\\Carbon.ExceptionHandling\\Carbon.ExceptionHandling.Abstractions.csproj",
         "projectName": "Carbon.ExceptionHandling.Abstractions",
@@ -268,7 +268,7 @@
       }
     },
     "C:\\Users\\02484829\\source\\repos\\Carbon\\Carbon.WebApplication\\Carbon.WebApplication.csproj": {
-      "version": "1.6.28",
+      "version": "1.6.29",
       "restore": {
         "projectUniqueName": "C:\\Users\\02484829\\source\\repos\\Carbon\\Carbon.WebApplication\\Carbon.WebApplication.csproj",
         "projectName": "Carbon.WebApplication",
