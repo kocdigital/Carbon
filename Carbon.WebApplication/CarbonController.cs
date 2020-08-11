@@ -192,6 +192,7 @@ namespace Carbon.WebApplication
     }
 
     [Obsolete("This class is obsolete. Usage for only apis dependant to P360Controller")]
+    [ApiExplorerSettings(IgnoreApi = true)]
     public class OrdinatedPageDto
     {
         public List<Ordination> Ordination { get; set; }
@@ -207,6 +208,7 @@ namespace Carbon.WebApplication
     }
 
     [Obsolete("This class is obsolete. Usage for only apis dependant to P360Controller")]
+    [ApiExplorerSettings(IgnoreApi = true)]
     public class Ordination
     {
         public string Value { get; set; }
