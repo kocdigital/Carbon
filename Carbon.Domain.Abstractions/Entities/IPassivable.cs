@@ -1,5 +1,8 @@
 ﻿namespace Carbon.Domain.Abstractions.Entities
 {
+    /// <summary>
+    ///     An interface for entities that have passive and active states.
+    /// </summary>
     public interface IPassivable
     {
         /// <summary>
