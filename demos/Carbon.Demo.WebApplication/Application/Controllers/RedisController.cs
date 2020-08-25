@@ -40,21 +40,19 @@ namespace Carbon.Demo.WebApplication.Application.Controllers
                 Name = "Bilgehan",
                 Home = new List<Home>() { home, homeForSummer }
             };
-
-            var (setStringIsSuccess, setStringError) = await _redis.SetBasicValueAsync(string.Format(CacheKey.HomeAddressById, home.Id), home.Address);
-
-            var (getStringData, getStringerror) = await _redis.GetBasicValueAsync(string.Format(CacheKey.HomeAddressById, home.Id));
-
+            var sasas = _redis.StringSet("aaa", 122);
+            var sassas = _redis.StringGet("aaa");
+       
 
 
-            var errorSetSimple = await _redis.SetSimpleObjectAsync(string.Format(CacheKey.CustomerHome, customer.Id, home.Id), home);
-            var errorSetSimple1 = await _redis.SetSimpleObjectAsync(string.Format(CacheKey.CustomerHome, customer.Id, homeForSummer.Id), homeForSummer);
+            var errorSetSimple = await _redis.SetHashAsync(string.Format(CacheKey.CustomerHome, customer.Id, home.Id), home);
+            var errorSetSimple1 = await _redis.SetHashAsync(string.Format(CacheKey.CustomerHome, customer.Id, homeForSummer.Id), homeForSummer);
 
-            var (setComplexIsSuccess, setComplexError) = await _redis.SetComplexObject(string.Format(CacheKey.CustomerById, customer.Id), customer);
+            var (setComplexIsSuccess, setComplexError) = await _redis.Set(string.Format(CacheKey.CustomerById, customer.Id), customer);
 
-            var (homeData, homeError) = _redis.GetSimpleObject<Home>(string.Format(CacheKey.CustomerHome, customer.Id, home.Id));
-            var (summerHomeData, summerHomeError) = _redis.GetSimpleObject<Home>(string.Format(CacheKey.CustomerHome, customer.Id, homeForSummer.Id));
-            var (customerData, customerError) = _redis.GetComplexObject<Customer>(string.Format(CacheKey.CustomerById, customer.Id));
+            var (homeData, homeError) = await _redis.GetHash<Home>(string.Format(CacheKey.CustomerHome, customer.Id, home.Id));
+            var (summerHomeData, summerHomeError) = await _redis.GetHash<Home>(string.Format(CacheKey.CustomerHome, customer.Id, homeForSummer.Id));
+            var (customerData, customerError) = await _redis.Get<Customer>(string.Format(CacheKey.CustomerById, customer.Id));
 
             var customer2 = new Customer()
             {
@@ -62,10 +60,10 @@ namespace Carbon.Demo.WebApplication.Application.Controllers
                 Name = "Bilgehan",
                 Home = new List<Home>() { home, homeForSummer }
             };
-            var (setComplexIsSuccess1, setComplexError1) = await _redis.SetComplexObject(string.Format(CacheKey.CustomerById, customer2.Id), customer);
+            var (setComplexIsSuccess1, setComplexError1) = await _redis.Set(string.Format(CacheKey.CustomerById, customer2.Id), customer);
             var (isDeleted, errorRemove) = await _redis.RemoveKey(string.Format(CacheKey.CustomerById, customer2.Id));
 
-            var (removedList, couldNotBeRemoved) = _redis.RemoveKeysByPattern(string.Format(CacheKey.CustomerHome, customer.Id, "*"), _connectionMultiplexer);
+            var (removedList, couldNotBeRemoved, errorMessage) = await _redis.RemoveKeysByPattern(string.Format(CacheKey.CustomerHome, customer.Id, "*"), _connectionMultiplexer);
             return null;
         }
 

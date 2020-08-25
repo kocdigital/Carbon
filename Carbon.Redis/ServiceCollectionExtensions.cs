@@ -21,7 +21,7 @@ namespace Carbon.Redis
                 throw new ArgumentNullException(nameof(configuration));
             }
             IOptions<RedisSettings> redisSettings = new RedisSettings();
-            configuration.GetSection("Redis").Bind(redisSettings);
+            configuration.GetSection(RedisSettingConstants.RedisSectionName).Bind(redisSettings);
             services.AddSingleton(redisSettings);
             if (redisSettings.Value.Enabled)
             {
@@ -54,7 +54,7 @@ namespace Carbon.Redis
                         services.AddSingleton<IConnectionMultiplexer>(redis);
                         var db = redis.GetDatabase(redisSettings.Value.DefaultDatabase);
                         services.AddSingleton(s => db);
-                        _ = db.StringSet("redisKeyLength", redisSettings.Value.KeyLength);
+                        _ = db.StringSet(RedisSettingConstants.RedisKeyLengthKey, redisSettings.Value.KeyLength);
                     }
                     else
                     {
@@ -67,9 +67,13 @@ namespace Carbon.Redis
                 }
                 catch (RedisException ex)
                 {
-
                     throw ex;
                 }
+            }
+            else
+            {
+                services.AddSingleton<IDatabase, RedisDatabase>();
+                services.AddSingleton<IConnectionMultiplexer, DummyConnectionMultiplexer>();
             }
 
 

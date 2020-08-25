@@ -14,37 +14,53 @@ namespace Carbon.Redis
         /// </summary>
         /// <param name="keyPattern">It represents cache key</param>
         /// <see cref="https://redis.io/topics/data-types-intro"/>
-        public static (List<string> removedKeys, List<string> couldNotBeRemovedKeys) RemoveKeysByPattern(this IDatabase _redisDb, string keyPattern, IConnectionMultiplexer _connectionMultiplexer)
+        public static async Task<(List<string> removedKeys, List<string> couldNotBeRemovedKeys, string errorMessage)> RemoveKeysByPattern(this IDatabase _redisDb, string keyPattern, IConnectionMultiplexer _connectionMultiplexer)
         {
-            var server = _connectionMultiplexer.GetServer(_connectionMultiplexer.GetEndPoints().First());
-
-            var keys = server.Keys(pattern: keyPattern).ToList();
-
-            var removedKeys = new List<string>();
-            var couldNotBeRemovedKeys = new List<string>();
-            //todo: batch delete
-            foreach (var key in keys)
+            if (_redisDb.IsRedisDisabled())
             {
-                if (_redisDb.KeyDelete(key))
-                {
-                    removedKeys.Add(key);
-                }
-                else
-                {
-                    couldNotBeRemovedKeys.Add(key);
-                }
+                return (default, default, "Redis is disabled");
             }
-            return (removedKeys, couldNotBeRemovedKeys);
+            try
+            {
+                var server = _connectionMultiplexer.GetServer(_connectionMultiplexer.GetEndPoints().First());
+
+                var keys = server.KeysAsync(pattern: keyPattern);
+
+                var removedKeys = new List<string>();
+                var couldNotBeRemovedKeys = new List<string>();
+                //todo: batch delete
+                await foreach (var key in keys)
+                {
+                    if (_redisDb.KeyDelete(key))
+                    {
+                        removedKeys.Add(key);
+                    }
+                    else
+                    {
+                        couldNotBeRemovedKeys.Add(key);
+                    }
+                }
+                return (removedKeys, couldNotBeRemovedKeys, null);
+            }
+            catch (Exception ex)
+            {
+                return (default, default, ex.InnerException?.Message??ex.Message);
+            }
+            
         }
-        public static (T, string) GetComplexObject<T>(this IDatabase _redisDb, string key)
+        public static async Task<(T, string)> Get<T>(this IDatabase _redisDb, string key)
         {
-            var keyLength = GetKeyLength(_redisDb);
-            var (isValid, error) = key.IsKeyValid(keyLength);
+            if (_redisDb.IsRedisDisabled())
+            {
+                return (default, "Redis is disabled");
+            }
+            var (isValid, error) = key.IsKeyValid(_redisDb);
+
             if (!isValid)
             {
                 return (default, error);
             }
-            return (_redisDb.ConvertJsonToObject<T>(key), null);
+            return (await _redisDb.ConvertJsonToObjectAsync<T>(key), null);
         }
         /// <summary>
         /// If you want to insert a complex object  to cache, use this method. For this method the object should contains another child object or list of object.
@@ -57,51 +73,31 @@ namespace Carbon.Redis
         /// <param name="data">It represents cache object value</param>
         /// <returns>  </returns>
         /// <see cref="https://redis.io/topics/data-types-intro"/>
-        public async static Task<(bool, string)> SetComplexObject<T>(this IDatabase _redisDb, string key, T data, TimeSpan? expiry = null)
+        public async static Task<(bool isSucess, string errorMessage)> Set<T>(this IDatabase _redisDb, string key, T data, TimeSpan? expiry = null)
         {
-            var keyLength = GetKeyLength(_redisDb);
-            var (isValid, error) = key.IsKeyValid(keyLength);
+            if (_redisDb.IsRedisDisabled())
+            {
+                return (default, "Redis is disabled");
+            }
+            var (isValid, error) = key.IsKeyValid(_redisDb);
+
             if (!isValid)
             {
                 return (false, error);
             }
-
-            return (await _redisDb.StringSetAsync(key, data.ConvertObjectToJson(), expiry), null);
-        }
-      
-        public async static Task<(string, string)> GetBasicValueAsync(this IDatabase _redisDb, string key)
-        {
-
-            var keyLength = GetKeyLength(_redisDb);
-            var (isValid, error) = key.IsKeyValid(keyLength);
-            if (!isValid)
+            bool isSuccess;
+            try
             {
-                return (null, error);
+                isSuccess = await _redisDb.StringSetAsync(key, data.ConvertObjectToJson(), expiry);
             }
-            return (await _redisDb.StringGetAsync(key), null);
-        }
-        /// <summary>
-        /// If you want to insert basic type (string, integer, boolean ext. ) value to cache, use this method. <br>The key <strong>should be less than 1024 byte</strong> 
-        /// and 
-        /// key should contains <strong>':'</strong> character between meaningful seperations. </br>
-        /// <br>The sample key is <strong>object-type:id:field(user:100:password)</strong></br> 
-        /// <br>Another sample is <strong>"Fault:{0}:FaultDetail:{1}"</strong> if we want to delete FaultDetails of a Fault, it becomes easier with this pattern.</br>
-        /// <br><see cref="https://redis.io/topics/data-types-intro"/></br>
-        /// </summary>
-        /// <param name="key">It represents cache key</param>
-        /// <param name="value">It represents cache string value</param>
-        /// <returns>  </returns>
-        /// <see cref="https://redis.io/topics/data-types-intro"/>
-        public async static Task<(bool, string)> SetBasicValueAsync(this IDatabase _redisDb, string key, string value, TimeSpan? expiry = null)
-        {
-            var keyLength = GetKeyLength(_redisDb);
-            var (isValid, error) = key.IsKeyValid(keyLength);
-            if (!isValid)
+            catch (Exception ex)
             {
-                return (false, error);
+                throw new RedisException("The object couldn't cached" ,ex);
             }
-            return (await _redisDb.StringSetAsync(key, value, expiry), null);
+          
+            return (isSuccess, null);
         }
+     
         /// <summary>
         /// If you want to insert a simple object  to cache, use this method. For this method the object shouldn't contains another child object or list of object.
         /// The key <strong>should be less than 1024 byte</strong> 
@@ -115,17 +111,23 @@ namespace Carbon.Redis
         /// <param name="value">It represents cache object value</param>
         /// <returns>  </returns>
         /// <see cref="https://redis.io/topics/data-types-intro"/>
-        public async static Task<string> SetSimpleObjectAsync<T>(this IDatabase _redisDb, string key, T value, DateTime? expiry = null) where T : new()
+        public async static Task<string> SetHashAsync<T>(this IDatabase _redisDb, string key, T value, DateTime? expiry = null) where T : new()
         {
-            var keyLength = GetKeyLength(_redisDb);
-            var (isValid, error) = key.IsKeyValid(keyLength);
+            if(_redisDb.IsRedisDisabled())
+            {
+                return "Redis is disabled";
+            }
+
+            var (isValid, error) = key.IsKeyValid(_redisDb);
+
             if (!isValid)
             {
                 return error;
             }
             var propList = value.ConvertToHashEntryList();
             var lst = propList.ToArray();
-            await _redisDb.HashSetAsync(key, lst);
+
+             await _redisDb.HashSetAsync(key, lst);
             if (expiry.HasValue)
             {
                 var isExpireSet = await _redisDb.KeyExpireAsync(key, expiry);
@@ -136,25 +138,32 @@ namespace Carbon.Redis
             }
             return null;
         }
-        public static (T, string) GetSimpleObject<T>(this IDatabase _redisDb, string key) where T : new()
+        public static async Task<(T data, string errorMessage)> GetHash<T>(this IDatabase _redisDb, string key) where T : new()
         {
-            var keyLength = GetKeyLength(_redisDb);
-            var (isValid, error) = key.IsKeyValid(keyLength);
+            if (_redisDb.IsRedisDisabled())
+            {
+                return (default,"Redis is disabled");
+            }
+            var (isValid, error) = key.IsKeyValid(_redisDb);
+
             if (!isValid)
             {
                 return (default, error);
             }
-            var hash = _redisDb.HashGetAll(key).ToList();
-            if (hash.Any())
+            var hash = await _redisDb.HashGetAllAsync(key);
+            if (hash!= null && hash.Any())
             {
                 return (hash.ConvertFromHashEntryList<T>(), null);
             }
             return (default, null);
         }
-        public async static Task<(bool, string)> RemoveKey(this IDatabase _redisDb, string key)
+        public async static Task<(bool isSuccess, string errorMessage)> RemoveKey(this IDatabase _redisDb, string key)
         {
-            var keyLength = GetKeyLength(_redisDb);
-            var (isValid, error) = key.IsKeyValid(keyLength);
+            if (_redisDb.IsRedisDisabled())
+            {
+                return (default, "Redis is disabled");
+            }
+            var (isValid, error) = key.IsKeyValid(_redisDb);
             if (!isValid)
             {
                 return (false, error);
@@ -162,17 +171,7 @@ namespace Carbon.Redis
             return (await _redisDb.KeyDeleteAsync(key), null);
         }
 
-        private static int GetKeyLength(this IDatabase db)
-        {
-            var keyLength = RedisSettingConstants.KeyLength;
-            var value = db.StringGet("redisKeyLength");
-            if (value.HasValue && !value.IsNullOrEmpty && value != 0)
-            {
-                keyLength = (int)value;
-            }
-
-            return keyLength;
-        }
+        
     }
 
 }

@@ -4,7 +4,9 @@ using StackExchange.Redis;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Runtime.Serialization;
+using System.Threading.Tasks;
 
 namespace Carbon.Redis
 {
@@ -25,11 +27,11 @@ namespace Carbon.Redis
         /// <typeparam name="T"></typeparam>
         /// <param name="key">Cache Key</param>
         /// <returns></returns>
-        public static T ConvertJsonToObject<T>(this IDatabase database, string key)
+        public static async Task<T> ConvertJsonToObjectAsync<T>(this IDatabase database, string key)
         {
             try
             {
-                var value = database.StringGet(key);
+                var value = await database.StringGetAsync(key);
                 if (!value.IsNull)
                     return JsonConvert.DeserializeObject<T>(value);
                 else
@@ -40,7 +42,7 @@ namespace Carbon.Redis
             catch (Exception ex)
             {
 
-                throw ex;
+                throw new RedisException("The object couldn't deserialized",ex);
             }
 
         }
@@ -195,8 +197,13 @@ namespace Carbon.Redis
             return instance;
         }
 
-        public static (bool isValid, string error) IsKeyValid(this string key, int keyLength)
+        public static (bool isValid, string error) IsKeyValid(this string key, IDatabase _redisDb)
         {
+            var (keyLength, error) = GetKeyLength(_redisDb);
+            if (error !=null)
+            {
+                return (false, error);
+            }
             if (key.Length > keyLength)
             {
                 return (false, $"key lenght should be smaller than {keyLength}");
@@ -206,6 +213,33 @@ namespace Carbon.Redis
                 return (false, "key should contains ':' character between meaningful seperations. The sample key is object-type:id:field(user:100:password)");
             }
             return (true, null);
+        }
+        private static (int keyLength, string error) GetKeyLength(this IDatabase db)
+        {
+            var keyLength = RedisSettingConstants.KeyLength;
+            try
+            {
+                var value = db.StringGet(RedisSettingConstants.RedisKeyLengthKey);
+                if (value.HasValue && !value.IsNullOrEmpty && value != 0)
+                {
+                    keyLength = (int)value;
+                }
+            }
+            catch (Exception ex)
+            {
+
+                return (default, ex.InnerException?.Message??ex.Message);
+            }
+
+            return (keyLength,null);
+        }
+        public static bool IsRedisDisabled(this IDatabase db)
+        {
+            if (db.Multiplexer == null)
+            {
+                return true;
+            }
+            return false;
         }
     }
 }
