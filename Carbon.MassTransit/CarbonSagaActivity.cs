@@ -7,6 +7,13 @@ using Microsoft.Extensions.Logging;
 
 namespace Carbon.MassTransit
 {
+    /// <summary>
+    /// Carbon Saga Activity Class
+    /// </summary>
+    /// <remarks>
+    /// An activity is part of a behavoir than is executed in order
+    /// </remarks>
+    /// <typeparam name="T">Type of Instance</typeparam>
     public abstract class CarbonSagaActivity<T> : Activity<T>
     {
         private readonly ILogger<T> _logger;
@@ -53,7 +60,7 @@ namespace Carbon.MassTransit
         }
 
         /// <summary>
-        /// Saga fault handling for next behavoir.
+        /// Saga fault handling for behavoir.
         /// </summary>
         /// <typeparam name="TException">Exception type to be thrown</typeparam>
         /// <param name="context">Behavior Exception Context with T : instance and TException : acception type </param>
@@ -65,7 +72,7 @@ namespace Carbon.MassTransit
         }
 
         /// <summary>
-        /// Saga fault handling for next operation.
+        /// Saga fault handling for behavoir.
         /// </summary>
         /// <typeparam name="T1">Data type for Behavior Exception Context</typeparam>
         /// <typeparam name="TException">Exception type to be thrown</typeparam>
@@ -80,7 +87,7 @@ namespace Carbon.MassTransit
         /// <summary>
         /// Adds scope to Probe Context as "publisher"
         /// </summary>
-        /// <param name="context">Greenpipes Probe Context to add scope</param>
+        /// <param name="context">Greenpipes.ProbeContext to add scope<see cref="ProbeContext"/></param>
         public void Probe(ProbeContext context)
         {
             context.CreateScope("publisher");

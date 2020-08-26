@@ -6,6 +6,12 @@ using System.Threading.Tasks;
 
 namespace Carbon.MassTransit
 {
+    /// <summary>
+    /// MassTransitHostedService
+    /// </summary>
+    /// <remarks>
+    ///  Defines methods for objects that are managed by the Mass Transit host.
+    /// </remarks>
     public class MassTransitHostedService : IHostedService
     {
         readonly IBusControl _bus;

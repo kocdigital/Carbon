@@ -6,6 +6,9 @@ using MassTransit.RabbitMqTransport;
 
 namespace Carbon.MassTransit
 {
+    /// <summary>
+    /// Rabbit Mq Settings Class
+    /// </summary>
     public class RabbitMqSettings : RabbitMqHostSettings
     {
         /// <summary>
@@ -85,17 +88,32 @@ namespace Carbon.MassTransit
         /// Certificate Validation Callback method delegate
         /// </summary>
         public string[] ClusterMembers { get; set; }
-
+        /// <summary>
+        /// Host Name Selector od type <see cref="IRabbitMqEndpointResolver"/>
+        /// </summary>
         public IRabbitMqEndpointResolver HostNameSelector { get; set; }
-
+        /// <summary>
+        /// Provided Name for client
+        /// </summary>
         public string ClientProvidedName { get; set; }
-
+        /// <summary>
+        /// Host Address Uri
+        /// </summary>
         public Uri HostAddress { get; set; }
-
+        /// <summary>
+        /// Publisher Confirmation
+        /// </summary>
+        /// <remarks>
+        /// Is <c>true</c> if Publisher Confirmation is OK
+        /// </remarks>
         public bool PublisherConfirmation { get; set; }
-
+        /// <summary>
+        /// <c>MAX</c> Requested Channel Count
+        /// </summary>
         public ushort RequestedChannelMax { get; set; }
-
+        /// <summary>
+        /// Requested Connection Timeout time in <c>msec</c>
+        /// </summary>
         public int RequestedConnectionTimeout { get; set; }
     }
 }

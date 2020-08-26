@@ -17,7 +17,7 @@ namespace Carbon.MassTransit.Abstractions
 
         }
         /// <summary>
-        /// Constructor that initializes MassTransitMessage instance with content  
+        /// Constructor that initializes MassTransitMessage instance with content of Generic <c>TType</c>
         /// </summary>
         public MassTransitMessage(TContent content)
         {
