@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace Carbon.PagedList.EntityFrameworkCore
 {
+    /// <summary>
+    /// Container for extension methods designed to simplify the creation of instances of <see cref="PagedList{T}"/>.
+    /// </summary>
     public static class PagedListExtensions
     {
         /// <summary>
