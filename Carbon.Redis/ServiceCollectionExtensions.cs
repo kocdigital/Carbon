@@ -10,6 +10,11 @@ namespace Carbon.Redis
 {
     public static class ServiceCollectionExtensions
     {
+        /// <summary>
+        /// Use AddRedisPersister for implementation Redis
+        /// </summary>
+        /// <param name="configuration"></param>
+        /// <returns> IServiceCollection </returns>
         public static IServiceCollection AddRedisPersister(this IServiceCollection services, IConfiguration configuration)
         {
             if (services == null)
@@ -21,12 +26,10 @@ namespace Carbon.Redis
                 throw new ArgumentNullException(nameof(configuration));
             }
             IOptions<RedisSettings> redisSettings = new RedisSettings();
-            configuration.GetSection(RedisSettingConstants.RedisSectionName).Bind(redisSettings);
+            configuration.GetSection(RedisConstants.RedisSectionName).Bind(redisSettings);
             services.AddSingleton(redisSettings);
             if (redisSettings.Value.Enabled)
             {
-
-
                 var configurationOptions = new ConfigurationOptions
                 {
                     EndPoints = { string.Join(",", redisSettings.Value.EndPoints) },
@@ -54,7 +57,7 @@ namespace Carbon.Redis
                         services.AddSingleton<IConnectionMultiplexer>(redis);
                         var db = redis.GetDatabase(redisSettings.Value.DefaultDatabase);
                         services.AddSingleton(s => db);
-                        _ = db.StringSet(RedisSettingConstants.RedisKeyLengthKey, redisSettings.Value.KeyLength);
+                        _ = db.StringSet(RedisConstants.RedisKeyLengthKey, redisSettings.Value.KeyLength);
                     }
                     else
                     {
@@ -79,6 +82,11 @@ namespace Carbon.Redis
 
             return services;
         }
+        /// <summary>
+        /// Converting password to MD5 for security
+        /// </summary>
+        /// <param name="password">password</param>
+        /// <returns> MD5 string </returns>
         public static string ConvertToMD5(string password)
         {
             MD5CryptoServiceProvider md5 = new MD5CryptoServiceProvider();

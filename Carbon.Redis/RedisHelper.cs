@@ -1,17 +1,16 @@
-﻿using FastMember;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using StackExchange.Redis;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Runtime.Serialization;
 using System.Threading.Tasks;
 
 namespace Carbon.Redis
 {
     public static class RedisHelper
     {
+        /// <summary>
+        /// Converts object to json.
+        /// </summary>
+        /// <returns> json string</returns>
         public static string ConvertObjectToJson(this object obj)
         {
             if (obj == null)
@@ -42,171 +41,42 @@ namespace Carbon.Redis
             catch (Exception ex)
             {
 
-                throw new RedisException("The object couldn't deserialized",ex);
+                throw new RedisException("The object couldn't deserialized", ex);
             }
 
         }
         /// <summary>
-        /// Converts instance of an object to hash entry list.
+        /// Is given key valid? <br>Returns:</br>
+        /// <br>
+        /// <list type="bullet">
+        /// <item>
+        /// <term>isValid (<i>Is given key valid?</i>)</term>
+        /// </item>
+        /// <br>
+        /// <item>
+        /// <term>errorMessage(<i>Error Messages</i>)</term>
+        /// </item>
+        /// </br>
+        /// </list> 
+        /// </br>
         /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="instance">The instance.</param>
-        /// <returns></returns>
-        /// <seealso cref="https://gist.github.com/ajai8085/364d076e7070c1677d1075467ae720e2#file-stackexchangeredisextensions-cs"/>
-        public static IEnumerable<HashEntry> ConvertToHashEntryList<T>(this T instance) where T : new()
+        /// <param name="key">Cache Key</param>
+        /// <see cref="https://redis.io/topics/data-types-intro"/>
+        public static async Task<(bool isValid, string error)> IsKeyValid(this string key, IDatabase _redisDb)
         {
-            var acessor = TypeAccessor.Create(typeof(T));
-            var members = acessor.GetMembers();
-
-            for (var index = 0; index < members.Count; index++)
+            if (_redisDb.IsRedisDisabled())
             {
-                var member = members[index];
-                if (member.IsDefined(typeof(IgnoreDataMemberAttribute)))
-                {
-                    continue;
-                }
-                var type = member.Type;
-
-                if (!type.IsValueType)//ATM supports only value types
-                {
-                    if (type != typeof(string))
-                    {
-                        continue;
-                    }
-                }
-
-                var underlyingType = Nullable.GetUnderlyingType(type);
-                var effectiveType = underlyingType ?? type;
-
-                var val = acessor[instance, member.Name];
-
-                if (val != null)
-                {
-                    if (effectiveType == typeof(DateTime))
-                    {
-                        var date = (DateTime)val;
-                        if (date.Kind == DateTimeKind.Utc)
-                        {
-
-                            yield return new HashEntry(member.Name, $"{date.Ticks}|UTC");
-                        }
-                        else
-                        {
-                            yield return new HashEntry(member.Name, $"{date.Ticks}|LOC");
-                        }
-                    }
-                    else
-                    {
-                        yield return new HashEntry(member.Name, val.ToString());
-                    }
-                }
+                return (default, RedisConstants.RedisDisabled);
             }
-        }
 
-        /// <summary>
-        /// Converts from hash entry list and create instance of type T.
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="entries">The entries returned from StackExchange.redis.</param>
-        /// <returns>Instance of Type T </returns>
-        /// <see cref="https://gist.github.com/ajai8085/364d076e7070c1677d1075467ae720e2#file-stackexchangeredisextensions-cs"/>
-        public static T ConvertFromHashEntryList<T>(this IEnumerable<HashEntry> entries) where T : new()
-        {
-            var acessor = TypeAccessor.Create(typeof(T));
-            var instance = new T();
-            var hashEntries = entries as HashEntry[] ?? entries.ToArray();
-            var members = acessor.GetMembers();
-            for (var index = 0; index < members.Count; index++)
-            {
-                var member = members[index];
-
-                if (member.IsDefined(typeof(IgnoreDataMemberAttribute)))
-                {
-                    continue;
-                }
-
-                var type = member.Type;
-
-                if (!type.IsValueType) //ATM supports only value types
-                {
-                    if (type != typeof(string))
-                    {
-                        continue;
-                    }
-                }
-                var underlyingType = Nullable.GetUnderlyingType(type);
-                var effectiveType = underlyingType ?? type;
-
-
-                var entry = hashEntries.FirstOrDefault(e => e.Name.ToString().Equals(member.Name));
-
-                if (entry.Equals(new HashEntry()))
-                {
-                    continue;
-                }
-
-                var value = entry.Value.ToString();
-
-                if (string.IsNullOrEmpty(value))
-                {
-                    continue;
-                }
-
-                if (effectiveType == typeof(DateTime))
-                {
-                    if (value.EndsWith("|UTC"))
-                    {
-                        value = value.TrimEnd("|UTC".ToCharArray());
-                        DateTime date;
-
-                        long ticks;
-                        if (long.TryParse(value, out ticks))
-                        {
-                            date = new DateTime(ticks);
-                            acessor[instance, member.Name] = DateTime.SpecifyKind(date, DateTimeKind.Utc);
-                        }
-                    }
-                    else
-                    {
-                        value = value.TrimEnd("|LOC".ToCharArray());
-                        DateTime date;
-                        long ticks;
-                        if (long.TryParse(value, out ticks))
-                        {
-                            date = new DateTime(ticks);
-                            acessor[instance, member.Name] = DateTime.SpecifyKind(date, DateTimeKind.Local);
-                        }
-                    }
-
-                }
-                else
-                {
-
-                    if (member.Type == typeof(Guid))
-                    {
-                        acessor[instance, member.Name] = Guid.Parse(entry.Value.ToString());
-                    }
-                    else if (member.Type.BaseType == typeof(Enum))
-                    {
-                        acessor[instance, member.Name] = Enum.Parse(member.Type, entry.Value.ToString());
-                    }
-                    else
-                        acessor[instance, member.Name] = Convert.ChangeType(entry.Value.ToString(), member.Type);
-                }
-            }
-            return instance;
-        }
-
-        public static (bool isValid, string error) IsKeyValid(this string key, IDatabase _redisDb)
-        {
-            var (keyLength, error) = GetKeyLength(_redisDb);
-            if (error !=null)
+            var (keyLength, error) = await GetKeyLength(_redisDb);
+            if (error != null)
             {
                 return (false, error);
             }
             if (key.Length > keyLength)
             {
-                return (false, $"key lenght should be smaller than {keyLength}");
+                return (false, $"key length has to be smaller than {keyLength}");
             }
             if (!key.Contains(":"))
             {
@@ -214,12 +84,15 @@ namespace Carbon.Redis
             }
             return (true, null);
         }
-        private static (int keyLength, string error) GetKeyLength(this IDatabase db)
+        /// <summary>
+        /// Getting defined key length  from the configuration settings
+        /// </summary>
+        private static async Task<(int keyLength, string error)> GetKeyLength(this IDatabase db)
         {
-            var keyLength = RedisSettingConstants.KeyLength;
+            var keyLength = RedisConstants.KeyLength;
             try
             {
-                var value = db.StringGet(RedisSettingConstants.RedisKeyLengthKey);
+                var value = await db.StringGetAsync(RedisConstants.RedisKeyLengthKey);
                 if (value.HasValue && !value.IsNullOrEmpty && value != 0)
                 {
                     keyLength = (int)value;
@@ -228,11 +101,14 @@ namespace Carbon.Redis
             catch (Exception ex)
             {
 
-                return (default, ex.InnerException?.Message??ex.Message);
+                return (default, ex.InnerException?.Message ?? ex.Message);
             }
 
-            return (keyLength,null);
+            return (keyLength, null);
         }
+        /// <summary>
+        /// Is redis disabled or not
+        /// </summary>
         public static bool IsRedisDisabled(this IDatabase db)
         {
             if (db.Multiplexer == null)

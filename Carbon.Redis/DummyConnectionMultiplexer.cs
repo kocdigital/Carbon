@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace Carbon.Redis
 {
+    /// <summary>
+    /// If redis  disabled DummyConnectionMultiplexer injected
+    /// </summary>
     public class DummyConnectionMultiplexer : IConnectionMultiplexer
     {
         public string ClientName =>  default;

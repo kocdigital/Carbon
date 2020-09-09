@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Carbon.Redis
 {
+    /// <summary>
+    /// If redis  disabled RedisDatabase injected
+    /// </summary>
     public class RedisDatabase : IDatabase
     {
         public int Database => default;

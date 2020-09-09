@@ -44,14 +44,9 @@ namespace Carbon.Demo.WebApplication.Application.Controllers
             var sassas = _redis.StringGet("aaa");
        
 
-
-            var errorSetSimple = await _redis.SetHashAsync(string.Format(CacheKey.CustomerHome, customer.Id, home.Id), home);
-            var errorSetSimple1 = await _redis.SetHashAsync(string.Format(CacheKey.CustomerHome, customer.Id, homeForSummer.Id), homeForSummer);
-
             var (setComplexIsSuccess, setComplexError) = await _redis.Set(string.Format(CacheKey.CustomerById, customer.Id), customer);
 
-            var (homeData, homeError) = await _redis.GetHash<Home>(string.Format(CacheKey.CustomerHome, customer.Id, home.Id));
-            var (summerHomeData, summerHomeError) = await _redis.GetHash<Home>(string.Format(CacheKey.CustomerHome, customer.Id, homeForSummer.Id));
+           
             var (customerData, customerError) = await _redis.Get<Customer>(string.Format(CacheKey.CustomerById, customer.Id));
 
             var customer2 = new Customer()
@@ -62,7 +57,7 @@ namespace Carbon.Demo.WebApplication.Application.Controllers
             };
             var (setComplexIsSuccess1, setComplexError1) = await _redis.Set(string.Format(CacheKey.CustomerById, customer2.Id), customer);
             var (isDeleted, errorRemove) = await _redis.RemoveKey(string.Format(CacheKey.CustomerById, customer2.Id));
-
+            var (ss, dd) = await _redis.IsCacheKeyValid("ddfsfsf");
             var (removedList, couldNotBeRemoved, errorMessage) = await _redis.RemoveKeysByPattern(string.Format(CacheKey.CustomerHome, customer.Id, "*"), _connectionMultiplexer);
             return null;
         }
