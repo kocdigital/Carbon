@@ -4,8 +4,14 @@ using System.Net;
 
 namespace Carbon.Common
 {
+    /// <summary>
+    /// A helper class for conversion between <see cref="ApiStatusCode"/> and <see cref="HttpStatusCode"/>
+    /// </summary>
     public static class ApiStatusCodeToHttpStatusMapper
     {
+        /// <summary>
+        /// Holds information about which <see cref="ApiStatusCode"/> referst to which <see cref="HttpStatusCode"/>
+        /// </summary>
         public static IDictionary<ApiStatusCode, HttpStatusCode> ApiStatusCodes = new Dictionary<ApiStatusCode, HttpStatusCode>
         {
             { ApiStatusCode.OK, HttpStatusCode.OK },
@@ -17,6 +23,9 @@ namespace Carbon.Common
             { ApiStatusCode.UnAuthorized, HttpStatusCode.Unauthorized }
         };
 
+        /// <summary>
+        /// Holds information about which <see cref="HttpStatusCode"/> referst to which <see cref="ApiStatusCode"/>
+        /// </summary>
         public static IDictionary<HttpStatusCode, ApiStatusCode> HttpStatusCodes = new Dictionary<HttpStatusCode, ApiStatusCode>
         {
             { HttpStatusCode.OK, ApiStatusCode.OK },
@@ -55,7 +64,11 @@ namespace Carbon.Common
             { HttpStatusCode.Forbidden, ApiStatusCode.UnAuthorized },
             
         };
-
+        /// <summary>
+        /// Gets equivalent <see cref="HttpStatusCode"/> for given <see cref="ApiStatusCode"/>
+        /// </summary>
+        /// <param name="apiStatusCode"><see cref="ApiStatusCode"/> to convert</param>
+        /// <returns>Equivalent <see cref="HttpStatusCode"/></returns>
         public static HttpStatusCode GetHttpStatusCode(ApiStatusCode apiStatusCode)
         {
             if (ApiStatusCodes.TryGetValue(apiStatusCode, out var httpStatusCode))
@@ -63,7 +76,11 @@ namespace Carbon.Common
 
             throw new ArgumentOutOfRangeException($"ApiStatusCode {apiStatusCode} is not mapped with a HttpStatusCode!");
         }
-
+        /// <summary>
+        /// Gets equivalent <see cref="ApiStatusCode"/> for given <see cref="HttpStatusCode"/>
+        /// </summary>
+        /// <param name="httpStatusCode"><see cref="HttpStatusCode"/> to convert</param>
+        /// <returns>Equivalent <see cref="ApiStatusCode"/></returns>
         public static ApiStatusCode GetApiStatusCode(HttpStatusCode httpStatusCode)
         {
             if (HttpStatusCodes.TryGetValue(httpStatusCode, out var apiStatusCode))
