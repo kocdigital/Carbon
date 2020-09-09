@@ -2,6 +2,12 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
+    <Version>1.0.1</Version>
+    <Description>-Summaries added
+-Set and Get Hash functions from the cache removed
+-function names fixed
+-exception controls added
+-if redis disabled, dummy redis injected . By this way, redis implemented apis continue to work</Description>
   </PropertyGroup>
 
   <ItemGroup>
