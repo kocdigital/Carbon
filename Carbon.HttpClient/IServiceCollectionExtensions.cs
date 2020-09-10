@@ -12,6 +12,8 @@ namespace Carbon.HttpClients
         /// <summary>
         /// Adds http client with header propogation
         /// </summary>
+        /// <param name="services">Injects action for user defined service collection</param>
+        /// <param name="configureHeaderPropagation">Options of the propogation of header</param>
         /// <seealso cref = "HeaderPropagationOptions" />
         public static void AddHttpClientWithHeaderPropagation(this IServiceCollection services, Action<HeaderPropagationOptions> configureHeaderPropagation)
         {

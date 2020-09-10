@@ -24,6 +24,7 @@ namespace Carbon.ExceptionHandling.Abstractions
         /// <summary>
         /// The Carbon Exception with Code
         /// </summary>
+        /// <param name="code">The code of the exception.</param>
         public CarbonException(T code) : base(Convert.ToInt32(code), code.ToString())
         {
             Code = code;
@@ -32,6 +33,8 @@ namespace Carbon.ExceptionHandling.Abstractions
         /// <summary>
         /// The Carbon Exception with Code and model
         /// </summary>
+        /// <param name="code">The code of the exception.</param>
+        /// <param name="model">The model of the exception.</param>
         public CarbonException(T code, object model) : base(Convert.ToInt32(code), code.ToString(), model)
         {
             Code = code;
@@ -40,6 +43,8 @@ namespace Carbon.ExceptionHandling.Abstractions
         /// <summary>
         /// The Carbon Exception with Code and arguments
         /// </summary>
+        /// <param name="code">The code of the exception.</param>
+        /// <param name="arguments">The argument object array of the exception.</param>
         public CarbonException(T code, params object[] arguments) : base(Convert.ToInt32(code), code.ToString(), arguments)
         {
             Code = code;
@@ -48,6 +53,8 @@ namespace Carbon.ExceptionHandling.Abstractions
         /// <summary>
         /// The Carbon Exception with Code and inner exception
         /// </summary>
+        /// <param name="innerException">The inner exception of the exception.</param>
+        /// <param name="code">The code of the exception.</param>
         public CarbonException(Exception innerException, T code) : base(innerException, Convert.ToInt32(code), code.ToString())
         {
             Code = code;
@@ -56,6 +63,9 @@ namespace Carbon.ExceptionHandling.Abstractions
         /// <summary>
         /// The Carbon Exception with Code, inner exception and arguments.
         /// </summary>
+        /// <param name="innerException">The inner exception of the exception.</param>
+        /// <param name="code">The code of the exception.</param>
+        /// <param name="args">The argument object array of the exception.</param>
         public CarbonException(Exception innerException, T code, params object[] args) : base(innerException, Convert.ToInt32(code), code.ToString(), args)
         {
             Code = code;
