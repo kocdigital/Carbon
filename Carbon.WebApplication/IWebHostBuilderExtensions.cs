@@ -13,6 +13,11 @@ namespace Carbon.WebApplication
 {
     public static class IWebHostBuilderExtensions
     {
+        /// <summary>
+        /// Applies Carbon Framework settings such as Environment, Consul Address, Assambly Name etc.
+        /// </summary>
+        /// <typeparam name="TStartup"></typeparam>
+        /// <param name="builder"></param>
         public static void UseCarbonFeatures<TStartup>(this IWebHostBuilder builder) where TStartup : class
         {
             var assemblyName = typeof(TStartup).Assembly.GetName().Name;

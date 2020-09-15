@@ -21,6 +21,11 @@ namespace Carbon.WebApplication
             _env = env;
             _logger = logger;
         }
+
+        /// <summary>
+        /// Called after an action has thrown an <see cref="System.Exception"/>.
+        /// </summary>
+        /// <param name="context">The <see cref="ExceptionContext"/>.</param>
         public void OnException(ExceptionContext context)
         {
             context.HttpContext.Request.Headers.TryGetValue("X-CorrelationId", out var correlationId);
@@ -35,7 +40,7 @@ namespace Carbon.WebApplication
             {
                 var exception = (CarbonException)context.Exception;
 
-                if(!string.IsNullOrEmpty(context.Exception.Message))
+                if (!string.IsNullOrEmpty(context.Exception.Message))
                 {
                     apiResponse.AddMessage(context.Exception.Message);
                 }

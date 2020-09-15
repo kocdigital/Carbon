@@ -13,6 +13,12 @@ namespace Carbon.WebApplication
         {
             _logger = logger;
         }
+
+        /// <summary>
+        /// Fills BadRequest error details.
+        /// </summary>
+        /// <param name="context"></param>
+       
         public async Task ExecuteResultAsync(ActionContext context)
         {
             var problemDetails = new ValidationProblemDetails(context.ModelState)

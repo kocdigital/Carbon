@@ -7,6 +7,9 @@ namespace Carbon.WebApplication
 {
     public abstract class BaseDtoValidator<T> : AbstractValidator<T>
     {
+        /// <summary>
+        /// A Validator that inherited from AbstractValidator 
+        /// </summary>
         public BaseDtoValidator()
         {
             if (typeof(IOrderableDto).IsAssignableFrom(typeof(T)))

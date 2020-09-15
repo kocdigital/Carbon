@@ -9,10 +9,14 @@ using System.Text;
 
 namespace Carbon.WebApplication
 {
-
     public abstract class CarbonController : ControllerBase
     {
-
+        /// <summary>
+        /// A response type that returns a result with HttpStatusCode.
+        /// </summary>
+        /// <typeparam name="T">Type of the response data</typeparam>
+        /// <param name="value">The response data</param>
+        /// <returns> HttpStatusCode result which could contain the response data from type of <typeparamref name="T"/></returns>
         [ApiExplorerSettings(IgnoreApi = true)]
         protected ObjectResult ResponseResult<T>(T value) where T : IApiResponse
         {
@@ -20,6 +24,12 @@ namespace Carbon.WebApplication
             return StatusCode((int)httpStatusCode, value);
         }
 
+        /// <summary>
+        /// A response type which returns a Conflict response status code.
+        /// </summary>
+        /// <typeparam name="T">Type of the response data</typeparam>
+        /// <param name="value">The response data</param>
+        /// <returns> Conflict response status result</returns>
         [ApiExplorerSettings(IgnoreApi = true)]
         protected ObjectResult ResponseConflict<T>(T value)
         {
@@ -29,6 +39,12 @@ namespace Carbon.WebApplication
             return ResponseResult(result);
         }
 
+        /// <summary>
+        /// A response type which returns a NotFound response status code.
+        /// </summary>
+        /// <typeparam name="T">Type of the response data</typeparam>
+        /// <param name="value">The response data</param>
+        /// <returns> NotFound response status result</returns>
         [ApiExplorerSettings(IgnoreApi = true)]
         protected ObjectResult ResponseNotFound<T>(T value)
         {
@@ -38,6 +54,11 @@ namespace Carbon.WebApplication
             return ResponseResult(result);
         }
 
+        /// <summary>
+        /// A response type which returns an <see cref="OkObjectResult"/> object that produces an <see cref="StatusCodes.Status200OK"/> response with data.
+        /// </summary>
+        /// <param name="value">The content value to format in the entity body.</param>
+        /// <returns>The created <see cref="OkObjectResult"/> for the response with its data</returns>
         [ApiExplorerSettings(IgnoreApi = true)]
         protected OkObjectResult ResponseOk<T>(T value)
         {
@@ -47,6 +68,10 @@ namespace Carbon.WebApplication
             return Ok(result);
         }
 
+        /// <summary>
+        /// A response type which returns an <see cref="OkObjectResult"/> object that produces an <see cref="StatusCodes.Status200OK"/> response without any data.
+        /// </summary>
+        /// <returns>The created <see cref="OkObjectResult"/> for the response.</returns>
         [ApiExplorerSettings(IgnoreApi = true)]
         protected OkObjectResult ResponseOk()
         {
@@ -54,6 +79,13 @@ namespace Carbon.WebApplication
             return Ok(result);
         }
 
+        /// <summary>
+        /// An Update response type which returns an <see cref="CreatedAtActionResult"/> object that produces a <see cref="StatusCodes.Status201Created"/> response.
+        /// </summary>
+        /// <param name="actionName">The name of the action to use for generating the URL.</param>
+        /// <param name="routeValues">The route data to use for generating the URL.</param>
+        /// <param name="value">The content value to format in the entity body.</param>
+        /// <returns>The created <see cref="CreatedAtActionResult"/> for the response.</returns>
         [ApiExplorerSettings(IgnoreApi = true)]
         protected CreatedAtActionResult UpdatedOk<T>(string actionName, object routeValues, T value)
         {
@@ -63,6 +95,10 @@ namespace Carbon.WebApplication
             return CreatedAtAction(actionName, routeValues, result);
         }
 
+        /// <summary>
+        /// A Delete response type which returns an OK response status code.
+        /// </summary>
+        /// <returns> OK response status result</returns>
         [ApiExplorerSettings(IgnoreApi = true)]
         protected OkObjectResult DeletedOk()
         {
@@ -70,6 +106,13 @@ namespace Carbon.WebApplication
             return Ok(result);
         }
 
+        /// <summary>
+        /// A Create response type which returns an <see cref="CreatedAtActionResult"/> object that produces a <see cref="StatusCodes.Status201Created"/> response.
+        /// </summary>
+        /// <param name="actionName">The name of the action to use for generating the URL.</param>
+        /// <param name="routeValues">The route data to use for generating the URL.</param>
+        /// <param name="value">The content value to format in the entity body.</param>
+        /// <returns>The created <see cref="CreatedAtActionResult"/> for the response.</returns>
         [ApiExplorerSettings(IgnoreApi = true)]
         protected CreatedAtActionResult CreatedOk<T>(string actionName, object routeValues, T value)
         {
@@ -79,6 +122,12 @@ namespace Carbon.WebApplication
             return CreatedAtAction(actionName, routeValues, result);
         }
 
+        /// <summary>
+        /// A response type which returns an <see cref="OkObjectResult"/> object that produces an <see cref="StatusCodes.Status200OK"/> response with a List of data.
+        /// </summary>
+        /// <typeparam name="T">Type of the response data</typeparam>
+        /// <param name="entity">The response list of data</param>
+        /// <returns> The created <see cref="OkObjectResult"/> for the response with a list of data</returns>
         [ApiExplorerSettings(IgnoreApi = true)]
         protected OkObjectResult PagedListOk<T>(IPagedList<T> entity)
         {
@@ -123,6 +172,13 @@ namespace Carbon.WebApplication
             return Ok(result);
         }
 
+        /// <summary>
+        /// Adds some paging variables to the Response Headers.
+        /// </summary>
+        /// <param name="key">The key to the header to add</param>
+        /// <param name="ordination"> A list of <code>Orderable</code> objects.</param>
+        /// <param name="pageSize"> Used for indicating how many data are on the page</param>
+        /// <param name="pageIndex"> Used for indicating which page it is</param>
         protected void AddParameter(string key, IList<Orderable> ordination, int pageSize, int pageIndex)
         {
             var builder = new StringBuilder();
@@ -158,11 +214,15 @@ namespace Carbon.WebApplication
             Response.Headers.Add(key, headerParameterLink);
         }
 
+        /// <summary>
+        /// Gets CorrelationId from the header
+        /// </summary>
+        /// <returns>CorrelationId</returns>
         private string GetRequestIdentifier()
         {
             if (Request != null && Request.Headers != null)
             {
-                if(Request.Headers.TryGetValue("X-CorrelationId", out var xCorrelationId))
+                if (Request.Headers.TryGetValue("X-CorrelationId", out var xCorrelationId))
                 {
                     return xCorrelationId;
                 }
@@ -175,6 +235,14 @@ namespace Carbon.WebApplication
             return Guid.NewGuid().ToString();
         }
 
+        /// <summary>
+        ///  A response type which returns an <see cref="OkObjectResult"/> object that produces an <see cref="StatusCodes.Status200OK"/> response with some paged data.
+        /// </summary>
+        /// <typeparam name="T">Type of the response data</typeparam>
+        /// <param name="TEntity">The response data</param>
+        /// <param name="ordinatedPageDto">Ordination object for ordering the response data</param>
+        /// <param name="totalCount">Total count of response data</param>
+        //// <returns>The created <see cref="OkObjectResult"/> for the response with some paged data.</returns>
         [ApiExplorerSettings(IgnoreApi = true)]
         [Obsolete("This method is obsolete. Usage for only apis dependant to P360Controller")]
         protected OkObjectResult PagedOk<T>(T TEntity, OrdinatedPageDto ordinatedPageDto, int totalCount)
@@ -191,14 +259,29 @@ namespace Carbon.WebApplication
         }
     }
 
+    /// <summary>
+    /// Ordination object for ordering the response data
+    /// </summary>
     [Obsolete("This class is obsolete. Usage for only apis dependant to P360Controller")]
     [ApiExplorerSettings(IgnoreApi = true)]
     public class OrdinatedPageDto
     {
+        /// <summary>
+        /// List of Ordination data
+        /// </summary>
         public List<Ordination> Ordination { get; set; }
+        /// <summary>
+        /// Size of data of each page
+        /// </summary>
         public int PageSize { get; set; }
+        /// <summary>
+        /// Page index of the requested data
+        /// </summary>
         public int PageIndex { get; set; }
 
+        /// <summary>
+        /// Constructor of OrdinatedPageDto that sets PageSize and PageIndex to their default values
+        /// </summary>
         public OrdinatedPageDto()
         {
             PageSize = 250;
@@ -207,17 +290,36 @@ namespace Carbon.WebApplication
         }
     }
 
-    [Obsolete("This class is obsolete. Usage for only apis dependant to P360Controller")]
+    /// <summary>
+    /// The Ordination object that orders the data according to the <see cref="Value"/> property
+    /// </summary>
+    [Obsolete("This class is obsolete. Usage for only apis dependent to P360Controller")]
     [ApiExplorerSettings(IgnoreApi = true)]
     public class Ordination
     {
+        /// <summary>
+        /// A key sorting property name of data.
+        /// </summary>
         public string Value { get; set; }
+        /// <summary>
+        /// Indicates Ascending or descending order
+        /// </summary>
         public bool IsAscending { get; set; }
     }
-   
+
+
     [Obsolete("This extension is obsolete. Usage for only apis dependant to P360Controller")]
     public static class P360ControllerExtensionMethod
     {
+        /// <summary>
+        /// Adds some paging variables to the Response Headers.
+        /// </summary>
+        /// <param name="headers">Header dictionary</param>
+        /// <param name="request">Http request object</param>
+        /// <param name="key">The key to the header to add</param>
+        /// <param name="ordination"> A list of <code>Orderable</code> objects.</param>
+        /// <param name="pageSize"> Used for indicating how many data are on the page</param>
+        /// <param name="pageIndex"> Used for indicating which page it is</param>
         public static void AddParameter(this IHeaderDictionary headers, HttpRequest request, string key, List<Ordination> ordination, int pageSize, int pageIndex)
         {
             var builder = new StringBuilder();

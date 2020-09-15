@@ -5,6 +5,9 @@ namespace Carbon.WebApplication
 {
     public class InternalServerErrorObjectResult : ObjectResult
     {
+        /// <summary>
+        /// Sets ObjectResults HTTP status code to 500.
+        /// </summary>
         public InternalServerErrorObjectResult(object error)
             : base(error)
         {
