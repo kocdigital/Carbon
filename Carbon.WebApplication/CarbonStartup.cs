@@ -29,10 +29,22 @@ namespace Carbon.WebApplication
         private bool _useAuthentication;
         private bool _useAuthorization;
 
+        /// <summary>
+        /// Provides information about the web hosting environment an application is running in.
+        /// </summary>
         public IWebHostEnvironment Environment { get; }
+
+        /// <summary>
+        /// Represents a set of key/value application configuration properties.
+        /// </summary>
         public IConfiguration Configuration { get; }
         protected IList<FilterDescriptor> _filterDescriptors = new List<FilterDescriptor>();
 
+        /// <summary>
+        /// Adds operation filter.
+        /// </summary>
+        /// <typeparam name="T">Specifies the type of filter.</typeparam>
+        /// <param name="args">Arguments of the filter</param>
         public void AddOperationFilter<T>(params object[] args) where T : IOperationFilter
         {
             _filterDescriptors.Add(new FilterDescriptor()
@@ -42,18 +54,37 @@ namespace Carbon.WebApplication
             });
         }
 
+        /// <summary>
+        /// Constructor that initializes configuration and environment variables.
+        /// </summary>
+        /// <param name="configuration">Represents a set of key/value application configuration properties.</param>
+        /// <param name="environment">Provides information about the web hosting environment an application is running in.</param>
         protected CarbonStartup(IConfiguration configuration, IWebHostEnvironment environment)
         {
             Configuration = configuration;
             Environment = environment;
         }
 
+        /// <summary>
+        /// Constructor that initializes configuration, environment, useAuthentication variables.
+        /// </summary>
+        /// <param name="configuration">Represents a set of key/value application configuration properties.</param>
+        /// <param name="environment">Provides information about the web hosting environment an application is running in.</param>
+        /// <param name="useAuthentication">Indicates that use authentication or not</param>
         protected CarbonStartup(IConfiguration configuration, IWebHostEnvironment environment, bool useAuthentication)
         {
             Configuration = configuration;
             Environment = environment;
             _useAuthentication = useAuthentication;
         }
+
+        /// <summary>
+        /// Constructor that initializes configuration, environment, useAuthentication and useAuthorization variables.
+        /// </summary>
+        /// <param name="configuration">Represents a set of key/value application configuration properties.</param>
+        /// <param name="environment">Provides information about the web hosting environment an application is running in.</param>
+        /// <param name="useAuthentication">Indicates that use authentication or not</param>
+        /// <param name="useAuthorization">Indicates that use authorization or not</param>
         protected CarbonStartup(IConfiguration configuration, IWebHostEnvironment environment, bool useAuthentication, bool useAuthorization)
         {
             Configuration = configuration;
@@ -62,6 +93,10 @@ namespace Carbon.WebApplication
             _useAuthorization = useAuthorization;
         }
 
+        /// <summary>
+        /// Decides and Configures the services at startup. 
+        /// </summary>
+        /// <param name="services">Specifies the contract for a collection of service descriptors.</param>
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddHeaderPropagation();
@@ -122,7 +157,7 @@ namespace Carbon.WebApplication
             }
 
             #endregion
-            
+
             services.AddHealthChecks();
             services.AddMvc(options =>
             {
@@ -164,11 +199,11 @@ namespace Carbon.WebApplication
             {
                 c.OperationFilter<HybridOperationFilter>();
                 c.OperationFilterDescriptors.AddRange(_filterDescriptors);
-
+                c.CustomSchemaIds(x => x.FullName);
                 foreach (var doc in _swaggerSettings.Documents)
                 {
                     c.SwaggerDoc(doc.DocumentName, new OpenApiInfo { Title = doc.OpenApiInfo.Title, Version = doc.OpenApiInfo.Version, Description = doc.OpenApiInfo.Description });
-                    if(_swaggerSettings.EnableXml)
+                    if (_swaggerSettings.EnableXml)
                     {
                         var xmlFile = $"{_swaggerSettings.EndpointName}.xml";
                         var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
@@ -207,6 +242,11 @@ namespace Carbon.WebApplication
             #endregion
         }
 
+        /// <summary>
+        /// Configures the application builder according to given environment
+        /// </summary>
+        /// <param name="app">Defines a class that provides the mechanisms to configure an application's request pipeline.</param>
+        /// <param name="env">Provides information about the web hosting environment an application is running in.</param>
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             app.UseHeaderPropagation();
@@ -239,7 +279,7 @@ namespace Carbon.WebApplication
                 app.UseAuthorization();
             }
 
-            if(_corsPolicySettings != null && (_corsPolicySettings.AllowAnyOrigin || (_corsPolicySettings.Origins != null && _corsPolicySettings.Origins.Count > 0)))
+            if (_corsPolicySettings != null && (_corsPolicySettings.AllowAnyOrigin || (_corsPolicySettings.Origins != null && _corsPolicySettings.Origins.Count > 0)))
             {
                 app.UseCors(MyAllowSpecificOrigins);
             }
@@ -252,7 +292,18 @@ namespace Carbon.WebApplication
             });
         }
 
+
+        /// <summary>
+        /// A Custom abstract method that configures the services. 
+        /// </summary>
+        /// <param name="services">Specifies the contract for a collection of service descriptors.</param>
         public abstract void CustomConfigureServices(IServiceCollection services);
+
+        /// <summary>
+        ///  A Custom abstract method that configures the application builder according to given environment
+        /// </summary>
+        /// <param name="app">Defines a class that provides the mechanisms to configure an application's request pipeline.</param>
+        /// <param name="env">Provides information about the web hosting environment an application is running in.</param>
         public abstract void CustomConfigure(IApplicationBuilder app, IWebHostEnvironment env);
     }
 }

@@ -7,6 +7,7 @@ using Carbon.HttpClients;
 using System.Net.Http;
 using System.Collections.Generic;
 using Carbon.Common;
+using Carbon.Redis;
 
 namespace Carbon.Demo.WebApplication
 {
@@ -39,7 +40,7 @@ namespace Carbon.Demo.WebApplication
             //    c.BaseAddress = new System.Uri("http://custombaseaddres.com");
             //}, Environment, "OneM2MClient");
 
-            // services.AddRedisPersister(Configuration);
+             services.AddRedisPersister(Configuration);
         }
 
         public override void CustomConfigure(IApplicationBuilder app, IWebHostEnvironment env)

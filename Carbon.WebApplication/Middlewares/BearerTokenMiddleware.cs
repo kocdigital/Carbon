@@ -18,7 +18,10 @@ namespace Carbon.WebApplication.Middlewares
         {
             _next = next;
         }
-
+        /// <summary>
+        /// A middleware that arranges the request's header.
+        /// </summary>
+        /// <param name="httpContext"></param>
         public Task Invoke(HttpContext httpContext)
         {
             var authorizationTokens = httpContext.Request.Headers[HeaderNames.Authorization];
@@ -36,7 +39,7 @@ namespace Carbon.WebApplication.Middlewares
                     {
                         httpContext.Request.Headers.Remove("TenantId");
                     }
-                    
+
                     httpContext.Request.Headers.Remove("ClientId");
 
 
@@ -44,7 +47,7 @@ namespace Carbon.WebApplication.Middlewares
                     {
                         foreach (var claim in securityToken.Claims)
                         {
-                            if(BearerTokenClaimMapper.TryGetValue(claim.Type, out string mappedKey))
+                            if (BearerTokenClaimMapper.TryGetValue(claim.Type, out string mappedKey))
                             {
                                 httpContext.Request.Headers.TryAdd(mappedKey, claim.Value);
                             }

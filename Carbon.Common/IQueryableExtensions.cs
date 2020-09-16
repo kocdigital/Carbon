@@ -9,51 +9,38 @@ namespace Carbon.Common
    
     public static class IQueryableExtensions
     {
-        //
-        // Summary:
-        //   The method retrieves paginated data
-        //
-        // Parameters:
-        //   index:
-        //     Pagination index
-        //
-        //   size:
-        //     Page size
-        //
-        // Type parameters:
-        //   TEntity:
-        //     The type of entity being queried.
-        //
-        // Returns:
-        //     A new query with the related data included.
+        /// <summary>
+        /// Adds pagination to query
+        /// </summary>
+        /// <typeparam name="TEntity">The type of entity being queried.</typeparam>
+        /// <param name="query">A query for use</param>
+        /// <param name="index">Page Index</param>
+        /// <param name="size">Page Size for retrive</param>
+        /// <returns>Input query with the related data included.</returns>
         public static IQueryable<TEntity> SkipTake<TEntity>(this IQueryable<TEntity> query, int index, int size)
         {
             return query.Skip((index - 1) * size).Take(size);
         }
 
-        //
-        // Summary:
-        //   The method calculates total page count
-        //
+        /// <summary>
+        /// Calculates total page count
+        /// </summary>
+        /// <typeparam name="TEntity">The type of entity being queried.</typeparam>
+        /// <param name="query">A query for use</param>
+        /// <param name="size">Page Size for calculation</param>
+        /// <returns>Input query with the related data included.</returns>
         public static int CalculatePageCount<TEntity>(this IQueryable<TEntity> query, int? size)
         {
             return (int)Math.Ceiling(query.Count() / (double)size);
         }
 
-        //
-        // Summary:
-        //   The method orders data by given values and directions
-        //
-        // Parameters:
-        //   ordination:
-        //     order by rules
-        //
-        // Type parameters:
-        //   TEntity:
-        //     The type of entity being queried.
-        //
-        // Returns:
-        //     A new query with the related data included.
+        /// <summary>
+        /// Orders data by given values and directions
+        /// </summary>
+        /// <typeparam name="TEntity">The type of entity being queried.</typeparam>
+        /// <param name="query">A query for use</param>
+        /// <param name="ordination">Used for ordering <see cref="Orderable"/></param>
+        /// <returns>Input query with the related data included.</returns>
         public static IQueryable<TEntity> OrderBy<TEntity>(this IQueryable<TEntity> query, ICollection<Orderable> ordination)
         {
             if (ordination != null)

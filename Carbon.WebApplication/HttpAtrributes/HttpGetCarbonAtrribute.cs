@@ -3,6 +3,9 @@ using System.Net;
 
 namespace Carbon.WebApplication.HttpAtrributes
 {
+    /// <summary>
+    ///     An attribute that inherits from HttpGetAttribute
+    /// </summary>
     [ProducesResponseType((int)HttpStatusCode.OK)]
     [ProducesResponseType((int)HttpStatusCode.NotFound)]
     [ProducesResponseType((int)HttpStatusCode.BadRequest)]
