@@ -45,6 +45,11 @@ namespace Carbon.WebApplication
                     apiResponse.AddMessage(context.Exception.Message);
                 }
 
+                if (!string.IsNullOrEmpty(context.Exception.StackTrace))
+                {
+                    apiResponse.AddMessage(context.Exception.StackTrace);
+                }
+
                 apiResponse.SetErrorCode(exception.ErrorCode);
             }
             else
@@ -52,6 +57,11 @@ namespace Carbon.WebApplication
                 if (!string.IsNullOrEmpty(context.Exception.Message))
                 {
                     apiResponse.AddMessage(context.Exception.Message);
+                }
+
+                if (!string.IsNullOrEmpty(context.Exception.StackTrace))
+                {
+                    apiResponse.AddMessage(context.Exception.StackTrace);
                 }
 
                 apiResponse.SetErrorCode(GeneralServerErrorCode);
