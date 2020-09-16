@@ -69,7 +69,7 @@
       }
     },
     "D:\\Development\\Carbonv2\\Carbon.ExceptionHandling\\Carbon.ExceptionHandling.Abstractions.csproj": {
-      "version": "1.0.10",
+      "version": "1.1.0",
       "restore": {
         "projectUniqueName": "D:\\Development\\Carbonv2\\Carbon.ExceptionHandling\\Carbon.ExceptionHandling.Abstractions.csproj",
         "projectName": "Carbon.ExceptionHandling.Abstractions",
@@ -111,6 +111,10 @@
             "Ben.Demystifier": {
               "target": "Package",
               "version": "[0.1.4, )"
+            },
+            "FluentValidation.AspNetCore": {
+              "target": "Package",
+              "version": "[8.6.1, )"
             },
             "Newtonsoft.Json": {
               "target": "Package",
@@ -268,7 +272,7 @@
       }
     },
     "D:\\Development\\Carbonv2\\Carbon.WebApplication\\Carbon.WebApplication.csproj": {
-      "version": "1.6.29",
+      "version": "1.6.32",
       "restore": {
         "projectUniqueName": "D:\\Development\\Carbonv2\\Carbon.WebApplication\\Carbon.WebApplication.csproj",
         "projectName": "Carbon.WebApplication",
