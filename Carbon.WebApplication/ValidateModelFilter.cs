@@ -9,10 +9,20 @@ namespace Carbon.WebApplication
     {
         private const int GeneralClientErrorCode = 4000;
 
+        
+        /// <summary>
+        /// Called after the action executes, before the action result.
+        /// </summary>
+        /// <param name="context">The <see cref="ActionExecutedContext"/>.</param>
         public void OnActionExecuted(ActionExecutedContext context)
         {
 
         }
+
+        /// <summary>
+        /// Called before the action executes, after model binding is complete.
+        /// </summary>
+        /// <param name="context">The <see cref="ActionExecutingContext"/>.</param>
 
         public void OnActionExecuting(ActionExecutingContext context)
         {

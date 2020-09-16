@@ -8,6 +8,12 @@ namespace Carbon.WebApplication
 {
     public class HybridOperationFilter : IOperationFilter
     {
+        /// <summary>
+        /// Creates RequestBody of OpenApiRequestBody object.
+        /// </summary>
+        /// <param name="operation">OpenApiOperation object that keeps parameters.</param>
+        /// <param name="context">The operation context.</param>
+
         public void Apply(OpenApiOperation operation, OperationFilterContext context)
         {
             var hybridParameters = context.ApiDescription

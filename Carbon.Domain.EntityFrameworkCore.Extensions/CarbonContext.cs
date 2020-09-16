@@ -1,5 +1,4 @@
-﻿
-using Carbon.Domain.Abstractions.Entities;
+﻿using Carbon.Domain.Abstractions.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using System;
@@ -10,14 +9,26 @@ using System.Threading.Tasks;
 
 namespace Carbon.Domain.EntityFrameworkCore
 {
-
+    /// <summary>
+    ///     A carbon wrapper class for database context objects.
+    /// </summary>
+    /// <typeparam name="TContext"> A database context object to be wrapped. </typeparam>
     public class CarbonContext<TContext> : DbContext where TContext : DbContext
     {
+        /// <summary>
+        ///     Constructor that initializes the CarbonContext with the given options for database context
+        /// </summary>
+        /// <param name="options"> Options for DbContext constructor </param>
         public CarbonContext(DbContextOptions options) : base(options)
         {
 
         }
 
+        /// <summary>
+        ///     Saves all changes made in this context to the database.
+        /// </summary>
+        /// <param name="acceptAllChangesOnSuccess">Set to true to discard tracked changes after the save operation ends in success.</param>
+        /// <returns>Number of state entries written to the database.</returns>
         public override int SaveChanges(bool acceptAllChangesOnSuccess)
         {
             OnBeforeSaving();
@@ -25,6 +36,15 @@ namespace Carbon.Domain.EntityFrameworkCore
             return base.SaveChanges(acceptAllChangesOnSuccess);
         }
 
+        /// <summary>
+        ///     Saves all changes made in this context to the database.
+        /// </summary>
+        /// <remarks> 
+        ///     Multiple SaveChangesAsync operations on the same context is not supported, therefore it is advised to call
+        ///     use the "await" keyword to let the task finish before any other operations on this context.
+        /// </remarks>
+        /// <param name="acceptAllChangesOnSuccess">Set to true to discard tracked changes after the save operation ends in success.</param>
+        /// <returns>A task with number of state entries written to the database as its result.</returns>
         public override Task<int> SaveChangesAsync(bool acceptAllChangesOnSuccess, CancellationToken cancellationToken = default(CancellationToken))
         {
             OnBeforeSaving();
@@ -32,6 +52,12 @@ namespace Carbon.Domain.EntityFrameworkCore
             return base.SaveChangesAsync(acceptAllChangesOnSuccess, cancellationToken);
         }
 
+        /// <summary>
+        ///     Adds necessary information to changed items in the context before they can be properly saved to the database.
+        /// </summary>
+        /// <remarks>
+        ///     Automatically gets called when SaveChanges or SaveChangesAsync is called.
+        /// </remarks>
         private void OnBeforeSaving()
         {
             foreach (var entry in ChangeTracker.Entries<ISoftDelete>())
@@ -70,6 +96,13 @@ namespace Carbon.Domain.EntityFrameworkCore
 
         }
 
+        /// <summary>
+        ///     Recursively updates database context entries to perform soft delete before entries can be saved to the database.
+        /// </summary>
+        /// <remarks>
+        ///     Automatically gets called when SaveChanges or SaveChangesAsync is called.
+        /// </remarks>
+        /// <param name="entries"> List of entries to be operated on. </param>
         private void CascadeSoftDelete(IEnumerable<NavigationEntry> entries)
         {
             if (entries.Count() == 0)

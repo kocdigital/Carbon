@@ -11,6 +11,12 @@ namespace Carbon.WebApplication
 
     public static class ServiceCollectionExtensions
     {
+        /// <summary>
+        /// Adds bearer authentication to the service
+        /// </summary>
+        /// <param name="services"> Specifies the contract for a collection of service descriptors.</param>
+        /// <param name="configuration"> Represents a set of key/value application configuration properties.</param>
+        /// <returns>Returns the contract for a collection of service descriptors.</returns>
         public static IServiceCollection AddBearerAuthentication(this IServiceCollection services, IConfiguration configuration)
         {
             var jwtSettings = configuration.GetSection("JwtSettings").Get<JwtSettings>();
@@ -25,7 +31,7 @@ namespace Carbon.WebApplication
                         options.RequireHttpsMetadata = jwtSettings.RequireHttpsMetadata;
                         options.Audience = jwtSettings.Audience;
 
-                        if(jwtSettings.TokenValidationSettings != null)
+                        if (jwtSettings.TokenValidationSettings != null)
                         {
                             var tokenValidationSettings = jwtSettings.TokenValidationSettings;
                             options.TokenValidationParameters.ValidIssuers = tokenValidationSettings.ValidIssuers;

@@ -36,7 +36,7 @@ namespace Carbon.Demo.WebApplication.Controllers
         [HttpGet]
         public IEnumerable<WeatherForecast> Get()
         {
-            throw new MyTestException(MyErrorCodes.Blabla);
+            //throw new MyTestException(MyErrorCodes.Blabla);
 
             var rng = new Random();
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast
