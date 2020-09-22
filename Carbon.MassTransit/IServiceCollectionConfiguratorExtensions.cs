@@ -55,6 +55,9 @@ namespace Carbon.MassTransit
 
                     return Bus.Factory.CreateUsingRabbitMq(x =>
                     {
+                        if (busSettings.PrefetchCount > 0)
+                            x.PrefetchCount = busSettings.PrefetchCount;
+
                         x.Host(busSettings.Host, busSettings.VirtualHost, (c) =>
                          {
                              if (!string.IsNullOrEmpty(busSettings.Username))
