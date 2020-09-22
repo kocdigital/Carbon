@@ -115,5 +115,10 @@ namespace Carbon.MassTransit
         /// Requested Connection Timeout time in <c>msec</c>
         /// </summary>
         public int RequestedConnectionTimeout { get; set; }
+        /// <summary>
+        /// Prefetch Count
+        /// </summary>
+        public ushort PrefetchCount { get; set; }
+
     }
 }
