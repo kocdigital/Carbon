@@ -16,19 +16,19 @@ namespace Carbon.Test.Common.DataShares
         }
     }
 
-    public class TestClass
+    public class CarbonContextTestClass
     {
         public Guid? Id { get; set; }
         public string Name { get; set; }
     }
 
-    public class TestContext : CarbonContext<TestContext>
+    public class TestCarbonContext : CarbonContext<TestCarbonContext>
     {
-        public TestContext(DbContextOptions options) : base(options)
+        public TestCarbonContext(DbContextOptions options) : base(options)
         {
         }
 
-        public DbSet<TestClass> TestClass { get; set; }
+        public DbSet<CarbonContextTestClass> CarbonContextTestClass { get; set; }
     }
     
 }

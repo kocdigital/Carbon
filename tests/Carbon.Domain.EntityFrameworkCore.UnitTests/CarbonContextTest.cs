@@ -30,14 +30,14 @@ namespace Carbon.Domain.EntityFrameworkCore.UnitTests
         [SaveChanges]
         public async Task SaveChanges_Successfully_Integer(bool acceptAllChangesOnSuccess)
         {
-            var options = new DbContextOptionsBuilder<TestContext>()
+            var options = new DbContextOptionsBuilder<TestCarbonContext>()
             .UseInMemoryDatabase(databaseName: "TestDatabase")
             .Options;
 
-            using (var context = new TestContext(options))
+            using (var context = new TestCarbonContext(options))
             {
-                context.TestClass.Add(new TestClass { Id = Guid.NewGuid(), Name = "Name 1" });
-                context.TestClass.Add(new TestClass { Id = Guid.NewGuid(), Name = "Name 2" });
+                context.CarbonContextTestClass.Add(new CarbonContextTestClass { Id = Guid.NewGuid(), Name = "Name 1" });
+                context.CarbonContextTestClass.Add(new CarbonContextTestClass { Id = Guid.NewGuid(), Name = "Name 2" });
                 var response = context.SaveChanges(acceptAllChangesOnSuccess);
                 Assert.IsType<int>(response);
             }
@@ -52,14 +52,14 @@ namespace Carbon.Domain.EntityFrameworkCore.UnitTests
         [SaveChanges]
         public async Task SaveChangesAsync_Successfully_Integer(bool acceptAllChangesOnSuccess)
         {
-            var options = new DbContextOptionsBuilder<TestContext>()
+            var options = new DbContextOptionsBuilder<TestCarbonContext>()
             .UseInMemoryDatabase(databaseName: "TestDatabase")
             .Options;
 
-            using (var context = new TestContext(options))
+            using (var context = new TestCarbonContext(options))
             {
-                context.TestClass.Add(new TestClass { Id = Guid.NewGuid(), Name = "Name 1" });
-                context.TestClass.Add(new TestClass { Id = Guid.NewGuid(), Name = "Name 2" });
+                context.CarbonContextTestClass.Add(new CarbonContextTestClass { Id = Guid.NewGuid(), Name = "Name 1" });
+                context.CarbonContextTestClass.Add(new CarbonContextTestClass { Id = Guid.NewGuid(), Name = "Name 2" });
                 var response = await context.SaveChangesAsync(acceptAllChangesOnSuccess);
                 Assert.IsType<int>(response);
             }
