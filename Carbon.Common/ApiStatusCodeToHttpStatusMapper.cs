@@ -35,7 +35,6 @@ namespace Carbon.Common
             { HttpStatusCode.MethodNotAllowed, ApiStatusCode.BadRequest },
             { HttpStatusCode.Gone, ApiStatusCode.BadRequest },
             { HttpStatusCode.ExpectationFailed, ApiStatusCode.BadRequest },
-            { HttpStatusCode.LengthRequired, ApiStatusCode.BadRequest },
 
             { HttpStatusCode.Conflict, ApiStatusCode.Conflict },
 

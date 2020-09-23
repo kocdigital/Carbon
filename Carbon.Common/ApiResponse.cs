@@ -4,10 +4,6 @@ namespace Carbon.Common
 {
     public class ApiResponse<T> : IApiResponse
     {
-        public ApiResponse()
-        {
-
-        }
         public ApiResponse(string identifier, ApiStatusCode statusCode)
         {
             StatusCode = statusCode;
@@ -24,7 +20,7 @@ namespace Carbon.Common
 
         public ApiResponse(string identifier, ApiStatusCode statusCode, int errorCode, IList<string> messages) : this(identifier, statusCode, errorCode)
         {
-            Messages = messages; 
+            Messages = messages;
         }
         public T Data { get; set; }
         public IList<string> Messages { get; set; }
@@ -57,10 +53,14 @@ namespace Carbon.Common
             if (Messages == null)
                 Messages = new List<string>();
 
-            foreach (var msg in messages)
+            if (messages != null)
             {
-                Messages.Add(msg);
+                foreach (var msg in messages)
+                {
+                    Messages.Add(msg);
+                }
             }
+
         }
 
         public void SetErrorCode(int errorCode)
