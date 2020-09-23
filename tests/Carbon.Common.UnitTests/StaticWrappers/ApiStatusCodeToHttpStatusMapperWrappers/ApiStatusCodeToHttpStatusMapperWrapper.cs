@@ -8,5 +8,9 @@ namespace Carbon.Common.UnitTests.StaticWrappers.ApiStatusCodeToHttpStatusMapper
         {
             return ApiStatusCodeToHttpStatusMapper.GetApiStatusCode(httpStatusCode);
         }
+        public HttpStatusCode GetHttpStatusCode(ApiStatusCode apiStatusCode)
+        {
+            return ApiStatusCodeToHttpStatusMapper.GetHttpStatusCode(apiStatusCode);
+        }
     }
 }

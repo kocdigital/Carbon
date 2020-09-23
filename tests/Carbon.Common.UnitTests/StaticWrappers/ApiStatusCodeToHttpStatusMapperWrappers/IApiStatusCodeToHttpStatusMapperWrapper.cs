@@ -5,5 +5,6 @@ namespace Carbon.Common.UnitTests.StaticWrappers.ApiStatusCodeToHttpStatusMapper
     public interface IApiStatusCodeToHttpStatusMapperWrapper
     {
         ApiStatusCode GetApiStatusCode(HttpStatusCode httpStatusCode);
+        HttpStatusCode GetHttpStatusCode(ApiStatusCode apiStatusCode);
     }
 }

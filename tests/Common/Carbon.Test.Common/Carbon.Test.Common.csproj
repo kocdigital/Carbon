@@ -17,4 +17,8 @@
     <ProjectReference Include="..\..\..\Carbon.Common\Carbon.Common.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Fixtures\" />
+  </ItemGroup>
+
 </Project>
