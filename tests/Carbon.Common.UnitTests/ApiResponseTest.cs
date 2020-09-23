@@ -14,6 +14,7 @@ namespace Carbon.Common.UnitTests
     public class Int32Facts : ApiResponseTest<int> { public Int32Facts(ITestOutputHelper testOutputHelper) : base(testOutputHelper) { } }
     public class ObjectFacts : ApiResponseTest<object> { public ObjectFacts(ITestOutputHelper testOutputHelper) : base(testOutputHelper) { } }
     public class ListStringFacts : ApiResponseTest<List<string>> { public ListStringFacts(ITestOutputHelper testOutputHelper) : base(testOutputHelper) { } }
+  
     public abstract class ApiResponseTest<T>
     {
         private readonly ITestOutputHelper _testOutputHelper;
