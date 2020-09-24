@@ -12,25 +12,25 @@ using Xunit;
 namespace Carbon.Domain.EntityFrameworkCore.UnitTests
 {
 
-    public class EFRepositoryTest : EFRepository<CarbonContextTestClass, TestCarbonContext>
+    public class EFTenantRepositoryTest : EFTenantRepository<CarbonContextTestClass, TestCarbonContext>
     {
 
-        public EFRepositoryTest() : base(EFRepositoryFixture.CreateContext())
+        public EFTenantRepositoryTest() : base(EFRepositoryFixture.CreateContext())
         {
 
         }
      
         [Theory]
-        [FoundEntityGetByIdAsyncEFRepository]
-        public async Task GetByIdAsync_Successfully_ReturnEntity(Guid Id)
+        [FoundEntityWithTenantGetByIdAsyncEFRepository]
+        public async Task GetByIdAsync_Successfully_ReturnEntity(Guid Id, Guid tenantId)
         {
             // Arrange
-            EFRepositoryFixture.CreateData(base.context, Id, Guid.NewGuid());
+            EFRepositoryFixture.CreateData(base.context, Id, tenantId);
               // Act
-              var response = await base.GetByIdAsync(Id);
+              var response = await base.GetByIdAsync(Id, tenantId);
 
             // Assert
-            Assert.Equal("Name 1", response.Name);
+            Assert.Equal(Id, response.Id);
         }
         [Theory]
         [NotFoundEntityGetByIdAsyncEFRepository]
@@ -39,7 +39,7 @@ namespace Carbon.Domain.EntityFrameworkCore.UnitTests
             // Arrange
             EFRepositoryFixture.CreateData(base.context, Guid.NewGuid(), Guid.NewGuid());
             // Act
-            var response = await base.GetByIdAsync(Id);
+            var response = await base.GetByIdAsync(Id, tenantId);
 
             // Assert
             Assert.Null(response);
@@ -79,7 +79,7 @@ namespace Carbon.Domain.EntityFrameworkCore.UnitTests
             // Arrange
             var createResponse = await base.CreateAsync(carbonContextTestClass);
             // Act
-            var response = await base.DeleteAsync(createResponse.Id);
+            var response = await base.DeleteAsync(createResponse.Id, createResponse.TenantId);
 
             // Assert
             Assert.Equal(carbonContextTestClass.Id, response.Id);
@@ -90,9 +90,9 @@ namespace Carbon.Domain.EntityFrameworkCore.UnitTests
         public async Task GetAllAsync_Successfully_ReturnEntity(CarbonContextTestClass carbonContextTestClass)
         {
             // Arrange
-            EFRepositoryFixture.CreateData(base.context, Guid.NewGuid(), Guid.NewGuid());
+            EFRepositoryFixture.CreateData(base.context, carbonContextTestClass.Id, carbonContextTestClass.TenantId);
             // Act
-            var response = await base.GetAllAsync();
+            var response = await base.GetAllAsync(carbonContextTestClass.TenantId);
 
             // Assert
             Assert.IsType<List<CarbonContextTestClass>>(response);
@@ -155,7 +155,7 @@ namespace Carbon.Domain.EntityFrameworkCore.UnitTests
             var createResponse = await base.CreateRangeAsync(carbonContextTestClassList);
 
             // Act
-            var response = await base.GetAsync(x => x.Name == "Test Name 1");
+            var response = await base.GetAsync(carbonContextTestClassList.FirstOrDefault().TenantId, x => x.Name == "Test Name 1");
 
             // Assert
             Assert.Equal("Test Name 1", response.Name);
@@ -169,7 +169,7 @@ namespace Carbon.Domain.EntityFrameworkCore.UnitTests
             var createResponse = await base.CreateRangeAsync(carbonContextTestClassList);
 
             // Act
-            var response = base.Query().ToList();
+            var response = base.Query(carbonContextTestClassList.FirstOrDefault().TenantId).ToList();
 
             // Assert
             Assert.IsType<List<CarbonContextTestClass>>(response);
@@ -183,7 +183,7 @@ namespace Carbon.Domain.EntityFrameworkCore.UnitTests
             var createResponse = await base.CreateRangeAsync(carbonContextTestClassList);
 
             // Act
-            var response = base.QueryAsNoTracking().ToList();
+            var response = base.QueryAsNoTracking(carbonContextTestClassList.FirstOrDefault().TenantId).ToList();
 
             // Assert
             Assert.IsType<List<CarbonContextTestClass>>(response);
