@@ -589,8 +589,8 @@
         }
       }
     },
-    "C:\\Projects\\Platform360\\Mes.Microservices\\Carbon\\Carbon.WebApplication\\Carbon.WebApplication.csproj": {
-      "version": "1.6.33",
+    "D:\\Development\\Carbonv2\\Carbon.WebApplication\\Carbon.WebApplication.csproj": {
+      "version": "1.6.32",
       "restore": {
         "projectUniqueName": "C:\\Projects\\Platform360\\Mes.Microservices\\Carbon\\Carbon.WebApplication\\Carbon.WebApplication.csproj",
         "projectName": "Carbon.WebApplication",
