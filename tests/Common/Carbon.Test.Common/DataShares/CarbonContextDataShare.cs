@@ -1,4 +1,5 @@
 ﻿using Carbon.Common;
+using Carbon.Domain.Abstractions.Entities;
 using Carbon.Domain.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -16,9 +17,9 @@ namespace Carbon.Test.Common.DataShares
         }
     }
 
-    public class CarbonContextTestClass
+    public class CarbonContextTestClass :IEntity
     {
-        public Guid? Id { get; set; }
+        public Guid Id { get; set; }
         public string Name { get; set; }
     }
 

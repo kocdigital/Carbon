@@ -1,4 +1,4 @@
-using Carbon.Test.Common.DataShares;
+using Carbon.Common.UnitTests.DataShares;
 using System;
 using System.Collections.Generic;
 using System.Linq;

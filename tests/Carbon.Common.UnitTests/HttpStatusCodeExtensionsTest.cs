@@ -1,5 +1,5 @@
 ﻿using Carbon.Common.UnitTests.StaticWrappers.HttpStatusCodeExtensionsWrapper;
-using Carbon.Test.Common.DataShares;
+using Carbon.Common.UnitTests.DataShares;
 using System.Net;
 using Xunit;
 

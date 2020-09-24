@@ -1,5 +1,5 @@
 ﻿using Carbon.Common.UnitTests.StaticWrappers.ApiStatusCodeToHttpStatusMapperWrappers;
-using Carbon.Test.Common.DataShares;
+using Carbon.Common.UnitTests.DataShares;
 using System;
 using System.Net;
 using Xunit;
