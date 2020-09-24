@@ -1,33 +1,32 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Development\\Carbonv2\\demos\\Carbon.Demo.WebApplication\\Carbon.Demo.WebApplication.csproj": {}
+    "C:\\Projects\\Platform360\\Mes.Microservices\\Carbon\\demos\\Carbon.Demo.WebApplication\\Carbon.Demo.WebApplication.csproj": {}
   },
   "projects": {
-    "D:\\Development\\Carbonv2\\Carbon.Common\\Carbon.Common.csproj": {
+    "C:\\Projects\\Platform360\\Mes.Microservices\\Carbon\\Carbon.Common\\Carbon.Common.csproj": {
       "version": "1.1.11",
       "restore": {
-        "projectUniqueName": "D:\\Development\\Carbonv2\\Carbon.Common\\Carbon.Common.csproj",
+        "projectUniqueName": "C:\\Projects\\Platform360\\Mes.Microservices\\Carbon\\Carbon.Common\\Carbon.Common.csproj",
         "projectName": "Carbon.Common",
-        "projectPath": "D:\\Development\\Carbonv2\\Carbon.Common\\Carbon.Common.csproj",
-        "packagesPath": "C:\\Users\\02484819\\.nuget\\packages\\",
-        "outputPath": "D:\\Development\\Carbonv2\\Carbon.Common\\obj\\",
+        "projectPath": "C:\\Projects\\Platform360\\Mes.Microservices\\Carbon\\Carbon.Common\\Carbon.Common.csproj",
+        "packagesPath": "C:\\Users\\02484773\\.nuget\\packages\\",
+        "outputPath": "C:\\Projects\\Platform360\\Mes.Microservices\\Carbon\\Carbon.Common\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Microsoft\\Xamarin\\NuGet\\",
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\02484819\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "C:\\Users\\02484773\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netstandard2.1"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "http://bellatrix:8080/tfs/KocDigitalCollection/_packaging/CarbonFramework/nuget/v3/index.json": {},
-          "http://bellatrix:8080/tfs/KocDigitalCollection/_packaging/Platform360Core/nuget/v3/index.json": {},
+          "http://bellatrix:8080/tfs/KocDigitalCollection/_packaging/CosmosNugetServerv1/nuget/v3/index.json": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -64,41 +63,40 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\Development\\Carbonv2\\Carbon.ConsoleApplication.Extensions\\Carbon.ConsoleApplication.csproj": {
+    "C:\\Projects\\Platform360\\Mes.Microservices\\Carbon\\Carbon.ConsoleApplication.Extensions\\Carbon.ConsoleApplication.csproj": {
       "version": "1.1.8",
       "restore": {
-        "projectUniqueName": "D:\\Development\\Carbonv2\\Carbon.ConsoleApplication.Extensions\\Carbon.ConsoleApplication.csproj",
+        "projectUniqueName": "C:\\Projects\\Platform360\\Mes.Microservices\\Carbon\\Carbon.ConsoleApplication.Extensions\\Carbon.ConsoleApplication.csproj",
         "projectName": "Carbon.ConsoleApplication",
-        "projectPath": "D:\\Development\\Carbonv2\\Carbon.ConsoleApplication.Extensions\\Carbon.ConsoleApplication.csproj",
-        "packagesPath": "C:\\Users\\02484819\\.nuget\\packages\\",
-        "outputPath": "D:\\Development\\Carbonv2\\Carbon.ConsoleApplication.Extensions\\obj\\",
+        "projectPath": "C:\\Projects\\Platform360\\Mes.Microservices\\Carbon\\Carbon.ConsoleApplication.Extensions\\Carbon.ConsoleApplication.csproj",
+        "packagesPath": "C:\\Users\\02484773\\.nuget\\packages\\",
+        "outputPath": "C:\\Projects\\Platform360\\Mes.Microservices\\Carbon\\Carbon.ConsoleApplication.Extensions\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Microsoft\\Xamarin\\NuGet\\",
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\02484819\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "C:\\Users\\02484773\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netstandard2.1"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "http://bellatrix:8080/tfs/KocDigitalCollection/_packaging/CarbonFramework/nuget/v3/index.json": {},
-          "http://bellatrix:8080/tfs/KocDigitalCollection/_packaging/Platform360Core/nuget/v3/index.json": {},
+          "http://bellatrix:8080/tfs/KocDigitalCollection/_packaging/CosmosNugetServerv1/nuget/v3/index.json": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "netstandard2.1": {
             "projectReferences": {
-              "D:\\Development\\Carbonv2\\Carbon.Common\\Carbon.Common.csproj": {
-                "projectPath": "D:\\Development\\Carbonv2\\Carbon.Common\\Carbon.Common.csproj"
+              "C:\\Projects\\Platform360\\Mes.Microservices\\Carbon\\Carbon.Common\\Carbon.Common.csproj": {
+                "projectPath": "C:\\Projects\\Platform360\\Mes.Microservices\\Carbon\\Carbon.Common\\Carbon.Common.csproj"
               }
             }
           }
@@ -160,41 +158,40 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\Development\\Carbonv2\\Carbon.Domain.Abstractions\\Carbon.Domain.Abstractions.csproj": {
+    "C:\\Projects\\Platform360\\Mes.Microservices\\Carbon\\Carbon.Domain.Abstractions\\Carbon.Domain.Abstractions.csproj": {
       "version": "1.1.4",
       "restore": {
-        "projectUniqueName": "D:\\Development\\Carbonv2\\Carbon.Domain.Abstractions\\Carbon.Domain.Abstractions.csproj",
+        "projectUniqueName": "C:\\Projects\\Platform360\\Mes.Microservices\\Carbon\\Carbon.Domain.Abstractions\\Carbon.Domain.Abstractions.csproj",
         "projectName": "Carbon.Domain.Abstractions",
-        "projectPath": "D:\\Development\\Carbonv2\\Carbon.Domain.Abstractions\\Carbon.Domain.Abstractions.csproj",
-        "packagesPath": "C:\\Users\\02484819\\.nuget\\packages\\",
-        "outputPath": "D:\\Development\\Carbonv2\\Carbon.Domain.Abstractions\\obj\\",
+        "projectPath": "C:\\Projects\\Platform360\\Mes.Microservices\\Carbon\\Carbon.Domain.Abstractions\\Carbon.Domain.Abstractions.csproj",
+        "packagesPath": "C:\\Users\\02484773\\.nuget\\packages\\",
+        "outputPath": "C:\\Projects\\Platform360\\Mes.Microservices\\Carbon\\Carbon.Domain.Abstractions\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Microsoft\\Xamarin\\NuGet\\",
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\02484819\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "C:\\Users\\02484773\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netstandard2.1"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "http://bellatrix:8080/tfs/KocDigitalCollection/_packaging/CarbonFramework/nuget/v3/index.json": {},
-          "http://bellatrix:8080/tfs/KocDigitalCollection/_packaging/Platform360Core/nuget/v3/index.json": {},
+          "http://bellatrix:8080/tfs/KocDigitalCollection/_packaging/CosmosNugetServerv1/nuget/v3/index.json": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "netstandard2.1": {
             "projectReferences": {
-              "D:\\Development\\Carbonv2\\Carbon.Common\\Carbon.Common.csproj": {
-                "projectPath": "D:\\Development\\Carbonv2\\Carbon.Common\\Carbon.Common.csproj"
+              "C:\\Projects\\Platform360\\Mes.Microservices\\Carbon\\Carbon.Common\\Carbon.Common.csproj": {
+                "projectPath": "C:\\Projects\\Platform360\\Mes.Microservices\\Carbon\\Carbon.Common\\Carbon.Common.csproj"
               }
             }
           }
@@ -228,41 +225,40 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\Development\\Carbonv2\\Carbon.Domain.EntityFrameworkCore.Extensions\\Carbon.Domain.EntityFrameworkCore.csproj": {
+    "C:\\Projects\\Platform360\\Mes.Microservices\\Carbon\\Carbon.Domain.EntityFrameworkCore.Extensions\\Carbon.Domain.EntityFrameworkCore.csproj": {
       "version": "1.0.14",
       "restore": {
-        "projectUniqueName": "D:\\Development\\Carbonv2\\Carbon.Domain.EntityFrameworkCore.Extensions\\Carbon.Domain.EntityFrameworkCore.csproj",
+        "projectUniqueName": "C:\\Projects\\Platform360\\Mes.Microservices\\Carbon\\Carbon.Domain.EntityFrameworkCore.Extensions\\Carbon.Domain.EntityFrameworkCore.csproj",
         "projectName": "Carbon.Domain.EntityFrameworkCore",
-        "projectPath": "D:\\Development\\Carbonv2\\Carbon.Domain.EntityFrameworkCore.Extensions\\Carbon.Domain.EntityFrameworkCore.csproj",
-        "packagesPath": "C:\\Users\\02484819\\.nuget\\packages\\",
-        "outputPath": "D:\\Development\\Carbonv2\\Carbon.Domain.EntityFrameworkCore.Extensions\\obj\\",
+        "projectPath": "C:\\Projects\\Platform360\\Mes.Microservices\\Carbon\\Carbon.Domain.EntityFrameworkCore.Extensions\\Carbon.Domain.EntityFrameworkCore.csproj",
+        "packagesPath": "C:\\Users\\02484773\\.nuget\\packages\\",
+        "outputPath": "C:\\Projects\\Platform360\\Mes.Microservices\\Carbon\\Carbon.Domain.EntityFrameworkCore.Extensions\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Microsoft\\Xamarin\\NuGet\\",
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\02484819\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "C:\\Users\\02484773\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netstandard2.1"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "http://bellatrix:8080/tfs/KocDigitalCollection/_packaging/CarbonFramework/nuget/v3/index.json": {},
-          "http://bellatrix:8080/tfs/KocDigitalCollection/_packaging/Platform360Core/nuget/v3/index.json": {},
+          "http://bellatrix:8080/tfs/KocDigitalCollection/_packaging/CosmosNugetServerv1/nuget/v3/index.json": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "netstandard2.1": {
             "projectReferences": {
-              "D:\\Development\\Carbonv2\\Carbon.Domain.Abstractions\\Carbon.Domain.Abstractions.csproj": {
-                "projectPath": "D:\\Development\\Carbonv2\\Carbon.Domain.Abstractions\\Carbon.Domain.Abstractions.csproj"
+              "C:\\Projects\\Platform360\\Mes.Microservices\\Carbon\\Carbon.Domain.Abstractions\\Carbon.Domain.Abstractions.csproj": {
+                "projectPath": "C:\\Projects\\Platform360\\Mes.Microservices\\Carbon\\Carbon.Domain.Abstractions\\Carbon.Domain.Abstractions.csproj"
               }
             }
           }
@@ -310,34 +306,33 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\Development\\Carbonv2\\Carbon.ExceptionHandling\\Carbon.ExceptionHandling.Abstractions.csproj": {
+    "C:\\Projects\\Platform360\\Mes.Microservices\\Carbon\\Carbon.ExceptionHandling\\Carbon.ExceptionHandling.Abstractions.csproj": {
       "version": "1.1.0",
       "restore": {
-        "projectUniqueName": "D:\\Development\\Carbonv2\\Carbon.ExceptionHandling\\Carbon.ExceptionHandling.Abstractions.csproj",
+        "projectUniqueName": "C:\\Projects\\Platform360\\Mes.Microservices\\Carbon\\Carbon.ExceptionHandling\\Carbon.ExceptionHandling.Abstractions.csproj",
         "projectName": "Carbon.ExceptionHandling.Abstractions",
-        "projectPath": "D:\\Development\\Carbonv2\\Carbon.ExceptionHandling\\Carbon.ExceptionHandling.Abstractions.csproj",
-        "packagesPath": "C:\\Users\\02484819\\.nuget\\packages\\",
-        "outputPath": "D:\\Development\\Carbonv2\\Carbon.ExceptionHandling\\obj\\",
+        "projectPath": "C:\\Projects\\Platform360\\Mes.Microservices\\Carbon\\Carbon.ExceptionHandling\\Carbon.ExceptionHandling.Abstractions.csproj",
+        "packagesPath": "C:\\Users\\02484773\\.nuget\\packages\\",
+        "outputPath": "C:\\Projects\\Platform360\\Mes.Microservices\\Carbon\\Carbon.ExceptionHandling\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Microsoft\\Xamarin\\NuGet\\",
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\02484819\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "C:\\Users\\02484773\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netstandard2.1"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "http://bellatrix:8080/tfs/KocDigitalCollection/_packaging/CarbonFramework/nuget/v3/index.json": {},
-          "http://bellatrix:8080/tfs/KocDigitalCollection/_packaging/Platform360Core/nuget/v3/index.json": {},
+          "http://bellatrix:8080/tfs/KocDigitalCollection/_packaging/CosmosNugetServerv1/nuget/v3/index.json": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -382,34 +377,33 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\Development\\Carbonv2\\Carbon.HttpClient\\Carbon.HttpClient.csproj": {
+    "C:\\Projects\\Platform360\\Mes.Microservices\\Carbon\\Carbon.HttpClient\\Carbon.HttpClient.csproj": {
       "version": "1.0.8",
       "restore": {
-        "projectUniqueName": "D:\\Development\\Carbonv2\\Carbon.HttpClient\\Carbon.HttpClient.csproj",
+        "projectUniqueName": "C:\\Projects\\Platform360\\Mes.Microservices\\Carbon\\Carbon.HttpClient\\Carbon.HttpClient.csproj",
         "projectName": "Carbon.HttpClient",
-        "projectPath": "D:\\Development\\Carbonv2\\Carbon.HttpClient\\Carbon.HttpClient.csproj",
-        "packagesPath": "C:\\Users\\02484819\\.nuget\\packages\\",
-        "outputPath": "D:\\Development\\Carbonv2\\Carbon.HttpClient\\obj\\",
+        "projectPath": "C:\\Projects\\Platform360\\Mes.Microservices\\Carbon\\Carbon.HttpClient\\Carbon.HttpClient.csproj",
+        "packagesPath": "C:\\Users\\02484773\\.nuget\\packages\\",
+        "outputPath": "C:\\Projects\\Platform360\\Mes.Microservices\\Carbon\\Carbon.HttpClient\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Microsoft\\Xamarin\\NuGet\\",
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\02484819\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "C:\\Users\\02484773\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "http://bellatrix:8080/tfs/KocDigitalCollection/_packaging/CarbonFramework/nuget/v3/index.json": {},
-          "http://bellatrix:8080/tfs/KocDigitalCollection/_packaging/Platform360Core/nuget/v3/index.json": {},
+          "http://bellatrix:8080/tfs/KocDigitalCollection/_packaging/CosmosNugetServerv1/nuget/v3/index.json": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -449,34 +443,33 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\Development\\Carbonv2\\Carbon.PagedList\\Carbon.PagedList.csproj": {
+    "C:\\Projects\\Platform360\\Mes.Microservices\\Carbon\\Carbon.PagedList\\Carbon.PagedList.csproj": {
       "version": "1.0.7",
       "restore": {
-        "projectUniqueName": "D:\\Development\\Carbonv2\\Carbon.PagedList\\Carbon.PagedList.csproj",
+        "projectUniqueName": "C:\\Projects\\Platform360\\Mes.Microservices\\Carbon\\Carbon.PagedList\\Carbon.PagedList.csproj",
         "projectName": "Carbon.PagedList",
-        "projectPath": "D:\\Development\\Carbonv2\\Carbon.PagedList\\Carbon.PagedList.csproj",
-        "packagesPath": "C:\\Users\\02484819\\.nuget\\packages\\",
-        "outputPath": "D:\\Development\\Carbonv2\\Carbon.PagedList\\obj\\",
+        "projectPath": "C:\\Projects\\Platform360\\Mes.Microservices\\Carbon\\Carbon.PagedList\\Carbon.PagedList.csproj",
+        "packagesPath": "C:\\Users\\02484773\\.nuget\\packages\\",
+        "outputPath": "C:\\Projects\\Platform360\\Mes.Microservices\\Carbon\\Carbon.PagedList\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Microsoft\\Xamarin\\NuGet\\",
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\02484819\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "C:\\Users\\02484773\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netstandard2.1"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "http://bellatrix:8080/tfs/KocDigitalCollection/_packaging/CarbonFramework/nuget/v3/index.json": {},
-          "http://bellatrix:8080/tfs/KocDigitalCollection/_packaging/Platform360Core/nuget/v3/index.json": {},
+          "http://bellatrix:8080/tfs/KocDigitalCollection/_packaging/CosmosNugetServerv1/nuget/v3/index.json": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -513,34 +506,33 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\Development\\Carbonv2\\Carbon.Redis\\Carbon.Redis.csproj": {
+    "C:\\Projects\\Platform360\\Mes.Microservices\\Carbon\\Carbon.Redis\\Carbon.Redis.csproj": {
       "version": "1.0.1",
       "restore": {
-        "projectUniqueName": "D:\\Development\\Carbonv2\\Carbon.Redis\\Carbon.Redis.csproj",
+        "projectUniqueName": "C:\\Projects\\Platform360\\Mes.Microservices\\Carbon\\Carbon.Redis\\Carbon.Redis.csproj",
         "projectName": "Carbon.Redis",
-        "projectPath": "D:\\Development\\Carbonv2\\Carbon.Redis\\Carbon.Redis.csproj",
-        "packagesPath": "C:\\Users\\02484819\\.nuget\\packages\\",
-        "outputPath": "D:\\Development\\Carbonv2\\Carbon.Redis\\obj\\",
+        "projectPath": "C:\\Projects\\Platform360\\Mes.Microservices\\Carbon\\Carbon.Redis\\Carbon.Redis.csproj",
+        "packagesPath": "C:\\Users\\02484773\\.nuget\\packages\\",
+        "outputPath": "C:\\Projects\\Platform360\\Mes.Microservices\\Carbon\\Carbon.Redis\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Microsoft\\Xamarin\\NuGet\\",
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\02484819\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "C:\\Users\\02484773\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netstandard2.1"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "http://bellatrix:8080/tfs/KocDigitalCollection/_packaging/CarbonFramework/nuget/v3/index.json": {},
-          "http://bellatrix:8080/tfs/KocDigitalCollection/_packaging/Platform360Core/nuget/v3/index.json": {},
+          "http://bellatrix:8080/tfs/KocDigitalCollection/_packaging/CosmosNugetServerv1/nuget/v3/index.json": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -593,50 +585,49 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\Development\\Carbonv2\\Carbon.WebApplication\\Carbon.WebApplication.csproj": {
-      "version": "1.6.32",
+    "C:\\Projects\\Platform360\\Mes.Microservices\\Carbon\\Carbon.WebApplication\\Carbon.WebApplication.csproj": {
+      "version": "1.6.33",
       "restore": {
-        "projectUniqueName": "D:\\Development\\Carbonv2\\Carbon.WebApplication\\Carbon.WebApplication.csproj",
+        "projectUniqueName": "C:\\Projects\\Platform360\\Mes.Microservices\\Carbon\\Carbon.WebApplication\\Carbon.WebApplication.csproj",
         "projectName": "Carbon.WebApplication",
-        "projectPath": "D:\\Development\\Carbonv2\\Carbon.WebApplication\\Carbon.WebApplication.csproj",
-        "packagesPath": "C:\\Users\\02484819\\.nuget\\packages\\",
-        "outputPath": "D:\\Development\\Carbonv2\\Carbon.WebApplication\\obj\\",
+        "projectPath": "C:\\Projects\\Platform360\\Mes.Microservices\\Carbon\\Carbon.WebApplication\\Carbon.WebApplication.csproj",
+        "packagesPath": "C:\\Users\\02484773\\.nuget\\packages\\",
+        "outputPath": "C:\\Projects\\Platform360\\Mes.Microservices\\Carbon\\Carbon.WebApplication\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Microsoft\\Xamarin\\NuGet\\",
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\02484819\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "C:\\Users\\02484773\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "http://bellatrix:8080/tfs/KocDigitalCollection/_packaging/CarbonFramework/nuget/v3/index.json": {},
-          "http://bellatrix:8080/tfs/KocDigitalCollection/_packaging/Platform360Core/nuget/v3/index.json": {},
+          "http://bellatrix:8080/tfs/KocDigitalCollection/_packaging/CosmosNugetServerv1/nuget/v3/index.json": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "D:\\Development\\Carbonv2\\Carbon.Common\\Carbon.Common.csproj": {
-                "projectPath": "D:\\Development\\Carbonv2\\Carbon.Common\\Carbon.Common.csproj"
+              "C:\\Projects\\Platform360\\Mes.Microservices\\Carbon\\Carbon.Common\\Carbon.Common.csproj": {
+                "projectPath": "C:\\Projects\\Platform360\\Mes.Microservices\\Carbon\\Carbon.Common\\Carbon.Common.csproj"
               },
-              "D:\\Development\\Carbonv2\\Carbon.ExceptionHandling\\Carbon.ExceptionHandling.Abstractions.csproj": {
-                "projectPath": "D:\\Development\\Carbonv2\\Carbon.ExceptionHandling\\Carbon.ExceptionHandling.Abstractions.csproj"
+              "C:\\Projects\\Platform360\\Mes.Microservices\\Carbon\\Carbon.ExceptionHandling\\Carbon.ExceptionHandling.Abstractions.csproj": {
+                "projectPath": "C:\\Projects\\Platform360\\Mes.Microservices\\Carbon\\Carbon.ExceptionHandling\\Carbon.ExceptionHandling.Abstractions.csproj"
               },
-              "D:\\Development\\Carbonv2\\Carbon.HttpClient\\Carbon.HttpClient.csproj": {
-                "projectPath": "D:\\Development\\Carbonv2\\Carbon.HttpClient\\Carbon.HttpClient.csproj"
+              "C:\\Projects\\Platform360\\Mes.Microservices\\Carbon\\Carbon.HttpClient\\Carbon.HttpClient.csproj": {
+                "projectPath": "C:\\Projects\\Platform360\\Mes.Microservices\\Carbon\\Carbon.HttpClient\\Carbon.HttpClient.csproj"
               },
-              "D:\\Development\\Carbonv2\\Carbon.PagedList\\Carbon.PagedList.csproj": {
-                "projectPath": "D:\\Development\\Carbonv2\\Carbon.PagedList\\Carbon.PagedList.csproj"
+              "C:\\Projects\\Platform360\\Mes.Microservices\\Carbon\\Carbon.PagedList\\Carbon.PagedList.csproj": {
+                "projectPath": "C:\\Projects\\Platform360\\Mes.Microservices\\Carbon\\Carbon.PagedList\\Carbon.PagedList.csproj"
               }
             }
           }
@@ -761,62 +752,61 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\Development\\Carbonv2\\demos\\Carbon.Demo.WebApplication\\Carbon.Demo.WebApplication.csproj": {
+    "C:\\Projects\\Platform360\\Mes.Microservices\\Carbon\\demos\\Carbon.Demo.WebApplication\\Carbon.Demo.WebApplication.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Development\\Carbonv2\\demos\\Carbon.Demo.WebApplication\\Carbon.Demo.WebApplication.csproj",
+        "projectUniqueName": "C:\\Projects\\Platform360\\Mes.Microservices\\Carbon\\demos\\Carbon.Demo.WebApplication\\Carbon.Demo.WebApplication.csproj",
         "projectName": "Carbon.Demo.WebApplication",
-        "projectPath": "D:\\Development\\Carbonv2\\demos\\Carbon.Demo.WebApplication\\Carbon.Demo.WebApplication.csproj",
-        "packagesPath": "C:\\Users\\02484819\\.nuget\\packages\\",
-        "outputPath": "D:\\Development\\Carbonv2\\demos\\Carbon.Demo.WebApplication\\obj\\",
+        "projectPath": "C:\\Projects\\Platform360\\Mes.Microservices\\Carbon\\demos\\Carbon.Demo.WebApplication\\Carbon.Demo.WebApplication.csproj",
+        "packagesPath": "C:\\Users\\02484773\\.nuget\\packages\\",
+        "outputPath": "C:\\Projects\\Platform360\\Mes.Microservices\\Carbon\\demos\\Carbon.Demo.WebApplication\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Microsoft\\Xamarin\\NuGet\\",
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\02484819\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "C:\\Users\\02484773\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "http://bellatrix:8080/tfs/KocDigitalCollection/_packaging/CarbonFramework/nuget/v3/index.json": {},
-          "http://bellatrix:8080/tfs/KocDigitalCollection/_packaging/Platform360Core/nuget/v3/index.json": {},
+          "http://bellatrix:8080/tfs/KocDigitalCollection/_packaging/CosmosNugetServerv1/nuget/v3/index.json": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "D:\\Development\\Carbonv2\\Carbon.Common\\Carbon.Common.csproj": {
-                "projectPath": "D:\\Development\\Carbonv2\\Carbon.Common\\Carbon.Common.csproj"
+              "C:\\Projects\\Platform360\\Mes.Microservices\\Carbon\\Carbon.Common\\Carbon.Common.csproj": {
+                "projectPath": "C:\\Projects\\Platform360\\Mes.Microservices\\Carbon\\Carbon.Common\\Carbon.Common.csproj"
               },
-              "D:\\Development\\Carbonv2\\Carbon.ConsoleApplication.Extensions\\Carbon.ConsoleApplication.csproj": {
-                "projectPath": "D:\\Development\\Carbonv2\\Carbon.ConsoleApplication.Extensions\\Carbon.ConsoleApplication.csproj"
+              "C:\\Projects\\Platform360\\Mes.Microservices\\Carbon\\Carbon.ConsoleApplication.Extensions\\Carbon.ConsoleApplication.csproj": {
+                "projectPath": "C:\\Projects\\Platform360\\Mes.Microservices\\Carbon\\Carbon.ConsoleApplication.Extensions\\Carbon.ConsoleApplication.csproj"
               },
-              "D:\\Development\\Carbonv2\\Carbon.Domain.Abstractions\\Carbon.Domain.Abstractions.csproj": {
-                "projectPath": "D:\\Development\\Carbonv2\\Carbon.Domain.Abstractions\\Carbon.Domain.Abstractions.csproj"
+              "C:\\Projects\\Platform360\\Mes.Microservices\\Carbon\\Carbon.Domain.Abstractions\\Carbon.Domain.Abstractions.csproj": {
+                "projectPath": "C:\\Projects\\Platform360\\Mes.Microservices\\Carbon\\Carbon.Domain.Abstractions\\Carbon.Domain.Abstractions.csproj"
               },
-              "D:\\Development\\Carbonv2\\Carbon.Domain.EntityFrameworkCore.Extensions\\Carbon.Domain.EntityFrameworkCore.csproj": {
-                "projectPath": "D:\\Development\\Carbonv2\\Carbon.Domain.EntityFrameworkCore.Extensions\\Carbon.Domain.EntityFrameworkCore.csproj"
+              "C:\\Projects\\Platform360\\Mes.Microservices\\Carbon\\Carbon.Domain.EntityFrameworkCore.Extensions\\Carbon.Domain.EntityFrameworkCore.csproj": {
+                "projectPath": "C:\\Projects\\Platform360\\Mes.Microservices\\Carbon\\Carbon.Domain.EntityFrameworkCore.Extensions\\Carbon.Domain.EntityFrameworkCore.csproj"
               },
-              "D:\\Development\\Carbonv2\\Carbon.ExceptionHandling\\Carbon.ExceptionHandling.Abstractions.csproj": {
-                "projectPath": "D:\\Development\\Carbonv2\\Carbon.ExceptionHandling\\Carbon.ExceptionHandling.Abstractions.csproj"
+              "C:\\Projects\\Platform360\\Mes.Microservices\\Carbon\\Carbon.ExceptionHandling\\Carbon.ExceptionHandling.Abstractions.csproj": {
+                "projectPath": "C:\\Projects\\Platform360\\Mes.Microservices\\Carbon\\Carbon.ExceptionHandling\\Carbon.ExceptionHandling.Abstractions.csproj"
               },
-              "D:\\Development\\Carbonv2\\Carbon.PagedList\\Carbon.PagedList.csproj": {
-                "projectPath": "D:\\Development\\Carbonv2\\Carbon.PagedList\\Carbon.PagedList.csproj"
+              "C:\\Projects\\Platform360\\Mes.Microservices\\Carbon\\Carbon.PagedList\\Carbon.PagedList.csproj": {
+                "projectPath": "C:\\Projects\\Platform360\\Mes.Microservices\\Carbon\\Carbon.PagedList\\Carbon.PagedList.csproj"
               },
-              "D:\\Development\\Carbonv2\\Carbon.Redis\\Carbon.Redis.csproj": {
-                "projectPath": "D:\\Development\\Carbonv2\\Carbon.Redis\\Carbon.Redis.csproj"
+              "C:\\Projects\\Platform360\\Mes.Microservices\\Carbon\\Carbon.Redis\\Carbon.Redis.csproj": {
+                "projectPath": "C:\\Projects\\Platform360\\Mes.Microservices\\Carbon\\Carbon.Redis\\Carbon.Redis.csproj"
               },
-              "D:\\Development\\Carbonv2\\Carbon.WebApplication\\Carbon.WebApplication.csproj": {
-                "projectPath": "D:\\Development\\Carbonv2\\Carbon.WebApplication\\Carbon.WebApplication.csproj"
+              "C:\\Projects\\Platform360\\Mes.Microservices\\Carbon\\Carbon.WebApplication\\Carbon.WebApplication.csproj": {
+                "projectPath": "C:\\Projects\\Platform360\\Mes.Microservices\\Carbon\\Carbon.WebApplication\\Carbon.WebApplication.csproj"
               }
             }
           }
@@ -855,7 +845,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
         }
       }
     }
