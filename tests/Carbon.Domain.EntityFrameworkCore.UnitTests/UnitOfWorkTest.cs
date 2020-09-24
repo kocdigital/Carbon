@@ -29,8 +29,7 @@ namespace Carbon.Domain.EntityFrameworkCore.UnitTests
             this.testOutputHelper = testOutputHelper;
         }
 
-        [Theory]
-        [EmptyData]
+        [Fact]
         public async Task SaveChanges_Successfully_Integer()
         {
             var uow = new UnitOfWork<TestCarbonContext>(EFRepositoryFixture.CreateContext());
@@ -40,8 +39,7 @@ namespace Carbon.Domain.EntityFrameworkCore.UnitTests
             Assert.IsType<int>(response);
         }
 
-        [Theory]
-        [EmptyData]
+        [Fact]
         public async Task SaveChangesAsync_Successfully_Integer()
         {
             var uow = new UnitOfWork<TestCarbonContext>(EFRepositoryFixture.CreateContext());

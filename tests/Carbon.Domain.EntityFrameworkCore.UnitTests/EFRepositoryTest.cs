@@ -85,9 +85,8 @@ namespace Carbon.Domain.EntityFrameworkCore.UnitTests
             Assert.Equal(carbonContextTestClass.Id, response.Id);
         }
 
-        [Theory]
-        [EntityEFRepository]
-        public async Task GetAllAsync_Successfully_ReturnEntity(CarbonContextTestClass carbonContextTestClass)
+        [Fact]
+        public async Task GetAllAsync_Successfully_ReturnEntity()
         {
             // Arrange
             EFRepositoryFixture.CreateData(base.context, Guid.NewGuid(), Guid.NewGuid());
