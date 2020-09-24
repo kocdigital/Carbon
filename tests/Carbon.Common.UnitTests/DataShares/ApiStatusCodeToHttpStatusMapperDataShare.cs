@@ -1,11 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using Carbon.Common;
+using System.Collections.Generic;
 using System.Net;
 using System.Reflection;
 using Xunit.Sdk;
 
-namespace Carbon.Test.Common.DataShares
+namespace Carbon.Common.UnitTests.DataShares
 {
-    public class ValidHttpStatusCodeExtensions : DataAttribute
+    public class ValidApiStatusCodeToApiStatusCodeToHttpStatusMapper : DataAttribute
     {
         public override IEnumerable<object[]> GetData(MethodInfo testMethod)
         {
@@ -40,14 +41,37 @@ namespace Carbon.Test.Common.DataShares
             yield return new object[] { HttpStatusCode.Forbidden };
         }
     }
-    public class InValidHttpStatusCodeExtensions : DataAttribute
+    public class InValidApiStatusCodeToApiStatusCodeToHttpStatusMapper : DataAttribute
     {
         public override IEnumerable<object[]> GetData(MethodInfo testMethod)
         {
             yield return new object[] { HttpStatusCode.IMUsed };
             yield return new object[] { HttpStatusCode.EarlyHints };
             yield return new object[] { HttpStatusCode.NetworkAuthenticationRequired };
-            
+
+        }
+    }
+
+
+    public class ValidHttpStatusCodeToApiStatusCodeToHttpStatusMapper : DataAttribute
+    {
+        public override IEnumerable<object[]> GetData(MethodInfo testMethod)
+        {
+            yield return new object[] { ApiStatusCode.OK };
+            yield return new object[] { ApiStatusCode.BadRequest };
+            yield return new object[] { ApiStatusCode.Conflict };
+            yield return new object[] { ApiStatusCode.InternalServerError };
+            yield return new object[] { ApiStatusCode.NotFound };
+            yield return new object[] { ApiStatusCode.RequestTimeout };
+            yield return new object[] { ApiStatusCode.UnAuthorized };
+           
+        }
+    }
+    public class InValidHttpStatusCodeToApiStatusCodeToHttpStatusMapper : DataAttribute
+    {
+        public override IEnumerable<object[]> GetData(MethodInfo testMethod)
+        {
+            yield return new object[] { null };
         }
     }
 }

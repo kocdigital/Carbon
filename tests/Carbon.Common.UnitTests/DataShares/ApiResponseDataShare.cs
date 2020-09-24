@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Reflection;
 using Xunit.Sdk;
 
-namespace Carbon.Test.Common.DataShares
+namespace Carbon.Common.UnitTests.DataShares
 {
     public class AddValidMessageToApiResponse : DataAttribute
     {
