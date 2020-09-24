@@ -54,7 +54,7 @@ namespace Carbon.Common
         /// <param name="messages"><see cref="IApiResponse.Messages"/></param>
         public ApiResponse(string identifier, ApiStatusCode statusCode, int errorCode, IList<string> messages) : this(identifier, statusCode, errorCode)
         {
-            Messages = messages; 
+            Messages = messages;
         }
         /// <summary>
         /// Contains response data from type of <typeparamref name="T"/>
@@ -119,10 +119,14 @@ namespace Carbon.Common
             if (Messages == null)
                 Messages = new List<string>();
 
-            foreach (var msg in messages)
+            if (messages != null)
             {
-                Messages.Add(msg);
+                foreach (var msg in messages)
+                {
+                    Messages.Add(msg);
+                }
             }
+
         }
         /// <summary>
         /// Sets error code. <see cref="ErrorCode"/>
