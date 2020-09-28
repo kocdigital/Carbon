@@ -16,10 +16,10 @@ namespace Carbon.Test.Common.Fixtures
             return context;
         }
 
-        public static void CreateData(TestCarbonContext context, Guid id)
+        public static void CreateData(TestCarbonContext context, Guid id, Guid tenantId)
         {
-            context.CarbonContextTestClass.Add(new CarbonContextTestClass { Id = id, Name = "Name 1" });
-            context.CarbonContextTestClass.Add(new CarbonContextTestClass { Id = Guid.NewGuid(), Name = "Name 2" });
+            context.CarbonContextTestClass.Add(new CarbonContextTestClass { Id = id, TenantId = tenantId, Name = "Name 1" });
+            context.CarbonContextTestClass.Add(new CarbonContextTestClass { Id = Guid.NewGuid(), TenantId = Guid.NewGuid(), Name = "Name 2" });
             context.SaveChanges();
         }
     }

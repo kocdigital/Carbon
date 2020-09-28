@@ -9,6 +9,14 @@ using Xunit.Sdk;
 
 namespace Carbon.Test.Common.DataShares
 {
+    public class EmptyData : DataAttribute
+    {
+        public override IEnumerable<object[]> GetData(MethodInfo testMethod)
+        {
+            yield return new object[] {  };
+        }
+    }
+
     public class SaveChanges : DataAttribute
     {
         public override IEnumerable<object[]> GetData(MethodInfo testMethod)
@@ -17,9 +25,10 @@ namespace Carbon.Test.Common.DataShares
         }
     }
 
-    public class CarbonContextTestClass :IEntity
+    public class CarbonContextTestClass :IEntity, IMustHaveTenant
     {
         public Guid Id { get; set; }
+        public Guid TenantId { get; set; }
         public string Name { get; set; }
     }
 
