@@ -12,7 +12,6 @@ namespace Carbon.HttpClient.UnitTests.DataShares
 {
     public class AddHttpClientWithHeaderPropagationData : DataAttribute
     {
-        //IServiceCollection services, Action<HeaderPropagationOptions> configureHeaderPropagation
         public override IEnumerable<object[]> GetData(MethodInfo testMethod)
         {
             IServiceCollection serviceCollection = new ServiceCollection();
