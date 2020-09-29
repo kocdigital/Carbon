@@ -8,8 +8,6 @@ namespace Carbon.Common.UnitTests
 
     public class HttpStatusCodeExtensionsTest
     {
-
-
         [Theory]
         [ValidApiStatusCodeToApiStatusCodeToHttpStatusMapper]
         public void GetApiStatusCode_Successfully_ApiStatusCodeToHttpStatusMapper(HttpStatusCode httpStatusCode)

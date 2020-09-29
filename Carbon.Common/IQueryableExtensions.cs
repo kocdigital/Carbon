@@ -2,11 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Runtime.CompilerServices;
 
 namespace Carbon.Common
 {
-   
+
     public static class IQueryableExtensions
     {
         /// <summary>
@@ -31,7 +30,7 @@ namespace Carbon.Common
         /// <returns>Input query with the related data included.</returns>
         public static int CalculatePageCount<TEntity>(this IQueryable<TEntity> query, int? size)
         {
-            return (int)Math.Ceiling(query.Count() / (double)size);
+            return (int)Math.Ceiling(query.Count() / (double)(size ?? query.Count()));
         }
 
         /// <summary>
@@ -77,7 +76,7 @@ namespace Carbon.Common
             }
 
             return query;
-           
+
         }
     }
 }

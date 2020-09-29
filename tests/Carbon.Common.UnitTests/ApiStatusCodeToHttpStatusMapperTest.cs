@@ -1,5 +1,5 @@
-﻿using Carbon.Common.UnitTests.StaticWrappers.ApiStatusCodeToHttpStatusMapperWrappers;
-using Carbon.Common.UnitTests.DataShares;
+﻿using Carbon.Common.UnitTests.DataShares;
+using Carbon.Common.UnitTests.StaticWrappers.ApiStatusCodeToHttpStatusMapperWrappers;
 using System;
 using System.Net;
 using Xunit;
@@ -39,7 +39,7 @@ namespace Carbon.Common.UnitTests
 
 
         [Theory]
-        [ValidHttpStatusCodeToApiStatusCodeToHttpStatusMapper]
+        [ValidApiStatusCode]
         public void GetHttpStatusCode_Successfully_ApiStatusCodeToHttpStatusMapper(ApiStatusCode apiStatusCode)
         {
             // Arrange
