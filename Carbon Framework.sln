@@ -49,7 +49,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Carbon.Common.UnitTests", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Carbon.Domain.EntityFrameworkCore.UnitTests", "tests\Carbon.Domain.EntityFrameworkCore.UnitTests\Carbon.Domain.EntityFrameworkCore.UnitTests.csproj", "{22CD275A-2CDC-4E96-9A14-1690F8CBC0E8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Carbon.HttpClient.UnitTests", "tests\Carbon.HttpClient.UnitTests\Carbon.HttpClient.UnitTests.csproj", "{51376F63-14B1-45F4-A730-D512C6F1C755}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Carbon.HttpClient.UnitTests", "tests\Carbon.HttpClient.UnitTests\Carbon.HttpClient.UnitTests.csproj", "{51376F63-14B1-45F4-A730-D512C6F1C755}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Carbon.MassTransit.Abstractions.UnitTests", "tests\Carbon.MassTransit.Abstractions.UnitTests\Carbon.MassTransit.Abstractions.UnitTests.csproj", "{2F67393E-DE50-44B4-97A8-47DF2C697C14}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -137,6 +139,10 @@ Global
 		{51376F63-14B1-45F4-A730-D512C6F1C755}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{51376F63-14B1-45F4-A730-D512C6F1C755}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{51376F63-14B1-45F4-A730-D512C6F1C755}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2F67393E-DE50-44B4-97A8-47DF2C697C14}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F67393E-DE50-44B4-97A8-47DF2C697C14}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F67393E-DE50-44B4-97A8-47DF2C697C14}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F67393E-DE50-44B4-97A8-47DF2C697C14}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -149,6 +155,7 @@ Global
 		{2DDCBC74-4D19-45DE-AD9B-5D9B95C124C7} = {C22416E6-A406-44C9-9347-D6E9826FE6F9}
 		{22CD275A-2CDC-4E96-9A14-1690F8CBC0E8} = {C22416E6-A406-44C9-9347-D6E9826FE6F9}
 		{51376F63-14B1-45F4-A730-D512C6F1C755} = {C22416E6-A406-44C9-9347-D6E9826FE6F9}
+		{2F67393E-DE50-44B4-97A8-47DF2C697C14} = {C22416E6-A406-44C9-9347-D6E9826FE6F9}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C0D2C443-9946-4077-A654-1B47F8842F19}
