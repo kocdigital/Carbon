@@ -1,0 +1,10 @@
+﻿{
+ 
+  "MassTransit": {
+    "BusType": 1,
+    "RabbitMq": null,
+    "ServiceBus": {
+      "ConnectionString": "Endpoint=sb://****.****.windows.net/;SharedAccessKeyName=******;SharedAccessKey=/*******/upPaoPI="
+    }
+  }
+}
