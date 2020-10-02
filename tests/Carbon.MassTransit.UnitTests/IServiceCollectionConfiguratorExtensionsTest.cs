@@ -1,19 +1,13 @@
 using Carbon.MassTransit.UnitTests.StaticWrappers.IServiceCollectionConfiguratorExtensionsWrapper;
 using Carbon.Test.Common.Fixtures;
-using GreenPipes;
-using MassTransit;
 using MassTransit.Azure.ServiceBus.Core;
-using MassTransit.EndpointConfigurators;
 using MassTransit.ExtensionsDependencyInjectionIntegration;
 using MassTransit.RabbitMqTransport;
-using MassTransit.Topology;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Moq;
 using System;
-using System.Threading;
-using System.Threading.Tasks;
 using Xunit;
 
 namespace Carbon.MassTransit.UnitTests
