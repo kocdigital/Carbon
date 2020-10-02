@@ -51,7 +51,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Carbon.Domain.EntityFramewo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Carbon.HttpClient.UnitTests", "tests\Carbon.HttpClient.UnitTests\Carbon.HttpClient.UnitTests.csproj", "{51376F63-14B1-45F4-A730-D512C6F1C755}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Carbon.MassTransit.Abstractions.UnitTests", "tests\Carbon.MassTransit.Abstractions.UnitTests\Carbon.MassTransit.Abstractions.UnitTests.csproj", "{2F67393E-DE50-44B4-97A8-47DF2C697C14}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Carbon.MassTransit.Abstractions.UnitTests", "tests\Carbon.MassTransit.Abstractions.UnitTests\Carbon.MassTransit.Abstractions.UnitTests.csproj", "{2F67393E-DE50-44B4-97A8-47DF2C697C14}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Carbon.MassTransit.UnitTests", "tests\Carbon.MassTransit.UnitTests\Carbon.MassTransit.UnitTests.csproj", "{4D76C5AD-B1BA-41EF-AAAE-96F585182567}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -143,6 +145,10 @@ Global
 		{2F67393E-DE50-44B4-97A8-47DF2C697C14}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2F67393E-DE50-44B4-97A8-47DF2C697C14}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2F67393E-DE50-44B4-97A8-47DF2C697C14}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4D76C5AD-B1BA-41EF-AAAE-96F585182567}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D76C5AD-B1BA-41EF-AAAE-96F585182567}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D76C5AD-B1BA-41EF-AAAE-96F585182567}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4D76C5AD-B1BA-41EF-AAAE-96F585182567}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -156,6 +162,7 @@ Global
 		{22CD275A-2CDC-4E96-9A14-1690F8CBC0E8} = {C22416E6-A406-44C9-9347-D6E9826FE6F9}
 		{51376F63-14B1-45F4-A730-D512C6F1C755} = {C22416E6-A406-44C9-9347-D6E9826FE6F9}
 		{2F67393E-DE50-44B4-97A8-47DF2C697C14} = {C22416E6-A406-44C9-9347-D6E9826FE6F9}
+		{4D76C5AD-B1BA-41EF-AAAE-96F585182567} = {C22416E6-A406-44C9-9347-D6E9826FE6F9}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C0D2C443-9946-4077-A654-1B47F8842F19}

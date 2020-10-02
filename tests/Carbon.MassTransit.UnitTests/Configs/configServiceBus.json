@@ -1,0 +1,23 @@
+﻿{
+ 
+  "MassTransit": {
+    "BusType": 2,
+    "RabbitMq": {
+      "Host": "*****",
+      "Username": "****",
+      "Password": "****",
+      "VirtualHost": "/",
+      "Port": 5672,
+      "SslServerName": "",
+      "ClientCertificatePath": "",
+      "ClientCertificatePassphrase": "",
+      "ClusterMembers": "",
+      "ClientProvidedName": "",
+      "HostAddress": "http://test.com"
+
+    },
+    "ServiceBus": {
+      "ConnectionString": "Endpoint=sb://****.****.windows.net/;SharedAccessKeyName=******;SharedAccessKey=/*******/upPaoPI="
+    }
+  }
+}

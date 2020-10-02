@@ -39,7 +39,7 @@ namespace Carbon.MassTransit
                                        IConfiguration configuration, Action<IServiceProvider,
                                        IRabbitMqBusFactoryConfigurator> configurator)
         {
-            var massTransitSettings = configuration.GetSection("MassTransit").Get<MassTransitSettings>();
+            var massTransitSettings = configuration.GetSection("MassTransit")?.Get<MassTransitSettings>();
 
             if (massTransitSettings == null)
                 throw new ArgumentNullException(nameof(massTransitSettings));
@@ -118,7 +118,7 @@ namespace Carbon.MassTransit
                                        IConfiguration configuration, Action<IServiceProvider,
                                        IServiceBusBusFactoryConfigurator> configurator)
         {
-            var massTransitSettings = configuration.GetSection("MassTransit").Get<MassTransitSettings>();
+            var massTransitSettings = configuration.GetSection("MassTransit")?.Get<MassTransitSettings>();
 
             if (massTransitSettings == null)
                 throw new ArgumentNullException(nameof(massTransitSettings));
