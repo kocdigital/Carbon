@@ -41,7 +41,7 @@ namespace Carbon.Redis
             {
                 var server = _connectionMultiplexer.GetServer(_connectionMultiplexer.GetEndPoints().First());
 
-                var keys = server.KeysAsync(pattern: keyPattern);
+                var keys = server.KeysAsync(database: _connectionMultiplexer.GetDatabase().Database, pattern: keyPattern);
 
                 var removedKeys = new List<string>();
                 var couldNotBeRemovedKeys = new List<string>();
