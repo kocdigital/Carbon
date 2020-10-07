@@ -41,7 +41,6 @@ namespace Carbon.PagedList.EntityFrameworkCore.UnitTests
             // Act
             var wrapper = new QueryableExtensionsWrapper<TEntity>();
             var response = wrapper.ToPagedListAsync(entity, pageNumber, pageSize);
-
             // Assert
             Assert.NotNull(response.Exception);
 
