@@ -3530,11 +3530,12 @@
           "bin/placeholder/Carbon.Common.dll": {}
         }
       },
-      "Carbon.ExceptionHandling.Abstractions/1.0.10": {
+      "Carbon.ExceptionHandling.Abstractions/1.1.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.1",
         "dependencies": {
           "Ben.Demystifier": "0.1.4",
+          "FluentValidation.AspNetCore": "8.6.1",
           "Newtonsoft.Json": "12.0.3"
         },
         "compile": {
@@ -10265,7 +10266,7 @@
       "path": "../Carbon.Common/Carbon.Common.csproj",
       "msbuildProject": "../Carbon.Common/Carbon.Common.csproj"
     },
-    "Carbon.ExceptionHandling.Abstractions/1.0.10": {
+    "Carbon.ExceptionHandling.Abstractions/1.1.0": {
       "type": "project",
       "path": "../Carbon.ExceptionHandling/Carbon.ExceptionHandling.Abstractions.csproj",
       "msbuildProject": "../Carbon.ExceptionHandling/Carbon.ExceptionHandling.Abstractions.csproj"
@@ -10284,7 +10285,7 @@
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
       "Carbon.Common >= 1.1.11",
-      "Carbon.ExceptionHandling.Abstractions >= 1.0.10",
+      "Carbon.ExceptionHandling.Abstractions >= 1.1.0",
       "Carbon.HttpClient >= 1.0.8",
       "Carbon.PagedList >= 1.0.7",
       "FluentValidation.AspNetCore >= 8.6.1",
@@ -10318,7 +10319,7 @@
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
-    "version": "1.6.29",
+    "version": "1.6.32",
     "restore": {
       "projectUniqueName": "D:\\Development\\Carbonv2\\Carbon.WebApplication\\Carbon.WebApplication.csproj",
       "projectName": "Carbon.WebApplication",
