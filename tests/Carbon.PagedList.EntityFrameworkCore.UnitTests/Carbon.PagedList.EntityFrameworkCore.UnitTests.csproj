@@ -14,8 +14,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Carbon.PagedList.EntityFrameworkCore\Carbon.PagedList.EntityFrameworkCore.csproj" />
-    <ProjectReference Include="..\tests\Common\Carbon.Test.Common\Carbon.Test.Common.csproj" />
+    <ProjectReference Include="..\..\Carbon.PagedList.EntityFrameworkCore\Carbon.PagedList.EntityFrameworkCore.csproj" />
+    <ProjectReference Include="..\Common\Carbon.Test.Common\Carbon.Test.Common.csproj" />
   </ItemGroup>
 
 </Project>
