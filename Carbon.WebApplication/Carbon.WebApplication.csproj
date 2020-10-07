@@ -2,8 +2,11 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <Version>1.6.32</Version>
-    <Description>1.6.32
+    <Version>1.6.33</Version>
+    <Description>
+    1.6.33
+     - StackTrace added to error
+    1.6.32
      - swagger schema names derived from their full names (namespaces)
 1.6.31
      - obsolete methods added for p360controller
@@ -54,8 +57,8 @@
 		- Swagger configurasyonunda AuthorizationUrl key'i ana root kısmında Security key'i altına alındı
 		- ResponseOk kısmında Unit Testlerde null exception hatası verme sorunu düzeltildi.
 	</Description>
-    <AssemblyVersion>1.6.32.0</AssemblyVersion>
-    <FileVersion>1.6.32.0</FileVersion>
+    <AssemblyVersion>1.6.33.0</AssemblyVersion>
+    <FileVersion>1.6.33.0</FileVersion>
   </PropertyGroup>
 
   <ItemGroup>

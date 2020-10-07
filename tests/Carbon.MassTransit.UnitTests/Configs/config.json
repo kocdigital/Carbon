@@ -1,0 +1,26 @@
+﻿{
+ 
+  "MassTransit": {
+    "BusType": 1,
+    "RabbitMq": {
+      "Host": "*****",
+      "Username": "****",
+      "Password": "****",
+      "VirtualHost": "/",
+      "Port": 5672,
+      "SslServerName": "",
+      "ClientCertificatePath": "",
+      "ClientCertificatePassphrase": "",
+      "ClusterMembers": "",
+      "ClientProvidedName": "",
+      "HostAddress": "http://test.com",
+      "ClientCertificate": "",
+      "CertificateSelectionCallback": "",
+      "CertificateValidationCallback": "",
+      "HostNameSelector": ""
+    },
+    "ServiceBus": {
+      "ConnectionString": "Endpoint=sb://****.****.windows.net/;SharedAccessKeyName=******;SharedAccessKey=/*******/upPaoPI="
+    }
+  }
+}

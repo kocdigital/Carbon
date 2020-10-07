@@ -1,0 +1,8 @@
+﻿{
+ 
+  "MassTransit": {
+    "BusType": 2,
+    "RabbitMq": null,
+    "ServiceBus": null
+  }
+}
