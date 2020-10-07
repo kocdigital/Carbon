@@ -2,8 +2,11 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
-    <Version>1.0.1</Version>
-    <Description>-Summaries added
+    <Version>1.0.2</Version>
+    <Description>1.0.2
+- (fix) Redis RemoveByPattern works with database number
+
+-Summaries added
 -Set and Get Hash functions from the cache removed
 -function names fixed
 -exception controls added

@@ -4173,7 +4173,7 @@
           "bin/placeholder/Carbon.PagedList.dll": {}
         }
       },
-      "Carbon.Redis/1.0.1": {
+      "Carbon.Redis/1.0.2": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.1",
         "dependencies": {
@@ -4227,10 +4227,7 @@
         },
         "runtime": {
           "bin/placeholder/Carbon.WebApplication.dll": {}
-        },
-        "frameworkReferences": [
-          "Microsoft.AspNetCore.App"
-        ]
+        }
       }
     }
   },
@@ -11919,7 +11916,7 @@
       "path": "../../Carbon.PagedList/Carbon.PagedList.csproj",
       "msbuildProject": "../../Carbon.PagedList/Carbon.PagedList.csproj"
     },
-    "Carbon.Redis/1.0.1": {
+    "Carbon.Redis/1.0.2": {
       "type": "project",
       "path": "../../Carbon.Redis/Carbon.Redis.csproj",
       "msbuildProject": "../../Carbon.Redis/Carbon.Redis.csproj"
@@ -11938,7 +11935,7 @@
       "Carbon.Domain.EntityFrameworkCore >= 1.0.14",
       "Carbon.ExceptionHandling.Abstractions >= 1.1.0",
       "Carbon.PagedList >= 1.0.7",
-      "Carbon.Redis >= 1.0.1",
+      "Carbon.Redis >= 1.0.2",
       "Carbon.WebApplication >= 1.6.33",
       "Microsoft.EntityFrameworkCore.Tools >= 3.1.0-preview1.19506.2"
     ]
@@ -12043,4 +12040,3 @@
     }
   }
 }
-
