@@ -3501,7 +3501,7 @@
           "lib/netstandard1.6/zipkin4net.middleware.aspnetcore.dll": {}
         }
       },
-      "Carbon.Common/1.1.11": {
+      "Carbon.Common/1.2.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.1",
         "dependencies": {
@@ -10225,7 +10225,7 @@
         "zipkin4net.middleware.aspnetcore.nuspec"
       ]
     },
-    "Carbon.Common/1.1.11": {
+    "Carbon.Common/1.2.0": {
       "type": "project",
       "path": "../Carbon.Common/Carbon.Common.csproj",
       "msbuildProject": "../Carbon.Common/Carbon.Common.csproj"
@@ -10248,7 +10248,7 @@
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
-      "Carbon.Common >= 1.1.11",
+      "Carbon.Common >= 1.2.0",
       "Carbon.ExceptionHandling.Abstractions >= 1.1.0",
       "Carbon.HttpClient >= 1.0.8",
       "Carbon.PagedList >= 1.0.7",
@@ -10282,7 +10282,7 @@
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
-    "version": "1.7.0",
+    "version": "1.8.0",
     "restore": {
       "projectUniqueName": "D:\\Development\\Carbonv2\\Carbon.WebApplication\\Carbon.WebApplication.csproj",
       "projectName": "Carbon.WebApplication",

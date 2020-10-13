@@ -4054,7 +4054,7 @@
           "lib/netstandard1.6/zipkin4net.middleware.aspnetcore.dll": {}
         }
       },
-      "Carbon.Common/1.1.11": {
+      "Carbon.Common/1.2.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.1",
         "dependencies": {
@@ -4071,7 +4071,7 @@
         "type": "project",
         "framework": ".NETStandard,Version=v2.1",
         "dependencies": {
-          "Carbon.Common": "1.1.11",
+          "Carbon.Common": "1.2.0",
           "Microsoft.Extensions.Configuration": "3.1.0",
           "Microsoft.Extensions.Configuration.EnvironmentVariables": "3.1.0",
           "Microsoft.Extensions.Hosting": "3.1.0",
@@ -4087,11 +4087,11 @@
           "bin/placeholder/Carbon.ConsoleApplication.dll": {}
         }
       },
-      "Carbon.Domain.Abstractions/1.1.4": {
+      "Carbon.Domain.Abstractions/1.2.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.1",
         "dependencies": {
-          "Carbon.Common": "1.1.11",
+          "Carbon.Common": "1.2.0",
           "System.ComponentModel.Annotations": "4.7.0"
         },
         "compile": {
@@ -4101,11 +4101,11 @@
           "bin/placeholder/Carbon.Domain.Abstractions.dll": {}
         }
       },
-      "Carbon.Domain.EntityFrameworkCore/1.0.14": {
+      "Carbon.Domain.EntityFrameworkCore/1.1.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.1",
         "dependencies": {
-          "Carbon.Domain.Abstractions": "1.1.4",
+          "Carbon.Domain.Abstractions": "1.2.0",
           "Microsoft.EntityFrameworkCore": "3.1.0",
           "Microsoft.EntityFrameworkCore.Relational": "3.1.0",
           "Microsoft.EntityFrameworkCore.SqlServer": "3.1.0"
@@ -4178,11 +4178,11 @@
           "bin/placeholder/Carbon.Redis.dll": {}
         }
       },
-      "Carbon.WebApplication/1.7.0": {
+      "Carbon.WebApplication/1.8.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v3.1",
         "dependencies": {
-          "Carbon.Common": "1.1.11",
+          "Carbon.Common": "1.2.0",
           "Carbon.ExceptionHandling.Abstractions": "1.1.0",
           "Carbon.HttpClient": "1.0.8",
           "Carbon.PagedList": "1.0.7",
@@ -11855,7 +11855,7 @@
         "zipkin4net.middleware.aspnetcore.nuspec"
       ]
     },
-    "Carbon.Common/1.1.11": {
+    "Carbon.Common/1.2.0": {
       "type": "project",
       "path": "../../Carbon.Common/Carbon.Common.csproj",
       "msbuildProject": "../../Carbon.Common/Carbon.Common.csproj"
@@ -11865,12 +11865,12 @@
       "path": "../../Carbon.ConsoleApplication.Extensions/Carbon.ConsoleApplication.csproj",
       "msbuildProject": "../../Carbon.ConsoleApplication.Extensions/Carbon.ConsoleApplication.csproj"
     },
-    "Carbon.Domain.Abstractions/1.1.4": {
+    "Carbon.Domain.Abstractions/1.2.0": {
       "type": "project",
       "path": "../../Carbon.Domain.Abstractions/Carbon.Domain.Abstractions.csproj",
       "msbuildProject": "../../Carbon.Domain.Abstractions/Carbon.Domain.Abstractions.csproj"
     },
-    "Carbon.Domain.EntityFrameworkCore/1.0.14": {
+    "Carbon.Domain.EntityFrameworkCore/1.1.0": {
       "type": "project",
       "path": "../../Carbon.Domain.EntityFrameworkCore.Extensions/Carbon.Domain.EntityFrameworkCore.csproj",
       "msbuildProject": "../../Carbon.Domain.EntityFrameworkCore.Extensions/Carbon.Domain.EntityFrameworkCore.csproj"
@@ -11895,7 +11895,7 @@
       "path": "../../Carbon.Redis/Carbon.Redis.csproj",
       "msbuildProject": "../../Carbon.Redis/Carbon.Redis.csproj"
     },
-    "Carbon.WebApplication/1.7.0": {
+    "Carbon.WebApplication/1.8.0": {
       "type": "project",
       "path": "../../Carbon.WebApplication/Carbon.WebApplication.csproj",
       "msbuildProject": "../../Carbon.WebApplication/Carbon.WebApplication.csproj"
@@ -11903,14 +11903,14 @@
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
-      "Carbon.Common >= 1.1.11",
+      "Carbon.Common >= 1.2.0",
       "Carbon.ConsoleApplication >= 1.2.0",
-      "Carbon.Domain.Abstractions >= 1.1.4",
-      "Carbon.Domain.EntityFrameworkCore >= 1.0.14",
+      "Carbon.Domain.Abstractions >= 1.2.0",
+      "Carbon.Domain.EntityFrameworkCore >= 1.1.0",
       "Carbon.ExceptionHandling.Abstractions >= 1.1.0",
       "Carbon.PagedList >= 1.0.7",
       "Carbon.Redis >= 1.0.2",
-      "Carbon.WebApplication >= 1.7.0",
+      "Carbon.WebApplication >= 1.8.0",
       "Microsoft.EntityFrameworkCore.Tools >= 3.1.0-preview1.19506.2"
     ]
   },

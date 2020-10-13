@@ -1,5 +1,6 @@
 ﻿using Carbon.Common;
 using Carbon.PagedList;
+using Carbon.WebApplication.TenantManagementHandler.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -11,7 +12,20 @@ namespace Carbon.WebApplication
 {
     public abstract class CarbonController : ControllerBase
     {
-        /// <summary>
+        List<ISolutionFilteredService> _solutionFilteredServices { get; set; }
+        List<IOwnershipFilteredService> _ownershipFilteredServices { get; set; }
+
+        public CarbonController()
+        {
+
+        }
+
+        public CarbonController(List<ISolutionFilteredService> solutionFilteredServices, List<IOwnershipFilteredService> ownershipFilteredServices)
+        {
+            _solutionFilteredServices = solutionFilteredServices;
+            _ownershipFilteredServices = ownershipFilteredServices;
+        }
+         /// <summary>
         /// A response type that returns a result with HttpStatusCode.
         /// </summary>
         /// <typeparam name="T">Type of the response data</typeparam>
