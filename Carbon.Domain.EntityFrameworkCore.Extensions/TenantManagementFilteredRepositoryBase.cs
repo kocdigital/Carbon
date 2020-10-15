@@ -63,11 +63,20 @@ namespace Carbon.Domain.EntityFrameworkCore
 
                 var allEqual = secondSet.SetEquals(firstSet);
                 if (!allEqual)
+                {
                     relationsChanged = true;
+                    TargetErDbSet.RemoveRange(oldRelations);
+                    await TargetErDbContext.SaveChangesAsync();
+                }
             }
 
             if (relationsChanged)
             {
+                foreach (var ro in relatedEntity.RelationalOwners)
+                {
+                    ro.Id = Guid.NewGuid();
+                }
+
                 TargetErDbSet.AddRange(relatedEntity.RelationalOwners);
                 await TargetErDbContext.SaveChangesAsync();
             }

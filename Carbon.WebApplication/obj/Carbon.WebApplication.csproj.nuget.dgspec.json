@@ -272,7 +272,7 @@
       }
     },
     "D:\\Development\\Carbonv2\\Carbon.WebApplication\\Carbon.WebApplication.csproj": {
-      "version": "1.8.0",
+      "version": "1.8.3",
       "restore": {
         "projectUniqueName": "D:\\Development\\Carbonv2\\Carbon.WebApplication\\Carbon.WebApplication.csproj",
         "projectName": "Carbon.WebApplication",
@@ -331,6 +331,10 @@
             "HybridModelBinding": {
               "target": "Package",
               "version": "[0.17.0, )"
+            },
+            "IdentityModel": {
+              "target": "Package",
+              "version": "[4.0.0, )"
             },
             "Microsoft.AspNetCore.Authentication.JwtBearer": {
               "target": "Package",
@@ -424,9 +428,6 @@
           "assetTargetFallback": true,
           "warn": true,
           "frameworkReferences": {
-            "Microsoft.AspNetCore.App": {
-              "privateAssets": "none"
-            },
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }

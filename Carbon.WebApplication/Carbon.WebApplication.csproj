@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <Version>1.8.0</Version>
+    <Version>1.8.3</Version>
     <Description>1.8.0
 Tenant Management Support Added
 
@@ -64,13 +64,14 @@ Tenant Management Support Added
       - Swagger configurasyonunda AuthorizationUrl key'i ana root kısmında Security key'i altına alındı
       - ResponseOk kısmında Unit Testlerde null exception hatası verme sorunu düzeltildi.
 </Description>
-    <AssemblyVersion>1.7.0.0</AssemblyVersion>
-    <FileVersion>1.7.0.0</FileVersion>
+    <AssemblyVersion>1.8.3.0</AssemblyVersion>
+    <FileVersion>1.8.3.0</FileVersion>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="FluentValidation.AspNetCore" Version="8.6.1" />
     <PackageReference Include="HybridModelBinding" Version="0.17.0" />
+    <PackageReference Include="IdentityModel" Version="4.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.1.1" />
     <PackageReference Include="Microsoft.AspNetCore.HeaderPropagation" Version="3.1.1" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.2.0" />

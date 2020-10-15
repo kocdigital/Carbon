@@ -1,4 +1,7 @@
 ﻿using Carbon.Common;
+using Carbon.WebApplication.TenantManagementHandler.Interfaces;
+using Carbon.WebApplication.TenantManagementHandler.Middlewares;
+using Carbon.WebApplication.TenantManagementHandler.Services;
 using FluentValidation.AspNetCore;
 using Mapster;
 using Microsoft.AspNetCore.Builder;
@@ -28,7 +31,7 @@ namespace Carbon.WebApplication
 
         private bool _useAuthentication;
         private bool _useAuthorization;
-
+        private bool _useOwnership;
         /// <summary>
         /// Provides information about the web hosting environment an application is running in.
         /// </summary>
@@ -108,7 +111,7 @@ namespace Carbon.WebApplication
             services.Configure<SwaggerSettings>(Configuration.GetSection("Swagger"));
             services.Configure<JwtSettings>(Configuration.GetSection("JwtSettings"));
             services.AddSingleton(Configuration);
-
+            services.AddScoped<IExternalService, ExternalService>();
             TypeAdapterConfig.GlobalSettings.Default.PreserveReference(true);
 
             #region Serilog Settings
@@ -187,6 +190,8 @@ namespace Carbon.WebApplication
             services.AddHeaderPropagation();
 
             CustomConfigureServices(services);
+
+            _useOwnership = services.Where(k => k.ImplementationType == typeof(CarbonTenantFilterManagedController)).Any();
 
             #region Swagger Settings
 
@@ -268,6 +273,9 @@ namespace Carbon.WebApplication
             app.UseRouting();
 
             CustomConfigure(app, env);
+
+            if (_useOwnership)
+                app.EnableRequestBodyRewind();
 
             if (_useAuthentication)
             {

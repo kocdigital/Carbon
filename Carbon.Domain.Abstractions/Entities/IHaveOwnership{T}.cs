@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Carbon.Common;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -14,14 +15,5 @@ namespace Carbon.Domain.Abstractions.Entities
         int GetObjectTypeCode();
 
     }
-
-    public enum OwnerType : int
-    {
-        None = 0,
-        User = 1,
-        Organization = 2,
-        CustomerBased = 3,
-        UserGroup = 4,
-        Role = 5
-    }
+    
 }

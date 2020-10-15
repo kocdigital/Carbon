@@ -129,6 +129,19 @@
           "lib/netstandard2.0/HybridModelBinding.dll": {}
         }
       },
+      "IdentityModel/4.0.0": {
+        "type": "package",
+        "dependencies": {
+          "Newtonsoft.Json": "11.0.2",
+          "System.Text.Encodings.Web": "4.5.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/IdentityModel.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/IdentityModel.dll": {}
+        }
+      },
       "Mapster/4.1.1": {
         "type": "package",
         "dependencies": {
@@ -4101,7 +4114,7 @@
           "bin/placeholder/Carbon.Domain.Abstractions.dll": {}
         }
       },
-      "Carbon.Domain.EntityFrameworkCore/1.1.0": {
+      "Carbon.Domain.EntityFrameworkCore/1.1.1": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.1",
         "dependencies": {
@@ -4178,7 +4191,7 @@
           "bin/placeholder/Carbon.Redis.dll": {}
         }
       },
-      "Carbon.WebApplication/1.8.0": {
+      "Carbon.WebApplication/1.8.3": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v3.1",
         "dependencies": {
@@ -4188,6 +4201,7 @@
           "Carbon.PagedList": "1.0.7",
           "FluentValidation.AspNetCore": "8.6.1",
           "HybridModelBinding": "0.17.0",
+          "IdentityModel": "4.0.0",
           "Microsoft.AspNetCore.Authentication.JwtBearer": "3.1.1",
           "Microsoft.AspNetCore.HeaderPropagation": "3.1.1",
           "Microsoft.AspNetCore.Mvc": "2.2.0",
@@ -4369,6 +4383,23 @@
         "hybridmodelbinding.nuspec",
         "lib/net451/HybridModelBinding.dll",
         "lib/netstandard2.0/HybridModelBinding.dll"
+      ]
+    },
+    "IdentityModel/4.0.0": {
+      "sha512": "Y7i2fezKKKnmxdENfEOpby4Es84e76D16SYcxWKggYraFOvvfKfQAn5KGuuR1X2h1aTrlKZy0lct0NxHg4aVVw==",
+      "type": "package",
+      "path": "identitymodel/4.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "identitymodel.4.0.0.nupkg.sha512",
+        "identitymodel.nuspec",
+        "lib/net461/IdentityModel.dll",
+        "lib/net461/IdentityModel.pdb",
+        "lib/net461/IdentityModel.xml",
+        "lib/netstandard2.0/IdentityModel.dll",
+        "lib/netstandard2.0/IdentityModel.pdb",
+        "lib/netstandard2.0/IdentityModel.xml"
       ]
     },
     "Mapster/4.1.1": {
@@ -11870,7 +11901,7 @@
       "path": "../../Carbon.Domain.Abstractions/Carbon.Domain.Abstractions.csproj",
       "msbuildProject": "../../Carbon.Domain.Abstractions/Carbon.Domain.Abstractions.csproj"
     },
-    "Carbon.Domain.EntityFrameworkCore/1.1.0": {
+    "Carbon.Domain.EntityFrameworkCore/1.1.1": {
       "type": "project",
       "path": "../../Carbon.Domain.EntityFrameworkCore.Extensions/Carbon.Domain.EntityFrameworkCore.csproj",
       "msbuildProject": "../../Carbon.Domain.EntityFrameworkCore.Extensions/Carbon.Domain.EntityFrameworkCore.csproj"
@@ -11895,7 +11926,7 @@
       "path": "../../Carbon.Redis/Carbon.Redis.csproj",
       "msbuildProject": "../../Carbon.Redis/Carbon.Redis.csproj"
     },
-    "Carbon.WebApplication/1.8.0": {
+    "Carbon.WebApplication/1.8.3": {
       "type": "project",
       "path": "../../Carbon.WebApplication/Carbon.WebApplication.csproj",
       "msbuildProject": "../../Carbon.WebApplication/Carbon.WebApplication.csproj"
@@ -11906,11 +11937,11 @@
       "Carbon.Common >= 1.2.0",
       "Carbon.ConsoleApplication >= 1.2.0",
       "Carbon.Domain.Abstractions >= 1.2.0",
-      "Carbon.Domain.EntityFrameworkCore >= 1.1.0",
+      "Carbon.Domain.EntityFrameworkCore >= 1.1.1",
       "Carbon.ExceptionHandling.Abstractions >= 1.1.0",
       "Carbon.PagedList >= 1.0.7",
       "Carbon.Redis >= 1.0.2",
-      "Carbon.WebApplication >= 1.8.0",
+      "Carbon.WebApplication >= 1.8.3",
       "Microsoft.EntityFrameworkCore.Tools >= 3.1.0-preview1.19506.2"
     ]
   },

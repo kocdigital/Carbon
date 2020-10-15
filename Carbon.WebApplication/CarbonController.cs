@@ -3,6 +3,8 @@ using Carbon.PagedList;
 using Carbon.WebApplication.TenantManagementHandler.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Filters;
+using Microsoft.Extensions.Primitives;
 using System;
 using System.Collections.Generic;
 using System.Net;
@@ -12,19 +14,13 @@ namespace Carbon.WebApplication
 {
     public abstract class CarbonController : ControllerBase
     {
-        List<ISolutionFilteredService> _solutionFilteredServices { get; set; }
-        List<IOwnershipFilteredService> _ownershipFilteredServices { get; set; }
+
 
         public CarbonController()
         {
 
         }
 
-        public CarbonController(List<ISolutionFilteredService> solutionFilteredServices, List<IOwnershipFilteredService> ownershipFilteredServices)
-        {
-            _solutionFilteredServices = solutionFilteredServices;
-            _ownershipFilteredServices = ownershipFilteredServices;
-        }
          /// <summary>
         /// A response type that returns a result with HttpStatusCode.
         /// </summary>
@@ -248,6 +244,9 @@ namespace Carbon.WebApplication
 
             return Guid.NewGuid().ToString();
         }
+
+
+
 
         /// <summary>
         ///  A response type which returns an <see cref="OkObjectResult"/> object that produces an <see cref="StatusCodes.Status200OK"/> response with some paged data.
