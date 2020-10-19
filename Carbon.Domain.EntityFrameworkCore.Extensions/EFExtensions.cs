@@ -144,7 +144,8 @@ namespace Carbon.Domain.EntityFrameworkCore
                 return relationEntities;
 
             List<Guid> orgs = new List<Guid>();
-            roleDetails.ForEach(k => orgs.AddRange(k.Policies));
+
+            roleDetails.ForEach(k => { if(k.Policies != null) orgs.AddRange(k.Policies); });
             orgs = orgs.Distinct().ToList();
             foreach (var rp in roleDetails)
             {

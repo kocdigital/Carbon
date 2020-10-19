@@ -229,7 +229,7 @@
       }
     },
     "D:\\Development\\Carbonv2\\Carbon.Domain.EntityFrameworkCore.Extensions\\Carbon.Domain.EntityFrameworkCore.csproj": {
-      "version": "1.1.1",
+      "version": "1.1.2",
       "restore": {
         "projectUniqueName": "D:\\Development\\Carbonv2\\Carbon.Domain.EntityFrameworkCore.Extensions\\Carbon.Domain.EntityFrameworkCore.csproj",
         "projectName": "Carbon.Domain.EntityFrameworkCore",
@@ -594,7 +594,7 @@
       }
     },
     "D:\\Development\\Carbonv2\\Carbon.WebApplication\\Carbon.WebApplication.csproj": {
-      "version": "1.8.3",
+      "version": "1.8.6",
       "restore": {
         "projectUniqueName": "D:\\Development\\Carbonv2\\Carbon.WebApplication\\Carbon.WebApplication.csproj",
         "projectName": "Carbon.WebApplication",

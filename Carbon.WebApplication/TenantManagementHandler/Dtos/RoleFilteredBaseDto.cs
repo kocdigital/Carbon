@@ -50,6 +50,11 @@ namespace Carbon.WebApplication
         public bool ValidateFilter(List<PermissionDetailedDto> permissionDetailedDtos)
         {
             bool permitted = false;
+            if (this.OwnerType == OwnerType.CustomerBased)
+            {
+                return true;
+            }
+
             foreach (var permissionDetailedDto in permissionDetailedDtos)
             {
                 if (permissionDetailedDto.PrivilegeLevelType == PermissionGroupImpactLevel.User)
@@ -63,11 +68,6 @@ namespace Carbon.WebApplication
                     permitted |= (((this.OwnerType == OwnerType.User || this.OwnerType == OwnerType.Organization) && permissionDetailedDto.Policies.Contains(this.OrganizationId))
                         || (this.OwnerType == OwnerType.Role && this.OwnerId == permissionDetailedDto.RoleId));
                 }
-                else if (this.OwnerType == OwnerType.CustomerBased)
-                {
-                    permitted |= true;
-                }
-
             }
             return permitted;
         }

@@ -31,7 +31,6 @@ namespace Carbon.WebApplication
 
         private bool _useAuthentication;
         private bool _useAuthorization;
-        private bool _useOwnership;
         /// <summary>
         /// Provides information about the web hosting environment an application is running in.
         /// </summary>
@@ -191,8 +190,6 @@ namespace Carbon.WebApplication
 
             CustomConfigureServices(services);
 
-            _useOwnership = services.Where(k => k.ImplementationType == typeof(CarbonTenantFilterManagedController)).Any();
-
             #region Swagger Settings
 
             _swaggerSettings = Configuration.GetSection("Swagger").Get<SwaggerSettings>();
@@ -273,9 +270,6 @@ namespace Carbon.WebApplication
             app.UseRouting();
 
             CustomConfigure(app, env);
-
-            if (_useOwnership)
-                app.EnableRequestBodyRewind();
 
             if (_useAuthentication)
             {
