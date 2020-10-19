@@ -35,7 +35,7 @@ namespace Carbon.Domain.EntityFrameworkCore
 
             return base.SaveChanges(acceptAllChangesOnSuccess);
         }
-
+        
         /// <summary>
         ///     Saves all changes made in this context to the database.
         /// </summary>
@@ -51,7 +51,6 @@ namespace Carbon.Domain.EntityFrameworkCore
 
             return base.SaveChangesAsync(acceptAllChangesOnSuccess, cancellationToken);
         }
-
         /// <summary>
         ///     Adds necessary information to changed items in the context before they can be properly saved to the database.
         /// </summary>
