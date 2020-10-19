@@ -69,7 +69,7 @@
       }
     },
     "D:\\Development\\Carbonv2\\Carbon.ConsoleApplication.Extensions\\Carbon.ConsoleApplication.csproj": {
-      "version": "1.1.8",
+      "version": "1.2.0",
       "restore": {
         "projectUniqueName": "D:\\Development\\Carbonv2\\Carbon.ConsoleApplication.Extensions\\Carbon.ConsoleApplication.csproj",
         "projectName": "Carbon.ConsoleApplication",
@@ -131,10 +131,6 @@
             "Serilog.Sinks.Console": {
               "target": "Package",
               "version": "[3.1.1, )"
-            },
-            "Serilog.Sinks.ElasticSearch": {
-              "target": "Package",
-              "version": "[8.0.1, )"
             },
             "Serilog.Sinks.File": {
               "target": "Package",
@@ -598,7 +594,7 @@
       }
     },
     "D:\\Development\\Carbonv2\\Carbon.WebApplication\\Carbon.WebApplication.csproj": {
-      "version": "1.6.33",
+      "version": "1.7.0",
       "restore": {
         "projectUniqueName": "D:\\Development\\Carbonv2\\Carbon.WebApplication\\Carbon.WebApplication.csproj",
         "projectName": "Carbon.WebApplication",
@@ -709,10 +705,6 @@
             "Serilog.Sinks.File": {
               "target": "Package",
               "version": "[4.1.0, )"
-            },
-            "Serilog.Sinks.RollingFile": {
-              "target": "Package",
-              "version": "[3.3.0, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",

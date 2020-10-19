@@ -48,18 +48,22 @@
           "lib/netstandard1.3/Consul.dll": {}
         }
       },
-      "Elasticsearch.Net/7.0.0": {
+      "Elasticsearch.Net/6.0.0": {
         "type": "package",
         "dependencies": {
-          "System.Buffers": "4.5.0",
-          "System.Reflection.Emit": "4.3.0",
-          "System.Reflection.Emit.Lightweight": "4.3.0"
+          "Microsoft.CSharp": "4.3.0",
+          "NETStandard.Library": "1.6.0",
+          "System.Collections.Specialized": "4.3.0",
+          "System.ComponentModel.TypeConverter": "4.3.0",
+          "System.Dynamic.Runtime": "4.3.0",
+          "System.Reflection.TypeExtensions": "4.3.0",
+          "System.Runtime.Serialization.Primitives": "4.3.0"
         },
         "compile": {
-          "lib/netstandard2.0/Elasticsearch.Net.dll": {}
+          "lib/netstandard1.3/Elasticsearch.Net.dll": {}
         },
         "runtime": {
-          "lib/netstandard2.0/Elasticsearch.Net.dll": {}
+          "lib/netstandard1.3/Elasticsearch.Net.dll": {}
         }
       },
       "FastMember/1.5.0": {
@@ -2019,16 +2023,18 @@
           "lib/netstandard1.1/Serilog.Formatting.Compact.dll": {}
         }
       },
-      "Serilog.Formatting.Elasticsearch/8.0.1": {
+      "Serilog.Formatting.Elasticsearch/7.1.0": {
         "type": "package",
         "dependencies": {
-          "Serilog": "2.8.0"
+          "Elasticsearch.Net": "6.0.0",
+          "NETStandard.Library": "1.6.0",
+          "Serilog": "2.6.0"
         },
         "compile": {
-          "lib/netstandard2.0/Serilog.Formatting.Elasticsearch.dll": {}
+          "lib/netstandard1.3/Serilog.Formatting.Elasticsearch.dll": {}
         },
         "runtime": {
-          "lib/netstandard2.0/Serilog.Formatting.Elasticsearch.dll": {}
+          "lib/netstandard1.3/Serilog.Formatting.Elasticsearch.dll": {}
         }
       },
       "Serilog.Settings.Configuration/3.1.0": {
@@ -2073,23 +2079,22 @@
           "lib/netstandard2.0/Serilog.Sinks.Debug.dll": {}
         }
       },
-      "Serilog.Sinks.Elasticsearch/8.0.1": {
+      "Serilog.Sinks.Elasticsearch/7.1.0": {
         "type": "package",
         "dependencies": {
-          "Elasticsearch.Net": "7.0.0",
-          "Microsoft.CSharp": "4.5.0",
-          "Serilog": "2.8.0",
+          "Elasticsearch.Net": "6.0.0",
+          "NETStandard.Library": "1.6.0",
+          "Serilog": "2.6.0",
           "Serilog.Formatting.Compact": "1.0.0",
-          "Serilog.Formatting.Elasticsearch": "8.0.1",
+          "Serilog.Formatting.Elasticsearch": "7.1.0",
           "Serilog.Sinks.File": "4.0.0",
-          "Serilog.Sinks.PeriodicBatching": "2.1.1",
-          "System.Diagnostics.DiagnosticSource": "4.5.1"
+          "Serilog.Sinks.PeriodicBatching": "2.1.1"
         },
         "compile": {
-          "lib/netstandard2.0/Serilog.Sinks.Elasticsearch.dll": {}
+          "lib/netstandard1.3/Serilog.Sinks.Elasticsearch.dll": {}
         },
         "runtime": {
-          "lib/netstandard2.0/Serilog.Sinks.Elasticsearch.dll": {}
+          "lib/netstandard1.3/Serilog.Sinks.Elasticsearch.dll": {}
         }
       },
       "Serilog.Sinks.File/4.1.0": {
@@ -2119,22 +2124,6 @@
         },
         "runtime": {
           "lib/netstandard1.2/Serilog.Sinks.PeriodicBatching.dll": {}
-        }
-      },
-      "Serilog.Sinks.RollingFile/3.3.0": {
-        "type": "package",
-        "dependencies": {
-          "Serilog.Sinks.File": "3.2.0",
-          "System.IO": "4.1.0",
-          "System.IO.FileSystem.Primitives": "4.0.1",
-          "System.Runtime.InteropServices": "4.1.0",
-          "System.Text.Encoding.Extensions": "4.0.11"
-        },
-        "compile": {
-          "lib/netstandard1.3/Serilog.Sinks.RollingFile.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard1.3/Serilog.Sinks.RollingFile.dll": {}
         }
       },
       "StackExchange.Redis/2.1.30": {
@@ -2322,7 +2311,7 @@
           "System.Runtime": "4.3.0"
         },
         "compile": {
-          "ref/netstandard1.0/_._": {}
+          "ref/netstandard1.0/System.ComponentModel.dll": {}
         },
         "runtime": {
           "lib/netstandard1.3/System.ComponentModel.dll": {}
@@ -2345,7 +2334,7 @@
           "System.Runtime": "4.3.0"
         },
         "compile": {
-          "ref/netstandard1.0/_._": {}
+          "ref/netstandard1.0/System.ComponentModel.Primitives.dll": {}
         },
         "runtime": {
           "lib/netstandard1.0/System.ComponentModel.Primitives.dll": {}
@@ -2371,7 +2360,7 @@
           "System.Threading": "4.3.0"
         },
         "compile": {
-          "ref/netstandard1.5/_._": {}
+          "ref/netstandard1.5/System.ComponentModel.TypeConverter.dll": {}
         },
         "runtime": {
           "lib/netstandard1.5/System.ComponentModel.TypeConverter.dll": {}
@@ -3043,7 +3032,7 @@
           "System.Runtime": "4.3.0"
         },
         "compile": {
-          "ref/netstandard1.1/System.Reflection.Emit.dll": {}
+          "ref/netstandard1.1/_._": {}
         },
         "runtime": {
           "lib/netstandard1.3/System.Reflection.Emit.dll": {}
@@ -3057,7 +3046,7 @@
           "System.Runtime": "4.3.0"
         },
         "compile": {
-          "ref/netstandard1.0/System.Reflection.Emit.ILGeneration.dll": {}
+          "ref/netstandard1.0/_._": {}
         },
         "runtime": {
           "lib/netstandard1.3/System.Reflection.Emit.ILGeneration.dll": {}
@@ -3072,7 +3061,7 @@
           "System.Runtime": "4.3.0"
         },
         "compile": {
-          "ref/netstandard1.0/System.Reflection.Emit.Lightweight.dll": {}
+          "ref/netstandard1.0/_._": {}
         },
         "runtime": {
           "lib/netstandard1.3/System.Reflection.Emit.Lightweight.dll": {}
@@ -4078,7 +4067,7 @@
           "bin/placeholder/Carbon.Common.dll": {}
         }
       },
-      "Carbon.ConsoleApplication/1.1.8": {
+      "Carbon.ConsoleApplication/1.2.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.1",
         "dependencies": {
@@ -4088,7 +4077,6 @@
           "Microsoft.Extensions.Hosting": "3.1.0",
           "Serilog.AspNetCore": "3.2.0",
           "Serilog.Sinks.Console": "3.1.1",
-          "Serilog.Sinks.ElasticSearch": "8.0.1",
           "Serilog.Sinks.File": "4.1.0",
           "Winton.Extensions.Configuration.Consul": "3.0.1"
         },
@@ -4190,7 +4178,7 @@
           "bin/placeholder/Carbon.Redis.dll": {}
         }
       },
-      "Carbon.WebApplication/1.6.33": {
+      "Carbon.WebApplication/1.7.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v3.1",
         "dependencies": {
@@ -4213,7 +4201,6 @@
           "Serilog.Sinks.Console": "3.1.1",
           "Serilog.Sinks.ElasticSearch": "7.1.0",
           "Serilog.Sinks.File": "4.1.0",
-          "Serilog.Sinks.RollingFile": "3.3.0",
           "Swashbuckle.AspNetCore": "5.0.0",
           "Swashbuckle.AspNetCore.Annotations": "5.5.1",
           "Swashbuckle.AspNetCore.Swagger": "5.5.1",
@@ -4227,7 +4214,10 @@
         },
         "runtime": {
           "bin/placeholder/Carbon.WebApplication.dll": {}
-        }
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
       }
     }
   },
@@ -4288,20 +4278,21 @@
         "lib/netstandard1.3/Consul.dll"
       ]
     },
-    "Elasticsearch.Net/7.0.0": {
-      "sha512": "2rLkJUu0c6xh/IVGRcIlvsZSA6pv9ach2K3xuTZpWcaB6WHFdIW/ot+cmyALF4SFvk6uKHPesUN5M3Pd8wI86g==",
+    "Elasticsearch.Net/6.0.0": {
+      "sha512": "z98PpOqlLQ9nJPTyFgBdXSrFu9ywgZhPpmqDUyvJgCd2x1lzD0wKz+2gL1ETZpLsTJokFfJCW7JyOxSwPtFeuQ==",
       "type": "package",
-      "path": "elasticsearch.net/7.0.0",
+      "path": "elasticsearch.net/6.0.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "elasticsearch.net.7.0.0.nupkg.sha512",
+        "elasticsearch.net.6.0.0.nupkg.sha512",
         "elasticsearch.net.nuspec",
-        "lib/net461/Elasticsearch.Net.dll",
-        "lib/net461/Elasticsearch.Net.xml",
-        "lib/netstandard2.0/Elasticsearch.Net.dll",
-        "lib/netstandard2.0/Elasticsearch.Net.xml",
-        "license.txt"
+        "lib/net45/Elasticsearch.Net.dll",
+        "lib/net45/Elasticsearch.Net.xml",
+        "lib/net46/Elasticsearch.Net.dll",
+        "lib/net46/Elasticsearch.Net.xml",
+        "lib/netstandard1.3/Elasticsearch.Net.dll",
+        "lib/netstandard1.3/Elasticsearch.Net.xml"
       ]
     },
     "FastMember/1.5.0": {
@@ -6701,10 +6692,10 @@
         "serilog.formatting.compact.nuspec"
       ]
     },
-    "Serilog.Formatting.Elasticsearch/8.0.1": {
-      "sha512": "qESo5i71iCmp8X4Mk9R77mXNUZIPFfoXnaCkeY7AsbVGZHB8wBr0FDgFWi53oOdFJbX/grxUt6XTliO/EvMOgw==",
+    "Serilog.Formatting.Elasticsearch/7.1.0": {
+      "sha512": "+SON7TMYrMjlSnRMRk1FsgQBEh7Skbks8ey/vnx7AZQGWPeGtGecj2nx7vHgXw4cueEAmEwailV3qV11so3mYw==",
       "type": "package",
-      "path": "serilog.formatting.elasticsearch/8.0.1",
+      "path": "serilog.formatting.elasticsearch/7.1.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -6712,9 +6703,7 @@
         "lib/net45/Serilog.Formatting.Elasticsearch.xml",
         "lib/netstandard1.3/Serilog.Formatting.Elasticsearch.dll",
         "lib/netstandard1.3/Serilog.Formatting.Elasticsearch.xml",
-        "lib/netstandard2.0/Serilog.Formatting.Elasticsearch.dll",
-        "lib/netstandard2.0/Serilog.Formatting.Elasticsearch.xml",
-        "serilog.formatting.elasticsearch.8.0.1.nupkg.sha512",
+        "serilog.formatting.elasticsearch.7.1.0.nupkg.sha512",
         "serilog.formatting.elasticsearch.nuspec"
       ]
     },
@@ -6771,18 +6760,18 @@
         "serilog.sinks.debug.nuspec"
       ]
     },
-    "Serilog.Sinks.Elasticsearch/8.0.1": {
-      "sha512": "fEYO1BzAeiBlKcpDqE4GLw/vwJVmzOR8tSPq8I+2S/ytEXeAp/rMfOCOx0N7a4HohlEAyVytXVrfK+h4E+eRQA==",
+    "Serilog.Sinks.Elasticsearch/7.1.0": {
+      "sha512": "nkDSCAIua6nB91g5hLlKyKA9ou9jqNaejkNWSpMBCl63H92OicWbduRxdZv4JpEntqQSOmJds0JjKpN5DCX5hA==",
       "type": "package",
-      "path": "serilog.sinks.elasticsearch/8.0.1",
+      "path": "serilog.sinks.elasticsearch/7.1.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "lib/net461/Serilog.Sinks.Elasticsearch.dll",
-        "lib/net461/Serilog.Sinks.Elasticsearch.xml",
-        "lib/netstandard2.0/Serilog.Sinks.Elasticsearch.dll",
-        "lib/netstandard2.0/Serilog.Sinks.Elasticsearch.xml",
-        "serilog.sinks.elasticsearch.8.0.1.nupkg.sha512",
+        "lib/net45/Serilog.Sinks.Elasticsearch.dll",
+        "lib/net45/Serilog.Sinks.Elasticsearch.xml",
+        "lib/netstandard1.3/Serilog.Sinks.Elasticsearch.dll",
+        "lib/netstandard1.3/Serilog.Sinks.Elasticsearch.xml",
+        "serilog.sinks.elasticsearch.7.1.0.nupkg.sha512",
         "serilog.sinks.elasticsearch.nuspec"
       ]
     },
@@ -6821,21 +6810,6 @@
         "lib/netstandard1.2/Serilog.Sinks.PeriodicBatching.xml",
         "serilog.sinks.periodicbatching.2.1.1.nupkg.sha512",
         "serilog.sinks.periodicbatching.nuspec"
-      ]
-    },
-    "Serilog.Sinks.RollingFile/3.3.0": {
-      "sha512": "2lT5X1r3GH4P0bRWJfhA7etGl8Q2Ipw9AACvtAHWRUSpYZ42NGVyHoVs2ALBZ/cAkkS+tA4jl80Zie144eLQPg==",
-      "type": "package",
-      "path": "serilog.sinks.rollingfile/3.3.0",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "lib/net45/Serilog.Sinks.RollingFile.dll",
-        "lib/net45/Serilog.Sinks.RollingFile.xml",
-        "lib/netstandard1.3/Serilog.Sinks.RollingFile.dll",
-        "lib/netstandard1.3/Serilog.Sinks.RollingFile.xml",
-        "serilog.sinks.rollingfile.3.3.0.nupkg.sha512",
-        "serilog.sinks.rollingfile.nuspec"
       ]
     },
     "StackExchange.Redis/2.1.30": {
@@ -11886,7 +11860,7 @@
       "path": "../../Carbon.Common/Carbon.Common.csproj",
       "msbuildProject": "../../Carbon.Common/Carbon.Common.csproj"
     },
-    "Carbon.ConsoleApplication/1.1.8": {
+    "Carbon.ConsoleApplication/1.2.0": {
       "type": "project",
       "path": "../../Carbon.ConsoleApplication.Extensions/Carbon.ConsoleApplication.csproj",
       "msbuildProject": "../../Carbon.ConsoleApplication.Extensions/Carbon.ConsoleApplication.csproj"
@@ -11921,7 +11895,7 @@
       "path": "../../Carbon.Redis/Carbon.Redis.csproj",
       "msbuildProject": "../../Carbon.Redis/Carbon.Redis.csproj"
     },
-    "Carbon.WebApplication/1.6.33": {
+    "Carbon.WebApplication/1.7.0": {
       "type": "project",
       "path": "../../Carbon.WebApplication/Carbon.WebApplication.csproj",
       "msbuildProject": "../../Carbon.WebApplication/Carbon.WebApplication.csproj"
@@ -11930,13 +11904,13 @@
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
       "Carbon.Common >= 1.1.11",
-      "Carbon.ConsoleApplication >= 1.1.8",
+      "Carbon.ConsoleApplication >= 1.2.0",
       "Carbon.Domain.Abstractions >= 1.1.4",
       "Carbon.Domain.EntityFrameworkCore >= 1.0.14",
       "Carbon.ExceptionHandling.Abstractions >= 1.1.0",
       "Carbon.PagedList >= 1.0.7",
       "Carbon.Redis >= 1.0.2",
-      "Carbon.WebApplication >= 1.6.33",
+      "Carbon.WebApplication >= 1.7.0",
       "Microsoft.EntityFrameworkCore.Tools >= 3.1.0-preview1.19506.2"
     ]
   },
