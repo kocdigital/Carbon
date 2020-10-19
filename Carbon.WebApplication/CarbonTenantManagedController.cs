@@ -12,13 +12,13 @@ using System.Text;
 
 namespace Carbon.WebApplication
 {
-    public abstract class CarbonTenantFilterManagedController : CarbonController, ISolutionFilteredController, IOwnershipFilteredController
+    public abstract class CarbonTenantManagedController : CarbonController, ISolutionFilteredController, IOwnershipFilteredController
     {
 
         public List<ISolutionFilteredService> SolutionFilteredServices { get; set; }
         public List<IOwnershipFilteredService> OwnershipFilteredServices { get; set; }
 
-        public CarbonTenantFilterManagedController(List<ISolutionFilteredService> solutionFilteredServices, List<IOwnershipFilteredService> ownershipFilteredServices) : base()
+        public CarbonTenantManagedController(List<ISolutionFilteredService> solutionFilteredServices, List<IOwnershipFilteredService> ownershipFilteredServices) : base()
         {
             SolutionFilteredServices = solutionFilteredServices;
             OwnershipFilteredServices = ownershipFilteredServices;

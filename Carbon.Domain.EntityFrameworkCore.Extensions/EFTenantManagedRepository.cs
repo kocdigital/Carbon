@@ -18,7 +18,7 @@ namespace Carbon.Domain.EntityFrameworkCore
     /// <typeparam name="TEntity"> The entity type to operated worked on. </typeparam>
     /// <typeparam name="TContext"> A database context containing records of <typeparamref name="TEntity"/> type entries. </typeparam>
     /// <seealso cref="IRepository{T}"/>
-    public abstract class EFTenantFilterManagedRepository<TEntity, TContext> : TenantManagementFilteredRepositoryBase, IRepository<TEntity>
+    public abstract class EFTenantManagedRepository<TEntity, TContext> : TenantManagedEFRepositoryBase, IRepository<TEntity>
                                                                                     where TEntity : class, IEntity, IHaveOwnership<EntitySolutionRelation>
                                                                                     where TContext : DbContext
     {
@@ -32,7 +32,7 @@ namespace Carbon.Domain.EntityFrameworkCore
         /// 	Use this constructor when you want to use TenantManagement Filters by enablingSolutionFilter <paramref name="context"/>.
         /// 	<paramref name="enableSolutionFilter"/> should be true
         /// </summary>
-        public EFTenantFilterManagedRepository(TContext context) : base(context)
+        public EFTenantManagedRepository(TContext context) : base(context)
         {
                 this.context = context;
         }

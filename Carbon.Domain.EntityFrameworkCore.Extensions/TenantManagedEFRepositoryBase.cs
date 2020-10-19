@@ -1,6 +1,7 @@
 ﻿using Carbon.Common.TenantManagementHandler.Classes;
 using Carbon.Common.TenantManagementHandler.Interfaces;
 using Carbon.Domain.Abstractions.Entities;
+using Carbon.Domain.Abstractions.Repositories;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -10,37 +11,23 @@ using System.Threading.Tasks;
 
 namespace Carbon.Domain.EntityFrameworkCore
 {
-    public abstract class TenantManagementFilteredRepositoryBase : ISolutionFilteredRepository, IOwnershipFilteredRepository
+    public abstract class TenantManagedEFRepositoryBase : TenantManagedRepositoryBase
     {
-        public List<Guid> FilterSolutionList { get; set; }
-        public List<PermissionDetailedDto> FilterOwnershipList { get; set; }
-
         private readonly DbContext TargetErDbContext;
 
         private DbSet<EntitySolutionRelation> TargetErDbSet;
 
-        public TenantManagementFilteredRepositoryBase()
+        public TenantManagedEFRepositoryBase()
         {
 
         }
-        public TenantManagementFilteredRepositoryBase(DbContext ctx)
+        public TenantManagedEFRepositoryBase(DbContext ctx)
         {
             TargetErDbContext = ctx;
             TargetErDbSet = TargetErDbContext.Set<EntitySolutionRelation>();
         }
 
-        public void SetSolutionFilter(List<Guid> filters)
-        {
-            this.FilterSolutionList = filters;
-        }
-
-        public void SetOwnershipFilter(List<PermissionDetailedDto> filters)
-        {
-            this.FilterOwnershipList = filters;
-        }
-
-        public async Task ConnectToSolution<T>(T relatedEntity)
-            where T : class, IHaveOwnership<EntitySolutionRelation>, IEntity
+        public override async Task ConnectToSolution<T>(T relatedEntity)
         {
             if (relatedEntity == null || relatedEntity.RelationalOwners == null || !relatedEntity.RelationalOwners.Any())
                 return;
@@ -82,8 +69,7 @@ namespace Carbon.Domain.EntityFrameworkCore
             }
         }
 
-        public async Task RemoveSolutions<T>(T relatedEntity)
-    where T : class, IHaveOwnership<EntitySolutionRelation>, IEntity
+        public override async Task RemoveSolutions<T>(T relatedEntity)
         {
             if (relatedEntity == null)
                 return;

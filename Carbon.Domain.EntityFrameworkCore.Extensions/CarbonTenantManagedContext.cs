@@ -13,13 +13,13 @@ namespace Carbon.Domain.EntityFrameworkCore
     ///     A carbon wrapper class for database context objects.
     /// </summary>
     /// <typeparam name="TContext"> A database context object to be wrapped. </typeparam>
-    public class CarbonTenantFilterManagedContext<TContext> : CarbonContext<TContext> where TContext : DbContext
+    public class CarbonTenantManagedContext<TContext> : CarbonContext<TContext> where TContext : DbContext
     {
         /// <summary>
         ///     Constructor that initializes the CarbonContext with the given options for database context
         /// </summary>
         /// <param name="options"> Options for DbContext constructor </param>
-        public CarbonTenantFilterManagedContext(DbContextOptions options) : base(options)
+        public CarbonTenantManagedContext(DbContextOptions options) : base(options)
         {
 
         }
