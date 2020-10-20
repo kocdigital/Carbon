@@ -89,7 +89,7 @@ namespace Carbon.Domain.EntityFrameworkCore
         {
             var filterContainsData = filter != null && filter.Any();
 
-            return relationEntities.Where(k => !filterContainsData || filter.Contains(k.Relation.SolutionId));
+            return relationEntities.Where(k => !filterContainsData || filter.Contains(k.Relation.SolutionId) || k.Relation == null);
 
         }
 
@@ -169,7 +169,7 @@ namespace Carbon.Domain.EntityFrameworkCore
                 return relationEntities;
 
             List<Guid> orgs = new List<Guid>();
-            roleDetails.ForEach(k => orgs.AddRange(k.Policies));
+            roleDetails.ForEach(k => { if (k.Policies != null) orgs.AddRange(k.Policies); });
             orgs = orgs.Distinct().ToList();
             foreach (var rp in roleDetails)
             {
