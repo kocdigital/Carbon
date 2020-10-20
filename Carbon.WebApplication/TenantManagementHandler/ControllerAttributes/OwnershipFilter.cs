@@ -66,7 +66,7 @@ namespace Carbon.WebApplication.TenantManagementHandler.ControllerAttributes
                         {
                             if (!reqBody.ValidateFilter(filterOwnershipPermissionList))
                             {
-                                context.HttpContext.Response.StatusCode = (int)HttpStatusCodeExtensions.GetApiStatusCode(System.Net.HttpStatusCode.Forbidden);
+                                context.HttpContext.Response.StatusCode = 403;
                                 context.Result = new JsonResult(new { response = "No_Permission", message = _role + " permission not sufficient!" });
                             }
                         }
@@ -83,7 +83,7 @@ namespace Carbon.WebApplication.TenantManagementHandler.ControllerAttributes
             }
             else
             {
-                context.HttpContext.Response.StatusCode = (int)HttpStatusCodeExtensions.GetApiStatusCode(System.Net.HttpStatusCode.Forbidden);
+                context.HttpContext.Response.StatusCode = 403;
                 context.Result = new JsonResult(new { response = "No_Permission", message = _role + " permission not found!" });
             }
 
