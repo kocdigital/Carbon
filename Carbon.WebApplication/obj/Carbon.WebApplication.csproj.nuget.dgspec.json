@@ -5,7 +5,7 @@
   },
   "projects": {
     "D:\\Development\\Carbonv2\\Carbon.Common\\Carbon.Common.csproj": {
-      "version": "1.1.11",
+      "version": "1.2.0",
       "restore": {
         "projectUniqueName": "D:\\Development\\Carbonv2\\Carbon.Common\\Carbon.Common.csproj",
         "projectName": "Carbon.Common",
@@ -272,7 +272,7 @@
       }
     },
     "D:\\Development\\Carbonv2\\Carbon.WebApplication\\Carbon.WebApplication.csproj": {
-      "version": "1.6.33",
+      "version": "1.8.9",
       "restore": {
         "projectUniqueName": "D:\\Development\\Carbonv2\\Carbon.WebApplication\\Carbon.WebApplication.csproj",
         "projectName": "Carbon.WebApplication",
@@ -332,6 +332,10 @@
               "target": "Package",
               "version": "[0.17.0, )"
             },
+            "IdentityModel": {
+              "target": "Package",
+              "version": "[4.0.0, )"
+            },
             "Microsoft.AspNetCore.Authentication.JwtBearer": {
               "target": "Package",
               "version": "[3.1.1, )"
@@ -376,17 +380,9 @@
               "target": "Package",
               "version": "[3.1.1, )"
             },
-            "Serilog.Sinks.ElasticSearch": {
-              "target": "Package",
-              "version": "[7.1.0, )"
-            },
             "Serilog.Sinks.File": {
               "target": "Package",
               "version": "[4.1.0, )"
-            },
-            "Serilog.Sinks.RollingFile": {
-              "target": "Package",
-              "version": "[3.3.0, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
