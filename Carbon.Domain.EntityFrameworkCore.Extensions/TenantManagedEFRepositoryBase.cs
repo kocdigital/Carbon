@@ -29,10 +29,10 @@ namespace Carbon.Domain.EntityFrameworkCore
 
         public override async Task ConnectToSolution<T>(T relatedEntity)
         {
-            if (relatedEntity == null || relatedEntity.RelationalOwners == null || !relatedEntity.RelationalOwners.Any())
+            if (relatedEntity == null || relatedEntity.RelationalOwners == null || !relatedEntity.RelationalOwners.Any() || relatedEntity.RelationalOwners.Where(k => k == null).Any())
                 return;
             bool relationsChanged = false;
-
+            
             foreach (var ro in relatedEntity.RelationalOwners)
             {
                 ro.EntityId = relatedEntity.Id;
