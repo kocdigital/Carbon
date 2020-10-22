@@ -6,12 +6,8 @@ using System.Text;
 
 namespace Carbon.WebApplication.TenantManagementHandler.Interfaces
 {
-    public interface IRoleFilteredDto
+    public interface IRoleFilteredDto : IOwnershipFilteredDto
     {
-        Guid OwnerId { get; set; }
-        Guid OrganizationId { get; set; }
-        OwnerType OwnerType { get; set; }
-
         bool ValidateFilter(List<PermissionDetailedDto> permissionDetailedDtos);
     }
 }

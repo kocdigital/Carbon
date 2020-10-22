@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <Version>1.8.9</Version>
+    <Version>1.8.10</Version>
     <Description>1.8.x
     -Tenant Management Support Added
 
@@ -64,8 +64,8 @@
       - Swagger configurasyonunda AuthorizationUrl key'i ana root kısmında Security key'i altına alındı
       - ResponseOk kısmında Unit Testlerde null exception hatası verme sorunu düzeltildi.
 </Description>
-    <AssemblyVersion>1.8.9.0</AssemblyVersion>
-    <FileVersion>1.8.9.0</FileVersion>
+    <AssemblyVersion>1.8.10.0</AssemblyVersion>
+    <FileVersion>1.8.10.0</FileVersion>
   </PropertyGroup>
 
   <ItemGroup>
