@@ -4050,7 +4050,7 @@
           "bin/placeholder/Carbon.Domain.Abstractions.dll": {}
         }
       },
-      "Carbon.Domain.EntityFrameworkCore/1.1.7": {
+      "Carbon.Domain.EntityFrameworkCore/1.1.10": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.1",
         "dependencies": {
@@ -11772,7 +11772,7 @@
       "path": "../../Carbon.Domain.Abstractions/Carbon.Domain.Abstractions.csproj",
       "msbuildProject": "../../Carbon.Domain.Abstractions/Carbon.Domain.Abstractions.csproj"
     },
-    "Carbon.Domain.EntityFrameworkCore/1.1.7": {
+    "Carbon.Domain.EntityFrameworkCore/1.1.10": {
       "type": "project",
       "path": "../../Carbon.Domain.EntityFrameworkCore.Extensions/Carbon.Domain.EntityFrameworkCore.csproj",
       "msbuildProject": "../../Carbon.Domain.EntityFrameworkCore.Extensions/Carbon.Domain.EntityFrameworkCore.csproj"
@@ -11808,7 +11808,7 @@
       "Carbon.Common >= 1.2.0",
       "Carbon.ConsoleApplication >= 1.2.0",
       "Carbon.Domain.Abstractions >= 1.2.1",
-      "Carbon.Domain.EntityFrameworkCore >= 1.1.7",
+      "Carbon.Domain.EntityFrameworkCore >= 1.1.10",
       "Carbon.ExceptionHandling.Abstractions >= 1.1.0",
       "Carbon.PagedList >= 1.0.7",
       "Carbon.Redis >= 1.0.2",

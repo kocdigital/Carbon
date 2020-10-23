@@ -102,7 +102,10 @@ namespace Carbon.Domain.EntityFrameworkCore
             var list = await relationEntities.Where(k => !filterContainsData || filter.Contains(k.Relation.SolutionId) || k.Relation == null).ToListAsync();
             var groupedList = list.GroupBy(k => k.Entity, k => k.Relation, (key, g) => new RelationEntity<T, U> { Entity = key, Relations = g.ToList() }).ToList();
 
-            groupedList.ForEach(k => k.Entity.RelationalOwners = k.Relations);
+            relationEntities.Select(k => k.Relation).ToList();
+
+
+            groupedList.ForEach(k => k.Entity.RelationalOwners = relationEntities.Select(k1 => k1.Relation).Where(k2 => k2.EntityId == k.Entity.Id).ToList());
             return groupedList.Select(k => k.Entity).ToList();
         }
 
@@ -128,7 +131,7 @@ namespace Carbon.Domain.EntityFrameworkCore
 
             if (groupedList != null)
             {
-                groupedList.Entity.RelationalOwners = groupedList.Relations;
+                groupedList.Entity.RelationalOwners = await relationEntities.Select(k => k.Relation).ToListAsync();
                 return groupedList.Entity;
             }
             else
