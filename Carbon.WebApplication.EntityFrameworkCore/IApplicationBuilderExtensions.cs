@@ -6,6 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Configuration;
 using System;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using System.Reflection;
 
 namespace Carbon.WebApplication.EntityFrameworkCore
 {
@@ -20,23 +21,35 @@ namespace Carbon.WebApplication.EntityFrameworkCore
             }
         }
 
-        public static void AddDatabaseContext<TContext>(this IServiceCollection services, IConfiguration configuration, Action<IRelationalDbContextOptionsBuilderInfrastructure> actions = null) where TContext : DbContext
+        /// <summary>
+        /// Manages Multi EF Target Database Context and Discovers Desired Related Migration Assembly 
+        /// </summary>
+        /// <typeparam name="TContext">Your Database Context</typeparam>
+        /// <typeparam name="TStartup">Your Startup Class</typeparam>
+        /// <param name="services"></param>
+        /// <param name="configuration"></param>
+        public static void AddDatabaseContext<TContext, TStartup>(this IServiceCollection services, IConfiguration configuration)
+            where TContext : DbContext
+            where TStartup : class
         {
 
             var target = configuration.GetConnectionString("ConnectionTarget");
             var connectionString = configuration.GetConnectionString("DefaultConnection");
-            services.AddDbContext<TContext>(options => 
+
+            var migrationsAssembly = typeof(TStartup).GetTypeInfo().Assembly.GetName().Name + "." + target;
+
+            services.AddDbContext<TContext>(options =>
             {
                 switch (target.ToLower())
                 {
                     case "postgresql":
-                        services.AddDbContext<TContext>(options => options.UseNpgsql(connectionString, actions));
+                        services.AddDbContext<TContext>(options => options.UseNpgsql(connectionString, sql => sql.MigrationsAssembly(migrationsAssembly)));
                         break;
                     case "mssql":
-                        services.AddDbContext<TContext>(options => options.UseSqlServer(connectionString, actions));
+                        services.AddDbContext<TContext>(options => options.UseSqlServer(connectionString, sql => sql.MigrationsAssembly(migrationsAssembly)));
                         break;
                     case null:
-                        services.AddDbContext<TContext>(options => options.UseSqlServer(connectionString, actions));
+                        services.AddDbContext<TContext>(options => options.UseSqlServer(connectionString, sql => sql.MigrationsAssembly(migrationsAssembly)));
                         break;
                     default:
                         throw new Exception("No Valid Connection Target Found");
