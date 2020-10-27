@@ -21,6 +21,13 @@ namespace Carbon.WebApplication.EntityFrameworkCore
             }
         }
 
+        /// <summary>
+        /// Manages Multi EF Target Database Context and Discovers Desired Related Migration Assembly 
+        /// </summary>
+        /// <typeparam name="TContext">Your Database Context</typeparam>
+        /// <typeparam name="TStartup">Your Startup Class</typeparam>
+        /// <param name="services"></param>
+        /// <param name="configuration"></param>
         public static void AddDatabaseContext<TContext, TStartup>(this IServiceCollection services, IConfiguration configuration)
             where TContext : DbContext
             where TStartup : class
