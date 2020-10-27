@@ -7,6 +7,8 @@ using Microsoft.Extensions.Configuration;
 using System;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using System.Reflection;
+using System.IO;
+using System.Runtime.Loader;
 
 namespace Carbon.WebApplication.EntityFrameworkCore
 {
@@ -37,6 +39,9 @@ namespace Carbon.WebApplication.EntityFrameworkCore
             var connectionString = configuration.GetConnectionString("DefaultConnection");
 
             var migrationsAssembly = typeof(TStartup).GetTypeInfo().Assembly.GetName().Name + "." + target;
+            string path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+
+            AssemblyLoadContext.Default.LoadFromAssemblyPath($"{path}\\{migrationsAssembly}.dll");
 
             services.AddDbContext<TContext>(options =>
             {
