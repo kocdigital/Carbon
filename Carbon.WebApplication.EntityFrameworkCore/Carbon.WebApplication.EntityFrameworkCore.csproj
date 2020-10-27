@@ -2,7 +2,10 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
-    <Version>1.0.8</Version>
+    <Version>1.2.0</Version>
+    <Description>*** PostgreSQL Support Added as of 1.2.0
+- Use ConnectionTarget key in your ConnectionStrings Section [postgresql, mssql] of your Configuration.
+- Use AddDatabaseContext Carbon extension while adding your dbContext to use the support mentioned above</Description>
   </PropertyGroup>
 
   <ItemGroup>

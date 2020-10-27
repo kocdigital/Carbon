@@ -1,6 +1,11 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
+using Npgsql.EntityFrameworkCore.PostgreSQL;
+
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Configuration;
+using System;
+using Microsoft.EntityFrameworkCore.Infrastructure;
 
 namespace Carbon.WebApplication.EntityFrameworkCore
 {
@@ -13,6 +18,30 @@ namespace Carbon.WebApplication.EntityFrameworkCore
                 var context = serviceScope.ServiceProvider.GetRequiredService<TContext>();
                 context.Database.Migrate();
             }
+        }
+
+        public static void AddDatabaseContext<TContext>(this IServiceCollection services, IConfiguration configuration, Action<IRelationalDbContextOptionsBuilderInfrastructure> actions = null) where TContext : DbContext
+        {
+
+            var target = configuration.GetConnectionString("ConnectionTarget");
+            var connectionString = configuration.GetConnectionString("DefaultConnection");
+            services.AddDbContext<TContext>(options => 
+            {
+                switch (target.ToLower())
+                {
+                    case "postgresql":
+                        services.AddDbContext<TContext>(options => options.UseNpgsql(connectionString, actions));
+                        break;
+                    case "mssql":
+                        services.AddDbContext<TContext>(options => options.UseSqlServer(connectionString, actions));
+                        break;
+                    case null:
+                        services.AddDbContext<TContext>(options => options.UseSqlServer(connectionString, actions));
+                        break;
+                    default:
+                        throw new Exception("No Valid Connection Target Found");
+                }
+            });
         }
     }
 }
