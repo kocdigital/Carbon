@@ -2,8 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
-    <Version>1.2.5</Version>
-    <Description>*** 1.2.5 Migration Management Changed (Multiple Migration)
+    <Version>1.2.6</Version>
+    <Description>*** 1.2.6 Migration Management Changed (Multiple Migration)
 Each Migrations should locate under a seperate class library named with {The API Namespace which uses this migration} +{.{Target EF Name [PostgreSQL, MSSQL]}}    (e.g. Platform360.AssetManagement.API.PostgreSQL, Platform360.AssetManagement.API.MSSQL)
 
 *** PostgreSQL Support Added as of 1.2.0 (Multiple EF Target)
@@ -13,6 +13,7 @@ Each Migrations should locate under a seperate class library named with {The API
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
+    <PackageReference Include="System.Runtime.Loader" Version="4.3.0" />
   </ItemGroup>
 
   <ItemGroup>
