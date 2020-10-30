@@ -4063,7 +4063,7 @@
           "bin/placeholder/Carbon.ConsoleApplication.dll": {}
         }
       },
-      "Carbon.Domain.Abstractions/1.2.1": {
+      "Carbon.Domain.Abstractions/1.2.2": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.1",
         "dependencies": {
@@ -4077,11 +4077,12 @@
           "bin/placeholder/Carbon.Domain.Abstractions.dll": {}
         }
       },
-      "Carbon.Domain.EntityFrameworkCore/1.2.0": {
+      "Carbon.Domain.EntityFrameworkCore/1.2.1": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.1",
         "dependencies": {
-          "Carbon.Domain.Abstractions": "1.2.1",
+          "Carbon.Domain.Abstractions": "1.2.2",
+          "Carbon.ExceptionHandling.Abstractions": "1.1.0",
           "Microsoft.EntityFrameworkCore": "3.1.0",
           "Microsoft.EntityFrameworkCore.Relational": "3.1.0",
           "Microsoft.EntityFrameworkCore.SqlServer": "3.1.0",
@@ -11833,12 +11834,12 @@
       "path": "../../Carbon.ConsoleApplication.Extensions/Carbon.ConsoleApplication.csproj",
       "msbuildProject": "../../Carbon.ConsoleApplication.Extensions/Carbon.ConsoleApplication.csproj"
     },
-    "Carbon.Domain.Abstractions/1.2.1": {
+    "Carbon.Domain.Abstractions/1.2.2": {
       "type": "project",
       "path": "../../Carbon.Domain.Abstractions/Carbon.Domain.Abstractions.csproj",
       "msbuildProject": "../../Carbon.Domain.Abstractions/Carbon.Domain.Abstractions.csproj"
     },
-    "Carbon.Domain.EntityFrameworkCore/1.2.0": {
+    "Carbon.Domain.EntityFrameworkCore/1.2.1": {
       "type": "project",
       "path": "../../Carbon.Domain.EntityFrameworkCore.Extensions/Carbon.Domain.EntityFrameworkCore.csproj",
       "msbuildProject": "../../Carbon.Domain.EntityFrameworkCore.Extensions/Carbon.Domain.EntityFrameworkCore.csproj"
@@ -11873,8 +11874,8 @@
     ".NETCoreApp,Version=v3.1": [
       "Carbon.Common >= 1.2.0",
       "Carbon.ConsoleApplication >= 1.2.0",
-      "Carbon.Domain.Abstractions >= 1.2.1",
-      "Carbon.Domain.EntityFrameworkCore >= 1.2.0",
+      "Carbon.Domain.Abstractions >= 1.2.2",
+      "Carbon.Domain.EntityFrameworkCore >= 1.2.1",
       "Carbon.ExceptionHandling.Abstractions >= 1.1.0",
       "Carbon.PagedList >= 1.0.7",
       "Carbon.Redis >= 1.0.2",

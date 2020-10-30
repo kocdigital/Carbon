@@ -1,7 +1,9 @@
-﻿using Carbon.Common.TenantManagementHandler.Classes;
+﻿using Carbon.Common;
+using Carbon.Common.TenantManagementHandler.Classes;
 using Carbon.Common.TenantManagementHandler.Interfaces;
 using Carbon.Domain.Abstractions.Entities;
 using Carbon.Domain.Abstractions.Repositories;
+using Carbon.ExceptionHandling.Abstractions;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -77,6 +79,35 @@ namespace Carbon.Domain.EntityFrameworkCore
             var entitySolutionRelations = await TargetErDbSet.Where(k => !k.IsDeleted && k.EntityCode == relatedEntity.GetObjectTypeCode() && k.EntityId == relatedEntity.Id).ToListAsync();
             TargetErDbSet.RemoveRange(entitySolutionRelations);
             await TargetErDbContext.SaveChangesAsync();
+        }
+
+        public override void CheckIfAuthorized<T>(T relatedEntity)
+        {
+            bool permitted = false;
+            if (relatedEntity.OwnerType == OwnerType.CustomerBased)
+            {
+                permitted = true;
+            }
+
+            foreach (var permissionDetailedDto in FilterOwnershipList)
+            {
+                if (permissionDetailedDto.PrivilegeLevelType == PermissionGroupImpactLevel.User)
+                {
+                    permitted |= (relatedEntity.OwnerType == OwnerType.User || relatedEntity.OwnerType == OwnerType.UserGroup) && relatedEntity.OwnerId == permissionDetailedDto.UserId;
+                }
+                else if (permissionDetailedDto.PrivilegeLevelType == PermissionGroupImpactLevel.OnlyPolicyItself
+                    || permissionDetailedDto.PrivilegeLevelType == PermissionGroupImpactLevel.PolicyItselfAndItsChildPolicies
+                    || permissionDetailedDto.PrivilegeLevelType == PermissionGroupImpactLevel.AllPoliciesIncludedInZone)
+                {
+                    permitted |= (((relatedEntity.OwnerType == OwnerType.User || relatedEntity.OwnerType == OwnerType.Organization) && permissionDetailedDto.Policies.Contains(relatedEntity.OrganizationId))
+                        || (relatedEntity.OwnerType == OwnerType.Role && relatedEntity.OwnerId == permissionDetailedDto.RoleId));
+                }
+            }
+            if(!permitted)
+            {
+                throw new ForbiddenOperationException("This operation is forbidden!");
+            }
+            
         }
 
     }
