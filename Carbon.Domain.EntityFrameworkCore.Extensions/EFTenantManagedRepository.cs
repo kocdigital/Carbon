@@ -114,6 +114,11 @@ namespace Carbon.Domain.EntityFrameworkCore
         /// <seealso cref="IEnumerable{T}"/>
         public virtual async Task<List<TEntity>> CreateRangeAsync(IEnumerable<TEntity> entities)
         {
+            foreach (var entity in entities)
+            {
+                base.CheckIfAuthorized(entity);
+            }
+
             context.Set<TEntity>().AddRange(entities);
             await context.SaveChangesAsync();
 
