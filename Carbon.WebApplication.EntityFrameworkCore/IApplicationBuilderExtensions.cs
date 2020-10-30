@@ -48,13 +48,13 @@ namespace Carbon.WebApplication.EntityFrameworkCore
                 switch (target.ToLower())
                 {
                     case "postgresql":
-                        services.AddDbContext<TContext>(options => options.UseNpgsql(connectionString, sql => sql.MigrationsAssembly(migrationsAssembly)));
+                        options.UseNpgsql(connectionString, sql => sql.MigrationsAssembly(migrationsAssembly));
                         break;
                     case "mssql":
-                        services.AddDbContext<TContext>(options => options.UseSqlServer(connectionString, sql => sql.MigrationsAssembly(migrationsAssembly)));
+                        options.UseSqlServer(connectionString, sql => sql.MigrationsAssembly(migrationsAssembly));
                         break;
                     case null:
-                        services.AddDbContext<TContext>(options => options.UseSqlServer(connectionString, sql => sql.MigrationsAssembly(migrationsAssembly)));
+                        options.UseSqlServer(connectionString, sql => sql.MigrationsAssembly(migrationsAssembly));
                         break;
                     default:
                         throw new Exception("No Valid Connection Target Found");
