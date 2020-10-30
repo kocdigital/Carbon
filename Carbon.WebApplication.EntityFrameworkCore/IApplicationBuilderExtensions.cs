@@ -35,31 +35,33 @@ namespace Carbon.WebApplication.EntityFrameworkCore
             where TStartup : class
         {
 
-            var target = configuration.GetConnectionString("ConnectionTarget");
+            var target = configuration.GetConnectionString("ConnectionTarget") ?? "MSSQL";
             var connectionString = configuration.GetConnectionString("DefaultConnection");
 
             var migrationsAssembly = typeof(TStartup).GetTypeInfo().Assembly.GetName().Name + "." + target;
             string path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
 
-            AssemblyLoadContext.Default.LoadFromAssemblyPath($"{path}\\{migrationsAssembly}.dll");
-
-            services.AddDbContext<TContext>(options =>
+            switch (target.ToLower())
             {
-                switch (target.ToLower())
-                {
-                    case "postgresql":
-                        options.UseNpgsql(connectionString, sql => sql.MigrationsAssembly(migrationsAssembly));
-                        break;
-                    case "mssql":
-                        options.UseSqlServer(connectionString, sql => sql.MigrationsAssembly(migrationsAssembly));
-                        break;
-                    case null:
-                        options.UseSqlServer(connectionString, sql => sql.MigrationsAssembly(migrationsAssembly));
-                        break;
-                    default:
-                        throw new Exception("No Valid Connection Target Found");
-                }
-            });
+                case "postgresql":
+                    services.AddDbContext<TContext>(options => options.UseNpgsql(connectionString, sql => sql.MigrationsAssembly(migrationsAssembly)));
+                    break;
+                case "mssql":
+                    services.AddDbContext<TContext>(options => options.UseSqlServer(connectionString, sql => sql.MigrationsAssembly(migrationsAssembly)));
+                    break;
+                default:
+                    throw new Exception("No Valid Connection Target Found");
+            }
+
+            try
+            {
+                AssemblyLoadContext.Default.LoadFromAssemblyPath($"{path}\\{migrationsAssembly}.dll");
+            }
+            catch
+            {
+                
+            }
+
         }
     }
 }
