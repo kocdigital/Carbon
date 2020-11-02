@@ -35,5 +35,8 @@ namespace Carbon.Domain.Abstractions.Repositories
         public abstract Task RemoveSolutions<T>(T relatedEntity)
             where T : class, IHaveOwnership<EntitySolutionRelation>, IEntity;
 
+        public abstract void CheckIfAuthorized<T>(T relatedEntity)
+            where T : class, IHaveOwnership<EntitySolutionRelation>, IEntity;
+
     }
 }

@@ -54,6 +54,7 @@ namespace Carbon.Domain.EntityFrameworkCore
         /// <returns> A task that returns the <typeparamref name="TEntity"/> object saved to database. </returns>
         public virtual async Task<TEntity> CreateAsync(TEntity entity)
         {
+            base.CheckIfAuthorized(entity);
             context.Set<TEntity>().Add(entity);
             await context.SaveChangesAsync();
             await base.ConnectToSolution(entity);
@@ -67,6 +68,7 @@ namespace Carbon.Domain.EntityFrameworkCore
         /// <returns> A task that returns the <typeparamref name="TEntity"/> object updated in database. </returns>
         public virtual async Task<TEntity> UpdateAsync(TEntity entity)
         {
+            base.CheckIfAuthorized(entity);
             context.Entry(entity).State = EntityState.Modified;
             await context.SaveChangesAsync();
             await base.ConnectToSolution(entity);
@@ -85,6 +87,7 @@ namespace Carbon.Domain.EntityFrameworkCore
             {
                 return entity;
             }
+            base.CheckIfAuthorized(entity);
 
             context.Set<TEntity>().Remove(entity);
             await context.SaveChangesAsync();
@@ -111,6 +114,11 @@ namespace Carbon.Domain.EntityFrameworkCore
         /// <seealso cref="IEnumerable{T}"/>
         public virtual async Task<List<TEntity>> CreateRangeAsync(IEnumerable<TEntity> entities)
         {
+            foreach (var entity in entities)
+            {
+                base.CheckIfAuthorized(entity);
+            }
+
             context.Set<TEntity>().AddRange(entities);
             await context.SaveChangesAsync();
 
@@ -130,6 +138,11 @@ namespace Carbon.Domain.EntityFrameworkCore
         /// <seealso cref="IEnumerable{T}"/>
         public virtual async Task<List<TEntity>> UpdateRangeAsync(IEnumerable<TEntity> entities)
         {
+            foreach (var entity in entities)
+            {
+                base.CheckIfAuthorized(entity);
+            }
+
             context.Set<TEntity>().UpdateRange(entities);
             await context.SaveChangesAsync();
 
@@ -149,6 +162,11 @@ namespace Carbon.Domain.EntityFrameworkCore
         /// <seealso cref="IEnumerable{T}"/>
         public virtual async Task<List<TEntity>> DeleteRangeAsync(IEnumerable<TEntity> entities)
         {
+            foreach (var entity in entities)
+            {
+                base.CheckIfAuthorized(entity);
+            }
+
             context.Set<TEntity>().RemoveRange(entities);
             await context.SaveChangesAsync();
 

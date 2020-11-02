@@ -59,7 +59,7 @@ namespace Carbon.WebApplication.EntityFrameworkCore
             }
             catch
             {
-                
+                Console.WriteLine("No Migration Assembly Loaded!");
             }
 
         }
