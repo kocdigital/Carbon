@@ -83,29 +83,36 @@ namespace Carbon.Domain.EntityFrameworkCore
 
         public override void CheckIfAuthorized<T>(T relatedEntity)
         {
+            if(relatedEntity.OwnerType == OwnerType.None || relatedEntity.OwnerId == Guid.Empty)
+            {
+                return;
+            }
+
             bool permitted = false;
             if (relatedEntity.OwnerType == OwnerType.CustomerBased)
             {
                 permitted = true;
             }
-
-            foreach (var permissionDetailedDto in FilterOwnershipList)
+            else
             {
-                if (permissionDetailedDto.PrivilegeLevelType == PermissionGroupImpactLevel.User)
+                foreach (var permissionDetailedDto in FilterOwnershipList)
                 {
-                    permitted |= (relatedEntity.OwnerType == OwnerType.User || relatedEntity.OwnerType == OwnerType.UserGroup) && relatedEntity.OwnerId == permissionDetailedDto.UserId;
-                }
-                else if (permissionDetailedDto.PrivilegeLevelType == PermissionGroupImpactLevel.OnlyPolicyItself
-                    || permissionDetailedDto.PrivilegeLevelType == PermissionGroupImpactLevel.PolicyItselfAndItsChildPolicies
-                    || permissionDetailedDto.PrivilegeLevelType == PermissionGroupImpactLevel.AllPoliciesIncludedInZone)
-                {
-                    permitted |= (((relatedEntity.OwnerType == OwnerType.User || relatedEntity.OwnerType == OwnerType.Organization) && permissionDetailedDto.Policies.Contains(relatedEntity.OrganizationId))
-                        || (relatedEntity.OwnerType == OwnerType.Role && relatedEntity.OwnerId == permissionDetailedDto.RoleId));
+                    if (permissionDetailedDto.PrivilegeLevelType == PermissionGroupImpactLevel.User)
+                    {
+                        permitted |= (relatedEntity.OwnerType == OwnerType.User || relatedEntity.OwnerType == OwnerType.UserGroup) && relatedEntity.OwnerId == permissionDetailedDto.UserId;
+                    }
+                    else if (permissionDetailedDto.PrivilegeLevelType == PermissionGroupImpactLevel.OnlyPolicyItself
+                        || permissionDetailedDto.PrivilegeLevelType == PermissionGroupImpactLevel.PolicyItselfAndItsChildPolicies
+                        || permissionDetailedDto.PrivilegeLevelType == PermissionGroupImpactLevel.AllPoliciesIncludedInZone)
+                    {
+                        permitted |= (((relatedEntity.OwnerType == OwnerType.User || relatedEntity.OwnerType == OwnerType.Organization) && permissionDetailedDto.Policies.Contains(relatedEntity.OrganizationId))
+                            || (relatedEntity.OwnerType == OwnerType.Role && relatedEntity.OwnerId == permissionDetailedDto.RoleId));
+                    }
                 }
             }
             if(!permitted)
             {
-                throw new ForbiddenOperationException("This operation is forbidden!");
+                throw new ForbiddenOperationException();
             }
             
         }
