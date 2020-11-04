@@ -14,6 +14,7 @@ using System.IO;
 using Newtonsoft.Json;
 using Carbon.Common;
 using Microsoft.AspNetCore.Mvc;
+using Carbon.ExceptionHandling.Abstractions;
 
 namespace Carbon.WebApplication.TenantManagementHandler.ControllerAttributes
 {
@@ -66,14 +67,17 @@ namespace Carbon.WebApplication.TenantManagementHandler.ControllerAttributes
                         {
                             if (!reqBody.ValidateFilter(filterOwnershipPermissionList))
                             {
-                                context.HttpContext.Response.StatusCode = 403;
-                                context.Result = new JsonResult(new { response = "No_Permission", message = _role + " permission not sufficient!" });
+                                throw new ForbiddenOperationException();
                             }
                         }
                     }
+                    catch(ForbiddenOperationException ex)
+                    {
+                        throw ex;
+                    }
                     catch (Exception ex)
                     {
-                        throw new Exception(ex.Message + ex.StackTrace);
+                        throw ex;
                     }
                     finally
                     {
