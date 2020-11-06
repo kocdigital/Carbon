@@ -1,0 +1,20 @@
+﻿{
+
+  "Redis": {
+    "Enabled": true,
+    "KeyLength": 1000,
+    "EndPoints": null,
+    "KeepAlive": 0,
+    "AbortOnConnectFail": false,
+    "ConfigurationChannel": "",
+    "TieBreaker": "",
+    "ConfigCheckSeconds": 0,
+    "CommandMap": null,
+    "Password": "******",
+    "AllowAdmin": true,
+    "AsyncTimeout": 11515,
+    "ConnectRetry": 0,
+    "ConnectTimeout": 1000,
+    "DefaultDatabase": 1
+  }
+}
