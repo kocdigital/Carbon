@@ -14,7 +14,7 @@ namespace Carbon.WebApplication
     public static class IWebHostBuilderExtensions
     {
         /// <summary>
-        /// Applies Carbon Framework settings such as Environment, Consul Address, Assambly Name etc.
+        /// Applies Carbon Framework settings such as Environment, Consul Address, Assembly Name etc.
         /// </summary>
         /// <typeparam name="TStartup"></typeparam>
         /// <param name="builder"></param>
@@ -23,9 +23,17 @@ namespace Carbon.WebApplication
             var assemblyName = typeof(TStartup).Assembly.GetName().Name;
             var currentEnviroment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
             var consulAddress = Environment.GetEnvironmentVariable("CONSUL_ADDRESS");
-
             var consulKeysValue = Environment.GetEnvironmentVariable(assemblyName + "_CONSUL_KEYS");
-
+            var environmentType = Environment.GetEnvironmentVariable("ENVIRONMENT_TYPE");
+            Console.WriteLine($"ENVIRONMENT_TYPE => {environmentType}");
+            if (environmentType?.ToUpper() == "IIS")
+            {
+                builder.UseIIS();
+            }
+            else if (environmentType?.ToUpper() == "KESTREL")
+            {
+                builder.UseKestrel();
+            }
             builder.ConfigureAppConfiguration((c) =>
             {
                 #region Consul Configuration
