@@ -109,6 +109,8 @@ namespace Carbon.WebApplication
             services.Configure<CorsPolicySettings>(Configuration.GetSection("CorsPolicy"));
             services.Configure<SwaggerSettings>(Configuration.GetSection("Swagger"));
             services.Configure<JwtSettings>(Configuration.GetSection("JwtSettings"));
+            services.AddHttpClient();
+
             services.AddSingleton(Configuration);
             services.AddScoped<IExternalService, ExternalService>();
             TypeAdapterConfig.GlobalSettings.Default.PreserveReference(true);
