@@ -5,9 +5,14 @@
     <ApplicationIcon />
     <OutputType>Library</OutputType>
     <StartupObject />
-    <Version>1.1.8</Version>
-    <AssemblyVersion>1.1.8.0</AssemblyVersion>
-    <FileVersion>1.1.8.0</FileVersion>
+    <Version>1.2.0</Version>
+    <AssemblyVersion>1.2.0.0</AssemblyVersion>
+    <FileVersion>1.2.0.0</FileVersion>
+    <Description>
+      1.2.0
+      - Serilog.Sinks.ElasticSearch package removed.Reason =&amp;gt; ElasticSearch.Net Dependency problem for 7.x update of ElasticSearch.
+          note : add if your app uses ElasticSearch for logging
+     </Description>
   </PropertyGroup>
 
   <ItemGroup>
@@ -16,7 +21,6 @@
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="3.1.0" />
     <PackageReference Include="Serilog.AspNetCore" Version="3.2.0" />
     <PackageReference Include="Serilog.Sinks.Console" Version="3.1.1" />
-    <PackageReference Include="Serilog.Sinks.ElasticSearch" Version="8.0.1" />
     <PackageReference Include="Serilog.Sinks.File" Version="4.1.0" />
     <PackageReference Include="Winton.Extensions.Configuration.Consul" Version="3.0.1" />
   </ItemGroup>

@@ -59,6 +59,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Carbon.PagedList.EntityFram
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Carbon.PageList.Mapster.UnitTests", "tests\Carbon.PageList.Mapster.UnitTests\Carbon.PageList.Mapster.UnitTests.csproj", "{D931CC10-5B5E-45C3-BEED-78C30545562B}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Carbon.PagedList.UnitTests", "tests\Carbon.PagedList.UnitTests\Carbon.PagedList.UnitTests.csproj", "{8E4A246B-0E79-4488-9246-B45499EE956F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Carbon.WebApplication.UnitTests", "tests\Carbon.WebApplication.UnitTests\Carbon.WebApplication.UnitTests.csproj", "{0428CF8C-1363-4941-8A8D-9D0A2777A85E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -161,6 +165,14 @@ Global
 		{D931CC10-5B5E-45C3-BEED-78C30545562B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D931CC10-5B5E-45C3-BEED-78C30545562B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D931CC10-5B5E-45C3-BEED-78C30545562B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8E4A246B-0E79-4488-9246-B45499EE956F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8E4A246B-0E79-4488-9246-B45499EE956F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8E4A246B-0E79-4488-9246-B45499EE956F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8E4A246B-0E79-4488-9246-B45499EE956F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0428CF8C-1363-4941-8A8D-9D0A2777A85E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0428CF8C-1363-4941-8A8D-9D0A2777A85E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0428CF8C-1363-4941-8A8D-9D0A2777A85E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0428CF8C-1363-4941-8A8D-9D0A2777A85E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -177,6 +189,8 @@ Global
 		{4D76C5AD-B1BA-41EF-AAAE-96F585182567} = {C22416E6-A406-44C9-9347-D6E9826FE6F9}
 		{9082911B-ABFE-4357-B516-DC3222C98484} = {C22416E6-A406-44C9-9347-D6E9826FE6F9}
 		{D931CC10-5B5E-45C3-BEED-78C30545562B} = {C22416E6-A406-44C9-9347-D6E9826FE6F9}
+		{8E4A246B-0E79-4488-9246-B45499EE956F} = {C22416E6-A406-44C9-9347-D6E9826FE6F9}
+		{0428CF8C-1363-4941-8A8D-9D0A2777A85E} = {C22416E6-A406-44C9-9347-D6E9826FE6F9}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C0D2C443-9946-4077-A654-1B47F8842F19}

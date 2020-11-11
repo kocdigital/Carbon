@@ -2,68 +2,82 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <Version>1.6.33</Version>
+    <Version>1.9.0</Version>
     <Description>
-    1.6.33
-     - StackTrace added to error
-    1.6.32
-     - swagger schema names derived from their full names (namespaces)
-1.6.31
-     - obsolete methods added for p360controller
-    1.6.28
-     - Swagger enable xml feature added.
-    1.6.27
-     -God user support added
-    1.6.26
-    - Swagger description update and CorrelationId header update.
-    1.6.25
-    - Fixed OrderBy extension issue in Carbon.Common
-		1.6.24
-		- TenantId as Guid in BaseRequestDto
-		1.6.23
-		- Generic CarbonException which takes enum added
-		- ErrorCodes removed
-		1.6.22
-		- ErrorCodes structure added. Exception will show the errorcode message.
-		- ErrorCode demo usage also added to Carbon.Demo.WebApplication
-		1.6.20-21
-		- ApiResponse default constructor added
-		- OrderBy function fixed
-		1.6.18
-		- Parameterless constructor added to ApiResponse
-		1.6.14
-		- Cors Bugfix
-		Framework for web apis
-		1.6.7
-		-Multiple Consul Configuration Key Support Added
-		e.g Provide Configuration Key Array as String to UseCarbonFeatures() function.
+      1.9.0
+      -IIS and Kestrel configuration added to Hostbuilder extension  UseCarbonFeatures for Environment var "ENVIRONMENT_TYPE"
 
-		1.6.6
-		- CorsSettings new parameters available
+      1.8.13
+      -Add HttpClient to service registration
+      1.8.x
+      -Tenant Management Support Added
 
-		1.6.5
-		- app.UseBearerTokenInRequestDto(); bunun kullanımını isteğe bağlı hale getirip, Default startupdan çıkardık
+      1.7.0
+      - Serilog.Sinks.ElasticSearch package removed.Reason =&gt; ElasticSearch.Net Dependency problem for 7.x update of ElasticSearch.
+          note : add if your app uses ElasticSearch for logging
+      - Serilog.Sinks.RollingFile deleted .Reason =&gt; Deprecated: new applications should use https://github.com/serilog/serilog-sinks-file instead
 
-		1.6.4 Change Set
-		- Only if bearer token is set, then TenantId and ClientId headers cannot set manually.
+      1.6.33
+      - StackTrace added to error
+      1.6.32
+      - swagger schema names derived from their full names (namespaces)
+      1.6.31
+      - obsolete methods added for p360controller
+      1.6.28
+      - Swagger enable xml feature added.
+      1.6.27
+      -God user support added
+      1.6.26
+      - Swagger description update and CorrelationId header update.
+      1.6.25
+      - Fixed OrderBy extension issue in Carbon.Common
+      1.6.24
+      - TenantId as Guid in BaseRequestDto
+      1.6.23
+      - Generic CarbonException which takes enum added
+      - ErrorCodes removed
+      1.6.22
+      - ErrorCodes structure added. Exception will show the errorcode message.
+      - ErrorCode demo usage also added to Carbon.Demo.WebApplication
+      1.6.20-21
+      - ApiResponse default constructor added
+      - OrderBy function fixed
+      1.6.18
+      - Parameterless constructor added to ApiResponse
+      1.6.14
+      - Cors Bugfix
+      Framework for web apis
+      1.6.7
+      -Multiple Consul Configuration Key Support Added
+      e.g Provide Configuration Key Array as String to UseCarbonFeatures() function.
 
-		1.6.3 Change Set
-		- BaseRequestDto'ya yeni 2 property (TenantId, ClientId) eklendi ve bunların Bearer AccessToken ile otomatik olarak maplenmesi sağlandı
-		- ClientId requesti atan UserId aslında
-		- TenantId ise yine requesti atan kişinin bulunduğu tenantı ifade ediyor
-		- Bu değerlerin manipulasyona kapalı olması için AccessToken içerisinden alınması sağlandı
+      1.6.6
+      - CorsSettings new parameters available
 
-		1.5.6 Change Set
-		- Swagger configurasyonunda AuthorizationUrl key'i ana root kısmında Security key'i altına alındı
-		- ResponseOk kısmında Unit Testlerde null exception hatası verme sorunu düzeltildi.
-	</Description>
-    <AssemblyVersion>1.6.33.0</AssemblyVersion>
-    <FileVersion>1.6.33.0</FileVersion>
+      1.6.5
+      - app.UseBearerTokenInRequestDto(); bunun kullanımını isteğe bağlı hale getirip, Default startupdan çıkardık
+
+      1.6.4 Change Set
+      - Only if bearer token is set, then TenantId and ClientId headers cannot set manually.
+
+      1.6.3 Change Set
+      - BaseRequestDto'ya yeni 2 property (TenantId, ClientId) eklendi ve bunların Bearer AccessToken ile otomatik olarak maplenmesi sağlandı
+      - ClientId requesti atan UserId aslında
+      - TenantId ise yine requesti atan kişinin bulunduğu tenantı ifade ediyor
+      - Bu değerlerin manipulasyona kapalı olması için AccessToken içerisinden alınması sağlandı
+
+      1.5.6 Change Set
+      - Swagger configurasyonunda AuthorizationUrl key'i ana root kısmında Security key'i altına alındı
+      - ResponseOk kısmında Unit Testlerde null exception hatası verme sorunu düzeltildi.
+</Description>
+    <AssemblyVersion>1.9.0.0</AssemblyVersion>
+    <FileVersion>1.9.0.0</FileVersion>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="FluentValidation.AspNetCore" Version="8.6.1" />
     <PackageReference Include="HybridModelBinding" Version="0.17.0" />
+    <PackageReference Include="IdentityModel" Version="4.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.1.1" />
     <PackageReference Include="Microsoft.AspNetCore.HeaderPropagation" Version="3.1.1" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.2.0" />
@@ -75,9 +89,7 @@
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
     <PackageReference Include="Serilog.AspNetCore" Version="3.2.0" />
     <PackageReference Include="Serilog.Sinks.Console" Version="3.1.1" />
-    <PackageReference Include="Serilog.Sinks.ElasticSearch" Version="7.1.0" />
     <PackageReference Include="Serilog.Sinks.File" Version="4.1.0" />
-    <PackageReference Include="Serilog.Sinks.RollingFile" Version="3.3.0" />
 	<PackageReference Include="Swashbuckle.AspNetCore" Version="5.0.0" />
 	<PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="5.5.1" />
 	<PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="5.5.1" />

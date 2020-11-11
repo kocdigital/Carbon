@@ -121,13 +121,13 @@
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
-    "version": "1.1.11",
+    "version": "1.2.0",
     "restore": {
-      "projectUniqueName": "D:\\Development\\Carbonv2\\Carbon.Common\\Carbon.Common.csproj",
+      "projectUniqueName": "D:\\Development\\Carbonv3\\Carbon.Common\\Carbon.Common.csproj",
       "projectName": "Carbon.Common",
-      "projectPath": "D:\\Development\\Carbonv2\\Carbon.Common\\Carbon.Common.csproj",
+      "projectPath": "D:\\Development\\Carbonv3\\Carbon.Common\\Carbon.Common.csproj",
       "packagesPath": "C:\\Users\\02484819\\.nuget\\packages\\",
-      "outputPath": "D:\\Development\\Carbonv2\\Carbon.Common\\obj\\",
+      "outputPath": "D:\\Development\\Carbonv3\\Carbon.Common\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Microsoft\\Xamarin\\NuGet\\",
@@ -185,4 +185,3 @@
     }
   }
 }
-

@@ -1,4 +1,7 @@
 ﻿using Carbon.Common;
+using Carbon.WebApplication.TenantManagementHandler.Interfaces;
+using Carbon.WebApplication.TenantManagementHandler.Middlewares;
+using Carbon.WebApplication.TenantManagementHandler.Services;
 using FluentValidation.AspNetCore;
 using Mapster;
 using Microsoft.AspNetCore.Builder;
@@ -28,7 +31,6 @@ namespace Carbon.WebApplication
 
         private bool _useAuthentication;
         private bool _useAuthorization;
-
         /// <summary>
         /// Provides information about the web hosting environment an application is running in.
         /// </summary>
@@ -107,8 +109,10 @@ namespace Carbon.WebApplication
             services.Configure<CorsPolicySettings>(Configuration.GetSection("CorsPolicy"));
             services.Configure<SwaggerSettings>(Configuration.GetSection("Swagger"));
             services.Configure<JwtSettings>(Configuration.GetSection("JwtSettings"));
-            services.AddSingleton(Configuration);
+            services.AddHttpClient();
 
+            services.AddSingleton(Configuration);
+            services.AddScoped<IExternalService, ExternalService>();
             TypeAdapterConfig.GlobalSettings.Default.PreserveReference(true);
 
             #region Serilog Settings
