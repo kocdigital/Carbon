@@ -1,24 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Development\\Carbonv3\\Carbon.Common\\Carbon.Common.csproj": {}
+    "C:\\Workspace\\GIT\\Carbon\\Carbon.Common\\Carbon.Common.csproj": {}
   },
   "projects": {
-    "D:\\Development\\Carbonv3\\Carbon.Common\\Carbon.Common.csproj": {
+    "C:\\Workspace\\GIT\\Carbon\\Carbon.Common\\Carbon.Common.csproj": {
       "version": "1.2.0",
       "restore": {
-        "projectUniqueName": "D:\\Development\\Carbonv3\\Carbon.Common\\Carbon.Common.csproj",
+        "projectUniqueName": "C:\\Workspace\\GIT\\Carbon\\Carbon.Common\\Carbon.Common.csproj",
         "projectName": "Carbon.Common",
-        "projectPath": "D:\\Development\\Carbonv3\\Carbon.Common\\Carbon.Common.csproj",
-        "packagesPath": "C:\\Users\\02484819\\.nuget\\packages\\",
-        "outputPath": "D:\\Development\\Carbonv3\\Carbon.Common\\obj\\",
+        "projectPath": "C:\\Workspace\\GIT\\Carbon\\Carbon.Common\\Carbon.Common.csproj",
+        "packagesPath": "C:\\Users\\02484804\\.nuget\\packages\\",
+        "outputPath": "C:\\Workspace\\GIT\\Carbon\\Carbon.Common\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\",
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\02484819\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\02484804\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
@@ -26,8 +26,10 @@
           "netstandard2.1"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "http://bellatrix:8080/tfs/KocDigitalCollection/_packaging/CarbonFramework/nuget/v3/index.json": {},
-          "http://bellatrix:8080/tfs/KocDigitalCollection/_packaging/Platform360Core/nuget/v3/index.json": {},
+          "http://bellatrix:8080/tfs/KocDigitalCollection/_packaging/CosmosNugetServerv1/nuget/v3/index.json": {},
+          "http://nuget.packages.kocsistem.com.tr/nuget": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -64,7 +66,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.403\\RuntimeIdentifierGraph.json"
         }
       }
     }

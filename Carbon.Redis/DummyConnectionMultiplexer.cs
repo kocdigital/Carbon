@@ -12,9 +12,9 @@ namespace Carbon.Redis
     /// </summary>
     public class DummyConnectionMultiplexer : IConnectionMultiplexer
     {
-        public string ClientName =>  default;
+        public string ClientName  { get; set; }
 
-        public string Configuration =>  default;
+        public string Configuration  { get; set; }
 
         public int TimeoutMilliseconds =>  default;
 
@@ -74,12 +74,12 @@ namespace Carbon.Redis
 
         public IDatabase GetDatabase(int db = -1, object asyncState = null)
         {
-            return default;
+            return new RedisDatabase();
         }
 
-        public EndPoint[] GetEndPoints(bool configuredOnly = false)
+        public virtual EndPoint[] GetEndPoints(bool configuredOnly = false)
         {
-            return default;
+            return new EndPoint[1];
         }
 
         public int GetHashSlot(RedisKey key)
@@ -89,22 +89,22 @@ namespace Carbon.Redis
 
         public IServer GetServer(string host, int port, object asyncState = null)
         {
-            return default;
+            return  new DummyRedisServer();
         }
 
         public IServer GetServer(string hostAndPort, object asyncState = null)
         {
-            return default;
+            return  new DummyRedisServer();
         }
 
         public IServer GetServer(IPAddress host, int port)
         {
-            return default;
+            return  new DummyRedisServer();
         }
 
         public IServer GetServer(EndPoint endpoint, object asyncState = null)
         {
-            return default;
+            return new DummyRedisServer();
         }
 
         public string GetStatus()

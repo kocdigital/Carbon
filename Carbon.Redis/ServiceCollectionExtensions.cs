@@ -61,11 +61,7 @@ namespace Carbon.Redis
                     }
                     else
                     {
-                        if (!string.IsNullOrEmpty(configurationOptions.Password))
-                        {
-                            configurationOptions.Password = ConvertToMD5(configurationOptions.Password);
-                        }
-                        throw new RedisConnectionException(ConnectionFailureType.UnableToConnect, Newtonsoft.Json.JsonConvert.SerializeObject(configurationOptions));
+                        throw new RedisConnectionException(ConnectionFailureType.UnableToConnect, ConnectionFailureType.UnableToConnect.ToString());
                     }
                 }
                 catch (RedisException ex)
