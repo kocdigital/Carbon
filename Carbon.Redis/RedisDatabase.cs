@@ -1665,7 +1665,7 @@ namespace Carbon.Redis
 
         public async Task<RedisValue> StringGetAsync(RedisKey key, CommandFlags flags = CommandFlags.None)
         {
-            return RedisValue.EmptyString;
+            return default;
         }
 
         public Task<RedisValue[]> StringGetAsync(RedisKey[] keys, CommandFlags flags = CommandFlags.None)
@@ -1765,12 +1765,12 @@ namespace Carbon.Redis
 
         public async Task<bool> StringSetAsync(RedisKey key, RedisValue value, TimeSpan? expiry = null, When when = When.Always, CommandFlags flags = CommandFlags.None)
         {
-            return true;
+            return default;
         }
 
         public async Task<bool> StringSetAsync(KeyValuePair<RedisKey, RedisValue>[] values, When when = When.Always, CommandFlags flags = CommandFlags.None)
         {
-            return true;
+            return default;
         }
 
         public bool StringSetBit(RedisKey key, long offset, bool bit, CommandFlags flags = CommandFlags.None)

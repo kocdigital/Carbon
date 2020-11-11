@@ -129,15 +129,6 @@ namespace Carbon.Redis.UnitTests
             Assert.False(result.ToTuple().Item1);
         }
 
-        [Theory]
-        [SendKeyValidData]
-        public async Task Set_Successful_ReturnResult(string key)
-        {
-            var result = await _redisExtensionFixture.RedisDatabase.Set<object>(key, _redisExtensionFixture.JsonData);
-
-            Assert.Null(result.ToTuple().Item2);
-            Assert.True(result.ToTuple().Item1);
-        }
         #endregion
 
         #region RemoveKey
