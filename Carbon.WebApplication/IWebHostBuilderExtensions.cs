@@ -25,7 +25,6 @@ namespace Carbon.WebApplication
             var consulAddress = Environment.GetEnvironmentVariable("CONSUL_ADDRESS");
             var consulKeysValue = Environment.GetEnvironmentVariable(assemblyName + "_CONSUL_KEYS");
             var environmentType = Environment.GetEnvironmentVariable("ENVIRONMENT_TYPE");
-            Console.WriteLine($"ENVIRONMENT_TYPE => {environmentType}");
             if (environmentType?.ToUpper() == "IIS")
             {
                 builder.UseIIS();
