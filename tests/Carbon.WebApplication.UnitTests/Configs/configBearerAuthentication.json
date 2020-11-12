@@ -1,0 +1,11 @@
+﻿{
+  "JwtSettings": {
+    "Authority": "sample",
+    "RequireHttpsMetadata": true,
+    "Audience": "sample",
+    "TokenValidationSettings": {
+      "ValidIssuers": "",
+      "ValidateIssuerSigningKey": true
+    }
+  }
+}
