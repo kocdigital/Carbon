@@ -22,12 +22,17 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="DataShares\" />
-    <Folder Include="StaticWrappers\" />
+    <ProjectReference Include="..\..\Carbon.WebApplication\Carbon.WebApplication.csproj" />
+    <ProjectReference Include="..\Common\Carbon.Test.Common\Carbon.Test.Common.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Carbon.WebApplication\Carbon.WebApplication.csproj" />
+    <None Update="Configs\invalidConfigBearerAuthentication.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Configs\configBearerAuthentication.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>
