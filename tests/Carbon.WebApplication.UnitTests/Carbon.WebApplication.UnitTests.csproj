@@ -22,7 +22,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="DataShares\" />
     <Folder Include="StaticWrappers\" />
   </ItemGroup>
 

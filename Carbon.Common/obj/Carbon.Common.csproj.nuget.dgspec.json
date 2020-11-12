@@ -1,35 +1,29 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Workspace\\GIT\\Carbon\\Carbon.Common\\Carbon.Common.csproj": {}
+    "C:\\Users\\02484829\\source\\repos\\testo\\Carbon\\Carbon.Common\\Carbon.Common.csproj": {}
   },
   "projects": {
-    "C:\\Workspace\\GIT\\Carbon\\Carbon.Common\\Carbon.Common.csproj": {
+    "C:\\Users\\02484829\\source\\repos\\testo\\Carbon\\Carbon.Common\\Carbon.Common.csproj": {
       "version": "1.2.0",
       "restore": {
-        "projectUniqueName": "C:\\Workspace\\GIT\\Carbon\\Carbon.Common\\Carbon.Common.csproj",
+        "projectUniqueName": "C:\\Users\\02484829\\source\\repos\\testo\\Carbon\\Carbon.Common\\Carbon.Common.csproj",
         "projectName": "Carbon.Common",
-        "projectPath": "C:\\Workspace\\GIT\\Carbon\\Carbon.Common\\Carbon.Common.csproj",
-        "packagesPath": "C:\\Users\\02484804\\.nuget\\packages\\",
-        "outputPath": "C:\\Workspace\\GIT\\Carbon\\Carbon.Common\\obj\\",
+        "projectPath": "C:\\Users\\02484829\\source\\repos\\testo\\Carbon\\Carbon.Common\\Carbon.Common.csproj",
+        "packagesPath": "C:\\Users\\02484829\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\02484829\\source\\repos\\testo\\Carbon\\Carbon.Common\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Microsoft\\Xamarin\\NuGet\\",
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\02484804\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "C:\\Users\\02484829\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netstandard2.1"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "http://bellatrix:8080/tfs/KocDigitalCollection/_packaging/CarbonFramework/nuget/v3/index.json": {},
-          "http://bellatrix:8080/tfs/KocDigitalCollection/_packaging/CosmosNugetServerv1/nuget/v3/index.json": {},
-          "http://nuget.packages.kocsistem.com.tr/nuget": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -66,7 +60,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.403\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.402\\RuntimeIdentifierGraph.json"
         }
       }
     }
