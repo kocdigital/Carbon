@@ -13,6 +13,7 @@ namespace Carbon.WebApplication.UnitTests.DataShares
     {
         public TestController() : base()
         {
+
         }
 
         public ObjectResult ResponseResultTest<T>(T value) where T : IApiResponse
@@ -63,6 +64,11 @@ namespace Carbon.WebApplication.UnitTests.DataShares
         public void AddParameterTest(string key, IList<Orderable> ordination, int pageSize, int pageIndex)
         {
             base.AddParameter(key, ordination, pageSize, pageIndex);
+        }
+
+        public OkObjectResult PagedOkTest<T>(T TEntity, OrdinatedPageDto ordinatedPageDto, int totalCount)
+        {
+            return base.PagedOk<T>(TEntity, ordinatedPageDto, totalCount);
         }
     }
 
