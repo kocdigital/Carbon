@@ -27,6 +27,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="Configs\invalidConfigBearerAuthentication.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="Configs\configBearerAuthentication.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
