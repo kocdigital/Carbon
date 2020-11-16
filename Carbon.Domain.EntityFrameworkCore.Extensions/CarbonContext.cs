@@ -74,6 +74,7 @@ namespace Carbon.Domain.EntityFrameworkCore
                 if (entry.State == EntityState.Deleted)
                 {
                     entry.CurrentValues["DeletedDate"] = DateTime.UtcNow;
+                    entry.CurrentValues["UpdatedDate"] = DateTime.UtcNow;
                 }
             }
 
@@ -82,6 +83,7 @@ namespace Carbon.Domain.EntityFrameworkCore
                 if (entry.State == EntityState.Added)
                 {
                     entry.CurrentValues["InsertedDate"] = DateTime.UtcNow;
+                    entry.CurrentValues["UpdatedDate"] = DateTime.UtcNow;
                 }
             }
 
