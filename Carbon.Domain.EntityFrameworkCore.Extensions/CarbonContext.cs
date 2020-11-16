@@ -64,6 +64,8 @@ namespace Carbon.Domain.EntityFrameworkCore
                 if (entry.State == EntityState.Deleted)
                 {
                     entry.CurrentValues["IsDeleted"] = true;
+                    entry.CurrentValues["DeletedDate"] = DateTime.UtcNow;
+                    entry.CurrentValues["UpdatedDate"] = DateTime.UtcNow;
                     entry.State = EntityState.Modified;
                     CascadeSoftDelete(entry.Navigations.ToList());
                 }
@@ -124,6 +126,8 @@ namespace Carbon.Domain.EntityFrameworkCore
                                 if (typeof(ISoftDelete).IsAssignableFrom(relatedEntry.Entity.GetType()))
                                 {
                                     relatedEntry.CurrentValues["IsDeleted"] = true;
+                                    relatedEntry.CurrentValues["DeletedDate"] = DateTime.UtcNow;
+                                    relatedEntry.CurrentValues["UpdatedDate"] = DateTime.UtcNow;
                                     relatedEntry.State = EntityState.Modified;
                                 }
                                 else
@@ -146,6 +150,8 @@ namespace Carbon.Domain.EntityFrameworkCore
                             if (typeof(ISoftDelete).IsAssignableFrom(relatedEntry.Entity.GetType()))
                             {
                                 relatedEntry.CurrentValues["IsDeleted"] = true;
+                                relatedEntry.CurrentValues["DeletedDate"] = DateTime.UtcNow;
+                                relatedEntry.CurrentValues["UpdatedDate"] = DateTime.UtcNow;
                                 relatedEntry.State = EntityState.Modified;
                             }
                             else
