@@ -116,32 +116,29 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\02484444\\.nuget\\packages\\": {},
+    "C:\\Users\\02484829\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.2.0",
     "restore": {
-      "projectUniqueName": "C:\\GitRepos\\P360_MES_Repository\\Carbon\\Carbon.Common\\Carbon.Common.csproj",
+      "projectUniqueName": "C:\\Users\\02484829\\source\\repos\\testo\\Carbon\\Carbon.Common\\Carbon.Common.csproj",
       "projectName": "Carbon.Common",
-      "projectPath": "C:\\GitRepos\\P360_MES_Repository\\Carbon\\Carbon.Common\\Carbon.Common.csproj",
-      "packagesPath": "C:\\Users\\02484444\\.nuget\\packages\\",
-      "outputPath": "C:\\GitRepos\\P360_MES_Repository\\Carbon\\Carbon.Common\\obj\\",
+      "projectPath": "C:\\Users\\02484829\\source\\repos\\testo\\Carbon\\Carbon.Common\\Carbon.Common.csproj",
+      "packagesPath": "C:\\Users\\02484829\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\02484829\\source\\repos\\testo\\Carbon\\Carbon.Common\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\02484444\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\02484829\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netstandard2.1"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "http://bellatrix:8080/tfs/KocDigitalCollection/_packaging/CarbonFramework/nuget/v3/index.json": {},
-        "http://bellatrix:8080/tfs/KocDigitalCollection/_packaging/CosmosNugetServerv1/nuget/v3/index.json": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -178,7 +175,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.402\\RuntimeIdentifierGraph.json"
       }
     }
   }
