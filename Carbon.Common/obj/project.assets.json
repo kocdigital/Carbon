@@ -116,33 +116,37 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\02484829\\.nuget\\packages\\": {},
+    "C:\\Users\\02484578\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.2.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\02484829\\source\\repos\\testo\\Carbon\\Carbon.Common\\Carbon.Common.csproj",
+      "projectUniqueName": "C:\\Users\\02484578\\Desktop\\Carbon_Tests\\Carbon\\Carbon.Common\\Carbon.Common.csproj",
       "projectName": "Carbon.Common",
-      "projectPath": "C:\\Users\\02484829\\source\\repos\\testo\\Carbon\\Carbon.Common\\Carbon.Common.csproj",
-      "packagesPath": "C:\\Users\\02484829\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\02484829\\source\\repos\\testo\\Carbon\\Carbon.Common\\obj\\",
+      "projectPath": "C:\\Users\\02484578\\Desktop\\Carbon_Tests\\Carbon\\Carbon.Common\\Carbon.Common.csproj",
+      "packagesPath": "C:\\Users\\02484578\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\02484578\\Desktop\\Carbon_Tests\\Carbon\\Carbon.Common\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\02484829\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\02484578\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netstandard2.1"
       ],
       "sources": {
+        "http://bellatrix:8080/tfs/KocDigitalCollection/_packaging/CarbonFramework/nuget/v3/index.json": {},
+        "http://bellatrix:8080/tfs/KocDigitalCollection/_packaging/CosmosNugetServerv1/nuget/v3/index.json": {},
+        "http://bellatrix:8080/tfs/KocDigitalCollection/_packaging/Platform360Core/nuget/v3/index.json": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "netstandard2.1": {
+          "targetAlias": "netstandard2.1",
           "projectReferences": {}
         }
       },
@@ -154,6 +158,7 @@
     },
     "frameworks": {
       "netstandard2.1": {
+        "targetAlias": "netstandard2.1",
         "dependencies": {
           "Mapster": {
             "target": "Package",
@@ -175,7 +180,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.402\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100-preview.8.20417.9\\RuntimeIdentifierGraph.json"
       }
     }
   }
