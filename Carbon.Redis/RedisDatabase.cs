@@ -11,9 +11,17 @@ namespace Carbon.Redis
     /// </summary>
     public class RedisDatabase : IDatabase
     {
-        public int Database => default;
+        public int Database
+        {
+            get;
+            set;
+        }
 
-        public IConnectionMultiplexer Multiplexer => default;
+        public IConnectionMultiplexer Multiplexer
+        {
+            get;
+            set;
+        }
 
         public IBatch CreateBatch(object asyncState = null)
         {
@@ -427,7 +435,7 @@ namespace Carbon.Redis
 
         public bool KeyDelete(RedisKey key, CommandFlags flags = CommandFlags.None)
         {
-            return default;
+            return true;
         }
 
         public long KeyDelete(RedisKey[] keys, CommandFlags flags = CommandFlags.None)
@@ -435,12 +443,12 @@ namespace Carbon.Redis
             return default;
         }
 
-        public Task<bool> KeyDeleteAsync(RedisKey key, CommandFlags flags = CommandFlags.None)
+        public async Task<bool> KeyDeleteAsync(RedisKey key, CommandFlags flags = CommandFlags.None)
         {
-            return default;
+            return true;
         }
 
-        public Task<long> KeyDeleteAsync(RedisKey[] keys, CommandFlags flags = CommandFlags.None)
+        public async Task<long> KeyDeleteAsync(RedisKey[] keys, CommandFlags flags = CommandFlags.None)
         {
             return default;
         }
@@ -1655,7 +1663,7 @@ namespace Carbon.Redis
             return default;
         }
 
-        public Task<RedisValue> StringGetAsync(RedisKey key, CommandFlags flags = CommandFlags.None)
+        public async Task<RedisValue> StringGetAsync(RedisKey key, CommandFlags flags = CommandFlags.None)
         {
             return default;
         }
@@ -1755,12 +1763,12 @@ namespace Carbon.Redis
             return default;
         }
 
-        public Task<bool> StringSetAsync(RedisKey key, RedisValue value, TimeSpan? expiry = null, When when = When.Always, CommandFlags flags = CommandFlags.None)
+        public async Task<bool> StringSetAsync(RedisKey key, RedisValue value, TimeSpan? expiry = null, When when = When.Always, CommandFlags flags = CommandFlags.None)
         {
             return default;
         }
 
-        public Task<bool> StringSetAsync(KeyValuePair<RedisKey, RedisValue>[] values, When when = When.Always, CommandFlags flags = CommandFlags.None)
+        public async Task<bool> StringSetAsync(KeyValuePair<RedisKey, RedisValue>[] values, When when = When.Always, CommandFlags flags = CommandFlags.None)
         {
             return default;
         }

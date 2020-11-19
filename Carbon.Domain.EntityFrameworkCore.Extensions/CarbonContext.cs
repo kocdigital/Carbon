@@ -51,6 +51,19 @@ namespace Carbon.Domain.EntityFrameworkCore
 
             return base.SaveChangesAsync(acceptAllChangesOnSuccess, cancellationToken);
         }
+        /// <summary>
+        /// Checks property is exist or not and sets datetimenowutc 
+        /// </summary>
+        /// <param name="propertyValues">property values</param>
+        /// <param name="name">property name</param>
+
+        private void SetDateTimeToProperty(PropertyValues propertyValues, string name)
+        {
+            if (propertyValues?.Properties!=null && propertyValues.Properties.Any(x => x.Name == name))
+            {
+                propertyValues[name] = DateTime.UtcNow;
+            }
+        }
 
         /// <summary>
         ///     Adds necessary information to changed items in the context before they can be properly saved to the database.
@@ -65,6 +78,8 @@ namespace Carbon.Domain.EntityFrameworkCore
                 if (entry.State == EntityState.Deleted)
                 {
                     entry.CurrentValues["IsDeleted"] = true;
+                    SetDateTimeToProperty(entry.CurrentValues, "DeletedDate");
+                    SetDateTimeToProperty(entry.CurrentValues, "UpdatedDate");
                     entry.State = EntityState.Modified;
                     CascadeSoftDelete(entry.Navigations.ToList());
                 }
@@ -74,7 +89,9 @@ namespace Carbon.Domain.EntityFrameworkCore
             {
                 if (entry.State == EntityState.Deleted)
                 {
+                    var obj = entry.CurrentValues;
                     entry.CurrentValues["DeletedDate"] = DateTime.UtcNow;
+                    SetDateTimeToProperty(entry.CurrentValues, "UpdatedDate");
                 }
             }
 
@@ -83,6 +100,7 @@ namespace Carbon.Domain.EntityFrameworkCore
                 if (entry.State == EntityState.Added)
                 {
                     entry.CurrentValues["InsertedDate"] = DateTime.UtcNow;
+                    SetDateTimeToProperty(entry.CurrentValues, "UpdatedDate");
                 }
             }
 
@@ -123,6 +141,8 @@ namespace Carbon.Domain.EntityFrameworkCore
                                 if (typeof(ISoftDelete).IsAssignableFrom(relatedEntry.Entity.GetType()))
                                 {
                                     relatedEntry.CurrentValues["IsDeleted"] = true;
+                                    SetDateTimeToProperty(relatedEntry.CurrentValues, "DeletedDate");
+                                    SetDateTimeToProperty(relatedEntry.CurrentValues, "UpdatedDate");
                                     relatedEntry.State = EntityState.Modified;
                                 }
                                 else
@@ -145,6 +165,8 @@ namespace Carbon.Domain.EntityFrameworkCore
                             if (typeof(ISoftDelete).IsAssignableFrom(relatedEntry.Entity.GetType()))
                             {
                                 relatedEntry.CurrentValues["IsDeleted"] = true;
+                                SetDateTimeToProperty(relatedEntry.CurrentValues, "DeletedDate");
+                                SetDateTimeToProperty(relatedEntry.CurrentValues, "UpdatedDate");
                                 relatedEntry.State = EntityState.Modified;
                             }
                             else

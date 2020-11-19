@@ -1,9 +1,12 @@
 ﻿using Carbon.Common;
 using Carbon.ExceptionHandling.Abstractions;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using System;
 using System.Diagnostics;
 using System.Net;
 
@@ -72,11 +75,22 @@ namespace Carbon.WebApplication
             //    apiResponse.Messages.Add(context.Exception.Demystify().ToString());
             //}
 
-            context.Result = new InternalServerErrorObjectResult(apiResponse);
-            context.HttpContext.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
-            context.HttpContext.Response.ContentType = "application/json";
-
-            context.ExceptionHandled = true;
+            if (context.Exception is ForbiddenOperationException)
+            {
+                var objectResult = new ObjectResult(apiResponse);
+                objectResult.StatusCode = StatusCodes.Status403Forbidden;
+                context.Result = objectResult;
+                context.HttpContext.Response.StatusCode = (int)HttpStatusCode.Forbidden;
+                context.HttpContext.Response.ContentType = "application/json";
+                context.ExceptionHandled = true;
+            }
+            else
+            {
+                context.Result = new InternalServerErrorObjectResult(apiResponse);
+                context.HttpContext.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
+                context.HttpContext.Response.ContentType = "application/json";
+                context.ExceptionHandled = true;
+            }
         }
     }
 }

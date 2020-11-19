@@ -58,10 +58,7 @@ namespace Carbon.PagedList
 
             // add items to internal list
             if (superset != null && TotalItemCount > 0)
-                Subset.AddRange(pageNumber == 1
-                    ? superset.Skip(0).Take(pageSize).ToList()
-                    : superset.Skip((pageNumber - 1) * pageSize).Take(pageSize).ToList()
-                );
+                Subset.AddRange(superset.Skip((pageNumber - 1) * pageSize).Take(pageSize).ToList());
         }
 
         /// <summary>

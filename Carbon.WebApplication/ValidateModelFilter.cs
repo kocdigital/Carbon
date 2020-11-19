@@ -9,7 +9,7 @@ namespace Carbon.WebApplication
     {
         private const int GeneralClientErrorCode = 4000;
 
-        
+
         /// <summary>
         /// Called after the action executes, before the action result.
         /// </summary>
@@ -32,11 +32,9 @@ namespace Carbon.WebApplication
 
                 var messages = new ValidationProblemDetails(context.ModelState).Errors.SelectMany(x => x.Value).ToList();
                 var apiResponse = new ApiResponse<object>(correlationId, ApiStatusCode.BadRequest, GeneralClientErrorCode, messages);
-                
+
                 context.Result = new BadRequestObjectResult(apiResponse);
             }
         }
     }
-
-   
 }
