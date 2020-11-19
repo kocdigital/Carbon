@@ -11922,11 +11922,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Development\\Carbonv2\\demos\\Carbon.Demo.WebApplication\\Carbon.Demo.WebApplication.csproj",
+      "projectUniqueName": "D:\\Development\\Carbonv3\\demos\\Carbon.Demo.WebApplication\\Carbon.Demo.WebApplication.csproj",
       "projectName": "Carbon.Demo.WebApplication",
-      "projectPath": "D:\\Development\\Carbonv2\\demos\\Carbon.Demo.WebApplication\\Carbon.Demo.WebApplication.csproj",
+      "projectPath": "D:\\Development\\Carbonv3\\demos\\Carbon.Demo.WebApplication\\Carbon.Demo.WebApplication.csproj",
       "packagesPath": "C:\\Users\\02484819\\.nuget\\packages\\",
-      "outputPath": "D:\\Development\\Carbonv2\\demos\\Carbon.Demo.WebApplication\\obj\\",
+      "outputPath": "D:\\Development\\Carbonv3\\demos\\Carbon.Demo.WebApplication\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Microsoft\\Xamarin\\NuGet\\",
@@ -11948,29 +11948,29 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "D:\\Development\\Carbonv2\\Carbon.Common\\Carbon.Common.csproj": {
-              "projectPath": "D:\\Development\\Carbonv2\\Carbon.Common\\Carbon.Common.csproj"
+            "D:\\Development\\Carbonv3\\Carbon.Common\\Carbon.Common.csproj": {
+              "projectPath": "D:\\Development\\Carbonv3\\Carbon.Common\\Carbon.Common.csproj"
             },
-            "D:\\Development\\Carbonv2\\Carbon.ConsoleApplication.Extensions\\Carbon.ConsoleApplication.csproj": {
-              "projectPath": "D:\\Development\\Carbonv2\\Carbon.ConsoleApplication.Extensions\\Carbon.ConsoleApplication.csproj"
+            "D:\\Development\\Carbonv3\\Carbon.ConsoleApplication.Extensions\\Carbon.ConsoleApplication.csproj": {
+              "projectPath": "D:\\Development\\Carbonv3\\Carbon.ConsoleApplication.Extensions\\Carbon.ConsoleApplication.csproj"
             },
-            "D:\\Development\\Carbonv2\\Carbon.Domain.Abstractions\\Carbon.Domain.Abstractions.csproj": {
-              "projectPath": "D:\\Development\\Carbonv2\\Carbon.Domain.Abstractions\\Carbon.Domain.Abstractions.csproj"
+            "D:\\Development\\Carbonv3\\Carbon.Domain.Abstractions\\Carbon.Domain.Abstractions.csproj": {
+              "projectPath": "D:\\Development\\Carbonv3\\Carbon.Domain.Abstractions\\Carbon.Domain.Abstractions.csproj"
             },
-            "D:\\Development\\Carbonv2\\Carbon.Domain.EntityFrameworkCore.Extensions\\Carbon.Domain.EntityFrameworkCore.csproj": {
-              "projectPath": "D:\\Development\\Carbonv2\\Carbon.Domain.EntityFrameworkCore.Extensions\\Carbon.Domain.EntityFrameworkCore.csproj"
+            "D:\\Development\\Carbonv3\\Carbon.Domain.EntityFrameworkCore.Extensions\\Carbon.Domain.EntityFrameworkCore.csproj": {
+              "projectPath": "D:\\Development\\Carbonv3\\Carbon.Domain.EntityFrameworkCore.Extensions\\Carbon.Domain.EntityFrameworkCore.csproj"
             },
-            "D:\\Development\\Carbonv2\\Carbon.ExceptionHandling\\Carbon.ExceptionHandling.Abstractions.csproj": {
-              "projectPath": "D:\\Development\\Carbonv2\\Carbon.ExceptionHandling\\Carbon.ExceptionHandling.Abstractions.csproj"
+            "D:\\Development\\Carbonv3\\Carbon.ExceptionHandling\\Carbon.ExceptionHandling.Abstractions.csproj": {
+              "projectPath": "D:\\Development\\Carbonv3\\Carbon.ExceptionHandling\\Carbon.ExceptionHandling.Abstractions.csproj"
             },
-            "D:\\Development\\Carbonv2\\Carbon.PagedList\\Carbon.PagedList.csproj": {
-              "projectPath": "D:\\Development\\Carbonv2\\Carbon.PagedList\\Carbon.PagedList.csproj"
+            "D:\\Development\\Carbonv3\\Carbon.PagedList\\Carbon.PagedList.csproj": {
+              "projectPath": "D:\\Development\\Carbonv3\\Carbon.PagedList\\Carbon.PagedList.csproj"
             },
-            "D:\\Development\\Carbonv2\\Carbon.Redis\\Carbon.Redis.csproj": {
-              "projectPath": "D:\\Development\\Carbonv2\\Carbon.Redis\\Carbon.Redis.csproj"
+            "D:\\Development\\Carbonv3\\Carbon.Redis\\Carbon.Redis.csproj": {
+              "projectPath": "D:\\Development\\Carbonv3\\Carbon.Redis\\Carbon.Redis.csproj"
             },
-            "D:\\Development\\Carbonv2\\Carbon.WebApplication\\Carbon.WebApplication.csproj": {
-              "projectPath": "D:\\Development\\Carbonv2\\Carbon.WebApplication\\Carbon.WebApplication.csproj"
+            "D:\\Development\\Carbonv3\\Carbon.WebApplication\\Carbon.WebApplication.csproj": {
+              "projectPath": "D:\\Development\\Carbonv3\\Carbon.WebApplication\\Carbon.WebApplication.csproj"
             }
           }
         }
