@@ -12,6 +12,48 @@ namespace Carbon.Domain.EntityFrameworkCore
 {
     public static class EFExtensions
     {
+        /// <summary>
+        /// Executes a StoredProcedure in MSSQL and Function in PostgreSQL, generally used for procedures that returns a table result
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="context">DbContext Inherited Context</param>
+        /// <param name="procedureName">Your Stored Procedure or Function Name</param>
+        /// <param name="parameters">Your parameters respectively as in the procedure (Same Order)</param>
+        /// <returns></returns>
+        public static IQueryable<T> ExecuteProcedureSql<T>(this DbContext context, string procedureName, params object[] parameters)
+           where T :  class           
+        {
+            List<String> sb = new List<String>();
+            foreach (var param in parameters)
+            {
+                if (param.GetType() == typeof(Guid))
+                    sb.Add($"'{param.ToString()}'");
+                else if (param.GetType() == typeof(bool) || param.GetType() == typeof(Int32) || param.GetType() == typeof(long) || param.GetType() == typeof(Int16))
+                    sb.Add($"{param}");
+                else if (param.GetType() == typeof(DateTime))
+                    sb.Add($"'{((DateTime)param).ToString("YYYY-MM-dd HH:mm:ss")}'");
+                else
+                    sb.Add($"'{param.ToString()}'");
+            }
+
+            string sqlQuery = null;
+            if (context.Database.IsNpgsql())
+            {
+                 sqlQuery = $"select * from { procedureName} ({String.Join(',',sb)});";
+            }
+            else if(context.Database.IsSqlServer())
+            {
+                 sqlQuery = $"EXEC {procedureName} {String.Join(',', sb)}";
+            }
+            else
+            {
+                throw new NotSupportedException($"{context.Database.ProviderName} not supported!");
+            }
+
+            return context.Set<T>().FromSqlRaw($"{sqlQuery}");
+
+        }
+
         public static async Task<ICollection<T>> ToEntityListIncludeOwnershipAsync<T, U>(this IQueryable<T> query, DbContext ctx)
            where T : IHaveOwnership<U>, IEntity
            where U : class, IOwnerRelation
