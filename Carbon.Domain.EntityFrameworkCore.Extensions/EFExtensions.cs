@@ -49,7 +49,7 @@ namespace Carbon.Domain.EntityFrameworkCore
             {
                 throw new NotSupportedException($"{context.Database.ProviderName} not supported!");
             }
-
+            Console.WriteLine("Execute Procedure Sql: " + sqlQuery);
             return context.Set<T>().FromSqlRaw($"{sqlQuery}");
 
         }
