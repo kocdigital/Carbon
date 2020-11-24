@@ -10,6 +10,14 @@
         /// </summary>
         /// <param name="message">The message of the forbidden exception.</param>
         /// <param name="args">The argument object array of the forbidden exception.</param>
+        public ForbiddenOperationException() : base("This Operation is Forbidden!")
+        {
+        }
+        /// <summary>
+        /// Forbidden Operation Carbon exception with message and arguments.
+        /// </summary>
+        /// <param name="message">The message of the forbidden exception.</param>
+        /// <param name="args">The argument object array of the forbidden exception.</param>
         public ForbiddenOperationException(params object[] args) : base("This Operation is Forbidden!", args)
         {
         }
