@@ -58,8 +58,8 @@ namespace Carbon.MassTransit
                         if (busSettings.PrefetchCount > 0)
                             x.PrefetchCount = busSettings.PrefetchCount;
 
-                        x.Host(busSettings.Host, busSettings.VirtualHost, (c) =>
-                         {
+                        x.Host(new Uri($"rabbitmq://{busSettings.Host}:{busSettings.Port}{busSettings.VirtualHost}"), (c) =>
+                        {
                              if (!string.IsNullOrEmpty(busSettings.Username))
                                  c.Username(busSettings.Username);
                              if (!string.IsNullOrEmpty(busSettings.Password))
