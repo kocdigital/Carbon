@@ -4,6 +4,7 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using Carbon.Redis.UnitTests.StaticWrappers.RedisHelper;
+using Microsoft.Extensions.Logging;
 using StackExchange.Redis;
 
 namespace Carbon.Redis.UnitTests.Fixtures
