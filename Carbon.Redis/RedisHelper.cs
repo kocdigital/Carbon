@@ -1,6 +1,8 @@
 ﻿using Newtonsoft.Json;
 using StackExchange.Redis;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Carbon.Redis
@@ -21,7 +23,7 @@ namespace Carbon.Redis
             return JsonConvert.SerializeObject(obj);
         }
         /// <summary>
-        /// Converts json to given object type.
+        /// Gets data from Redis and converts it into the proper object
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="key">Cache Key</param>
@@ -45,6 +47,36 @@ namespace Carbon.Redis
             }
 
         }
+
+        /// <summary>
+        /// Gets data from Redis and converts it into the proper object
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="database"></param>
+        /// <param name="keys"></param>
+        /// <returns></returns>
+        public static async Task<IEnumerable<T>> ConvertJsonToObjectAsync<T>(this IDatabase database, IEnumerable<RedisKey> keys)
+        {
+            try
+            {
+                var values = await database.StringGetAsync(keys.ToArray());
+                var resultList = new List<T>();
+
+                if (values != null)
+                {
+                    resultList.AddRange(values?.Select(value => JsonConvert.DeserializeObject<T>(value)));
+                }
+
+                return resultList;
+            }
+            catch (Exception ex)
+            {
+
+                throw new RedisException("The object couldn't deserialized", ex);
+            }
+
+        }
+
         /// <summary>
         /// Is given key valid? <br>Returns:</br>
         /// <br>
