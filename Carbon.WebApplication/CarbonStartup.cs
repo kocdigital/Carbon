@@ -101,6 +101,12 @@ namespace Carbon.WebApplication
         /// <param name="services">Specifies the contract for a collection of service descriptors.</param>
         public void ConfigureServices(IServiceCollection services)
         {
+#if NET5_0
+            Console.WriteLine("Carbon starting with .Net 5.0");
+#elif NETCOREAPP3_1
+            Console.WriteLine("Carbon starting with .NetCore 3.1");
+#endif
+
             services.AddHeaderPropagation();
 
             services.AddOptions();
