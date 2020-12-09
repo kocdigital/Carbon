@@ -83,7 +83,7 @@ namespace Carbon.Redis.UnitTests.DataShares
             yield return new object[] { db, "keyPattern", connection };
         }
     }
-    
+
     public class AddRedisPersisterServicesIsNullData : DataAttribute
     {
         public override IEnumerable<object[]> GetData(MethodInfo testMethod)
@@ -105,6 +105,38 @@ namespace Carbon.Redis.UnitTests.DataShares
         public override IEnumerable<object[]> GetData(MethodInfo testMethod)
         {
             yield return new object[] { "123456" };
+        }
+    }
+
+    public class InvalidCacheObject : DataAttribute
+    {
+        public override IEnumerable<object[]> GetData(MethodInfo testMethod)
+        {
+            yield return new object[] { null };
+            yield return new object[] { new CacheObject("", Guid.NewGuid(), new RedisDatabase()
+            {
+                Multiplexer = new DummyConnectionMultiplexer() { ClientName = "ClientName", Configuration = "Configuration", StormLogThreshold = 1, IncludeDetailInExceptions = true, PreserveAsyncOrder = true },
+                Database = 1}, null)
+            };
+            yield return new object[] { new CacheObject("", Guid.NewGuid(), new RedisDatabase() { Database = 1 }, null) };
+
+        }
+    }
+
+    public class GetWithLoggingGettingCacheError : DataAttribute
+    {
+        public override IEnumerable<object[]> GetData(MethodInfo testMethod)
+        {
+            yield return new object[] { new CacheObject("key:", Guid.NewGuid(), new RedisDatabase(), null) };
+        }
+    }
+
+    public class ValidCacheObject : DataAttribute
+    {
+        public override IEnumerable<object[]> GetData(MethodInfo testMethod)
+        {
+            yield return new object[] { new CacheObject("key:", Guid.NewGuid(), new RedisDatabase(){ Multiplexer = new DummyConnectionMultiplexer() { ClientName = "ClientName", Configuration = "Configuration", StormLogThreshold = 1, IncludeDetailInExceptions = true, PreserveAsyncOrder = true },
+                Database = 1}, null)};
         }
     }
 }
