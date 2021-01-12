@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
     <LangVersion>8.0</LangVersion>
-    <Version>1.2.10</Version>
+    <Version>1.2.11</Version>
     <Description>ExecuteProcedureSql added 1.2.8
 UpdatedDate,deletedDate set for soft deletion 1.2.6</Description>
   </PropertyGroup>

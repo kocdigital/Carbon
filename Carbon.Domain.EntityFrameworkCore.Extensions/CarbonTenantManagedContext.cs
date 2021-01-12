@@ -15,10 +15,6 @@ namespace Carbon.Domain.EntityFrameworkCore
     /// <typeparam name="TContext"> A database context object to be wrapped. </typeparam>
     public class CarbonTenantManagedContext<TContext> : CarbonContext<TContext> where TContext : DbContext
     {
-        public CarbonTenantManagedContext():base()
-        {
-            
-        }
         /// <summary>
         ///     Constructor that initializes the CarbonContext with the given options for database context
         /// </summary>
