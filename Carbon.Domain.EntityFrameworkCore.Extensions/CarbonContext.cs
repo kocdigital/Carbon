@@ -15,6 +15,10 @@ namespace Carbon.Domain.EntityFrameworkCore
     /// <typeparam name="TContext"> A database context object to be wrapped. </typeparam>
     public class CarbonContext<TContext> : DbContext where TContext : DbContext
     {
+        public CarbonContext()
+        {
+
+        }
         /// <summary>
         ///     Constructor that initializes the CarbonContext with the given options for database context
         /// </summary>
@@ -59,7 +63,7 @@ namespace Carbon.Domain.EntityFrameworkCore
 
         private void SetDateTimeToProperty(PropertyValues propertyValues, string name)
         {
-            if (propertyValues?.Properties!=null && propertyValues.Properties.Any(x => x.Name == name))
+            if (propertyValues?.Properties != null && propertyValues.Properties.Any(x => x.Name == name))
             {
                 propertyValues[name] = DateTime.UtcNow;
             }
