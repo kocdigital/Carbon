@@ -2,8 +2,11 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
-    <Version>1.2.9</Version>
-    <Description>*** 1.2.6 Migration Management Changed (Multiple Migration)
+    <Version>1.3.0</Version>
+    <Description>*** 1.3.0
+Database Seeding Support added, Just create a seeder with IContextSeed interface and use app.SeedDatabase by passing your seeder into this method
+
+*** 1.2.6 Migration Management Changed (Multiple Migration)
 Each Migrations should locate under a seperate class library named with {The API Namespace which uses this migration} +{.{Target EF Name [PostgreSQL, MSSQL]}}    (e.g. Platform360.AssetManagement.API.PostgreSQL, Platform360.AssetManagement.API.MSSQL)
 
 *** PostgreSQL Support Added as of 1.2.0 (Multiple EF Target)

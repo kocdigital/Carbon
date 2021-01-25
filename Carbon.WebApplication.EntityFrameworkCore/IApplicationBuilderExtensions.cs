@@ -9,17 +9,62 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using System.Reflection;
 using System.IO;
 using System.Runtime.Loader;
+using Microsoft.Extensions.Logging;
+using Carbon.Domain.EntityFrameworkCore;
 
 namespace Carbon.WebApplication.EntityFrameworkCore
 {
     public static class IApplicationBuilderExtensions
     {
+        /// <summary>
+        /// Migrates your database with related to the configurations in AddDatabaseContext method
+        /// </summary>
+        /// <typeparam name="TContext">Your Database Context</typeparam>
+        /// <param name="app"></param>
         public static void MigrateDatabase<TContext>(this IApplicationBuilder app) where TContext : DbContext
         {
             using (var serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
             {
                 var context = serviceScope.ServiceProvider.GetRequiredService<TContext>();
                 context.Database.Migrate();
+            }
+        }
+
+
+        /// <summary>
+        /// Manages Database Seeding. To Disable, use "DisableSeeding = false" configuration. 
+        /// </summary>
+        /// <typeparam name="TContext">Your Database Context</typeparam>
+        /// <typeparam name="TContextSeed">Your Seeding Context If exists in your project (IContextSeed)</typeparam>
+        /// <param name="app"></param>
+        public static void SeedDatabase<TContext, TContextSeed>(this IApplicationBuilder app) 
+            where TContext : DbContext 
+            where TContextSeed : IContextSeed
+        {
+            using (var serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
+            {
+                var logger = serviceScope.ServiceProvider.GetRequiredService<ILogger<TContextSeed>>();
+                try
+                {
+                    var context = serviceScope.ServiceProvider.GetRequiredService<TContext>();
+                    var seeder = serviceScope.ServiceProvider.GetRequiredService<IContextSeed>();
+                    var config = serviceScope.ServiceProvider.GetRequiredService<IConfiguration>();
+                    var seedDisabled = config.GetConnectionString("DisableSeeding");
+
+                    if (String.IsNullOrEmpty(seedDisabled) || !Convert.ToBoolean(seedDisabled))
+                    {
+                        seeder.SeedAsync<TContextSeed>(context, logger).Wait();
+                        logger.LogInformation("Database Seeded");
+                    }
+                    else
+                    {
+                        logger.LogInformation("Database Seed Disabled! Skipping!");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    logger.LogWarning("Unable to Seed Database: " + ex.Message);
+                }
             }
         }
 
