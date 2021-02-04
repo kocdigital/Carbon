@@ -119,6 +119,10 @@ namespace Carbon.ExceptionHandling.Abstractions
             : base(string.Format(message, args), innerException)
         {
             ErrorCode = code;
+            if (args != null && args.Length > 0)
+            {
+                SerializedModel = JsonConvert.SerializeObject(args);
+            }
         }
     }
 }
