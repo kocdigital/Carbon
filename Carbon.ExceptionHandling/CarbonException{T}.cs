@@ -8,8 +8,6 @@ namespace Carbon.ExceptionHandling.Abstractions
     /// </summary>
     public abstract class CarbonException<T> : CarbonException where T : IConvertible
     {
-        private readonly ILogger _logger = Log.Logger;
-
         /// <summary>
         /// The code of the defined error.
         /// </summary>
@@ -41,8 +39,6 @@ namespace Carbon.ExceptionHandling.Abstractions
         public CarbonException(T code, object model) : base(Convert.ToInt32(code), code.ToString(), model)
         {
             Code = code;
-           
-            
         }
 
         /// <summary>
