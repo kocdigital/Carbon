@@ -33,22 +33,21 @@ namespace Carbon.WebApplication
         {
             context.HttpContext.Request.Headers.TryGetValue("X-CorrelationId", out var correlationId);
 
-            _logger.LogError(new EventId(context.Exception.HResult),
-                context.Exception,
-                context.Exception.Message);
-
             var apiResponse = new ApiResponse<object>(correlationId, ApiStatusCode.InternalServerError);
 
             if (context.Exception is CarbonException)
             {
                 var exception = (CarbonException)context.Exception;
 
+                _logger.LogError($" {{{ "ErrorCode"}}} {{{ "ErrorMessage"}}} {{{ "Args"}}} {{{ "StackTrace"}}}",
+                    exception.ErrorCode, exception.Message, exception.SerializedModel, context.Exception.StackTrace);
+
                 if (!string.IsNullOrEmpty(context.Exception.Message))
                 {
                     apiResponse.AddMessage(context.Exception.Message);
                 }
 
-                if (!string.IsNullOrEmpty(context.Exception.StackTrace))
+                if (_env.IsDevelopment() && !string.IsNullOrEmpty(context.Exception.StackTrace))
                 {
                     apiResponse.AddMessage(context.Exception.StackTrace);
                 }
@@ -57,23 +56,21 @@ namespace Carbon.WebApplication
             }
             else
             {
+                _logger.LogError($" {{{ "ErrorCode"}}} {{{ "ErrorMessage"}}} {{{ "StackTrace"}}}",
+                    GeneralServerErrorCode, context.Exception.Message, context.Exception.StackTrace);
+
                 if (!string.IsNullOrEmpty(context.Exception.Message))
                 {
                     apiResponse.AddMessage(context.Exception.Message);
                 }
 
-                if (!string.IsNullOrEmpty(context.Exception.StackTrace))
+                if (_env.IsDevelopment() && !string.IsNullOrEmpty(context.Exception.StackTrace))
                 {
                     apiResponse.AddMessage(context.Exception.StackTrace);
                 }
 
                 apiResponse.SetErrorCode(GeneralServerErrorCode);
             }
-
-            //if (_env.IsDevelopment())
-            //{
-            //    apiResponse.Messages.Add(context.Exception.Demystify().ToString());
-            //}
 
             if (context.Exception is ForbiddenOperationException)
             {

@@ -2,12 +2,15 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
-    <Version>1.1.2</Version>
+    <Version>1.1.3</Version>
     <FileVersion>1.1.2.0</FileVersion>
+    <Description>
+      1.1.3
+      -Ben.Demistify package removed.
+    </Description>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Ben.Demystifier" Version="0.1.4" />
     <PackageReference Include="FluentValidation.AspNetCore" Version="8.6.1" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
   </ItemGroup>
