@@ -1,5 +1,4 @@
-﻿using Serilog;
-using System;
+﻿using System;
 
 namespace Carbon.ExceptionHandling.Abstractions
 {
