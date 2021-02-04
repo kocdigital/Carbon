@@ -67,7 +67,7 @@ namespace Carbon.ExceptionHandling.Abstractions
         /// <param name="args">The argument object array of the exception.</param>
         public CarbonException(string message, params object[] args) : this(default(int), message, args)
         {
-
+            SerializedModel = JsonConvert.SerializeObject(args);
         }
 
         /// <summary>
@@ -78,7 +78,11 @@ namespace Carbon.ExceptionHandling.Abstractions
         /// <param name="args">The argument object array of the exception.</param>
         public CarbonException(int code, string message, params object[] args) : this(null, code, message, args)
         {
-
+            if(args != null && args.Length > 0)
+            {
+                SerializedModel = JsonConvert.SerializeObject(args);
+            }
+            
         }
 
         /// <summary>
