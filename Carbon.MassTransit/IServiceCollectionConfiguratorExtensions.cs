@@ -79,7 +79,10 @@ namespace Carbon.MassTransit
                              if (busSettings.ClusterMembers != null && busSettings.ClusterMembers.Length > 0)
                                  c.UseCluster((cluster) =>
                                  {
-                                     cluster.ClusterMembers = busSettings.ClusterMembers;
+                                     foreach (var cm in busSettings.ClusterMembers)
+                                     {
+                                         cluster.Node(cm);
+                                     }
                                  });
 
                              if (busSettings.Ssl)
@@ -99,7 +102,7 @@ namespace Carbon.MassTransit
 
                          });
 
-                        configurator(provider, x);
+                        configurator(provider.Container, x);
                     });
                 });
             }
@@ -150,7 +153,7 @@ namespace Carbon.MassTransit
                             c.TransportType = busSettings.TransportType;
                         });
 
-                        configurator(provider, x);
+                        configurator(provider.Container, x);
                     });
                 });
             }

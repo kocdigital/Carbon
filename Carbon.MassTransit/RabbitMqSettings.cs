@@ -91,7 +91,7 @@ namespace Carbon.MassTransit
         /// <summary>
         /// Host Name Selector od type <see cref="IRabbitMqEndpointResolver"/>
         /// </summary>
-        public IRabbitMqEndpointResolver HostNameSelector { get; set; }
+        public IRabbitMqEndpointResolver EndpointResolver { get; set; }
         /// <summary>
         /// Provided Name for client
         /// </summary>
@@ -119,6 +119,8 @@ namespace Carbon.MassTransit
         /// Prefetch Count
         /// </summary>
         public ushort PrefetchCount { get; set; }
+
+        public BatchSettings BatchSettings { get; set; }
 
     }
 }
