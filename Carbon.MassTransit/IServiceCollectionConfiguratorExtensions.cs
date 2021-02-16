@@ -11,12 +11,30 @@ namespace Carbon.MassTransit
 {
     public static class IServiceCollectionConfiguratorExtensions
     {
+        /// <summary>
+        /// Mass Transit Add Extension Method
+        /// </summary>
+        /// <remarks>
+        /// Extension method for Service Collection to add MassTransit Hosted Service as singleton and 
+        /// mass transit with the given "MassTransit" configuration
+        /// </remarks>
+        /// <param name="services">Service Collection</param>
+        /// <param name="configurator">Configuration Action</param>
         public static void AddMassTransitBus(this IServiceCollection services, Action<IServiceCollectionBusConfigurator> configurator)
         {
             services.AddSingleton<IHostedService, MassTransitHostedService>();
             services.AddMassTransit(configurator);
         }
 
+        /// <summary>
+        /// Rabbit MQ Add Extension Method
+        /// </summary>
+        /// <remarks>
+        /// Adds new bus to the service collection  with the given configuration parameters in "MassTransit" config item.
+        /// </remarks>
+        /// <param name="serviceCollection">Service Collection Configurator</param>
+        /// <param name="configuration">API Configuration Item with MassTransit Section</param>
+        /// <param name="configurator">Service provider's Configuration Action</param>
         public static void AddRabbitMqBus(this IServiceCollectionBusConfigurator serviceCollection, 
                                        IConfiguration configuration, Action<IServiceProvider, 
                                        IRabbitMqBusFactoryConfigurator> configurator)
@@ -78,6 +96,15 @@ namespace Carbon.MassTransit
             }
         }
 
+        /// <summary>
+        /// Azure Service Bus Add Extension Method
+        /// </summary>
+        /// <remarks>
+        /// Adds Azure Service Bus to the service collection given with the given configuration parameters in "MassTransit" config item.
+        /// </remarks>
+        /// <param name="serviceCollection">Service Collection Configurator</param>
+        /// <param name="configuration">API Configuration Item with MassTransit Section</param>
+        /// <param name="configurator">Service provider's Configuration Action</param>
         public static void AddServiceBus(this IServiceCollectionBusConfigurator serviceCollection, 
                                        IConfiguration configuration, Action<IServiceProvider, 
                                        IServiceBusBusFactoryConfigurator> configurator)
