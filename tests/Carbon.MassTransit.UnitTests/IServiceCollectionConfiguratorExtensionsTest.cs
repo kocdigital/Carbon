@@ -15,8 +15,8 @@ namespace Carbon.MassTransit.UnitTests
     public class IServiceCollectionConfiguratorExtensionsTest : IClassFixture<ConfigFixture>
     {
         private readonly Mock<IServiceCollection> _serviceCollectionMock;
-        private readonly Mock<Action<IServiceCollectionConfigurator>> _serviceCollectionConfiguratorMock;
-        private readonly Mock<IServiceCollectionConfigurator> _configuratorMock;
+        private readonly Mock<Action<IServiceCollectionBusConfigurator>> _serviceCollectionConfiguratorMock;
+        private readonly Mock<IServiceCollectionBusConfigurator> _configuratorMock;
         private readonly Mock<IConfiguration> _configurationMock;
         private readonly Mock<Action<IServiceProvider, IRabbitMqBusFactoryConfigurator>> _actionRabbitMqBusFactoryConfiguratorMock;
         private readonly Mock<Action<IServiceProvider, IServiceBusBusFactoryConfigurator>> _actionServiceBusBusFactoryConfiguratorMock;
@@ -24,11 +24,11 @@ namespace Carbon.MassTransit.UnitTests
         public IServiceCollectionConfiguratorExtensionsTest(ConfigFixture configFixture)
         {
             _serviceCollectionMock = new Mock<IServiceCollection>();
-            _serviceCollectionConfiguratorMock = new Mock<Action<IServiceCollectionConfigurator>>();
+            _serviceCollectionConfiguratorMock = new Mock<Action<IServiceCollectionBusConfigurator>>();
             _configurationMock = new Mock<IConfiguration>();
             _actionRabbitMqBusFactoryConfiguratorMock = new Mock<Action<IServiceProvider, IRabbitMqBusFactoryConfigurator>>();
             _actionServiceBusBusFactoryConfiguratorMock = new Mock<Action<IServiceProvider, IServiceBusBusFactoryConfigurator>>();
-            _configuratorMock = new Mock<IServiceCollectionConfigurator>();
+            _configuratorMock = new Mock<IServiceCollectionBusConfigurator>();
             _configFixture = configFixture;
         }
 
