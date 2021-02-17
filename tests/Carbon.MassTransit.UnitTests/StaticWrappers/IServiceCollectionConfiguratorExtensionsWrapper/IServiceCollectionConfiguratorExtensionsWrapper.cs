@@ -9,11 +9,11 @@ namespace Carbon.MassTransit.UnitTests.StaticWrappers.IServiceCollectionConfigur
 {
     public interface IServiceCollectionConfiguratorExtensionsWrapper
     {
-        void AddMassTransitBus(IServiceCollection services, Action<IServiceCollectionConfigurator> configurator);
-        void AddRabbitMqBus(IServiceCollectionConfigurator serviceCollection,
+        void AddMassTransitBus(IServiceCollection services, Action<IServiceCollectionBusConfigurator> configurator);
+        void AddRabbitMqBus(IServiceCollectionBusConfigurator serviceCollection,
                                        IConfiguration configuration, Action<IServiceProvider,
                                        IRabbitMqBusFactoryConfigurator> configurator);
-        void AddServiceBus(IServiceCollectionConfigurator serviceCollection,
+        void AddServiceBus(IServiceCollectionBusConfigurator serviceCollection,
                                        IConfiguration configuration, Action<IServiceProvider,
                                        IServiceBusBusFactoryConfigurator> configurator);
     }

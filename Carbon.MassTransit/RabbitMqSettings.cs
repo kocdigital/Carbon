@@ -39,7 +39,7 @@ namespace Carbon.MassTransit
         /// <summary>
         /// Heart beat of Rabbit MQ <c>Default:</c> 60
         /// </summary>
-        public ushort Heartbeat { get; set; }
+        public TimeSpan Heartbeat { get; set; }
 
         /// <summary>
         /// Value <c>true</c> if SSL is used
@@ -114,7 +114,7 @@ namespace Carbon.MassTransit
         /// <summary>
         /// Requested Connection Timeout time in <c>msec</c>
         /// </summary>
-        public int RequestedConnectionTimeout { get; set; }
+        public TimeSpan RequestedConnectionTimeout { get; set; }
         /// <summary>
         /// Prefetch Count
         /// </summary>

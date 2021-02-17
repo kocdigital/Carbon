@@ -39,6 +39,6 @@ namespace Carbon.MassTransit
         /// <summary>
         /// Service Uri
         /// </summary>
-        public Uri ServiceUri { get;  }
+        public Uri ServiceUri { get; }
     }
 }
