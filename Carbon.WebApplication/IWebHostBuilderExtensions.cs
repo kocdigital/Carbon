@@ -42,7 +42,7 @@ namespace Carbon.WebApplication
             {
                 #region Configuration
 
-
+                //Suitable for Standalone or IIS Applications
                 if (String.IsNullOrEmpty(confType) || confType?.ToUpper() == "CONSUL")
                 {
                     var consulEnabled = !string.IsNullOrEmpty(consulAddress);
@@ -77,10 +77,11 @@ namespace Carbon.WebApplication
                         }
                     }
                 }
-                else if (confType?.ToUpper() == "KUBERNETES")
+                //Suitable for Kubernetes or Dockerized Applications
+                else if (confType?.ToUpper() == "FILE")
                 {
-                    Console.WriteLine("Configuration Type: KUBERNETES");
-                    var kubConfigPath = Environment.GetEnvironmentVariable("KUBERNETES_CONFIG_PATHS") ?? "config/appsettings.main.kubernetes.json";
+                    Console.WriteLine("Configuration Type: FILE");
+                    var kubConfigPath = Environment.GetEnvironmentVariable("FILE_CONFIG_PATHS") ?? "config/appsettings.main.file.json";
                     Console.WriteLine("Config Paths => " + kubConfigPath);
 
                     var kubConfigPaths = kubConfigPath.Split(',').ToArray();
