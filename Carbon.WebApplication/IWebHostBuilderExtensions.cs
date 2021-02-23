@@ -5,6 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Serilog;
 using System;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using Winton.Extensions.Configuration.Consul;
@@ -25,6 +26,10 @@ namespace Carbon.WebApplication
             var consulAddress = Environment.GetEnvironmentVariable("CONSUL_ADDRESS");
             var consulKeysValue = Environment.GetEnvironmentVariable(assemblyName + "_CONSUL_KEYS");
             var environmentType = Environment.GetEnvironmentVariable("ENVIRONMENT_TYPE");
+
+            var confType = Environment.GetEnvironmentVariable("CONFIGURATION_TYPE");
+
+
             if (environmentType?.ToUpper() == "IIS")
             {
                 builder.UseIIS();
@@ -35,41 +40,66 @@ namespace Carbon.WebApplication
             }
             builder.ConfigureAppConfiguration((c) =>
             {
-                #region Consul Configuration
+                #region Configuration
 
-                var consulEnabled = !string.IsNullOrEmpty(consulAddress);
 
-                if (consulEnabled)
+                if (String.IsNullOrEmpty(confType) || confType?.ToUpper() == "CONSUL")
                 {
-
-                    if (!string.IsNullOrEmpty(consulKeysValue))
+                    var consulEnabled = !string.IsNullOrEmpty(consulAddress);
+                    if (consulEnabled)
                     {
-                        var consulKeys = consulKeysValue.Split(',').ToArray();
-                        foreach (var consulKey in consulKeys)
+                        Console.WriteLine("Configuration Type: CONSUL");
+                        if (!string.IsNullOrEmpty(consulKeysValue))
+                        {
+                            var consulKeys = consulKeysValue.Split(',').ToArray();
+                            foreach (var consulKey in consulKeys)
+                            {
+                                c.AddConsul(
+                                   $"{consulKey}/{currentEnviroment}", (options) =>
+                                   {
+                                       options.ConsulConfigurationOptions = cco => { cco.Address = new Uri(consulAddress); };
+                                       options.Optional = false;
+                                       options.ReloadOnChange = true;
+                                       options.OnLoadException = exceptionContext => { exceptionContext.Ignore = false; };
+                                   });
+                            }
+                        }
+                        else
                         {
                             c.AddConsul(
-                               $"{consulKey}/{currentEnviroment}", (options) =>
-                               {
-                                   options.ConsulConfigurationOptions = cco => { cco.Address = new Uri(consulAddress); };
-                                   options.Optional = false;
-                                   options.ReloadOnChange = true;
-                                   options.OnLoadException = exceptionContext => { exceptionContext.Ignore = false; };
-                               });
+                                        $"{assemblyName}/{currentEnviroment}", (options) =>
+                                        {
+                                            options.ConsulConfigurationOptions = cco => { cco.Address = new Uri(consulAddress); };
+                                            options.Optional = false;
+                                            options.ReloadOnChange = true;
+                                            options.OnLoadException = exceptionContext => { exceptionContext.Ignore = false; };
+                                        });
                         }
                     }
-                    else
+                }
+                else if (confType?.ToUpper() == "KUBERNETES")
+                {
+                    Console.WriteLine("Configuration Type: KUBERNETES");
+                    var kubConfigPath = Environment.GetEnvironmentVariable("KUBERNETES_CONFIG_PATHS") ?? "config/appsettings.main.kubernetes.json";
+                    Console.WriteLine("Config Paths => " + kubConfigPath);
+
+                    var kubConfigPaths = kubConfigPath.Split(',').ToArray();
+
+                    foreach (var kubCnf in kubConfigPaths)
                     {
-                        c.AddConsul(
-                                    $"{assemblyName}/{currentEnviroment}", (options) =>
-                                    {
-                                        options.ConsulConfigurationOptions = cco => { cco.Address = new Uri(consulAddress); };
-                                        options.Optional = false;
-                                        options.ReloadOnChange = true;
-                                        options.OnLoadException = exceptionContext => { exceptionContext.Ignore = false; };
-                                    });
+                        Console.WriteLine("Adding Config =>  " + kubCnf);
+                        try
+                        {
+                            var configToRead = File.ReadAllText(kubCnf);
+                            Console.WriteLine("Inserting Config => \n" + configToRead);
+                        }
+                        catch
+                        {
+                            Console.WriteLine("Config File not found! No configurations may be loaded!");
+                        }
+                        c.AddJsonFile(kubConfigPath, optional: true, reloadOnChange: true);
                     }
                 }
-
 
 
                 #endregion
