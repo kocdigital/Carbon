@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFrameworks>netcoreapp3.1</TargetFrameworks>
-    <Version>2.1.4</Version>
+    <Version>2.1.0</Version>
     <Description>2.1.0
          -Kubernetes ConfigMap support added. Use CONFIGURATION_TYPE = CONSUL / FILE [Default = CONSUL]. Use     FILE for Kubernetes Environment.
        2.0.1
@@ -77,8 +77,8 @@
       - Swagger configurasyonunda AuthorizationUrl key'i ana root kısmında Security key'i altına alındı
       - ResponseOk kısmında Unit Testlerde null exception hatası verme sorunu düzeltildi.
 </Description>
-    <AssemblyVersion>2.1.4.0</AssemblyVersion>
-    <FileVersion>2.1.4.0</FileVersion>
+    <AssemblyVersion>2.1.0.0</AssemblyVersion>
+    <FileVersion>2.1.0.0</FileVersion>
     <OpenApiGenerateDocuments>false</OpenApiGenerateDocuments>
   </PropertyGroup>
 
