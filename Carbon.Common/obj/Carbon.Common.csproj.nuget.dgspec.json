@@ -1,31 +1,32 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\02484376\\OneDrive - KocSistem Bilgi ve Iletisim Hizmetleri A.S\\Desktop\\CarbonNew\\Carbon\\Carbon.Common\\Carbon.Common.csproj": {}
+    "C:\\GitRepos\\rmq\\Carbon\\Carbon.Common\\Carbon.Common.csproj": {}
   },
   "projects": {
-    "C:\\Users\\02484376\\OneDrive - KocSistem Bilgi ve Iletisim Hizmetleri A.S\\Desktop\\CarbonNew\\Carbon\\Carbon.Common\\Carbon.Common.csproj": {
+    "C:\\GitRepos\\rmq\\Carbon\\Carbon.Common\\Carbon.Common.csproj": {
       "version": "1.2.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\02484376\\OneDrive - KocSistem Bilgi ve Iletisim Hizmetleri A.S\\Desktop\\CarbonNew\\Carbon\\Carbon.Common\\Carbon.Common.csproj",
+        "projectUniqueName": "C:\\GitRepos\\rmq\\Carbon\\Carbon.Common\\Carbon.Common.csproj",
         "projectName": "Carbon.Common",
-        "projectPath": "C:\\Users\\02484376\\OneDrive - KocSistem Bilgi ve Iletisim Hizmetleri A.S\\Desktop\\CarbonNew\\Carbon\\Carbon.Common\\Carbon.Common.csproj",
-        "packagesPath": "C:\\Users\\02484376\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\02484376\\OneDrive - KocSistem Bilgi ve Iletisim Hizmetleri A.S\\Desktop\\CarbonNew\\Carbon\\Carbon.Common\\obj\\",
+        "projectPath": "C:\\GitRepos\\rmq\\Carbon\\Carbon.Common\\Carbon.Common.csproj",
+        "packagesPath": "C:\\Users\\02484784\\.nuget\\packages\\",
+        "outputPath": "C:\\GitRepos\\rmq\\Carbon\\Carbon.Common\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\02484376\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\02484784\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netstandard2.1"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Projects\\Nuget.Platform360.Device.SDK\\Platform360.Service.SDK.MQTT\\bin\\Debug": {},
-          "C:\\Users\\02484376\\OneDrive - KocSistem Bilgi ve Iletisim Hizmetleri A.S\\Desktop\\carbooon": {},
           "http://bellatrix:8080/tfs/KocDigitalCollection/_packaging/CarbonFramework/nuget/v3/index.json": {},
           "http://bellatrix:8080/tfs/KocDigitalCollection/_packaging/CosmosNugetServerv1/nuget/v3/index.json": {},
+          "http://packagesource": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -62,7 +63,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.400\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
         }
       }
     }
