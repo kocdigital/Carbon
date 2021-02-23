@@ -55,7 +55,7 @@ namespace Carbon.MassTransit
 
                     return Bus.Factory.CreateUsingRabbitMq(x =>
                     {
-                        x.Host(busSettings.Host, (c) =>
+                        x.Host(new Uri($"rabbitmq://{busSettings.Host}:{busSettings.Port}{busSettings.VirtualHost}"), (c) =>
                         {
                             if(!string.IsNullOrEmpty(busSettings.Username))
                                 c.Username(busSettings.Username);
