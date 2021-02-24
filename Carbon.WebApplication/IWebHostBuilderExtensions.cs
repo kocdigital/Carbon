@@ -28,7 +28,7 @@ namespace Carbon.WebApplication
             var environmentType = Environment.GetEnvironmentVariable("ENVIRONMENT_TYPE");
 
             var confType = Environment.GetEnvironmentVariable("CONFIGURATION_TYPE");
-
+            Console.WriteLine("Configuration Type: " + confType);
 
             if (environmentType?.ToUpper() == "IIS")
             {
@@ -78,7 +78,7 @@ namespace Carbon.WebApplication
                     }
                 }
                 //Suitable for Kubernetes or Dockerized Applications
-                else if (confType?.ToUpper() == "FILE")
+                else if (confType?.ToUpper() == "FILE" || confType == "file" || confType == "File")
                 {
                     Console.WriteLine("Configuration Type: FILE");
                     var kubConfigPath = Environment.GetEnvironmentVariable("FILE_CONFIG_PATHS") ?? "config/appsettings.main.file.json";
@@ -100,6 +100,10 @@ namespace Carbon.WebApplication
                         }
                         c.AddJsonFile(kubConfigPath, optional: true, reloadOnChange: true);
                     }
+                }
+                else
+                {
+                    Console.WriteLine("No Configuration Source Specified!");
                 }
 
 
