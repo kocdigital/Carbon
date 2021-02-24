@@ -4,6 +4,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Serilog;
 using System;
+using System.IO;
+using System.Linq;
 using Winton.Extensions.Configuration.Consul;
 
 namespace Carbon.ConsoleApplication
@@ -23,28 +25,77 @@ namespace Carbon.ConsoleApplication
             var assemblyName = typeof(TProgram).Assembly.GetName().Name;
             var currentEnviroment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
             var consulAddress = Environment.GetEnvironmentVariable("CONSUL_ADDRESS");
+            var consulKeysValue = Environment.GetEnvironmentVariable(assemblyName + "_CONSUL_KEYS");
+            var confType = Environment.GetEnvironmentVariable("CONFIGURATION_TYPE");
 
             builder.ConfigureAppConfiguration((h, c) =>
             {
-                c.AddJsonFile($"appsettings.{currentEnviroment}.json", optional: true);
                 c.AddEnvironmentVariables();
 
                 #region Consul Configuration
-
-                var consulEnabled = !string.IsNullOrEmpty(consulAddress);
-
-                if (consulEnabled)
+                if (String.IsNullOrEmpty(confType) || confType?.ToUpper() == "CONSUL")
                 {
-                    c.AddConsul(
-                                $"{assemblyName}/{currentEnviroment}", (options) =>
-                                {
-                                    options.ConsulConfigurationOptions = cco => { cco.Address = new Uri(consulAddress); };
-                                    options.Optional = false;
-                                    options.ReloadOnChange = true;
-                                    options.OnLoadException = exceptionContext => { exceptionContext.Ignore = false; };
-                                });
-                }
+                    var consulEnabled = !string.IsNullOrEmpty(consulAddress);
 
+                    if (consulEnabled)
+                    {
+                        Console.WriteLine("Configuration Type: CONSUL");
+                        if (!string.IsNullOrEmpty(consulKeysValue))
+                        {
+                            var consulKeys = consulKeysValue.Split(',').ToArray();
+                            foreach (var consulKey in consulKeys)
+                            {
+                                c.AddConsul(
+                                   $"{consulKey}/{currentEnviroment}", (options) =>
+                                   {
+                                       options.ConsulConfigurationOptions = cco => { cco.Address = new Uri(consulAddress); };
+                                       options.Optional = false;
+                                       options.ReloadOnChange = true;
+                                       options.OnLoadException = exceptionContext => { exceptionContext.Ignore = false; };
+                                   });
+                            }
+                        }
+                        else
+                        {
+                            c.AddConsul(
+                                        $"{assemblyName}/{currentEnviroment}", (options) =>
+                                        {
+                                            options.ConsulConfigurationOptions = cco => { cco.Address = new Uri(consulAddress); };
+                                            options.Optional = false;
+                                            options.ReloadOnChange = true;
+                                            options.OnLoadException = exceptionContext => { exceptionContext.Ignore = false; };
+                                        });
+                        }
+                    }
+                }
+                else if (confType?.ToUpper() == "FILE" || confType == "file" || confType == "File")
+                {
+                    Console.WriteLine("Configuration Type: FILE");
+                    var kubConfigPath = Environment.GetEnvironmentVariable("FILE_CONFIG_PATHS") ?? "config/appsettings.main.file.json";
+                    Console.WriteLine("Config Paths => " + kubConfigPath);
+
+                    var kubConfigPaths = kubConfigPath.Split(',').ToArray();
+
+                    foreach (var kubCnf in kubConfigPaths)
+                    {
+                        Console.WriteLine("Adding Config =>  " + kubCnf);
+                        try
+                        {
+                            var configToRead = File.ReadAllText(kubCnf);
+                            Console.WriteLine("Inserting Config => \n" + configToRead);
+                        }
+                        catch
+                        {
+                            Console.WriteLine("Config File not found! No configurations may be loaded!");
+                        }
+                        c.AddJsonFile(kubCnf, optional: true, reloadOnChange: true);
+                    }
+                }
+                else
+                {
+                    Console.WriteLine($"Unknown Configuration Source Specified! Defaults to => appsettings.{currentEnviroment}.json");
+                    c.AddJsonFile($"appsettings.{currentEnviroment}.json", optional: true);
+                }
                 #endregion
 
                 var configuration = c.Build();
