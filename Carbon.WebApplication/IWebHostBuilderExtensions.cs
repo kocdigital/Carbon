@@ -98,7 +98,7 @@ namespace Carbon.WebApplication
                         {
                             Console.WriteLine("Config File not found! No configurations may be loaded!");
                         }
-                        c.AddJsonFile(kubConfigPath, optional: true, reloadOnChange: true);
+                        c.AddJsonFile(kubCnf, optional: true, reloadOnChange: true);
                     }
                 }
                 else
