@@ -53,6 +53,94 @@ namespace Carbon.Redis
 
         }
 
+        public static async Task<(IEnumerable<string>, string errorMessage)> SearchKeysAsync(this IDatabase redisDb, string pattern)
+        {
+            if (redisDb.IsRedisDisabled())
+            {
+                return (default, RedisConstants.RedisDisabled);
+            }
+            try
+            {
+                var keys = new HashSet<string>();
+                long nextCursor = 0;
+                do
+                {
+                    var redisResult = await redisDb.ExecuteAsync(RedisConstants.Scan, nextCursor.ToString(), RedisConstants.Match, pattern, RedisConstants.Count, RedisConstants.SearchKeyCount).ConfigureAwait(false);
+                    var innerResult = (RedisResult[])redisResult;
+
+                    nextCursor = long.Parse((string)innerResult[0]);
+
+                    var resultLines = ((string[])innerResult[1]).ToArray();
+                    keys.UnionWith(resultLines);
+                }
+                while (nextCursor != 0);
+                return (keys, null);
+            }
+            catch (Exception ex)
+            {
+                return (default, ex.InnerException?.Message ?? ex.Message);
+            }
+        }
+        /// <summary>
+        /// Delete multiple key. key searchin in redis server with "scan" keyword
+        /// <br>
+        /// <list type="bullet">
+        /// <item>
+        /// <term>removedKeys (<i>key list that removed from cache</i>)</term>
+        /// </item>
+        /// <br>
+        /// <item>
+        /// <term>couldNotBeRemovedKeys(<i>Key list that cannot be removed from cache</i>)</term>
+        /// </item>
+        /// </br>
+        /// <br>
+        /// <item>
+        /// <term>errorMessage(<i>Error Messages</i>)</term>
+        /// </item>
+        /// </br>
+        /// </list> 
+        /// </br>
+        /// </summary>
+        /// <param name="redisDb">database object</param>
+        /// <param name="keyPattern">It represents cache key pattern. Sample pattern => Customer:b0cbb0a2-4feb-4655-aeb5-ce55fad71699:Home:*</param>
+        /// <see cref="https://redis.io/topics/data-types-intro"/>
+        public static async Task<(List<string> removedKeys, List<string> couldNotBeRemovedKeys, string errorMessage)> ScanKeysAndRemoveByPattern(this IDatabase redisDb, string keyPattern)
+        {
+            if (redisDb.IsRedisDisabled())
+            {
+                return (default, default, RedisConstants.RedisDisabled);
+            }
+            try
+            {
+                var server = redisDb.Multiplexer.GetServer(redisDb.Multiplexer.GetEndPoints().First());
+
+                var (keys, errorMessage) = await SearchKeysAsync(redisDb, keyPattern);
+                if (!string.IsNullOrEmpty(errorMessage))
+                {
+                    return (default, default, errorMessage);
+                }
+                var removedKeys = new List<string>();
+                var couldNotBeRemovedKeys = new List<string>();
+                foreach (var key in keys)
+                {
+                    if (redisDb.KeyDelete(key))
+                    {
+                        removedKeys.Add(key);
+                    }
+                    else
+                    {
+                        couldNotBeRemovedKeys.Add(key);
+                    }
+                }
+                return (removedKeys, couldNotBeRemovedKeys, null);
+            }
+            catch (Exception ex)
+            {
+                return (default, default, ex.InnerException?.Message ?? ex.Message);
+            }
+
+        }
+
         /// <summary>
         /// Delete multiple key. <br>Returns:</br>
         /// <br>
@@ -77,6 +165,7 @@ namespace Carbon.Redis
         /// <param name="keyPattern">It represents cache key pattern. Sample pattern => Customer:b0cbb0a2-4feb-4655-aeb5-ce55fad71699:Home:*</param>
         /// <param name="connectionMultiplexer">connectionMultiplexer object</param>
         /// <see cref="https://redis.io/topics/data-types-intro"/>
+        [Obsolete("RemoveKeysByPattern is deprecated, please use Post ScanKeysAndRemoveByPattern instead. If redis server support Scan!")]
         public static async Task<(List<string> removedKeys, List<string> couldNotBeRemovedKeys, string errorMessage)> RemoveKeysByPattern(this IDatabase redisDb, string keyPattern, IConnectionMultiplexer connectionMultiplexer)
         {
             if (redisDb.IsRedisDisabled())
@@ -85,6 +174,7 @@ namespace Carbon.Redis
             }
             try
             {
+
                 var server = connectionMultiplexer.GetServer(connectionMultiplexer.GetEndPoints().First());
 
                 var keys = server.KeysAsync(database: connectionMultiplexer.GetDatabase().Database, pattern: keyPattern);

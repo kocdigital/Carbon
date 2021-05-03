@@ -59,6 +59,7 @@ namespace Carbon.Demo.WebApplication.Application.Controllers
             var (isDeleted, errorRemove) = await _redis.RemoveKey(string.Format(CacheKey.CustomerById, customer2.Id));
             var (ss, dd) = await _redis.IsCacheKeyValid("ddfsfsf");
             var (removedList, couldNotBeRemoved, errorMessage) = await _redis.RemoveKeysByPattern(string.Format(CacheKey.CustomerHome, customer.Id, "*"), _connectionMultiplexer);
+             (removedList, couldNotBeRemoved, errorMessage) = await _redis.ScanKeysAndRemoveByPattern(string.Format(CacheKey.CustomerHome, customer.Id, "*"));
             return null;
         }
 
