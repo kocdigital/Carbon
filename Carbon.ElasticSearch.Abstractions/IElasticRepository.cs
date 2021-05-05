@@ -9,7 +9,7 @@ namespace Carbon.ElasticSearch.Abstractions
     {
         Task<T> FindOneAsync(Func<QueryContainerDescriptor<T>, QueryContainer> query);
         Task<IEnumerable<T>> FindAsync(Func<QueryContainerDescriptor<T>, QueryContainer> query);
-        Task<IEnumerable<T>> FindAsync(Func<QueryContainerDescriptor<T>, QueryContainer> query, int size)
+        Task<IEnumerable<T>> FindAsync(Func<QueryContainerDescriptor<T>, QueryContainer> query, int size);
         Task<ISearchResponse<T>> SearchAsync(Func<SearchDescriptor<T>, ISearchRequest> selector = null);
         void DeleteById(string id);
         DeleteResponse DeleteByIdAndReturn(string id);
