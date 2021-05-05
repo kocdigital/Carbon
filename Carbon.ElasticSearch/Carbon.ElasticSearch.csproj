@@ -3,18 +3,18 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <ProjectGuid>{7AEAD788-E78D-4825-9761-AEB2570DE3E0}</ProjectGuid>
-    <Version>3.1.1</Version>
-    <AssemblyVersion>3.1.1</AssemblyVersion>
+    <Version>3.1.2</Version>
+    <AssemblyVersion>3.1.2</AssemblyVersion>
     <Description>** ElasticSearch 7 Library
 ** For older versions, please use Platform360.ElasticSearch(Deprecated) from Cosmos Nuget Repo
 
-3.1.1
+3.1.2
 
 - FindAsync with Size added
 - New Configuration added for force refresh on writing operations
 -ElasticSearch.NET &amp; Nest Libraries Updated to 7.11.1
 -Sort feature added for FilterAsync.</Description>
-    <FileVersion>3.1.1</FileVersion>
+    <FileVersion>3.1.2</FileVersion>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
   </PropertyGroup>
 

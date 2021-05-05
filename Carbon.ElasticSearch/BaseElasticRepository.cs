@@ -30,7 +30,7 @@ namespace Carbon.ElasticSearch
         public async Task AddAsync(T item)
         {
             var response = await _client.IndexAsync(item, i => i.Index(Index)
-            .Refresh((_elasticSettings != null &&_elasticSettings.ForceRefresh)? Elasticsearch.Net.Refresh.True: Elasticsearch.Net.Refresh.False));
+            .Refresh((_elasticSettings != null && _elasticSettings.ForceRefresh) ? Elasticsearch.Net.Refresh.True : Elasticsearch.Net.Refresh.False));
         }
         public async Task<IndexResponse> AddAndReturnAsync(T item)
         {
@@ -74,7 +74,7 @@ namespace Carbon.ElasticSearch
 
         public async Task<IEnumerable<T>> FindAsync(Func<QueryContainerDescriptor<T>, QueryContainer> query, int size)
         {
-            var response = await _client.SearchAsync<T>(x => x.Index(Index).From(0).Size(size).Query(query));
+            var response = await _client.SearchAsync<T>(x => x.Index(Index).From(0).Size(size > 0 ? size : 1000).Query(query));
 
             return response.Documents.ToList();
         }
