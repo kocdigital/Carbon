@@ -75,6 +75,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Carbon.Cassandra.Abstractio
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Carbon.Cassandra", "Carbon.Cassandra\Carbon.Cassandra.csproj", "{5323A62A-EE22-4A47-96B7-D32F0FA1C755}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Carbon.WebApplication.SolutionService", "Carbon.WebApplication.SolutionService\Carbon.WebApplication.SolutionService.csproj", "{590469F3-F2CA-45D3-97AB-5B7F5D6FE7A0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -209,6 +211,10 @@ Global
 		{5323A62A-EE22-4A47-96B7-D32F0FA1C755}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5323A62A-EE22-4A47-96B7-D32F0FA1C755}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5323A62A-EE22-4A47-96B7-D32F0FA1C755}.Release|Any CPU.Build.0 = Release|Any CPU
+		{590469F3-F2CA-45D3-97AB-5B7F5D6FE7A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{590469F3-F2CA-45D3-97AB-5B7F5D6FE7A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{590469F3-F2CA-45D3-97AB-5B7F5D6FE7A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{590469F3-F2CA-45D3-97AB-5B7F5D6FE7A0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
