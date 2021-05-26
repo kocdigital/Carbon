@@ -48,9 +48,9 @@ namespace Carbon.WebApplication.SolutionService
         {
             services.AddScoped<ISolutionRegistrationService, SolutionRegistrationService>();
             var bsp = services.BuildServiceProvider();
-            var busControl = bsp.GetService<IBusControl>();
+            var registrationConfigurator = bsp.GetService<IRegistrationConfigurator>();
 
-            if (busControl == null)
+            if (registrationConfigurator == null)
             {
                 services.AddMassTransitBus(cfg =>
                 {
@@ -86,12 +86,13 @@ namespace Carbon.WebApplication.SolutionService
             }
             else
             {
-                var registrationConfigurator = bsp.GetService<IRegistrationConfigurator>();
                 registrationConfigurator.AddConsumer<FeatureSetSagaCompletionSucceedConsumer>();
                 registrationConfigurator.AddConsumer<FeatureSetSagaCompletionFailedConsumer>();
                 registrationConfigurator.AddConsumer<SolutionSagaCompletionSucceedConsumer>();
                 registrationConfigurator.AddConsumer<SolutionSagaCompletionFailedConsumer>();
 
+                var bsp2 = services.BuildServiceProvider();
+                var busControl = bsp2.GetService<IBusControl>();
                 busControl.ConnectReceiveEndpoint("App-Solution-Fail", (cfg) =>
                 {
                     cfg.Consumer<SolutionSagaCompletionFailedConsumer>(bsp);
