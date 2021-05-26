@@ -40,7 +40,7 @@ namespace Carbon.WebApplication.SolutionService.Services
             }
 
             var sendEp = await _busControl.GetSendEndpoint(new Uri("queue:solution-creation-state"));
-            await sendEp.Send<ISolutionCreateRequest>(data);
+            await sendEp.Send<ISolutionCreationRequest>(data);
 
             _logger.LogInformation($"Solution Registration has successfully submitted! SolutionId: {data.Solution.SolutionId} SolutionName: {data.Solution.SolutionName}");
         }

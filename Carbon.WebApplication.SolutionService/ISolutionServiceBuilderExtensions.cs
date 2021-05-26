@@ -46,11 +46,15 @@ namespace Carbon.WebApplication.SolutionService
         /// <param name="configuration"></param>
         public static void ConfigureAsSolutionService(this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddScoped<ISolutionRegistrationService, SolutionRegistrationService>();
-            var bsp = services.BuildServiceProvider();
-            var registrationConfigurator = bsp.GetService<IRegistrationConfigurator>();
+            services.AddScoped<FeatureSetSagaCompletionSucceedConsumer>();
+            services.AddScoped<FeatureSetSagaCompletionFailedConsumer>();
+            services.AddScoped<SolutionSagaCompletionSucceedConsumer>();
+            services.AddScoped<SolutionSagaCompletionFailedConsumer>();
 
-            if (registrationConfigurator == null)
+            var bsp = services.BuildServiceProvider();
+            var busControl = bsp.GetService<IBusControl>();
+
+            if (busControl == null)
             {
                 services.AddMassTransitBus(cfg =>
                 {
@@ -86,13 +90,11 @@ namespace Carbon.WebApplication.SolutionService
             }
             else
             {
-                registrationConfigurator.AddConsumer<FeatureSetSagaCompletionSucceedConsumer>();
-                registrationConfigurator.AddConsumer<FeatureSetSagaCompletionFailedConsumer>();
-                registrationConfigurator.AddConsumer<SolutionSagaCompletionSucceedConsumer>();
-                registrationConfigurator.AddConsumer<SolutionSagaCompletionFailedConsumer>();
-
-                var bsp2 = services.BuildServiceProvider();
-                var busControl = bsp2.GetService<IBusControl>();
+                //registrationConfigurator.AddConsumer<FeatureSetSagaCompletionSucceedConsumer>();
+                //registrationConfigurator.AddConsumer<FeatureSetSagaCompletionFailedConsumer>();
+                //registrationConfigurator.AddConsumer<SolutionSagaCompletionSucceedConsumer>();
+                //registrationConfigurator.AddConsumer<SolutionSagaCompletionFailedConsumer>();
+                
                 busControl.ConnectReceiveEndpoint("App-Solution-Fail", (cfg) =>
                 {
                     cfg.Consumer<SolutionSagaCompletionFailedConsumer>(bsp);
@@ -110,6 +112,8 @@ namespace Carbon.WebApplication.SolutionService
                     cfg.Consumer<FeatureSetSagaCompletionSucceedConsumer>(bsp);
                 });
             }
+
+            services.AddScoped<ISolutionRegistrationService, SolutionRegistrationService>();
 
 
 

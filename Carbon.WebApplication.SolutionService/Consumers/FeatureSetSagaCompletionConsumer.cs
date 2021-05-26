@@ -35,7 +35,7 @@ namespace Carbon.WebApplication.SolutionService.Consumers
         public async Task Consume(ConsumeContext<IFeatureSetCreationFailed> context)
         {
             var message = context.Message;
-            _logger.LogError($"FeatureSet registration has failed to SolutionId: {message.SolutionId}, FeatureSet: {message.FeatureSetId}");
+            _logger.LogError($"FeatureSet registration has failed to SolutionId: {message.SolutionId}, FeatureSet: {message.FeatureSetId}, Error: {message.ErrorMessage}");
         }
     }
 }
