@@ -2,16 +2,15 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
-    <Version>1.0.0</Version>
-    <Description>-1.0.0
- Supports MassTransit greater than 6.2.3</Description>
-    <AssemblyVersion>1.0.0.0</AssemblyVersion>
-    <FileVersion>1.0.0.0</FileVersion>
+    <Version>1.0.1</Version>
+    <Description>-1.0.1
+ Supports MassTransit greater than 6.2.3 and Carbon.MassTransit 2.0.8</Description>
+    <AssemblyVersion>1.0.1.0</AssemblyVersion>
+    <FileVersion>1.0.1.0</FileVersion>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Carbon.MassTransit" Version="2.0.8" />
-    <PackageReference Include="Carbon.MassTransit.Abstractions" Version="1.0.12" />
     <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
     <PackageReference Include="Platform360.Domain.Messages" Version="1.5.7" />
     <PackageReference Include="System.Runtime.Loader" Version="4.3.0" />
