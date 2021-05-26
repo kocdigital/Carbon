@@ -86,6 +86,12 @@ namespace Carbon.WebApplication.SolutionService
             }
             else
             {
+                var registrationConfigurator = bsp.GetService<IRegistrationConfigurator>();
+                registrationConfigurator.AddConsumer<FeatureSetSagaCompletionSucceedConsumer>();
+                registrationConfigurator.AddConsumer<FeatureSetSagaCompletionFailedConsumer>();
+                registrationConfigurator.AddConsumer<SolutionSagaCompletionSucceedConsumer>();
+                registrationConfigurator.AddConsumer<SolutionSagaCompletionFailedConsumer>();
+
                 busControl.ConnectReceiveEndpoint("App-Solution-Fail", (cfg) =>
                 {
                     cfg.Consumer<SolutionSagaCompletionFailedConsumer>(bsp);
