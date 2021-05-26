@@ -12,7 +12,7 @@
   <ItemGroup>
     <PackageReference Include="Carbon.MassTransit" Version="2.0.8" />
     <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
-    <PackageReference Include="Platform360.Domain.Messages" Version="1.5.7" />
+    <PackageReference Include="Platform360.Domain.Messages" Version="1.5.8" />
     <PackageReference Include="System.Runtime.Loader" Version="4.3.0" />
   </ItemGroup>
 
