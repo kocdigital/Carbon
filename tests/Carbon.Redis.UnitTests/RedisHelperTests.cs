@@ -85,7 +85,7 @@ namespace Carbon.Redis.UnitTests
         public async Task IsKeyValid_RedisDisabled_RedisDisabledResult(string key)
         {
             var helper = new RedisHelperWrapper();
-            var result = await helper.IsKeyValid(key, _redisFixture.RedisDatabaseWithoutMultiplexer);
+            var result = helper.IsKeyValid(key, _redisFixture.RedisDatabaseWithoutMultiplexer);
             
             Assert.IsType<ValueTuple<bool, string>>(result);
             Assert.NotNull(result.ToTuple().Item2);
@@ -97,7 +97,7 @@ namespace Carbon.Redis.UnitTests
         public async Task IsKeyValid_LengthError_ErrorResult(string key)
         {
             var helper = new RedisHelperWrapper();
-            var result = await helper.IsKeyValid(key, _redisFixture.RedisDatabase);
+            var result = helper.IsKeyValid(key, _redisFixture.RedisDatabase);
             
             Assert.IsType<ValueTuple<bool, string>>(result);
             Assert.NotEmpty(result.ToTuple().Item2);
@@ -109,7 +109,7 @@ namespace Carbon.Redis.UnitTests
         public async Task IsKeyValid_KeySyntaxError_ErrorResult(string key)
         {
             var helper = new RedisHelperWrapper();
-            var result = await helper.IsKeyValid(key, _redisFixture.RedisDatabase);
+            var result = helper.IsKeyValid(key, _redisFixture.RedisDatabase);
             
             Assert.IsType<ValueTuple<bool, string>>(result);
             Assert.NotEmpty(result.ToTuple().Item2);
@@ -121,7 +121,7 @@ namespace Carbon.Redis.UnitTests
         public async Task IsKeyValid_Successful_ValidResult(string key)
         {
             var helper = new RedisHelperWrapper();
-            var result = await helper.IsKeyValid(key, _redisFixture.RedisDatabase);
+            var result = helper.IsKeyValid(key, _redisFixture.RedisDatabase);
             
             Assert.IsType<ValueTuple<bool, string>>(result);
             Assert.Null(result.ToTuple().Item2);

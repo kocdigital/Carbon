@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 using StackExchange.Redis;
@@ -10,6 +11,14 @@ namespace Carbon.Redis
 {
     public static class ServiceCollectionExtensions
     {
+        public async static void ValidateRedisConnection(this IApplicationBuilder app)
+        {
+            using (var serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
+            {
+                var redisDatabase = serviceScope.ServiceProvider.GetRequiredService<IDatabase>();
+                await redisDatabase.StringSetAsync(RedisConstants.RedisKeyLengthKey, RedisHelper.RedisKeyLength);
+            }
+        }
         /// <summary>
         /// Use AddRedisPersister for implementation Redis
         /// </summary>
@@ -57,7 +66,7 @@ namespace Carbon.Redis
                         services.AddSingleton<IConnectionMultiplexer>(redis);
                         var db = redis.GetDatabase(redisSettings.Value.DefaultDatabase);
                         services.AddSingleton(s => db);
-                        _ = db.StringSet(RedisConstants.RedisKeyLengthKey, redisSettings.Value.KeyLength);
+                        RedisHelper.SetRedisKeyLength(redisSettings.Value.KeyLength);
                     }
                     else
                     {

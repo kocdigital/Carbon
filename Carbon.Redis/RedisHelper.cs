@@ -9,6 +9,12 @@ namespace Carbon.Redis
 {
     public static class RedisHelper
     {
+        public static int RedisKeyLength = RedisConstants.KeyLength;
+
+        public static void SetRedisKeyLength(int redisKeyLength)
+        {
+            RedisKeyLength = redisKeyLength;
+        }
         /// <summary>
         /// Converts object to json.
         /// </summary>
@@ -94,18 +100,14 @@ namespace Carbon.Redis
         /// </summary>
         /// <param name="key">Cache Key</param>
         /// <see cref="https://redis.io/topics/data-types-intro"/>
-        public static async Task<(bool isValid, string error)> IsKeyValid(this string key, IDatabase _redisDb)
+        public static (bool isValid, string error) IsKeyValid(this string key, IDatabase _redisDb)
         {
             if (_redisDb.IsRedisDisabled())
             {
                 return (default, RedisConstants.RedisDisabled);
             }
+            var keyLength = GetKeyLength();
 
-            var (keyLength, error) = await GetKeyLength(_redisDb);
-            if (error != null)
-            {
-                return (false, error);
-            }
             if (key.Length > keyLength)
             {
                 return (false, $"key length has to be smaller than {keyLength}");
@@ -119,24 +121,15 @@ namespace Carbon.Redis
         /// <summary>
         /// Getting defined key length  from the configuration settings
         /// </summary>
-        private static async Task<(int keyLength, string error)> GetKeyLength(this IDatabase db)
+        private static int GetKeyLength()
         {
             var keyLength = RedisConstants.KeyLength;
-            try
-            {
-                var value = await db.StringGetAsync(RedisConstants.RedisKeyLengthKey);
-                if (value.HasValue && !value.IsNullOrEmpty && value != 0)
-                {
-                    keyLength = (int)value;
-                }
-            }
-            catch (Exception ex)
-            {
 
-                return (default, ex.InnerException?.Message ?? ex.Message);
+            if (RedisKeyLength > 0)
+            {
+                keyLength = RedisKeyLength;
             }
-
-            return (keyLength, null);
+            return keyLength;
         }
         /// <summary>
         /// Is redis disabled or not
