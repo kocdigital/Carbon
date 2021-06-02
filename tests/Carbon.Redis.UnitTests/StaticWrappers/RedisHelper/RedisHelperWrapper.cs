@@ -45,9 +45,9 @@ namespace Carbon.Redis.UnitTests.StaticWrappers.RedisHelper
         /// </summary>
         /// <param name="key">Cache Key</param>
         /// <see cref="http://redis.io/topics/data-types-intro"/>
-        public virtual async Task<(bool isValid, string error)> IsKeyValid(string key, IDatabase redisDb)
+        public virtual (bool isValid, string error) IsKeyValid(string key, IDatabase redisDb)
         {
-            return await key.IsKeyValid(redisDb);
+            return key.IsKeyValid(redisDb);
         }
 
         /// <summary>
