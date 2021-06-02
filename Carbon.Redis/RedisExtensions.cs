@@ -220,7 +220,7 @@ namespace Carbon.Redis
         /// <see cref="https://redis.io/topics/data-types-intro"/>
         public static async Task<(T cachedObject, string errorMessage)> Get<T>(this IDatabase redisDb, string key)
         {
-            var (isValid, error) = await key.IsKeyValid(redisDb);
+            var (isValid, error) = key.IsKeyValid(redisDb);
 
             if (!isValid)
             {
@@ -256,7 +256,7 @@ namespace Carbon.Redis
         /// <see cref="https://redis.io/topics/data-types-intro"/>
         public static async Task<(bool isValid, string errorMessage)> IsCacheKeyValid(this IDatabase redisDb, string key)
         {
-            return await key.IsKeyValid(redisDb);
+            return key.IsKeyValid(redisDb);
         }
 
         /// <summary>
@@ -284,7 +284,7 @@ namespace Carbon.Redis
         /// <see cref="https://redis.io/topics/data-types-intro"/>
         public async static Task<(bool isSucess, string errorMessage)> Set<T>(this IDatabase redisDb, string key, T data, TimeSpan? expiry = null)
         {
-            var (isValid, error) = await key.IsKeyValid(redisDb);
+            var (isValid, error) = key.IsKeyValid(redisDb);
 
             if (!isValid)
             {
@@ -327,7 +327,7 @@ namespace Carbon.Redis
         /// <see cref="https://redis.io/topics/data-types-intro"/>
         public async static Task<(bool isSuccess, string errorMessage)> RemoveKey(this IDatabase redisDb, string key)
         {
-            var (isValid, error) = await key.IsKeyValid(redisDb);
+            var (isValid, error) = key.IsKeyValid(redisDb);
             if (!isValid)
             {
                 return (false, error);
