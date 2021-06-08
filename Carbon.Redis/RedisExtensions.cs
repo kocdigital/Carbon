@@ -22,7 +22,7 @@ namespace Carbon.Redis
         /// <term>errorMessage(<i>Error Messages</i>)</term>
         /// </item>
         /// </br>
-        /// </list> 
+        /// </list>
         /// </br>
         /// </summary>
         /// <typeparam name="T"></typeparam>
@@ -53,6 +53,57 @@ namespace Carbon.Redis
 
         }
 
+        /// <summary>
+        /// Get multiple data by pattern  <br>Returns:</br>
+        /// <br>
+        /// <list type="bullet">
+        /// <item>
+        /// <term>dataList(<i>List of return data</i>)</term>
+        /// </item>
+        /// <br>
+        /// <item>
+        /// <term>errorMessage(<i>Error Messages</i>)</term>
+        /// </item>
+        /// </br>
+        /// </list>
+        /// </br>
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="redisDb">database object</param>
+        /// <param name="keyPattern">It represents cache key pattern. Sample pattern => Customer:b0cbb0a2-4feb-4655-aeb5-ce55fad71699:*</param>
+        public static async Task<(IEnumerable<T> dataList, string errorMessage)> GetKeysValues<T>(this IDatabase redisDb, string keyPattern)
+        {
+            if (redisDb.IsRedisDisabled())
+            {
+                return (default, RedisConstants.RedisDisabled);
+            }
+            try
+            {
+                var (keys, errorMessage) = await SearchKeysAsync(redisDb, keyPattern);
+
+                if (!string.IsNullOrEmpty(errorMessage))
+                {
+                    return (default, errorMessage);
+                }
+                var dataList = new List<T>();
+                foreach (var key in keys)
+                {
+                    var (data, error) = await Get<T>(redisDb, key);
+                    if (!string.IsNullOrEmpty(error))
+                    {
+                        return (default, error);
+                    }
+                    dataList.Add(data);
+                }
+
+                return (dataList, null);
+            }
+            catch (Exception ex)
+            {
+                return (default, ex.InnerException?.Message ?? ex.Message);
+            }
+        }
+
         public static async Task<(IEnumerable<string>, string errorMessage)> SearchKeysAsync(this IDatabase redisDb, string pattern)
         {
             if (redisDb.IsRedisDisabled())
@@ -81,6 +132,7 @@ namespace Carbon.Redis
                 return (default, ex.InnerException?.Message ?? ex.Message);
             }
         }
+
         /// <summary>
         /// Delete multiple key. key searchin in redis server with "scan" keyword
         /// <br>
@@ -98,7 +150,7 @@ namespace Carbon.Redis
         /// <term>errorMessage(<i>Error Messages</i>)</term>
         /// </item>
         /// </br>
-        /// </list> 
+        /// </list>
         /// </br>
         /// </summary>
         /// <param name="redisDb">database object</param>
@@ -158,7 +210,7 @@ namespace Carbon.Redis
         /// <term>errorMessage(<i>Error Messages</i>)</term>
         /// </item>
         /// </br>
-        /// </list> 
+        /// </list>
         /// </br>
         /// </summary>
         /// <param name="redisDb">database object</param>
@@ -213,7 +265,7 @@ namespace Carbon.Redis
         /// <term>errorMessage(<i>Error Messages</i>)</term>
         /// </item>
         /// </br>
-        /// </list> 
+        /// </list>
         /// </br>
         /// </summary>
         /// <param name="key">Cache Key</param>
@@ -249,7 +301,7 @@ namespace Carbon.Redis
         /// <term>errorMessage(<i>Error Messages</i>)</term>
         /// </item>
         /// </br>
-        /// </list> 
+        /// </list>
         /// </br>
         /// </summary>
         /// <param name="key">Cache Key</param>
@@ -261,9 +313,9 @@ namespace Carbon.Redis
 
         /// <summary>
         /// Insert an object to the cache
-        /// The key <strong>should be less than 1024 byte</strong> 
-        /// and 
-        /// key should contains <strong>':'</strong> character between meaningful seperations. 
+        /// The key <strong>should be less than 1024 byte</strong>
+        /// and
+        /// key should contains <strong>':'</strong> character between meaningful seperations.
         /// The sample key is <strong>object-type:id:field(user:100:password)</strong><br>Returns:</br>
         /// <br>
         /// <list type="bullet">
@@ -275,7 +327,7 @@ namespace Carbon.Redis
         /// <term>errorMessage(<i>Error Messages</i>)</term>
         /// </item>
         /// </br>
-        /// </list> 
+        /// </list>
         /// </br>
         /// </summary>
         /// <param name="key">It represents cache key</param>
@@ -305,9 +357,9 @@ namespace Carbon.Redis
 
         /// <summary>
         /// Remove key and key's value from the cache
-        /// The key <strong>should be less than 1024 byte</strong> 
-        /// and 
-        /// key should contains <strong>':'</strong> character between meaningful separations. 
+        /// The key <strong>should be less than 1024 byte</strong>
+        /// and
+        /// key should contains <strong>':'</strong> character between meaningful separations.
         /// The sample key is <strong>object-type:id:field(user:100:password)</strong><br>Returns:</br>
         /// <br>
         /// <list type="bullet">
@@ -319,7 +371,7 @@ namespace Carbon.Redis
         /// <term>errorMessage(<i>Error Messages</i>)</term>
         /// </item>
         /// </br>
-        /// </list> 
+        /// </list>
         /// </br>
         /// </summary>
         /// <param name="key">It represents cache key</param>

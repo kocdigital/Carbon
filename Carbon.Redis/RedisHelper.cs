@@ -95,7 +95,7 @@ namespace Carbon.Redis
         /// <term>errorMessage(<i>Error Messages</i>)</term>
         /// </item>
         /// </br>
-        /// </list> 
+        /// </list>
         /// </br>
         /// </summary>
         /// <param name="key">Cache Key</param>
