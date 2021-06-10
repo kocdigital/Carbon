@@ -2,11 +2,11 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
-    <Version>1.0.16</Version>
-    <Description>-1.0.16
+    <Version>1.0.23</Version>
+    <Description>-1.0.17
  Supports MassTransit greater than 6.2.3 and Carbon.MassTransit 2.0.8</Description>
-    <AssemblyVersion>1.0.16.0</AssemblyVersion>
-    <FileVersion>1.0.16.0</FileVersion>
+    <AssemblyVersion>1.0.23.0</AssemblyVersion>
+    <FileVersion>1.0.23.0</FileVersion>
   </PropertyGroup>
 
   <ItemGroup>
