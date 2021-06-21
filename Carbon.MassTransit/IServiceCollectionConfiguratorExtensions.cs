@@ -6,6 +6,7 @@ using MassTransit.RabbitMqTransport;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using MassTransit.ExtensionsDependencyInjectionIntegration;
+using Microsoft.Extensions.Diagnostics.HealthChecks;
 
 namespace Carbon.MassTransit
 {
@@ -35,8 +36,8 @@ namespace Carbon.MassTransit
         /// <param name="serviceCollection">Service Collection Configurator</param>
         /// <param name="configuration">API Configuration Item with MassTransit Section</param>
         /// <param name="configurator">Service provider's Configuration Action</param>
-        public static void AddRabbitMqBus(this IServiceCollectionBusConfigurator serviceCollection, 
-                                       IConfiguration configuration, Action<IServiceProvider, 
+        public static void AddRabbitMqBus(this IServiceCollectionBusConfigurator serviceCollection,
+                                       IConfiguration configuration, Action<IServiceProvider,
                                        IRabbitMqBusFactoryConfigurator> configurator)
         {
             var massTransitSettings = configuration.GetSection("MassTransit").Get<MassTransitSettings>();
@@ -49,28 +50,30 @@ namespace Carbon.MassTransit
                 if (massTransitSettings.RabbitMq == null)
                     throw new ArgumentNullException(nameof(massTransitSettings.RabbitMq));
 
+                var busSettings = massTransitSettings.RabbitMq;
+                var host = $"rabbitmq://{busSettings.Host}:{busSettings.Port}{busSettings.VirtualHost}";
+
                 serviceCollection.AddBus(provider =>
                 {
-                    var busSettings = massTransitSettings.RabbitMq;
 
                     return Bus.Factory.CreateUsingRabbitMq(x =>
                     {
-                        x.Host(new Uri($"rabbitmq://{busSettings.Host}:{busSettings.Port}{busSettings.VirtualHost}"), (c) =>
+                        x.Host(new Uri(host), (c) =>
                         {
-                            if(!string.IsNullOrEmpty(busSettings.Username))
+                            if (!string.IsNullOrEmpty(busSettings.Username))
                                 c.Username(busSettings.Username);
                             if (!string.IsNullOrEmpty(busSettings.Password))
                                 c.Password(busSettings.Password);
 
                             c.PublisherConfirmation = busSettings.PublisherConfirmation;
-                           
+
                             if (busSettings.RequestedChannelMax > 0)
                                 c.RequestedChannelMax(busSettings.RequestedChannelMax);
 
                             if (busSettings.RequestedConnectionTimeout > TimeSpan.Zero)
                                 c.RequestedConnectionTimeout(busSettings.RequestedConnectionTimeout);
 
-                            if(busSettings.Heartbeat > TimeSpan.Zero)
+                            if (busSettings.Heartbeat > TimeSpan.Zero)
                                 c.Heartbeat(busSettings.Heartbeat);
 
                             if (busSettings.Ssl)
@@ -93,7 +96,16 @@ namespace Carbon.MassTransit
                         configurator(provider, x);
                     });
                 });
+
+
+                serviceCollection.Collection.AddRabbitMqBusHealthCheck(host);
             }
+        }
+
+        public static void AddRabbitMqBusHealthCheck(this IServiceCollection services,
+                                       string host, HealthStatus failureStatus = HealthStatus.Unhealthy)
+        {
+            services.AddHealthChecks().AddRabbitMQ(host, failureStatus);
         }
 
         /// <summary>
@@ -105,8 +117,8 @@ namespace Carbon.MassTransit
         /// <param name="serviceCollection">Service Collection Configurator</param>
         /// <param name="configuration">API Configuration Item with MassTransit Section</param>
         /// <param name="configurator">Service provider's Configuration Action</param>
-        public static void AddServiceBus(this IServiceCollectionBusConfigurator serviceCollection, 
-                                       IConfiguration configuration, Action<IServiceProvider, 
+        public static void AddServiceBus(this IServiceCollectionBusConfigurator serviceCollection,
+                                       IConfiguration configuration, Action<IServiceProvider,
                                        IServiceBusBusFactoryConfigurator> configurator)
         {
             var massTransitSettings = configuration.GetSection("MassTransit").Get<MassTransitSettings>();
