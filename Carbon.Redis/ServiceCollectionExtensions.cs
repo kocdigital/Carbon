@@ -1,9 +1,11 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Diagnostics.HealthChecks;
 using Microsoft.Extensions.Options;
 using StackExchange.Redis;
 using System;
+using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 
@@ -67,6 +69,8 @@ namespace Carbon.Redis
                         var db = redis.GetDatabase(redisSettings.Value.DefaultDatabase);
                         services.AddSingleton(s => db);
                         RedisHelper.SetRedisKeyLength(redisSettings.Value.KeyLength);
+
+                        services.AddRedisPersisterHealthCheck(redisSettings.Value);
                     }
                     else
                     {
@@ -87,6 +91,16 @@ namespace Carbon.Redis
 
             return services;
         }
+
+        public static void AddRedisPersisterHealthCheck(this IServiceCollection services, RedisSettings settings, HealthStatus failureStatus = HealthStatus.Unhealthy)
+        {
+            var healthCheck = services.AddHealthChecks();
+            settings.EndPoints.ToList().ForEach(endpoint =>
+            {
+                healthCheck.AddRedis($"{endpoint},defaultDatabase={settings.DefaultDatabase},password={settings.Password}", $"redis[{endpoint}]", failureStatus);
+            });
+        }
+
         /// <summary>
         /// Converting password to MD5 for security
         /// </summary>
