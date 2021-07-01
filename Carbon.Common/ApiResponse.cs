@@ -9,6 +9,13 @@ namespace Carbon.Common
     public class ApiResponse<T> : IApiResponse
     {
         /// <summary>
+        /// Default Constructor. Creates an Api Response
+        /// </summary>
+        public ApiResponse()
+        {
+
+        }
+        /// <summary>
         /// Constructor that initializes an ApiResponse with identifier and status code
         /// </summary>
         /// <param name="identifier"><see cref="IApiResponse.Identifier"/></param>
