@@ -1,38 +1,26 @@
 ﻿using Carbon.Common;
-using Carbon.WebApplication.TenantManagementHandler.Interfaces;
-using Carbon.WebApplication.TenantManagementHandler.Middlewares;
 using Carbon.WebApplication.TenantManagementHandler.Services;
-using FluentValidation.AspNetCore;
 using Mapster;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.OpenApi.Models;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Serialization;
 using Serilog;
 using Swashbuckle.AspNetCore.SwaggerGen;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 
-namespace Carbon.WebApplication
+namespace Carbon.WebApplication.Grpc
 {
     public abstract class CarbonGrpcStartup<TStartup> where TStartup : class
     {
-        private string MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
-        private SwaggerSettings _swaggerSettings;
-        private CorsPolicySettings _corsPolicySettings;
-
         private bool _useAuthentication;
         private bool _useAuthorization;
+
         /// <summary>
         /// Provides information about the web hosting environment an application is running in.
         /// </summary>
@@ -103,17 +91,18 @@ namespace Carbon.WebApplication
         /// <param name="services">Specifies the contract for a collection of service descriptors.</param>
         public void ConfigureServices(IServiceCollection services)
         {
-#if NET5_0
             Console.WriteLine("Carbon starting with .Net 5.0 with GRPC");
-#elif NETCOREAPP3_1
-            throw new Exception("Carbon with GRPC is only supported with .Net 5.0. Please upgrade your dotnetcore framework version!");
-#endif
-
+            services.AddGrpc();
+            if (_useAuthorization)
+            {
+                services.AddAuthorization();
+            }
             services.AddHeaderPropagation();
 
             services.AddOptions();
             services.Configure<SerilogSettings>(Configuration.GetSection("Serilog"));
             services.Configure<JwtSettings>(Configuration.GetSection("JwtSettings"));
+            services.AddHttpClient();
 
             services.AddSingleton(Configuration);
             services.AddScoped<IExternalService, ExternalService>();
@@ -145,7 +134,7 @@ namespace Carbon.WebApplication
         /// <param name="env">Provides information about the web hosting environment an application is running in.</param>
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-
+            app.UseHeaderPropagation();
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -162,7 +151,6 @@ namespace Carbon.WebApplication
             {
                 app.UseAuthentication();
             }
-
             if (_useAuthorization)
             {
                 app.UseAuthorization();
