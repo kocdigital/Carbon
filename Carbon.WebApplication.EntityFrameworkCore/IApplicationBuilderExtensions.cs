@@ -11,6 +11,7 @@ using System.IO;
 using System.Runtime.Loader;
 using Microsoft.Extensions.Logging;
 using Carbon.Domain.EntityFrameworkCore;
+using Microsoft.Extensions.Diagnostics.HealthChecks;
 
 namespace Carbon.WebApplication.EntityFrameworkCore
 {
@@ -37,8 +38,8 @@ namespace Carbon.WebApplication.EntityFrameworkCore
         /// <typeparam name="TContext">Your Database Context</typeparam>
         /// <typeparam name="TContextSeed">Your Seeding Context If exists in your project (IContextSeed)</typeparam>
         /// <param name="app"></param>
-        public static void SeedDatabase<TContext, TContextSeed>(this IApplicationBuilder app) 
-            where TContext : DbContext 
+        public static void SeedDatabase<TContext, TContextSeed>(this IApplicationBuilder app)
+            where TContext : DbContext
             where TContextSeed : IContextSeed
         {
             using (var serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
@@ -98,6 +99,8 @@ namespace Carbon.WebApplication.EntityFrameworkCore
                     throw new Exception("No Valid Connection Target Found");
             }
 
+            services.AddDatabaseContextHealthCheck(target, connectionString);
+
             try
             {
                 AssemblyLoadContext.Default.LoadFromAssemblyPath($"{path}\\{migrationsAssembly}.dll");
@@ -107,6 +110,21 @@ namespace Carbon.WebApplication.EntityFrameworkCore
                 Console.WriteLine("No Migration Assembly Loaded!");
             }
 
+        }
+
+        public static void AddDatabaseContextHealthCheck(this IServiceCollection services, string target, string connectionString, HealthStatus failureStatus = HealthStatus.Unhealthy)
+        {
+            switch (target.ToLower())
+            {
+                case "postgresql":
+                    services.AddHealthChecks().AddSqlServer(connectionString, failureStatus: failureStatus, name: $"{target}");
+                    break;
+                case "mssql":
+                    services.AddHealthChecks().AddNpgSql(connectionString, failureStatus: failureStatus, name: $"{target}");
+                    break;
+                default:
+                    throw new Exception("No Valid Connection Target Found");
+            }
         }
     }
 }

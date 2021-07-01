@@ -3,8 +3,10 @@ using Carbon.WebApplication.TenantManagementHandler.Interfaces;
 using Carbon.WebApplication.TenantManagementHandler.Middlewares;
 using Carbon.WebApplication.TenantManagementHandler.Services;
 using FluentValidation.AspNetCore;
+using HealthChecks.UI.Client;
 using Mapster;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
@@ -296,7 +298,11 @@ namespace Carbon.WebApplication
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapHealthChecks("/health");
+                endpoints.MapHealthChecks("/health", new HealthCheckOptions()
+                {
+                    Predicate = _ => true,
+                    ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
+                });
                 endpoints.MapControllers();
                 endpoints.MapDefaultControllerRoute();
             });
