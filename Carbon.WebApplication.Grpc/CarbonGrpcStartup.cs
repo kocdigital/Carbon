@@ -13,6 +13,7 @@ using Swashbuckle.AspNetCore.SwaggerGen;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 
 namespace Carbon.WebApplication.Grpc
 {
@@ -20,6 +21,8 @@ namespace Carbon.WebApplication.Grpc
     {
         private bool _useAuthentication;
         private bool _useAuthorization;
+        private CorsPolicySettings _corsPolicySettings;
+        private string MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 
         /// <summary>
         /// Provides information about the web hosting environment an application is running in.
@@ -118,8 +121,43 @@ namespace Carbon.WebApplication.Grpc
             Log.Logger = new LoggerConfiguration().ReadFrom.Configuration(Configuration).CreateLogger();
 
             #endregion
+            #region Cors Policy Settings
 
-            
+            _corsPolicySettings = Configuration.GetSection("CorsPolicy").Get<CorsPolicySettings>();
+
+            if (_corsPolicySettings != null)
+            {
+                services.AddCors(options =>
+                {
+                    options.AddPolicy(MyAllowSpecificOrigins,
+                        builder =>
+                        {
+                            if (_corsPolicySettings.AllowAnyOrigin)
+                            {
+                                builder = builder.AllowAnyOrigin();
+                            }
+                            else if (_corsPolicySettings.Origins != null && _corsPolicySettings.Origins.Count > 0)
+                            {
+                                builder = builder.WithOrigins(_corsPolicySettings.Origins.ToArray());
+                            }
+
+                            if (_corsPolicySettings.AllowAnyMethods)
+                            {
+                                builder = builder.AllowAnyMethod();
+                            }
+
+                            if (_corsPolicySettings.AllowAnyHeaders)
+                            {
+                                builder = builder.AllowAnyHeader();
+                            }
+                            builder.WithExposedHeaders("Grpc-Status", "Grpc-Message", "Grpc-Encoding", "Grpc-Accept-Encoding");
+                        });
+                });
+
+            }
+
+            #endregion
+
 
             services.AddHealthChecks();
             
@@ -146,7 +184,7 @@ namespace Carbon.WebApplication.Grpc
             app.UseRouting();
 
             CustomConfigure(app, env);
-
+            app.UseGrpcWeb();
             if (_useAuthentication)
             {
                 app.UseAuthentication();
@@ -154,6 +192,11 @@ namespace Carbon.WebApplication.Grpc
             if (_useAuthorization)
             {
                 app.UseAuthorization();
+            }
+
+            if (_corsPolicySettings != null && (_corsPolicySettings.AllowAnyOrigin || (_corsPolicySettings.Origins != null && _corsPolicySettings.Origins.Count > 0)))
+            {
+                app.UseCors(MyAllowSpecificOrigins);
             }
 
             app.UseEndpoints(endpoints =>
