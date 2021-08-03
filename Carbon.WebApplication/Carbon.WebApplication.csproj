@@ -2,8 +2,11 @@
 
   <PropertyGroup>
     <TargetFrameworks>net5.0;netcoreapp3.1</TargetFrameworks>
-    <Version>2.2.7</Version>
-    <Description>2.2.7
+    <Version>2.2.10</Version>
+    <Description>2.2.10
+ - Carbon.Common 1.3.0 Support
+
+2.2.7
 Carbon Webapplication now supports GRPC with Carbon.WebApplication.Grpc package
 
 2.1.3
@@ -82,8 +85,8 @@ Carbon Webapplication now supports GRPC with Carbon.WebApplication.Grpc package
       - Swagger configurasyonunda AuthorizationUrl key'i ana root kısmında Security key'i altına alındı
       - ResponseOk kısmında Unit Testlerde null exception hatası verme sorunu düzeltildi.
 </Description>
-    <AssemblyVersion>2.2.7.0</AssemblyVersion>
-    <FileVersion>2.2.7.0</FileVersion>
+    <AssemblyVersion>2.2.10.0</AssemblyVersion>
+    <FileVersion>2.2.10.0</FileVersion>
     <OpenApiGenerateDocuments>false</OpenApiGenerateDocuments>
   </PropertyGroup>
 
