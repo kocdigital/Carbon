@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFrameworks>net5.0;netcoreapp3.1</TargetFrameworks>
-    <Version>2.3.7</Version>
+    <Version>2.3.8</Version>
     <Description>2.3.7
  - Goduser Implementation added for tenant management
  - Solution header is must (p360-solution-id) for tenant management adopters
@@ -91,8 +91,8 @@ Carbon Webapplication now supports GRPC with Carbon.WebApplication.Grpc package
       - Swagger configurasyonunda AuthorizationUrl key'i ana root kısmında Security key'i altına alındı
       - ResponseOk kısmında Unit Testlerde null exception hatası verme sorunu düzeltildi.
 </Description>
-    <AssemblyVersion>2.3.7.0</AssemblyVersion>
-    <FileVersion>2.3.7.0</FileVersion>
+    <AssemblyVersion>2.3.8.0</AssemblyVersion>
+    <FileVersion>2.3.8.0</FileVersion>
     <OpenApiGenerateDocuments>false</OpenApiGenerateDocuments>
   </PropertyGroup>
 
