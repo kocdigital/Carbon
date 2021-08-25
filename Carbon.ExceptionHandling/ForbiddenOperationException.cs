@@ -10,7 +10,7 @@
         /// </summary>
         /// <param name="message">The message of the forbidden exception.</param>
         /// <param name="args">The argument object array of the forbidden exception.</param>
-        public ForbiddenOperationException() : base("This Operation is Forbidden!")
+        public ForbiddenOperationException() : base(CarbonExceptionMessages.OperationForbidden)
         {
         }
         /// <summary>
@@ -18,7 +18,7 @@
         /// </summary>
         /// <param name="message">The message of the forbidden exception.</param>
         /// <param name="args">The argument object array of the forbidden exception.</param>
-        public ForbiddenOperationException(params object[] args) : base("This Operation is Forbidden!", args)
+        public ForbiddenOperationException(params object[] args) : base(CarbonExceptionMessages.OperationForbidden, args)
         {
         }
         /// <summary>

@@ -42,7 +42,6 @@ namespace Carbon.WebApplication.Middlewares
 
                     httpContext.Request.Headers.Remove("ClientId");
 
-
                     if (securityToken.Claims != null)
                     {
                         foreach (var claim in securityToken.Claims)
@@ -54,6 +53,7 @@ namespace Carbon.WebApplication.Middlewares
                         }
 
                     }
+
                 }
 
             }

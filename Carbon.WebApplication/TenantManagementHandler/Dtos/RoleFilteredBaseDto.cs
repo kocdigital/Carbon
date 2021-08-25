@@ -50,7 +50,7 @@ namespace Carbon.WebApplication
         public bool ValidateFilter(List<PermissionDetailedDto> permissionDetailedDtos)
         {
             bool permitted = false;
-            if (this.OwnerType == OwnerType.CustomerBased)
+            if (this.OwnerType == OwnerType.CustomerBased || permissionDetailedDtos == null)
             {
                 return true;
             }

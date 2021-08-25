@@ -66,6 +66,23 @@ namespace Carbon.WebApplication.TenantManagementHandler.Extensions
         }
 
         /// <summary>
+        /// Retrieve Organization Id claim from Token
+        /// </summary>
+        /// <param name="user"></param>
+        /// <returns></returns>
+        public static bool CheckIfGodUser(this System.Security.Claims.ClaimsPrincipal user)
+        {
+            var isGodUser = user.Claims?.Where(k => k.Type.Contains("GodUser") || k.Type.Contains("god-user"))?.FirstOrDefault()?.Value;
+
+            if (String.IsNullOrEmpty(isGodUser))
+                return false;
+            else if (Boolean.TryParse(isGodUser, out bool isGodUserBool))
+                return isGodUserBool;
+            else
+                return false;
+        }
+
+        /// <summary>
         /// Retrieve Solution Filter List from Header
         /// </summary>
         /// <param name="context"></param>

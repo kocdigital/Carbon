@@ -95,19 +95,27 @@ namespace Carbon.Domain.EntityFrameworkCore
             }
             else
             {
-                foreach (var permissionDetailedDto in FilterOwnershipList)
+                if (FilterOwnershipList != null)
                 {
-                    if (permissionDetailedDto.PrivilegeLevelType == PermissionGroupImpactLevel.User)
+                    foreach (var permissionDetailedDto in FilterOwnershipList)
                     {
-                        permitted |= (relatedEntity.OwnerType == OwnerType.User || relatedEntity.OwnerType == OwnerType.UserGroup) && relatedEntity.OwnerId == permissionDetailedDto.UserId;
+                        if (permissionDetailedDto.PrivilegeLevelType == PermissionGroupImpactLevel.User)
+                        {
+                            permitted |= (relatedEntity.OwnerType == OwnerType.User || relatedEntity.OwnerType == OwnerType.UserGroup) && relatedEntity.OwnerId == permissionDetailedDto.UserId;
+                        }
+                        else if (permissionDetailedDto.PrivilegeLevelType == PermissionGroupImpactLevel.OnlyPolicyItself
+                            || permissionDetailedDto.PrivilegeLevelType == PermissionGroupImpactLevel.PolicyItselfAndItsChildPolicies
+                            || permissionDetailedDto.PrivilegeLevelType == PermissionGroupImpactLevel.AllPoliciesIncludedInZone)
+                        {
+                            permitted |= (((relatedEntity.OwnerType == OwnerType.User || relatedEntity.OwnerType == OwnerType.Organization) && permissionDetailedDto.Policies.Contains(relatedEntity.OrganizationId))
+                                || (relatedEntity.OwnerType == OwnerType.Role && relatedEntity.OwnerId == permissionDetailedDto.RoleId));
+                        }
                     }
-                    else if (permissionDetailedDto.PrivilegeLevelType == PermissionGroupImpactLevel.OnlyPolicyItself
-                        || permissionDetailedDto.PrivilegeLevelType == PermissionGroupImpactLevel.PolicyItselfAndItsChildPolicies
-                        || permissionDetailedDto.PrivilegeLevelType == PermissionGroupImpactLevel.AllPoliciesIncludedInZone)
-                    {
-                        permitted |= (((relatedEntity.OwnerType == OwnerType.User || relatedEntity.OwnerType == OwnerType.Organization) && permissionDetailedDto.Policies.Contains(relatedEntity.OrganizationId))
-                            || (relatedEntity.OwnerType == OwnerType.Role && relatedEntity.OwnerId == permissionDetailedDto.RoleId));
-                    }
+                }
+                else
+                {
+                    //Only Godusers have no roles, thus permitted
+                    permitted = true;
                 }
             }
             if(!permitted)
