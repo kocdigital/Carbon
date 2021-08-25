@@ -17,7 +17,7 @@ namespace Carbon.WebApplication
         /// Tenant Id of the request
         /// </summary>
         [JsonIgnore]
-        [FromHeader]
+        [HybridBindProperty(Source.Header)]
         public Guid TenantId { get; set; }
 
         /// <summary>
