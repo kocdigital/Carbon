@@ -35,10 +35,12 @@ namespace Carbon.WebApplication.Middlewares
                     var rawToken = bearerToken.Replace($"{BearerHeaderName} ", "");
                     var securityToken = new JwtSecurityToken(rawToken);
 
+                    httpContext.Request.Headers.Remove("GodUser");
                     if (securityToken.Claims == null || !securityToken.Claims.Where(k => k.Type == "god-user" && k.Value == "true").Any())
                     {
                         httpContext.Request.Headers.Remove("TenantId");
                     }
+                    
 
                     httpContext.Request.Headers.Remove("ClientId");
 
