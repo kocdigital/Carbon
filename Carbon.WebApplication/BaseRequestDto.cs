@@ -1,6 +1,7 @@
 ﻿
 
 using Carbon.Common;
+using HybridModelBinding;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Text.Json.Serialization;
@@ -16,7 +17,7 @@ namespace Carbon.WebApplication
         /// Tenant Id of the request
         /// </summary>
         [JsonIgnore]
-        [FromHeader]
+        [HybridBindProperty(Source.Header)]
         public Guid TenantId { get; set; }
 
         /// <summary>
@@ -32,5 +33,12 @@ namespace Carbon.WebApplication
         [JsonIgnore]
         [FromHeader]
         public Guid CorrelationId { get; set; }
+
+        /// <summary>
+        /// Is God User Executing the request
+        /// </summary>
+        [JsonIgnore]
+        [HybridBindProperty(Source.Header, "GodUser")]
+        public bool IsGodUserExecuting { get; set; }
     }
 }

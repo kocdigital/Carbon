@@ -25,15 +25,25 @@ namespace Carbon.WebApplication.TenantManagementHandler.Middlewares
     }
     public static class BodyRewindExtensions
     {
+        /// <summary>
+        /// Enables Dto Validation in Carbon Tenant Management for RoleFilteredBaseDto based dto classes
+        /// </summary>
+        /// <param name="app"></param>
+        /// <returns></returns>
         public static IApplicationBuilder EnableRequestBodyRewind(this IApplicationBuilder app)
         {
             if (app == null)
             {
                 throw new ArgumentNullException(nameof(app));
             }
-
+            BodyRewindSettings.Enabled = true;
             return app.UseMiddleware<BodyRewindMiddleware>();
         }
 
+    }
+
+    public static class BodyRewindSettings
+    {
+        public static bool Enabled { get; set; }
     }
 }
