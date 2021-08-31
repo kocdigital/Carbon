@@ -2,9 +2,10 @@
 
 	<PropertyGroup>
 		<TargetFramework>netstandard2.0</TargetFramework>
-		<Version>3.0.2</Version>
-		<AssemblyVersion>3.0.2</AssemblyVersion>
-		<Description>
+		<Version>3.0.3</Version>
+		<AssemblyVersion>3.0.3</AssemblyVersion>
+		<Description>3.0.3
+                                                  -Buggy Rabbitmq healthcheck removed temporarily, will be fixed in a later version
 			3.0.2
 			-Added Health Check
 			3.0.1
@@ -20,7 +21,7 @@
 
 			-
 		</Description>
-		<FileVersion>2.1.0</FileVersion>
+		<FileVersion>3.0.3</FileVersion>
 	</PropertyGroup>
 
 	<ItemGroup>
