@@ -97,8 +97,8 @@ namespace Carbon.MassTransit
                     });
                 });
 
-
-                serviceCollection.Collection.AddRabbitMqBusHealthCheck(host);
+                //TODO: To be refactored
+                //serviceCollection.Collection.AddRabbitMqBusHealthCheck(host);
             }
         }
 
