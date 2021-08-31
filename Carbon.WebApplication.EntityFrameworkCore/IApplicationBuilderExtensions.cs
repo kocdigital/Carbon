@@ -116,10 +116,10 @@ namespace Carbon.WebApplication.EntityFrameworkCore
         {
             switch (target.ToLower())
             {
-                case "postgresql":
+                case "mssql":
                     services.AddHealthChecks().AddSqlServer(connectionString, failureStatus: failureStatus, name: $"{target}");
                     break;
-                case "mssql":
+                case "postgresql":
                     services.AddHealthChecks().AddNpgSql(connectionString, failureStatus: failureStatus, name: $"{target}");
                     break;
                 default:
