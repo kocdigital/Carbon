@@ -24,6 +24,8 @@ namespace Carbon.WebApplication
         private readonly IExternalService _externalService;
         private readonly IConfiguration _config;
         private readonly LogLevel logLevel;
+        private readonly string _errorHandling;
+
 
         private const int GeneralServerErrorCode = (int)ApiStatusCode.InternalServerError;
 
@@ -34,6 +36,8 @@ namespace Carbon.WebApplication
             _externalService = externalService;
             _config = configuration;
             logLevel = configuration.GetSection("Logging:LogLevel").GetValue<LogLevel>("Default");
+            _errorHandling = _config.GetValue<string>("ErrorHandling:Url");
+
         }
 
 
@@ -71,19 +75,27 @@ namespace Carbon.WebApplication
 
             if (context.Exception is CarbonException exception)
             {
-                var exceptionMessage = GetErrorMessage(exception.ErrorCode, context.HttpContext.Request).Result;
+                if (!string.IsNullOrEmpty(_errorHandling))
+                {
+                    var exceptionMessage = GetErrorMessage(exception.ErrorCode, context.HttpContext.Request).Result;
 
-                _logger.LogError($" {{{ "ErrorCode"}}} {{{ "ErrorMessage"}}} {{{ "Args"}}} {{{ "StackTrace"}}}",
+                    _logger.LogError($" {{{ "ErrorCode"}}} {{{ "ErrorMessage"}}} {{{ "Args"}}} {{{ "StackTrace"}}}",
                     exception.ErrorCode, exceptionMessage, exception.SerializedModel, context.Exception.StackTrace);
 
-                //if (!string.IsNullOrEmpty(context.Exception.Message))
-                //{
-                //    apiResponse.AddMessage(context.Exception.Message);
-                //}
-
-                if (!string.IsNullOrEmpty(exceptionMessage))
+                    if (!string.IsNullOrEmpty(exceptionMessage))
+                    {
+                        apiResponse.AddMessage(exceptionMessage);
+                    }
+                }
+                else
                 {
-                    apiResponse.AddMessage(exceptionMessage);
+                    _logger.LogError($" {{{ "ErrorCode"}}} {{{ "ErrorMessage"}}} {{{ "Args"}}} {{{ "StackTrace"}}}",
+                  exception.ErrorCode, context.Exception.Message, exception.SerializedModel, context.Exception.StackTrace);
+
+                    if (!string.IsNullOrEmpty(context.Exception.Message))
+                    {
+                        apiResponse.AddMessage(context.Exception.Message);
+                    }
                 }
 
                 if (logLevel == LogLevel.Trace && !string.IsNullOrEmpty(context.Exception.StackTrace))
