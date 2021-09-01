@@ -97,15 +97,21 @@ namespace Carbon.MassTransit
                     });
                 });
 
-                //TODO: To be refactored
-                //serviceCollection.Collection.AddRabbitMqBusHealthCheck(host);
+                serviceCollection.Collection.AddRabbitMqBusHealthCheck($"amqp://{busSettings.Username}:{busSettings.Password}@{busSettings.Host}:{busSettings.Port}{busSettings.VirtualHost}");
             }
         }
 
         public static void AddRabbitMqBusHealthCheck(this IServiceCollection services,
                                        string host, HealthStatus failureStatus = HealthStatus.Unhealthy)
         {
-            services.AddHealthChecks().AddRabbitMQ(host, failureStatus);
+            services.AddHealthChecks().AddRabbitMQ(sp =>
+            {
+                var factory = new RabbitMQ.Client.ConnectionFactory()
+                {
+                    Uri = new Uri(host)
+                };
+                return factory.CreateConnection();
+            });
         }
 
         /// <summary>
