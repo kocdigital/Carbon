@@ -1,14 +1,19 @@
 ﻿using Carbon.Common;
 using Carbon.ExceptionHandling.Abstractions;
+using Carbon.WebApplication.TenantManagementHandler.Services;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Diagnostics;
+using System.Linq;
 using System.Net;
+using System.Threading.Tasks;
+using Carbon.WebApplication.TenantManagementHandler.Extensions;
 
 namespace Carbon.WebApplication
 {
@@ -16,14 +21,47 @@ namespace Carbon.WebApplication
     {
         private readonly IWebHostEnvironment _env;
         private readonly ILogger<HttpGlobalExceptionFilter> _logger;
+        private readonly IExternalService _externalService;
+        private readonly IConfiguration _config;
+        private readonly LogLevel logLevel;
+        private readonly string _errorHandling;
+
 
         private const int GeneralServerErrorCode = (int)ApiStatusCode.InternalServerError;
 
-        public HttpGlobalExceptionFilter(IWebHostEnvironment env, ILogger<HttpGlobalExceptionFilter> logger)
+        public HttpGlobalExceptionFilter(IWebHostEnvironment env, ILogger<HttpGlobalExceptionFilter> logger, IExternalService externalService, IConfiguration configuration)
         {
             _env = env;
             _logger = logger;
+            _externalService = externalService;
+            _config = configuration;
+            logLevel = configuration.GetSection("Logging:LogLevel").GetValue<LogLevel>("Default");
+            _errorHandling = _config.GetValue<string>("ErrorHandling:Url");
+
         }
+
+
+        private async Task<string> GetErrorMessage(int errorCode, HttpRequest context)
+        {
+            var errorResponse = await
+                _externalService
+                .GetErrorDescription(new TenantManagementHandler.Dtos.ErrorHandling.ApplicationErrorRequest
+            (
+                 _env.ApplicationName,
+                 errorCode,
+                 context.GetUserLanguage(),
+                 context.Headers["p360-solution-id"],
+                 context.Headers["tenantId"]
+            ));
+
+
+            if (errorResponse != null)
+            {
+                return errorResponse.ErrorDescription;
+            }
+            return null;
+        }
+
 
         /// <summary>
         /// Called after an action has thrown an <see cref="System.Exception"/>.
@@ -35,19 +73,32 @@ namespace Carbon.WebApplication
 
             var apiResponse = new ApiResponse<object>(correlationId, ApiStatusCode.InternalServerError);
 
-            if (context.Exception is CarbonException)
+            if (context.Exception is CarbonException exception)
             {
-                var exception = (CarbonException)context.Exception;
-
-                _logger.LogError($" {{{ "ErrorCode"}}} {{{ "ErrorMessage"}}} {{{ "Args"}}} {{{ "StackTrace"}}}",
-                    exception.ErrorCode, exception.Message, exception.SerializedModel, context.Exception.StackTrace);
-
-                if (!string.IsNullOrEmpty(context.Exception.Message))
+                if (!string.IsNullOrEmpty(_errorHandling))
                 {
-                    apiResponse.AddMessage(context.Exception.Message);
+                    var exceptionMessage = GetErrorMessage(exception.ErrorCode, context.HttpContext.Request).Result;
+
+                    _logger.LogError($" {{{ "ErrorCode"}}} {{{ "ErrorMessage"}}} {{{ "Args"}}} {{{ "StackTrace"}}}",
+                    exception.ErrorCode, exceptionMessage, exception.SerializedModel, context.Exception.StackTrace);
+
+                    if (!string.IsNullOrEmpty(exceptionMessage))
+                    {
+                        apiResponse.AddMessage(exceptionMessage);
+                    }
+                }
+                else
+                {
+                    _logger.LogError($" {{{ "ErrorCode"}}} {{{ "ErrorMessage"}}} {{{ "Args"}}} {{{ "StackTrace"}}}",
+                  exception.ErrorCode, context.Exception.Message, exception.SerializedModel, context.Exception.StackTrace);
+
+                    if (!string.IsNullOrEmpty(context.Exception.Message))
+                    {
+                        apiResponse.AddMessage(context.Exception.Message);
+                    }
                 }
 
-                if (_env.IsDevelopment() && !string.IsNullOrEmpty(context.Exception.StackTrace))
+                if (logLevel == LogLevel.Trace && !string.IsNullOrEmpty(context.Exception.StackTrace))
                 {
                     apiResponse.AddMessage(context.Exception.StackTrace);
                 }
@@ -64,7 +115,7 @@ namespace Carbon.WebApplication
                     apiResponse.AddMessage(context.Exception.Message);
                 }
 
-                if (_env.IsDevelopment() && !string.IsNullOrEmpty(context.Exception.StackTrace))
+                if (logLevel == LogLevel.Trace && !string.IsNullOrEmpty(context.Exception.StackTrace))
                 {
                     apiResponse.AddMessage(context.Exception.StackTrace);
                 }
