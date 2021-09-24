@@ -1,4 +1,5 @@
 ﻿using Carbon.Common;
+using Carbon.WebApplication.Grpc.Interceptors;
 using Carbon.WebApplication.TenantManagementHandler.Services;
 
 using Mapster;
@@ -105,6 +106,7 @@ namespace Carbon.WebApplication.Grpc
 			Console.WriteLine("Carbon starting with .Net 5.0 with GRPC");
 			services.AddGrpc(options =>
 			{
+				options.Interceptors.Add<CarbonTenantIdInterceptor>();
 				foreach (var interceptor in _interceptors)
 				{
 					options.Interceptors.Add(interceptor);
