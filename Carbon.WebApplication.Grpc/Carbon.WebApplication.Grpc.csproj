@@ -2,9 +2,9 @@
 
   <PropertyGroup>
     <TargetFrameworks>net5.0</TargetFrameworks>
-    <Version>2.4.0</Version>
-    <Description>2.4.0
-- TenantId Interceptor Included as default
+    <Version>2.4.3</Version>
+    <Description>2.4.3
+- Bearer Interceptor Included as default
 2.3.0
  - Can inject Interceptor as ctor parameter
 2.2.10
