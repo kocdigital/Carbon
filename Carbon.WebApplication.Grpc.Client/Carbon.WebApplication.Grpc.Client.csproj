@@ -2,11 +2,14 @@
 
   <PropertyGroup>
     <TargetFrameworks>net5.0</TargetFrameworks>
-    <Version>2.2.10</Version>
-    <Description>2.2.10
+    <Version>2.3.2</Version>
+    <Description>2.3.2
+ - Added Authorized GRPC Client for Identity Server (Handles token retreival and header injection)
+
+2.2.10
 - GRPC Client Extension for Carbon.WebApplication or Carbon.ConsoleApplication</Description>
-    <AssemblyVersion>2.2.10.0</AssemblyVersion>
-    <FileVersion>2.2.10.0</FileVersion>
+    <AssemblyVersion>2.3.2.0</AssemblyVersion>
+    <FileVersion>2.3.2.0</FileVersion>
     <OpenApiGenerateDocuments>false</OpenApiGenerateDocuments>
   </PropertyGroup>
 
@@ -14,6 +17,11 @@
     <PackageReference Include="Google.Protobuf" Version="3.17.3" />
     <PackageReference Include="Grpc.Net.Client" Version="2.38.0" />
     <PackageReference Include="Grpc.Net.ClientFactory" Version="2.38.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="3.1.19" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Carbon.HttpClient.Auth\Carbon.HttpClient.Auth.csproj" />
   </ItemGroup>
 
 </Project>
