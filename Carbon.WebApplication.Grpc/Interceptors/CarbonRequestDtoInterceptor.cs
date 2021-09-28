@@ -10,9 +10,9 @@ using System.Threading.Tasks;
 
 namespace Carbon.WebApplication.Grpc.Interceptors
 {
-    public class CarbonBearerInterceptor : Interceptor
+    public class CarbonRequestDtoInterceptor : Interceptor
     {
-        public CarbonBearerInterceptor()
+        public CarbonRequestDtoInterceptor()
         {
 
         }
