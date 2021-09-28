@@ -10,58 +10,20 @@ using System.Threading.Tasks;
 
 namespace Carbon.WebApplication.Grpc.Interceptors
 {
-	public class CarbonBearerInterceptor : Interceptor
-	{
-		public CarbonBearerInterceptor()
-		{
+    public class CarbonBearerInterceptor : Interceptor
+    {
+        public CarbonBearerInterceptor()
+        {
 
-		}
-		public override Task<TResponse> UnaryServerHandler<TRequest, TResponse>(TRequest request, ServerCallContext context, UnaryServerMethod<TRequest, TResponse> continuation)
-		{
-            var bearerToken = context.RequestHeaders.Get("authorization")?.Value ?? context.RequestHeaders.Get("Authorization")?.Value;
+        }
+        public override Task<TResponse> UnaryServerHandler<TRequest, TResponse>(TRequest request, ServerCallContext context, UnaryServerMethod<TRequest, TResponse> continuation)
+        {
             bool isGodUser = false;
-            if (!String.IsNullOrEmpty(bearerToken))
+
+            var goduserHeader = context.RequestHeaders.Where(k => k.Key.ToLower() == "goduser" || k.Key == "god-user").FirstOrDefault();
+            if (goduserHeader != null)
             {
-                if (bearerToken != null)
-                {
-                    var rawToken = bearerToken.Replace($"Bearer ", "");
-                    var securityToken = new JwtSecurityToken(rawToken);
-
-                    var goduserHeader = context.RequestHeaders.Where(k => k.Key.ToLower() == "goduser" || k.Key == "god-user").FirstOrDefault();
-                    if (goduserHeader != null)
-                    {
-                        if (Boolean.TryParse(goduserHeader.Value, out isGodUser))
-                        {
-                            context.RequestHeaders.Remove(goduserHeader);
-                        }
-                    }
-
-                    if (securityToken.Claims == null || !securityToken.Claims.Where(k => k.Type == "god-user" && k.Value == "true").Any())
-                    {
-                        var tenantIdHeader = context.RequestHeaders.Where(k => k.Key.ToLower() == "tenantid" || k.Key.ToLower() == "tenant-id").FirstOrDefault();
-                        if (tenantIdHeader != null)
-                        {
-                            context.RequestHeaders.Remove(tenantIdHeader);
-                        }
-                    }
-
-                    var clientidHeader = context.RequestHeaders.Where(k => k.Key.ToLower() == "clientid").FirstOrDefault();
-                    if (clientidHeader != null)
-                    {
-                        context.RequestHeaders.Remove(clientidHeader);
-                    }
-
-                    if (securityToken.Claims != null)
-                    {
-                        foreach (var claim in securityToken.Claims)
-                        {
-                            if (BearerTokenClaimMapper.TryGetValue(claim.Type, out string mappedKey))
-                            {
-                                context.RequestHeaders.Add(mappedKey, claim.Value);
-                            }
-                        }
-                    }
-                }
+                Boolean.TryParse(goduserHeader.Value, out isGodUser);
             }
 
             if (!isGodUser)
@@ -79,5 +41,5 @@ namespace Carbon.WebApplication.Grpc.Interceptors
             }
             return base.UnaryServerHandler(request, context, continuation);
         }
-	}
+    }
 }
