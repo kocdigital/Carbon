@@ -15,7 +15,7 @@ namespace Carbon.WebApplication.Grpc.Client
         {
             using (var scope = serviceProvider.CreateScope())
             {
-                _authHttpClientFactory = serviceProvider.GetRequiredService<AuthHttpClientFactory>();
+                _authHttpClientFactory = scope.ServiceProvider.GetRequiredService<AuthHttpClientFactory>();
             }
         }
 
