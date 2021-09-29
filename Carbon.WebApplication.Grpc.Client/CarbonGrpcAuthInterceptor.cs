@@ -13,7 +13,10 @@ namespace Carbon.WebApplication.Grpc.Client
 
         public CarbonGrpcAuthInterceptor(IServiceProvider serviceProvider)
         {
-            _authHttpClientFactory = serviceProvider.GetRequiredService<AuthHttpClientFactory>();
+            using (var scope = serviceProvider.CreateScope())
+            {
+                _authHttpClientFactory = serviceProvider.GetRequiredService<AuthHttpClientFactory>();
+            }
         }
 
         public override AsyncUnaryCall<TResponse> AsyncUnaryCall<TRequest, TResponse>(TRequest request, ClientInterceptorContext<TRequest, TResponse> context, AsyncUnaryCallContinuation<TRequest, TResponse> continuation)
