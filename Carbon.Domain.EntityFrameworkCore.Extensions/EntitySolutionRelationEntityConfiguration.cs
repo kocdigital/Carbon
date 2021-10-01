@@ -23,7 +23,7 @@ namespace Carbon.Domain.EntityFrameworkCore
             builder.Property(x => x.SolutionId)
                    .IsRequired(true);
 
-            builder.HasIndex(k => new { k.EntityCode, k.EntityId, k.IsDeleted }).HasFilter("[IsDeleted] = 0");
+            builder.HasIndex(k => new { k.EntityCode, k.EntityId, k.IsDeleted });
         }
     }
 }
