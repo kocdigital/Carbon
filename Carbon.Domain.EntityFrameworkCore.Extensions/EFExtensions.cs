@@ -22,7 +22,7 @@ namespace Carbon.Domain.EntityFrameworkCore
         /// <param name="parameters">Your parameters respectively as in the procedure (Same Order)</param>
         /// <returns></returns>
         public static IQueryable<T> ExecuteProcedureSql<T>(this DbContext context, string procedureName, params object[] parameters)
-           where T :  class           
+           where T : class
         {
             List<String> sb = new List<String>();
             foreach (var param in parameters)
@@ -40,11 +40,11 @@ namespace Carbon.Domain.EntityFrameworkCore
             string sqlQuery = null;
             if (context.Database.IsNpgsql())
             {
-                 sqlQuery = $"select * from { procedureName} ({String.Join(',',sb)});";
+                sqlQuery = $"select * from { procedureName} ({String.Join(',', sb)});";
             }
-            else if(context.Database.IsSqlServer())
+            else if (context.Database.IsSqlServer())
             {
-                 sqlQuery = $"EXEC {procedureName} {String.Join(',', sb)}";
+                sqlQuery = $"EXEC {procedureName} {String.Join(',', sb)}";
             }
             else
             {
@@ -155,7 +155,7 @@ namespace Carbon.Domain.EntityFrameworkCore
         {
             var filterContainsData = filter != null && filter.Any();
 
-            return relationEntities.Where(k => !filterContainsData || filter.Contains(k.Relation.SolutionId) || k.Relation == null);
+            return relationEntities.Where(k => !filterContainsData || k.Relation == null || filter.Contains(k.Relation.SolutionId));
 
         }
 
@@ -165,7 +165,7 @@ namespace Carbon.Domain.EntityFrameworkCore
         {
             var filterContainsData = filter != null && filter.Any();
 
-            return relationEntities.Where(k => !filterContainsData || filter.Contains(k.Relation.SolutionId) || k.Relation == null);
+            return relationEntities.Where(k => !filterContainsData || k.Relation == null || filter.Contains(k.Relation.SolutionId));
 
         }
 
@@ -176,13 +176,13 @@ namespace Carbon.Domain.EntityFrameworkCore
         {
             var filterContainsData = filter != null && filter.Any();
 
-            var list = await relationEntities.Where(k => !filterContainsData || filter.Contains(k.Relation.SolutionId) || k.Relation == null).ToListAsync();
+            var list = await relationEntities.Where(k => !filterContainsData || k.Relation == null || filter.Contains(k.Relation.SolutionId)).ToListAsync();
             var groupedList = list.GroupBy(k => k.Entity, k => k.Relation, (key, g) => new RelationEntity<T, U> { Entity = key, Relations = g.ToList() }).ToList();
 
-            relationEntities.Select(k => k.Relation).ToList();
+            var relationEntitiesAsList = relationEntities.Where(k => k.Relation != null).Select(k => k.Relation).ToList();
 
 
-            groupedList.ForEach(k => k.Entity.RelationalOwners = relationEntities.Select(k1 => k1.Relation).Where(k2 => k2.EntityId == k.Entity.Id).ToList());
+            groupedList.ForEach(k => k.Entity.RelationalOwners = relationEntitiesAsList.Where(k2 => k2 != null && k2.EntityId == k.Entity.Id).ToList());
             return groupedList.Select(k => k.Entity).ToList();
         }
 
@@ -192,13 +192,13 @@ namespace Carbon.Domain.EntityFrameworkCore
         {
             var filterContainsData = filter != null && filter.Any();
 
-            var list = relationEntities.Where(k => !filterContainsData || filter.Contains(k.Relation.SolutionId) || k.Relation == null).ToList();
+            var list = relationEntities.Where(k => !filterContainsData || k.Relation == null || filter.Contains(k.Relation.SolutionId)).ToList();
             var groupedList = list.GroupBy(k => k.Entity, k => k.Relation, (key, g) => new RelationEntity<T, U> { Entity = key, Relations = g.ToList() }).ToList();
 
-            relationEntities.Select(k => k.Relation).ToList();
+            var relationEntitiesAsList = relationEntities.Where(k => k.Relation != null).Select(k => k.Relation).ToList();
 
+            groupedList.ForEach(k => k.Entity.RelationalOwners = relationEntitiesAsList.Where(k2 => k2 != null && k2.EntityId == k.Entity.Id).ToList());
 
-            groupedList.ForEach(k => k.Entity.RelationalOwners = relationEntities.Select(k1 => k1.Relation).Where(k2 => k2.EntityId == k.Entity.Id).ToList());
             return groupedList.Select(k => k.Entity).ToList();
         }
 
@@ -218,7 +218,7 @@ namespace Carbon.Domain.EntityFrameworkCore
         {
             var filterContainsData = filter != null && filter.Any();
 
-            var list = await relationEntities.Where(k => !filterContainsData || filter.Contains(k.Relation.SolutionId) || k.Relation == null).ToListAsync();
+            var list = await relationEntities.Where(k => !filterContainsData || k.Relation == null || filter.Contains(k.Relation.SolutionId)).ToListAsync();
             var groupedList = list.GroupBy(k => k.Entity, k => k.Relation, (key, g) => new RelationEntity<T, U> { Entity = key, Relations = g.ToList() }).FirstOrDefault();
 
 
@@ -237,7 +237,7 @@ namespace Carbon.Domain.EntityFrameworkCore
         {
             var filterContainsData = filter != null && filter.Any();
 
-            var list = relationEntities.Where(k => !filterContainsData || filter.Contains(k.Relation.SolutionId) || k.Relation == null).ToList();
+            var list = relationEntities.Where(k => !filterContainsData || k.Relation == null || filter.Contains(k.Relation.SolutionId)).ToList();
             var groupedList = list.GroupBy(k => k.Entity, k => k.Relation, (key, g) => new RelationEntity<T, U> { Entity = key, Relations = g.ToList() }).FirstOrDefault();
 
 
@@ -260,7 +260,7 @@ namespace Carbon.Domain.EntityFrameworkCore
 
             List<Guid> orgs = new List<Guid>();
 
-            roleDetails.ForEach(k => { if(k.Policies != null) orgs.AddRange(k.Policies); });
+            roleDetails.ForEach(k => { if (k.Policies != null) orgs.AddRange(k.Policies); });
             orgs = orgs.Distinct().ToList();
             foreach (var rp in roleDetails)
             {
