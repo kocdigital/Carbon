@@ -15,6 +15,9 @@ namespace Carbon.Common.TenantManagementHandler.Classes
         public int? PrivilegeEffectLevel { get; set; }
         public Guid UserId { get; set; }
         public Guid RoleId { get; set; }
+        public int OriginatedRoleType { get; set; }
+        public int RoleType { get; set; }
+
         /// <summary>
         /// If PrivilegeLevelType = 1, then it is blank
         /// If PrivilegeLevelType = 2, then it will be assigned with all the organizations selected on Role Provider
