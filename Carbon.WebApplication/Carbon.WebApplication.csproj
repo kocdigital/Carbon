@@ -2,8 +2,10 @@
 
   <PropertyGroup>
     <TargetFrameworks>net5.0;netcoreapp3.1</TargetFrameworks>
-    <Version>3.0.0</Version>
-    <Description>3.0.0
+    <Version>3.1.0</Version>
+    <Description>3.1.0
+  - Tenant Ownership new features and performance improvements
+3.0.0
   - Added new error handling mechanism
 2.3.7
  - Goduser Implementation added for tenant management
@@ -93,8 +95,8 @@ Carbon Webapplication now supports GRPC with Carbon.WebApplication.Grpc package
       - Swagger configurasyonunda AuthorizationUrl key'i ana root kısmında Security key'i altına alındı
       - ResponseOk kısmında Unit Testlerde null exception hatası verme sorunu düzeltildi.
 </Description>
-    <AssemblyVersion>3.0.0.0</AssemblyVersion>
-    <FileVersion>3.0.0.0</FileVersion>
+    <AssemblyVersion>3.1.0.0</AssemblyVersion>
+    <FileVersion>3.1.0.0</FileVersion>
     <OpenApiGenerateDocuments>false</OpenApiGenerateDocuments>
   </PropertyGroup>
 
@@ -109,7 +111,7 @@ Carbon Webapplication now supports GRPC with Carbon.WebApplication.Grpc package
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Formatters.Json" Version="2.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.1.2" />
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="3.1.1" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="3.1.12" />
     <PackageReference Include="Microsoft.OpenApi" Version="1.1.4" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
     <PackageReference Include="Serilog.AspNetCore" Version="3.2.0" />
@@ -127,6 +129,7 @@ Carbon Webapplication now supports GRPC with Carbon.WebApplication.Grpc package
   <ItemGroup>
     <ProjectReference Include="..\Carbon.Common\Carbon.Common.csproj" />
     <ProjectReference Include="..\Carbon.ExceptionHandling\Carbon.ExceptionHandling.Abstractions.csproj" />
+    <ProjectReference Include="..\Carbon.HttpClient.Auth\Carbon.HttpClient.Auth.csproj" />
     <ProjectReference Include="..\Carbon.HttpClient\Carbon.HttpClient.csproj" />
     <ProjectReference Include="..\Carbon.PagedList\Carbon.PagedList.csproj" />
   </ItemGroup>
