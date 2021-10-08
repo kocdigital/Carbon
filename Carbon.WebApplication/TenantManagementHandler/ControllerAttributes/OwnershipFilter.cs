@@ -38,7 +38,7 @@ namespace Carbon.WebApplication.TenantManagementHandler.ControllerAttributes
             _ownershipType = OwnershipType.User;
         }
 
-        public OwnershipFilter(OwnershipType ownershipType = OwnershipType.User ,string role = null)
+        public OwnershipFilter(OwnershipType ownershipType = OwnershipType.User, string role = null)
         {
             _role = role;
             _ownershipType = ownershipType;
@@ -56,7 +56,7 @@ namespace Carbon.WebApplication.TenantManagementHandler.ControllerAttributes
 
             List<PermissionDetailedDto> filterOwnershipPermissionList;
 
-            if(_ownershipType == OwnershipType.Goduser && !isGodUser)
+            if (_ownershipType == OwnershipType.Goduser && !isGodUser)
                 throw new ForbiddenOperationException(CarbonExceptionMessages.OnlyGodUserOperation);
 
             if (isGodUser)
@@ -67,6 +67,19 @@ namespace Carbon.WebApplication.TenantManagementHandler.ControllerAttributes
 
 
             filterOwnershipPermissionList = _externalService.ExecuteInPolicyApi_GetRoles(new PermissionDetailedFilterDto() { TenantId = tenantId, UserPolicyId = organizationId, UserId = userId, SolutionId = solutions.FirstOrDefault(), PermissionNames = new List<string>() { _role } }, daToken.ToString().Split(' ')[1]).Result;
+            RoleExtensions.SetPermissions(filterOwnershipPermissionList);
+
+            if (_ownershipType == OwnershipType.Admin)
+                if (filterOwnershipPermissionList == null || !(filterOwnershipPermissionList.Where(k => k.OriginatedRoleType <= 2).Any()))
+                {
+                    throw new ForbiddenOperationException(CarbonExceptionMessages.OnlyAdminUserOperation);
+                }
+
+            if (_ownershipType == OwnershipType.Superadmin)
+                if (filterOwnershipPermissionList == null || !(filterOwnershipPermissionList.Where(k => k.OriginatedRoleType == 1).Any()))
+                {
+                    throw new ForbiddenOperationException(CarbonExceptionMessages.OnlySuperAdminUserOperation);
+                }
 
             if (filterOwnershipPermissionList != null && filterOwnershipPermissionList.Any())
             {
