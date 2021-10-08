@@ -15,7 +15,7 @@ namespace Carbon.Demo.WebApplication
     {
         public class CustomWebApiClient:WebapiClient
         {
-            public CustomWebApiClient(HttpClient c) : base(c)
+            public CustomWebApiClient(System.Net.Http.HttpClient c) : base(c)
             {
 
             }
