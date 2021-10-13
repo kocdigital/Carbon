@@ -33,10 +33,10 @@ namespace Carbon.WebApplication.Grpc.Interceptors
                 if ((prop = _type.GetProperty("TenantId")) != null || (prop = _type.GetProperty("tenantid")) != null)
                 {
                     var tenantId = context.RequestHeaders.Get("TenantId")?.Value ?? context.RequestHeaders.Get("tenantid")?.Value;
-                    if (string.IsNullOrWhiteSpace(tenantId))
-                        throw new ArgumentNullException("TenantId");
-
-                    prop.SetValue(request, tenantId);
+                    if (!string.IsNullOrWhiteSpace(tenantId))
+                    {
+                        prop.SetValue(request, tenantId);
+                    }
                 }
             }
             return base.UnaryServerHandler(request, context, continuation);
