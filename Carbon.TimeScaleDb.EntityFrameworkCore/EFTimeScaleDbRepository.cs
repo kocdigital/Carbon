@@ -186,7 +186,7 @@ namespace Carbon.TimeScaleDb.EntityFrameworkCore
             return await context.SaveChangesAsync();
         }
 
-        public async Task<List<TEntity>> GetByDateTimeRangeAsync(DateTime startTime, DateTime endTime)
+        public virtual async Task<List<TEntity>> GetByDateTimeRangeAsync(DateTime startTime, DateTime endTime)
         {
             var tablename = context.Set<TEntity>().EntityType.DisplayName();
             var timeseriefieldname = TimeSeriesTableInfo.TableTimeSeriePair.GetValueOrDefault(tablename.ToLower());
@@ -196,7 +196,7 @@ namespace Carbon.TimeScaleDb.EntityFrameworkCore
             return await context.Set<TEntity>().FromSqlRaw(daQuery, start, end).ToListAsync();
         }
 
-        public IQueryable<TEntity> CustomQuery(string query, params object[] parameters)
+        public virtual IQueryable<TEntity> CustomQuery(string query, params object[] parameters)
         {
             var rawSql = context.Set<TEntity>().FromSqlRaw(query, parameters);
             return rawSql;
