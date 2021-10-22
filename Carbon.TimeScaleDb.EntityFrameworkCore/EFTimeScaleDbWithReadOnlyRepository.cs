@@ -1,5 +1,6 @@
 ﻿using Carbon.Domain.Abstractions.Entities;
 using Carbon.Domain.Abstractions.Repositories;
+using Carbon.PagedList;
 using Carbon.TimeSeriesDb.Abstractions.Attributes;
 using Carbon.TimeSeriesDb.Abstractions.Entities;
 using Carbon.TimeSeriesDb.Abstractions.Repositories;
@@ -99,14 +100,14 @@ namespace Carbon.TimeScaleDb.EntityFrameworkCore
             }
         }
 
-        public new virtual async Task<List<TEntity>> GetByDateTimeRangeAsync(DateTime startTime, DateTime endTime)
+        public new virtual async Task<IPagedList<TEntity>> GetByDateTimeRangeAsync(DateTime startTime, DateTime endTime, int pageNumber, int pageSize)
         {
             var tablename = readOnlyContext.Set<TEntity>().EntityType.DisplayName();
             var timeseriefieldname = TimeSeriesTableInfo.TableTimeSeriePair.GetValueOrDefault(tablename.ToLower());
-            var daQuery = $"select * from {tablename.ToLower()} where {timeseriefieldname} > @startdate and {timeseriefieldname} < @enddate;";
+            var daQuery = $"select * from {tablename.ToLower()} where {timeseriefieldname} > @startdate and {timeseriefieldname} < @enddate";
             NpgsqlParameter start = new NpgsqlParameter("@startdate", startTime);
             NpgsqlParameter end = new NpgsqlParameter("@enddate", endTime);
-            return await readOnlyContext.Set<TEntity>().FromSqlRaw(daQuery, start, end).ToListAsync();
+            return await Task.FromResult(readOnlyContext.Set<TEntity>().FromSqlRaw(daQuery, start, end).ToPagedList(pageNumber, pageSize));
         }
 
         public new virtual IQueryable<TEntity> CustomQuery(string query, params object[] parameters)
