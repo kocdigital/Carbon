@@ -16,7 +16,7 @@ using Carbon.TimeSeriesDb.Abstractions.Attributes;
 
 namespace Carbon.TimeScaleDb.EntityFrameworkCore
 {
-    public static class IApplicationBuilderExtensions
+    public static class ApplicationBuilderExtensions
     {
         /// <summary>
         /// Migrates your database with related to the configurations in AddDatabaseContext method

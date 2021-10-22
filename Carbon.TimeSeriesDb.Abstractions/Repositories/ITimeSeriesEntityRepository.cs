@@ -1,4 +1,5 @@
-﻿using Carbon.TimeSeriesDb.Abstractions.Entities;
+﻿using Carbon.PagedList;
+using Carbon.TimeSeriesDb.Abstractions.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,8 +20,7 @@ namespace Carbon.TimeSeriesDb.Abstractions.Repositories
         /// <param name="startTime"></param>
         /// <param name="endTime"></param>
         /// <returns></returns>
-        Task<List<T>> GetByDateTimeRangeAsync(DateTime startTime, DateTime endTime);
-
+        Task<IPagedList<T>> GetByDateTimeRangeAsync(DateTime startTime, DateTime endTime, int pageNumber, int pageSize);
         /// <summary>
         ///     Creates and saves the given <typeparamref name="TEntity"/> object in the database.
         /// </summary>

@@ -3,11 +3,12 @@
   <PropertyGroup>
     <TargetFrameworks>net5.0;netcoreapp3.1</TargetFrameworks>
     <LangVersion>8.0</LangVersion>
-    <Version>1.0.1</Version>
+    <Version>1.0.3</Version>
     <Description></Description>
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Carbon.PagedList.EntityFrameworkCore" Version="1.0.6" />
     <PackageReference Include="EFCore.NamingConventions" Version="5.0.2" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.7" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="5.0.7" />
