@@ -1,4 +1,5 @@
-﻿using Carbon.Domain.Abstractions.Entities;
+﻿using Carbon.Domain.Abstractions.Attributes;
+using Carbon.Domain.Abstractions.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using System;
@@ -81,9 +82,9 @@ namespace Carbon.TimeScaleDb.EntityFrameworkCore
             {
                 if (entry.State == EntityState.Deleted)
                 {
-                    entry.CurrentValues["IsDeleted"] = true;
-                    SetDateTimeToProperty(entry.CurrentValues, "DeletedDate");
-                    SetDateTimeToProperty(entry.CurrentValues, "UpdatedDate");
+                    entry.CurrentValues[nameof(ISoftDelete.IsDeleted)] = true;
+                    SetDateTimeToProperty(entry.CurrentValues, nameof(IDeleteAuditing.DeletedDate));
+                    SetDateTimeToProperty(entry.CurrentValues, nameof(IUpdateAuditing.UpdatedDate));
                     entry.State = EntityState.Modified;
                     CascadeSoftDelete(entry.Navigations.ToList());
                 }
@@ -94,8 +95,8 @@ namespace Carbon.TimeScaleDb.EntityFrameworkCore
                 if (entry.State == EntityState.Deleted)
                 {
                     var obj = entry.CurrentValues;
-                    entry.CurrentValues["DeletedDate"] = DateTime.UtcNow;
-                    SetDateTimeToProperty(entry.CurrentValues, "UpdatedDate");
+                    entry.CurrentValues[nameof(IDeleteAuditing.DeletedDate)] = DateTime.UtcNow;
+                    SetDateTimeToProperty(entry.CurrentValues, nameof(IUpdateAuditing.UpdatedDate));
                 }
             }
 
@@ -103,8 +104,8 @@ namespace Carbon.TimeScaleDb.EntityFrameworkCore
             {
                 if (entry.State == EntityState.Added)
                 {
-                    entry.CurrentValues["InsertedDate"] = DateTime.UtcNow;
-                    SetDateTimeToProperty(entry.CurrentValues, "UpdatedDate");
+                    entry.CurrentValues[nameof(IInsertAuditing.InsertedDate)] = DateTime.UtcNow;
+                    SetDateTimeToProperty(entry.CurrentValues, nameof(IUpdateAuditing.UpdatedDate));
                 }
             }
 
@@ -112,7 +113,7 @@ namespace Carbon.TimeScaleDb.EntityFrameworkCore
             {
                 if (entry.State == EntityState.Modified)
                 {
-                    entry.CurrentValues["UpdatedDate"] = DateTime.UtcNow;
+                    entry.CurrentValues[nameof(IUpdateAuditing.UpdatedDate)] = DateTime.UtcNow;
                 }
             }
 
@@ -132,7 +133,7 @@ namespace Carbon.TimeScaleDb.EntityFrameworkCore
 
             foreach (var navItem in entries)
             {
-                if (navItem.Metadata.PropertyInfo.CustomAttributes.Any(x => x.AttributeType.Name == "DoCascadeDelete"))
+                if (navItem.Metadata.PropertyInfo.CustomAttributes.Any(x => x.AttributeType.Name == nameof(DoCascadeDelete)))
                 {
                     if (navItem is CollectionEntry collectionEntry)
                     {
@@ -144,9 +145,9 @@ namespace Carbon.TimeScaleDb.EntityFrameworkCore
 
                                 if (typeof(ISoftDelete).IsAssignableFrom(relatedEntry.Entity.GetType()))
                                 {
-                                    relatedEntry.CurrentValues["IsDeleted"] = true;
-                                    SetDateTimeToProperty(relatedEntry.CurrentValues, "DeletedDate");
-                                    SetDateTimeToProperty(relatedEntry.CurrentValues, "UpdatedDate");
+                                    relatedEntry.CurrentValues[nameof(ISoftDelete.IsDeleted)] = true;
+                                    SetDateTimeToProperty(relatedEntry.CurrentValues, nameof(IDeleteAuditing.DeletedDate));
+                                    SetDateTimeToProperty(relatedEntry.CurrentValues, nameof(IUpdateAuditing.UpdatedDate));
                                     relatedEntry.State = EntityState.Modified;
                                 }
                                 else
@@ -168,9 +169,9 @@ namespace Carbon.TimeScaleDb.EntityFrameworkCore
 
                             if (typeof(ISoftDelete).IsAssignableFrom(relatedEntry.Entity.GetType()))
                             {
-                                relatedEntry.CurrentValues["IsDeleted"] = true;
-                                SetDateTimeToProperty(relatedEntry.CurrentValues, "DeletedDate");
-                                SetDateTimeToProperty(relatedEntry.CurrentValues, "UpdatedDate");
+                                relatedEntry.CurrentValues[nameof(ISoftDelete.IsDeleted)] = true;
+                                SetDateTimeToProperty(relatedEntry.CurrentValues, nameof(IDeleteAuditing.DeletedDate));
+                                SetDateTimeToProperty(relatedEntry.CurrentValues, nameof(IUpdateAuditing.UpdatedDate));
                                 relatedEntry.State = EntityState.Modified;
                             }
                             else
