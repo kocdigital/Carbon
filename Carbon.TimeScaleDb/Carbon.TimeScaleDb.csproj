@@ -2,8 +2,9 @@
 
   <PropertyGroup>
     <TargetFrameworks>net5.0;netcoreapp3.1</TargetFrameworks>
-    <Version>1.0.0</Version>
-    <Description></Description>
+    <Version>1.0.1</Version>
+    <Description>1.0.1
+Library for some specific TimeScaleDb methods</Description>
   </PropertyGroup>
 
   <ItemGroup>
