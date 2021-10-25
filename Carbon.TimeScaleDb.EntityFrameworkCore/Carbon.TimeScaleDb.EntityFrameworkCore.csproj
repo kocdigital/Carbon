@@ -3,8 +3,9 @@
   <PropertyGroup>
     <TargetFrameworks>net5.0;netcoreapp3.1</TargetFrameworks>
     <LangVersion>8.0</LangVersion>
-    <Version>1.0.4</Version>
-    <Description></Description>
+    <Version>1.0.5</Version>
+    <Description>1.0.5
+- Brings native EntityFramework Core support to TimeScaleDb as if you are using an SQL Database. Implements TimescaleDb logic based-on abstraction of Carbon.TimeSeriesDb.Abstractions.</Description>
   </PropertyGroup>
 
   <ItemGroup>
