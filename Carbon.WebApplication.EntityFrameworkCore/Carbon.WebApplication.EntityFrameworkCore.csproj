@@ -2,8 +2,11 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
-    <Version>2.0.1</Version>
-    <Description>2.0.1
+    <Version>2.1.0</Version>
+    <Description>2.1.0
+ Read-Only Context and Repository added in order to implement CQRS over replicated SQL servers. Simply use AddDatabaseWithReadOnlyReplicaContext method in your startup by passing your readonly context.
+
+2.0.1
  Postgre and MSSQL healthcheck mismatch fixed
 
 2.0.0 (Unstable - please update to at least 2.0.1)
