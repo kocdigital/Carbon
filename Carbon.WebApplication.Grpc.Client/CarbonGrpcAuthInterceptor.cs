@@ -22,14 +22,43 @@ namespace Carbon.WebApplication.Grpc.Client
         public override AsyncUnaryCall<TResponse> AsyncUnaryCall<TRequest, TResponse>(TRequest request, ClientInterceptorContext<TRequest, TResponse> context, AsyncUnaryCallContinuation<TRequest, TResponse> continuation)
         {
             //Token Validation will appear here
-            var daRes = _authHttpClientFactory.GetAuthentication("Grpc").Result;
+            var daRes = _authHttpClientFactory.GetAuthentication(GrpcClientStaticValues.GrpcAuthenticator).Result;
             Metadata newMetadata = new Metadata();
             newMetadata.Add("Authorization", "Bearer " + daRes.PrimaryAccessId);
-            
+
             context = new ClientInterceptorContext<TRequest, TResponse>(context.Method,
                  context.Host, context.Options.WithHeaders(newMetadata));
 
-            return base.AsyncUnaryCall(request, context, continuation);
+            var response = base.AsyncUnaryCall(request, context, continuation);
+            try
+            {
+                var resResponse = response.ResponseAsync.Result;
+                return response;
+            }
+            catch (Exception exc)
+            {
+                var ex = exc.InnerException as RpcException;
+                if (ex != null && ex.StatusCode == StatusCode.Unauthenticated)
+                {
+                    var reAuth = _authHttpClientFactory.ReAuthenticate(GrpcClientStaticValues.GrpcAuthenticator).Result;
+                    if (reAuth == null)
+                        return response;
+
+                    Metadata newMetadataReAuthed = new Metadata();
+                    newMetadataReAuthed.Add("Authorization", "Bearer " + reAuth.PrimaryAccessId);
+                    context = new ClientInterceptorContext<TRequest, TResponse>(context.Method,
+                        context.Host, context.Options.WithHeaders(newMetadataReAuthed));
+
+                    return base.AsyncUnaryCall(request, context, continuation);
+                }
+                else
+                {
+                    return response;
+                }
+            }
+
+
+
         }
 
         public override TResponse BlockingUnaryCall<TRequest, TResponse>(TRequest request, ClientInterceptorContext<TRequest, TResponse> context, BlockingUnaryCallContinuation<TRequest, TResponse> continuation)
