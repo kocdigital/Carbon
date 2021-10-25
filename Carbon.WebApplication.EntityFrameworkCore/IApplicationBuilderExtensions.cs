@@ -111,6 +111,80 @@ namespace Carbon.WebApplication.EntityFrameworkCore
             }
 
         }
+        /// <summary>
+        /// Manages Multi EF Target Database Context and Discovers Desired Related Migration Assembly. Contains support for adding a read-only context corresponding to a read-only replica.
+        /// </summary>
+        /// <typeparam name="TContext">Your Database Context</typeparam>
+        /// <typeparam name="RContext">Your ReadOnly Database Context</typeparam>
+        /// <typeparam name="TStartup">Your Startup Class</typeparam>
+        /// <param name="services"></param>
+        /// <param name="configuration"></param>
+        public static void AddDatabaseWithReadOnlyReplicaContext<TContext, RContext, TStartup>(this IServiceCollection services, IConfiguration configuration)
+            where TContext : DbContext
+            where RContext : DbContext, IReadOnlyContext
+            where TStartup : class
+        {
+            var target = configuration.GetConnectionString("ConnectionTarget") ?? "MSSQL";
+            var connectionString = configuration.GetConnectionString("DefaultConnection");
+            var readReplicaEnabled = configuration.GetConnectionString("ReadReplicaEnabled");
+
+            var migrationsAssembly = typeof(TStartup).GetTypeInfo().Assembly.GetName().Name + "." + target;
+            string path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+
+            switch (target.ToLower())
+            {
+                case "postgresql":
+                    services.AddDbContext<TContext>(options => options.UseNpgsql(connectionString, sql => sql.MigrationsAssembly(migrationsAssembly)));
+                    break;
+                case "mssql":
+                    services.AddDbContext<TContext>(options => options.UseSqlServer(connectionString, sql => sql.MigrationsAssembly(migrationsAssembly)));
+                    break;
+                default:
+                    throw new Exception("No Valid Connection Target Found");
+            }
+
+            services.AddDatabaseContextHealthCheck(target, connectionString);
+
+
+            if (Boolean.TryParse(readReplicaEnabled, out bool rrEnabled) && rrEnabled)
+            {
+                var readOnlyConnectionString = configuration.GetConnectionString("DefaultReadOnlyConnection");
+                var realReadOnlyConnectionString = String.IsNullOrEmpty(readOnlyConnectionString) ? connectionString : readOnlyConnectionString;
+                AddDbContextWithoutMigration<RContext>(services, target, realReadOnlyConnectionString);
+            }
+            else
+            {
+                AddDbContextWithoutMigration<RContext>(services, target, connectionString);
+            }
+
+            try
+            {
+                AssemblyLoadContext.Default.LoadFromAssemblyPath($"{path}\\{migrationsAssembly}.dll");
+            }
+            catch
+            {
+                Console.WriteLine("No Migration Assembly Loaded!");
+            }
+
+        }
+
+        private static void AddDbContextWithoutMigration<RTContext>(IServiceCollection services, string target, string connStr)
+                where RTContext : DbContext
+        {
+            switch (target.ToLower())
+            {
+                case "postgresql":
+                    services.AddDbContext<RTContext>(options => options.UseNpgsql(connStr));
+                    break;
+                case "mssql":
+                    services.AddDbContext<RTContext>(options => options.UseSqlServer(connStr));
+                    break;
+                default:
+                    throw new Exception("No Valid Connection Target Found");
+            }
+        }
+
+
 
         public static void AddDatabaseContextHealthCheck(this IServiceCollection services, string target, string connectionString, HealthStatus failureStatus = HealthStatus.Unhealthy)
         {

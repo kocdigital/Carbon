@@ -52,5 +52,16 @@ namespace Carbon.TimeScaleDb.EntityFrameworkCore
             throw new InvalidOperationException("This context is read-only.");
         }
 
+
+        public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
+        {
+            throw new InvalidOperationException("This context is read-only.");
+        }
+
+        public override int SaveChanges()
+        {
+            throw new InvalidOperationException("This context is read-only.");
+        }
+
     }
 }
