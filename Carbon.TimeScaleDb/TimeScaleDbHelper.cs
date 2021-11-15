@@ -71,6 +71,32 @@ namespace Carbon.TimeScaleDb
 
         }
 
+        public bool AddTimeScaleDbExtensionToDatabase()
+        {
+            // get one connection for all SQL commands below
+            using (var conn = getConnection())
+            {
+
+                var sql = "CREATE EXTENSION IF NOT EXISTS timescaledb;";
+
+                using (var cmd = new NpgsqlCommand(sql, conn))
+                {
+                    try
+                    {
+                        cmd.ExecuteNonQuery();
+                        _logger.LogInformation("TimescaleDB extension enabled on the database");
+                        return true;
+                    }
+                    catch(PostgresException pex)
+                    {
+                        _logger.LogWarning($"TimeScaleDb extension unable to install! Try to enable manually! - " + pex.Message);
+                        return false;
+                    }
+                }
+            }
+
+        }
+
         public bool ConvertTableToTimeSeriesDb(string tableName, string timeColumnName)
         {
 
