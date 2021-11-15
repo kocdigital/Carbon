@@ -27,16 +27,17 @@ namespace Carbon.TimeScaleDb.EntityFrameworkCore
         {
             using (var serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
             {
+                var context = serviceScope.ServiceProvider.GetRequiredService<TContext>();
+                context.Database.Migrate();
+
                 var tsdbHelper = serviceScope.ServiceProvider.GetRequiredService<ITimeScaleDbHelper>();
                 if (!tsdbHelper.CheckTimeScaleDbSupport())
                 {
-                    throw new NotSupportedException("Database does not support TimeScaleDb");
+                    throw new NotSupportedException("Migration not completed! Database does not support TimeScaleDb");
                 }
 
-                var context = serviceScope.ServiceProvider.GetRequiredService<TContext>();
-
-
-                context.Database.Migrate();
+                tsdbHelper.AddTimeScaleDbExtensionToDatabase();
+                
                 var timeSerieEntities = context.GetType().Assembly.GetTypes()
                     .Where(type => typeof(ITimeSeriesEntity).IsAssignableFrom(type) && !type.IsInterface)
                     .ToList();
