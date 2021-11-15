@@ -8,5 +8,6 @@ namespace Carbon.TimeScaleDb
     {
         public bool CheckTimeScaleDbSupport();
         public bool ConvertTableToTimeSeriesDb(string tableName, string timeColumnName);
+        public bool AddTimeScaleDbExtensionToDatabase();
     }
 }
