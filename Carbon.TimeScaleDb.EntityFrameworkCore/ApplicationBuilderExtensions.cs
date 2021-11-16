@@ -18,8 +18,13 @@ namespace Carbon.TimeScaleDb.EntityFrameworkCore
 {
     public static class ApplicationBuilderExtensions
     {
+        public static bool IsTimeScaleDbEnabled(this IConfiguration configuration)
+        {
+            var connectionString = configuration.GetConnectionString("TimeScaleDbConnectionString");
+            return !String.IsNullOrEmpty(connectionString);
+        }
         /// <summary>
-        /// Migrates your database with related to the configurations in AddDatabaseContext method
+        /// Migrates your timescaledb database with related to the configurations in AddDatabaseContext method
         /// </summary>
         /// <typeparam name="TContext">Your Database Context</typeparam>
         /// <param name="app"></param>
@@ -27,6 +32,15 @@ namespace Carbon.TimeScaleDb.EntityFrameworkCore
         {
             using (var serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
             {
+                var configuration = serviceScope.ServiceProvider.GetRequiredService<IConfiguration>();
+                var connectionString = configuration.GetConnectionString("TimeScaleDbConnectionString");
+                if (String.IsNullOrEmpty(connectionString))
+                {
+                    Console.WriteLine("No TimeScaleDb Connection String Found. Skipping Migration!");
+                    return;
+                }
+
+
                 var context = serviceScope.ServiceProvider.GetRequiredService<TContext>();
                 context.Database.Migrate();
 
@@ -67,7 +81,7 @@ namespace Carbon.TimeScaleDb.EntityFrameworkCore
 
 
         /// <summary>
-        /// Manages Multi EF Target Database Context and Discovers Desired Related Migration Assembly 
+        /// Manages TimescaleDb Database Context and Discovers Desired Related Migration Assembly 
         /// </summary>
         /// <typeparam name="TContext">Your Database Context</typeparam>
         /// <typeparam name="TStartup">Your Startup Class</typeparam>
@@ -77,9 +91,15 @@ namespace Carbon.TimeScaleDb.EntityFrameworkCore
             where TContext : DbContext
             where TStartup : class
         {
+            var connectionString = configuration.GetConnectionString("TimeScaleDbConnectionString");
+            if(String.IsNullOrEmpty(connectionString))
+            {
+                Console.WriteLine("No TimeScaleDb Connection String Found. Skipping Adding Context!");
+                return;
+            }
+
             services.AddScoped<ITimeScaleDbHelper, TimeScaleDbHelper>();
 
-            var connectionString = configuration.GetConnectionString("TimeScaleDbConnectionString");
 
             var migrationsAssembly = typeof(TStartup).GetTypeInfo().Assembly.GetName().Name + "." + "TimeScaleDb";
             string path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
@@ -98,14 +118,28 @@ namespace Carbon.TimeScaleDb.EntityFrameworkCore
 
         }
 
+        /// <summary>
+        /// Manages TimescaleDb Database Context including ReadOnly Context and Discovers Desired Related Migration Assembly 
+        /// </summary>
+        /// <typeparam name="TContext">Your Database Context</typeparam>
+        /// <typeparam name="RContext">Your Database ReadOnly Context</typeparam>
+        /// <typeparam name="TStartup">Your Startup Class</typeparam>
+        /// <param name="services"></param>
+        /// <param name="configuration"></param>
         public static void AddTimeScaleDatabaseWithReadOnlyReplicaContext<TContext, RContext, TStartup>(this IServiceCollection services, IConfiguration configuration)
             where TContext : DbContext
             where RContext : DbContext, ITimeScaleDbReadOnlyContext
             where TStartup : class
         {
+            var connectionString = configuration.GetConnectionString("TimeScaleDbConnectionString");
+
+            if (String.IsNullOrEmpty(connectionString))
+            {
+                Console.WriteLine("No TimeScaleDb Connection String Found. Skipping Adding Context with ReadOnly!");
+                return;
+            }
             services.AddScoped<ITimeScaleDbHelper, TimeScaleDbHelper>();
 
-            var connectionString = configuration.GetConnectionString("TimeScaleDbConnectionString");
             var readReplicaEnabled = configuration.GetConnectionString("ReadReplicaEnabled");
 
             var migrationsAssembly = typeof(TStartup).GetTypeInfo().Assembly.GetName().Name + "." + "TimeScaleDb";
