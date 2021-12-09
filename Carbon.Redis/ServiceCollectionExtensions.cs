@@ -56,13 +56,17 @@ namespace Carbon.Redis
                     ConnectRetry = redisSettings.Value.ConnectRetry,
                     ConnectTimeout = redisSettings.Value.ConnectTimeout,
                     DefaultDatabase = redisSettings.Value.DefaultDatabase,
-
+                    Ssl = redisSettings.Value.SSLEnabled
                 };
+
+                if (redisSettings.Value.SSLEnabled)
+                {
+                    configurationOptions.SslProtocols = System.Security.Authentication.SslProtocols.None;
+                }
+
                 try
                 {
-
                     var redis = ConnectionMultiplexer.Connect(configurationOptions);
-
                     if (redis.IsConnected)
                     {
                         services.AddSingleton<IConnectionMultiplexer>(redis);
@@ -97,7 +101,14 @@ namespace Carbon.Redis
             var healthCheck = services.AddHealthChecks();
             settings.EndPoints.ToList().ForEach(endpoint =>
             {
-                healthCheck.AddRedis($"{endpoint},defaultDatabase={settings.DefaultDatabase},password={settings.Password}", $"redis[{endpoint}]", failureStatus);
+                if (!settings.SSLEnabled)
+                {
+                    healthCheck.AddRedis($"{endpoint},defaultDatabase={settings.DefaultDatabase},password={settings.Password}", $"redis[{endpoint}]", failureStatus);
+                }
+                else
+                {
+                    healthCheck.AddRedis($"{endpoint},defaultDatabase={settings.DefaultDatabase},password={settings.Password},ssl=true", $"redis[{endpoint}]", failureStatus);
+                }
             });
         }
 

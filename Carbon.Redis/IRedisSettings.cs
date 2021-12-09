@@ -68,5 +68,9 @@ namespace Carbon.Redis
         /// Default database index, from 0 to databases - 1
         /// </summary>
         int DefaultDatabase { get; set; }
+        /// <summary>
+        /// Enable if redis port uses TLS
+        /// </summary>
+        bool SSLEnabled { get; set; }
     }
 }
