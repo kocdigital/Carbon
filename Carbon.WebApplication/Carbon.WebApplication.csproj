@@ -2,8 +2,10 @@
 
   <PropertyGroup>
     <TargetFrameworks>net5.0;netcoreapp3.1</TargetFrameworks>
-    <Version>3.1.0</Version>
-    <Description>3.1.0
+    <Version>3.1.2</Version>
+    <Description>3.1.2
+   - Fluent Validation crash on dotnet 5 applications fixed
+3.1.0
   - Tenant Ownership new features and performance improvements
 3.0.0
   - Added new error handling mechanism
@@ -95,14 +97,14 @@ Carbon Webapplication now supports GRPC with Carbon.WebApplication.Grpc package
       - Swagger configurasyonunda AuthorizationUrl key'i ana root kısmında Security key'i altına alındı
       - ResponseOk kısmında Unit Testlerde null exception hatası verme sorunu düzeltildi.
 </Description>
-    <AssemblyVersion>3.1.0.0</AssemblyVersion>
-    <FileVersion>3.1.0.0</FileVersion>
+    <AssemblyVersion>3.1.2.0</AssemblyVersion>
+    <FileVersion>3.1.2.0</FileVersion>
     <OpenApiGenerateDocuments>false</OpenApiGenerateDocuments>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="AspNetCore.HealthChecks.UI.Client" Version="3.1.0" />
-    <PackageReference Include="FluentValidation.AspNetCore" Version="8.6.1" />
+    <PackageReference Include="FluentValidation.AspNetCore" Version="9.5.4" />
     <PackageReference Include="HybridModelBinding" Version="0.17.0" />
     <PackageReference Include="IdentityModel" Version="4.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.1.1" />
