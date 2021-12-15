@@ -1,10 +1,11 @@
-﻿using FluentValidation;
+﻿using Carbon.ExceptionHandling.Abstractions;
+using FluentValidation;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Carbon.ExceptionHandling.Abstractions
+namespace Carbon.WebApplication
 {
     /// <summary>
     /// Common DTO validator, can be used as external validation instead of fluent validation's middleware.
