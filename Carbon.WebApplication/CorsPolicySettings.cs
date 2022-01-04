@@ -23,5 +23,10 @@ namespace Carbon.WebApplication
         /// A property that indicates Allowing any origin or not.
         /// </summary>
         public bool AllowAnyOrigin { get; set; }
+        /// <summary>
+        /// A property that indicates Exposing headers like X-Paging-PageIndex.
+        /// If you use PagedListOk etc. you must set true this so that clients can read the header values
+        /// </summary>
+        public bool ExposePaginationHeaders { get; set; }
     }
 }

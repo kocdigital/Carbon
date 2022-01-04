@@ -2,8 +2,10 @@
 
   <PropertyGroup>
     <TargetFrameworks>net5.0;netcoreapp3.1</TargetFrameworks>
-    <Version>3.2.0</Version>
-    <Description>3.2.0
+    <Version>3.3.0</Version>
+    <Description>3.3.0
+   - Cors ExposeHeaders added
+3.2.0
    - Fluent Validation crash on dotnet 5 applications fixed
    - CarbonValidator class moved here from ExceptionHandling Package
    - Fluent Validation upgraded
@@ -99,8 +101,6 @@ Carbon Webapplication now supports GRPC with Carbon.WebApplication.Grpc package
       - Swagger configurasyonunda AuthorizationUrl key'i ana root kısmında Security key'i altına alındı
       - ResponseOk kısmında Unit Testlerde null exception hatası verme sorunu düzeltildi.
 </Description>
-    <AssemblyVersion>3.2.0.0</AssemblyVersion>
-    <FileVersion>3.2.0.0</FileVersion>
     <OpenApiGenerateDocuments>false</OpenApiGenerateDocuments>
   </PropertyGroup>
 
