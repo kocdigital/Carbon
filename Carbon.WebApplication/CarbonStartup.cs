@@ -163,6 +163,18 @@ namespace Carbon.WebApplication
                             {
                                 builder = builder.AllowAnyHeader();
                             }
+                            if (_corsPolicySettings.ExposePaginationHeaders)
+                            {
+                                builder = builder.WithExposedHeaders(
+                                    "X-Paging-PageIndex",
+                                    "X-Paging-PageSize",
+                                    "X-Paging-PageCount",
+                                    "X-Paging-TotalRecordCount",
+                                    "X-Paging-Previous-Link",
+                                    "X-Paging-Next-Link",
+                                    "X-CorrelationId"
+                                    );
+                            }
                         });
                 });
 
