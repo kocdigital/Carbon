@@ -278,7 +278,7 @@ namespace Carbon.WebApplication
             app.UseSwaggerUI(c =>
             {
                 c.OAuth2RedirectUrl($"{_swaggerSettings.EndpointUrl}/swagger/oauth2-redirect.html");
-                c.SwaggerEndpoint(_swaggerSettings.EndpointPath, _swaggerSettings.EndpointName);
+                c.SwaggerEndpoint(_swaggerSettings.RoutePrefix + _swaggerSettings.EndpointPath, _swaggerSettings.EndpointName);
             });
 
             if (env.IsDevelopment())
