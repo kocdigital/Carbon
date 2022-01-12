@@ -99,10 +99,9 @@ namespace Carbon.TimeScaleDb
 
         public bool ConvertTableToTimeSeriesDb(string tableName, string timeColumnName)
         {
-
             using (var conn = getConnection())
             {
-                using (var command = new NpgsqlCommand($"SELECT create_hypertable('{tableName}', '{timeColumnName}');", conn))
+                using (var command = new NpgsqlCommand($"SELECT create_hypertable('{tableName}', '{timeColumnName}', migrate_data => true);", conn))
                 {
                     try
                     {
@@ -116,6 +115,23 @@ namespace Carbon.TimeScaleDb
                         {
                             _logger.LogInformation($"{tableName} is already Timeserie table, no changes applied");
                             return true;
+                        }
+                        if(pex.SqlState == "0A000" && pex.MessageText.ToLower().Contains("is not empty"))
+                        {
+                            _logger.LogWarning($"Unable to Convert To TimeSerieDatabase: {pex.Message}, truncating table...");
+                            using (var cmd = new NpgsqlCommand($"truncate table {tableName};", conn))
+                            {
+                                try
+                                {
+                                    cmd.ExecuteNonQuery();
+                                    ConvertTableToTimeSeriesDb(tableName, timeColumnName);
+                                }
+                                catch (Exception ex)
+                                {
+                                    _logger.LogError($"Unable to Convert To TimeSerieDatabase: {ex.Message}");
+                                    return false;
+                                }
+                            }
                         }
                         _logger.LogError($"Unable to Convert To TimeSerieDatabase: {pex.Message}");
                         return false;

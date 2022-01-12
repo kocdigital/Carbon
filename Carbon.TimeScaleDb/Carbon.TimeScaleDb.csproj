@@ -2,8 +2,10 @@
 
   <PropertyGroup>
     <TargetFrameworks>net5.0;netcoreapp3.1</TargetFrameworks>
-    <Version>1.1.0</Version>
-    <Description>1.1.0
+    <Version>1.1.2</Version>
+    <Description>1.1.2
+TimeScaleDb converts to existing tables to hypertables by migrating data
+1.1.0
 TimeScaleDb Extension Installation Method Added
 1.0.1
 Library for some specific TimeScaleDb methods</Description>
