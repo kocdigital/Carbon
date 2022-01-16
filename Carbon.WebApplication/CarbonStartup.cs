@@ -1,4 +1,5 @@
 ﻿using Carbon.Common;
+using Carbon.WebApplication.TenantManagementHandler.Extensions;
 using Carbon.WebApplication.TenantManagementHandler.Interfaces;
 using Carbon.WebApplication.TenantManagementHandler.Middlewares;
 using Carbon.WebApplication.TenantManagementHandler.Services;
@@ -118,6 +119,8 @@ namespace Carbon.WebApplication
             services.Configure<SwaggerSettings>(Configuration.GetSection("Swagger"));
             services.Configure<JwtSettings>(Configuration.GetSection("JwtSettings"));
             services.AddHttpClient();
+            services.AddSwaggerGen(c =>
+              c.OperationFilter<HeaderParameterExtension>());
 
             services.AddSingleton(Configuration);
             services.AddScoped<IExternalService, ExternalService>();
