@@ -119,8 +119,6 @@ namespace Carbon.WebApplication
             services.Configure<SwaggerSettings>(Configuration.GetSection("Swagger"));
             services.Configure<JwtSettings>(Configuration.GetSection("JwtSettings"));
             services.AddHttpClient();
-            services.AddSwaggerGen(c =>
-              c.OperationFilter<HeaderParameterExtension>());
 
             services.AddSingleton(Configuration);
             services.AddScoped<IExternalService, ExternalService>();
@@ -224,6 +222,9 @@ namespace Carbon.WebApplication
 
             services.AddSwaggerGen(c =>
             {
+
+                
+                c.OperationFilter<HeaderParameterExtension>();
                 c.OperationFilter<HybridOperationFilter>();
                 c.OperationFilterDescriptors.AddRange(_filterDescriptors);
                 c.CustomSchemaIds(x => x.FullName);
