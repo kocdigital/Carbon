@@ -1,4 +1,5 @@
 ﻿using Carbon.Common;
+using Carbon.WebApplication.TenantManagementHandler.Extensions;
 using Carbon.WebApplication.TenantManagementHandler.Interfaces;
 using Carbon.WebApplication.TenantManagementHandler.Middlewares;
 using Carbon.WebApplication.TenantManagementHandler.Services;
@@ -221,6 +222,9 @@ namespace Carbon.WebApplication
 
             services.AddSwaggerGen(c =>
             {
+
+                
+                c.OperationFilter<HeaderParameterExtension>();
                 c.OperationFilter<HybridOperationFilter>();
                 c.OperationFilterDescriptors.AddRange(_filterDescriptors);
                 c.CustomSchemaIds(x => x.FullName);
