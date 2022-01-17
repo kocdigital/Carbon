@@ -13,7 +13,7 @@ namespace Carbon.WebApplication.TenantManagementHandler.Extensions
             {
                 Name = "p360-solution-id",
                 In = ParameterLocation.Header,
-                Required = true
+                Required = false
             });
 
         }
