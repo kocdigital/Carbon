@@ -2,8 +2,10 @@
 
   <PropertyGroup>
     <TargetFrameworks>net5.0;netcoreapp3.1</TargetFrameworks>
-    <Version>3.3.1</Version>
-    <Description>3.3.1
+    <Version>3.3.2</Version>
+    <Description>3.3.2
+  -Swagger Header(P360SolutonId) Added  		
+3.3.1
    - Swagger RoutePrefix added
 3.3.0
    - Cors ExposeHeaders added
