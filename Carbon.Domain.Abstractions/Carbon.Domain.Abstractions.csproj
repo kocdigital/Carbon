@@ -2,8 +2,10 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
-    <Version>1.2.2</Version>
-    <Description>Tenant Management Support Added as of 1.2.0</Description>
+    <Version>1.3.0</Version>
+    <Description>- 1.3.0
+*SoftDeleteContraint added,
+Tenant Management Support Added as of 1.2.0</Description>
   </PropertyGroup>
 
   <ItemGroup>
