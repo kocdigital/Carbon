@@ -1,4 +1,5 @@
-﻿using Carbon.Domain.Abstractions.Entities;
+﻿using Carbon.Domain.Abstractions.Attributes;
+using Carbon.Domain.Abstractions.Entities;
 
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
@@ -29,8 +30,8 @@ namespace Carbon.Domain.EntityFrameworkCore
 			navigationOps[EntityState.Deleted] = new List<(string AttributeName, Action<EntityEntry> Action)>
 			{
 				//Order of items makes sense! Be careful when changing!
-				("DoCascadeDelete", SoftDelete),
-				("SoftDeleteConstraint", SoftDeleteConstraint)
+				(nameof(DoCascadeDelete), SoftDelete),
+				(nameof(SoftDeleteConstraint), CheckSoftDeleteConstraint)
 			};
 		}
 
@@ -132,7 +133,7 @@ namespace Carbon.Domain.EntityFrameworkCore
 		///     Automatically gets called when SaveChanges or SaveChangesAsync is called.
 		/// </remarks>
 		/// <param name="relatedEntry">Related entry to be operated on. </param>
-		private void SoftDeleteConstraint(EntityEntry relatedEntry)
+		private void CheckSoftDeleteConstraint(EntityEntry relatedEntry)
 		{
 			if (relatedEntry == null)
 				return;
