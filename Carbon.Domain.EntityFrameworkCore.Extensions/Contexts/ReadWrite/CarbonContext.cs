@@ -93,7 +93,7 @@ namespace Carbon.Domain.EntityFrameworkCore
 					SetDateTimeToProperty(entry.CurrentValues, "DeletedDate");
 					SetDateTimeToProperty(entry.CurrentValues, "UpdatedDate");
 					entry.State = EntityState.Modified;
-					NavigationVisitor(entry.Navigations.Where(x => !((Microsoft.EntityFrameworkCore.Metadata.INavigation)x.Metadata).IsOnDependent).ToList(), EntityState.Deleted);
+					NavigationVisitor(entry.Navigations.ToList(), EntityState.Deleted);
 				}
 			}
 
@@ -202,7 +202,7 @@ namespace Carbon.Domain.EntityFrameworkCore
 									}
 								}
 
-								NavigationVisitor(relatedEntry.Navigations.Where(x => !((Microsoft.EntityFrameworkCore.Metadata.INavigation)x.Metadata).IsOnDependent).ToList(), visitingOperation);
+								NavigationVisitor(relatedEntry.Navigations.ToList(), visitingOperation);
 							}
 						}
 					}
@@ -223,7 +223,7 @@ namespace Carbon.Domain.EntityFrameworkCore
 								}
 							}
 
-							NavigationVisitor(relatedEntry.Navigations.Where(x => !((Microsoft.EntityFrameworkCore.Metadata.INavigation)x.Metadata).IsOnDependent).ToList(), visitingOperation);
+							NavigationVisitor(relatedEntry.Navigations.ToList(), visitingOperation);
 						}
 					}
 				}
