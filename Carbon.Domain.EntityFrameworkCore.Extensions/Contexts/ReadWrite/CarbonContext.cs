@@ -93,7 +93,7 @@ namespace Carbon.Domain.EntityFrameworkCore
 					SetDateTimeToProperty(entry.CurrentValues, "DeletedDate");
 					SetDateTimeToProperty(entry.CurrentValues, "UpdatedDate");
 					entry.State = EntityState.Modified;
-					NavigationVisitor(entry.Navigations.ToList(), EntityState.Deleted);
+					NavigationVisitor(entry.Navigations.Where(x => !((Microsoft.EntityFrameworkCore.Metadata.INavigation)x.Metadata).IsOnDependent).ToList(), EntityState.Deleted);
 				}
 			}
 
@@ -138,9 +138,9 @@ namespace Carbon.Domain.EntityFrameworkCore
 			if (relatedEntry == null)
 				return;
 
-			if ((typeof(ISoftDelete).IsAssignableFrom(relatedEntry.Entity.GetType()) & (bool)relatedEntry.CurrentValues["IsDeleted"] != true)
-				| relatedEntry.State != EntityState.Deleted)
-				throw new InvalidOperationException($"Could not continue delete operation! There is a related entity which is not deleted! Relation Entity: {nameof(relatedEntry.Entity)}");
+			if (!((typeof(ISoftDelete).IsAssignableFrom(relatedEntry.Entity.GetType()) & (bool)relatedEntry.CurrentValues["IsDeleted"] == true)
+				| relatedEntry.State == EntityState.Deleted))
+				throw new InvalidOperationException($"Could not continue delete operation! There is a related entity which is not deleted! Relation Entity: {relatedEntry.Metadata.DisplayName()}");
 		}
 
 		/// <summary>
@@ -149,19 +149,21 @@ namespace Carbon.Domain.EntityFrameworkCore
 		/// <remarks>
 		///     Automatically gets called when SaveChanges or SaveChangesAsync is called.
 		/// </remarks>
-		/// <param name="entry">Related entry to be operated on. </param>
-		private void SoftDelete(EntityEntry entry)
+		/// <param name="relatedEntry">Related entry to be operated on. </param>
+		private void SoftDelete(EntityEntry relatedEntry)
 		{
-			if (typeof(ISoftDelete).IsAssignableFrom(entry.Entity.GetType()))
+			if (relatedEntry == null)
+				return;
+			if (typeof(ISoftDelete).IsAssignableFrom(relatedEntry.Entity.GetType()))
 			{
-				entry.CurrentValues["IsDeleted"] = true;
-				SetDateTimeToProperty(entry.CurrentValues, "DeletedDate");
-				SetDateTimeToProperty(entry.CurrentValues, "UpdatedDate");
-				entry.State = EntityState.Modified;
+				relatedEntry.CurrentValues["IsDeleted"] = true;
+				SetDateTimeToProperty(relatedEntry.CurrentValues, "DeletedDate");
+				SetDateTimeToProperty(relatedEntry.CurrentValues, "UpdatedDate");
+				relatedEntry.State = EntityState.Modified;
 			}
 			else
 			{
-				entry.State = EntityState.Deleted;
+				relatedEntry.State = EntityState.Deleted;
 			}
 		}
 
@@ -175,7 +177,7 @@ namespace Carbon.Domain.EntityFrameworkCore
 		/// <param name="visitingOperation">Type of current operation</param>
 		private void NavigationVisitor(IEnumerable<NavigationEntry> entries, EntityState visitingOperation)
 		{
-			if (entries.Count() == 0 || navigationOps.ContainsKey(visitingOperation))
+			if (entries.Count() == 0 || !navigationOps.ContainsKey(visitingOperation))
 				return;
 
 			foreach (var navItem in entries)
@@ -185,6 +187,8 @@ namespace Carbon.Domain.EntityFrameworkCore
 				{
 					if (navItem is CollectionEntry collectionEntry)
 					{
+						if (collectionEntry?.CurrentValue == null && !collectionEntry.IsLoaded)
+							collectionEntry.Load();
 						if (collectionEntry?.CurrentValue != null)
 						{
 							foreach (var dependentEntry in collectionEntry.CurrentValue)
@@ -198,12 +202,14 @@ namespace Carbon.Domain.EntityFrameworkCore
 									}
 								}
 
-								NavigationVisitor(relatedEntry.Navigations.ToList(), visitingOperation);
+								NavigationVisitor(relatedEntry.Navigations.Where(x => !((Microsoft.EntityFrameworkCore.Metadata.INavigation)x.Metadata).IsOnDependent).ToList(), visitingOperation);
 							}
 						}
 					}
 					else
 					{
+						if (navItem?.CurrentValue == null && !navItem.IsLoaded)
+							navItem.Load();
 						var dependentEntry = navItem.CurrentValue;
 
 						if (dependentEntry != null)
@@ -217,7 +223,7 @@ namespace Carbon.Domain.EntityFrameworkCore
 								}
 							}
 
-							NavigationVisitor(relatedEntry.Navigations.ToList(), visitingOperation);
+							NavigationVisitor(relatedEntry.Navigations.Where(x => !((Microsoft.EntityFrameworkCore.Metadata.INavigation)x.Metadata).IsOnDependent).ToList(), visitingOperation);
 						}
 					}
 				}
