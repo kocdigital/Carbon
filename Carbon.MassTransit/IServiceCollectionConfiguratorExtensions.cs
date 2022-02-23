@@ -1,124 +1,83 @@
 ﻿using MassTransit;
 using MassTransit.Azure.ServiceBus.Core;
-using System;
-using Microsoft.Extensions.Configuration;
-using MassTransit.RabbitMqTransport;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 using MassTransit.ExtensionsDependencyInjectionIntegration;
-using Microsoft.Extensions.Diagnostics.HealthChecks;
 using MassTransit.ExtensionsDependencyInjectionIntegration.MultiBus;
 using MassTransit.MultiBus;
+using MassTransit.RabbitMqTransport;
+
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
+using Microsoft.Extensions.Diagnostics.HealthChecks;
+using Microsoft.Extensions.Hosting;
+
+using System;
 
 namespace Carbon.MassTransit
 {
-    public static class IServiceCollectionConfiguratorExtensions
-    {
-        /// <summary>
-        /// Mass Transit Add Extension Method
-        /// </summary>
-        /// <remarks>
-        /// Extension method for Service Collection to add MassTransit Hosted Service as singleton and 
-        /// mass transit with the given "MassTransit" configuration
-        /// </remarks>
-        /// <param name="services">Service Collection</param>
-        /// <param name="configurator">Configuration Action</param>
-        public static void AddMassTransitBus(this IServiceCollection services, Action<IServiceCollectionBusConfigurator> configurator)
-        {
-            services.AddSingleton<IHostedService, MassTransitHostedService>();
-            services.AddMassTransit(configurator);
-        }
+	public static class IServiceCollectionConfiguratorExtensions
+	{
+		/// <summary>
+		/// Mass Transit Add Extension Method
+		/// </summary>
+		/// <remarks>
+		/// Extension method for Service Collection to add MassTransit Hosted Service as singleton and 
+		/// mass transit with the given "MassTransit" configuration
+		/// </remarks>
+		/// <param name="services">Service Collection</param>
+		/// <param name="configurator">Configuration Action</param>
+		public static void AddMassTransitBus(this IServiceCollection services, Action<IServiceCollectionBusConfigurator> configurator)
+		{
+			services.AddSingleton<IHostedService, MassTransitHostedService>();
+			services.AddMassTransit(configurator);
+		}
 
-        /// <summary>
-        /// Adds extra MassTransit Bus
-        /// </summary>
-        /// <remarks>
-        /// Extension method for Service Collection to add extra MassTransit Bus for given Interface with the given MultiBus configuration.
-        /// </remarks>
-        /// <param name="services">Service Collection</param>
-        /// <param name="configurator">Configuration Action</param>
-        public static void AddMassTransitBus<T>(this IServiceCollection services, Action<IServiceCollectionConfigurator<T>> configurator) where T: class, IBus
-        {
-            services.TryAddSingleton<IHostedService, MassTransitHostedService>();
-            services.AddMassTransit<T>(configurator);
-        }
+		/// <summary>
+		/// Adds extra MassTransit Bus
+		/// </summary>
+		/// <remarks>
+		/// Extension method for Service Collection to add extra MassTransit Bus for given Interface with the given MultiBus configuration.
+		/// </remarks>
+		/// <param name="services">Service Collection</param>
+		/// <param name="configurator">Configuration Action</param>
+		public static void AddMassTransitBus<T>(this IServiceCollection services, Action<IServiceCollectionConfigurator<T>> configurator) where T : class, IBus
+		{
+			services.TryAddSingleton<IHostedService, MassTransitHostedService>();
+			services.AddMassTransit<T>(configurator);
+		}
 
-        /// <summary>
-        /// Rabbit MQ Add Extension Method
-        /// </summary>
-        /// <remarks>
-        /// Adds new bus to the service collection  with the given configuration parameters in "MassTransit" config item.
-        /// </remarks>
-        /// <param name="serviceCollection">Service Collection Configurator</param>
-        /// <param name="configuration">API Configuration Item with MassTransit Section</param>
-        /// <param name="configurator">Service provider's Configuration Action</param>
-        public static void AddRabbitMqBus(this IServiceCollectionBusConfigurator serviceCollection,
-                                       IConfiguration configuration, Action<IServiceProvider,
-                                       IRabbitMqBusFactoryConfigurator> configurator)
-        {
-            var massTransitSettings = configuration.GetSection("MassTransit").Get<MassTransitSettings>();
+		/// <summary>
+		/// Rabbit MQ Add Extension Method
+		/// </summary>
+		/// <remarks>
+		/// Adds new bus to the service collection  with the given configuration parameters in "MassTransit" config item.
+		/// </remarks>
+		/// <param name="serviceCollection">Service Collection Configurator</param>
+		/// <param name="configuration">API Configuration Item with MassTransit Section</param>
+		/// <param name="configurator">Service provider's Configuration Action</param>
+		public static void AddRabbitMqBus(this IServiceCollectionBusConfigurator serviceCollection,
+									   IConfiguration configuration, Action<IServiceProvider,
+									   IRabbitMqBusFactoryConfigurator> configurator)
+		{
+			var massTransitSettings = configuration.GetSection("MassTransit").Get<MassTransitSettings>();
 
-            if (massTransitSettings == null)
-                throw new ArgumentNullException(nameof(massTransitSettings));
+			if (massTransitSettings == null)
+				throw new ArgumentNullException(nameof(massTransitSettings));
 
-            if (massTransitSettings.BusType == MassTransitBusType.RabbitMQ)
-            {
-                if (massTransitSettings.RabbitMq == null)
-                    throw new ArgumentNullException(nameof(massTransitSettings.RabbitMq));
+			if (massTransitSettings.BusType == MassTransitBusType.RabbitMQ)
+			{
+				if (massTransitSettings.RabbitMq == null)
+					throw new ArgumentNullException(nameof(massTransitSettings.RabbitMq));
 
-                var busSettings = massTransitSettings.RabbitMq;
-                var host = $"rabbitmq://{busSettings.Host}:{busSettings.Port}{busSettings.VirtualHost}";
+				var busSettings = massTransitSettings.RabbitMq;
 
-                serviceCollection.AddBus(provider =>
-                {
+				serviceCollection.AddBus(cfg => busFactory(configurator, busSettings, cfg));
 
-                    return Bus.Factory.CreateUsingRabbitMq(x =>
-                    {
-                        x.Host(new Uri(host), (c) =>
-                        {
-                            if (!string.IsNullOrEmpty(busSettings.Username))
-                                c.Username(busSettings.Username);
-                            if (!string.IsNullOrEmpty(busSettings.Password))
-                                c.Password(busSettings.Password);
+				serviceCollection.Collection.AddRabbitMqBusHealthCheck($"amqp://{busSettings.Username}:{busSettings.Password}@{busSettings.Host}:{busSettings.Port}{busSettings.VirtualHost}");
+			}
+		}
 
-                            c.PublisherConfirmation = busSettings.PublisherConfirmation;
-
-                            if (busSettings.RequestedChannelMax > 0)
-                                c.RequestedChannelMax(busSettings.RequestedChannelMax);
-
-                            if (busSettings.RequestedConnectionTimeout > TimeSpan.Zero)
-                                c.RequestedConnectionTimeout(busSettings.RequestedConnectionTimeout);
-
-                            if (busSettings.Heartbeat > TimeSpan.Zero)
-                                c.Heartbeat(busSettings.Heartbeat);
-
-                            if (busSettings.Ssl)
-                            {
-                                c.UseSsl((s) =>
-                                {
-                                    s.UseCertificateAsAuthenticationIdentity = busSettings.UseClientCertificateAsAuthenticationIdentity;
-                                    s.ServerName = busSettings.SslServerName;
-                                    s.Protocol = busSettings.SslProtocol;
-                                    s.Certificate = busSettings.ClientCertificate;
-                                    s.CertificatePassphrase = busSettings.ClientCertificatePassphrase;
-                                    s.CertificatePath = busSettings.ClientCertificatePath;
-                                    s.CertificateSelectionCallback = busSettings.CertificateSelectionCallback;
-                                });
-                            }
-
-
-                        });
-
-                        configurator(provider, x);
-                    });
-                });
-
-                serviceCollection.Collection.AddRabbitMqBusHealthCheck($"amqp://{busSettings.Username}:{busSettings.Password}@{busSettings.Host}:{busSettings.Port}{busSettings.VirtualHost}");
-            }
-        }
-
-        /// <summary>
+		/// <summary>
 		/// Rabbit MQ Add Extension Method
 		/// </summary>
 		/// <remarks>
@@ -128,129 +87,166 @@ namespace Carbon.MassTransit
 		/// <param name="configuration">API Configuration Item with MassTransit Section</param>
 		/// <param name="configurator">Service provider's Configuration Action</param>
 		public static void AddRabbitMqBus<T>(this IServiceCollectionConfigurator<T> serviceCollection,
-                                       IConfiguration configuration, Action<IServiceProvider,
-                                       IRabbitMqBusFactoryConfigurator> configurator, string busName = null) where T: class, IBus
-        {
-            var massTransitSettings = configuration.GetSection("MassTransit").Get<MassTransitSettings>();
+									   IConfiguration configuration, Action<IServiceProvider,
+									   IRabbitMqBusFactoryConfigurator> configurator, string busName = null) where T : class, IBus
+		{
+			var massTransitSettings = configuration.GetSection("MassTransit").Get<MassTransitSettings>();
 
-            if (massTransitSettings == null)
-                throw new ArgumentNullException(nameof(massTransitSettings));
+			if (massTransitSettings == null)
+				throw new ArgumentNullException(nameof(massTransitSettings));
 
-            if (massTransitSettings.BusType == MassTransitBusType.RabbitMQ)
-            {
-                if (massTransitSettings.RabbitMq == null)
-                    throw new ArgumentNullException(nameof(massTransitSettings.RabbitMq));
+			if (massTransitSettings.BusType == MassTransitBusType.RabbitMQ)
+			{
+				if (massTransitSettings.RabbitMq == null)
+					throw new ArgumentNullException(nameof(massTransitSettings.RabbitMq));
 
-                var busSettings = massTransitSettings.RabbitMq;
-                var host = $"rabbitmq://{busSettings.Host}:{busSettings.Port}{busSettings.VirtualHost}";
+				var busSettings = massTransitSettings.RabbitMq;
 
-                serviceCollection.AddBus(provider =>
-                {
+				serviceCollection.AddBus(cfg => busFactory(configurator, busSettings, cfg));
 
-                    return Bus.Factory.CreateUsingRabbitMq(x =>
-                    {
-                        x.Host(new Uri(host), (c) =>
-                        {
-                            if (!string.IsNullOrEmpty(busSettings.Username))
-                                c.Username(busSettings.Username);
-                            if (!string.IsNullOrEmpty(busSettings.Password))
-                                c.Password(busSettings.Password);
+				serviceCollection.Collection.AddRabbitMqBusHealthCheck($"amqp://{busSettings.Username}:{busSettings.Password}@{busSettings.Host}:{busSettings.Port}{busSettings.VirtualHost}", name: busName);
+			}
+		}
 
-                            c.PublisherConfirmation = busSettings.PublisherConfirmation;
+		public static void AddRabbitMqBusHealthCheck(this IServiceCollection services,
+									   string host, HealthStatus failureStatus = HealthStatus.Unhealthy, string name = null)
+		{
+			services.AddHealthChecks().AddRabbitMQ(sp =>
+			{
+				var factory = new RabbitMQ.Client.ConnectionFactory()
+				{
+					Uri = new Uri(host)
+				};
+				return factory.CreateConnection();
+			}, name: name, failureStatus: failureStatus);
+		}
 
-                            if (busSettings.RequestedChannelMax > 0)
-                                c.RequestedChannelMax(busSettings.RequestedChannelMax);
+		/// <summary>
+		/// Azure Service Bus Add Extension Method
+		/// </summary>
+		/// <remarks>
+		/// Adds Azure Service Bus to the service collection given with the given configuration parameters in "MassTransit" config item.
+		/// </remarks>
+		/// <param name="serviceCollection">Service Collection Configurator</param>
+		/// <param name="configuration">API Configuration Item with MassTransit Section</param>
+		/// <param name="configurator">Service provider's Configuration Action</param>
+		public static void AddServiceBus(this IServiceCollectionBusConfigurator serviceCollection,
+									   IConfiguration configuration, Action<IServiceProvider,
+									   IServiceBusBusFactoryConfigurator> configurator)
+		{
+			var massTransitSettings = configuration.GetSection("MassTransit").Get<MassTransitSettings>();
 
-                            if (busSettings.RequestedConnectionTimeout > TimeSpan.Zero)
-                                c.RequestedConnectionTimeout(busSettings.RequestedConnectionTimeout);
+			if (massTransitSettings == null)
+				throw new ArgumentNullException(nameof(massTransitSettings));
 
-                            if (busSettings.Heartbeat > TimeSpan.Zero)
-                                c.Heartbeat(busSettings.Heartbeat);
+			if (massTransitSettings.BusType == MassTransitBusType.AzureServiceBus)
+			{
+				if (massTransitSettings.ServiceBus == null)
+					throw new ArgumentNullException(nameof(massTransitSettings.ServiceBus));
 
-                            if (busSettings.Ssl)
-                            {
-                                c.UseSsl((s) =>
-                                {
-                                    s.UseCertificateAsAuthenticationIdentity = busSettings.UseClientCertificateAsAuthenticationIdentity;
-                                    s.ServerName = busSettings.SslServerName;
-                                    s.Protocol = busSettings.SslProtocol;
-                                    s.Certificate = busSettings.ClientCertificate;
-                                    s.CertificatePassphrase = busSettings.ClientCertificatePassphrase;
-                                    s.CertificatePath = busSettings.ClientCertificatePath;
-                                    s.CertificateSelectionCallback = busSettings.CertificateSelectionCallback;
-                                });
-                            }
-                        });
-                        configurator(provider, x);
-                    });
-                });
+				serviceCollection.AddBus(cfg => serviceBusFactory(configurator, massTransitSettings, cfg));
+			}
+		}
 
-                serviceCollection.Collection.AddRabbitMqBusHealthCheck($"amqp://{busSettings.Username}:{busSettings.Password}@{busSettings.Host}:{busSettings.Port}{busSettings.VirtualHost}", name:busName);
-            }
-        }
+		/// <summary>
+		/// Azure Service Bus Add Extension Method
+		/// </summary>
+		/// <remarks>
+		/// Adds Azure Service Bus to the service collection given with the given configuration parameters in "MassTransit" config item.
+		/// </remarks>
+		/// <param name="serviceCollection">Service Collection Configurator</param>
+		/// <param name="configuration">API Configuration Item with MassTransit Section</param>
+		/// <param name="configurator">Service provider's Configuration Action</param>
+		public static void AddServiceBus<T>(this IServiceCollectionConfigurator<T> serviceCollection,
+									   IConfiguration configuration, Action<IServiceProvider,
+									   IServiceBusBusFactoryConfigurator> configurator) where T: class, IBus
+		{
+			var massTransitSettings = configuration.GetSection("MassTransit").Get<MassTransitSettings>();
 
-        public static void AddRabbitMqBusHealthCheck(this IServiceCollection services,
-                                       string host, HealthStatus failureStatus = HealthStatus.Unhealthy, string name = null)
-        {
-            services.AddHealthChecks().AddRabbitMQ(sp =>
-            {
-                var factory = new RabbitMQ.Client.ConnectionFactory()
-                {
-                    Uri = new Uri(host)
-                };
-                return factory.CreateConnection();
-            }, name: name, failureStatus: failureStatus);
-        }
+			if (massTransitSettings == null)
+				throw new ArgumentNullException(nameof(massTransitSettings));
 
-        /// <summary>
-        /// Azure Service Bus Add Extension Method
-        /// </summary>
-        /// <remarks>
-        /// Adds Azure Service Bus to the service collection given with the given configuration parameters in "MassTransit" config item.
-        /// </remarks>
-        /// <param name="serviceCollection">Service Collection Configurator</param>
-        /// <param name="configuration">API Configuration Item with MassTransit Section</param>
-        /// <param name="configurator">Service provider's Configuration Action</param>
-        public static void AddServiceBus(this IServiceCollectionBusConfigurator serviceCollection,
-                                       IConfiguration configuration, Action<IServiceProvider,
-                                       IServiceBusBusFactoryConfigurator> configurator)
-        {
-            var massTransitSettings = configuration.GetSection("MassTransit").Get<MassTransitSettings>();
+			if (massTransitSettings.BusType == MassTransitBusType.AzureServiceBus)
+			{
+				if (massTransitSettings.ServiceBus == null)
+					throw new ArgumentNullException(nameof(massTransitSettings.ServiceBus));
+				
+				serviceCollection.AddBus(cfg => serviceBusFactory(configurator, massTransitSettings, cfg));
+			}
+		}
 
-            if (massTransitSettings == null)
-                throw new ArgumentNullException(nameof(massTransitSettings));
+		private static Func<Action<IServiceProvider, IServiceBusBusFactoryConfigurator> ,
+										MassTransitSettings,
+										IBusRegistrationContext, 
+										IBusControl> serviceBusFactory = (configurator, massTransitSettings, provider) =>
+		{
+			return Bus.Factory.CreateUsingAzureServiceBus(x =>
+			{
+				var busSettings = massTransitSettings.ServiceBus;
 
-            if (massTransitSettings.BusType == MassTransitBusType.AzureServiceBus)
-            {
-                if (massTransitSettings.ServiceBus == null)
-                    throw new ArgumentNullException(nameof(massTransitSettings.ServiceBus));
+				x.Host(massTransitSettings.ServiceBus.ConnectionString, (c) =>
+				{
+					c.RetryLimit = busSettings.RetryLimit == 0 ? 1 : busSettings.RetryLimit;
 
-                serviceCollection.AddBus(provider =>
-                {
-                    return Bus.Factory.CreateUsingAzureServiceBus(x =>
-                    {
-                        var busSettings = massTransitSettings.ServiceBus;
+					if (busSettings.OperationTimeout != TimeSpan.Zero)
+						c.OperationTimeout = busSettings.OperationTimeout;
+					if (busSettings.RetryMaxBackoff != TimeSpan.Zero)
+						c.RetryMaxBackoff = busSettings.RetryMaxBackoff;
+					if (busSettings.RetryMinBackoff != TimeSpan.Zero)
+						c.RetryMinBackoff = busSettings.RetryMinBackoff;
+					if (busSettings.TokenProvider != null)
+						c.TokenProvider = busSettings.TokenProvider;
 
-                        x.Host(massTransitSettings.ServiceBus.ConnectionString, (c) =>
-                        {
-                            c.RetryLimit = busSettings.RetryLimit == 0 ? 1 : busSettings.RetryLimit;
+					c.TransportType = busSettings.TransportType;
+				});
 
-                            if (busSettings.OperationTimeout != TimeSpan.Zero)
-                                c.OperationTimeout = busSettings.OperationTimeout;
-                            if (busSettings.RetryMaxBackoff != TimeSpan.Zero)
-                                c.RetryMaxBackoff = busSettings.RetryMaxBackoff;
-                            if (busSettings.RetryMinBackoff != TimeSpan.Zero)
-                                c.RetryMinBackoff = busSettings.RetryMinBackoff;
-                            if (busSettings.TokenProvider != null)
-                                c.TokenProvider = busSettings.TokenProvider;
+				configurator(provider, x);
+			});
+		};
 
-                            c.TransportType = busSettings.TransportType;
-                        });
+		private static Func<Action<IServiceProvider, IRabbitMqBusFactoryConfigurator>,
+										RabbitMqSettings,
+										IBusRegistrationContext,
+										IBusControl> busFactory = (configurator, busSettings, provider) =>
+		{
+			var host = $"rabbitmq://{busSettings.Host}:{busSettings.Port}{busSettings.VirtualHost}";
+			return Bus.Factory.CreateUsingRabbitMq(x =>
+			{
+				x.Host(new Uri(host), (c) =>
+				{
+					if (!string.IsNullOrEmpty(busSettings.Username))
+						c.Username(busSettings.Username);
+					if (!string.IsNullOrEmpty(busSettings.Password))
+						c.Password(busSettings.Password);
 
-                        configurator(provider, x);
-                    });
-                });
-            }
-        }
-    }
+					c.PublisherConfirmation = busSettings.PublisherConfirmation;
+
+					if (busSettings.RequestedChannelMax > 0)
+						c.RequestedChannelMax(busSettings.RequestedChannelMax);
+
+					if (busSettings.RequestedConnectionTimeout > TimeSpan.Zero)
+						c.RequestedConnectionTimeout(busSettings.RequestedConnectionTimeout);
+
+					if (busSettings.Heartbeat > TimeSpan.Zero)
+						c.Heartbeat(busSettings.Heartbeat);
+
+					if (busSettings.Ssl)
+					{
+						c.UseSsl((s) =>
+						{
+							s.UseCertificateAsAuthenticationIdentity = busSettings.UseClientCertificateAsAuthenticationIdentity;
+							s.ServerName = busSettings.SslServerName;
+							s.Protocol = busSettings.SslProtocol;
+							s.Certificate = busSettings.ClientCertificate;
+							s.CertificatePassphrase = busSettings.ClientCertificatePassphrase;
+							s.CertificatePath = busSettings.ClientCertificatePath;
+							s.CertificateSelectionCallback = busSettings.CertificateSelectionCallback;
+						});
+					}
+				});
+				configurator(provider, x);
+			});
+		};
+
+	}
 }
