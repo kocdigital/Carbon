@@ -31,10 +31,10 @@ namespace Carbon.MassTransit
         }
 
         /// <summary>
-        /// Mass Transit Add Extension Method
+        /// Adds extra MassTransit Bus
         /// </summary>
         /// <remarks>
-        /// Extension method for Service Collection to add extra MassTransit Bus with given Interface with the given "MassTransit" configuration.
+        /// Extension method for Service Collection to add extra MassTransit Bus for given Interface with the given MultiBus configuration.
         /// </remarks>
         /// <param name="services">Service Collection</param>
         /// <param name="configurator">Configuration Action</param>
@@ -122,7 +122,7 @@ namespace Carbon.MassTransit
 		/// Rabbit MQ Add Extension Method
 		/// </summary>
 		/// <remarks>
-		/// Adds new bus to the service collection  with the given configuration parameters in "MassTransit" config item.
+		/// Adds new bus to the service collection with the given configuration parameters in "MassTransit" config item.
 		/// </remarks>
 		/// <param name="serviceCollection">Service Collection Configurator</param>
 		/// <param name="configuration">API Configuration Item with MassTransit Section</param>
