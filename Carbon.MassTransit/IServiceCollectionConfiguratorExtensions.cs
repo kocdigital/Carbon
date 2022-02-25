@@ -4,14 +4,17 @@ using MassTransit.ExtensionsDependencyInjectionIntegration;
 using MassTransit.ExtensionsDependencyInjectionIntegration.MultiBus;
 using MassTransit.MultiBus;
 using MassTransit.RabbitMqTransport;
+using MassTransit.Registration;
 
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
 using Microsoft.Extensions.Hosting;
 
 using System;
+using System.Linq;
+
+using MassTransitNS = MassTransit;
 
 namespace Carbon.MassTransit
 {
@@ -42,8 +45,20 @@ namespace Carbon.MassTransit
 		/// <param name="configurator">Configuration Action</param>
 		public static void AddMassTransitBus<T>(this IServiceCollection services, Action<IServiceCollectionConfigurator<T>> configurator) where T : class, IBus
 		{
-			services.TryAddSingleton<IHostedService, MassTransitHostedService>();
 			services.AddMassTransit<T>(configurator);
+
+			//HACK: Hosted service for consumers, contains bus depot
+			//BusDepot is registered as single instance and it handles multiple IBus instances so only one hosted service is enough
+			//NOTE: Composed from Masstransit source code v7.1.5, so watch out while upgrading masstansit
+			if (!services.Any(descriptor => descriptor?.ImplementationFactory?.Method?.ReturnType == typeof(MassTransitNS.AspNetCoreIntegration.MassTransitHostedService)))
+			{
+				MassTransitNS.AspNetCoreIntegration.MassTransitHostedService HostedServiceFactory(IServiceProvider provider)
+				{
+					var busDepot = provider.GetRequiredService<IBusDepot>();
+					return new MassTransitNS.AspNetCoreIntegration.MassTransitHostedService(busDepot, false);
+				}
+				services.AddHostedService(HostedServiceFactory);
+			}
 		}
 
 		/// <summary>
@@ -159,7 +174,7 @@ namespace Carbon.MassTransit
 		/// <param name="configurator">Service provider's Configuration Action</param>
 		public static void AddServiceBus<T>(this IServiceCollectionConfigurator<T> serviceCollection,
 									   IConfiguration configuration, Action<IServiceProvider,
-									   IServiceBusBusFactoryConfigurator> configurator) where T: class, IBus
+									   IServiceBusBusFactoryConfigurator> configurator) where T : class, IBus
 		{
 			var massTransitSettings = configuration.GetSection("MassTransit").Get<MassTransitSettings>();
 
@@ -170,14 +185,14 @@ namespace Carbon.MassTransit
 			{
 				if (massTransitSettings.ServiceBus == null)
 					throw new ArgumentNullException(nameof(massTransitSettings.ServiceBus));
-				
+
 				serviceCollection.AddBus(cfg => serviceBusFactory(configurator, massTransitSettings, cfg));
 			}
 		}
 
-		private static Func<Action<IServiceProvider, IServiceBusBusFactoryConfigurator> ,
+		private static Func<Action<IServiceProvider, IServiceBusBusFactoryConfigurator>,
 										MassTransitSettings,
-										IBusRegistrationContext, 
+										IBusRegistrationContext,
 										IBusControl> serviceBusFactory = (configurator, massTransitSettings, provider) =>
 		{
 			return Bus.Factory.CreateUsingAzureServiceBus(x =>
