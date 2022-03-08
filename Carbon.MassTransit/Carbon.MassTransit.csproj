@@ -2,28 +2,29 @@
 
 	<PropertyGroup>
 		<TargetFramework>netstandard2.0</TargetFramework>
-		<Version>3.0.4</Version>
-		<AssemblyVersion>3.0.4</AssemblyVersion>
-		<Description>3.0.4
-			-Health Check with IConnection
-			3.0.3
-			-Buggy Rabbitmq healthcheck removed temporarily, will be fixed in a later version
-			3.0.2
-			-Added Health Check
-			3.0.1
-			-Recovered the port settings feature from 2.0.8
-			3.0.0
-			-MassTransit 7.1.5 support added
-			2.1.0
-			-MassTransit 6.3.1 support added. Use this version, if MassTransit 6.3.1 required in your project.
-			2.0.8
-			-Port Issue fixed (RabbitMQ started using the port number in settings.)
-			2.0.7
-			-Prefetch Count Added
-
-			-
-		</Description>
-		<FileVersion>3.0.3</FileVersion>
+		<Version>3.1.1</Version>
+		<Description>3.1.1
+      - MultiBus Hosted Service registration fixed
+      3.1.0
+      - MultiBus Support Added
+      3.0.4
+      -Health Check with IConnection
+      3.0.3
+      -Buggy Rabbitmq healthcheck removed temporarily, will be fixed in a later version
+      3.0.2
+      -Added Health Check
+      3.0.1
+      -Recovered the port settings feature from 2.0.8
+      3.0.0
+      -MassTransit 7.1.5 support added
+      2.1.0
+      -MassTransit 6.3.1 support added. Use this version, if MassTransit 6.3.1 required in your project.
+      2.0.8
+      -Port Issue fixed (RabbitMQ started using the port number in settings.)
+      2.0.7
+      -Prefetch Count Added
+      -
+</Description>
 	</PropertyGroup>
 
 	<ItemGroup>

@@ -106,16 +106,13 @@ namespace Carbon.WebApplication.Grpc
 			Console.WriteLine("Carbon starting with .Net 5.0 with GRPC");
 			services.AddGrpc(options =>
 			{
-				options.Interceptors.Add<CarbonTenantIdInterceptor>();
+				options.Interceptors.Add<CarbonRequestDtoInterceptor>();
 				foreach (var interceptor in _interceptors)
 				{
 					options.Interceptors.Add(interceptor);
 				}
 			});
-			if (_useAuthorization)
-			{
-				services.AddAuthorization();
-			}
+			
 			services.AddHeaderPropagation();
 
 			services.AddOptions();
@@ -172,8 +169,12 @@ namespace Carbon.WebApplication.Grpc
 
 			}
 
-			#endregion
 
+			#endregion
+			if (_useAuthorization)
+			{
+				services.AddAuthorization();
+			}
 
 			services.AddHealthChecks();
 
@@ -200,7 +201,12 @@ namespace Carbon.WebApplication.Grpc
 			app.UseRouting();
 
 			CustomConfigure(app, env);
-			app.UseGrpcWeb();
+
+			if (_corsPolicySettings != null && (_corsPolicySettings.AllowAnyOrigin || (_corsPolicySettings.Origins != null && _corsPolicySettings.Origins.Count > 0)))
+			{
+				app.UseCors(MyAllowSpecificOrigins);
+			}
+
 			if (_useAuthentication)
 			{
 				app.UseAuthentication();
@@ -210,10 +216,9 @@ namespace Carbon.WebApplication.Grpc
 				app.UseAuthorization();
 			}
 
-			if (_corsPolicySettings != null && (_corsPolicySettings.AllowAnyOrigin || (_corsPolicySettings.Origins != null && _corsPolicySettings.Origins.Count > 0)))
-			{
-				app.UseCors(MyAllowSpecificOrigins);
-			}
+			app.UseGrpcWeb();
+
+
 
 			app.UseEndpoints(endpoints =>
 			{

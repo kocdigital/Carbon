@@ -1,9 +1,6 @@
 ﻿using Carbon.Domain.Abstractions.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Carbon.Domain.EntityFrameworkCore
 {
@@ -23,7 +20,7 @@ namespace Carbon.Domain.EntityFrameworkCore
             builder.Property(x => x.SolutionId)
                    .IsRequired(true);
 
-            builder.HasIndex(k => new { k.EntityCode, k.EntityId, k.IsDeleted }).HasFilter("[IsDeleted] = 0");
+            builder.HasIndex(k => new { k.EntityCode, k.EntityId, k.IsDeleted });
         }
     }
 }

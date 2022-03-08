@@ -8,6 +8,7 @@ namespace Carbon.WebApplication.TenantManagementHandler.Interfaces
 {
     public interface IRoleFilteredDto : IOwnershipFilteredDto
     {
-        bool ValidateFilter(List<PermissionDetailedDto> permissionDetailedDtos);
+        bool ValidateFilter(List<PermissionDetailedDto> permissionDetailedDtos, bool throwExceptionOnInvalid = false);
+        bool ValidateFilter(bool throwExceptionOnInvalid = false);
     }
 }
