@@ -2,9 +2,11 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
-    <Version>1.1.5</Version>
-    <FileVersion>1.1.5.0</FileVersion>
-    <Description>1.1.5
+    <Version>1.2.0</Version>
+    <FileVersion>1.2.0.0</FileVersion>
+    <Description>1.2.0
+CarbonValidator moved to CarbonWebApplication and FluentValidation dependency removed
+1.1.5
 Exception Messages Added
       1.1.4
       -Json serialize object reference loop handling ignore.
@@ -12,7 +14,6 @@ Exception Messages Added
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="FluentValidation.AspNetCore" Version="8.6.1" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
   </ItemGroup>
 

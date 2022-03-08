@@ -2,6 +2,7 @@
 
 using Carbon.Common;
 using Carbon.Common.TenantManagementHandler.Classes;
+using Carbon.WebApplication.TenantManagementHandler.Extensions;
 using Carbon.WebApplication.TenantManagementHandler.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -47,7 +48,25 @@ namespace Carbon.WebApplication
         public Guid OrganizationId { get; set; }
         public OwnerType OwnerType { get; set; }
 
-        public bool ValidateFilter(List<PermissionDetailedDto> permissionDetailedDtos)
+        public bool ValidateFilter(List<PermissionDetailedDto> permissionDetailedDtos, bool throwExceptionOnInvalid = false)
+        {
+            var permittedByBusinessLogic = runBusinessLogic(permissionDetailedDtos);
+            if (throwExceptionOnInvalid && !permittedByBusinessLogic)
+                throw new ExceptionHandling.Abstractions.ForbiddenOperationException();
+            else
+                return permittedByBusinessLogic;
+        }
+
+        public bool ValidateFilter(bool throwExceptionOnInvalid = false)
+        {
+            var permittedByBusinessLogic = runBusinessLogic(RoleExtensions.GetPermissions());
+            if (throwExceptionOnInvalid && !permittedByBusinessLogic)
+                throw new ExceptionHandling.Abstractions.ForbiddenOperationException();
+            else
+                return permittedByBusinessLogic;
+        }
+
+        private bool runBusinessLogic(List<PermissionDetailedDto> permissionDetailedDtos)
         {
             bool permitted = false;
             if (this.OwnerType == OwnerType.CustomerBased || permissionDetailedDtos == null)

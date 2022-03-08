@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>netstandard2.1</TargetFramework>
+		<Version>1.0.1</Version>
+		<AssemblyVersion>1.0.1</AssemblyVersion>
+		<Description></Description>
+		<FileVersion>1.0.1</FileVersion>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="IdentityModel" Version="4.0.0" />
+		<PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
+		<PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="3.1.12" />
+		<PackageReference Include="Microsoft.Extensions.Http" Version="3.1.12" />
+	</ItemGroup>
+
+</Project>

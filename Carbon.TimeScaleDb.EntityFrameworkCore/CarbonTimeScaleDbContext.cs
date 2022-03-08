@@ -1,4 +1,5 @@
-﻿using Carbon.Domain.Abstractions.Entities;
+﻿using Carbon.Domain.Abstractions.Attributes;
+using Carbon.Domain.Abstractions.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using System;
@@ -7,22 +8,26 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Carbon.Domain.EntityFrameworkCore
+namespace Carbon.TimeScaleDb.EntityFrameworkCore
 {
     /// <summary>
     ///     A carbon wrapper class for database context objects.
     /// </summary>
     /// <typeparam name="TContext"> A database context object to be wrapped. </typeparam>
-    public class CarbonContext<TContext> : DbContext where TContext : DbContext
+    public class CarbonTimeScaleDbContext<TContext> : DbContext where TContext : DbContext
     {
         /// <summary>
         ///     Constructor that initializes the CarbonContext with the given options for database context
         /// </summary>
         /// <param name="options"> Options for DbContext constructor </param>
-        public CarbonContext(DbContextOptions options) : base(options)
+        public CarbonTimeScaleDbContext(DbContextOptions options) : base(options)
         {
 
         }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+             => optionsBuilder
+        .UseNpgsql().UseLowerCaseNamingConvention(System.Globalization.CultureInfo.InvariantCulture);
 
         /// <summary>
         ///     Saves all changes made in this context to the database.
@@ -77,9 +82,9 @@ namespace Carbon.Domain.EntityFrameworkCore
             {
                 if (entry.State == EntityState.Deleted)
                 {
-                    entry.CurrentValues["IsDeleted"] = true;
-                    SetDateTimeToProperty(entry.CurrentValues, "DeletedDate");
-                    SetDateTimeToProperty(entry.CurrentValues, "UpdatedDate");
+                    entry.CurrentValues[nameof(ISoftDelete.IsDeleted)] = true;
+                    SetDateTimeToProperty(entry.CurrentValues, nameof(IDeleteAuditing.DeletedDate));
+                    SetDateTimeToProperty(entry.CurrentValues, nameof(IUpdateAuditing.UpdatedDate));
                     entry.State = EntityState.Modified;
                     CascadeSoftDelete(entry.Navigations.ToList());
                 }
@@ -90,8 +95,8 @@ namespace Carbon.Domain.EntityFrameworkCore
                 if (entry.State == EntityState.Deleted)
                 {
                     var obj = entry.CurrentValues;
-                    entry.CurrentValues["DeletedDate"] = DateTime.UtcNow;
-                    SetDateTimeToProperty(entry.CurrentValues, "UpdatedDate");
+                    entry.CurrentValues[nameof(IDeleteAuditing.DeletedDate)] = DateTime.UtcNow;
+                    SetDateTimeToProperty(entry.CurrentValues, nameof(IUpdateAuditing.UpdatedDate));
                 }
             }
 
@@ -99,8 +104,8 @@ namespace Carbon.Domain.EntityFrameworkCore
             {
                 if (entry.State == EntityState.Added)
                 {
-                    entry.CurrentValues["InsertedDate"] = DateTime.UtcNow;
-                    SetDateTimeToProperty(entry.CurrentValues, "UpdatedDate");
+                    entry.CurrentValues[nameof(IInsertAuditing.InsertedDate)] = DateTime.UtcNow;
+                    SetDateTimeToProperty(entry.CurrentValues, nameof(IUpdateAuditing.UpdatedDate));
                 }
             }
 
@@ -108,7 +113,7 @@ namespace Carbon.Domain.EntityFrameworkCore
             {
                 if (entry.State == EntityState.Modified)
                 {
-                    entry.CurrentValues["UpdatedDate"] = DateTime.UtcNow;
+                    entry.CurrentValues[nameof(IUpdateAuditing.UpdatedDate)] = DateTime.UtcNow;
                 }
             }
 
@@ -128,7 +133,7 @@ namespace Carbon.Domain.EntityFrameworkCore
 
             foreach (var navItem in entries)
             {
-                if (navItem.Metadata.PropertyInfo.CustomAttributes.Any(x => x.AttributeType.Name == "DoCascadeDelete"))
+                if (navItem.Metadata.PropertyInfo.CustomAttributes.Any(x => x.AttributeType.Name == nameof(DoCascadeDelete)))
                 {
                     if (navItem is CollectionEntry collectionEntry)
                     {
@@ -140,9 +145,9 @@ namespace Carbon.Domain.EntityFrameworkCore
 
                                 if (typeof(ISoftDelete).IsAssignableFrom(relatedEntry.Entity.GetType()))
                                 {
-                                    relatedEntry.CurrentValues["IsDeleted"] = true;
-                                    SetDateTimeToProperty(relatedEntry.CurrentValues, "DeletedDate");
-                                    SetDateTimeToProperty(relatedEntry.CurrentValues, "UpdatedDate");
+                                    relatedEntry.CurrentValues[nameof(ISoftDelete.IsDeleted)] = true;
+                                    SetDateTimeToProperty(relatedEntry.CurrentValues, nameof(IDeleteAuditing.DeletedDate));
+                                    SetDateTimeToProperty(relatedEntry.CurrentValues, nameof(IUpdateAuditing.UpdatedDate));
                                     relatedEntry.State = EntityState.Modified;
                                 }
                                 else
@@ -164,9 +169,9 @@ namespace Carbon.Domain.EntityFrameworkCore
 
                             if (typeof(ISoftDelete).IsAssignableFrom(relatedEntry.Entity.GetType()))
                             {
-                                relatedEntry.CurrentValues["IsDeleted"] = true;
-                                SetDateTimeToProperty(relatedEntry.CurrentValues, "DeletedDate");
-                                SetDateTimeToProperty(relatedEntry.CurrentValues, "UpdatedDate");
+                                relatedEntry.CurrentValues[nameof(ISoftDelete.IsDeleted)] = true;
+                                SetDateTimeToProperty(relatedEntry.CurrentValues, nameof(IDeleteAuditing.DeletedDate));
+                                SetDateTimeToProperty(relatedEntry.CurrentValues, nameof(IUpdateAuditing.UpdatedDate));
                                 relatedEntry.State = EntityState.Modified;
                             }
                             else

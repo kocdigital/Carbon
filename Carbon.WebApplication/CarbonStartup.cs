@@ -1,4 +1,5 @@
 ﻿using Carbon.Common;
+using Carbon.WebApplication.TenantManagementHandler.Extensions;
 using Carbon.WebApplication.TenantManagementHandler.Interfaces;
 using Carbon.WebApplication.TenantManagementHandler.Middlewares;
 using Carbon.WebApplication.TenantManagementHandler.Services;
@@ -163,6 +164,18 @@ namespace Carbon.WebApplication
                             {
                                 builder = builder.AllowAnyHeader();
                             }
+                            if (_corsPolicySettings.ExposePaginationHeaders)
+                            {
+                                builder = builder.WithExposedHeaders(
+                                    "X-Paging-PageIndex",
+                                    "X-Paging-PageSize",
+                                    "X-Paging-PageCount",
+                                    "X-Paging-TotalRecordCount",
+                                    "X-Paging-Previous-Link",
+                                    "X-Paging-Next-Link",
+                                    "X-CorrelationId"
+                                    );
+                            }
                         });
                 });
 
@@ -209,6 +222,9 @@ namespace Carbon.WebApplication
 
             services.AddSwaggerGen(c =>
             {
+
+                
+                c.OperationFilter<HeaderParameterExtension>();
                 c.OperationFilter<HybridOperationFilter>();
                 c.OperationFilterDescriptors.AddRange(_filterDescriptors);
                 c.CustomSchemaIds(x => x.FullName);
@@ -266,7 +282,7 @@ namespace Carbon.WebApplication
             app.UseSwaggerUI(c =>
             {
                 c.OAuth2RedirectUrl($"{_swaggerSettings.EndpointUrl}/swagger/oauth2-redirect.html");
-                c.SwaggerEndpoint(_swaggerSettings.EndpointPath, _swaggerSettings.EndpointName);
+                c.SwaggerEndpoint(_swaggerSettings.RoutePrefix + _swaggerSettings.EndpointPath, _swaggerSettings.EndpointName);
             });
 
             if (env.IsDevelopment())

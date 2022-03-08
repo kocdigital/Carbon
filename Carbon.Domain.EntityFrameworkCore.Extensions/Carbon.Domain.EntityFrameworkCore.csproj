@@ -3,8 +3,25 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
     <LangVersion>8.0</LangVersion>
-    <Version>2.1.0</Version>
-    <Description>-2.1.0
+    <Version>2.5.0</Version>
+    <Description>- 2.5.0
+*SoftDeleteConstraint which checks entity relations on soft delete, added
+- 2.4.1
+*Removed unnecessary and problematical usings
+-2.4.0
+*Read-Only Context and Repository support added in order to implement CQRS over replicated SQL servers
+
+-2.3.8
+*Some performance improvements on Tenant Management EF Extensions and bug fixes
+-2.3.0
+*IEnumerable extensions added for Tenant Management EF Extensions
+-2.2.0
+*EFTenantManagetTenantRepository Added for ITenantRepository supported repos
+
+-2.1.1
+*FilteredIndex Error on EntitySolutionRelation in PostgreSQL mitigated
+
+-2.1.0
 * Compatible with Carbon.WebApplication Goduser feature
 
 -2.0.0
