@@ -74,7 +74,7 @@ namespace Carbon.Quartz
                                                      .ForJob(job)
                                                      .WithIdentity(jobName + "_trigger")
                                                      .StartNow()
-                                                     .WithSimpleSchedule(z => z.WithIntervalInSeconds(secondsInterval).RepeatForever().WithMisfireHandlingInstructionIgnoreMisfires())
+                                                     .WithSimpleSchedule(z => z.WithIntervalInSeconds(secondsInterval).RepeatForever().WithMisfireHandlingInstructionNextWithRemainingCount())
                                                      .Build();
 
                 if (existingTrigger != null)
