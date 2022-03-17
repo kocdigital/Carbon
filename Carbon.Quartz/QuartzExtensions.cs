@@ -9,7 +9,7 @@ namespace Carbon.Quartz
         {
             try
             {
-                var data = context.JobDetail.JobDataMap.Get("data");
+                var data = context.JobDetail.JobDataMap.Get(QuartzConstants.DefaultData);
                 if (data != null)
                 {
                     var myConfig = JsonConvert.DeserializeObject<T>(data.ToString());
