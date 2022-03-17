@@ -17,7 +17,10 @@ namespace Carbon.Quartz
         {
 
         }
-
+        /// <summary>
+        /// use SetSchedulerId method first identically same with your schedulername you gave in AddQuartzScheduler
+        /// </summary>
+        /// <param name="Id"></param>
         public void SetSchedulerId(string Id)
         {
             _schedulerId = Id;
@@ -41,6 +44,15 @@ namespace Carbon.Quartz
             }
         }
 
+        /// <summary>
+        /// Adds a clusterable and persistable basic job to your scheduler. Before using this method, if your scheduler is persistable, then use SetSchedulerId method first identically same with your schedulername you gave in AddQuartzScheduler
+        /// </summary>
+        /// <typeparam name="TJob">You need to create a new job that inherits from IJob so that your job will be executed with the given second intervals</typeparam>
+        /// <param name="jobName">Give a name to your job</param>
+        /// <param name="jobData">Pass a data to use it in your execute context, if you don't have, pass string empty</param>
+        /// <param name="secondsInterval">Tick time as second</param>
+        /// <returns></returns>
+        /// <exception cref="Exception"></exception>
         public async Task AddAndStartClusterableBasicJob<TJob>(string jobName, object jobData, int secondsInterval)
             where TJob : IJob
         {
