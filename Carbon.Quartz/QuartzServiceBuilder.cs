@@ -25,7 +25,7 @@ namespace Carbon.Quartz
             services.AddQuartz(q =>
             {
                 // handy when part of cluster or you want to otherwise identify multiple schedulers
-                q.SchedulerId = "AUTO";
+                q.SchedulerId = QuartzConstants.SchedulerAutoId;
                 // as of 3.3.2 this also injects scoped services (like EF DbContext) without problems
                 q.UseMicrosoftDependencyInjectionJobFactory();
                 q.UseDefaultThreadPool(x => x.MaxConcurrency = maxConcurrency);
@@ -36,21 +36,21 @@ namespace Carbon.Quartz
                 }
                 else
                 {
-                    var connString = configuration.GetSection("Quartz").GetConnectionString("DefaultConnection");
-                    var target = configuration.GetSection("Quartz").GetConnectionString("ConnectionTarget");
+                    var connString = configuration.GetSection(QuartzConstants.Quartz).GetConnectionString(QuartzConstants.DefaultConnection);
+                    var target = configuration.GetSection(QuartzConstants.Quartz).GetConnectionString(QuartzConstants.ConnectionTarget);
                     q.UsePersistentStore(s =>
                     {
                         s.UseProperties = true;
                         s.RetryInterval = TimeSpan.FromSeconds(15);
                         s.UseJsonSerializer();
-                        if (target == "PostgreSQL")
+                        if (target == QuartzConstants.PostgreSQL)
                         {
                             s.UsePostgres(sqlServer =>
                             {
                                 sqlServer.ConnectionString = connString;
                             });
                         }
-                        else if (target == "MSSQL")
+                        else if (target == QuartzConstants.MSSQL)
                         {
                             s.UseSqlServer(sqlServer =>
                             {

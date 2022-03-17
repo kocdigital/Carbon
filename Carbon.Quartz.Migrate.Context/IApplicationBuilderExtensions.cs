@@ -44,18 +44,18 @@ namespace Carbon.Quartz.Migrate.Context.Extensions
         {
             Console.WriteLine("Adding Quartz Context...");
 
-            var connectionString = configuration.GetSection("Quartz").GetConnectionString("DefaultConnection");
-            var target = configuration.GetSection("Quartz").GetConnectionString("ConnectionTarget");
+            var connectionString = configuration.GetSection(QuartzContextConstants.Quartz).GetConnectionString(QuartzContextConstants.DefaultConnection);
+            var target = configuration.GetSection(QuartzContextConstants.Quartz).GetConnectionString(QuartzContextConstants.ConnectionTarget);
 
             var migrationsAssembly = "Carbon.Quartz.Migrate." + target;
             string path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
 
             switch (target.ToLower())
             {
-                case "postgresql":
+                case QuartzContextConstants.PostgreSQLLowerCase:
                     services.AddDbContext<TContext>(options => options.UseNpgsql(connectionString, sql => sql.MigrationsAssembly(migrationsAssembly)));
                     break;
-                case "mssql":
+                case QuartzContextConstants.MSSQLLowerCase:
                     services.AddDbContext<TContext>(options => options.UseSqlServer(connectionString, sql => sql.MigrationsAssembly(migrationsAssembly)));
                     break;
                 default:

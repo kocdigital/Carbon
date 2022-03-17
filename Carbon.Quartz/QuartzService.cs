@@ -49,7 +49,7 @@ namespace Carbon.Quartz
                 _scheduler = await getRelatedScheduler();
                 var configData = JsonConvert.SerializeObject(jobData);
                 IJobDetail job = JobBuilder.Create<TJob>()
-                                          .UsingJobData("data", configData)
+                                          .UsingJobData(QuartzConstants.DefaultData, configData)
                                           .StoreDurably()
                                           .WithIdentity(jobName)
                                           .Build();
