@@ -100,6 +100,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Carbon.Quartz.Migrate.Postg
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Carbon.Quartz.Migrate.Context", "Carbon.Quartz.Migrate.Context\Carbon.Quartz.Migrate.Context.csproj", "{0971E433-6A35-456F-B456-8D3F1046FC8D}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Carbon.Quartz", "Carbon.Quartz\Carbon.Quartz.csproj", "{BA4FCE43-E9CC-44B6-B7DD-D70C35BBD69D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -274,6 +276,10 @@ Global
 		{0971E433-6A35-456F-B456-8D3F1046FC8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0971E433-6A35-456F-B456-8D3F1046FC8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0971E433-6A35-456F-B456-8D3F1046FC8D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BA4FCE43-E9CC-44B6-B7DD-D70C35BBD69D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BA4FCE43-E9CC-44B6-B7DD-D70C35BBD69D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BA4FCE43-E9CC-44B6-B7DD-D70C35BBD69D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BA4FCE43-E9CC-44B6-B7DD-D70C35BBD69D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
