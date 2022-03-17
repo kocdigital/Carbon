@@ -5,6 +5,12 @@ namespace Carbon.Quartz
 {
     public static class QuartzExtensions
     {
+        /// <summary>
+        /// Collect your default data from context that you have already passed in AddAndStartClusterableBasicJob
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="context"></param>
+        /// <returns></returns>
         public static T GetDefaultData<T>(this IJobExecutionContext context) where T : class
         {
             try

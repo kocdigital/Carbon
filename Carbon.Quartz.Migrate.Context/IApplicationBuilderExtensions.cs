@@ -18,28 +18,25 @@ namespace Carbon.Quartz.Migrate.Context.Extensions
     public static class IApplicationBuilderExtensions
     {
         /// <summary>
-        /// Migrates your database with related to the configurations in AddDatabaseContext method
+        /// Migrates your Quartz Auto-Migrations (Postgre and MSSQL supported)
         /// </summary>
-        /// <typeparam name="TContext">Your Database Context</typeparam>
         /// <param name="app"></param>
-        public static void MigrateQuartz<TContext>(this IApplicationBuilder app) where TContext : DbContext
+        public static void MigrateQuartz(this IApplicationBuilder app)
         {
             using (var serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
             {
-                var context = serviceScope.ServiceProvider.GetRequiredService<TContext>();
+                var context = serviceScope.ServiceProvider.GetRequiredService<QuartzMigrationContext>();
                 context.Database.Migrate();
             }
         }
 
         /// <summary>
-        /// Manages Multi EF Target Database Context and Discovers Desired Related Migration Assembly 
+        /// Manages Quartz Auto-Migrations as Multi Target. Use this if you are using quartz as persisted. 
         /// </summary>
-        /// <typeparam name="TContext">Your Database Context</typeparam>
         /// <typeparam name="TStartup">Your Startup Class</typeparam>
         /// <param name="services"></param>
         /// <param name="configuration"></param>
-        public static void AddQuartzContext<TContext, TStartup>(this IServiceCollection services, IConfiguration configuration)
-            where TContext : DbContext
+        public static void AddQuartzContext<TStartup>(this IServiceCollection services, IConfiguration configuration)
             where TStartup : class
         {
             Console.WriteLine("Adding Quartz Context...");
@@ -53,10 +50,10 @@ namespace Carbon.Quartz.Migrate.Context.Extensions
             switch (target.ToLower())
             {
                 case QuartzContextConstants.PostgreSQLLowerCase:
-                    services.AddDbContext<TContext>(options => options.UseNpgsql(connectionString, sql => sql.MigrationsAssembly(migrationsAssembly)));
+                    services.AddDbContext<QuartzMigrationContext>(options => options.UseNpgsql(connectionString, sql => sql.MigrationsAssembly(migrationsAssembly)));
                     break;
                 case QuartzContextConstants.MSSQLLowerCase:
-                    services.AddDbContext<TContext>(options => options.UseSqlServer(connectionString, sql => sql.MigrationsAssembly(migrationsAssembly)));
+                    services.AddDbContext<QuartzMigrationContext>(options => options.UseSqlServer(connectionString, sql => sql.MigrationsAssembly(migrationsAssembly)));
                     break;
                 default:
                     throw new Exception("No Valid Connection Target Found");
