@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.29418.71
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32210.238
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Carbon.Domain.Abstractions", "Carbon.Domain.Abstractions\Carbon.Domain.Abstractions.csproj", "{1353BC6E-5373-4E94-A1B4-A825D79EF2BA}"
 EndProject
@@ -93,6 +93,14 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Carbon.TimeScaleDb.EntityFrameworkCore", "Carbon.TimeScaleDb.EntityFrameworkCore\Carbon.TimeScaleDb.EntityFrameworkCore.csproj", "{5CE49E3E-D32F-4840-A28B-F99025D3EB88}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Carbon.TimeSeriesDb.Abstractions", "Carbon.TimeSeriesDb.Abstractions\Carbon.TimeSeriesDb.Abstractions.csproj", "{840E295B-7466-4368-9FE9-89008A5D1A8E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Carbon.Quartz.Migrate.MSSQL", "Carbon.Quartz.Migrate.MSSQL\Carbon.Quartz.Migrate.MSSQL.csproj", "{8888A9E8-9513-4654-89FA-11C71BC23F93}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Carbon.Quartz.Migrate.PostgreSQL", "Carbon.Quartz.Migrate.PostgreSQL\Carbon.Quartz.Migrate.PostgreSQL.csproj", "{746E5F87-AF61-4DA5-B58C-76E038042831}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Carbon.Quartz.Migrate.Context", "Carbon.Quartz.Migrate.Context\Carbon.Quartz.Migrate.Context.csproj", "{0971E433-6A35-456F-B456-8D3F1046FC8D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Carbon.Quartz", "Carbon.Quartz\Carbon.Quartz.csproj", "{BA4FCE43-E9CC-44B6-B7DD-D70C35BBD69D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -256,6 +264,22 @@ Global
 		{840E295B-7466-4368-9FE9-89008A5D1A8E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{840E295B-7466-4368-9FE9-89008A5D1A8E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{840E295B-7466-4368-9FE9-89008A5D1A8E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8888A9E8-9513-4654-89FA-11C71BC23F93}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8888A9E8-9513-4654-89FA-11C71BC23F93}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8888A9E8-9513-4654-89FA-11C71BC23F93}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8888A9E8-9513-4654-89FA-11C71BC23F93}.Release|Any CPU.Build.0 = Release|Any CPU
+		{746E5F87-AF61-4DA5-B58C-76E038042831}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{746E5F87-AF61-4DA5-B58C-76E038042831}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{746E5F87-AF61-4DA5-B58C-76E038042831}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{746E5F87-AF61-4DA5-B58C-76E038042831}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0971E433-6A35-456F-B456-8D3F1046FC8D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0971E433-6A35-456F-B456-8D3F1046FC8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0971E433-6A35-456F-B456-8D3F1046FC8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0971E433-6A35-456F-B456-8D3F1046FC8D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BA4FCE43-E9CC-44B6-B7DD-D70C35BBD69D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BA4FCE43-E9CC-44B6-B7DD-D70C35BBD69D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BA4FCE43-E9CC-44B6-B7DD-D70C35BBD69D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BA4FCE43-E9CC-44B6-B7DD-D70C35BBD69D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
