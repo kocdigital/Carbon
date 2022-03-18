@@ -5,6 +5,7 @@
     <OutputPath>..\Platform360.ModelManager.API\bin\$(Configuration)\</OutputPath>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <Version>1.0.0</Version>
+    <Description>Quartz MSSQL Persistency auto migrator</Description>
   </PropertyGroup>
 
   <ItemGroup>
