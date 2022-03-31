@@ -44,7 +44,7 @@ namespace Carbon.WebApplication.TenantManagementHandler.Extensions
         /// <returns></returns>
         public static string GetUserName(this System.Security.Claims.ClaimsPrincipal user)
         {
-            return user.Claims?.Where(k => k.Type.Contains("name"))?.FirstOrDefault()?.Value ?? GetUserFullName(user) ?? user.Identity?.Name;
+            return user.Claims?.FirstOrDefault(k => k.Type == "name")?.Value ?? GetUserFullName(user) ?? user.Identity?.Name;
         }
 
         /// <summary>
