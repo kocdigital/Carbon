@@ -36,6 +36,17 @@ namespace Carbon.WebApplication.TenantManagementHandler.Extensions
             return user.Claims?.Where(k => k.Type.Contains("fullname"))?.FirstOrDefault()?.Value;
         }
 
+
+        /// <summary>
+        /// Retrieve User Name Claim from Token
+        /// </summary>
+        /// <param name="user"></param>
+        /// <returns></returns>
+        public static string GetUserName(this System.Security.Claims.ClaimsPrincipal user)
+        {
+            return user.Claims?.FirstOrDefault(k => k.Type == "name")?.Value ?? GetUserFullName(user) ?? user.Identity?.Name;
+        }
+
         /// <summary>
         /// Retrieve TenantId claim from Token
         /// </summary>
