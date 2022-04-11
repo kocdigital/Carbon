@@ -18,7 +18,7 @@ namespace Carbon.WebApplication.TenantManagementHandler.Extensions
                 Required = false
             });
 
-            if (!operation.Parameters.Where(k => k.Name.ToLower() == "tenantid" || k.Name.ToLower() == "tenant-id").Any())
+            if (!operation.Parameters.Where(k => k.Name.ToLower() == "tenantid" && k.Name.ToLower() == "tenant-id").Any())
             {
                 operation.Parameters.Add(new OpenApiParameter()
                 {
