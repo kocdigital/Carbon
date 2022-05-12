@@ -2,7 +2,6 @@
 
   <PropertyGroup>
     <TargetFrameworks>net5.0;netcoreapp3.1</TargetFrameworks>
-    <OutputPath>..\Platform360.ModelManager.API\bin\$(Configuration)\</OutputPath>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <Version>1.1.0</Version>
     <GenerateDocumentationFile>False</GenerateDocumentationFile>
