@@ -18,10 +18,10 @@ Supports Masstransit 7.1.x and Carbon.MassTransit 3.0.2
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Carbon.MassTransit" Version="3.0.4" />
+    <PackageReference Include="Carbon.MassTransit" Version="3.1.1" />
     <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="3.1.12" />
-    <PackageReference Include="Platform360.Domain.Messages" Version="1.5.8" />
+    <PackageReference Include="Carbon.Domain.Messages" Version="1.8.0" />
     <PackageReference Include="System.Runtime.Loader" Version="4.3.0" />
   </ItemGroup>
 
