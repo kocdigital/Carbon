@@ -39,61 +39,61 @@ namespace Carbon.MassTransit.UnitTests
         }
 
 
-        [Fact]
-        public void AddMassTransitBusTo_Successfully_ServiceCollection()
-        {
-            // Arrange
-            // Act
+        //[Fact]
+        //public void AddMassTransitBusTo_Successfully_ServiceCollection()
+        //{
+        //    // Arrange
+        //    // Act
 
-            var serviceCollectionWrapper = new ServiceCollectionConfiguratorExtensionsWrapper();
-            serviceCollectionWrapper.AddMassTransitBus(_serviceCollectionMock.Object, _serviceCollectionConfiguratorMock.Object);
+        //    var serviceCollectionWrapper = new ServiceCollectionConfiguratorExtensionsWrapper();
+        //    serviceCollectionWrapper.AddMassTransitBus(_serviceCollectionMock.Object, _serviceCollectionConfiguratorMock.Object);
 
-            // Assert      
-            _serviceCollectionMock.Verify(serviceCollection => serviceCollection.Add(
-                    It.Is<ServiceDescriptor>(serviceDescriptor => serviceDescriptor.ServiceType == typeof(IHostedService)
-                    && serviceDescriptor.ImplementationType == typeof(MassTransitHostedService) && serviceDescriptor.Lifetime == ServiceLifetime.Singleton)));
-        }
+        //    // Assert      
+        //    _serviceCollectionMock.Verify(serviceCollection => serviceCollection.Add(
+        //            It.Is<ServiceDescriptor>(serviceDescriptor => serviceDescriptor.ServiceType == typeof(IHostedService)
+        //            && serviceDescriptor.ImplementationType == typeof(MassTransitHostedService) && serviceDescriptor.Lifetime == ServiceLifetime.Singleton)));
+        //}
 
-        [Fact]
-        public void AddMassTransitBusGenericTo_Successfully_ServiceCollection()
-        {
-            // Arrange
-            // Act
+        //[Fact]
+        //public void AddMassTransitBusGenericTo_Successfully_ServiceCollection()
+        //{
+        //    // Arrange
+        //    // Act
 
-            var serviceCollectionWrapper = new ServiceCollectionConfiguratorExtensionsWrapper();
-            serviceCollectionWrapper.AddMassTransitBus<ITestBus>(_serviceCollectionMock.Object, _serviceCollectionConfiguratorGenericMock.Object);
+        //    var serviceCollectionWrapper = new ServiceCollectionConfiguratorExtensionsWrapper();
+        //    serviceCollectionWrapper.AddMassTransitBus<ITestBus>(_serviceCollectionMock.Object, _serviceCollectionConfiguratorGenericMock.Object);
 
-            // Assert      
-            _serviceCollectionMock.Verify(serviceCollection => serviceCollection.Add(
-                    It.Is<ServiceDescriptor>(serviceDescriptor => serviceDescriptor.ServiceType == typeof(IHostedService)
-                    && serviceDescriptor.ImplementationType == typeof(MassTransitHostedService) && serviceDescriptor.Lifetime == ServiceLifetime.Singleton)));
-        }
+        //    // Assert      
+        //    _serviceCollectionMock.Verify(serviceCollection => serviceCollection.Add(
+        //            It.Is<ServiceDescriptor>(serviceDescriptor => serviceDescriptor.ServiceType == typeof(IHostedService)
+        //            && serviceDescriptor.ImplementationType == typeof(MassTransitHostedService) && serviceDescriptor.Lifetime == ServiceLifetime.Singleton)));
+        //}
 
-        [Fact]
-        public void AddAddRabbitMqBusTo_Successfully_ServiceCollection()
-        {
-            // Arrange
-            var config = _configFixture.GetConfiguration("Configs/config.json");
-            _configurationMock.Setup(c => c.GetSection("MassTransit")).Returns(config.GetSection("MassTransit"));
-            // Act
-            var serviceCollectionWrapper = new ServiceCollectionConfiguratorExtensionsWrapper();
-            var exception =  Record.Exception(() => serviceCollectionWrapper.AddRabbitMqBus(_configuratorMock.Object, _configurationMock.Object, _actionRabbitMqBusFactoryConfiguratorMock.Object));
-            // Assert      
-            Assert.Null(exception);
-        }
+        //[Fact]
+        //public void AddAddRabbitMqBusTo_Successfully_ServiceCollection()
+        //{
+        //    // Arrange
+        //    var config = _configFixture.GetConfiguration("Configs/config.json");
+        //    _configurationMock.Setup(c => c.GetSection("MassTransit")).Returns(config.GetSection("MassTransit"));
+        //    // Act
+        //    var serviceCollectionWrapper = new ServiceCollectionConfiguratorExtensionsWrapper();
+        //    var exception =  Record.Exception(() => serviceCollectionWrapper.AddRabbitMqBus(_configuratorMock.Object, _configurationMock.Object, _actionRabbitMqBusFactoryConfiguratorMock.Object));
+        //    // Assert      
+        //    Assert.Null(exception);
+        //}
 
-        [Fact]
-        public void AddAddRabbitMqBusGenericTo_Successfully_ServiceCollection()
-        {
-            // Arrange
-            var config = _configFixture.GetConfiguration("Configs/config.json");
-            _configurationMock.Setup(c => c.GetSection("MassTransit")).Returns(config.GetSection("MassTransit"));
-            // Act
-            var serviceCollectionWrapper = new ServiceCollectionConfiguratorExtensionsWrapper();
-            var exception = Record.Exception(() => serviceCollectionWrapper.AddRabbitMqBus<ITestBus>(_configuratorMockGeneric.Object, _configurationMock.Object, _actionRabbitMqBusFactoryConfiguratorMock.Object,"testBus"));
-            // Assert      
-            Assert.Null(exception);
-        }
+        //[Fact]
+        //public void AddAddRabbitMqBusGenericTo_Successfully_ServiceCollection()
+        //{
+        //    // Arrange
+        //    var config = _configFixture.GetConfiguration("Configs/config.json");
+        //    _configurationMock.Setup(c => c.GetSection("MassTransit")).Returns(config.GetSection("MassTransit"));
+        //    // Act
+        //    var serviceCollectionWrapper = new ServiceCollectionConfiguratorExtensionsWrapper();
+        //    var exception = Record.Exception(() => serviceCollectionWrapper.AddRabbitMqBus<ITestBus>(_configuratorMockGeneric.Object, _configurationMock.Object, _actionRabbitMqBusFactoryConfiguratorMock.Object,"testBus"));
+        //    // Assert      
+        //    Assert.Null(exception);
+        //}
 
         [Fact]
         public void AddAddRabbitMqBusTo_ThrowError_ServiceCollection()
