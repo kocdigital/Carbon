@@ -19,17 +19,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Carbon.WebApplication", "Ca
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{C22416E6-A406-44C9-9347-D6E9826FE6F9}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Carbon.Demo.WebApplication", "demos\Carbon.Demo.WebApplication\Carbon.Demo.WebApplication.csproj", "{55EB676E-1EE3-4728-967C-4CA0452667EA}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "demos", "demos", "{ECB8C495-D13E-4360-AD95-B3DACE26EF77}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Carbon.WebApplication.EntityFrameworkCore", "Carbon.WebApplication.EntityFrameworkCore\Carbon.WebApplication.EntityFrameworkCore.csproj", "{D21B58AC-8D3E-4BE4-8D3F-4129686BDAE1}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Carbon.PagedList.EntityFrameworkCore", "Carbon.PagedList.EntityFrameworkCore\Carbon.PagedList.EntityFrameworkCore.csproj", "{2BAAF760-68D4-4198-998C-EDADFC7BA22F}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Carbon.PagedList.Mapster", "Carbon.PagedList.Mapster\Carbon.PagedList.Mapster.csproj", "{F593B998-3CDB-4144-AE11-A857C7C296D1}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Carbon.Demo.ConsoleApplication", "demos\Carbon.Demo.ConsoleApplication\Carbon.Demo.ConsoleApplication.csproj", "{3764F610-9435-4392-8D09-8392C6F9DC1D}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "templates", "templates", "{D90DEEBA-BBAE-48A2-AD9D-69E18808B3B0}"
 EndProject
@@ -136,10 +130,6 @@ Global
 		{7B9A4FAA-8D00-4A21-8EE6-6909A9152863}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7B9A4FAA-8D00-4A21-8EE6-6909A9152863}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7B9A4FAA-8D00-4A21-8EE6-6909A9152863}.Release|Any CPU.Build.0 = Release|Any CPU
-		{55EB676E-1EE3-4728-967C-4CA0452667EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{55EB676E-1EE3-4728-967C-4CA0452667EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{55EB676E-1EE3-4728-967C-4CA0452667EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{55EB676E-1EE3-4728-967C-4CA0452667EA}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D21B58AC-8D3E-4BE4-8D3F-4129686BDAE1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D21B58AC-8D3E-4BE4-8D3F-4129686BDAE1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D21B58AC-8D3E-4BE4-8D3F-4129686BDAE1}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -152,10 +142,6 @@ Global
 		{F593B998-3CDB-4144-AE11-A857C7C296D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F593B998-3CDB-4144-AE11-A857C7C296D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F593B998-3CDB-4144-AE11-A857C7C296D1}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3764F610-9435-4392-8D09-8392C6F9DC1D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3764F610-9435-4392-8D09-8392C6F9DC1D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3764F610-9435-4392-8D09-8392C6F9DC1D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3764F610-9435-4392-8D09-8392C6F9DC1D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{4E873D6E-07DA-4525-9748-0F17F252CF77}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{4E873D6E-07DA-4525-9748-0F17F252CF77}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4E873D6E-07DA-4525-9748-0F17F252CF77}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -285,8 +271,6 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{55EB676E-1EE3-4728-967C-4CA0452667EA} = {ECB8C495-D13E-4360-AD95-B3DACE26EF77}
-		{3764F610-9435-4392-8D09-8392C6F9DC1D} = {ECB8C495-D13E-4360-AD95-B3DACE26EF77}
 		{2607B98C-686D-417E-ABFA-A8EA5307769E} = {C22416E6-A406-44C9-9347-D6E9826FE6F9}
 		{EEE740AD-B5C6-4BF0-B43B-052834DED506} = {2607B98C-686D-417E-ABFA-A8EA5307769E}
 		{2DDCBC74-4D19-45DE-AD9B-5D9B95C124C7} = {C22416E6-A406-44C9-9347-D6E9826FE6F9}
