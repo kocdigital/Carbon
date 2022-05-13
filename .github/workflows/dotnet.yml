@@ -1,8 +1,6 @@
-name: .NET
+name: Build and Validate Master
 
 on:
-  push:
-    branches: [ master ]
   pull_request:
     branches: [ master ]
 
