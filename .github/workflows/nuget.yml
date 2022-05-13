@@ -2,7 +2,7 @@ name: .NET
 
 on:
   push:
-    branches: [ dev_pr2 ]
+    branches: [ master ]
 
 jobs:
   build:
@@ -24,4 +24,4 @@ jobs:
     - name: Build
       run: dotnet build --no-restore
     - name: Nuget Push
-      run: dotnet nuget push "**/*.nupkg" --api-key ${{ secrets.SuperSecret }} --skip-duplicate --source https://api.nuget.org/v3/index.json
+      run: dotnet nuget push "**/*.nupkg" --api-key ${{ secrets.NUGETORGKEY }} --skip-duplicate --source https://api.nuget.org/v3/index.json

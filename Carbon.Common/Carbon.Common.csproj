@@ -22,6 +22,7 @@
 		  - ApiResponse parameterless private constructor added for deserialization
 	</Description>
 	  <PackageId>Carbon.Common</PackageId>
+	  <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <ItemGroup>
