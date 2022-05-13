@@ -29,6 +29,7 @@
 
 ExecuteProcedureSql added 1.2.8
 UpdatedDate,deletedDate set for soft deletion 1.2.6</Description>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <ItemGroup>

@@ -12,6 +12,7 @@
 - TimeScaleDb extension is now automatically enabled on the given database during migration
 1.0.5
 - Brings native EntityFramework Core support to TimeScaleDb as if you are using an SQL Database. Implements TimescaleDb logic based-on abstraction of Carbon.TimeSeriesDb.Abstractions.</Description>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <ItemGroup>

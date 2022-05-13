@@ -5,6 +5,7 @@
     <Version>1.0.3</Version>
     <Description>1.0.3
   -Includes abstractions for any kind of TimeSerie-based Databases.</Description>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <ItemGroup>

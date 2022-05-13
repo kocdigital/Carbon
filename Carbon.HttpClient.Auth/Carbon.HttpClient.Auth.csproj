@@ -6,6 +6,7 @@
 		<AssemblyVersion>1.0.1</AssemblyVersion>
 		<Description></Description>
 		<FileVersion>1.0.1</FileVersion>
+		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 	</PropertyGroup>
 
 	<ItemGroup>

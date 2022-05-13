@@ -11,7 +11,7 @@
 - New Configuration added for force refresh on writing operations
 -ElasticSearch.NET &amp; Nest Libraries Updated to 7.11.1
 -Sort feature added for FilterAsync.</Description>
-    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
   </PropertyGroup>
 
