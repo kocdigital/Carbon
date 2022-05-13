@@ -11,6 +11,7 @@ Exception Messages Added
       1.1.4
       -Json serialize object reference loop handling ignore.
 </Description>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <ItemGroup>

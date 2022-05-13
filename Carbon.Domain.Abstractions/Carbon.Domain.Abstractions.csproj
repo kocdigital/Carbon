@@ -6,6 +6,7 @@
     <Description>- 1.3.0
 *SoftDeleteContraint added,
 Tenant Management Support Added as of 1.2.0</Description>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <ItemGroup>

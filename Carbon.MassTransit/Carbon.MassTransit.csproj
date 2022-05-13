@@ -25,6 +25,7 @@
       -Prefetch Count Added
       -
 </Description>
+		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 	</PropertyGroup>
 
 	<ItemGroup>

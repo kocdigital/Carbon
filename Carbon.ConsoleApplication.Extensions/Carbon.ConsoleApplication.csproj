@@ -15,6 +15,7 @@
       - Serilog.Sinks.ElasticSearch package removed.Reason =&amp;gt; ElasticSearch.Net Dependency problem for 7.x update of ElasticSearch.
           note : add if your app uses ElasticSearch for logging
 </Description>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <ItemGroup>
