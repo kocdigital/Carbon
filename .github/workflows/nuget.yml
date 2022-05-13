@@ -2,7 +2,7 @@ name: .NET
 
 on:
   push:
-    branches: [ dev_pr2 ]
+    branches: [ master ]
 
 jobs:
   build:
