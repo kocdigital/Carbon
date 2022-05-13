@@ -18,7 +18,7 @@
 -ElasticSearch.NET &amp; Nest Libraries Updated to 7.11.1
 -Sort feature added for FilterAsync.</Description>
     <FileVersion>3.1.2</FileVersion>
-    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <ItemGroup>

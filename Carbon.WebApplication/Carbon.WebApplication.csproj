@@ -110,6 +110,7 @@ Carbon Webapplication now supports GRPC with Carbon.WebApplication.Grpc package
       - ResponseOk kısmında Unit Testlerde null exception hatası verme sorunu düzeltildi.
 </Description>
     <OpenApiGenerateDocuments>false</OpenApiGenerateDocuments>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <ItemGroup>

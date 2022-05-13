@@ -23,6 +23,7 @@ Each Migrations should locate under a seperate class library named with {The API
 *** PostgreSQL Support Added as of 1.2.0 (Multiple EF Target)
 - Use ConnectionTarget key in your ConnectionStrings Section [postgresql, mssql] of your Configuration.
 - Use AddDatabaseContext Carbon extension while adding your dbContext to use the support mentioned above</Description>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <ItemGroup>
