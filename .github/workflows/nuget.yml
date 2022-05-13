@@ -1,4 +1,4 @@
-name: .NET
+name: Nuget Publish on Master Merged
 
 on:
   push:
