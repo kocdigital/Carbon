@@ -2,8 +2,10 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
-    <Version>2.1.1</Version>
-    <Description>-2.1.1
+    <Version>2.1.2</Version>
+    <Description>-2.1.2
+- Consumer added as a scoped
+-2.1.1
 - Enables featureset notification to the subscribers when a tenant is assigned with
 
 -2.0.3
