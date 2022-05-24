@@ -144,7 +144,7 @@ namespace Carbon.WebApplication.SolutionService
             where T : class, IConsumer
         {
             var apiname = System.Reflection.Assembly.GetEntryAssembly().GetName().Name;
-
+            services.AddScoped<T>();
 
             var bsp = services.BuildServiceProvider();
             var busControl = bsp.GetService<IBusControl>();
