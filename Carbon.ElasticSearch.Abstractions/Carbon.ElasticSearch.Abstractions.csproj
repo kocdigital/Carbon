@@ -3,10 +3,10 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <ProjectGuid>{bdcf1c00-d0d9-4328-8817-4d093f30cee1}</ProjectGuid>
-    <Version>3.1.1</Version>
-    <AssemblyVersion>3.1.1</AssemblyVersion>
-    <FileVersion>3.1.1</FileVersion>
-    <Description>3.1.1
+    <Version>3.2.0</Version>
+    <Description>3.2.0
+- Refresh parameter added to create, update and delete methods
+3.1.1
 - FindAsync with Size added
 - New Configuration added for force refresh on writing operations
 -ElasticSearch.NET &amp; Nest Libraries Updated to 7.11.1

@@ -12,12 +12,14 @@ namespace Carbon.ElasticSearch
     {
         private readonly ElasticClient _client;
         private readonly IElasticSettings _elasticSettings;
+        private readonly bool _forceRefresh;
         public abstract string Index { get; }
 
         protected BaseElasticRepository(IElasticSettings elasticSettings)
         {
             _client = new ElasticClient(elasticSettings.ConnectionSettings);
             _elasticSettings = elasticSettings;
+            _forceRefresh = _elasticSettings != null && _elasticSettings.ForceRefresh;
         }
         public void Add(T item)
         {
@@ -27,35 +29,35 @@ namespace Carbon.ElasticSearch
         {
             return _client.Index(item, i => i.Index(Index));
         }
-        public async Task AddAsync(T item)
+        public async Task AddAsync(T item, bool? refresh = null)
         {
             var response = await _client.IndexAsync(item, i => i.Index(Index)
-            .Refresh((_elasticSettings != null && _elasticSettings.ForceRefresh) ? Elasticsearch.Net.Refresh.True : Elasticsearch.Net.Refresh.False));
+            .Refresh((_forceRefresh || (refresh??false)) ? Elasticsearch.Net.Refresh.True : Elasticsearch.Net.Refresh.False));
         }
-        public async Task<IndexResponse> AddAndReturnAsync(T item)
+        public async Task<IndexResponse> AddAndReturnAsync(T item, bool? refresh = null)
         {
             return await _client.IndexAsync(item, i => i.Index(Index)
-            .Refresh((_elasticSettings != null && _elasticSettings.ForceRefresh) ? Elasticsearch.Net.Refresh.True : Elasticsearch.Net.Refresh.False));
+            .Refresh((_forceRefresh || (refresh ?? false)) ? Elasticsearch.Net.Refresh.True : Elasticsearch.Net.Refresh.False));
         }
-        public void DeleteById(string id)
+        public void DeleteById(string id, bool? refresh = null)
         {
             var response = _client.Delete<T>(new DocumentPath<T>(id), x => x.Index(Index)
-            .Refresh((_elasticSettings != null && _elasticSettings.ForceRefresh) ? Elasticsearch.Net.Refresh.True : Elasticsearch.Net.Refresh.False));
+            .Refresh((_forceRefresh || (refresh ?? false)) ? Elasticsearch.Net.Refresh.True : Elasticsearch.Net.Refresh.False));
         }
-        public DeleteResponse DeleteByIdAndReturn(string id)
+        public DeleteResponse DeleteByIdAndReturn(string id, bool? refresh = null)
         {
             return _client.Delete<T>(new DocumentPath<T>(id), x => x.Index(Index)
-            .Refresh((_elasticSettings != null && _elasticSettings.ForceRefresh) ? Elasticsearch.Net.Refresh.True : Elasticsearch.Net.Refresh.False));
+            .Refresh((_forceRefresh || (refresh ?? false)) ? Elasticsearch.Net.Refresh.True : Elasticsearch.Net.Refresh.False));
         }
-        public async Task DeleteByIdAsync(string id)
+        public async Task DeleteByIdAsync(string id, bool? refresh = null)
         {
             var response = await _client.DeleteAsync<T>(new DocumentPath<T>(id), x => x.Index(Index)
-            .Refresh((_elasticSettings != null && _elasticSettings.ForceRefresh) ? Elasticsearch.Net.Refresh.True : Elasticsearch.Net.Refresh.False));
+            .Refresh((_forceRefresh || (refresh ?? false)) ? Elasticsearch.Net.Refresh.True : Elasticsearch.Net.Refresh.False));
         }
-        public async Task<DeleteResponse> DeleteByIdAndReturnAsync(string id)
+        public async Task<DeleteResponse> DeleteByIdAndReturnAsync(string id, bool? refresh = null)
         {
             return await _client.DeleteAsync<T>(new DocumentPath<T>(id), x => x.Index(Index)
-            .Refresh((_elasticSettings != null && _elasticSettings.ForceRefresh) ? Elasticsearch.Net.Refresh.True : Elasticsearch.Net.Refresh.False));
+            .Refresh((_forceRefresh || (refresh ?? false)) ? Elasticsearch.Net.Refresh.True : Elasticsearch.Net.Refresh.False));
         }
 
         public async Task<T> FindOneAsync(Func<QueryContainerDescriptor<T>, QueryContainer> query)
@@ -79,25 +81,25 @@ namespace Carbon.ElasticSearch
             return response.Documents.ToList();
         }
 
-        public async Task UpdateAsync(T item)
+        public async Task UpdateAsync(T item, bool? refresh = null)
         {
             var response = await _client.UpdateAsync<T>(item, u => u.Index(Index).Doc(item).RetryOnConflict(3)
-            .Refresh((_elasticSettings != null && _elasticSettings.ForceRefresh) ? Elasticsearch.Net.Refresh.True : Elasticsearch.Net.Refresh.False));
+            .Refresh((_forceRefresh || (refresh ?? false)) ? Elasticsearch.Net.Refresh.True : Elasticsearch.Net.Refresh.False));
         }
-        public async Task<UpdateResponse<T>> UpdateAndReturnAsync(T item)
+        public async Task<UpdateResponse<T>> UpdateAndReturnAsync(T item, bool? refresh = null)
         {
             return await _client.UpdateAsync<T>(item, u => u.Index(Index).Doc(item).RetryOnConflict(3)
-            .Refresh((_elasticSettings != null && _elasticSettings.ForceRefresh) ? Elasticsearch.Net.Refresh.True : Elasticsearch.Net.Refresh.False));
+            .Refresh((_forceRefresh || (refresh ?? false)) ? Elasticsearch.Net.Refresh.True : Elasticsearch.Net.Refresh.False));
         }
-        public void Update(T item)
+        public void Update(T item, bool? refresh = null)
         {
             var response = _client.Update<T>(item, u => u.Index(Index).Doc(item).RetryOnConflict(3)
-            .Refresh((_elasticSettings != null && _elasticSettings.ForceRefresh) ? Elasticsearch.Net.Refresh.True : Elasticsearch.Net.Refresh.False));
+            .Refresh((_forceRefresh || (refresh ?? false)) ? Elasticsearch.Net.Refresh.True : Elasticsearch.Net.Refresh.False));
         }
-        public UpdateResponse<T> UpdateAndReturn(T item)
+        public UpdateResponse<T> UpdateAndReturn(T item, bool? refresh = null)
         {
             return _client.Update<T>(item, u => u.Index(Index).Doc(item).RetryOnConflict(3)
-            .Refresh((_elasticSettings != null && _elasticSettings.ForceRefresh) ? Elasticsearch.Net.Refresh.True : Elasticsearch.Net.Refresh.False));
+            .Refresh((_forceRefresh || (refresh ?? false)) ? Elasticsearch.Net.Refresh.True : Elasticsearch.Net.Refresh.False));
         }
         public async Task<ISearchResponse<T>> SearchAsync(Func<SearchDescriptor<T>, ISearchRequest> selector = null)
         {
