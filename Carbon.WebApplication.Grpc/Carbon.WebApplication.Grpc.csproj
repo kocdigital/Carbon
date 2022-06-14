@@ -1,9 +1,11 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>net5.0</TargetFrameworks>
-    <Version>2.5.0</Version>
-    <Description>2.5.0
+    <TargetFrameworks>net5.0;netcoreapp3.1</TargetFrameworks>
+    <Version>2.5.1</Version>
+    <Description>2.5.1
+-NetCore 3.1 target framework added
+2.5.0
 -Major bug fixed for UI Authorized request 401 error. Startup changed.
 2.4.3
 - Bearer Interceptor Included as default
