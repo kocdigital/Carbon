@@ -15,7 +15,7 @@ namespace Carbon.WebApplication
 		/// <param name="services"> Specifies the contract for a collection of service descriptors.</param>
 		/// <param name="configuration"> Represents a set of key/value application configuration properties.</param>
 		/// <returns>Returns the contract for a collection of service descriptors.</returns>
-		public static IServiceCollection AddBearerAuthentication(this IServiceCollection services, IConfiguration configuration)
+		public static IServiceCollection AddBearerAuthentication(this IServiceCollection services, IConfiguration configuration, JwtBearerEvents events = null)
 		{
 			var jwtSettings = configuration.GetSection("JwtSettings").Get<JwtSettings>();
 
@@ -35,6 +35,11 @@ namespace Carbon.WebApplication
 							options.TokenValidationParameters.ValidIssuers = tokenValidationSettings.ValidIssuers;
 							options.TokenValidationParameters.ValidateIssuerSigningKey = tokenValidationSettings.ValidateIssuerSigningKey;
 						}
+
+						if(events != null)
+                        {
+							options.Events = events;
+                        }
 					});
 
 			return services;
