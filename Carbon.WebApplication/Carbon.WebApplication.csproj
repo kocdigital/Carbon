@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFrameworks>net5.0;netcoreapp3.1</TargetFrameworks>
-    <Version>3.4.5</Version>
+    <Version>3.5.0</Version>
     <Description>3.4.5
 - Bearer Authenticator can now be passed some events
 3.4.4
