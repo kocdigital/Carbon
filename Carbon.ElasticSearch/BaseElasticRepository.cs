@@ -150,7 +150,7 @@ namespace Carbon.ElasticSearch
                 fieldList.Add(new Field(fieldName));
             }
             var response = await _client.SearchAsync<T>(x => x.Index(Index).From(offset).Size(limit).Source(sr => sr.Includes(fi => fi.Fields(fieldList)))
-            .Query(q => q.Bool(bq => bq.Filter(filters.ToArray()))).Sort(s=> s.));
+            .Query(q => q.Bool(bq => bq.Filter(filters.ToArray()))));
             return response;
         }
 
