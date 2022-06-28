@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -314,6 +315,7 @@ namespace Carbon.WebApplication
 
             app.UseEndpoints(endpoints =>
             {
+                ConfigureEndpoints(endpoints);
                 endpoints.MapHealthChecks("/health", new HealthCheckOptions()
                 {
                     Predicate = _ => true,
@@ -337,5 +339,8 @@ namespace Carbon.WebApplication
         /// <param name="app">Defines a class that provides the mechanisms to configure an application's request pipeline.</param>
         /// <param name="env">Provides information about the web hosting environment an application is running in.</param>
         public abstract void CustomConfigure(IApplicationBuilder app, IWebHostEnvironment env);
+
+        public abstract void ConfigureEndpoints(IEndpointRouteBuilder endpoints);
+
     }
 }
