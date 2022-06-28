@@ -131,6 +131,11 @@ namespace Carbon.ElasticSearch
             var response = await _client.SearchAsync<T>(x => x.Index(Index).From(offset).Size(limit).Query(q => q.Bool(bq => bq.Filter(filters.ToArray()))));
             return response;
         }
+        public async Task<ISearchResponse<T>> FilterDiscoveryAsync(List<Func<QueryContainerDescriptor<T>, QueryContainer>> filters, SortDescriptor<T> sort, int? offset, int? limit)
+        {
+            var response = await _client.SearchAsync<T>(x => x.Index(Index).From(offset).Size(limit).Query(q => q.Bool(bq => bq.Filter(filters.ToArray()))).Sort(s=> sort));
+            return response;
+        }
         public async Task<ISearchResponse<T>> DiscoverUrlAsync(List<Func<QueryContainerDescriptor<T>, QueryContainer>> filters, bool isHierarchical, int? offset, int? limit)
         {
             var field = isHierarchical ? "hierarchicalUrl" : "id";
@@ -145,7 +150,7 @@ namespace Carbon.ElasticSearch
                 fieldList.Add(new Field(fieldName));
             }
             var response = await _client.SearchAsync<T>(x => x.Index(Index).From(offset).Size(limit).Source(sr => sr.Includes(fi => fi.Fields(fieldList)))
-            .Query(q => q.Bool(bq => bq.Filter(filters.ToArray()))));
+            .Query(q => q.Bool(bq => bq.Filter(filters.ToArray()))).Sort(s=> s.));
             return response;
         }
 
