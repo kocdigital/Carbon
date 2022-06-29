@@ -122,5 +122,6 @@ namespace Carbon.MassTransit
 
         public BatchSettings BatchSettings { get; set; }
 
+        public TimeSpan ContinuationTimeout { get; set; }
     }
 }
