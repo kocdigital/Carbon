@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFrameworks>net5.0;netcoreapp3.1</TargetFrameworks>
-    <Version>3.5.1</Version>
+    <Version>3.6.0</Version>
     <Description>3.6.0
 - ConfigureEndpoint is now a virtual class rather than an abstract
 - HealthCheck partial healthy (degraded) also causes endpoint to generate 5xx http status code
