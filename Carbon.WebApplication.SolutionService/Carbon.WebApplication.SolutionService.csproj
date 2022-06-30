@@ -8,6 +8,7 @@
 - Uses MultiBus instead of SingleBus while registering solution or subscribing tenant featureset notifications
 - Compatible with Carbon.MassTransit &gt; 3.4.x
 - Improved Performance and Health Monitorable
+- Each SubscriptionToFeatureSetNotification Requires a bus interface derived from IBus
 
 -2.1.4
 - Consumer added as a scoped
@@ -24,8 +25,8 @@ Supports Masstransit 7.1.x and Carbon.MassTransit 3.0.2
 
 -1.0.23
  Supports MassTransit  6.2.3 and Carbon.MassTransit 2.0.8</Description>
-    <AssemblyVersion>2.2.7</AssemblyVersion>
-    <FileVersion>2.2.7</FileVersion>
+    <AssemblyVersion>2.5.0</AssemblyVersion>
+    <FileVersion>2.5.0</FileVersion>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
   </PropertyGroup>
 
