@@ -1,4 +1,5 @@
 ﻿using MassTransit;
+using MassTransit.AspNetCoreIntegration.HealthChecks;
 using MassTransit.Azure.ServiceBus.Core;
 using MassTransit.ExtensionsDependencyInjectionIntegration;
 using MassTransit.ExtensionsDependencyInjectionIntegration.MultiBus;
@@ -10,7 +11,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
 using Microsoft.Extensions.Hosting;
-
+using Microsoft.Extensions.Options;
 using System;
 using System.Linq;
 
@@ -29,10 +30,17 @@ namespace Carbon.MassTransit
         /// </remarks>
         /// <param name="services">Service Collection</param>
         /// <param name="configurator">Configuration Action</param>
-        public static void AddMassTransitBus(this IServiceCollection services, Action<IServiceCollectionBusConfigurator> configurator)
+        public static void AddMassTransitBus(this IServiceCollection services, Action<IServiceCollectionBusConfigurator> configurator, bool useDefaultHostedService = true)
         {
             services.AddMassTransit(configurator);
-            services.AddMassTransitHostedService();
+            if (useDefaultHostedService)
+                services.AddMassTransitHostedService();
+            else
+            {
+                services.AddSingleton<IConfigureOptions<HealthCheckServiceOptions>>(provider =>
+                new ConfigureBusHealthCheckServiceOptions(provider.GetServices<IBusInstance>(), new[] { "ready", "masstransit" }));
+                services.AddSingleton<IHostedService, MassTransitHostedService>();
+            }
         }
 
         /// <summary>
@@ -87,7 +95,7 @@ namespace Carbon.MassTransit
                 var busSettings = massTransitSettings.RabbitMq;
                 serviceCollection.UsingRabbitMq((cfg, x) => busFactory(configurator, busSettings, cfg, x));
 
-                serviceCollection.Collection.AddRabbitMqBusHealthCheck($"amqp://{busSettings.Username}:{busSettings.Password}@{busSettings.Host}:{busSettings.Port}{busSettings.VirtualHost}");
+                serviceCollection.Collection.AddRabbitMqBusHealthCheck($"amqp://{busSettings.Username}:{busSettings.Password}@{busSettings.Host}:{busSettings.Port}{busSettings.VirtualHost}", HealthStatus.Unhealthy, "RabbitMqConnection");
             }
         }
 
@@ -102,7 +110,7 @@ namespace Carbon.MassTransit
         /// <param name="configurator">Service provider's Configuration Action</param>
         public static void AddRabbitMqBus<T>(this IServiceCollectionBusConfigurator<T> serviceCollection,
                                        IConfiguration configuration, Action<IServiceProvider,
-                                       IRabbitMqBusFactoryConfigurator> configurator, string busName = null) where T : class, IBus
+                                       IRabbitMqBusFactoryConfigurator> configurator) where T : class, IBus
         {
             var massTransitSettings = configuration.GetSection("MassTransit").Get<MassTransitSettings>();
 
@@ -116,11 +124,12 @@ namespace Carbon.MassTransit
 
                 var busSettings = massTransitSettings.RabbitMq;
 
-                serviceCollection.UsingRabbitMq((cfg, x) => {
-                    busFactory(configurator, busSettings, cfg, x); 
+                serviceCollection.UsingRabbitMq((cfg, x) =>
+                {
+                    busFactory(configurator, busSettings, cfg, x);
                 });
 
-                serviceCollection.Collection.AddRabbitMqBusHealthCheck($"amqp://{busSettings.Username}:{busSettings.Password}@{busSettings.Host}:{busSettings.Port}{busSettings.VirtualHost}", name: busName);
+                serviceCollection.Collection.AddRabbitMqBusHealthCheck($"amqp://{busSettings.Username}:{busSettings.Password}@{busSettings.Host}:{busSettings.Port}{busSettings.VirtualHost}", name: typeof(T).Name);
             }
         }
 

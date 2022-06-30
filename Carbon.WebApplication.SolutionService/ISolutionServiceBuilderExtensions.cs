@@ -10,6 +10,10 @@ using MassTransit;
 using System;
 using MassTransit.RabbitMqTransport;
 using System.Linq;
+using MassTransit.Pipeline;
+using MassTransit.Transports;
+using MassTransit.EndpointConfigurators;
+using GreenPipes;
 
 namespace Carbon.WebApplication.SolutionService
 {
@@ -46,6 +50,7 @@ namespace Carbon.WebApplication.SolutionService
             }
         }
 
+
         /// <summary>
         /// Configure your service as solution-managed by Tenant Management, Requires MassTransit -> RabbitMQ or ServiceBus
         /// </summary>
@@ -64,74 +69,39 @@ namespace Carbon.WebApplication.SolutionService
             services.AddScoped<SolutionSagaCompletionSucceedConsumer>();
             services.AddScoped<SolutionSagaCompletionFailedConsumer>();
 
-            var bsp = services.BuildServiceProvider();
-            var busControl = bsp.GetService<IBusControl>();
-
-            if (busControl == null)
+            services.AddMassTransitBus<ISolutionRegistrationBus>(cfg =>
             {
-                services.AddMassTransitBus(cfg =>
+                cfg.AddConsumer<SolutionSagaCompletionFailedConsumer>();
+                cfg.AddConsumer<SolutionSagaCompletionSucceedConsumer>();
+                cfg.AddConsumer<FeatureSetSagaCompletionFailedConsumer>();
+                cfg.AddConsumer<FeatureSetSagaCompletionSucceedConsumer>();
+
+                cfg.AddRabbitMqBus(configuration, (provider, busFactoryConfig) =>
                 {
-                    cfg.AddConsumer<SolutionSagaCompletionFailedConsumer>();
-                    cfg.AddConsumer<SolutionSagaCompletionSucceedConsumer>();
-                    cfg.AddConsumer<FeatureSetSagaCompletionFailedConsumer>();
-                    cfg.AddConsumer<FeatureSetSagaCompletionSucceedConsumer>();
+                    busFactoryConfig.ReceiveEndpoint($"App-Solution-Fail-{apiname}", e => { e.Consumer<SolutionSagaCompletionFailedConsumer>(provider); });
+                    busFactoryConfig.ReceiveEndpoint($"App-Solution-Succeed-{apiname}", e => { e.Consumer<SolutionSagaCompletionSucceedConsumer>(provider); });
+                    busFactoryConfig.ReceiveEndpoint($"App-Featureset-Fail-{apiname}", e => { e.Consumer<FeatureSetSagaCompletionFailedConsumer>(provider); });
+                    busFactoryConfig.ReceiveEndpoint($"App-Featureset-Succeed-{apiname}", e => { e.Consumer<FeatureSetSagaCompletionSucceedConsumer>(provider); });
 
-                    cfg.AddRabbitMqBus(configuration, (provider, busFactoryConfig) =>
-                    {
-                        busFactoryConfig.ReceiveEndpoint($"App-Solution-Fail-{apiname}", e => { e.Consumer<SolutionSagaCompletionFailedConsumer>(provider); });
-                        busFactoryConfig.ReceiveEndpoint($"App-Solution-Succeed-{apiname}", e => { e.Consumer<SolutionSagaCompletionSucceedConsumer>(provider); });
-                        busFactoryConfig.ReceiveEndpoint($"App-Featureset-Fail-{apiname}", e => { e.Consumer<FeatureSetSagaCompletionFailedConsumer>(provider); });
-                        busFactoryConfig.ReceiveEndpoint($"App-Featureset-Succeed-{apiname}", e => { e.Consumer<FeatureSetSagaCompletionSucceedConsumer>(provider); });
-
-                        busFactoryConfig.Publish<ISolutionCreationRequest>(x => { });
-                        busFactoryConfig.Publish<IFeatureSetCreationRequest>(x => { });
-
-                    });
-
-                    cfg.AddServiceBus(configuration, (provider, busFactoryConfig) =>
-                    {
-                        busFactoryConfig.ReceiveEndpoint($"App-Solution-Fail-{apiname}", e => { e.Consumer<SolutionSagaCompletionFailedConsumer>(provider); });
-                        busFactoryConfig.ReceiveEndpoint($"App-Solution-Succeed-{apiname}", e => { e.Consumer<SolutionSagaCompletionSucceedConsumer>(provider); });
-                        busFactoryConfig.ReceiveEndpoint($"App-Featureset-Fail-{apiname}", e => { e.Consumer<FeatureSetSagaCompletionFailedConsumer>(provider); });
-                        busFactoryConfig.ReceiveEndpoint($"App-Featureset-Succeed-{apiname}", e => { e.Consumer<FeatureSetSagaCompletionSucceedConsumer>(provider); });
-
-                        busFactoryConfig.Publish<ISolutionCreationRequest>(x => { });
-                        busFactoryConfig.Publish<IFeatureSetCreationRequest>(x => { });
-                    });
+                    busFactoryConfig.Publish<ISolutionCreationRequest>(x => { });
+                    busFactoryConfig.Publish<IFeatureSetCreationRequest>(x => { });
 
                 });
-            }
-            else
-            {
-                //registrationConfigurator.AddConsumer<FeatureSetSagaCompletionSucceedConsumer>();
-                //registrationConfigurator.AddConsumer<FeatureSetSagaCompletionFailedConsumer>();
-                //registrationConfigurator.AddConsumer<SolutionSagaCompletionSucceedConsumer>();
-                //registrationConfigurator.AddConsumer<SolutionSagaCompletionFailedConsumer>();
 
-                busControl.ConnectReceiveEndpoint($"App-Solution-Fail-{apiname}", (cfg) =>
+                cfg.AddServiceBus(configuration, (provider, busFactoryConfig) =>
                 {
-                    cfg.Consumer<SolutionSagaCompletionFailedConsumer>(bsp);
+                    busFactoryConfig.ReceiveEndpoint($"App-Solution-Fail-{apiname}", e => { e.Consumer<SolutionSagaCompletionFailedConsumer>(provider); });
+                    busFactoryConfig.ReceiveEndpoint($"App-Solution-Succeed-{apiname}", e => { e.Consumer<SolutionSagaCompletionSucceedConsumer>(provider); });
+                    busFactoryConfig.ReceiveEndpoint($"App-Featureset-Fail-{apiname}", e => { e.Consumer<FeatureSetSagaCompletionFailedConsumer>(provider); });
+                    busFactoryConfig.ReceiveEndpoint($"App-Featureset-Succeed-{apiname}", e => { e.Consumer<FeatureSetSagaCompletionSucceedConsumer>(provider); });
+
+                    busFactoryConfig.Publish<ISolutionCreationRequest>(x => { });
+                    busFactoryConfig.Publish<IFeatureSetCreationRequest>(x => { });
                 });
-                busControl.ConnectReceiveEndpoint($"App-Solution-Succeed-{apiname}", (cfg) =>
-                {
-                    cfg.Consumer<SolutionSagaCompletionSucceedConsumer>(bsp);
-                });
-                busControl.ConnectReceiveEndpoint($"App-Featureset-Fail-{apiname}", (cfg) =>
-                {
-                    cfg.Consumer<FeatureSetSagaCompletionFailedConsumer>(bsp);
-                });
-                busControl.ConnectReceiveEndpoint($"App-Featureset-Succeed-{apiname}", (cfg) =>
-                {
-                    cfg.Consumer<FeatureSetSagaCompletionSucceedConsumer>(bsp);
-                });
-            }
+            });
 
             services.AddScoped<ISolutionRegistrationService, SolutionRegistrationService>();
-
-
-
         }
-
 
         /// <summary>
         /// Subscribes to FeatureSet enablement for any tenant, so that any logic can be run, Requires MassTransit -> RabbitMQ or ServiceBus
@@ -140,49 +110,37 @@ namespace Carbon.WebApplication.SolutionService
         /// <param name="services"></param>
         /// <param name="configuration"></param>
         /// <param name="featureSetId"></param>
-        public static void SubscribeToFeatureSetForAnyTenant<T>(this IServiceCollection services, IConfiguration configuration, Guid featureSetId)
+        public static void SubscribeToFeatureSetForAnyTenant<T, U>(this IServiceCollection services, IConfiguration configuration, Guid featureSetId)
             where T : class, IConsumer
+            where U : class, IBus
         {
             var apiname = System.Reflection.Assembly.GetEntryAssembly().GetName().Name;
             services.AddScoped<T>();
 
-            var bsp = services.BuildServiceProvider();
-            var busControl = bsp.GetService<IBusControl>();
-
-            if (busControl == null)
+            services.AddMassTransitBus<U>(cfg =>
             {
-                services.AddMassTransitBus(cfg =>
+                cfg.AddConsumer<T>();
+
+                cfg.AddRabbitMqBus(configuration, (provider, busFactoryConfig) =>
                 {
-                    cfg.AddConsumer<T>();
-
-                    cfg.AddRabbitMqBus(configuration, (provider, busFactoryConfig) =>
+                    busFactoryConfig.ReceiveEndpoint($"{apiname}-featureset-notification-{featureSetId}", e =>
                     {
-                        busFactoryConfig.ReceiveEndpoint($"{apiname}-featureset-notification-{featureSetId}", e =>
-                        {
-                            e.Consumer<T>(provider);
-                            e.Bind($"featureset-notification-{featureSetId}", b => { });
-                        });
+                        e.Consumer<T>(provider);
+                        e.Bind($"featureset-notification-{featureSetId}", b => { });
                     });
-
-                    cfg.AddServiceBus(configuration, (provider, busFactoryConfig) =>
-                    {
-                        busFactoryConfig.ReceiveEndpoint($"featureset-notification-{featureSetId}", e =>
-                        {
-                            e.Consumer<T>(provider);
-                        });
-                    });
-
                 });
-            }
-            else
-            {
-                busControl.ConnectReceiveEndpoint($"{apiname}-featureset-notification-{featureSetId}", (cfg) =>
+
+                cfg.AddServiceBus(configuration, (provider, busFactoryConfig) =>
                 {
-                    cfg.Consumer<T>(bsp);
-                    if (cfg.GetType().GetInterfaces().Contains(typeof(IRabbitMqReceiveEndpointConfigurator)))
-                        ((IRabbitMqReceiveEndpointConfigurator)cfg).Bind($"featureset-notification-{featureSetId}", b => { });
+                    busFactoryConfig.ReceiveEndpoint($"featureset-notification-{featureSetId}", e =>
+                    {
+                        e.Consumer<T>(provider);
+                    });
                 });
-            }
+
+            });
+
+
 
         }
     }

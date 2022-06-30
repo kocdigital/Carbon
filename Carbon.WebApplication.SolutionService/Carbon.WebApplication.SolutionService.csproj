@@ -2,8 +2,14 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
-    <Version>2.1.4</Version>
-    <Description>-2.1.4
+    <Version>2.5.0</Version>
+    <Description>-2.5.0
+- Uses latest Masstransit version which is 7.3.x
+- Uses MultiBus instead of SingleBus while registering solution or subscribing tenant featureset notifications
+- Compatible with Carbon.MassTransit &gt; 3.4.x
+- Improved Performance and Health Monitorable
+
+-2.1.4
 - Consumer added as a scoped
 -2.1.1
 - Enables featureset notification to the subscribers when a tenant is assigned with
@@ -18,13 +24,12 @@ Supports Masstransit 7.1.x and Carbon.MassTransit 3.0.2
 
 -1.0.23
  Supports MassTransit  6.2.3 and Carbon.MassTransit 2.0.8</Description>
-    <AssemblyVersion>2.1.4</AssemblyVersion>
-    <FileVersion>2.1.4</FileVersion>
+    <AssemblyVersion>2.2.7</AssemblyVersion>
+    <FileVersion>2.2.7</FileVersion>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Carbon.MassTransit" Version="3.1.1" />
     <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="3.1.12" />
     <PackageReference Include="Carbon.Domain.Messages" Version="1.8.0" />
@@ -33,6 +38,7 @@ Supports Masstransit 7.1.x and Carbon.MassTransit 3.0.2
 
   <ItemGroup>
     <ProjectReference Include="..\Carbon.ExceptionHandling\Carbon.ExceptionHandling.Abstractions.csproj" />
+    <ProjectReference Include="..\Carbon.MassTransit\Carbon.MassTransit.csproj" />
   </ItemGroup>
 
 </Project>
