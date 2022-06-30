@@ -9,10 +9,12 @@ using Mapster;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Diagnostics.HealthChecks;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using Newtonsoft.Json;
@@ -316,13 +318,6 @@ namespace Carbon.WebApplication
             app.UseEndpoints(endpoints =>
             {
                 ConfigureEndpoints(endpoints);
-                endpoints.MapHealthChecks("/health", new HealthCheckOptions()
-                {
-                    Predicate = _ => true,
-                    ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
-                });
-                endpoints.MapControllers();
-                endpoints.MapDefaultControllerRoute();
             });
         }
 
@@ -340,7 +335,23 @@ namespace Carbon.WebApplication
         /// <param name="env">Provides information about the web hosting environment an application is running in.</param>
         public abstract void CustomConfigure(IApplicationBuilder app, IWebHostEnvironment env);
 
-        public abstract void ConfigureEndpoints(IEndpointRouteBuilder endpoints);
+        public virtual void ConfigureEndpoints(IEndpointRouteBuilder endpoints)
+        {
+            endpoints.MapHealthChecks("/health", new HealthCheckOptions()
+            {
+                Predicate = _ => true,
+                ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse,
+                ResultStatusCodes =
+                {
+                    [HealthStatus.Healthy] = StatusCodes.Status200OK,
+                    [HealthStatus.Degraded] = StatusCodes.Status500InternalServerError,
+                    [HealthStatus.Unhealthy] = StatusCodes.Status503ServiceUnavailable
+                }
+
+            });
+            endpoints.MapControllers();
+            endpoints.MapDefaultControllerRoute();
+        }
 
     }
 }

@@ -1,7 +1,9 @@
 ﻿using System;
+using Azure;
+using Azure.Core;
+using Azure.Messaging.ServiceBus;
+using Azure.Messaging.ServiceBus.Administration;
 using MassTransit.Azure.ServiceBus.Core;
-using Microsoft.Azure.ServiceBus;
-using Microsoft.Azure.ServiceBus.Primitives;
 
 namespace Carbon.MassTransit
 {
@@ -15,7 +17,6 @@ namespace Carbon.MassTransit
         /// <summary>
         /// Token Provider
         /// </summary>
-        public ITokenProvider TokenProvider { get; set; }
         /// <summary>
         /// Operation Timeout
         /// </summary>        
@@ -35,10 +36,21 @@ namespace Carbon.MassTransit
         /// <summary>
         /// TransportType of type <see cref="TransportType"/>
         /// </summary>
-        public TransportType TransportType { get; set; }
         /// <summary>
         /// Service Uri
         /// </summary>
         public Uri ServiceUri { get; }
+
+        public ServiceBusClient ServiceBusClient { get; set; }
+
+        public ServiceBusAdministrationClient ServiceBusAdministrationClient { get; set; }
+
+        public AzureNamedKeyCredential NamedKeyCredential { get; set; }
+
+        public AzureSasCredential SasCredential { get; set; }
+
+        public TokenCredential TokenCredential { get; set; }
+
+        public ServiceBusTransportType TransportType { get; set; }
     }
 }
