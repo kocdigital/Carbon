@@ -16,7 +16,7 @@ namespace Carbon.MassTransit.UnitTests.StaticWrappers.IServiceCollectionConfigur
             IServiceCollectionConfiguratorExtensions.AddMassTransitBus(services, configurator);
         }
 
-        public void AddMassTransitBus<T>(IServiceCollection services, Action<IServiceCollectionConfigurator<T>> configurator) where T: class, IBus
+        public void AddMassTransitBus<T>(IServiceCollection services, Action<IServiceCollectionBusConfigurator<T>> configurator) where T: class, IBus
         {
             IServiceCollectionConfiguratorExtensions.AddMassTransitBus<T>(services, configurator);
         }
@@ -26,9 +26,9 @@ namespace Carbon.MassTransit.UnitTests.StaticWrappers.IServiceCollectionConfigur
             IServiceCollectionConfiguratorExtensions.AddRabbitMqBus(serviceCollection, configuration, configurator);
         }
 
-        public void AddRabbitMqBus<T>(IServiceCollectionConfigurator<T> serviceCollection, IConfiguration configuration, Action<IServiceProvider, IRabbitMqBusFactoryConfigurator> configurator, string busName = null) where T : class, IBus
+        public void AddRabbitMqBus<T>(IServiceCollectionBusConfigurator<T> serviceCollection, IConfiguration configuration, Action<IServiceProvider, IRabbitMqBusFactoryConfigurator> configurator) where T : class, IBus
         {
-            IServiceCollectionConfiguratorExtensions.AddRabbitMqBus<T>(serviceCollection, configuration, configurator, busName);
+            IServiceCollectionConfiguratorExtensions.AddRabbitMqBus<T>(serviceCollection, configuration, configurator);
         }
 
         public void AddServiceBus(IServiceCollectionBusConfigurator serviceCollection, IConfiguration configuration, Action<IServiceProvider, IServiceBusBusFactoryConfigurator> configurator)
