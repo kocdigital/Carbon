@@ -31,45 +31,39 @@ namespace Carbon.Domain.EntityFrameworkCore
 
         public override async Task ConnectToSolution<T>(T relatedEntity)
         {
-            if (relatedEntity == null || relatedEntity.RelationalOwners == null || !relatedEntity.RelationalOwners.Any() || relatedEntity.RelationalOwners.Where(k => k == null).Any())
-                return;
-            bool relationsChanged = false;
-            
-            foreach (var ro in relatedEntity.RelationalOwners)
+			if (relatedEntity == null || relatedEntity.RelationalOwners.Where(k => k == null).Any())
+				return;
+
+			if (relatedEntity.RelationalOwners == null)
             {
-                ro.EntityId = relatedEntity.Id;
-                ro.EntityCode = relatedEntity.GetObjectTypeCode();
+				relatedEntity.RelationalOwners = new List<EntitySolutionRelation>();
             }
 
-            var oldRelations = await TargetErDbSet.Where(k => !k.IsDeleted && k.EntityCode == relatedEntity.GetObjectTypeCode() && k.EntityId == relatedEntity.Id).ToListAsync();
+			foreach (var ro in relatedEntity.RelationalOwners)
+			{
+				ro.EntityId = relatedEntity.Id;
+				ro.EntityCode = relatedEntity.GetObjectTypeCode();
+			}
 
-            if (oldRelations == null || !oldRelations.Any())
-                relationsChanged = true;
-            else
-            {
-                var firstSet = new HashSet<Guid>(oldRelations.Select(k => k.SolutionId).ToList());
-                var secondSet = new HashSet<Guid>(relatedEntity.RelationalOwners.Select(k => k.SolutionId).ToList());
+			var oldRelations = await TargetErDbSet.Where(k => !k.IsDeleted && k.EntityCode == relatedEntity.GetObjectTypeCode() && k.EntityId == relatedEntity.Id).ToListAsync();
 
-                var allEqual = secondSet.SetEquals(firstSet);
-                if (!allEqual)
-                {
-                    relationsChanged = true;
-                    TargetErDbSet.RemoveRange(oldRelations);
-                    await TargetErDbContext.SaveChangesAsync();
-                }
-            }
+			var firstSet = new HashSet<Guid>(oldRelations.Select(k => k.SolutionId).ToList());
+			var secondSet = new HashSet<Guid>(relatedEntity.RelationalOwners.Select(k => k.SolutionId).ToList());
 
-            if (relationsChanged)
-            {
-                foreach (var ro in relatedEntity.RelationalOwners)
-                {
-                    ro.Id = Guid.NewGuid();
-                }
+			var relationsUnchanged = secondSet.SetEquals(firstSet);
+			if (!relationsUnchanged)
+			{
+				TargetErDbSet.RemoveRange(oldRelations);
 
-                TargetErDbSet.AddRange(relatedEntity.RelationalOwners);
-                await TargetErDbContext.SaveChangesAsync();
-            }
-        }
+				foreach (var ro in relatedEntity.RelationalOwners)
+				{
+					ro.Id = Guid.NewGuid();
+				}
+
+				TargetErDbSet.AddRange(relatedEntity.RelationalOwners);
+				await TargetErDbContext.SaveChangesAsync();
+			}
+		}
 
         public override async Task RemoveSolutions<T>(T relatedEntity)
         {
