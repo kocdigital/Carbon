@@ -3,32 +3,39 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
     <LangVersion>8.0</LangVersion>
-    <Version>2.5.0</Version>
-    <Description>- 2.5.0
-*SoftDeleteConstraint which checks entity relations on soft delete, added
-- 2.4.1
-*Removed unnecessary and problematical usings
--2.4.0
-*Read-Only Context and Repository support added in order to implement CQRS over replicated SQL servers
+    <Version>2.5.1</Version>
+    <Description>
+		- 2.5.1
+		*ConnectToSolution method on repositoryBase now allows entities to be removed from any solutions altogether.
 
--2.3.8
-*Some performance improvements on Tenant Management EF Extensions and bug fixes
--2.3.0
-*IEnumerable extensions added for Tenant Management EF Extensions
--2.2.0
-*EFTenantManagetTenantRepository Added for ITenantRepository supported repos
+		- 2.5.0
+		*SoftDeleteConstraint which checks entity relations on soft delete, added
 
--2.1.1
-*FilteredIndex Error on EntitySolutionRelation in PostgreSQL mitigated
+		- 2.4.1
+		*Removed unnecessary and problematical usings
 
--2.1.0
-* Compatible with Carbon.WebApplication Goduser feature
+		-2.4.0
+		*Read-Only Context and Repository support added in order to implement CQRS over replicated SQL servers
 
--2.0.0
-* Entity Framework Core 5 support added. 
+		-2.3.8
+		*Some performance improvements on Tenant Management EF Extensions and bug fixes
+		-2.3.0
+		*IEnumerable extensions added for Tenant Management EF Extensions
+		-2.2.0
+		*EFTenantManagetTenantRepository Added for ITenantRepository supported repos
 
-ExecuteProcedureSql added 1.2.8
-UpdatedDate,deletedDate set for soft deletion 1.2.6</Description>
+		-2.1.1
+		*FilteredIndex Error on EntitySolutionRelation in PostgreSQL mitigated
+
+		-2.1.0
+		* Compatible with Carbon.WebApplication Goduser feature
+
+		-2.0.0
+		* Entity Framework Core 5 support added.
+
+		ExecuteProcedureSql added 1.2.8
+		UpdatedDate,deletedDate set for soft deletion 1.2.6
+	</Description>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
   </PropertyGroup>
 
