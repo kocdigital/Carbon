@@ -47,7 +47,12 @@ namespace Carbon.Domain.EntityFrameworkCore
 
 			var oldRelations = await TargetErDbSet.Where(k => !k.IsDeleted && k.EntityCode == relatedEntity.GetObjectTypeCode() && k.EntityId == relatedEntity.Id).ToListAsync();
 
-			var firstSet = new HashSet<Guid>(oldRelations.Select(k => k.SolutionId).ToList());
+            if (oldRelations == null)
+            {
+                oldRelations = new List<EntitySolutionRelation>();
+            }
+
+            var firstSet = new HashSet<Guid>(oldRelations.Select(k => k.SolutionId).ToList());
 			var secondSet = new HashSet<Guid>(relatedEntity.RelationalOwners.Select(k => k.SolutionId).ToList());
 
 			var relationsUnchanged = secondSet.SetEquals(firstSet);
