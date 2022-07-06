@@ -31,13 +31,14 @@ namespace Carbon.Domain.EntityFrameworkCore
 
         public override async Task ConnectToSolution<T>(T relatedEntity)
         {
-			if (relatedEntity == null || relatedEntity.RelationalOwners.Where(k => k == null).Any())
-				return;
+			if (relatedEntity == null) return;
 
 			if (relatedEntity.RelationalOwners == null)
             {
 				relatedEntity.RelationalOwners = new List<EntitySolutionRelation>();
             }
+
+            if (relatedEntity.RelationalOwners.Where(k => k == null).Any()) return;
 
 			foreach (var ro in relatedEntity.RelationalOwners)
 			{
