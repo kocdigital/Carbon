@@ -2,8 +2,11 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
-    <Version>2.5.0</Version>
-    <Description>-2.5.0
+    <Version>2.6.0</Version>
+    <Description>-2.6.0
+- Critical bug fixed for SolutionRegistration when there is no default MassTransit usage
+- Some Performance Improvements
+-2.5.0
 - Uses latest Masstransit version which is 7.3.x
 - Uses MultiBus instead of SingleBus while registering solution or subscribing tenant featureset notifications
 - Compatible with Carbon.MassTransit &gt; 3.4.x
@@ -25,8 +28,8 @@ Supports Masstransit 7.1.x and Carbon.MassTransit 3.0.2
 
 -1.0.23
  Supports MassTransit  6.2.3 and Carbon.MassTransit 2.0.8</Description>
-    <AssemblyVersion>2.5.0</AssemblyVersion>
-    <FileVersion>2.5.0</FileVersion>
+    <AssemblyVersion>2.6.0</AssemblyVersion>
+    <FileVersion>2.6.0</FileVersion>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
   </PropertyGroup>
 
