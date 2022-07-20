@@ -13,10 +13,10 @@ namespace Carbon.WebApplication.SolutionService.Services
     public class SolutionRegistrationService : ISolutionRegistrationService
     {
         private ILogger<SolutionRegistrationService> _logger;
-        private IBusControl _busControl;
+        private ISolutionRegistrationBus _busControl;
 
         public SolutionRegistrationService(ILogger<SolutionRegistrationService> logger,
-                                  IBusControl busControl)
+                                  ISolutionRegistrationBus busControl)
         {
             _logger = logger;
             _busControl = busControl;
