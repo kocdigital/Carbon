@@ -224,13 +224,15 @@ namespace Carbon.WebApplication
                 throw new ArgumentNullException("Swagger settings cannot be empty!");
 
             services.AddSwaggerGen(c =>
-            {
-
-                
+            {              
                 c.OperationFilter<HeaderParameterExtension>();
                 c.OperationFilter<HybridOperationFilter>();
                 c.OperationFilterDescriptors.AddRange(_filterDescriptors);
                 c.CustomSchemaIds(x => x.FullName);
+                c.AddServer(new OpenApiServer()
+                {
+                    Url = _swaggerSettings.EndpointUrl
+                });                
                 foreach (var doc in _swaggerSettings.Documents)
                 {
                     c.SwaggerDoc(doc.DocumentName, new OpenApiInfo { Title = doc.OpenApiInfo.Title, Version = doc.OpenApiInfo.Version, Description = doc.OpenApiInfo.Description });
