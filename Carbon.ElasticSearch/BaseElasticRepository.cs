@@ -125,6 +125,16 @@ namespace Carbon.ElasticSearch
                 .Sort(s => sortByDescending ?? false ? s.Descending($"{sortFieldName}.keyword") : s.Ascending($"{sortFieldName}.keyword")));
             return response;
         }
+        
+        public async Task<ISearchResponse<T>> FilterAsync(List<Func<QueryContainerDescriptor<T>, QueryContainer>> filters,SortDescriptor<T> sort, int? offset, int? limit)
+        {
+            var response = await _client.SearchAsync<T>(x => x.Index(Index)
+                .From(offset)
+                .Size(limit)
+                .Query(q => q.Bool(bq => bq.Filter(filters.ToArray())))
+                .Sort(s=> sort));
+            return response;
+        }
 
         public async Task<ISearchResponse<T>> FilterDiscoveryAsync(List<Func<QueryContainerDescriptor<T>, QueryContainer>> filters, int? offset, int? limit)
         {

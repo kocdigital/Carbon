@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <ProjectGuid>{7AEAD788-E78D-4825-9761-AEB2570DE3E0}</ProjectGuid>
-    <Version>3.3.0</Version>
+    <Version>3.4.0</Version>
     <Description>3.2.0
 - Refresh parameter added to create, update and delete methods
 3.1.3
