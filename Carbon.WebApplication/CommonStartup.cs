@@ -21,7 +21,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Hosting;
-
+using Microsoft.AspNetCore.Routing;
+using Microsoft.AspNetCore.Diagnostics.HealthChecks;
+using HealthChecks.UI.Client;
+using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Diagnostics.HealthChecks;
 
 namespace Carbon.WebApplication
 {
@@ -81,7 +85,12 @@ namespace Carbon.WebApplication
                 options.Filters.Add(typeof(HttpGlobalExceptionFilter));
             }).AddJsonOptions(options =>
             {
+
+#if NET6_0
                 options.JsonSerializerOptions.DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull;
+#elif NET5_0 || NETCOREAPP3_1
+                options.JsonSerializerOptions.IgnoreNullValues = true;
+#endif       
             })
             .AddNewtonsoftJson(options =>
             {
@@ -240,8 +249,10 @@ namespace Carbon.WebApplication
             app.UseRouting();
         }
 
-        internal static void AddAuths(IApplicationBuilder app)
+        internal static void AddAppAuths(IApplicationBuilder app, bool useAuthentication, bool useAuthorization)
         {
+            _useAuthentication = useAuthentication;
+            _useAuthorization = useAuthorization;
             if (_useAuthentication)
             {
                 app.UseAuthentication();
@@ -258,6 +269,23 @@ namespace Carbon.WebApplication
             }
         }
 
+        internal static void AddAppEndpoints(IEndpointRouteBuilder endpoints)
+        {
+            endpoints.MapHealthChecks("/health", new HealthCheckOptions()
+            {
+                Predicate = _ => true,
+                ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse,
+                ResultStatusCodes =
+                {
+                    [HealthStatus.Healthy] = StatusCodes.Status200OK,
+                    [HealthStatus.Degraded] = StatusCodes.Status500InternalServerError,
+                    [HealthStatus.Unhealthy] = StatusCodes.Status503ServiceUnavailable
+                }
+
+            });
+            endpoints.MapControllers();
+            endpoints.MapDefaultControllerRoute();
+        }
 
     }
 }
