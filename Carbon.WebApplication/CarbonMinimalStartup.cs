@@ -1,21 +1,14 @@
-﻿using Carbon.Common;
+﻿#if NET6_0
+using Carbon.Common;
 using Carbon.WebApplication.TenantManagementHandler.Extensions;
-using Carbon.WebApplication.TenantManagementHandler.Interfaces;
-using Carbon.WebApplication.TenantManagementHandler.Middlewares;
 using Carbon.WebApplication.TenantManagementHandler.Services;
 using FluentValidation.AspNetCore;
-using HealthChecks.UI.Client;
 using Mapster;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Diagnostics.HealthChecks;
-using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
@@ -26,34 +19,42 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using Microsoft.Extensions.Hosting;
+using System.Text;
+using System.Threading.Tasks;
+using HealthChecks.UI.Client;
+using Microsoft.Extensions.Diagnostics.HealthChecks;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Diagnostics.HealthChecks;
+using Microsoft.AspNetCore.Routing;
 
 namespace Carbon.WebApplication
 {
-    public abstract class CarbonStartup<TStartup> where TStartup : class
+    public static class CarbonMinimalStartup
     {
-        private string MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
-        private SwaggerSettings _swaggerSettings;
-        private CorsPolicySettings _corsPolicySettings;
+        private static string MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+        private static SwaggerSettings _swaggerSettings;
+        private static CorsPolicySettings _corsPolicySettings;
 
-        private bool _useAuthentication;
-        private bool _useAuthorization;
+        private static bool _useAuthentication;
+        private static bool _useAuthorization;
         /// <summary>
         /// Provides information about the web hosting environment an application is running in.
         /// </summary>
-        public IWebHostEnvironment Environment { get; }
+        public static IWebHostEnvironment Environment { get; }
 
         /// <summary>
         /// Represents a set of key/value application configuration properties.
         /// </summary>
-        public IConfiguration Configuration { get; }
-        protected IList<FilterDescriptor> _filterDescriptors = new List<FilterDescriptor>();
+        public static IConfiguration Configuration { get; set; }
+        private static IList<FilterDescriptor> _filterDescriptors = new List<FilterDescriptor>();
 
         /// <summary>
         /// Adds operation filter.
         /// </summary>
         /// <typeparam name="T">Specifies the type of filter.</typeparam>
         /// <param name="args">Arguments of the filter</param>
-        public void AddOperationFilter<T>(params object[] args) where T : IOperationFilter
+        public static void AddOperationFilter<T>(params object[] args) where T : IOperationFilter
         {
             _filterDescriptors.Add(new FilterDescriptor()
             {
@@ -62,58 +63,10 @@ namespace Carbon.WebApplication
             });
         }
 
-        /// <summary>
-        /// Constructor that initializes configuration and environment variables.
-        /// </summary>
-        /// <param name="configuration">Represents a set of key/value application configuration properties.</param>
-        /// <param name="environment">Provides information about the web hosting environment an application is running in.</param>
-        protected CarbonStartup(IConfiguration configuration, IWebHostEnvironment environment)
+        public static void AddCarbonServices(this WebApplicationBuilder builder, Func<IServiceCollection, IServiceCollection> serviceCollector)
         {
-            Configuration = configuration;
-            Environment = environment;
-        }
-
-        /// <summary>
-        /// Constructor that initializes configuration, environment, useAuthentication variables.
-        /// </summary>
-        /// <param name="configuration">Represents a set of key/value application configuration properties.</param>
-        /// <param name="environment">Provides information about the web hosting environment an application is running in.</param>
-        /// <param name="useAuthentication">Indicates that use authentication or not</param>
-        protected CarbonStartup(IConfiguration configuration, IWebHostEnvironment environment, bool useAuthentication)
-        {
-            Configuration = configuration;
-            Environment = environment;
-            _useAuthentication = useAuthentication;
-        }
-
-        /// <summary>
-        /// Constructor that initializes configuration, environment, useAuthentication and useAuthorization variables.
-        /// </summary>
-        /// <param name="configuration">Represents a set of key/value application configuration properties.</param>
-        /// <param name="environment">Provides information about the web hosting environment an application is running in.</param>
-        /// <param name="useAuthentication">Indicates that use authentication or not</param>
-        /// <param name="useAuthorization">Indicates that use authorization or not</param>
-        protected CarbonStartup(IConfiguration configuration, IWebHostEnvironment environment, bool useAuthentication, bool useAuthorization)
-        {
-            Configuration = configuration;
-            Environment = environment;
-            _useAuthentication = useAuthentication;
-            _useAuthorization = useAuthorization;
-        }
-
-        /// <summary>
-        /// Decides and Configures the services at startup. 
-        /// </summary>
-        /// <param name="services">Specifies the contract for a collection of service descriptors.</param>
-        public void ConfigureServices(IServiceCollection services)
-        {
-#if NET6_0   
-            Console.WriteLine("Carbon starting with .Net 6.0 (not minimal api)");
-#elif NET5_0       
-            Console.WriteLine("Carbon starting with .Net 5.0");
-#elif NETCOREAPP3_1
-            Console.WriteLine("Carbon starting with .NetCore 3.1");
-#endif
+            var services = builder.Services;
+            Configuration = builder.Configuration;
 
             services.AddHeaderPropagation();
 
@@ -189,18 +142,13 @@ namespace Carbon.WebApplication
             #endregion
 
             services.AddHealthChecks();
-            
             services.AddMvc(options =>
             {
                 options.Filters.Add(typeof(ValidateModelFilter));
                 options.Filters.Add(typeof(HttpGlobalExceptionFilter));
             }).AddJsonOptions(options =>
             {
-#if NET6_0
                 options.JsonSerializerOptions.DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull;
-#elif NET5_0 || NETCOREAPP3_1
-                options.JsonSerializerOptions.IgnoreNullValues = true;
-#endif
             })
             .AddNewtonsoftJson(options =>
             {
@@ -214,8 +162,9 @@ namespace Carbon.WebApplication
             services.AddFluentValidation(fv =>
             {
                 fv.DisableDataAnnotationsValidation = true;
-                fv.RegisterValidatorsFromAssemblyContaining<TStartup>();
+                fv.RegisterValidatorsFromAssembly(System.Reflection.Assembly.GetEntryAssembly());
             });
+            var apiname = System.Reflection.Assembly.GetEntryAssembly().GetName().Name;
 
             services.Configure<ApiBehaviorOptions>(options =>
             {
@@ -223,9 +172,7 @@ namespace Carbon.WebApplication
             });
             services.AddHeaderPropagation();
 
-            CustomConfigureServices(services);
-
-#region Swagger Settings
+            services = serviceCollector(services);
 
             _swaggerSettings = Configuration.GetSection("Swagger").Get<SwaggerSettings>();
 
@@ -233,7 +180,7 @@ namespace Carbon.WebApplication
                 throw new ArgumentNullException("Swagger settings cannot be empty!");
 
             services.AddSwaggerGen(c =>
-            {              
+            {
                 c.OperationFilter<HeaderParameterExtension>();
                 c.OperationFilter<HybridOperationFilter>();
                 c.OperationFilterDescriptors.AddRange(_filterDescriptors);
@@ -241,7 +188,7 @@ namespace Carbon.WebApplication
                 c.AddServer(new OpenApiServer()
                 {
                     Url = _swaggerSettings.EndpointUrl
-                });                
+                });
                 foreach (var doc in _swaggerSettings.Documents)
                 {
                     c.SwaggerDoc(doc.DocumentName, new OpenApiInfo { Title = doc.OpenApiInfo.Title, Version = doc.OpenApiInfo.Version, Description = doc.OpenApiInfo.Description });
@@ -280,17 +227,15 @@ namespace Carbon.WebApplication
                     }
                 }
             });
-
-#endregion
+            builder.Host.UseSerilog();
         }
 
-        /// <summary>
-        /// Configures the application builder according to given environment
-        /// </summary>
-        /// <param name="app">Defines a class that provides the mechanisms to configure an application's request pipeline.</param>
-        /// <param name="env">Provides information about the web hosting environment an application is running in.</param>
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public static void AddCarbonApplication(this Microsoft.AspNetCore.Builder.WebApplication app, Func<Microsoft.AspNetCore.Builder.WebApplication, Microsoft.AspNetCore.Builder.WebApplication> applicationCollector, bool useAuthentication = true, bool useAuthorization = true, Func<IEndpointRouteBuilder, IEndpointRouteBuilder> endpointRouteCollector = null)
         {
+            _useAuthentication = useAuthentication;
+            _useAuthorization = useAuthorization;
+            var env = app.Environment;
+            Console.WriteLine("Carbon starting with .Net 6.0 (Minimal api)");
             app.UseHeaderPropagation();
             app.UseSwagger();
             app.UseSwaggerUI(c =>
@@ -309,7 +254,7 @@ namespace Carbon.WebApplication
             app.UseStaticFiles();
             app.UseRouting();
 
-            CustomConfigure(app, env);
+            app = applicationCollector(app);
 
             if (_useAuthentication)
             {
@@ -328,41 +273,25 @@ namespace Carbon.WebApplication
 
             app.UseEndpoints(endpoints =>
             {
-                ConfigureEndpoints(endpoints);
-            });
-        }
+                if (endpointRouteCollector != null)
+                    endpointRouteCollector(endpoints);
 
-
-        /// <summary>
-        /// A Custom abstract method that configures the services. 
-        /// </summary>
-        /// <param name="services">Specifies the contract for a collection of service descriptors.</param>
-        public abstract void CustomConfigureServices(IServiceCollection services);
-
-        /// <summary>
-        ///  A Custom abstract method that configures the application builder according to given environment
-        /// </summary>
-        /// <param name="app">Defines a class that provides the mechanisms to configure an application's request pipeline.</param>
-        /// <param name="env">Provides information about the web hosting environment an application is running in.</param>
-        public abstract void CustomConfigure(IApplicationBuilder app, IWebHostEnvironment env);
-
-        public virtual void ConfigureEndpoints(IEndpointRouteBuilder endpoints)
-        {
-            endpoints.MapHealthChecks("/health", new HealthCheckOptions()
-            {
-                Predicate = _ => true,
-                ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse,
-                ResultStatusCodes =
+                endpoints.MapHealthChecks("/health", new HealthCheckOptions()
+                {
+                    Predicate = _ => true,
+                    ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse,
+                    ResultStatusCodes =
                 {
                     [HealthStatus.Healthy] = StatusCodes.Status200OK,
                     [HealthStatus.Degraded] = StatusCodes.Status500InternalServerError,
                     [HealthStatus.Unhealthy] = StatusCodes.Status503ServiceUnavailable
                 }
 
+                });
+                endpoints.MapControllers();
+                endpoints.MapDefaultControllerRoute();
             });
-            endpoints.MapControllers();
-            endpoints.MapDefaultControllerRoute();
         }
-
     }
 }
+#endif
