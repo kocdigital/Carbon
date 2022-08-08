@@ -2,8 +2,14 @@
 
   <PropertyGroup>
     <TargetFrameworks>net6.0;net5.0;netcoreapp3.1</TargetFrameworks>
-    <Version>4.0.10-alpha</Version>
-    <Description>
+    <Version>4.0.0-preview</Version>
+    <Description>4.0.0-preview
+- Carbon now supports Dotnet 6 in terms of both minimal and not minimal
+- Fluent Validation Upgraded
+- Swagger Upgraded
+- BodyRewind deprecated, thus RoleFilteredDto is now unsupported as it is unnecessary just after repository-level validation introduced
+- Some Performance Improvements
+
 3.7.0
 - Swagger server definition added
 3.6.0
@@ -101,6 +107,10 @@ Carbon Webapplication now supports GRPC with Carbon.WebApplication.Grpc package
     <ProjectReference Include="..\Carbon.HttpClient.Auth\Carbon.HttpClient.Auth.csproj" />
     <ProjectReference Include="..\Carbon.HttpClient\Carbon.HttpClient.csproj" />
     <ProjectReference Include="..\Carbon.PagedList\Carbon.PagedList.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="TenantManagementHandler\Middlewares\" />
   </ItemGroup>
 
 </Project>
