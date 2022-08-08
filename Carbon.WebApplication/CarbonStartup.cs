@@ -107,7 +107,9 @@ namespace Carbon.WebApplication
         /// <param name="services">Specifies the contract for a collection of service descriptors.</param>
         public void ConfigureServices(IServiceCollection services)
         {
-#if NET5_0
+#if NET6_0   
+            Console.WriteLine("Carbon starting with .Net 6.0 (not minimal api)");
+#elif NET5_0       
             Console.WriteLine("Carbon starting with .Net 5.0");
 #elif NETCOREAPP3_1
             Console.WriteLine("Carbon starting with .NetCore 3.1");
@@ -187,13 +189,18 @@ namespace Carbon.WebApplication
             #endregion
 
             services.AddHealthChecks();
+            
             services.AddMvc(options =>
             {
                 options.Filters.Add(typeof(ValidateModelFilter));
                 options.Filters.Add(typeof(HttpGlobalExceptionFilter));
             }).AddJsonOptions(options =>
             {
+#if NET6_0
+                options.JsonSerializerOptions.DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull;
+#elif NET5_0 || NETCOREAPP3_1
                 options.JsonSerializerOptions.IgnoreNullValues = true;
+#endif
             })
             .AddNewtonsoftJson(options =>
             {
@@ -202,11 +209,13 @@ namespace Carbon.WebApplication
                 options.SerializerSettings.PreserveReferencesHandling = PreserveReferencesHandling.None;
                 options.SerializerSettings.Converters.Add(new StringEnumConverter());
                 options.SerializerSettings.NullValueHandling = NullValueHandling.Ignore;
-            }).AddFluentValidation(fv =>
-            {
-                fv.RunDefaultMvcValidationAfterFluentValidationExecutes = false;
-                fv.RegisterValidatorsFromAssemblyContaining<TStartup>();
             }).AddHybridModelBinder();
+
+            services.AddFluentValidation(fv =>
+            {
+                fv.DisableDataAnnotationsValidation = true;
+                fv.RegisterValidatorsFromAssemblyContaining<TStartup>();
+            });
 
             services.Configure<ApiBehaviorOptions>(options =>
             {
@@ -216,7 +225,7 @@ namespace Carbon.WebApplication
 
             CustomConfigureServices(services);
 
-            #region Swagger Settings
+#region Swagger Settings
 
             _swaggerSettings = Configuration.GetSection("Swagger").Get<SwaggerSettings>();
 
@@ -272,7 +281,7 @@ namespace Carbon.WebApplication
                 }
             });
 
-            #endregion
+#endregion
         }
 
         /// <summary>
