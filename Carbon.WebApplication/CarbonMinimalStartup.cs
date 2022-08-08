@@ -51,7 +51,7 @@ namespace Carbon.WebApplication
             services = serviceCollector(services);
 
             CommonStartup.AddServiceSwagger(services, Configuration);
-            builder.Host.UseSerilog();
+            builder.WebHost.UseCarbonFeatures();
         }
 
         public static void AddCarbonApplication(this Microsoft.AspNetCore.Builder.WebApplication app, Func<Microsoft.AspNetCore.Builder.WebApplication, Microsoft.AspNetCore.Builder.WebApplication> applicationCollector, bool useAuthentication = true, bool useAuthorization = true, Func<IEndpointRouteBuilder, IEndpointRouteBuilder> endpointRouteCollector = null)
