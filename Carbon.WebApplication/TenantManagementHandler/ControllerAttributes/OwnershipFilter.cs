@@ -1,21 +1,15 @@
 ﻿using Carbon.Common.TenantManagementHandler.Classes;
+using Carbon.ExceptionHandling.Abstractions;
 using Carbon.WebApplication.TenantManagementHandler.Dtos;
 using Carbon.WebApplication.TenantManagementHandler.Extensions;
+using Carbon.WebApplication.TenantManagementHandler.Interfaces;
 using Carbon.WebApplication.TenantManagementHandler.Services;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Primitives;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using Microsoft.Extensions.DependencyInjection;
-using System.Text;
-using Carbon.WebApplication.TenantManagementHandler.Interfaces;
-using System.IO;
-using Newtonsoft.Json;
-using Carbon.Common;
-using Microsoft.AspNetCore.Mvc;
-using Carbon.ExceptionHandling.Abstractions;
-using Carbon.WebApplication.TenantManagementHandler.Middlewares;
 
 namespace Carbon.WebApplication.TenantManagementHandler.ControllerAttributes
 {
