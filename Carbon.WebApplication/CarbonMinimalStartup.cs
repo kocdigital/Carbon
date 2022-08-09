@@ -44,7 +44,7 @@ namespace Carbon.WebApplication
         {
             var services = builder.Services;
             Configuration = builder.Configuration;
-            Console.WriteLine("Carbon starting with .Net 6.0 (Minimal api)");
+            Console.WriteLine($"Carbon is compiled with .Net 6.0 and working on .Net {System.Environment.Version.ToString()}. (Minimal api)");
 
             CommonStartup.AddServiceBaseLogic(services, Configuration);
 
