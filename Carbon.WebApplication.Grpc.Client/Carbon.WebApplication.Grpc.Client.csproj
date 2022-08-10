@@ -1,10 +1,12 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>net5.0;netcoreapp3.1</TargetFrameworks>
-    <Version>2.4.1</Version>
-    <Description>2.4.1
--NetCore 3.1 target framework added
+    <TargetFrameworks>net6.0;net5.0;netcoreapp3.1</TargetFrameworks>
+    <Version>2.5.0</Version>
+    <Description>2.5.0
+ - Dotnet 6.0 target framework added
+2.4.1
+ - NetCore 3.1 target framework added
 2.4.0
   - GRPC Client ReAuth and Resend request when unauthorized 401 from server automatically
 2.3.6
