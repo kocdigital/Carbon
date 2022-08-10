@@ -1,21 +1,15 @@
 ﻿using Carbon.Common.TenantManagementHandler.Classes;
+using Carbon.ExceptionHandling.Abstractions;
 using Carbon.WebApplication.TenantManagementHandler.Dtos;
 using Carbon.WebApplication.TenantManagementHandler.Extensions;
+using Carbon.WebApplication.TenantManagementHandler.Interfaces;
 using Carbon.WebApplication.TenantManagementHandler.Services;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Primitives;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using Microsoft.Extensions.DependencyInjection;
-using System.Text;
-using Carbon.WebApplication.TenantManagementHandler.Interfaces;
-using System.IO;
-using Newtonsoft.Json;
-using Carbon.Common;
-using Microsoft.AspNetCore.Mvc;
-using Carbon.ExceptionHandling.Abstractions;
-using Carbon.WebApplication.TenantManagementHandler.Middlewares;
 
 namespace Carbon.WebApplication.TenantManagementHandler.ControllerAttributes
 {
@@ -85,45 +79,6 @@ namespace Carbon.WebApplication.TenantManagementHandler.ControllerAttributes
             {
                 var relatedController = ((IOwnershipFilteredController)context.Controller);
                 relatedController.OwnershipFilteredServices.ForEach(k => k.SetFilter(filterOwnershipPermissionList));
-                if (BodyRewindSettings.Enabled)
-                {
-                    context.HttpContext.Request.Body.Position = 0;
-                    using (var reader = new StreamReader(context.HttpContext.Request.Body))
-                    {
-                        RoleFilteredConcreteDto reqBody = null;
-                        var body = reader.ReadToEndAsync().Result;
-                        try
-                        {
-                            try
-                            {
-                                reqBody = JsonConvert.DeserializeObject<RoleFilteredConcreteDto>(body);
-                            }
-                            catch
-                            {
-                                //Unable to parse then skip
-                            }
-                            if (reqBody != null && reqBody.OwnerType != OwnerType.None)
-                            {
-                                if (!reqBody.ValidateFilter(filterOwnershipPermissionList))
-                                {
-                                    throw new ForbiddenOperationException();
-                                }
-                            }
-                        }
-                        catch (ForbiddenOperationException ex)
-                        {
-                            throw ex;
-                        }
-                        catch (Exception ex)
-                        {
-                            throw ex;
-                        }
-                        finally
-                        {
-                            context.HttpContext.Request.Body.Dispose();
-                        }
-                    }
-                }
             }
             else
             {
