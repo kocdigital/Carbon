@@ -1,28 +1,32 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.1</TargetFramework>
-    <Version>2.1.0</Version>
-    <Description>2.1.0
- Read-Only Context and Repository added in order to implement CQRS over replicated SQL servers. Simply use AddDatabaseWithReadOnlyReplicaContext method in your startup by passing your readonly context.
+    <TargetFrameworks>net6.0;net5.0;netstandard2.1</TargetFrameworks>
+    <Version>2.2.0</Version>
+    <Description>
+		2.2.0
+		Dotnet 6 and EfCore 6 support added when referenced by Carbon.Domain.EntityFrameworkCore 3.0.0 and Dotnet 6.0
 
-2.0.1
- Postgre and MSSQL healthcheck mismatch fixed
+		2.1.0
+		Read-Only Context and Repository added in order to implement CQRS over replicated SQL servers. Simply use AddDatabaseWithReadOnlyReplicaContext method in your startup by passing your readonly context.
 
-2.0.0 (Unstable - please update to at least 2.0.1)
-Entityframework Core 5 support added
+		2.0.1
+		Postgre and MSSQL healthcheck mismatch fixed
 
-1.4.0  (Unstable - please update to at least 2.0.1)
-	Added health check.
-*** 1.3.0
-Database Seeding Support added, Just create a seeder with IContextSeed interface and use app.SeedDatabase by passing your seeder into this method
+		2.0.0 (Unstable - please update to at least 2.0.1)
+		Entityframework Core 5 support added
 
-*** 1.2.6 Migration Management Changed (Multiple Migration)
-Each Migrations should locate under a seperate class library named with {The API Namespace which uses this migration} +{.{Target EF Name [PostgreSQL, MSSQL]}}    (e.g. Platform360.AssetManagement.API.PostgreSQL, Platform360.AssetManagement.API.MSSQL)
+		1.4.0  (Unstable - please update to at least 2.0.1)
+		Added health check.
+		*** 1.3.0
+		Database Seeding Support added, Just create a seeder with IContextSeed interface and use app.SeedDatabase by passing your seeder into this method
 
-*** PostgreSQL Support Added as of 1.2.0 (Multiple EF Target)
-- Use ConnectionTarget key in your ConnectionStrings Section [postgresql, mssql] of your Configuration.
-- Use AddDatabaseContext Carbon extension while adding your dbContext to use the support mentioned above</Description>
+		*** 1.2.6 Migration Management Changed (Multiple Migration)
+		Each Migrations should locate under a seperate class library named with {The API Namespace which uses this migration} +{.{Target EF Name [PostgreSQL, MSSQL]}}    (e.g. Platform360.AssetManagement.API.PostgreSQL, Platform360.AssetManagement.API.MSSQL)
+
+		*** PostgreSQL Support Added as of 1.2.0 (Multiple EF Target)
+		- Use ConnectionTarget key in your ConnectionStrings Section [postgresql, mssql] of your Configuration.
+		- Use AddDatabaseContext Carbon extension while adding your dbContext to use the support mentioned above</Description>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
   </PropertyGroup>
 

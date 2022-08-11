@@ -1,11 +1,14 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>net5.0;netcoreapp3.1</TargetFrameworks>
+    <TargetFrameworks>net6.0;net5.0;netcoreapp3.1</TargetFrameworks>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-    <Version>1.1.0</Version>
+    <Version>1.2.0</Version>
     <GenerateDocumentationFile>False</GenerateDocumentationFile>
-    <Description>Quartz.NET is a full-featured, open source job scheduling system that can be used from smallest apps to large scale enterprise systems.
+    <Description>1.2.0
+- Added EF Core 6 support
+
+Quartz.NET is a full-featured, open source job scheduling system that can be used from smallest apps to large scale enterprise systems.
 
 This quartz package may be a cumbersome when it is used for the first time. So that, this package wrapped properly to run in Kubernetes without breaking 1-click deployment rules and with HA and resilience.</Description>
   </PropertyGroup>
