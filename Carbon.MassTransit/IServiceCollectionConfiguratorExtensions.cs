@@ -1,10 +1,13 @@
-﻿using MassTransit;
+﻿using Carbon.MassTransit.AsyncReqResp;
+using Carbon.MassTransit.AsyncReqResp.Events;
+using MassTransit;
 using MassTransit.AspNetCoreIntegration.HealthChecks;
 using MassTransit.Azure.ServiceBus.Core;
 using MassTransit.ExtensionsDependencyInjectionIntegration;
 using MassTransit.ExtensionsDependencyInjectionIntegration.MultiBus;
 using MassTransit.MultiBus;
 using MassTransit.RabbitMqTransport;
+using MassTransit.RedisIntegration;
 using MassTransit.Registration;
 
 using Microsoft.Extensions.Configuration;
@@ -12,6 +15,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Options;
+using StackExchange.Redis;
 using System;
 using System.Linq;
 
@@ -172,6 +176,104 @@ namespace Carbon.MassTransit
                 serviceCollection.AddBus(cfg => serviceBusFactory(configurator, massTransitSettings, cfg));
             }
         }
+
+        /// <summary>
+        /// Adds AsyncRequestResponsePattern. Use this overload for only requestor
+        /// </summary>
+        /// <param name="services"></param>
+        /// <param name="configuration"></param>
+        public static void AddAsyncRequestResponsePatternForRequestor<T>(this IServiceCollection services, IConfiguration configuration)
+            where T : class, IConsumer<IResponseCarrier>
+        {
+            var apiname = System.Reflection.Assembly.GetEntryAssembly().GetName().Name;
+
+            services.AddMassTransitBus<IReqRespRequestorBus>(cfg =>
+            {
+                cfg.AddConsumer<T>();
+
+                cfg.AddSagaStateMachine<RequestResponseStateMachine, RequestResponseState>()
+                .RedisRepository(x =>
+                {
+                    x.ConnectionFactory(k => (ConnectionMultiplexer)k.GetRequiredService<IConnectionMultiplexer>());
+                    x.KeyPrefix = "exdata";
+                    x.Expiry = new System.TimeSpan(0, 30, 0);
+                    x.ConcurrencyMode = ConcurrencyMode.Pessimistic;
+                    x.LockRetryTimeout = new System.TimeSpan(0, 0, 2);
+                    x.LockTimeout = new System.TimeSpan(0, 0, 30);
+                }
+                );
+
+                cfg.AddRabbitMqBus(configuration, (provider, busFactoryConfig) =>
+                {
+                    busFactoryConfig.ReceiveEndpoint("request-starter-state", e =>
+                    {
+                        e.ConfigureSaga<RequestResponseState>((IBusRegistrationContext)provider);
+                    });
+
+                    busFactoryConfig.Publish<IRequestStarterRequest>(x => { });
+
+                    busFactoryConfig.ReceiveEndpoint(apiname + "-Req.Resp.Async-RespHandler", configurator =>
+                    {
+                        configurator.Consumer<T>(provider);
+                    });
+                });
+
+                cfg.AddServiceBus(configuration, (provider, busFactoryConfig) =>
+                {
+                    busFactoryConfig.ReceiveEndpoint("request-starter-state", e =>
+                    {
+                        e.ConfigureSaga<RequestResponseState>((IBusRegistrationContext)provider);
+                    });
+
+                    busFactoryConfig.Publish<IRequestStarterRequest>(x => { });
+
+                    busFactoryConfig.ReceiveEndpoint(apiname + "-Req.Resp.Async-RespHandler", configurator =>
+                    {
+                        configurator.Consumer<T>(provider);
+                    });
+                });
+            });
+        }
+
+        /// <summary>
+        /// Adds AsyncRequestResponsePattern. Use this overload for only responder to requestor
+        /// </summary>
+        /// <typeparam name="T">Your request handler consumer where you respond to consumer</typeparam>
+        /// <param name="services"></param>
+        /// <param name="configuration"></param>
+        /// <param name="responseDestinationPath"></param>
+        public static void AddAsyncRequestResponsePatternForResponder<T>(this IServiceCollection services, IConfiguration configuration, string responseDestinationPath)
+            where T : class, IConsumer<IRequestCarrierRequest>
+        {
+            if (String.IsNullOrEmpty(responseDestinationPath))
+            {
+                throw new Exception("responseDestinationPath cannot be null or empty");
+            }
+
+            services.AddMassTransitBus<IReqRespResponderBus>(cfg =>
+            {
+                cfg.AddConsumer<T>();
+
+                cfg.AddRabbitMqBus(configuration, (provider, busFactoryConfig) =>
+                {
+
+                    busFactoryConfig.ReceiveEndpoint("Req.Resp.Async-" + responseDestinationPath, configurator =>
+                    {
+                        configurator.Consumer<T>(provider);
+                    });
+
+                });
+
+                cfg.AddServiceBus(configuration, (provider, busFactoryConfig) =>
+                {
+                    busFactoryConfig.ReceiveEndpoint("Req.Resp.Async-" + responseDestinationPath, configurator =>
+                    {
+                        configurator.Consumer<T>(provider);
+                    });
+                });
+            });
+        }
+
 
         /// <summary>
         /// Azure Service Bus Add Extension Method
