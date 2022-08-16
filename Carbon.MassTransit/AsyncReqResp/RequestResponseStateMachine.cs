@@ -57,7 +57,7 @@ namespace Carbon.MassTransit.AsyncReqResp
                     .Then(ctx =>
                     {
                         _logger.LogInformation($"Response has failed, finalizing! State : CorrelationId: {ctx.Data.CorrelationId} From: {ctx.Instance.RequestData.DestinationEndpointName}");
-                        ctx.Instance.ResponseCode = StaticHelpers.ResponseCode.BadRequest;
+                        ctx.Instance.ResponseCode = StaticHelpers.ResponseCode.ServerError;
                         ctx.Instance.Response = ctx.Data.ResponseBody;
                     })
                     .TransitionTo(RequestFinalizingState)
@@ -68,7 +68,7 @@ namespace Carbon.MassTransit.AsyncReqResp
                     .Then(ctx =>
                     {
                         _logger.LogInformation($"Request cannot be sent, no response will be expected, finalizing! State : CorrelationId: {ctx.Data.CorrelationId} From: {ctx.Instance.RequestData.DestinationEndpointName} Exc: {ctx.Data.ErrorMessage}");
-                        ctx.Instance.ResponseCode = StaticHelpers.ResponseCode.ServerError;
+                        ctx.Instance.ResponseCode = StaticHelpers.ResponseCode.BadRequest;
                         ctx.Instance.Response = ctx.Data.ErrorMessage;
                     })
                     .TransitionTo(RequestFinalizingState)
