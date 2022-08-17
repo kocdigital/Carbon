@@ -4,13 +4,20 @@ namespace Carbon.MassTransit.AsyncReqResp.Events
 {
     public class RequestCarrierRequest : IRequestCarrierRequest
     {
-        public RequestCarrierRequest(Guid correlationId, string integrationBody)
+        public RequestCarrierRequest(Guid correlationId, string requestBody)
         {
             CorrelationId = correlationId;
-            RequestBody = integrationBody;
+            RequestBody = requestBody;
+            OriginatedRequestTime = DateTime.UtcNow;
+        }
+
+        public RequestCarrierRequest(Guid correlationId, string requestBody, DateTime originatedRequestTime) : this(correlationId, requestBody)
+        {
+            OriginatedRequestTime = originatedRequestTime;
         }
 
         public Guid CorrelationId { get; set; }
         public String RequestBody { get; set; }
+        public DateTime OriginatedRequestTime { get; set; }
     }
 }
