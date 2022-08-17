@@ -17,6 +17,43 @@ namespace Carbon.MassTransit.AsyncReqResp
             ServerError = 500
         }
 
+        /// <summary>
+        /// Use this method anywhere where you want to respond to request. Keep the correlationId with you. Otherwise, you won't be able to use this extension.
+        /// </summary>
+        /// <param name="context"></param>
+        /// <param name="correlationId"></param>
+        /// <param name="responseBody"></param>
+        /// <param name="responseCode"></param>
+        /// <returns></returns>
+        /// <exception cref="Exception"></exception>
+        public static async Task SendResponseToReqRespAsync(this IReqRespResponderBus context, Guid correlationId, string responseBody, ResponseCode responseCode = ResponseCode.Ok)
+        {
+            if(correlationId == Guid.Empty)
+            {
+                throw new Exception("CorrelationId cannot be Guid.Empty");
+            }
+
+            if (responseCode == ResponseCode.Ok)
+            {
+                ResponseSucceed responseSucceed = new ResponseSucceed(correlationId);
+                responseSucceed.ResponseBody = responseBody;
+                await context.Publish(responseSucceed);
+            }
+            else if (responseCode == ResponseCode.ServerError)
+            {
+                ResponseFailed responseFailed = new ResponseFailed(correlationId);
+                responseFailed.ResponseBody = responseBody;
+                await context.Publish(responseFailed);
+            }
+        }
+
+        /// <summary>
+        /// Use this method directly from your response consumer. Your context is aware of correlationId.
+        /// </summary>
+        /// <param name="consumeContext"></param>
+        /// <param name="responseBody"></param>
+        /// <param name="responseCode"></param>
+        /// <returns></returns>
         public static async Task SendResponseToReqRespAsync(this ConsumeContext<IRequestCarrierRequest> consumeContext, string responseBody, ResponseCode responseCode = ResponseCode.Ok)
         {
             if (responseCode == ResponseCode.Ok)
