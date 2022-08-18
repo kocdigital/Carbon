@@ -1,22 +1,32 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFramework>netstandard2.1</TargetFramework>
     <ProjectGuid>{bdcf1c00-d0d9-4328-8817-4d093f30cee1}</ProjectGuid>
-    <Version>3.4.0</Version>
-    <Description>3.2.0
-- Refresh parameter added to create, update and delete methods
-3.1.1
-- FindAsync with Size added
-- New Configuration added for force refresh on writing operations
--ElasticSearch.NET &amp; Nest Libraries Updated to 7.11.1
--Sort feature added for FilterAsync.</Description>
+    <Version>3.5.0</Version>
+    <Description>
+		3.5.0
+		- Readonly Elastic repository implemented.
+		- Paging functions added to BaseElasticRepositories.
+		
+		3.2.0
+		- Refresh parameter added to create, update and delete methods
+		3.1.1
+		- FindAsync with Size added
+		- New Configuration added for force refresh on writing operations
+		-ElasticSearch.NET &amp; Nest Libraries Updated to 7.11.1
+		-Sort feature added for FilterAsync.
+	</Description>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="NEST" Version="7.11.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Carbon.Common\Carbon.Common.csproj" />
   </ItemGroup>
 
 </Project>
