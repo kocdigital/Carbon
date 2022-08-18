@@ -21,6 +21,7 @@ namespace Carbon.Quartz
             if (maxConcurrency > 10)
                 maxConcurrency = 10;
             // base configuration from appsettings.json
+            services.AddScoped<IQuartzClusterableService, QuartzService>();
 
             services.Configure<QuartzOptions>(k => configuration.GetSection(QuartzConstants.Quartz));
 

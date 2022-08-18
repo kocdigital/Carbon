@@ -98,6 +98,18 @@ namespace Carbon.Quartz
         }
 
         /// <summary>
+        /// Deletes a job with the given name
+        /// </summary>
+        /// <param name="jobName"></param>
+        /// <returns></returns>
+        public async Task DeleteJob(string jobName)
+        {
+            _scheduler = await getRelatedScheduler();
+            JobKey jobKey = new JobKey(jobName);
+            await _scheduler.DeleteJob(jobKey);
+        }
+
+        /// <summary>
         /// Clears all the unused jobs excluding with a given job key list. Useful when you don't know scheduled jobs at an earlier time, and keep the ones you want
         /// </summary>
         /// <param name="excludingJobKeyList">Jobs to keep</param>
@@ -161,6 +173,11 @@ namespace Carbon.Quartz
                 Console.WriteLine(ex.Message);
                 throw new Exception(ex.Message, ex);
             }
+        }
+
+        public async Task<IScheduler> GetCurrentScheduler()
+        {
+            return await this.getRelatedScheduler();
         }
     }
 }

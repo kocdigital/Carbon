@@ -13,5 +13,9 @@ namespace Carbon.Quartz
         Task ClearAllJobsExceptFor(List<string> excludingJobKeyList);
         Task AddAndStartClusterableCustomJob<TJob>(string jobName, object jobData, ITrigger trigger)
              where TJob : IJob;
+
+        Task DeleteJob(string jobName);
+
+        Task<IScheduler> GetCurrentScheduler();
     }
 }
