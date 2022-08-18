@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFramework>netstandard2.1</TargetFramework>
     <ProjectGuid>{7AEAD788-E78D-4825-9761-AEB2570DE3E0}</ProjectGuid>
     <Version>3.4.0</Version>
     <Description>3.2.0
@@ -32,6 +32,7 @@
   </ItemGroup>
 
   <ItemGroup>
+	<ProjectReference Include="..\Carbon.Common\Carbon.Common.csproj" />
     <ProjectReference Include="..\Carbon.ElasticSearch.Abstractions\Carbon.ElasticSearch.Abstractions.csproj" />
   </ItemGroup>
 
