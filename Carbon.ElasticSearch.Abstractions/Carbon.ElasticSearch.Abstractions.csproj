@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFramework>netstandard2.1</TargetFramework>
     <ProjectGuid>{bdcf1c00-d0d9-4328-8817-4d093f30cee1}</ProjectGuid>
     <Version>3.4.0</Version>
     <Description>3.2.0
@@ -17,6 +17,10 @@
 
   <ItemGroup>
     <PackageReference Include="NEST" Version="7.11.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Carbon.Common\Carbon.Common.csproj" />
   </ItemGroup>
 
 </Project>
