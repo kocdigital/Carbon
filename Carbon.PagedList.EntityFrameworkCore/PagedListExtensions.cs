@@ -38,7 +38,7 @@ namespace Carbon.PagedList.EntityFrameworkCore
                     result = await superset.Skip((pageNumber - 1) * pageSize).Take(pageSize).ToListAsync();
             }
 
-            return new PagedList<T>(result, pageNumber, pageSize);
+            return new PagedList<T>(result, pageNumber, pageSize, TotalItemCount);
         }
     }
 }
