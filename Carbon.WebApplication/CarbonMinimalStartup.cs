@@ -42,6 +42,7 @@ namespace Carbon.WebApplication
 
         public static void AddCarbonServices(this WebApplicationBuilder builder, Func<IServiceCollection, IServiceCollection> serviceCollector)
         {
+            builder.WebHost.UseCarbonFeatures();
             var services = builder.Services;
             Configuration = builder.Configuration;
             Console.WriteLine($"Carbon is compiled with .Net 6.0 and working on .Net {System.Environment.Version.ToString()}. (Minimal api)");
@@ -51,7 +52,6 @@ namespace Carbon.WebApplication
             services = serviceCollector(services);
 
             CommonStartup.AddServiceSwagger(services, Configuration);
-            builder.WebHost.UseCarbonFeatures();
         }
 
         public static void AddCarbonApplication(this Microsoft.AspNetCore.Builder.WebApplication app, Func<Microsoft.AspNetCore.Builder.WebApplication, Microsoft.AspNetCore.Builder.WebApplication> applicationCollector, bool useAuthentication = true, bool useAuthorization = true, Func<IEndpointRouteBuilder, IEndpointRouteBuilder> endpointRouteCollector = null)

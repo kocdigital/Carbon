@@ -2,8 +2,8 @@
 
   <PropertyGroup>
     <TargetFrameworks>net6.0;net5.0;netcoreapp3.1</TargetFrameworks>
-    <Version>4.0.0-preview</Version>
-    <Description>4.0.0-preview
+    <Version>4.0.0</Version>
+    <Description>4.0.0
 - Carbon now supports Dotnet 6 in terms of both minimal and not minimal
 - Fluent Validation Upgraded
 - Swagger Upgraded
