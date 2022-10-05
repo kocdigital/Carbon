@@ -2,8 +2,12 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
-    <Version>2.6.0</Version>
-    <Description>-2.6.0
+    <Version>2.7.0</Version>
+    <Description>-2.7.0
+- Critical bug fixed for Directory separator char to specific platform (Windows,Linux)
+-2.6.0
+- Critical bug fixed for SolutionRegistration when there is no default MassTransit usage
+- Some Performance Improvements-2.6.0
 - Critical bug fixed for SolutionRegistration when there is no default MassTransit usage
 - Some Performance Improvements
 -2.5.0
