@@ -44,7 +44,7 @@ namespace Carbon.WebApplication
 
             foreach (var resource in resources)
             {
-                var languageCode = resource.Split("\\")[1].Replace($"{resourceBaseName}.", "").Replace(".resx", "");
+                var languageCode = resource.Split(Path.DirectorySeparatorChar)[1].Replace($"{resourceBaseName}.", "").Replace(".resx", "");
                 XDocument xResx = null;
                 xResx = XDocument.Load($"{resource}");
                 if (xResx == null) continue;
