@@ -67,6 +67,7 @@ namespace Carbon.ExceptionHandling.Abstractions
         /// <param name="args">The argument object array of the exception.</param>
         public CarbonException(string message, params object[] args) : this(default(int), message, args)
         {
+            Arguments = args;
             SerializedModel = JsonConvert.SerializeObject(args​​, new JsonSerializerSettings { ReferenceLoopHandling = ReferenceLoopHandling.Ignore });
         }
 
@@ -80,6 +81,7 @@ namespace Carbon.ExceptionHandling.Abstractions
         {
             if (args != null && args.Length > 0)
             {
+                Arguments = args;
                 SerializedModel = JsonConvert.SerializeObject(args​​​​, new JsonSerializerSettings { ReferenceLoopHandling = ReferenceLoopHandling.Ignore });
             }
 
@@ -121,6 +123,7 @@ namespace Carbon.ExceptionHandling.Abstractions
             ErrorCode = code;
             if (args != null && args.Length > 0)
             {
+                Arguments = args;
                 SerializedModel = JsonConvert.SerializeObject(args, new JsonSerializerSettings { ReferenceLoopHandling = ReferenceLoopHandling.Ignore });
             }
         }
