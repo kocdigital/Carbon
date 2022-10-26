@@ -1,19 +1,15 @@
 ﻿using Carbon.Common;
 using Carbon.ExceptionHandling.Abstractions;
+using Carbon.WebApplication.TenantManagementHandler.Extensions;
 using Carbon.WebApplication.TenantManagementHandler.Services;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using System;
-using System.Diagnostics;
-using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
-using Carbon.WebApplication.TenantManagementHandler.Extensions;
 
 namespace Carbon.WebApplication
 {
@@ -41,7 +37,7 @@ namespace Carbon.WebApplication
         }
 
 
-        private async Task<string> GetErrorMessage(int errorCode, HttpRequest context)
+        private async Task<string> GetErrorMessage(int errorCode, object[] arguments, HttpRequest context)
         {
             var errorResponse = await
                 _externalService
@@ -54,9 +50,13 @@ namespace Carbon.WebApplication
                  context.Headers["tenantId"]
             ));
 
-
             if (errorResponse != null)
             {
+                if (arguments?.Length > 0)
+                {
+                    var errorDescription = string.Format(errorResponse.ErrorDescription, arguments);
+                    return errorDescription;
+                }
                 return errorResponse.ErrorDescription;
             }
             return null;
@@ -77,7 +77,7 @@ namespace Carbon.WebApplication
             {
                 if (!string.IsNullOrEmpty(_errorHandling))
                 {
-                    var exceptionMessage = GetErrorMessage(exception.ErrorCode, context.HttpContext.Request).Result;
+                    var exceptionMessage = GetErrorMessage(exception.ErrorCode, exception.Arguments, context.HttpContext.Request).Result;
 
                     _logger.LogError($" {{{ "ErrorCode"}}} {{{ "ErrorMessage"}}} {{{ "Args"}}} {{{ "StackTrace"}}}",
                     exception.ErrorCode, exceptionMessage, exception.SerializedModel, context.Exception.StackTrace);
