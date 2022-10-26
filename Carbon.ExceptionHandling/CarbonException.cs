@@ -47,7 +47,6 @@ namespace Carbon.ExceptionHandling.Abstractions
         /// <param name="model">The model of the exception.</param>
         public CarbonException(int code, object model) : this(code)
         {
-            Arguments = args;
             SerializedModel = JsonConvert.SerializeObject(model​​, new JsonSerializerSettings { ReferenceLoopHandling = ReferenceLoopHandling.Ignore });
         }
 
