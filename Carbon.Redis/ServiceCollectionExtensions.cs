@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using Carbon.Redis.Builder;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
@@ -26,7 +27,7 @@ namespace Carbon.Redis
         /// </summary>
         /// <param name="configuration"></param>
         /// <returns> IServiceCollection </returns>
-        public static IServiceCollection AddRedisPersister(this IServiceCollection services, IConfiguration configuration)
+        public static ICarbonRedisBuilder AddRedisPersister(this IServiceCollection services, IConfiguration configuration)
         {
             if (services == null)
             {
@@ -39,9 +40,10 @@ namespace Carbon.Redis
             IOptions<RedisSettings> redisSettings = new RedisSettings();
             configuration.GetSection(RedisConstants.RedisSectionName).Bind(redisSettings);
             services.AddSingleton(redisSettings);
+            ConfigurationOptions configurationOptions = new ConfigurationOptions();
             if (redisSettings.Value.Enabled)
             {
-                var configurationOptions = new ConfigurationOptions
+                 configurationOptions = new ConfigurationOptions
                 {
                     EndPoints = { string.Join(",", redisSettings.Value.EndPoints) },
                     KeepAlive = redisSettings.Value.KeepAlive,
@@ -93,7 +95,7 @@ namespace Carbon.Redis
             }
 
 
-            return services;
+            return new CarbonRedisBuilder(services, configurationOptions, configuration);
         }
 
         public static void AddRedisPersisterHealthCheck(this IServiceCollection services, RedisSettings settings, HealthStatus failureStatus = HealthStatus.Unhealthy)
