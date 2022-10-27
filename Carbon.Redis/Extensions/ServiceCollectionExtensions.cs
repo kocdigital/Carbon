@@ -33,7 +33,14 @@ namespace Carbon.Caching.Redis
 
             services.AddOptions();
             IOptions<CarbonRedisCacheOptions> redisSettings = new CarbonRedisCacheOptions();
-            redisSettings.Value.InstanceName = configuration.GetSection(RedisConstants.RedisSectionName).GetValue<string>(RedisConstants.InstanceName, "CarbonInstance");
+            string instanceName = configuration.GetSection(RedisConstants.RedisSectionName).GetValue<string>(RedisConstants.InstanceName);
+
+            if(String.IsNullOrEmpty(instanceName))
+            {
+                throw new ArgumentNullException(instanceName);
+            }
+
+            redisSettings.Value.InstanceName = configuration.GetSection(RedisConstants.RedisSectionName).GetValue<string>(RedisConstants.InstanceName);
             redisSettings.Value.ConfigurationOptions = builder.ConfigurationOptions;
             redisSettings.Value.Configuration = builder.ConfigurationOptions.ToString();
 
