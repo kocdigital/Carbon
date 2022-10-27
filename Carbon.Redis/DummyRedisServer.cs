@@ -589,5 +589,15 @@ namespace Carbon.Redis
         {
             throw new NotImplementedException();
         }
+
+        public Role Role(CommandFlags flags = CommandFlags.None)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<Role> RoleAsync(CommandFlags flags = CommandFlags.None)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

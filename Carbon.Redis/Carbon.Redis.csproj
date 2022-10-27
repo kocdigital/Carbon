@@ -2,8 +2,12 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
-    <Version>1.3.4</Version>
-    <Description>1.3.3
+    <Version>2.0.0-preview</Version>
+    <Description>2.0.0-preview
+  Enables you to use CarbonRedisCache Helper in your services to access more extended methods and capabilities (i.e. RedLock, Redis PubSub etc.) and make the legacy apis compatible with this package
+  Handle with care while using this Helper extension methods as it contains binaryformatters which are obsoleted as of dotnet 5, either allow this feature in your csproj or do not use dotnet 5 and greater
+  BinaryFormatters will migrate to JsonSerializers or other serializations at incoming versions
+1.3.3
   Added SSL/TLS connection support
 1.2.0
 	Added health check.
@@ -14,15 +18,19 @@
 - Scan Keys And Remove By Pattern</Description>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-    <AssemblyVersion>1.3.4.0</AssemblyVersion>
+    <AssemblyVersion>2.0.0</AssemblyVersion>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="AspNetCore.HealthChecks.Redis" Version="5.0.2" />
     <PackageReference Include="FastMember" Version="1.5.0" />
     <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Extensions.Caching.Abstractions" Version="6.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Caching.StackExchangeRedis" Version="6.0.10" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="2.1.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="6.0.1" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    <PackageReference Include="RedLock.net" Version="2.3.2" />
   </ItemGroup>
 
 </Project>

@@ -10,5 +10,7 @@
         public const string Match = "MATCH";
         public const string Count = "COUNT";
         public const string SearchKeyCount = "500";
+        public const string InstanceName = "InstanceName";
+
     }
 }
