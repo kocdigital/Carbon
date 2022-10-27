@@ -40,7 +40,7 @@ namespace Carbon.Caching.Redis
                 throw new ArgumentNullException(instanceName);
             }
 
-            redisSettings.Value.InstanceName = configuration.GetSection(RedisConstants.RedisSectionName).GetValue<string>(RedisConstants.InstanceName);
+            redisSettings.Value.InstanceName = instanceName;
             redisSettings.Value.ConfigurationOptions = builder.ConfigurationOptions;
             redisSettings.Value.Configuration = builder.ConfigurationOptions.ToString();
 
