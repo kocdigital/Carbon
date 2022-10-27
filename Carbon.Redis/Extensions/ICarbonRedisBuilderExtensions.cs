@@ -9,7 +9,7 @@ using System;
 
 namespace Carbon.Caching.Redis
 {
-    public static class ServiceCollectionExtensions
+    public static class ICarbonRedisBuilderExtensions
     {
         /// <summary>
         /// Enables you to use CarbonRedisCache in your services to access more extended methods and capabilities (i.e. RedLock, Redis PubSub etc.) and make the legacy apis compatible with this package
