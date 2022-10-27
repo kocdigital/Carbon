@@ -26,7 +26,7 @@ namespace Carbon.Redis
         public int ConnectTimeout { get; set; }
         public int DefaultDatabase { get; set; }
         public bool SSLEnabled { get; set; }
-
+        public string InstanceName { get; set; }
         public RedisSettings Value => this;
     }
 }

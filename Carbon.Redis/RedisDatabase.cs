@@ -663,6 +663,11 @@ namespace Carbon.Redis
             return default;
         }
 
+        public long ListLeftPush(RedisKey key, RedisValue[] values, When when = When.Always, CommandFlags flags = CommandFlags.None)
+        {
+            throw new NotImplementedException();
+        }
+
         public Task<long> ListLeftPushAsync(RedisKey key, RedisValue value, When when = When.Always, CommandFlags flags = CommandFlags.None)
         {
             return default;
@@ -671,6 +676,11 @@ namespace Carbon.Redis
         public Task<long> ListLeftPushAsync(RedisKey key, RedisValue[] values, CommandFlags flags = CommandFlags.None)
         {
             return default;
+        }
+
+        public Task<long> ListLeftPushAsync(RedisKey key, RedisValue[] values, When when = When.Always, CommandFlags flags = CommandFlags.None)
+        {
+            throw new NotImplementedException();
         }
 
         public long ListLength(RedisKey key, CommandFlags flags = CommandFlags.None)
@@ -733,6 +743,11 @@ namespace Carbon.Redis
             return default;
         }
 
+        public long ListRightPush(RedisKey key, RedisValue[] values, When when = When.Always, CommandFlags flags = CommandFlags.None)
+        {
+            throw new NotImplementedException();
+        }
+
         public Task<long> ListRightPushAsync(RedisKey key, RedisValue value, When when = When.Always, CommandFlags flags = CommandFlags.None)
         {
             return default;
@@ -741,6 +756,11 @@ namespace Carbon.Redis
         public Task<long> ListRightPushAsync(RedisKey key, RedisValue[] values, CommandFlags flags = CommandFlags.None)
         {
             return default;
+        }
+
+        public Task<long> ListRightPushAsync(RedisKey key, RedisValue[] values, When when = When.Always, CommandFlags flags = CommandFlags.None)
+        {
+            throw new NotImplementedException();
         }
 
         public void ListSetByIndex(RedisKey key, long index, RedisValue value, CommandFlags flags = CommandFlags.None)
