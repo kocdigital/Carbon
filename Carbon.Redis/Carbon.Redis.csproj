@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
-    <Version>2.0.0-preview</Version>
+    <Version>2.0.1-preview</Version>
     <Description>2.0.0-preview
   Enables you to use CarbonRedisCache Helper in your services to access more extended methods and capabilities (i.e. RedLock, Redis PubSub etc.) and make the legacy apis compatible with this package
   Handle with care while using this Helper extension methods as it contains binaryformatters which are obsoleted as of dotnet 5, either allow this feature in your csproj or do not use dotnet 5 and greater
