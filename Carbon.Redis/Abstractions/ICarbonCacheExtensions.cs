@@ -9,6 +9,24 @@ namespace Carbon.Caching.Abstractions
 {
     public static class ICarbonCacheExtensions
     {
+        private static Serialization SerializationType { get; set; }
+
+        public static void SetSerializationType(Serialization PreferredSerializationType)
+        {
+            if (PreferredSerializationType == Serialization.BinaryFormatter)
+            {
+                Console.WriteLine(SerializationType + " is obsolete, handle with care or consider changing it!");
+                SerializationType = PreferredSerializationType;
+            }
+            else if (PreferredSerializationType == Serialization.Json)
+            {
+                SerializationType = PreferredSerializationType;
+            }
+            else if (PreferredSerializationType == Serialization.Protobuf)
+            {
+                throw new NotImplementedException("Protobuf serialization is not implemented yet!");
+            }
+        }
         public static void Set<T>(this ICarbonCache instance, string key, T content, TimeSpan period)
         {
             var options = new DistributedCacheEntryOptions();
@@ -18,7 +36,7 @@ namespace Carbon.Caching.Abstractions
                 options = options.SetSlidingExpiration(period);
             }
 
-            instance.Set(key, content.ToByteArraySafe(), options);
+            instance.Set(key, content.ToByteArray(SerializationType), options);
         }
 
         public static void Set<T>(this ICarbonCache instance, string key, T content)
@@ -30,7 +48,7 @@ namespace Carbon.Caching.Abstractions
         {
             var value = instance.Get(key);
 
-            return value?.FromByteArraySafe<T>();
+            return value?.FromByteArray<T>(SerializationType);
         }
 
         public static void SetMultiKey<T>(this ICarbonCache instance, IList<string> keys, T content, TimeSpan period)
@@ -54,7 +72,7 @@ namespace Carbon.Caching.Abstractions
         {
             var value = await instance.GetAsync(key, token).ConfigureAwait(false);
 
-            return value?.FromByteArraySafe<T>();
+            return value?.FromByteArray<T>(SerializationType);
         }
 
         public static async Task<T> GetAsync<T>(this ICarbonCache instance, string key, Func<Task<T>> setMethodIfNotExists, CancellationToken token = default(CancellationToken), TimeSpan timeSpan = default(TimeSpan), bool isSlidingExpiration = true) where T : class
@@ -67,7 +85,7 @@ namespace Carbon.Caching.Abstractions
                 return result;
             }
 
-            return value?.FromByteArraySafe<T>();
+            return value?.FromByteArray<T>(SerializationType);
         }
 
 
@@ -90,7 +108,7 @@ namespace Carbon.Caching.Abstractions
                     options = options.SetAbsoluteExpiration(period);
             }
 
-            await instance.SetAsync(key, content.ToByteArraySafe(), options, token).ConfigureAwait(false);
+            await instance.SetAsync(key, content.ToByteArray(SerializationType), options, token).ConfigureAwait(false);
         }
 
         public static async Task SetMultiKeyAsync<T>(this ICarbonCache instance, IList<string> keys, T content)

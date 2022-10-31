@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
-    <Version>2.0.1-preview</Version>
+    <Version>2.1.0-preview</Version>
     <Description>2.0.0-preview
   Enables you to use CarbonRedisCache Helper in your services to access more extended methods and capabilities (i.e. RedLock, Redis PubSub etc.) and make the legacy apis compatible with this package
   Handle with care while using this Helper extension methods as it contains binaryformatters which are obsoleted as of dotnet 5, either allow this feature in your csproj or do not use dotnet 5 and greater
@@ -18,7 +18,7 @@
 - Scan Keys And Remove By Pattern</Description>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-    <AssemblyVersion>2.0.0</AssemblyVersion>
+    <AssemblyVersion>2.1.0</AssemblyVersion>
   </PropertyGroup>
 
   <ItemGroup>
@@ -29,8 +29,8 @@
     <PackageReference Include="Microsoft.Extensions.Caching.StackExchangeRedis" Version="6.0.10" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="2.1.0" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="6.0.1" />
-    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
     <PackageReference Include="RedLock.net" Version="2.3.2" />
+    <PackageReference Include="System.Text.Json" Version="6.0.6" />
   </ItemGroup>
 
 </Project>

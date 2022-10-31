@@ -1,15 +1,70 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Text;
+using System.Text.Json;
 
 namespace Carbon.Caching.Abstractions.Extensions
 {
     public static class SerializationExtensions
     {
-        [Obsolete("This conversion is deprecated as of dotnet 5 unless you demand especially in your csproj")]
-        public static byte[] ToByteArray(this object obj)
+        public static byte[] ToByteArray(this object obj, Serialization serializationType = Serialization.BinaryFormatter)
+        {
+            if (serializationType == Serialization.BinaryFormatter)
+                return BinaryFormatterSerializer(obj);
+            else if (serializationType == Serialization.Json)
+                return JsonBinarySerializer(obj);
+            else if (serializationType == Serialization.Protobuf)
+                return ProtobufSerializer(obj);
+            else
+                throw new NotImplementedException();
+        }
+        public static T FromByteArray<T>(this byte[] byteArray, Serialization serializationType = Serialization.BinaryFormatter) where T : class
+        {
+            if (serializationType == Serialization.BinaryFormatter)
+                return BinaryFormatterDeserializer<T>(byteArray);
+            else if (serializationType == Serialization.Json)
+                return JsonBinaryDeserializer<T>(byteArray);
+            else if (serializationType == Serialization.Protobuf)
+                return ProtobufDeserializer<T>(byteArray);
+            else
+                throw new NotImplementedException();
+        }
+
+        private static T ProtobufDeserializer<T>(byte[] byteArray)
+            where T : class
+        {
+            throw new NotImplementedException();
+        }
+
+        private static byte[] ProtobufSerializer(object obj)
+        {
+            throw new NotImplementedException();
+        }
+
+        private static T JsonBinaryDeserializer<T>(byte[] byteArray) 
+            where T : class
+        {
+            if (byteArray == null)
+            {
+                return default(T);
+            }
+            var objAsJsonString = System.Text.Encoding.UTF8.GetString(byteArray);
+            return JsonSerializer.Deserialize<T>(objAsJsonString);
+        }
+
+        private static byte[] JsonBinarySerializer(object obj)
+        {
+            if (obj == null)
+            {
+                return null;
+            }
+            var serializedObj = JsonSerializer.Serialize(obj);
+            return Encoding.UTF8.GetBytes(serializedObj);
+        }
+
+        private static byte[] BinaryFormatterSerializer(object obj)
         {
             if (obj == null)
             {
@@ -22,8 +77,9 @@ namespace Carbon.Caching.Abstractions.Extensions
                 return memoryStream.ToArray();
             }
         }
-        [Obsolete("This conversion is deprecated as of dotnet 5 unless you demand especially in your csproj")]
-        public static T FromByteArray<T>(this byte[] byteArray) where T : class
+
+        private static T BinaryFormatterDeserializer<T>(byte[] byteArray) 
+            where T : class
         {
             if (byteArray == null)
             {
@@ -35,54 +91,5 @@ namespace Carbon.Caching.Abstractions.Extensions
                 return binaryFormatter.Deserialize(memoryStream) as T;
             }
         }
-
-        internal static StructureType FromByteArraySafe<StructureType>(this byte[] byteArray)
-    where StructureType : class
-        {
-            using (var memoryStream = new MemoryStream(byteArray))
-            {
-                int Length = Marshal.SizeOf(typeof(StructureType));
-                byte[] Bytes = new byte[Length];
-                memoryStream.Read(Bytes, 0, Length);
-                IntPtr Handle = Marshal.AllocHGlobal(Length);
-                Marshal.Copy(Bytes, 0, Handle, Length);
-                StructureType Result = (StructureType)Marshal.PtrToStructure(Handle, typeof(StructureType));
-                Marshal.FreeHGlobal(Handle);
-                return Result;
-            }
-        }
-
-        internal static byte[] ToByteArraySafe(this object Structure)
-        {
-            using (var memoryStream = new MemoryStream())
-            {
-                int Length = Marshal.SizeOf(Structure);
-                byte[] Bytes = new byte[Length];
-                IntPtr Handle = Marshal.AllocHGlobal(Length);
-                Marshal.StructureToPtr(Structure, Handle, true);
-                Marshal.Copy(Handle, Bytes, 0, Length);
-                Marshal.FreeHGlobal(Handle);
-                memoryStream.Write(Bytes, 0, Length);
-                return Bytes;
-            }
-        }
-
-
-        public static string ToJson(this object obj)
-        {
-            if (obj == null)
-                return default(string);
-
-            return JsonConvert.SerializeObject(obj);
-        }
-
-        public static T FromJson<T>(this string jsonString) where T : class
-        {
-            if (jsonString == null)
-                return default(T);
-
-            return JsonConvert.DeserializeObject<T>(jsonString);
-        }
-
     }
 }
