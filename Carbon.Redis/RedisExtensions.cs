@@ -4,8 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
-using Newtonsoft.Json;
-
+using System.Text.Json;
 namespace Carbon.Redis
 {
     public static class RedisExtension
@@ -495,7 +494,7 @@ namespace Carbon.Redis
             {
                 cacheObject?.Logger?.LogError(
                     $"{{{SerilogConstant.CacheKey}}} {{{SerilogConstant.TenantId}}} {{{SerilogConstant.RequestBody}}} {{{SerilogConstant.Error}}}",
-                    cacheObject?.CacheKey, cacheObject.TenantId, JsonConvert.SerializeObject(cacheObject),
+                    cacheObject?.CacheKey, cacheObject.TenantId, JsonSerializer.Serialize(cacheObject),
                     ErrorMessageConstants.CacheRequestIsNotValid);
                 return (false, ErrorMessageConstants.CacheRequestIsNotValid);
             }
@@ -507,7 +506,7 @@ namespace Carbon.Redis
             {
                 cacheObject.Logger?.LogError(
                     $"{{{SerilogConstant.CacheKey}}} {{{SerilogConstant.TenantId}}} {{{SerilogConstant.RequestBody}}} {{{SerilogConstant.Error}}}",
-                    cacheObject.CacheKey, cacheObject.TenantId, JsonConvert.SerializeObject(cacheObject), setError);
+                    cacheObject.CacheKey, cacheObject.TenantId, JsonSerializer.Serialize(cacheObject), setError);
                 return (false, setError);
             }
 
@@ -543,7 +542,7 @@ namespace Carbon.Redis
 
             if (couldNotBeRemoved != null && couldNotBeRemoved.Any())
             {
-                var serializedObject = JsonConvert.SerializeObject(couldNotBeRemoved);
+                var serializedObject = JsonSerializer.Serialize(couldNotBeRemoved);
                 cacheObject.Logger.LogError(
                     $"{{{SerilogConstant.CacheKey}}} {{{SerilogConstant.TenantId}}}  {{{SerilogConstant.Error}}}",
                     cacheObject.CacheKey, cacheObject.TenantId,

@@ -10,6 +10,5 @@ namespace Carbon.Caching.Abstractions
         int GetRedisDatabaseNumber();
         RedLockFactory GetRedLockFactory();
         IDatabase GetDatabase();
-
     }
 }
