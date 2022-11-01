@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Runtime.InteropServices;
+using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Text.Json;
@@ -51,7 +52,16 @@ namespace Carbon.Caching.Abstractions.Extensions
                 return default(T);
             }
             var objAsJsonString = System.Text.Encoding.UTF8.GetString(byteArray);
-            return JsonSerializer.Deserialize<T>(objAsJsonString);
+
+            try
+            {
+                var objectReturn = JsonSerializer.Deserialize<T>(objAsJsonString);
+                return objectReturn;
+            }
+            catch(JsonException)
+            {
+                return default(T);
+            }
         }
 
         private static byte[] JsonBinarySerializer(object obj)
@@ -88,7 +98,14 @@ namespace Carbon.Caching.Abstractions.Extensions
             var binaryFormatter = new BinaryFormatter();
             using (var memoryStream = new MemoryStream(byteArray))
             {
-                return binaryFormatter.Deserialize(memoryStream) as T;
+                try
+                {
+                    return binaryFormatter.Deserialize(memoryStream) as T;
+                }
+                catch(SerializationException)
+                {
+                    return default(T);
+                }
             }
         }
     }

@@ -77,15 +77,14 @@ namespace Carbon.Caching.Abstractions
 
         public static async Task<T> GetAsync<T>(this ICarbonCache instance, string key, Func<Task<T>> setMethodIfNotExists, CancellationToken token = default(CancellationToken), TimeSpan timeSpan = default(TimeSpan), bool isSlidingExpiration = true) where T : class
         {
-            var value = await instance.GetAsync(key, token).ConfigureAwait(false);
+            var value = await instance.GetAsync<T>(key, token).ConfigureAwait(false);
             if (value == null)
             {
                 T result = await setMethodIfNotExists();
                 await instance.SetAsync(key, result, token, timeSpan, isSlidingExpiration);
                 return result;
             }
-
-            return value?.FromByteArray<T>(SerializationType);
+            return value;
         }
 
 
