@@ -15,7 +15,7 @@ namespace Carbon.Caching.Abstractions
         {
             if (PreferredSerializationType == Serialization.BinaryFormatter)
             {
-                Console.WriteLine(SerializationType + " is obsolete, handle with care or consider changing it!");
+                Console.WriteLine(PreferredSerializationType + " is obsolete, handle with care or consider changing it!");
                 SerializationType = PreferredSerializationType;
             }
             else if (PreferredSerializationType == Serialization.Json)
