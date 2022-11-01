@@ -13,7 +13,6 @@ namespace Carbon.Caching.Redis
         private readonly RedLockFactory _redlockFactory; 
         private readonly IServer _redisServer;
         private ConnectionMultiplexer _existingConnectionMultiplexer;
-
         public delegate void OnExpiredHandler(string tagName);
         public static event OnExpiredHandler OnExpired;
 
@@ -100,5 +99,7 @@ namespace Carbon.Caching.Redis
         {
             return _existingConnectionMultiplexer.GetDatabase();
         }
+
+        
     }
 }

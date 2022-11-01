@@ -22,6 +22,9 @@ namespace Carbon.Redis
                 await redisDatabase.StringSetAsync(RedisConstants.RedisKeyLengthKey, RedisHelper.RedisKeyLength);
             }
         }
+
+        
+
         /// <summary>
         /// Use AddRedisPersister for implementation Redis
         /// </summary>
