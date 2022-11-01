@@ -1,6 +1,6 @@
 ﻿namespace Carbon.Caching.Abstractions
 {
-    public enum Serialization
+    public enum CarbonContentSerializationType
     {
         BinaryFormatter = 0,
         Json = 1,
