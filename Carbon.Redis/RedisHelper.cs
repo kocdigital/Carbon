@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json;
 using StackExchange.Redis;
 using System;
 using System.Collections.Generic;
@@ -26,7 +26,7 @@ namespace Carbon.Redis
                 return string.Empty;
             }
 
-            return JsonConvert.SerializeObject(obj);
+            return JsonSerializer.Serialize(obj);
         }
         /// <summary>
         /// Gets data from Redis and converts it into the proper object
@@ -40,7 +40,7 @@ namespace Carbon.Redis
             {
                 var value = await database.StringGetAsync(key);
                 if (!value.IsNull)
-                    return JsonConvert.DeserializeObject<T>(value);
+                    return JsonSerializer.Deserialize<T>(value);
                 else
                 {
                     return default;
@@ -70,7 +70,7 @@ namespace Carbon.Redis
 
                 if (values != null)
                 {
-                    resultList.AddRange(values?.Select(value => JsonConvert.DeserializeObject<T>(value)));
+                    resultList.AddRange(values?.Select(value => JsonSerializer.Deserialize<T>(value)));
                 }
 
                 return resultList;
