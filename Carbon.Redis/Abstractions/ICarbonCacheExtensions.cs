@@ -9,20 +9,20 @@ namespace Carbon.Caching.Abstractions
 {
     public static class ICarbonCacheExtensions
     {
-        private static Serialization SerializationType { get; set; }
+        private static CarbonContentSerializationType SerializationType { get; set; }
 
-        public static void SetSerializationType(Serialization PreferredSerializationType)
+        public static void SetSerializationType(CarbonContentSerializationType PreferredSerializationType)
         {
-            if (PreferredSerializationType == Serialization.BinaryFormatter)
+            if (PreferredSerializationType == CarbonContentSerializationType.BinaryFormatter)
             {
                 Console.WriteLine(PreferredSerializationType + " is obsolete, handle with care or consider changing it!");
                 SerializationType = PreferredSerializationType;
             }
-            else if (PreferredSerializationType == Serialization.Json)
+            else if (PreferredSerializationType == CarbonContentSerializationType.Json)
             {
                 SerializationType = PreferredSerializationType;
             }
-            else if (PreferredSerializationType == Serialization.Protobuf)
+            else if (PreferredSerializationType == CarbonContentSerializationType.Protobuf)
             {
                 throw new NotImplementedException("Protobuf serialization is not implemented yet!");
             }

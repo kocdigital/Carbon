@@ -10,24 +10,24 @@ namespace Carbon.Caching.Abstractions.Extensions
 {
     public static class SerializationExtensions
     {
-        public static byte[] ToByteArray(this object obj, Serialization serializationType = Serialization.BinaryFormatter)
+        public static byte[] ToByteArray(this object obj, CarbonContentSerializationType serializationType = CarbonContentSerializationType.BinaryFormatter)
         {
-            if (serializationType == Serialization.BinaryFormatter)
+            if (serializationType == CarbonContentSerializationType.BinaryFormatter)
                 return BinaryFormatterSerializer(obj);
-            else if (serializationType == Serialization.Json)
+            else if (serializationType == CarbonContentSerializationType.Json)
                 return JsonBinarySerializer(obj);
-            else if (serializationType == Serialization.Protobuf)
+            else if (serializationType == CarbonContentSerializationType.Protobuf)
                 return ProtobufSerializer(obj);
             else
                 throw new NotImplementedException();
         }
-        public static T FromByteArray<T>(this byte[] byteArray, Serialization serializationType = Serialization.BinaryFormatter) where T : class
+        public static T FromByteArray<T>(this byte[] byteArray, CarbonContentSerializationType serializationType = CarbonContentSerializationType.BinaryFormatter) where T : class
         {
-            if (serializationType == Serialization.BinaryFormatter)
+            if (serializationType == CarbonContentSerializationType.BinaryFormatter)
                 return BinaryFormatterDeserializer<T>(byteArray);
-            else if (serializationType == Serialization.Json)
+            else if (serializationType == CarbonContentSerializationType.Json)
                 return JsonBinaryDeserializer<T>(byteArray);
-            else if (serializationType == Serialization.Protobuf)
+            else if (serializationType == CarbonContentSerializationType.Protobuf)
                 return ProtobufDeserializer<T>(byteArray);
             else
                 throw new NotImplementedException();
