@@ -1,7 +1,11 @@
 ﻿using Carbon.Caching.Abstractions.Extensions;
 using Microsoft.Extensions.Caching.Distributed;
+using StackExchange.Redis;
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text.Json;
+using System.Text.Json.Nodes;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -38,6 +42,122 @@ namespace Carbon.Caching.Abstractions
 
             instance.Set(key, content.ToByteArray(SerializationType), options);
         }
+
+        public static async Task HashSetAsObject<T>(this ICarbonCache instance, string key, T content)
+        {
+            var objAsDictionary = JsonSerializer.Deserialize<Dictionary<String, JsonElement>>(JsonSerializer.Serialize(content));
+            List<HashEntry> hashEntries = new List<HashEntry>();
+            foreach (var entry in objAsDictionary)
+            {
+                hashEntries.Add(new HashEntry(entry.Key, entry.Value.ToByteArray(CarbonContentSerializationType.Json)));
+            }
+            await instance.GetDatabase().HashSetAsync(key, hashEntries.ToArray());
+        }
+
+        public static async Task<T> HashGetAsObject<T>(this ICarbonCache instance, string key) where T : class
+        {
+            var values = await instance.GetDatabase().HashGetAllAsync(key);
+            Dictionary<string, object> keyValuePairs = new Dictionary<string, object>();
+            foreach (var k in values)
+            {
+                keyValuePairs.TryAdd(k.Name, ((byte[])k.Value.Box()).FromByteArray<object>(CarbonContentSerializationType.Json));
+            }
+            return JsonSerializer.Deserialize<T>(JsonSerializer.Serialize(keyValuePairs));
+        }
+
+        public static async Task<T> HashGetAsObject<T>(this ICarbonCache instance, string key, string[] hashfields) where T : class
+        {
+            RedisValue[] redisValues = new RedisValue[hashfields.Length];
+            for (int i = 0; i < redisValues.Length; i++)
+            {
+                redisValues[i] = hashfields[i];
+            }
+            var values = await instance.GetDatabase().HashGetAsync(key, redisValues);
+
+            Dictionary<string, object> keyValuePairs = new Dictionary<string, object>();
+            for (int i = 0; i < values.Length; i++)
+            {
+                keyValuePairs.TryAdd(hashfields[i], ((byte[])values[i].Box()).FromByteArray<object>(CarbonContentSerializationType.Json));
+            }
+
+            return JsonSerializer.Deserialize<T>(JsonSerializer.Serialize(keyValuePairs));
+        }
+
+        public static async Task<bool> SetTTL(this ICarbonCache instance, string key, TimeSpan expiryTimeSpan)
+        {
+            if (expiryTimeSpan == TimeSpan.Zero || expiryTimeSpan == default(TimeSpan))
+            {
+                throw new NotSupportedException("Expiry Time cannot be set to 0");
+            }
+            return await instance.GetDatabase().KeyExpireAsync(key, expiryTimeSpan);
+        }
+
+        public static async Task HashSet<T>(this ICarbonCache instance, string key, Dictionary<string, T> content)
+        {
+            List<HashEntry> hashEntries = new List<HashEntry>();
+            foreach (var entry in content)
+            {
+                hashEntries.Add(new HashEntry(entry.Key, entry.Value.ToByteArray(SerializationType)));
+            }
+            await instance.GetDatabase().HashSetAsync(key, hashEntries.ToArray());
+        }
+
+        public static async Task<T> HashGet<T>(this ICarbonCache instance, string key, string hashfield) where T : class
+        {
+            var value = await instance.GetDatabase().HashGetAsync(key, hashfield);
+            return ((byte[])value).FromByteArray<T>(SerializationType);
+        }
+
+        public static async Task<Dictionary<string, T>> HashGet<T>(this ICarbonCache instance, string key, string[] hashfields) where T : class
+        {
+            RedisValue[] redisValues = new RedisValue[hashfields.Length];
+            for (int i = 0; i < redisValues.Length; i++)
+            {
+                redisValues[i] = hashfields[i];
+            }
+            var values = await instance.GetDatabase().HashGetAsync(key, redisValues);
+            Dictionary<string, T> keyValuePairs = new Dictionary<string, T>();
+            for (int i = 0; i < values.Length; i++)
+            {
+                keyValuePairs.TryAdd(hashfields[i], ((byte[])values[i]).FromByteArray<T>(SerializationType));
+            }
+
+            return keyValuePairs;
+        }
+
+        public static async Task<Dictionary<string, T>> HashGet<T>(this ICarbonCache instance, string key) where T : class
+        {
+            var values = await instance.GetDatabase().HashGetAllAsync(key);
+            Dictionary<string, T> keyValuePairs = new Dictionary<string, T>();
+            foreach (var k in values)
+            {
+                keyValuePairs.TryAdd(k.Name, ((byte[])k.Value).FromByteArray<T>(SerializationType));
+            }
+            return keyValuePairs;
+        }
+
+        public static async Task SetAdd<T>(this ICarbonCache instance, string key, T value)
+        {
+            await instance.GetDatabase().SetAddAsync(key, value.ToByteArray(SerializationType));
+        }
+
+        public static async Task<List<T>> SetGetMembers<T>(this ICarbonCache instance, string key) 
+            where T : class
+        {
+            var members = await instance.GetDatabase().SetMembersAsync(key);
+            return members.Select(k => ((byte[])k).FromByteArray<T>(SerializationType)).ToList();
+        }
+
+        public static async Task<List<T>> SetMultiGetMembers<T>(this ICarbonCache instance, SetOperation setOperation, string[] keys)
+            where T : class
+        {
+            List<RedisKey> redisKeys = new List<RedisKey>();
+            redisKeys.AddRange(keys.Select(k=> new RedisKey(k)));
+
+            var combinedMembers = await instance.GetDatabase().SetCombineAsync(setOperation, redisKeys.ToArray());
+            return combinedMembers.Select(k => ((byte[])k).FromByteArray<T>(SerializationType)).ToList();
+        }
+
 
         public static void Set<T>(this ICarbonCache instance, string key, T content)
         {
