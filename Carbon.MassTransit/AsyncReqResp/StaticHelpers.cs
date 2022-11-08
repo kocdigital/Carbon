@@ -18,7 +18,7 @@ namespace Carbon.MassTransit.AsyncReqResp
         }
 
         /// <summary>
-        /// Use this method anywhere where you want to respond to request.
+        /// Use this method anywhere where you want to send a response to request.
         /// </summary>
         /// <param name="context"></param>
         /// <param name="correlationId"></param>
@@ -26,25 +26,25 @@ namespace Carbon.MassTransit.AsyncReqResp
         /// <param name="responseCode"></param>
         /// <returns></returns>
         /// <exception cref="Exception"></exception>
-        public static async Task SendResponseToReqRespAsync<T>(this ConsumeContext<T> context, string responseBody, ResponseCode responseCode = ResponseCode.Ok) 
+        public static async Task SendResponseToReqRespAsync<T>(this ConsumeContext<T> context, string responseBody, ResponseCode responseCode = ResponseCode.Ok, Guid? correlationId = default) 
             where T:class
         {
             if (responseCode == ResponseCode.Ok)
             {
-                ResponseSucceed responseSucceed = new ResponseSucceed(context.CorrelationId.Value);
+                ResponseSucceed responseSucceed = new ResponseSucceed(correlationId ?? context.CorrelationId.Value);
                 responseSucceed.ResponseBody = responseBody;
                 await context.Publish(responseSucceed);
             }
             else if (responseCode == ResponseCode.ServerError)
             {
-                ResponseFailed responseFailed = new ResponseFailed(context.CorrelationId.Value);
+                ResponseFailed responseFailed = new ResponseFailed(correlationId ?? context.CorrelationId.Value);
                 responseFailed.ResponseBody = responseBody;
                 await context.Publish(responseFailed);
             }
         }
 
         /// <summary>
-        /// Use this method anywhere where you want to respond to request. Keep the correlationId with you. Otherwise, you won't be able to use this extension.
+        /// Use this method anywhere where you want to send a response to request. Keep the correlationId with you. Otherwise, you won't be able to use this extension.
         /// </summary>
         /// <param name="context"></param>
         /// <param name="correlationId"></param>
@@ -103,6 +103,11 @@ namespace Carbon.MassTransit.AsyncReqResp
             IRequestStarterRequest requestStarterRequest = new RequestStarterRequest(Guid.NewGuid(), requestBody, "Req.Resp.Async-" + responseDestinationPath);
             var responseTaken = await reqClient.GetResponse<IResponder>(requestStarterRequest);
             return responseTaken.Message;
+        }
+
+        public static bool IsRespondable(this ConsumeContext<IResponseCarrier> context)
+        {
+            return context.Message.ResponseAddress != null;
         }
 
         public static async Task RespondToReqRespAsync(this ConsumeContext<IResponseCarrier> context, string responseBody, ResponseCode responseCode = ResponseCode.Ok, Guid? requestId = default)

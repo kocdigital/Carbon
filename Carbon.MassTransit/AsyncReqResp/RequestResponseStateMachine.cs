@@ -31,7 +31,7 @@ namespace Carbon.MassTransit.AsyncReqResp
                             .Then(ctx =>
                             {
                                 var payload = ctx.GetPayload<ConsumeContext<IRequestStarterRequest>>();
-                                _logger.LogInformation($"Request retrieved, now starting! CorrelationId: {ctx.Data.CorrelationId} To: {ctx.Data.DestinationEndpointName}");
+                                _logger.LogInformation($"Request retrieved, now starting! CorrelationId: {ctx.Data.CorrelationId} To: {ctx.Data.DestinationEndpointName} RespAddress: {payload.ResponseAddress}");
                                 ctx.Instance.RequestData = new RequestStarterRequest(ctx.Data.CorrelationId, ctx.Data.RequestBody, ctx.Data.DestinationEndpointName, payload.ResponseAddress);
                             })
                            .TransitionTo(ResponsePendingState)
