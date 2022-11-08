@@ -7,5 +7,8 @@ namespace Carbon.MassTransit.AsyncReqResp.Events
     {
         String ResponseBody { get; set; }
         StaticHelpers.ResponseCode ResponseCode { get; set; }
+        Uri ResponseAddress { get; set; }
     }
+
+    
 }

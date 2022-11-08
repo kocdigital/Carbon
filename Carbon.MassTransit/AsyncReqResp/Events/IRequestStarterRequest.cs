@@ -7,5 +7,6 @@ namespace Carbon.MassTransit.AsyncReqResp.Events
     {
         String RequestBody { get; set; }
         String DestinationEndpointName { get; set; }
+        Uri ResponseAddress { get; set; }
     }
 }
