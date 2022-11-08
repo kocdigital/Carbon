@@ -2,10 +2,14 @@
 
 	<PropertyGroup>
 		<TargetFramework>netstandard2.0</TargetFramework>
-		<Version>3.5.28-testalpha</Version>
-		<Description>     3.5.2
+		<Version>3.6.0</Version>
+		<Description>     3.6.0
+     - ReqRespAsync as GetResponse/Respond Pattern introduced
+     - Awaitable saga, routing slip or ReqRespAsync
+     - Some other useful extension methods
+     3.5.2
      - Minor fixes
-     - Request Response Async Pattern responder can respond from anywhere thanks to bus 
+     - Request Response Async Pattern response sender can send response from anywhere thanks to bus 
      3.5.0
       - Request-Response Async Pattern introduced
       3.4.0
