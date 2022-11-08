@@ -1,7 +1,8 @@
 ﻿using Automatonymous;
 using Carbon.MassTransit.AsyncReqResp.Events;
 using Microsoft.Extensions.Logging;
-
+using GreenPipes;
+using MassTransit;
 namespace Carbon.MassTransit.AsyncReqResp
 {
     public class RequestResponseStateMachine : MassTransitStateMachine<RequestResponseState>
@@ -29,8 +30,9 @@ namespace Carbon.MassTransit.AsyncReqResp
                             .TransitionTo(RequestStartedState)
                             .Then(ctx =>
                             {
+                                var payload = ctx.GetPayload<ConsumeContext<IRequestStarterRequest>>();
                                 _logger.LogInformation($"Request retrieved, now starting! CorrelationId: {ctx.Data.CorrelationId} To: {ctx.Data.DestinationEndpointName}");
-                                ctx.Instance.RequestData = new RequestStarterRequest(ctx.Data.CorrelationId, ctx.Data.RequestBody, ctx.Data.DestinationEndpointName);
+                                ctx.Instance.RequestData = new RequestStarterRequest(ctx.Data.CorrelationId, ctx.Data.RequestBody, ctx.Data.DestinationEndpointName, payload.ResponseAddress);
                             })
                            .TransitionTo(ResponsePendingState)
                            .Activity(x => x.OfInstanceType<RequestHandlerActivity>())
