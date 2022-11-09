@@ -141,6 +141,35 @@ namespace Carbon.Caching.Abstractions
             await instance.GetDatabase().SetAddAsync(key, value.ToByteArray(SerializationType));
         }
 
+        public static async Task SetAdd<T>(this ICarbonCache instance, string key, T[] values)
+        {
+            RedisValue[] redisValues = new RedisValue[values.Length];
+            for (int i = 0; i < redisValues.Length; i++)
+            {
+                redisValues[i] = values[i].ToByteArray(SerializationType);
+            }
+            await instance.GetDatabase().SetAddAsync(key, redisValues);
+        }
+
+        public static async Task SetOverrideAdd<T>(this ICarbonCache instance, string key, T[] values) 
+            where T: class
+        {
+            var allMembers = await instance.GetDatabase().SetMembersAsync(key);
+            await instance.GetDatabase().SetRemoveAsync(key, allMembers);
+            await instance.SetAdd<T>(key, values);
+        }
+
+        public static async Task SetRemove<T>(this ICarbonCache instance, string key, T[] values)
+            where T : class
+        {
+            RedisValue[] redisValues = new RedisValue[values.Length];
+            for (int i = 0; i < redisValues.Length; i++)
+            {
+                redisValues[i] = values[i].ToByteArray(SerializationType);
+            }
+            await instance.GetDatabase().SetRemoveAsync(key, redisValues);
+        }
+
         public static async Task<List<T>> SetGetMembers<T>(this ICarbonCache instance, string key) 
             where T : class
         {
