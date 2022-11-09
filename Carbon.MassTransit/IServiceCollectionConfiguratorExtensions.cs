@@ -191,6 +191,8 @@ namespace Carbon.MassTransit
             {
                 cfg.AddConsumer<T>();
 
+                cfg.AddRequestClient<IRequestStarterRequest>();
+
                 cfg.AddSagaStateMachine<RequestResponseStateMachine, RequestResponseState>()
                 .RedisRepository(x =>
                 {

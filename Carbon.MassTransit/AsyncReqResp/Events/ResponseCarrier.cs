@@ -9,5 +9,6 @@ namespace Carbon.MassTransit.AsyncReqResp.Events
         public StaticHelpers.ResponseCode ResponseCode { get; set; }
 
         public Guid CorrelationId { get; set; }
+        public Uri ResponseAddress { get; set; }
     }
 }
