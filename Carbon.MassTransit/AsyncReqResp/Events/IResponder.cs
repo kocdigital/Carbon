@@ -3,11 +3,10 @@ using System;
 
 namespace Carbon.MassTransit.AsyncReqResp.Events
 {
-    public interface IResponseCarrier : CorrelatedBy<Guid>
+    public interface IResponder : CorrelatedBy<Guid>
     {
         String ResponseBody { get; set; }
         StaticHelpers.ResponseCode ResponseCode { get; set; }
-        Uri ResponseAddress { get; set; }
     }
 
     
