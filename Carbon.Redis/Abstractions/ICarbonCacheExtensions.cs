@@ -154,8 +154,7 @@ namespace Carbon.Caching.Abstractions
         public static async Task SetOverrideAdd<T>(this ICarbonCache instance, string key, T[] values) 
             where T: class
         {
-            var allMembers = await instance.GetDatabase().SetMembersAsync(key);
-            await instance.GetDatabase().SetRemoveAsync(key, allMembers);
+            await instance.RemoveAsync(key);
             await instance.SetAdd<T>(key, values);
         }
 
