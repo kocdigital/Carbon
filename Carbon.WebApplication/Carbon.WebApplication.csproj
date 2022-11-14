@@ -2,8 +2,10 @@
 
   <PropertyGroup>
     <TargetFrameworks>net6.0;net5.0;netcoreapp3.1</TargetFrameworks>
-    <Version>4.1.1</Version>
-    <Description>4.1.1
+    <Version>4.1.2</Version>
+    <Description>4.1.2
+- Cors Allow Credentials support added 
+4.1.1
 - CarbonException messages are take arguments for dynamic exception messages
 
 4.1.0
