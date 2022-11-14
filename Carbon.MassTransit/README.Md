@@ -1,5 +1,5 @@
-﻿Carbon.MassTransit
-===
+﻿# Carbon.MassTransit
+
 This package is powered up by MassTransit that is a _free, open-source_ distributed application framework for .NET. MassTransit makes it easy to create applications and services that leverage message-based, 
 loosely-coupled asynchronous communication for higher availability, reliability, and scalability.
 
@@ -11,10 +11,10 @@ Please refer to this website to collect more information: https://masstransit-pr
 Check here for the [ChangeLog](Carbon.MassTransit.csproj)
 
 
-Add MassTransit Support to Your Project
----------------------------
-Basic Usage
--------
+## Add MassTransit Support to Your Project
+
+### Basic Usage
+
 You can add a masstransit support with this code snippet which starts a hosted masstransit service with all the healthchecks and configuration managaments behind the scenes.
 This will only builds a consumer and binds it to a queue namely *my-queue* and starts to consume it. This is the most basic 
 approach ever seen.
@@ -75,19 +75,20 @@ class MyConsumer :
 }
 ```
 
-Advanced Configuration
-----
+### Advanced Configuration
+
 
 More RabbitMQ specific settings can be found as below if needed. You can use each property within the configuration json file with the same name.
 Check here for [RabbitMqSettings](RabbitMqSettings.cs)
 
-Microservice Design Pattern Usages
------
+---
+
+## Microservice Design Pattern Usages
 As described earlier, this package includes many useful and easy to use patterns to manage 
 loosely-coupled asynchronous communication for higher availability, reliability, and scalability.
 
-Routing Slip
----
+### Routing Slip
+
 This pattern is already implemented by MassTransit, however its usage sometimes might be cumbersome or 
 requires more knowledge and proficiency about MassTransit in order to use it. Carbon eases the usage and 
 abstracts you from some cumbersome configurations.
@@ -263,8 +264,8 @@ ConsumeRoutingSlipExecuteOnlyActivity<TActivity, TArguments> rather than Consume
 
 Now you are good to go! Each activity can be defined in seperate APIs, they will somehow find each other.
 
-Request/Response Async
----
+### Request/Response Async
+
 
 > This pattern requires Carbon.Redis to use persistent saga! Please see Carbon.Redis basic usage.
 
@@ -448,8 +449,8 @@ public class ExternalDataResponseHandlerConsumer : IConsumer<IResponseCarrier>
     }
 ```
 
-Use Routing Slip in Request/Response Async pattern
-------
+### Use Routing Slip in Request/Response Async pattern
+
 As described above, routing slip including all activities are async operation which is not awaited where you initiate. For example, you
 wanted to do a chain of implementations such as sensor registering by triggering a controller method, however you want to await a response from
 your routing slip, so that you return the created object information to triggerer user via given controller method. In this case, 
