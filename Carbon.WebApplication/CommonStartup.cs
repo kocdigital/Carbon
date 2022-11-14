@@ -146,6 +146,12 @@ namespace Carbon.WebApplication
                             {
                                 builder = builder.AllowAnyHeader();
                             }
+
+                            if (_corsPolicySettings.AllowCredentials)
+                            {
+                                builder = builder.AllowCredentials();
+                            }
+
                             if (_corsPolicySettings.ExposePaginationHeaders)
                             {
                                 builder = builder.WithExposedHeaders(

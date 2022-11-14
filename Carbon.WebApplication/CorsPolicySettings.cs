@@ -28,5 +28,11 @@ namespace Carbon.WebApplication
         /// If you use PagedListOk etc. you must set true this so that clients can read the header values
         /// </summary>
         public bool ExposePaginationHeaders { get; set; }
+
+        /// <summary>
+        /// A property that indicates allowing response header "Access-Control-Allow-Credentials"
+        /// </summary>
+        public bool AllowCredentials { get; set; }
+
     }
 }

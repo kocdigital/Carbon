@@ -2,8 +2,11 @@
 
   <PropertyGroup>
     <TargetFrameworks>net6.0;net5.0;netcoreapp3.1</TargetFrameworks>
-    <Version>3.0.0-preview</Version>
-    <Description>3.0.0-preview
+    <Version>3.0.1</Version>
+    <Description>3.0.1
+- Not a RC anymore
+- Cors Allow Credentials support added 
+3.0.0-preview
 - Dotnet 6 support with minimal and not minimal api added
 2.5.1
 -NetCore 3.1 target framework added
