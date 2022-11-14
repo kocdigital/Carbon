@@ -124,6 +124,11 @@ namespace Carbon.WebApplication.Grpc
                                 builder = builder.AllowAnyMethod();
                             }
 
+                            if (_corsPolicySettings.AllowCredentials)
+                            {
+                                builder = builder.AllowCredentials();
+                            }
+
                             if (_corsPolicySettings.AllowAnyHeaders)
                             {
                                 builder = builder.AllowAnyHeader();
