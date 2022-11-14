@@ -14,6 +14,7 @@ namespace Carbon.MassTransit.AsyncReqResp
         {
             Ok = 200,
             BadRequest = 400,
+            NotFound = 404,
             ServerError = 500
         }
 
@@ -35,9 +36,9 @@ namespace Carbon.MassTransit.AsyncReqResp
                 responseSucceed.ResponseBody = responseBody;
                 await context.Publish(responseSucceed);
             }
-            else if (responseCode == ResponseCode.ServerError)
+            else
             {
-                ResponseFailed responseFailed = new ResponseFailed(correlationId ?? context.CorrelationId.Value);
+                ResponseFailed responseFailed = new ResponseFailed(correlationId ?? context.CorrelationId.Value, responseCode);
                 responseFailed.ResponseBody = responseBody;
                 await context.Publish(responseFailed);
             }
@@ -65,9 +66,9 @@ namespace Carbon.MassTransit.AsyncReqResp
                 responseSucceed.ResponseBody = responseBody;
                 await context.Publish(responseSucceed);
             }
-            else if (responseCode == ResponseCode.ServerError)
+            else
             {
-                ResponseFailed responseFailed = new ResponseFailed(correlationId);
+                ResponseFailed responseFailed = new ResponseFailed(correlationId, responseCode);
                 responseFailed.ResponseBody = responseBody;
                 await context.Publish(responseFailed);
             }
@@ -88,9 +89,9 @@ namespace Carbon.MassTransit.AsyncReqResp
                 responseSucceed.ResponseBody = responseBody;
                 await consumeContext.Publish(responseSucceed);
             }
-            else if (responseCode == ResponseCode.ServerError)
+            else
             {
-                ResponseFailed responseFailed = new ResponseFailed(consumeContext.Message.CorrelationId);
+                ResponseFailed responseFailed = new ResponseFailed(consumeContext.Message.CorrelationId, responseCode);
                 responseFailed.ResponseBody = responseBody;
                 await consumeContext.Publish(responseFailed);
             }
