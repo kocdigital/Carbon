@@ -239,11 +239,12 @@ ConsumeRoutingSlipExecuteOnlyActivity<TActivity, TArguments> rather than Consume
 
     public void RoutingSlipStarter()
     {
-        //Initiate a builder with a tracking number(Guid)
+        //Do some pre-operations, variable initializations
+        //Initiate a builder with a tracking number(Guid), if you have a correlationId from somewhere use it, or Guid.NewGuid()
         var builder = new RoutingSlipBuilder(routingSlipTrackingNumber);
         
         //Create an instance for your routing slip journey
-        var routingSlipInstance = new QuickAddTelemetryInstance() { CorrelationId = correlationId.Value, TenantId = tenantId };
+        var routingSlipInstance = new QuickAddTelemetryInstance() { CorrelationId = correlationId, TenantId = tenantId };
         
         //Tweak over your instance with some implemented logic and populate
         var dataColumnName = await _service.GetColumnNameByTenantId(tenantId);
