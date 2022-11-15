@@ -29,10 +29,6 @@ Nevertheless, this package wraps up everything and works fine for you!
 
 ### Basic Usage
 
-You can add a masstransit support with this code snippet which starts a hosted masstransit service with all the healthchecks and configuration managaments behind the scenes.
-This will only builds a consumer and binds it to a queue namely *my-queue* and starts to consume it. This is the most basic 
-approach ever seen.
-
 **1. Create a database object and inherit from *TimeSerieEntityBase***
 
 Use **[TimeSerie]** tag for a DateTime field that you want it to be timeserie indexed. This will also create an PK index with a composition of Id + Date where *Id* is auto generated field.
