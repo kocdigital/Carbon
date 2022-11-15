@@ -161,6 +161,7 @@ keep occupied master one.
 Prior to reading this part, please make sure you have already read the Basic Usage section and implemented the neccessary operations.  
 
 **1. Create another Read-Only Context on the top of usual one**
+
 ```csharp
 public class TimeSerieDataLogReadOnlyContext : CarbonTimeScaleDbReadOnlyContext<TimeSerieDataLogReadOnlyContext>
     {
@@ -202,6 +203,7 @@ public class TimeScaleDataLogRepository : EFTimeScaleDbWithReadOnlyRepository<Ti
 You can also add new methods as you wish. Please note that, if your method is doing read-only operations, you can use readOnly context for such operations.
 
 **3. Change the registration way of your Context**
+
 In the basic usage you used AddTimeScaleDatabaseContext, now change it into *AddTimeScaleDatabaseWithReadOnlyReplicaContext* to register your read-only context as well
 
 ```csharp
