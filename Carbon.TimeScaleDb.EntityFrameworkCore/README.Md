@@ -24,8 +24,8 @@ Nevertheless, this package wraps up everything and works fine for you!
 
 | Related Package                                                                  | Required | Auto-Included |
 |-----------------------------------------------------------------                 |:----:    |:----:         |
-| [Carbon.TimeScaleDb](../Carbon.TimeScaleDb/README.md)                            | Yes      | Yes           |
-| [Carbon.TimeSeriesDb.Abstractions](../Carbon.TimeSeriesDb.Abstractions/README.md)| Yes      | Yes           |
+| [Carbon.TimeScaleDb](../Carbon.TimeScaleDb/README.Md)                            | Yes      | Yes           |
+| [Carbon.TimeSeriesDb.Abstractions](../Carbon.TimeSeriesDb.Abstractions/README.Md)| Yes      | Yes           |
 
 ### Basic Usage
 
