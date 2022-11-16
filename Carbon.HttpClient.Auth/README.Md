@@ -58,6 +58,9 @@ If you are already using Carbon.WebApplication, JwtSettings section already exis
 
 **3. Use it in your code**
 
+When there is a scenario such as resulted with 401 Unauthorized for your request, it will refresh the token and store the new one for future references and resends the
+request from the stracth automatically.
+
 ```csharp
     public class ExternalService : IExternalService
     {
