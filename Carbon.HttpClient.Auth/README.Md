@@ -25,6 +25,8 @@ services.AddGrpcHttpClientAuth();
 ```
 
 **2. Create an authentication with the name just as it is writing in the configuration file**
+
+This creates the token at startup by communicating with identity server and stores it until you ask for.
 ```csharp
 //IApplicationBuilder
 app.CreateAuthentication("RAM");
