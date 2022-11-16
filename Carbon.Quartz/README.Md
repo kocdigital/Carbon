@@ -39,6 +39,9 @@ services.AddQuartzScheduler(configuration, false, "MyQuartz");
 In a controller method, or at startup when application is booted, you can resolve the *IQuartzClusterableService* and start using it.
 ```csharp
 
+//To be resolved by DI
+private readonly IQuartzClusterableService _quartzService;
+
 //Set your scheduler for the service, scheduler name should be the same with the one you registered at startup
 _quartzService.SetSchedulerId("MyQuartz");
 
