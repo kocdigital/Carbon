@@ -1,9 +1,9 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.1</TargetFramework>
-    <Version>2.3.1-preview</Version>
-    <Description>2.3.0-preview
+	 <TargetFrameworks>net6.0;net5.0;netcoreapp3.1</TargetFrameworks>
+	 <Version>2.3.2-preview</Version>
+     <Description>2.3.0-preview
 Numerous type of handy extension methods are added such as Hash, HashAsObject, Set
 Use HashAsObject to store a complete object into hash fields for boosted performance (Only supports Json serialization), and able to get selected fields rather than the entire object
 Use Set for relationships or etc.

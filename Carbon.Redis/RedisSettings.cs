@@ -27,6 +27,7 @@ namespace Carbon.Redis
         public int DefaultDatabase { get; set; }
         public bool SSLEnabled { get; set; }
         public string InstanceName { get; set; }
+        public string SentinelServiceName { get; set; }
         public RedisSettings Value => this;
     }
 }
