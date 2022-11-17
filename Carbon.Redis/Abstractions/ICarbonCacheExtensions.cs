@@ -88,6 +88,11 @@ namespace Carbon.Caching.Abstractions
         public static async Task<T> HashGetAsObject<T>(this ICarbonCache instance, string key) where T : class
         {
             var values = await instance.GetDatabase().HashGetAllAsync(key.ToRedisInstanceKey(instance), CommandFlags.PreferReplica);
+            if(values == default || !values.Any())
+            {
+                return default(T);
+            }
+
             Dictionary<string, object> keyValuePairs = new Dictionary<string, object>();
             foreach (var k in values)
             {
@@ -137,7 +142,7 @@ namespace Carbon.Caching.Abstractions
             if(value == default)
             {
                 T result = await setMethodIfNotExists();
-                await instance.HashGetAsObject<T>(key);
+                await instance.HashSetAsObject<T>(key, result);
                 return result;
             }
 
@@ -251,7 +256,7 @@ namespace Carbon.Caching.Abstractions
         }
 
         /// <summary>
-        /// Gets your entire object with the given fields that is converted into hash key-value pairs within a single redis hash key.
+        /// Gets the selected field from entire dictionary that is converted into hash key-value pairs within a single redis hash key.
         /// </summary>
         /// <typeparam name="T">The value type that you want to retrieve from given field/dictionary key</typeparam>
         /// <param name="instance"></param>
@@ -380,7 +385,7 @@ namespace Carbon.Caching.Abstractions
         }
 
         /// <summary>
-        /// Removes values in a Redis Set
+        /// Removes given members in a Redis Set
         /// </summary>
         /// <typeparam name="T">Type of set value to be removed</typeparam>
         /// <param name="instance"></param>
@@ -413,7 +418,7 @@ namespace Carbon.Caching.Abstractions
         }
 
         /// <summary>
-        /// Get Members by applying set operations such as Union, Intersect, Difference for multiple keys
+        /// Get Members of a Redis Set by applying set operations such as Union, Intersect, Difference for multiple keys
         /// </summary>
         /// <typeparam name="T">The value type that you want to retrieve from set, use object if all the types may differ, then convert it later</typeparam>
         /// <param name="instance"></param>
