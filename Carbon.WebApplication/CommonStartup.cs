@@ -134,7 +134,7 @@ namespace Carbon.WebApplication
                             }
                             else if (_corsPolicySettings.Origins != null && _corsPolicySettings.Origins.Count > 0)
                             {
-                                builder = builder.WithOrigins(_corsPolicySettings.Origins.ToArray());
+                                builder = builder.SetIsOriginAllowedToAllowWildcardSubdomains().WithOrigins(_corsPolicySettings.Origins.ToArray());
                             }
 
                             if (_corsPolicySettings.AllowAnyMethods)
@@ -149,7 +149,7 @@ namespace Carbon.WebApplication
 
                             if (_corsPolicySettings.AllowCredentials)
                             {
-                                builder = builder.AllowCredentials();
+                                builder = builder.SetIsOriginAllowed(origin => true).AllowCredentials();
                             }
 
                             if (_corsPolicySettings.ExposePaginationHeaders)
