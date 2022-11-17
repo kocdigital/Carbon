@@ -15,7 +15,7 @@ namespace Carbon.Caching.Redis
         private ConnectionMultiplexer _existingConnectionMultiplexer;
         public delegate void OnExpiredHandler(string tagName);
         public static event OnExpiredHandler OnExpired;
-
+        private readonly string _instanceName;
         public bool RegisterOnExpiredEventHandler(OnExpiredHandler handler)
         {
             if (handler == null)
@@ -41,6 +41,7 @@ namespace Carbon.Caching.Redis
         public CarbonRedisCache(IOptions<CarbonRedisCacheOptions> optionsAccessor, IConnectionMultiplexer connectionMultiplexer) : base(optionsAccessor)
         {
             var _redisUrl = optionsAccessor.Value.Configuration;
+            _instanceName = optionsAccessor.Value.InstanceName;
             _existingConnectionMultiplexer = (ConnectionMultiplexer)connectionMultiplexer;
             var multiplexers = new List<RedLockMultiplexer>
             {
@@ -100,6 +101,9 @@ namespace Carbon.Caching.Redis
             return _existingConnectionMultiplexer.GetDatabase();
         }
 
-        
+        public string GetInstanceName()
+        {
+            return _instanceName;
+        }
     }
 }

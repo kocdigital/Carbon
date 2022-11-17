@@ -28,7 +28,7 @@ services.AddGrpcHttpClientAuth();
 
 This creates the token at startup by communicating with identity server and stores it until you ask for.
 ```csharp
-//IApplicationBuilder
+//IApplicationBuilder - Let the name be 'RAM'. You can say 'Thing'. It is the identifier.
 app.CreateAuthentication("RAM");
 ```
 
@@ -117,3 +117,65 @@ request from the stracth automatically.
 
 Check here also https://github.com/kocdigital/Carbon.Sample/blob/master/Carbon.Sample.API/Domain/Services/DataService.cs#L45 for
 a sample in detail.
+
+## Advanced Usage
+You can use multiple instances of authorizations. In order to do that, simply CreateAuthentication more than one by defining
+multiple authorizations in the config file:
+
+```json
+"Authorizations":
+{
+    "RAM":
+        {
+            "AuthenticationType": 4,
+            "Secret":"yoursecret",
+            "Scope":"scope1 scope2",
+            "ClientId":"yourclient"
+        },
+     "Other":
+        {
+            "AuthenticationType": 4,
+            "Secret":"myothersecret",
+            "Scope":"scope1 scope2 scope3",
+            "ClientId":"yourotherclient"
+        }
+},
+"JwtSettings": {
+    "Authority": "http://youridentityurl.com",
+  }
+```
+
+Create authentication for each (RAM and Other):
+```csharp
+//Register it as usual
+services.AddHttpClientAuth();
+
+//IApplicationBuilder - Create two instead of one as in the basic usage
+app.CreateAuthentication("RAM");
+app.CreateAuthentication("Other");
+
+```
+And use whichever you want:
+
+```csharp
+    public class ExternalService : IExternalService
+    {
+        // Inject your Authed Http Client Factory by DI
+        private readonly AuthHttpClientFactory _clientFactory;
+
+        public ExternalService(AuthHttpClientFactory clientFactory)
+        {
+            _clientFactory = clientFactory;
+        }
+
+
+        public async Task<bool> DoSomethingByUsingAuthClient()
+        {
+          //Get your auth client with the given name in service registrations
+          //RAM-based token and authorization will be used in this client
+          var authClientForRAM = _clientFactory.CreateAuthClient("RAM");
+          //Other-based token and authorization will be used in this client
+          var authClientForOther = _clientFactory.CreateAuthClient("Other");            
+        }
+    }
+```
