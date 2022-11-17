@@ -2,8 +2,11 @@
 
   <PropertyGroup>
 	 <TargetFrameworks>net6.0;net5.0;netcoreapp3.1</TargetFrameworks>
-	 <Version>2.3.2-preview</Version>
-     <Description>2.3.0-preview
+	 <Version>2.4.0-preview</Version>
+     <Description>2.4.0-preview
+More extension methods added (Get a key from redis, if null set it via method and return)
+
+2.3.0-preview
 Numerous type of handy extension methods are added such as Hash, HashAsObject, Set
 Use HashAsObject to store a complete object into hash fields for boosted performance (Only supports Json serialization), and able to get selected fields rather than the entire object
 Use Set for relationships or etc.
@@ -29,7 +32,7 @@ System.Text.Json (faster) is used as master serializer/deserializer replacing Ne
 - Scan Keys And Remove By Pattern</Description>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-    <AssemblyVersion>2.3.1</AssemblyVersion>
+    <AssemblyVersion>2.4.0</AssemblyVersion>
   </PropertyGroup>
 
   <ItemGroup>
