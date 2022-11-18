@@ -37,7 +37,7 @@ namespace Carbon.Caching.Redis
 
             if(String.IsNullOrEmpty(instanceName))
             {
-                throw new ArgumentNullException(instanceName);
+                throw new ArgumentNullException("InstanceName cannot be null");
             }
 
             redisSettings.Value.InstanceName = instanceName;

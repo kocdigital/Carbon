@@ -72,5 +72,11 @@ namespace Carbon.Redis
         /// Enable if redis port uses TLS
         /// </summary>
         bool SSLEnabled { get; set; }
+
+        /// <summary>
+        /// Sentinel Enablement
+        /// </summary>
+        public string SentinelServiceName { get; set; }
+
     }
 }

@@ -61,7 +61,8 @@ namespace Carbon.Redis
                     ConnectRetry = redisSettings.Value.ConnectRetry,
                     ConnectTimeout = redisSettings.Value.ConnectTimeout,
                     DefaultDatabase = redisSettings.Value.DefaultDatabase,
-                    Ssl = redisSettings.Value.SSLEnabled
+                    Ssl = redisSettings.Value.SSLEnabled,
+                    ServiceName = redisSettings.Value.SentinelServiceName
                 };
 
                 if (redisSettings.Value.SSLEnabled)

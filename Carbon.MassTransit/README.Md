@@ -268,7 +268,7 @@ Now you are good to go! Each activity can be defined in seperate APIs, they will
 ### Request/Response Async
 
 
-> This pattern requires Carbon.Redis to use persistent saga! Please see Carbon.Redis basic usage.
+> This pattern requires Carbon.Redis to use persistent saga! Please see Carbon.Redis basic usage. [Carbon.Redis](../Carbon.Redis/README.md)
 
 This pattern works similarly to GetResponse/Respond pattern of Masstransit. But this one uses saga orchestration behind the scenes and no timeouts are expected.
 Requestor can retrieve a response from the regarding endpoint at any time by also creating a loose-coupling. This pattern also is useful for external integrations.
