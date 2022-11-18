@@ -1,7 +1,7 @@
 ﻿# Carbon.Redis
 
-This package is powered up by multiple useful redis libraries such as Stackexchange.Redis [1], RedLock.net [2], Microsoft.Extensions.Caching.StackExchangeRedis [3]  that provide remarkable Redis capabilities
-to your projects in many aspect.
+This package is powered up by multiple useful Redis libraries such as Stackexchange.Redis [1], RedLock.net [2], Microsoft.Extensions.Caching.StackExchangeRedis [3]  that provide remarkable Redis capabilities
+to your projects in many aspects.
 
 >[1] https://github.com/StackExchange/StackExchange.Redis
 > 
@@ -9,18 +9,18 @@ to your projects in many aspect.
 > 
 >[3] https://github.com/dotnet/aspnetcore
 
-This package wraps up some capabilities such as (Redis Lock, Redis PubSub, Redis Key Operations) in a single pack and presents you with an easier and maintained way. It also creates some handy logics for Redis Operations which
-creates ease of usage and out-of-the-box serialization switch enablement which provides you some object conversions on behalf of you and also a Redis Healthcheck will be added
+This package wraps up some capabilities such as (Redis Lock, Redis PubSub, Redis Key Operations) in a single pack and presents them you with an easier and more maintainable way. It also creates some handy logics for Redis Operations which
+creates ease of usage and out-of-the-box serialization switch enablement which provides you with some object conversions. Also a Redis Healthcheck will be added
 automatically to your **/health** endpoint.
 
 
-## Add Redis Support to Your Project
+## Adding Redis Support to Your Project
 
 ### Basic Usage
 
-You can add a Carbon.Redis support only with StackExchange.Redis capabilities excluding the others. With this package
-you can have a redis connection (ConnectionMultiplexer) in order to be used for any purpose. This usage gives you a pretty bundle
-by providing a good healthcheck to your **/health** endpoint.
+You can add Carbon.Redis support only with StackExchange.Redis capabilities (without the other two libraries). With this package
+you can have a Redis connection (ConnectionMultiplexer) in order to be used for any purpose you like. This usage gives you a good set of functionalities
+and provides you with automatic heath check capability at **/health** endpoint.
 
 This usage also is a baseline for [Carbon.MassTransit](../Carbon.MassTransit/README.Md) Saga Pattern persistency.
 
@@ -33,7 +33,7 @@ services.AddRedisPersister(Configuration);
 
 **2. Get to start by configuring as below**
 
-Use a configuration given below, all the connection is managed by StackExchange.Redis, however this configuration may not contain all connection properties that StackExchange presents.
+Using the configuration given below, all the connections are managed by StackExchange.Redis, however this configuration may not contain all connection properties that StackExchange offers.
 ```json
 "Redis": {
     "Enabled":true,
@@ -54,7 +54,7 @@ Use a configuration given below, all the connection is managed by StackExchange.
     "InstanceName" : "YourInstance:",
   }
 ```
-**3. Use IDatabase that is powered by StackExchange.Redis and use**
+**3. Use IDatabase that is powered by StackExchange.Redis**
 ```csharp
         private readonly IDatabase _redisCache;
         public PolicyService(IDatabase redisCache)
@@ -72,30 +72,30 @@ Use a configuration given below, all the connection is managed by StackExchange.
 ---
 ### Level-up your usage
 ---
-Basic usage does not add a huge value indeed, it simply wraps StackExchange and unveil its power as-is. In this section, you can
-increase your control against Redis and have lots of privileges including Redis Lock, Redis Pub/Sub, Useful Extensions and operations by 
+Basic usage does not add a huge value indeed, it simply wraps StackExchange and unveils its power as-is. In this section, you can
+increase your control on Redis and have lots of privileges including Redis Lock, Redis Pub/Sub, useful extensions and operations by 
 considering infrastructural best practices (by CQRS) (Read operations prefers replicas, Write operations prefers masters)
 
 #### Extension Methods
-**1. Register Carbon.Redis with Helper Extension to your service**
+**1. Register Carbon.Redis with Helper Extension in your service provider**
 
 ```csharp
 //IServiceCollection services
 services.AddRedisPersister(Configuration).AddCarbonRedisCachingHelper();
 ```
 
-**2. Get to start by configuring as you do in Basic Usage**
+**2. Get it to start by configuring as you do in Basic Usage**
 
 On the top of basic usage configuration, you can tweak this [RedisSettings](RedisSettings.cs) class that can be used for more control.
 
-**3. Set your serialization type at anywhere you want (Startup, OnAppStart, in your Controller etc.)**
+**3. Set your serialization type anywhere you want (Startup, OnAppStart, in your Controller etc.)**
 
 ```csharp
 //Defaults to BinaryFormatter which is obsolete as of Dotnet 5. So change it to Json if you need
 ICarbonCacheExtensions.SetSerializationType(CarbonContentSerializationType.Json);
 ```
 
-**4. Use ICarbonCache that is powered by Carbon.Redis and use**
+**4. Use ICarbonCache that is powered by Carbon.Redis**
 ```csharp
     [Serializable]
     public class TestClass
@@ -135,7 +135,7 @@ ICarbonCacheExtensions.SetSerializationType(CarbonContentSerializationType.Json)
 
 **5. You are all set, now unleash the power!**
 
-Now you can use many kind of useful extension methods for various types of Redis Data Types (e.g. Redis Set, Hash etc.)
+Now you can use many kinds of useful extension methods for various Redis Data Types (e.g. Redis Set, Hash etc.)
 
 ```csharp
     
@@ -193,7 +193,7 @@ Now you can use many kind of useful extension methods for various types of Redis
        //Removes given members in a Redis Set
        await _carbonRedisCache.SetRemove<String>("myset", new string[] { "yolo", "bolo" });
 
-       //Simple gets your entire object as single that is converted into single hash field within that redis hash key, if key does not exist, it tries to fill with the given function
+       //Simply gets your entire object as single that is converted into single hash field within that redis hash key, if key does not exist, it tries to fill with the given function
        var getOrSetHash = await _carbonRedisCache.HashSingleGet<String>("SingleDataOfHash", () =>
             {
                 return Task.FromResult("OnlyThisDataWillBeStored");
@@ -241,8 +241,8 @@ Now you can use many kind of useful extension methods for various types of Redis
 To be filled later...
 
 ---
-#### Access Stack.Exchange Based Objects (Server, Database etc.)
-Access to server object to execute server-based commands
+#### Accessing Stack.Exchange Based Objects (Server, Database etc.)
+Access server object to execute server-based commands
 ```csharp
 //Provides configuration controls of a redis server
 IServer server = _carbonRedisCache.GetServer();
@@ -253,7 +253,7 @@ Access to database object to unveil all the redis operations via IDatabase
 IDatabase database = _carbonRedisCache.GetDatabase();
 ```
 
-Get the current database number you are ruling
+Get the current database number in use
 ```csharp
 int dbnumber = _carbonRedisCache.GetRedisDatabaseNumber();
 ```
