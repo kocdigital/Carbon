@@ -4,6 +4,9 @@ using System.Text;
 
 namespace Carbon.Common.TenantManagementHandler.Classes
 {
+    /// <summary>
+	/// Contains information about Permission and it's policies
+	/// </summary>
     public class PermissionDetailedDto
     {
         public Guid Id { get; set; }
