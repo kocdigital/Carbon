@@ -28,6 +28,7 @@ namespace Carbon.Redis
         public bool SSLEnabled { get; set; }
         public string InstanceName { get; set; }
         public string SentinelServiceName { get; set; }
+        public int SyncTimeout { get; set; }
         public RedisSettings Value => this;
     }
 }

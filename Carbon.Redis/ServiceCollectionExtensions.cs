@@ -1,4 +1,5 @@
 ﻿using Carbon.Redis.Builder;
+using Carbon.Redis.Sentinel;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -23,7 +24,7 @@ namespace Carbon.Redis
             }
         }
 
-        
+
 
         /// <summary>
         /// Use AddRedisPersister for implementation Redis
@@ -40,15 +41,27 @@ namespace Carbon.Redis
             {
                 throw new ArgumentNullException(nameof(configuration));
             }
+
             IOptions<RedisSettings> redisSettings = new RedisSettings();
             configuration.GetSection(RedisConstants.RedisSectionName).Bind(redisSettings);
             services.AddSingleton(redisSettings);
             ConfigurationOptions configurationOptions = new ConfigurationOptions();
             if (redisSettings.Value.Enabled)
             {
-                 configurationOptions = new ConfigurationOptions
+                if(redisSettings.Value.EndPoints == null || !redisSettings.Value.EndPoints.Any())
                 {
-                    EndPoints = { string.Join(",", redisSettings.Value.EndPoints) },
+                    throw new ArgumentNullException(nameof(redisSettings.Value.EndPoints));
+                }
+
+                EndPointCollection endPoints = new EndPointCollection();
+                foreach (var endpoint in redisSettings.Value.EndPoints)
+                {
+                    endPoints.Add(endpoint);
+                }
+
+                configurationOptions = new ConfigurationOptions
+                {
+                    EndPoints = endPoints,
                     KeepAlive = redisSettings.Value.KeepAlive,
                     AbortOnConnectFail = redisSettings.Value.AbortOnConnectFail,
                     ConfigurationChannel = redisSettings.Value.ConfigurationChannel,
@@ -62,7 +75,8 @@ namespace Carbon.Redis
                     ConnectTimeout = redisSettings.Value.ConnectTimeout,
                     DefaultDatabase = redisSettings.Value.DefaultDatabase,
                     Ssl = redisSettings.Value.SSLEnabled,
-                    ServiceName = redisSettings.Value.SentinelServiceName
+                    ServiceName = redisSettings.Value.SentinelServiceName,
+                    SyncTimeout = redisSettings.Value.SyncTimeout
                 };
 
                 if (redisSettings.Value.SSLEnabled)
@@ -75,12 +89,31 @@ namespace Carbon.Redis
                     var redis = ConnectionMultiplexer.Connect(configurationOptions);
                     if (redis.IsConnected)
                     {
+                        services.AddSingleton<ConfigurationOptions>(configurationOptions);
                         services.AddSingleton<IConnectionMultiplexer>(redis);
                         var db = redis.GetDatabase(redisSettings.Value.DefaultDatabase);
                         services.AddSingleton(s => db);
                         RedisHelper.SetRedisKeyLength(redisSettings.Value.KeyLength);
 
-                        services.AddRedisPersisterHealthCheck(redisSettings.Value);
+                        if (!String.IsNullOrEmpty(configurationOptions.ServiceName))
+                        {
+                            var sentinelConfig = configurationOptions.Clone();
+                            var SecondsOfTimeOut = 1000;
+                            sentinelConfig.SyncTimeout = SecondsOfTimeOut;
+                            sentinelConfig.AsyncTimeout = SecondsOfTimeOut;
+                            SentinelConnectionMultiplexer redisSentinel = new SentinelConnectionMultiplexer(ConnectionMultiplexer.SentinelConnect(sentinelConfig));
+                            if (redisSentinel.ConnectionMultiplexer.IsConnected)
+                            {
+                                services.AddSingleton<ISentinelConnectionMultiplexer>(redisSentinel);
+                            }
+                        }
+                        else
+                        {
+                            NonSentinelConnectionMultiplexer redisSentinel = new NonSentinelConnectionMultiplexer(redis);
+                            services.AddSingleton<ISentinelConnectionMultiplexer>(redisSentinel);
+                        }
+
+                        services.AddHealthChecks().AddCheck<CustomRedisHealthCheck>("RedisConnectionCheck", HealthStatus.Unhealthy);
                     }
                     else
                     {
@@ -100,22 +133,6 @@ namespace Carbon.Redis
 
 
             return new CarbonRedisBuilder(services, configurationOptions, configuration);
-        }
-
-        public static void AddRedisPersisterHealthCheck(this IServiceCollection services, RedisSettings settings, HealthStatus failureStatus = HealthStatus.Unhealthy)
-        {
-            var healthCheck = services.AddHealthChecks();
-            settings.EndPoints.ToList().ForEach(endpoint =>
-            {
-                if (!settings.SSLEnabled)
-                {
-                    healthCheck.AddRedis($"{endpoint},defaultDatabase={settings.DefaultDatabase},password={settings.Password}", $"redis[{endpoint}]", failureStatus);
-                }
-                else
-                {
-                    healthCheck.AddRedis($"{endpoint},defaultDatabase={settings.DefaultDatabase},password={settings.Password},ssl=true", $"redis[{endpoint}]", failureStatus);
-                }
-            });
         }
 
         /// <summary>
