@@ -41,12 +41,18 @@ namespace Carbon.Redis
             {
                 throw new ArgumentNullException(nameof(configuration));
             }
+
             IOptions<RedisSettings> redisSettings = new RedisSettings();
             configuration.GetSection(RedisConstants.RedisSectionName).Bind(redisSettings);
             services.AddSingleton(redisSettings);
             ConfigurationOptions configurationOptions = new ConfigurationOptions();
             if (redisSettings.Value.Enabled)
             {
+                if(redisSettings.Value.EndPoints == null || !redisSettings.Value.EndPoints.Any())
+                {
+                    throw new ArgumentNullException(nameof(redisSettings.Value.EndPoints));
+                }
+
                 EndPointCollection endPoints = new EndPointCollection();
                 foreach (var endpoint in redisSettings.Value.EndPoints)
                 {
