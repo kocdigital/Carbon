@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Carbon.ElasticSearch
 {
-
+    /// <inheritdoc cref="IElasticRepository{T}"/>
     public abstract class BaseElasticRepository<T> : BaseElasticReadOnlyRepository<T>, IElasticRepository<T> where T : class
     {
         private readonly bool _forceRefresh;
@@ -27,7 +27,7 @@ namespace Carbon.ElasticSearch
         public async Task AddAsync(T item, bool? refresh = null)
         {
             var response = await _client.IndexAsync(item, i => i.Index(Index)
-            .Refresh((_forceRefresh || (refresh??false)) ? Elasticsearch.Net.Refresh.True : Elasticsearch.Net.Refresh.False));
+            .Refresh((_forceRefresh || (refresh ?? false)) ? Elasticsearch.Net.Refresh.True : Elasticsearch.Net.Refresh.False));
         }
         public async Task<IndexResponse> AddAndReturnAsync(T item, bool? refresh = null)
         {
