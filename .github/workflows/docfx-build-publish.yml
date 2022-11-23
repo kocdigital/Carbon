@@ -43,12 +43,12 @@ jobs:
       - name: Build
         run: dotnet build --no-restore
       - name: DocFX Build
-        run: docfx docs/docfx.json -o ${{ runner.temp }}/_site
+        run: docfx docs/docfx.json
         continue-on-error: false
       - name: Publish
         if: github.event_name == 'push'
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ${{ runner.temp }}/_site
+          publish_dir: docs/_site
           force_orphan: true
