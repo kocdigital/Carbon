@@ -20,6 +20,11 @@
       },
       {
         "files": [ "**/*.md", "*.md", "toc.yml" ]
+      },
+      {
+        "files": [ "**/*.md", "**/*.Md", "**/*.MD"],
+        "src": "../",
+        "dest": "articles/api"
       }
     ],
     "resource": [
