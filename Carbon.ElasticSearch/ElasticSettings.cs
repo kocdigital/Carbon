@@ -8,6 +8,9 @@ using Carbon.ElasticSearch.Abstractions;
 
 namespace Carbon.ElasticSearch
 {
+    /// <summary>
+	/// <inheritdoc cref="IElasticSettings"/>
+	/// </summary>
     public class ElasticSettings : IElasticSettings, IOptions<ElasticSettings>
     {
         public ElasticSettings()

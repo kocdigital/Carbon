@@ -14,6 +14,8 @@ using System.Threading.Tasks;
 
 namespace Carbon.WebApplication.TenantManagementHandler.Services
 {
+    /// <inheritdoc cref="IExternalService"/>
+    
     public class ExternalService : IExternalService
     {
         private readonly IHttpClientFactory _clientFactory;
@@ -28,7 +30,8 @@ namespace Carbon.WebApplication.TenantManagementHandler.Services
             _errorHandling = _config.GetValue<string>("ErrorHandling:Url");
             _clientFactory = httpClientFactory;
         }
-        public async Task<List<PermissionDetailedDto>> ExecuteInPolicyApi_GetRoles(PermissionDetailedFilterDto permissionDetailedFilterDto, string token)
+
+		public async Task<List<PermissionDetailedDto>> ExecuteInPolicyApi_GetRoles(PermissionDetailedFilterDto permissionDetailedFilterDto, string token)
         {
 
             var clientForPolicy = _clientFactory.CreateClient();
@@ -88,7 +91,7 @@ namespace Carbon.WebApplication.TenantManagementHandler.Services
             return null;
         }
 
-        public async Task<bool> RegisterApplicationError(ApplicationErrorRegisterRequest request, string token = null)
+		public async Task<bool> RegisterApplicationError(ApplicationErrorRegisterRequest request, string token = null)
         {
             var clientForPolicy = _clientFactory.CreateClient();
             clientForPolicy.DefaultRequestHeaders.Accept.Clear();

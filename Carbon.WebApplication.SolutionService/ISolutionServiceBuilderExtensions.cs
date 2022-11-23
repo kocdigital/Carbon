@@ -17,6 +17,9 @@ using GreenPipes;
 
 namespace Carbon.WebApplication.SolutionService
 {
+    /// <summary>
+	/// Contains extension methods about solution and feature set initialization like RegisterAsSolution, RegisterAsFeatureSet etc. for <see cref="IApplicationBuilder"/>
+	/// </summary>
     public static class ISolutionServiceBuilderExtensions
     {
         /// <summary>

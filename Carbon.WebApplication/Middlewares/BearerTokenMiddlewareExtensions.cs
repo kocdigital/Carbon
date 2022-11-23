@@ -2,6 +2,9 @@
 
 namespace Carbon.WebApplication.Middlewares
 {
+    /// <summary>
+	/// Contains extension methods for "Bearer Token" operations
+	/// </summary>
     public static class BearerTokenMiddlewareExtensions
     {
         /// <summary>
