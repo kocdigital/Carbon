@@ -40,6 +40,8 @@ jobs:
           args: install docfx
       - name: Install dependencies & restore
         run: dotnet restore
+      - name: Build
+        run: dotnet build --no-restore
       - name: DocFX Build
         working-directory: docs
         run: docfx build -o ${{ runner.temp }}/_site
