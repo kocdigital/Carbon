@@ -8,6 +8,9 @@ using System.Text;
 
 namespace Carbon.WebApplication.TenantManagementHandler.ControllerAttributes
 {
+    /// <summary>
+	/// Adds required filters using OnActionExecuting event to Query via service's repository
+	/// </summary>
     public class SolutionFilter : ActionFilterAttribute
     {
         public SolutionFilter()

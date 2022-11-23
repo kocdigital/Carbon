@@ -4,6 +4,9 @@ using System.Text;
 
 namespace Carbon.WebApplication.TenantManagementHandler.Dtos
 {
+    /// <summary>
+	/// Request object for querying Policies from Policy API
+	/// </summary>
     public class PermissionDetailedFilterDto
     {
         public Guid? UserId { get; set; }

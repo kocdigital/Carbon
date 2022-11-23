@@ -23,6 +23,9 @@ using MassTransitNS = MassTransit;
 
 namespace Carbon.MassTransit
 {
+    /// <summary>
+	/// Contains extension methods like AddRabbitMqBus, AddServiceBus for <see cref="IServiceCollectionBusConfigurator"/> and <see cref="IServiceCollection"/>
+	/// </summary>
     public static class IServiceCollectionConfiguratorExtensions
     {
         /// <summary>

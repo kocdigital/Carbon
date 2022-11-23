@@ -9,6 +9,9 @@ using System.Threading.Tasks;
 
 namespace Carbon.Domain.EntityFrameworkCore
 {
+    /// <summary>
+	/// Contains extension methods like IncludeSolutionFilter, ToListEntityFilteredWithSolutionAsync etc.
+	/// </summary>
     public static class EFExtensions
     {
         /// <summary>

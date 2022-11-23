@@ -186,6 +186,16 @@ namespace Carbon.WebApplication.EntityFrameworkCore
 
 
 
+        /// <summary>
+        /// Adds db health checks to <see cref="IHealthChecksBuilder"/>
+        /// </summary>
+        /// <remarks>
+        /// <see cref="AddDatabaseContext"/> and <see cref="AddDatabaseWithReadOnlyReplicaContext"/> methods adds this automatically, you don't need to add this again
+        /// </remarks>
+        /// <param name="services"></param>
+        /// <param name="target">MSSQL or PostgreSQL</param>
+        /// <param name="connectionString"></param>
+        /// <param name="failureStatus"></param>
         public static void AddDatabaseContextHealthCheck(this IServiceCollection services, string target, string connectionString, HealthStatus failureStatus = HealthStatus.Unhealthy)
         {
             switch (target.ToLower())

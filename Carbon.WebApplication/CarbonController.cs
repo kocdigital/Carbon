@@ -12,6 +12,12 @@ using System.Text;
 
 namespace Carbon.WebApplication
 {
+    /// <summary>
+	/// A base class for an MVC controller without view support.
+	/// </summary>
+	/// <remarks>
+	/// For standardized responses adds response types like <see cref="ResponseOk"/>, <see cref="DeletedOk"/>
+	/// </remarks>
     public abstract class CarbonController : ControllerBase
     {
 

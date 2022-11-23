@@ -7,6 +7,19 @@ using System;
 
 namespace Carbon.WebApplication
 {
+    /// <summary>
+	/// A base class for Startup class. Helps to automatically configure your API with Carbon standarts
+	/// </summary>
+	/// <remarks>
+	/// Configures Swagger, Serilog, Authentication, Authorization, Cors and HealthChecks with given Configuration options
+	/// </remarks>
+	/// <typeparam name="TStartup">
+	/// Your Startup class
+	/// <para>
+	/// Use it like;
+    /// <code>MyStartup : CarbonStartup&lt;MyStartUp&gt;</code>
+	/// </para>
+	/// </typeparam>
     public abstract class CarbonStartup<TStartup> where TStartup : class
     {
         private bool _useAuthentication;
