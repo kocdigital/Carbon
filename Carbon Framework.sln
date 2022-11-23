@@ -99,7 +99,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{1CFA9FF6-1
 	ProjectSection(SolutionItems) = preProject
 		docs\docfx.json = docs\docfx.json
 		docs\index.md = docs\index.md
-		docs\log.txt = docs\log.txt
 		docs\README.md = docs\README.md
 		docs\toc.yml = docs\toc.yml
 	EndProjectSection
@@ -129,6 +128,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "styles", "styles", "{981D90
 	ProjectSection(SolutionItems) = preProject
 		docs\templates\material\styles\main.css = docs\templates\material\styles\main.css
 	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "api_docs", "api_docs", "{B37908DA-C218-4D02-A163-E7EA2B76E725}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -324,6 +325,7 @@ Global
 		{AE0DB2C1-C7C9-41D0-9E32-6398543D701E} = {C3FB4119-59B3-4504-A451-0C03848B9DFC}
 		{6380124B-4EF3-4B89-9C46-2BA4EB035302} = {AE0DB2C1-C7C9-41D0-9E32-6398543D701E}
 		{981D9029-3528-46C3-A1F0-1ADF7A30BC84} = {AE0DB2C1-C7C9-41D0-9E32-6398543D701E}
+		{B37908DA-C218-4D02-A163-E7EA2B76E725} = {1CFA9FF6-1A48-4C89-ABBC-5DB9E8970C62}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C0D2C443-9946-4077-A654-1B47F8842F19}
