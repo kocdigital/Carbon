@@ -65,6 +65,11 @@ namespace Carbon.Redis
 
         }
 
+        public ValueTask DisposeAsync()
+        {
+            throw new NotImplementedException();
+        }
+
         public void ExportConfiguration(Stream destination, ExportOptions options = (ExportOptions)(-1))
         {
 
@@ -108,6 +113,11 @@ namespace Carbon.Redis
         public IServer GetServer(EndPoint endpoint, object asyncState = null)
         {
             return new DummyRedisServer();
+        }
+
+        public IServer[] GetServers()
+        {
+            throw new NotImplementedException();
         }
 
         public string GetStatus()
