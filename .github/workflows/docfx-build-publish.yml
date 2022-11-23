@@ -1,0 +1,53 @@
+# Simple workflow for deploying static content to GitHub Pages
+name: DocFX Build and Publish
+
+on:
+  # Runs on pushes targeting the default branch
+  push:
+    branches: ["carbon_docs"]
+  pull_request:
+    branches: ["carbon_docs"]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Allow one concurrent deployment
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
+jobs:
+  generate-docs:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: | 
+                          3.1.x
+                          6.0.x
+      - name: Setup DocFX
+        uses: crazy-max/ghaction-chocolatey@v1
+        with:
+          args: install docfx
+      - name: Install dependencies & restore
+        run: dotnet restore
+      - name: DocFX Build
+        working-directory: docs
+        run: docfx build -o ${{ runner.temp }}/_site
+        continue-on-error: false
+      - name: Publish
+        if: github.event_name == 'push'
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ${{ runner.temp }}/_site
+          force_orphan: true
