@@ -99,7 +99,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{1CFA9FF6-1
 	ProjectSection(SolutionItems) = preProject
 		docs\docfx.json = docs\docfx.json
 		docs\index.md = docs\index.md
-		docs\README.md = docs\README.md
 		docs\toc.yml = docs\toc.yml
 	EndProjectSection
 EndProject
