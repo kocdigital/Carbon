@@ -95,6 +95,41 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Carbon.Quartz.Migrate.Conte
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Carbon.Quartz", "Carbon.Quartz\Carbon.Quartz.csproj", "{BA4FCE43-E9CC-44B6-B7DD-D70C35BBD69D}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{1CFA9FF6-1A48-4C89-ABBC-5DB9E8970C62}"
+	ProjectSection(SolutionItems) = preProject
+		docs\docfx.json = docs\docfx.json
+		docs\index.md = docs\index.md
+		docs\log.txt = docs\log.txt
+		docs\README.md = docs\README.md
+		docs\toc.yml = docs\toc.yml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "articles", "articles", "{8FB4F0A8-7D43-42C4-BD60-EE1389D4C08B}"
+	ProjectSection(SolutionItems) = preProject
+		docs\articles\creating_webapi.md = docs\articles\creating_webapi.md
+		docs\articles\toc.md = docs\articles\toc.md
+		docs\articles\_getting_started.md = docs\articles\_getting_started.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "images", "images", "{7C921555-4AB7-45A6-8D47-F4A637BDF1DC}"
+	ProjectSection(SolutionItems) = preProject
+		docs\images\logo.png = docs\images\logo.png
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "templates", "templates", "{C3FB4119-59B3-4504-A451-0C03848B9DFC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "material", "material", "{AE0DB2C1-C7C9-41D0-9E32-6398543D701E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "partials", "partials", "{6380124B-4EF3-4B89-9C46-2BA4EB035302}"
+	ProjectSection(SolutionItems) = preProject
+		docs\templates\material\partials\head.tmpl.partial = docs\templates\material\partials\head.tmpl.partial
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "styles", "styles", "{981D9029-3528-46C3-A1F0-1ADF7A30BC84}"
+	ProjectSection(SolutionItems) = preProject
+		docs\templates\material\styles\main.css = docs\templates\material\styles\main.css
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -283,6 +318,12 @@ Global
 		{0428CF8C-1363-4941-8A8D-9D0A2777A85E} = {C22416E6-A406-44C9-9347-D6E9826FE6F9}
 		{E0375C00-E000-4CAC-AB11-B90FD8E5B2F3} = {C22416E6-A406-44C9-9347-D6E9826FE6F9}
 		{3D77B813-4819-41BB-98B8-B66B15D57684} = {C22416E6-A406-44C9-9347-D6E9826FE6F9}
+		{8FB4F0A8-7D43-42C4-BD60-EE1389D4C08B} = {1CFA9FF6-1A48-4C89-ABBC-5DB9E8970C62}
+		{7C921555-4AB7-45A6-8D47-F4A637BDF1DC} = {1CFA9FF6-1A48-4C89-ABBC-5DB9E8970C62}
+		{C3FB4119-59B3-4504-A451-0C03848B9DFC} = {1CFA9FF6-1A48-4C89-ABBC-5DB9E8970C62}
+		{AE0DB2C1-C7C9-41D0-9E32-6398543D701E} = {C3FB4119-59B3-4504-A451-0C03848B9DFC}
+		{6380124B-4EF3-4B89-9C46-2BA4EB035302} = {AE0DB2C1-C7C9-41D0-9E32-6398543D701E}
+		{981D9029-3528-46C3-A1F0-1ADF7A30BC84} = {AE0DB2C1-C7C9-41D0-9E32-6398543D701E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C0D2C443-9946-4077-A654-1B47F8842F19}

@@ -1,0 +1,49 @@
+{
+  "metadata": [
+    {
+      "src": [
+        {
+          "files": [ "**/*.csproj" ],
+          "exclude": [ "**/bin/**", "**/obj/**", "**/demos/**", "**/TestResults/**", "**/tests/**", "**/SolutionItems/**", "**/Carbon.Documentation/**" ],
+          "src": "../"
+        }
+      ],
+      "dest": "obj/api"
+    }
+  ],
+  "build": {
+    "content": [
+      {
+        "files": [ "**/*.yml" ],
+        "src": "obj/api",
+        "dest": "api"
+      },
+      {
+        "files": [ "**/*.md", "*.md", "toc.yml" ]
+      }
+    ],
+    "resource": [
+      {
+        "files": [ "**/images/**" ]
+      }
+    ],
+    "postProcessors": [ "ExtractSearchIndex" ],
+    "overwrite": "specs/*.md",
+    "globalMetadata": {
+      "_appTitle": "Carbon Framework",
+      "_appFooter": "Carbon Framework",
+      "_appLogoPath": "images/logo.png",
+      "_appFaviconPath": "images/logo.png",
+      "_enableSearch": true,
+      "_disableContribution": true,
+      "_gitUrlPattern": "https://github.com/kocdigital/Carbon",
+      "_gitContribute": {
+        "repo": "https://github.com/kocdigital/Carbon",
+        "branch": "master",
+        "apiSpecFolder": "docs-ref-overwrite"
+      }
+    },
+    "markdownEngineName": "markdig",
+    "template": [ "default", "templates/material" ]
+  }
+}
