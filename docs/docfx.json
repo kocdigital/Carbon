@@ -8,15 +8,15 @@
           "src": "../"
         }
       ],
-      "dest": "obj/api"
+      "dest": "api_docs_yml"
     }
   ],
   "build": {
     "content": [
       {
         "files": [ "**/*.yml" ],
-        "src": "obj/api",
-        "dest": "api"
+        "src": "api_docs_yml",
+        "dest": "api_docs"
       },
       {
         "files": [ "**/*.md", "*.md", "toc.yml" ]
