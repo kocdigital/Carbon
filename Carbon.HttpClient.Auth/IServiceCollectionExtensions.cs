@@ -10,6 +10,9 @@ namespace Carbon.HttpClient.Auth
         public static bool Enabled = false;
     }
 
+    /// <summary>
+	/// Contains extension methos like AddHttpClientAuth, CreateAuthentication etc. for <see cref="IServiceCollection"/> and <see cref="IApplicationBuilder"/>
+	/// </summary>
     public static class IServiceCollectionExtensions
     {
 

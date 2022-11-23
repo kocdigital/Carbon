@@ -7,8 +7,14 @@ using System.Threading.Tasks;
 namespace Carbon.Redis
 {
     /// <summary>
-    /// If redis  disabled RedisDatabase injected
-    /// </summary>
+    /// If redis  disabled RedisDatabase injected. 
+    /// Aim of this RedisDatabase is not to throw errors when you don't enable redis within your configuration
+	/// <see cref="ServiceCollectionExtensions.AddRedisPersister"/> does this accordingly to configuraiton.
+    /// So DO NOT USE this directly
+	/// <para>
+	/// This dummy database does nothing, just returns default values
+	/// </para>
+	/// </summary>
     public class RedisDatabase : IDatabase
     {
         public int Database

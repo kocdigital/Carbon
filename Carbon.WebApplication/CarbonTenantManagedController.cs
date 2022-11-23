@@ -12,6 +12,11 @@ using System.Text;
 
 namespace Carbon.WebApplication
 {
+    /// <summary>
+	/// <para>
+	/// Adds automatic solution and ownership filtering. Uses OnActionExecuting event of <see cref="OwnershipFilter"/> and <see cref="SolutionFilter"/>, adds required filters to Query via repository on run time
+	/// </para>
+	/// </summary>
     public abstract class CarbonTenantManagedController : CarbonController, ISolutionFilteredController, IOwnershipFilteredController
     {
 

@@ -23,11 +23,14 @@ namespace Carbon.Redis
             }
         }
 
-        
+
 
         /// <summary>
         /// Use AddRedisPersister for implementation Redis
         /// </summary>
+        /// <remarks>
+        /// If configuration for <see cref="RedisSettings.Enabled"/> is false, adds a <see cref="DummyConnectionMultiplexer"/>
+        /// </remarks>
         /// <param name="configuration"></param>
         /// <returns> IServiceCollection </returns>
         public static ICarbonRedisBuilder AddRedisPersister(this IServiceCollection services, IConfiguration configuration)

@@ -21,6 +21,12 @@ namespace Carbon.WebApplication.TenantManagementHandler.ControllerAttributes
         Goduser = 99
     }
 
+    /// <summary>
+	/// Adds required filters using OnActionExecuting event to Query via service's repository
+	/// </summary>
+	/// <remarks>
+	/// Checks Superadmin and Admin rights. If user is GodUser skips adding filter to query
+	/// </remarks>
     public class OwnershipFilter : ActionFilterAttribute
     {
         private readonly string _role;

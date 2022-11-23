@@ -13,6 +13,9 @@ using System.IO;
 
 namespace Carbon.HttpClient.Auth.IdentityServerSupport
 {
+    /// <summary>
+	/// Factory for Creating Authenticated HttpClients
+	/// </summary>
     public class AuthHttpClientFactory
     {
         private readonly IHttpClientFactory _clientFactory;
@@ -21,7 +24,6 @@ namespace Carbon.HttpClient.Auth.IdentityServerSupport
         private readonly object _locker;
 
         private readonly AuthHttpClientAuthorization _authHttpClientAuthorization;
-        //Dictionary<string, AuthenticationInfo> Authentications;
         private Dictionary<string, string> _currentSessionHeaders;
 
         public Dictionary<string, string> CurrentSessionHeaders
@@ -53,13 +55,22 @@ namespace Carbon.HttpClient.Auth.IdentityServerSupport
             };
         }
 
-        public async Task<AuthenticationInfo> ReAuthenticate(string Name)
+        /// <summary>
+		/// Drops authentication and cretes new one using <see cref="CreateAuthentication"/>
+		/// </summary>
+		/// <param name="Name"><inheritdoc cref="CreateAuthentication(string, bool)"/></param>
+		public async Task<AuthenticationInfo> ReAuthenticate(string Name)
         {
             DropAuthentication(Name);
             return await CreateAuthentication(Name);
         }
 
-        public bool DropAuthentication(string Name)
+        /// <summary>
+		/// Drops authentication for given name.
+		/// </summary>
+		/// <param name="Name"><inheritdoc cref="CreateAuthentication(string, bool)"/></param>
+		/// <returns>If there is a created authenticaion and drops it succesfully returns <c>true</c> otherwise returns <c>false</c></returns>
+		public bool DropAuthentication(string Name)
         {
             if (_authHttpClientAuthorization.Authentications.ContainsKey(Name) && _authHttpClientAuthorization.Authentications[Name] != null)
             {
@@ -73,7 +84,20 @@ namespace Carbon.HttpClient.Auth.IdentityServerSupport
             }
             return false;
         }
-        public async Task<AuthenticationInfo> CreateAuthentication(string Name, bool reauth = false)
+
+        /// <summary>
+		/// Reads Configuration's "Authorizations" key and creates Authentication
+		/// </summary>
+		/// <param name="Name">Auth name which given Configuration's "Authorizations" key</param>
+		/// <param name="reauth"></param>
+		/// <returns>
+		/// <list type="bullet">
+		/// <item>If AuthType is <see cref="AuthenticationType.OneM2MSpecific"/> returns <see cref="OneM2MAuth"/></item>
+		/// <item>If AuthType is <see cref="AuthenticationType.OneM2MConnector"/> returns <see cref="OneM2MConAuth"/></item>
+		/// <item>Otherwise returns <see cref="BasicAuth"/> which contains authentication informations like token etc</item>
+		/// </list>
+        /// </returns>
+		public async Task<AuthenticationInfo> CreateAuthentication(string Name, bool reauth = false)
         {
             if (!reauth)
                 if (_authHttpClientAuthorization.Authentications.ContainsKey(Name) && _authHttpClientAuthorization.Authentications[Name] != null && _authHttpClientAuthorization.Authentications[Name].PrimaryAccessIdExpireDate > DateTime.Now)
@@ -201,7 +225,14 @@ namespace Carbon.HttpClient.Auth.IdentityServerSupport
 
         }
 
-        public virtual AuthHttpClient CreateAuthClient(string Name)
+        /// <summary>
+		/// Creates Authenticated client by using created Authentications with <see cref="CreateAuthentication"/> method.
+		/// </summary>
+		/// <remarks>
+		/// Create an Authentication with <see cref="CreateAuthentication"/> method before creating a Authentcated Client.
+		/// </remarks>
+		/// <param name="Name"><inheritdoc cref="CreateAuthentication(string, bool)"/></param>
+		public virtual AuthHttpClient CreateAuthClient(string Name)
         {
             string originheader = "";
             var clnt = _clientFactory.CreateClient();
@@ -232,22 +263,9 @@ namespace Carbon.HttpClient.Auth.IdentityServerSupport
 
         }
 
-        private AuthHttpClient SetAuthHttpClientForOneM2m<T>(System.Net.Http.HttpClient clnt, string originheader, IBaseOneM2MAuth relatedAuth, string Name) where T : IBaseOneM2MAuth
-        {
-            if (!this._currentSessionHeaders.ContainsKey(originheader))
-                clnt.DefaultRequestHeaders.TryAddWithoutValidation(originheader, ((AuthenticationInfo)relatedAuth).PrimaryAccessId);
-            else
-                clnt.DefaultRequestHeaders.TryAddWithoutValidation(originheader, this._currentSessionHeaders[originheader]);
-
-            clnt.DefaultRequestHeaders.TryAddWithoutValidation("x-original-fqdn", ((T)relatedAuth).FQDN);
-
-            foreach (var csh in this._currentSessionHeaders.Where(k => k.Key != originheader && k.Key != "x-original-fqdn").ToList())
-            {
-                clnt.DefaultRequestHeaders.TryAddWithoutValidation(csh.Key, csh.Value);
-            }
-            return new AuthHttpClient() { HttpClient = clnt, Name = Name };
-        }
-
+        /// <summary>
+        /// Sends Http Request using created <see cref="AuthHttpClient"/>. Renews authentication if needed
+        /// </summary>
         public virtual async Task<HttpResponseMessage> SendAsync(AuthHttpClient client, HttpRequestMessage request)
         {
             var resp = await client.HttpClient.SendAsync(request);
@@ -267,6 +285,44 @@ namespace Carbon.HttpClient.Auth.IdentityServerSupport
             return resp;
         }
 
+        /// <summary>
+		/// Retrive authentication which created by <see cref="CreateAuthentication"/> method.
+		/// </summary>
+		/// <param name="Name"><inheritdoc cref="CreateAuthentication(string, bool)"/></param>
+		/// <returns><see cref="AuthenticationInfo"/></returns>
+        public async Task<AuthenticationInfo> GetAuthentication(string Name)
+        {
+            if (_authHttpClientAuthorization.Authentications.ContainsKey(Name) && _authHttpClientAuthorization.Authentications[Name] != null && _authHttpClientAuthorization.Authentications[Name].PrimaryAccessIdExpireDate > DateTime.Now)
+            {
+                return _authHttpClientAuthorization.Authentications[Name];
+            }
+            await ReAuthenticate(Name);
+            return _authHttpClientAuthorization.Authentications[Name];
+        }
+
+        /// <summary>
+		/// Retrive authentication names which created by <see cref="CreateAuthentication"/> method.
+		/// </summary>
+        public List<string> GetAuthNames()
+        {
+            return _authHttpClientAuthorization.Authentications.Keys.ToList();
+        }
+
+        private AuthHttpClient SetAuthHttpClientForOneM2m<T>(System.Net.Http.HttpClient clnt, string originheader, IBaseOneM2MAuth relatedAuth, string Name) where T : IBaseOneM2MAuth
+        {
+            if (!this._currentSessionHeaders.ContainsKey(originheader))
+                clnt.DefaultRequestHeaders.TryAddWithoutValidation(originheader, ((AuthenticationInfo)relatedAuth).PrimaryAccessId);
+            else
+                clnt.DefaultRequestHeaders.TryAddWithoutValidation(originheader, this._currentSessionHeaders[originheader]);
+
+            clnt.DefaultRequestHeaders.TryAddWithoutValidation("x-original-fqdn", ((T)relatedAuth).FQDN);
+
+            foreach (var csh in this._currentSessionHeaders.Where(k => k.Key != originheader && k.Key != "x-original-fqdn").ToList())
+            {
+                clnt.DefaultRequestHeaders.TryAddWithoutValidation(csh.Key, csh.Value);
+            }
+            return new AuthHttpClient() { HttpClient = clnt, Name = Name };
+        }
         private static async Task<HttpRequestMessage> CloneHttpRequestMessageAsync(HttpRequestMessage req)
         {
             HttpRequestMessage clone = new HttpRequestMessage(req.Method, req.RequestUri);
@@ -297,23 +353,10 @@ namespace Carbon.HttpClient.Auth.IdentityServerSupport
             return clone;
         }
 
-        public async Task<AuthenticationInfo> GetAuthentication(string Name)
-        {
-            if (_authHttpClientAuthorization.Authentications.ContainsKey(Name) && _authHttpClientAuthorization.Authentications[Name] != null && _authHttpClientAuthorization.Authentications[Name].PrimaryAccessIdExpireDate > DateTime.Now)
-            {
-                return _authHttpClientAuthorization.Authentications[Name];
-            }
-            await ReAuthenticate(Name);
-            return _authHttpClientAuthorization.Authentications[Name];
-        }
-
-        public List<string> GetAuthNames()
-        {
-            return _authHttpClientAuthorization.Authentications.Keys.ToList();
-        }
-
         #region Classes
-
+        /// <summary>
+		/// Named Http Client
+		/// </summary>
         public class AuthHttpClient
         {
             public string Name { get; set; }
@@ -336,6 +379,9 @@ namespace Carbon.HttpClient.Auth.IdentityServerSupport
             public string TokenUrl { get; set; }
         }
 
+        /// <summary>
+		/// Contains information like AuthType, Name, TenantId etc.  about Authentication
+		/// </summary>
         public class AuthenticationInfo
         {
             public AuthenticationInfo()
@@ -356,6 +402,9 @@ namespace Carbon.HttpClient.Auth.IdentityServerSupport
             public bool IsGodUser { get; set; }
         }
 
+        /// <summary>
+		/// Contains information like Token, ExpiryDate etc. about Authentication
+		/// </summary>
         public class BasicAuth : AuthenticationInfo
         {
             public BasicAuth(string AccessToken, DateTime? AccessTokenExpiryDate, string Name) : base(AccessToken, AccessTokenExpiryDate, Name)
@@ -370,6 +419,9 @@ namespace Carbon.HttpClient.Auth.IdentityServerSupport
             public DateTime? RefreshTokenExpiryDate { get; set; }
         }
 
+        /// <summary>
+		/// Contains specific authentication info for OneM2M APIs.
+		/// </summary>
         public interface IBaseOneM2MAuth
         {
             string ApplicationEntityId { get; set; }
@@ -377,6 +429,7 @@ namespace Carbon.HttpClient.Auth.IdentityServerSupport
             string FQDN { get; set; }
         }
 
+        /// <inheritdoc cref="IBaseOneM2MAuth"/>
         public class OneM2MAuth : AuthenticationInfo, IBaseOneM2MAuth
         {
             public OneM2MAuth(string ApplicationEntityId, DateTime? ApplicationEntityIdExpiryDate, string Name) : base(ApplicationEntityId, ApplicationEntityIdExpiryDate, Name)
@@ -391,6 +444,9 @@ namespace Carbon.HttpClient.Auth.IdentityServerSupport
 
         }
 
+        /// <summary>
+		/// Contains specific authentication info for OneM2M Connector API
+		/// </summary>
         public class OneM2MConAuth : AuthenticationInfo, IBaseOneM2MAuth
         {
             public OneM2MConAuth(string ApplicationEntityId, DateTime? ApplicationEntityIdExpiryDate, string Name)
