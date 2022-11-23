@@ -8,19 +8,27 @@
           "src": "../"
         }
       ],
-      "dest": "api_docs",
-      "shouldSkipMarkup": false
+      "dest": "obj/api"
     }
   ],
   "build": {
     "content": [
       {
-        "files": [ "api_docs/**.yml" ]
+        "files": [ "**/*.yml" ],
+        "src": "obj/api",
+        "dest": "api"
       },
       {
         "files": [ "**/*.md", "*.md", "toc.yml" ]
       }
     ],
+    "resource": [
+      {
+        "files": [ "**/images/**" ]
+      }
+    ],
+    "postProcessors": [ "ExtractSearchIndex" ],
+    "overwrite": "specs/*.md",
     "globalMetadata": {
       "_appTitle": "Carbon Framework",
       "_appFooter": "Carbon Framework",
@@ -36,14 +44,7 @@
       }
     },
     "markdownEngineName": "markdig",
-    "overwrite": "specs/*.md",
-    "maxParallelism": 0,
-    "postProcessors": [ "ExtractSearchIndex" ],
-    "resource": [
-      {
-        "files": [ "**/images/**" ]
-      }
-    ],
+    "dest": "_site",
     "template": [ "default", "templates/material" ]
   }
 }
