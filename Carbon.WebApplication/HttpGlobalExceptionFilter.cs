@@ -13,6 +13,12 @@ using System.Threading.Tasks;
 
 namespace Carbon.WebApplication
 {
+    /// <summary>
+	/// Caches unhandled exceptions and builds a proper exception. Uses error descriptions, if "ErrorHandling:Url" defined at configuration
+	/// <para>
+	/// <see cref="CarbonStartup{TStartup}"/> uses this by default, adds as a MVC Filter.
+	/// </para>
+	/// </summary>
     public class HttpGlobalExceptionFilter : IExceptionFilter
     {
         private readonly IWebHostEnvironment _env;

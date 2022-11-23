@@ -1,5 +1,8 @@
 ﻿namespace Carbon.WebApplication.TenantManagementHandler.Dtos.ErrorHandling
 {
+    /// <summary>
+	/// Error definition for a language
+	/// </summary>
     public class ApplicationErrorTranslation
     {
         public long ErrorCode { get; set; }

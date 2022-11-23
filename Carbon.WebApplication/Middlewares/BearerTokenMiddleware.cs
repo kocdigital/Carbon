@@ -8,7 +8,19 @@ using System.Threading.Tasks;
 
 namespace Carbon.WebApplication.Middlewares
 {
-
+    /// <summary>
+	/// A middleware that arranges the request's header.
+	/// </summary>
+	/// <remarks>
+	/// <list type="bullet">
+	/// <item>
+	/// Adds claims as headers
+	/// </item>
+	/// <item>
+	/// if user is a GodUser, removes TenantId Header from request
+	/// </item>
+	/// </list>
+	/// </remarks>
     public class BearerTokenMiddleware
     {
         private readonly RequestDelegate _next;

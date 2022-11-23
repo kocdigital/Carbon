@@ -8,8 +8,11 @@ using System.Threading.Tasks;
 namespace Carbon.Redis
 {
     /// <summary>
-    /// If redis  disabled DummyConnectionMultiplexer injected
-    /// </summary>
+	/// If redis is disabled DummyConnectionMultiplexer is injected. Aim of this Dummy Connection Multiplexer is not to throw errors when you don't enable redis within your configuration
+	/// <para>
+	/// This dummy connection multiplexer does nothing, just returns default values and uses <see cref="DummyRedisServer"/> 
+	/// </para>
+	/// </summary>
     public class DummyConnectionMultiplexer : IConnectionMultiplexer
     {
         public string ClientName  { get; set; }

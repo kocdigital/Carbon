@@ -1,6 +1,9 @@
 ﻿
 namespace Carbon.WebApplication.TenantManagementHandler.Dtos.ErrorHandling
 {
+    /// <summary>
+	/// Request object for to get application based errors for given language and tenant
+	/// </summary>
     public class ApplicationErrorRequest
     {
         public ApplicationErrorRequest(

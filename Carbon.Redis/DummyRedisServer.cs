@@ -9,6 +9,12 @@ using StackExchange.Redis;
 
 namespace Carbon.Redis
 {
+    /// <summary>
+	/// Aim of this Dummy Redis Server is not to throw errors when you don't enable redis
+	/// <para>
+	/// This dummy server does nothing, just returns default values
+	/// </para>
+	/// </summary>
     public class DummyRedisServer : IServer
     {
         public ClusterConfiguration ClusterConfiguration { get; }

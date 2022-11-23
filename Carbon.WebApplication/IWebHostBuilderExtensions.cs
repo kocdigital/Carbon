@@ -12,6 +12,7 @@ using Winton.Extensions.Configuration.Consul;
 
 namespace Carbon.WebApplication
 {
+
     public static class IWebHostBuilderExtensions
     {
         /// <summary>
