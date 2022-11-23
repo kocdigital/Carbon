@@ -9,16 +9,13 @@
         }
       ],
       "dest": "api_docs",
-      "shouldSkipMarkup": false,
-      "properties": {
-        "TargetFramework": "net6.0"
-      }
+      "shouldSkipMarkup": false
     }
   ],
   "build": {
     "content": [
       {
-        "files": [ "api_docs/*.yml" ]
+        "files": [ "api_docs/**.yml" ]
       },
       {
         "files": [ "**/*.md", "*.md", "toc.yml" ]
