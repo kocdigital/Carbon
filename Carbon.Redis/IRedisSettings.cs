@@ -77,6 +77,8 @@ namespace Carbon.Redis
         /// Sentinel Enablement
         /// </summary>
         public string SentinelServiceName { get; set; }
+        public int SyncTimeout { get; set; }
+
 
     }
 }
