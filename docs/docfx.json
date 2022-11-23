@@ -4,7 +4,7 @@
       "src": [
         {
           "files": [ "**/*.csproj" ],
-          "exclude": [ "**/bin/**", "**/obj/**", "**/demos/**", "**/TestResults/**", "**/tests/**", "**/SolutionItems/**", "**/Carbon.Documentation/**" ],
+          "exclude": [ "**/bin/**", "**/obj/**", "demos/**", "TestResults/**", "tests/**", "SolutionItems/**", "Carbon.Documentation/**" ],
           "src": "../"
         }
       ],
