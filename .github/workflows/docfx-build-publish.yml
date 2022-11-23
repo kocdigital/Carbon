@@ -43,8 +43,7 @@ jobs:
       - name: Build
         run: dotnet build --no-restore
       - name: DocFX Build
-        working-directory: docs
-        run: docfx build -o ${{ runner.temp }}/_site
+        run: docfx docs/docfx.json -o ${{ runner.temp }}/_site
         continue-on-error: false
       - name: Publish
         if: github.event_name == 'push'
