@@ -1,5 +1,5 @@
 ﻿- name: Home
-  href: articles/api/README.html
+  homepage: articles/api/README.html
 - name: Getting Started
   href: articles/
   homepage: articles/_getting_started.md

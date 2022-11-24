@@ -11,3 +11,4 @@
 ## [Carbon.TimeScaleDb.EntityFrameworkCore](api/Carbon.TimeScaleDb.EntityFrameworkCore/README.html)
 # [Carbon.HttpClient.Auth](api/Carbon.HttpClient.Auth/README.html)
 # [Carbon.ExceptionHandling](api/Carbon.ExceptionHandling/README.html)
+# [Carbon.WebApplication.SolutionService](api/Carbon.WebApplication.SolutionService/README.html)

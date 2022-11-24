@@ -98,7 +98,6 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{1CFA9FF6-1A48-4C89-ABBC-5DB9E8970C62}"
 	ProjectSection(SolutionItems) = preProject
 		docs\docfx.json = docs\docfx.json
-		docs\index.md = docs\index.md
 		docs\toc.yml = docs\toc.yml
 	EndProjectSection
 EndProject
