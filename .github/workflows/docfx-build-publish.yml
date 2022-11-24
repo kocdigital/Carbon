@@ -44,7 +44,7 @@ jobs:
         run: dotnet build --no-restore
       - name: Copy the Readmes
         run: |
-          Copy-Item ${GITHUB_WORKSPACE}\Carbon\README.md ${GITHUB_WORKSPACE}\Carbon\docs\index.md
+          Copy-Item ${GITHUB_WORKSPACE}\README.md ${GITHUB_WORKSPACE}\docs\index.md
       - name: DocFX Build
         run: docfx docs/docfx.json
         continue-on-error: false
