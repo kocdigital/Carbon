@@ -16,6 +16,6 @@ And maybe some new developers may have trouble doing them. Or when developer nee
 Use [Nuget]() for packages.
 
 ## Is There a Documentation For Packages?
-We offer a [sample project]() and an [API documentation](). Feel free to use them and if there is a problem contact us from -----MAIL----
+We offer a [sample project](https://github.com/kocdigital/Carbon.Sample) and an [API documentation](https://kocdigital.github.io/Carbon). Feel free to use them and if there is a problem contact us from [discussions section](https://github.com/kocdigital/Carbon/discussions)
 
-And if neded, there is [this]() quick example about how to create sample web api using carbon.
+And if needed, there is [this](https://kocdigital.github.io/Carbon/articles/_getting_started.html) quick example about how to create sample web api using carbon.
