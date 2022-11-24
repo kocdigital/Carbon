@@ -4,16 +4,14 @@ name: DocFX Build and Publish
 on:
   # Runs on pushes targeting the default branch
   push:
-    branches: ["carbon_docs"]
-  pull_request:
-    branches: [ "carbon_docs" ]
+    branches: ["master"]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
 # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 
@@ -28,6 +26,10 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+      - name: Copy the Readmes
+        working-directory: ./
+        run: |
+          Copy-Item README.md docs\index.md
       - name: Setup .NET
         uses: actions/setup-dotnet@v1
         with:
@@ -40,14 +42,15 @@ jobs:
           args: install docfx
       - name: Install dependencies & restore
         run: dotnet restore
+      - name: Build
+        run: dotnet build --no-restore      
       - name: DocFX Build
-        working-directory: docs
-        run: docfx build -o ${{ runner.temp }}/_site
+        run: docfx docs/docfx.json
         continue-on-error: false
       - name: Publish
         if: github.event_name == 'push'
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ${{ runner.temp }}/_site
+          publish_dir: docs/_site
           force_orphan: true
