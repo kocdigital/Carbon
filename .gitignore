@@ -356,3 +356,5 @@ MigrationBackup/
 */[Dd]ebug/
 *.cache
 */[Oo]bj
+
+.vs/

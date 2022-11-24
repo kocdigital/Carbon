@@ -2,13 +2,13 @@
 
 Simple HTTP Handler for inter-microservices communication. Recommended for only purpose of in-cluster communication.
 Supports oAuth2 client_credentials grant typed authorization. Both HTTP 1.1 (REST-based) and HTTP 2.0 (GRPC-based)
-when [Carbon.WebApplication.Grpc.Client](../Carbon.WebApplication.Grpc.Client/README.Md) used are supported.
+when [Carbon.WebApplication.Grpc.Client](../Carbon.WebApplication.Grpc.Client/README.md) used are supported.
 
 It handles the token retreival from identity server supported by oauth2 and 
 In case of having 401 status code from microservices due to token expiration or something, it refreshes the token and resends
 the http request again.
 
-[Carbon.WebApplication.Grpc.Client](../Carbon.WebApplication.Grpc.Client/README.Md) uses this package as-is for the
+[Carbon.WebApplication.Grpc.Client](../Carbon.WebApplication.Grpc.Client/README.md) uses this package as-is for the
 inter-microservices authorized communication.
 
 **1a. Simply register this httpclient (For HTTP 1.1 REST-based)**

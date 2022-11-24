@@ -18,9 +18,9 @@ Let Carbon know about Quartz.Net, you simply use!
 
 | Related Package                                                                  | Required | Auto-Included |
 |-----------------------------------------------------------------                 |:----:    |:----:         |
-| [Carbon.Quartz.Migrate.Context](../Carbon.Quartz.Migrate.Context/README.Md)      | No       | No            |
-| [Carbon.Quartz.Migrate.MSSQL](../Carbon.Quartz.Migrate.MSSQL/README.Md)          | No       | No            |
-| [Carbon.Quartz.Migrate.PostgreSQL](../Carbon.Quartz.Migrate.PostgreSQL/README.Md)| No       | No            |
+| [Carbon.Quartz.Migrate.Context](../Carbon.Quartz.Migrate.Context/README.md)      | No       | No            |
+| [Carbon.Quartz.Migrate.MSSQL](../Carbon.Quartz.Migrate.MSSQL/README.md)          | No       | No            |
+| [Carbon.Quartz.Migrate.PostgreSQL](../Carbon.Quartz.Migrate.PostgreSQL/README.md)| No       | No            |
 
 This basic usage introduces a non-persistent, thus not scalable Quartz.Net approach. It is recommended dev-purposes only.
 
@@ -99,9 +99,9 @@ Finally it migrates the tables to the selected database, so that you don't have 
 
 | Related Package                                                                  | Required | Auto-Included |
 |-----------------------------------------------------------------                 |:----:    |:----:         |
-| [Carbon.Quartz.Migrate.Context](../Carbon.Quartz.Migrate.Context/README.Md)      | Yes      | No            |
-| [Carbon.Quartz.Migrate.MSSQL](../Carbon.Quartz.Migrate.MSSQL/README.Md)          | Yes      | No            |
-| [Carbon.Quartz.Migrate.PostgreSQL](../Carbon.Quartz.Migrate.PostgreSQL/README.Md)| Yes      | No            |
+| [Carbon.Quartz.Migrate.Context](../Carbon.Quartz.Migrate.Context/README.md)      | Yes      | No            |
+| [Carbon.Quartz.Migrate.MSSQL](../Carbon.Quartz.Migrate.MSSQL/README.md)          | Yes      | No            |
+| [Carbon.Quartz.Migrate.PostgreSQL](../Carbon.Quartz.Migrate.PostgreSQL/README.md)| Yes      | No            |
 
 **1. Register Quartz To Your Application**
 
