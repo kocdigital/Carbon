@@ -28,6 +28,10 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+      - name: Copy the Readmes
+        working-directory: ./
+        run: |
+          Copy-Item README.md docs\index.md
       - name: Setup .NET
         uses: actions/setup-dotnet@v1
         with:
@@ -41,7 +45,7 @@ jobs:
       - name: Install dependencies & restore
         run: dotnet restore
       - name: Build
-        run: dotnet build --no-restore
+        run: dotnet build --no-restore      
       - name: DocFX Build
         run: docfx docs/docfx.json
         continue-on-error: false
