@@ -5,10 +5,10 @@
 [**] https://www.quartz-scheduler.net/
 
 This package brings you the capability of single code line of migration to bring persistency of Quartz.Net. Check
-usage details from [Carbon.Quartz](../Carbon.Quartz/README.Md) 
+usage details from [Carbon.Quartz](../Carbon.Quartz/README.md) 
 
-This package should be used with either [Carbon.Quartz.Migrate.MSSQL](../Carbon.Quartz.Migrate.MSSQL/README.Md)
-or [Carbon.Quartz.Migrate.PostgreSQL](../Carbon.Quartz.Migrate.PostgreSQL/README.Md). This package can be used standalone
+This package should be used with either [Carbon.Quartz.Migrate.MSSQL](../Carbon.Quartz.Migrate.MSSQL/README.md)
+or [Carbon.Quartz.Migrate.PostgreSQL](../Carbon.Quartz.Migrate.PostgreSQL/README.md). This package can be used standalone
 with additionally a selected SQL package with a Quartz.Net (https://github.com/quartznet/quartznet) package without
 using Carbon.Quartz package.
 

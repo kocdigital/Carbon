@@ -22,7 +22,7 @@ You can add Carbon.Redis support only with StackExchange.Redis capabilities (wit
 you can have a Redis connection (ConnectionMultiplexer) in order to be used for any purpose you like. This usage gives you a good set of functionalities
 and provides you with automatic heath check capability at **/health** endpoint.
 
-This usage also is a baseline for [Carbon.MassTransit](../Carbon.MassTransit/README.Md) Saga Pattern persistency.
+This usage also is a baseline for [Carbon.MassTransit](../Carbon.MassTransit/README.md) Saga Pattern persistency.
 
 **1. Register Carbon.Redis to your service**
 
