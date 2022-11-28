@@ -2,22 +2,24 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
-    <Version>1.2.1</Version>
-    <FileVersion>1.2.0.0</FileVersion>
-    <Description>1.2.1
-Added arguments to CarbonException methods using SerializedModel
-1.2.0
-CarbonValidator moved to CarbonWebApplication and FluentValidation dependency removed
-1.1.5
-Exception Messages Added
-      1.1.4
-      -Json serialize object reference loop handling ignore.
-</Description>
+    <Version>1.2.2</Version>
+    <Description>
+		1.2.2
+		- Newtonsoft dependency updated
+		1.2.1
+		- Added arguments to CarbonException methods using SerializedModel
+		1.2.0
+		- CarbonValidator moved to CarbonWebApplication and FluentValidation dependency removed
+		1.1.5
+		- Exception Messages Added
+		1.1.4
+		- Json serialize object reference loop handling ignore.
+	</Description>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
   </ItemGroup>
 
 </Project>
