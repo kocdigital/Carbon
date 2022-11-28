@@ -23,6 +23,7 @@ equipped web application with a couple line of codes.
 | Request Validation                                                               | Yes          | Rules can run against Dtos from controllers. Supported via Fluent Validation  |
 | Multi .Net Run Time Support                                                      | Yes          | Supports Dotnet 3.1 - 5 and 6 directly. (Complied against these versions)  |
 | Hands-free MVC initialization                                                    | Yes          | Manages MVC core features on its own. Simply use carbon, and your controllers or other simple MVC settings handled automatically  |
+| Serialization                                                                    | Yes          | Uses Newtonsoft.Json under the hood  |
 
 
 **1a. Build your API Startup if it is non-minimal**
