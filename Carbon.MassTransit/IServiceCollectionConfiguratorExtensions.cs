@@ -212,6 +212,7 @@ namespace Carbon.MassTransit
                 {
                     busFactoryConfig.ReceiveEndpoint("request-starter-state", e =>
                     {
+                        e.AddAsHighAvailableQueue(configuration);
                         e.ConfigureSaga<RequestResponseState>((IBusRegistrationContext)provider);
                     });
 
@@ -219,6 +220,7 @@ namespace Carbon.MassTransit
 
                     busFactoryConfig.ReceiveEndpoint(apiname + "-Req.Resp.Async-RespHandler", configurator =>
                     {
+                        configurator.AddAsHighAvailableQueue(configuration);
                         configurator.Consumer<T>(provider);
                     });
                 });
@@ -264,6 +266,7 @@ namespace Carbon.MassTransit
 
                     busFactoryConfig.ReceiveEndpoint("Req.Resp.Async-" + responseDestinationPath, configurator =>
                     {
+                        configurator.AddAsHighAvailableQueue(configuration);
                         configurator.Consumer<T>(provider);
                     });
 
@@ -295,7 +298,7 @@ namespace Carbon.MassTransit
         /// </summary>
         /// <param name="cfg"></param>
         /// <param name="configuration">Configuration</param>
-        public static void AddAsDefaultQueue(this IRabbitMqReceiveEndpointConfigurator cfg,
+        public static void AddAsDefaultQueue(this IReceiveEndpointConfigurator cfg,
                                       IConfiguration configuration)
         {
             cfg.ConnectReceiveEndpointObserver(new ReceiveEndpointObserver(configuration));
