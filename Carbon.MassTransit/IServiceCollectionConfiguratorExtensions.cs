@@ -279,6 +279,27 @@ namespace Carbon.MassTransit
             });
         }
 
+        /// <summary>
+        /// ReceiveEndpoint queue will be declared as a quorum queue, if it is already declared as default, it will delete the existing one and create new HA queue
+        /// </summary>
+        /// <param name="cfg"></param>
+        /// <param name="configuration">Configuration</param>
+        public static void AddAsHighAvailableQueue(this IRabbitMqReceiveEndpointConfigurator cfg,
+                                      IConfiguration configuration)
+        {
+            cfg.SetQuorumQueue(3);
+            cfg.ConnectReceiveEndpointObserver(new ReceiveEndpointObserver(configuration));
+        }
+        /// <summary>
+        /// ReceiveEndpoint queue will be declared as a classic queue, if it is already declared as quorum or something else, it will delete the existing one and create new classic queue
+        /// </summary>
+        /// <param name="cfg"></param>
+        /// <param name="configuration">Configuration</param>
+        public static void AddAsDefaultQueue(this IRabbitMqReceiveEndpointConfigurator cfg,
+                                      IConfiguration configuration)
+        {
+            cfg.ConnectReceiveEndpointObserver(new ReceiveEndpointObserver(configuration));
+        }
 
         /// <summary>
         /// Azure Service Bus Add Extension Method
