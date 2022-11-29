@@ -221,7 +221,7 @@ ENVIRONMENT_TYPE=Kestrel
 public class Startup : CarbonStartup<Startup>
     {
         //Base your startup and use authorization and authentication as enabled
-        public Startup(IConfiguration configuration, IWebHostEnvironment environment) : base(configuration, environment, false, false)
+        public Startup(IConfiguration configuration, IWebHostEnvironment environment) : base(configuration, environment, base(configuration, environment, useAuthentication: false, useAuthorization: false))
         {
         }
 
@@ -247,7 +247,7 @@ app.AddCarbonApplication((app) =>
 {            
     app.CreateAuthentication("RAM");
     return app;
-}, false, false);
+}, useAuthentication: false, useAuthorization: false);
 ```
 
 #### Add custom endpoints to minimal API in Program.cs
