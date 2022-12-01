@@ -9,8 +9,8 @@ This package wraps Nest library and provides handy ElasticSearch Based operation
 ## Add Carbon.ElasticSearch Support to Your Project
 ### Basic Usage
 
-| Related Package                                                                  | Required | Auto-Included |
-|-----------------------------------------------------------------                 |:----:    |:----:         |
-| [Carbon.ElasticSearch.Abstractions](../Carbon.ElasticSearch.Abstractions/README.md)      | No       | No            |
+| Related Package																		| Required | Auto-Included |
+|:----------------------------------------------------------------						|:----:    |:----:         |
+| [Carbon.ElasticSearch.Abstractions](../Carbon.ElasticSearch.Abstractions/README.md)   | No       | No            |
 
 
