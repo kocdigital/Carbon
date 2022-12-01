@@ -212,6 +212,7 @@ namespace Carbon.MassTransit
                 {
                     busFactoryConfig.ReceiveEndpoint("request-starter-state", e =>
                     {
+                        e.AddAsHighAvailableQueue(configuration);
                         e.ConfigureSaga<RequestResponseState>((IBusRegistrationContext)provider);
                     });
 
@@ -219,6 +220,7 @@ namespace Carbon.MassTransit
 
                     busFactoryConfig.ReceiveEndpoint(apiname + "-Req.Resp.Async-RespHandler", configurator =>
                     {
+                        configurator.AddAsHighAvailableQueue(configuration);
                         configurator.Consumer<T>(provider);
                     });
                 });
@@ -264,6 +266,7 @@ namespace Carbon.MassTransit
 
                     busFactoryConfig.ReceiveEndpoint("Req.Resp.Async-" + responseDestinationPath, configurator =>
                     {
+                        configurator.AddAsHighAvailableQueue(configuration);
                         configurator.Consumer<T>(provider);
                     });
 
@@ -279,6 +282,27 @@ namespace Carbon.MassTransit
             });
         }
 
+        /// <summary>
+        /// ReceiveEndpoint queue will be declared as a quorum queue, if it is already declared as default, it will delete the existing one and create new HA queue
+        /// </summary>
+        /// <param name="cfg"></param>
+        /// <param name="configuration">Configuration</param>
+        public static void AddAsHighAvailableQueue(this IRabbitMqReceiveEndpointConfigurator cfg,
+                                      IConfiguration configuration)
+        {
+            cfg.SetQuorumQueue(3);
+            cfg.ConnectReceiveEndpointObserver(new ReceiveEndpointObserver(configuration));
+        }
+        /// <summary>
+        /// ReceiveEndpoint queue will be declared as a classic queue, if it is already declared as quorum or something else, it will delete the existing one and create new classic queue
+        /// </summary>
+        /// <param name="cfg"></param>
+        /// <param name="configuration">Configuration</param>
+        public static void AddAsDefaultQueue(this IReceiveEndpointConfigurator cfg,
+                                      IConfiguration configuration)
+        {
+            cfg.ConnectReceiveEndpointObserver(new ReceiveEndpointObserver(configuration));
+        }
 
         /// <summary>
         /// Azure Service Bus Add Extension Method
