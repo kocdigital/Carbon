@@ -5,3 +5,4 @@
   topicHref: articles/getting_started.md
 - name: API Documentation
   href: api_docs/
+  topicHref: api_docs/README.md
