@@ -309,10 +309,15 @@
         "dest": "api"
       },
       {
+        "files": [ "toc.yml" ],
+        "src": "api",
+        "dest": "api"
+      },
+      {
         "files": [ "**/*.md", "*.md", "toc.yml" ]
       },
       {
-        "files": [ "**/*.md", "**/*.Md", "**/*.MD"],
+        "files": [ "**/*.md", "**/*.Md", "**/*.MD" ],
         "src": "../",
         "dest": "articles/api"
       }
