@@ -8,7 +8,7 @@
           "src": "../"
         }
       ],
-      "dest": "obj/api/Carbon.Cassandra"
+      "dest": "api_docs/Carbon.Cassandra"
     },
     {
       "src": [
@@ -18,7 +18,7 @@
           "src": "../"
         }
       ],
-      "dest": "obj/api/Carbon.Cassandra.Abstractions"
+      "dest": "api_docs/Carbon.Cassandra.Abstractions"
     },
     {
       "src": [
@@ -28,7 +28,7 @@
           "src": "../"
         }
       ],
-      "dest": "obj/api/Carbon.Common"
+      "dest": "api_docs/Carbon.Common"
     },
     {
       "src": [
@@ -38,7 +38,7 @@
           "src": "../"
         }
       ],
-      "dest": "obj/api/Carbon.ConsoleApplication"
+      "dest": "api_docs/Carbon.ConsoleApplication"
     },
     {
       "src": [
@@ -48,7 +48,7 @@
           "src": "../"
         }
       ],
-      "dest": "obj/api/Carbon.Domain.Abstractions"
+      "dest": "api_docs/Carbon.Domain.Abstractions"
     },
     {
       "src": [
@@ -58,7 +58,7 @@
           "src": "../"
         }
       ],
-      "dest": "obj/api/Carbon.Domain.EntityFrameworkCore"
+      "dest": "api_docs/Carbon.Domain.EntityFrameworkCore"
     },
     {
       "src": [
@@ -68,7 +68,7 @@
           "src": "../"
         }
       ],
-      "dest": "obj/api/Carbon.ElasticSearch"
+      "dest": "api_docs/Carbon.ElasticSearch"
     },
     {
       "src": [
@@ -78,7 +78,7 @@
           "src": "../"
         }
       ],
-      "dest": "obj/api/Carbon.ElasticSearch.Abstractions"
+      "dest": "api_docs/Carbon.ElasticSearch.Abstractions"
     },
     {
       "src": [
@@ -88,7 +88,7 @@
           "src": "../"
         }
       ],
-      "dest": "obj/api/Carbon.ExceptionHandling.Abstractions"
+      "dest": "api_docs/Carbon.ExceptionHandling.Abstractions"
     },
     {
       "src": [
@@ -98,7 +98,7 @@
           "src": "../"
         }
       ],
-      "dest": "obj/api/Carbon.HttpClient"
+      "dest": "api_docs/Carbon.HttpClient"
     },
     {
       "src": [
@@ -108,7 +108,7 @@
           "src": "../"
         }
       ],
-      "dest": "obj/api/Carbon.HttpClient.Auth"
+      "dest": "api_docs/Carbon.HttpClient.Auth"
     },
     {
       "src": [
@@ -118,7 +118,7 @@
           "src": "../"
         }
       ],
-      "dest": "obj/api/Carbon.MassTransit"
+      "dest": "api_docs/Carbon.MassTransit"
     },
     {
       "src": [
@@ -128,7 +128,7 @@
           "src": "../"
         }
       ],
-      "dest": "obj/api/Carbon.MassTransit.Abstractions"
+      "dest": "api_docs/Carbon.MassTransit.Abstractions"
     },
     {
       "src": [
@@ -138,7 +138,7 @@
           "src": "../"
         }
       ],
-      "dest": "obj/api/Carbon.PagedList"
+      "dest": "api_docs/Carbon.PagedList"
     },
     {
       "src": [
@@ -148,7 +148,7 @@
           "src": "../"
         }
       ],
-      "dest": "obj/api/Carbon.PagedList.EntityFrameworkCore"
+      "dest": "api_docs/Carbon.PagedList.EntityFrameworkCore"
     },
     {
       "src": [
@@ -158,7 +158,7 @@
           "src": "../"
         }
       ],
-      "dest": "obj/api/Carbon.PagedList.Mapster"
+      "dest": "api_docs/Carbon.PagedList.Mapster"
     },
     {
       "src": [
@@ -168,7 +168,7 @@
           "src": "../"
         }
       ],
-      "dest": "obj/api/Carbon.Quartz"
+      "dest": "api_docs/Carbon.Quartz"
     },
     {
       "src": [
@@ -178,7 +178,7 @@
           "src": "../"
         }
       ],
-      "dest": "obj/api/Carbon.Quartz.Migrate.Context"
+      "dest": "api_docs/Carbon.Quartz.Migrate.Context"
     },
     {
       "src": [
@@ -188,7 +188,7 @@
           "src": "../"
         }
       ],
-      "dest": "obj/api/Carbon.Quartz.Migrate.MSSQL"
+      "dest": "api_docs/Carbon.Quartz.Migrate.MSSQL"
     },
     {
       "src": [
@@ -198,7 +198,7 @@
           "src": "../"
         }
       ],
-      "dest": "obj/api/Carbon.Quartz.Migrate.PostgreSQL"
+      "dest": "api_docs/Carbon.Quartz.Migrate.PostgreSQL"
     },
     {
       "src": [
@@ -208,7 +208,7 @@
           "src": "../"
         }
       ],
-      "dest": "obj/api/Carbon.Redis"
+      "dest": "api_docs/Carbon.Redis"
     },
     {
       "src": [
@@ -218,7 +218,7 @@
           "src": "../"
         }
       ],
-      "dest": "obj/api/Carbon.TimeScaleDb"
+      "dest": "api_docs/Carbon.TimeScaleDb"
     },
     {
       "src": [
@@ -228,7 +228,7 @@
           "src": "../"
         }
       ],
-      "dest": "obj/api/Carbon.TimeScaleDb.EntityFrameworkCore"
+      "dest": "api_docs/Carbon.TimeScaleDb.EntityFrameworkCore"
     },
     {
       "src": [
@@ -238,7 +238,7 @@
           "src": "../"
         }
       ],
-      "dest": "obj/api/Carbon.TimeSeriesDb.Abstractions"
+      "dest": "api_docs/Carbon.TimeSeriesDb.Abstractions"
     },
     {
       "src": [
@@ -248,7 +248,7 @@
           "src": "../"
         }
       ],
-      "dest": "obj/api/Carbon.WebApplication"
+      "dest": "api_docs/Carbon.WebApplication"
     },
     {
       "src": [
@@ -258,7 +258,7 @@
           "src": "../"
         }
       ],
-      "dest": "obj/api/Carbon.WebApplication.EntityFrameworkCore"
+      "dest": "api_docs/Carbon.WebApplication.EntityFrameworkCore"
     },
     {
       "src": [
@@ -268,7 +268,7 @@
           "src": "../"
         }
       ],
-      "dest": "obj/api/Carbon.WebApplication.Grpc"
+      "dest": "api_docs/Carbon.WebApplication.Grpc"
     },
     {
       "src": [
@@ -278,7 +278,7 @@
           "src": "../"
         }
       ],
-      "dest": "obj/api/Carbon.WebApplication.Grpc.Client"
+      "dest": "api_docs/Carbon.WebApplication.Grpc.Client"
     },
     {
       "src": [
@@ -288,7 +288,7 @@
           "src": "../"
         }
       ],
-      "dest": "obj/api/Carbon.WebApplication.SolutionService"
+      "dest": "api_docs/Carbon.WebApplication.SolutionService"
     },
     {
       "src": [
