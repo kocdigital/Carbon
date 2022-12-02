@@ -1,4 +1,4 @@
-# Carbon.ConsoleApplication
+# Carbon.ConsoleApplication [<img alt="Nuget (with prereleases)" src="https://img.shields.io/nuget/vpre/Carbon.ConsoleApplication">](https://www.nuget.org/packages/Carbon.ConsoleApplication)
 
 Standardization for Console Applications. Add this library and have a working console application immediately with some most commonly used approaches for console applications 
 such as Containerization, Logging, Config Management, Hosting Service etc.
