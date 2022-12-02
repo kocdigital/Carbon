@@ -306,18 +306,18 @@
       {
         "files": [ "**" ],
         "src": "obj/api",
-        "dest": "api_docs"
+        "dest": "api"
       },
       {
         "files": [ "toc.yml" ],
         "src": "api",
-        "dest": "api_docs"
+        "dest": "api"
       },
       {
         "files": [ "**/*.md", "*.md", "toc.yml" ]
       },
       {
-        "files": "api_docs/**"
+        "files": "api/**"
       },
       {
         "files": [ "**/*.md", "**/*.Md", "**/*.MD" ],
