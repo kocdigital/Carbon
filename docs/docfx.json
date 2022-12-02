@@ -304,7 +304,7 @@
   "build": {
     "content": [
       {
-        "files": [ "**/*.yml" ],
+        "files": [ "**" ],
         "src": "obj/api",
         "dest": "api_docs"
       },
