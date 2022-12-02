@@ -126,9 +126,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "styles", "styles", "{981D90
 		docs\templates\material\styles\main.css = docs\templates\material\styles\main.css
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "api", "api", "{B37908DA-C218-4D02-A163-E7EA2B76E725}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "api_docs", "api_docs", "{B37908DA-C218-4D02-A163-E7EA2B76E725}"
 	ProjectSection(SolutionItems) = preProject
-		docs\api\toc.yml = docs\api\toc.yml
+		docs\api_docs\toc.yml = docs\api_docs\toc.yml
 	EndProjectSection
 EndProject
 Global

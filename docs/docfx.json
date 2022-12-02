@@ -298,26 +298,26 @@
           "src": "../"
         }
       ],
-      "dest": "obj/api/Carbon.Zipkin4Net"
+      "dest": "api_docs/Carbon.Zipkin4Net"
     }
   ],
   "build": {
     "content": [
       {
         "files": [ "**" ],
-        "src": "obj/api",
-        "dest": "api"
+        "src": "api_docs",
+        "dest": "api_docs"
       },
       {
         "files": [ "toc.yml" ],
-        "src": "api",
-        "dest": "api"
+        "src": "api_docs",
+        "dest": "api_docs"
       },
       {
         "files": [ "**/*.md", "*.md", "toc.yml" ]
       },
       {
-        "files": "api/**"
+        "files": "api_docs/**"
       },
       {
         "files": [ "**/*.md", "**/*.Md", "**/*.MD" ],
