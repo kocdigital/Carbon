@@ -3,12 +3,302 @@
     {
       "src": [
         {
-          "files": [ "**/*.csproj" ],
+          "files": [ "**/Carbon.Cassandra.csproj" ],
           "exclude": [ "**/bin/**", "**/obj/**", "demos/**", "TestResults/**", "tests/**", "SolutionItems/**", "Carbon.Documentation/**" ],
           "src": "../"
         }
       ],
-      "dest": "obj/api"
+      "dest": "obj/api/Carbon.Cassandra"
+    },
+    {
+      "src": [
+        {
+          "files": [ "**/Carbon.Cassandra.Abstractions.csproj" ],
+          "exclude": [ "**/bin/**", "**/obj/**", "demos/**", "TestResults/**", "tests/**", "SolutionItems/**", "Carbon.Documentation/**" ],
+          "src": "../"
+        }
+      ],
+      "dest": "obj/api/Carbon.Cassandra.Abstractions"
+    },
+    {
+      "src": [
+        {
+          "files": [ "**/Carbon.Common.csproj" ],
+          "exclude": [ "**/bin/**", "**/obj/**", "demos/**", "TestResults/**", "tests/**", "SolutionItems/**", "Carbon.Documentation/**" ],
+          "src": "../"
+        }
+      ],
+      "dest": "obj/api/Carbon.Common"
+    },
+    {
+      "src": [
+        {
+          "files": [ "**/Carbon.ConsoleApplication.csproj" ],
+          "exclude": [ "**/bin/**", "**/obj/**", "demos/**", "TestResults/**", "tests/**", "SolutionItems/**", "Carbon.Documentation/**" ],
+          "src": "../"
+        }
+      ],
+      "dest": "obj/api/Carbon.ConsoleApplication"
+    },
+    {
+      "src": [
+        {
+          "files": [ "**/Carbon.Domain.Abstractions.csproj" ],
+          "exclude": [ "**/bin/**", "**/obj/**", "demos/**", "TestResults/**", "tests/**", "SolutionItems/**", "Carbon.Documentation/**" ],
+          "src": "../"
+        }
+      ],
+      "dest": "obj/api/Carbon.Domain.Abstractions"
+    },
+    {
+      "src": [
+        {
+          "files": [ "**/Carbon.Domain.EntityFrameworkCore.csproj" ],
+          "exclude": [ "**/bin/**", "**/obj/**", "demos/**", "TestResults/**", "tests/**", "SolutionItems/**", "Carbon.Documentation/**" ],
+          "src": "../"
+        }
+      ],
+      "dest": "obj/api/Carbon.Domain.EntityFrameworkCore"
+    },
+    {
+      "src": [
+        {
+          "files": [ "**/Carbon.ElasticSearch.csproj" ],
+          "exclude": [ "**/bin/**", "**/obj/**", "demos/**", "TestResults/**", "tests/**", "SolutionItems/**", "Carbon.Documentation/**" ],
+          "src": "../"
+        }
+      ],
+      "dest": "obj/api/Carbon.ElasticSearch"
+    },
+    {
+      "src": [
+        {
+          "files": [ "**/Carbon.ElasticSearch.Abstractions.csproj" ],
+          "exclude": [ "**/bin/**", "**/obj/**", "demos/**", "TestResults/**", "tests/**", "SolutionItems/**", "Carbon.Documentation/**" ],
+          "src": "../"
+        }
+      ],
+      "dest": "obj/api/Carbon.ElasticSearch.Abstractions"
+    },
+    {
+      "src": [
+        {
+          "files": [ "**/Carbon.ExceptionHandling.Abstractions.csproj" ],
+          "exclude": [ "**/bin/**", "**/obj/**", "demos/**", "TestResults/**", "tests/**", "SolutionItems/**", "Carbon.Documentation/**" ],
+          "src": "../"
+        }
+      ],
+      "dest": "obj/api/Carbon.ExceptionHandling.Abstractions"
+    },
+    {
+      "src": [
+        {
+          "files": [ "**/Carbon.HttpClient.csproj" ],
+          "exclude": [ "**/bin/**", "**/obj/**", "demos/**", "TestResults/**", "tests/**", "SolutionItems/**", "Carbon.Documentation/**" ],
+          "src": "../"
+        }
+      ],
+      "dest": "obj/api/Carbon.HttpClient"
+    },
+    {
+      "src": [
+        {
+          "files": [ "**/Carbon.HttpClient.Auth.csproj" ],
+          "exclude": [ "**/bin/**", "**/obj/**", "demos/**", "TestResults/**", "tests/**", "SolutionItems/**", "Carbon.Documentation/**" ],
+          "src": "../"
+        }
+      ],
+      "dest": "obj/api/Carbon.HttpClient.Auth"
+    },
+    {
+      "src": [
+        {
+          "files": [ "**/Carbon.MassTransit.csproj" ],
+          "exclude": [ "**/bin/**", "**/obj/**", "demos/**", "TestResults/**", "tests/**", "SolutionItems/**", "Carbon.Documentation/**" ],
+          "src": "../"
+        }
+      ],
+      "dest": "obj/api/Carbon.MassTransit"
+    },
+    {
+      "src": [
+        {
+          "files": [ "**/Carbon.MassTransit.Abstractions.csproj" ],
+          "exclude": [ "**/bin/**", "**/obj/**", "demos/**", "TestResults/**", "tests/**", "SolutionItems/**", "Carbon.Documentation/**" ],
+          "src": "../"
+        }
+      ],
+      "dest": "obj/api/Carbon.MassTransit.Abstractions"
+    },
+    {
+      "src": [
+        {
+          "files": [ "**/Carbon.PagedList.csproj" ],
+          "exclude": [ "**/bin/**", "**/obj/**", "demos/**", "TestResults/**", "tests/**", "SolutionItems/**", "Carbon.Documentation/**" ],
+          "src": "../"
+        }
+      ],
+      "dest": "obj/api/Carbon.PagedList"
+    },
+    {
+      "src": [
+        {
+          "files": [ "**/Carbon.PagedList.EntityFrameworkCore.csproj" ],
+          "exclude": [ "**/bin/**", "**/obj/**", "demos/**", "TestResults/**", "tests/**", "SolutionItems/**", "Carbon.Documentation/**" ],
+          "src": "../"
+        }
+      ],
+      "dest": "obj/api/Carbon.PagedList.EntityFrameworkCore"
+    },
+    {
+      "src": [
+        {
+          "files": [ "**/Carbon.PagedList.Mapster.csproj" ],
+          "exclude": [ "**/bin/**", "**/obj/**", "demos/**", "TestResults/**", "tests/**", "SolutionItems/**", "Carbon.Documentation/**" ],
+          "src": "../"
+        }
+      ],
+      "dest": "obj/api/Carbon.PagedList.Mapster"
+    },
+    {
+      "src": [
+        {
+          "files": [ "**/Carbon.Quartz.csproj" ],
+          "exclude": [ "**/bin/**", "**/obj/**", "demos/**", "TestResults/**", "tests/**", "SolutionItems/**", "Carbon.Documentation/**" ],
+          "src": "../"
+        }
+      ],
+      "dest": "obj/api/Carbon.Quartz"
+    },
+    {
+      "src": [
+        {
+          "files": [ "**/Carbon.Quartz.Migrate.Context.csproj" ],
+          "exclude": [ "**/bin/**", "**/obj/**", "demos/**", "TestResults/**", "tests/**", "SolutionItems/**", "Carbon.Documentation/**" ],
+          "src": "../"
+        }
+      ],
+      "dest": "obj/api/Carbon.Quartz.Migrate.Context"
+    },
+    {
+      "src": [
+        {
+          "files": [ "**/Carbon.Quartz.Migrate.MSSQL.csproj" ],
+          "exclude": [ "**/bin/**", "**/obj/**", "demos/**", "TestResults/**", "tests/**", "SolutionItems/**", "Carbon.Documentation/**" ],
+          "src": "../"
+        }
+      ],
+      "dest": "obj/api/Carbon.Quartz.Migrate.MSSQL"
+    },
+    {
+      "src": [
+        {
+          "files": [ "**/Carbon.Quartz.Migrate.PostgreSQL.csproj" ],
+          "exclude": [ "**/bin/**", "**/obj/**", "demos/**", "TestResults/**", "tests/**", "SolutionItems/**", "Carbon.Documentation/**" ],
+          "src": "../"
+        }
+      ],
+      "dest": "obj/api/Carbon.Quartz.Migrate.PostgreSQL"
+    },
+    {
+      "src": [
+        {
+          "files": [ "**/Carbon.Redis.csproj" ],
+          "exclude": [ "**/bin/**", "**/obj/**", "demos/**", "TestResults/**", "tests/**", "SolutionItems/**", "Carbon.Documentation/**" ],
+          "src": "../"
+        }
+      ],
+      "dest": "obj/api/Carbon.Redis"
+    },
+    {
+      "src": [
+        {
+          "files": [ "**/Carbon.TimeScaleDb.csproj" ],
+          "exclude": [ "**/bin/**", "**/obj/**", "demos/**", "TestResults/**", "tests/**", "SolutionItems/**", "Carbon.Documentation/**" ],
+          "src": "../"
+        }
+      ],
+      "dest": "obj/api/Carbon.TimeScaleDb"
+    },
+    {
+      "src": [
+        {
+          "files": [ "**/Carbon.TimeScaleDb.EntityFrameworkCore.csproj" ],
+          "exclude": [ "**/bin/**", "**/obj/**", "demos/**", "TestResults/**", "tests/**", "SolutionItems/**", "Carbon.Documentation/**" ],
+          "src": "../"
+        }
+      ],
+      "dest": "obj/api/Carbon.TimeScaleDb.EntityFrameworkCore"
+    },
+    {
+      "src": [
+        {
+          "files": [ "**/Carbon.TimeSeriesDb.Abstractions.csproj" ],
+          "exclude": [ "**/bin/**", "**/obj/**", "demos/**", "TestResults/**", "tests/**", "SolutionItems/**", "Carbon.Documentation/**" ],
+          "src": "../"
+        }
+      ],
+      "dest": "obj/api/Carbon.TimeSeriesDb.Abstractions"
+    },
+    {
+      "src": [
+        {
+          "files": [ "**/Carbon.WebApplication.csproj" ],
+          "exclude": [ "**/bin/**", "**/obj/**", "demos/**", "TestResults/**", "tests/**", "SolutionItems/**", "Carbon.Documentation/**" ],
+          "src": "../"
+        }
+      ],
+      "dest": "obj/api/Carbon.WebApplication"
+    },
+    {
+      "src": [
+        {
+          "files": [ "**/Carbon.WebApplication.EntityFrameworkCore.csproj" ],
+          "exclude": [ "**/bin/**", "**/obj/**", "demos/**", "TestResults/**", "tests/**", "SolutionItems/**", "Carbon.Documentation/**" ],
+          "src": "../"
+        }
+      ],
+      "dest": "obj/api/Carbon.WebApplication.EntityFrameworkCore"
+    },
+    {
+      "src": [
+        {
+          "files": [ "**/Carbon.WebApplication.Grpc.csproj" ],
+          "exclude": [ "**/bin/**", "**/obj/**", "demos/**", "TestResults/**", "tests/**", "SolutionItems/**", "Carbon.Documentation/**" ],
+          "src": "../"
+        }
+      ],
+      "dest": "obj/api/Carbon.WebApplication.Grpc"
+    },
+    {
+      "src": [
+        {
+          "files": [ "**/Carbon.WebApplication.Grpc.Client.csproj" ],
+          "exclude": [ "**/bin/**", "**/obj/**", "demos/**", "TestResults/**", "tests/**", "SolutionItems/**", "Carbon.Documentation/**" ],
+          "src": "../"
+        }
+      ],
+      "dest": "obj/api/Carbon.WebApplication.Grpc.Client"
+    },
+    {
+      "src": [
+        {
+          "files": [ "**/Carbon.WebApplication.SolutionService.csproj" ],
+          "exclude": [ "**/bin/**", "**/obj/**", "demos/**", "TestResults/**", "tests/**", "SolutionItems/**", "Carbon.Documentation/**" ],
+          "src": "../"
+        }
+      ],
+      "dest": "obj/api/Carbon.WebApplication.SolutionService"
+    },
+    {
+      "src": [
+        {
+          "files": [ "**/Carbon.Zipkin4Net.csproj" ],
+          "exclude": [ "**/bin/**", "**/obj/**", "demos/**", "TestResults/**", "tests/**", "SolutionItems/**", "Carbon.Documentation/**" ],
+          "src": "../"
+        }
+      ],
+      "dest": "obj/api/Carbon.Zipkin4Net"
     }
   ],
   "build": {
