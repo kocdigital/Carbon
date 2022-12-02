@@ -2,6 +2,7 @@
   href: articles/api/README.html
 - name: Getting Started
   href: articles/
-  homepage: articles/_getting_started.md
+  topicHref: articles/_getting_started.md
 - name: API Documentation
   href: api_docs/
+  topicHref: api_docs/toc.html
