@@ -104,7 +104,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "articles", "articles", "{8F
 	ProjectSection(SolutionItems) = preProject
 		docs\articles\creating_webapi.md = docs\articles\creating_webapi.md
 		docs\articles\toc.md = docs\articles\toc.md
-		docs\articles\_getting_started.md = docs\articles\_getting_started.md
+		docs\articles\getting_started.md = docs\articles\getting_started.md
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "images", "images", "{7C921555-4AB7-45A6-8D47-F4A637BDF1DC}"
@@ -128,6 +128,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "styles", "styles", "{981D90
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "api_docs", "api_docs", "{B37908DA-C218-4D02-A163-E7EA2B76E725}"
 	ProjectSection(SolutionItems) = preProject
+		docs\api_docs\README.md = docs\api_docs\README.md
 		docs\api_docs\toc.yml = docs\api_docs\toc.yml
 	EndProjectSection
 EndProject
