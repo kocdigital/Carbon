@@ -306,12 +306,12 @@
       {
         "files": [ "**/*.yml" ],
         "src": "obj/api",
-        "dest": "api"
+        "dest": "api_docs"
       },
       {
         "files": [ "toc.yml" ],
         "src": "api",
-        "dest": "api"
+        "dest": "api_docs"
       },
       {
         "files": [ "**/*.md", "*.md", "toc.yml" ]
