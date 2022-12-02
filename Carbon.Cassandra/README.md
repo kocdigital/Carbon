@@ -1,4 +1,4 @@
-# Carbon.Cassandra
+# Carbon.Cassandra [<img alt="Nuget (with prereleases)" src="https://img.shields.io/nuget/vpre/Carbon.Cassandra">](https://www.nuget.org/packages/Carbon.Cassandra)
 
 > Cassandra is an open source NoSQL distributed database trusted by thousands of companies for scalability and high availability without compromising performance. Linear scalability and proven fault-tolerance on commodity hardware or cloud infrastructure make it the perfect platform for mission-critical data.[**]
 [**] https://cassandra.apache.org/_/
