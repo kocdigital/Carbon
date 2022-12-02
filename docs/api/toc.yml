@@ -1,0 +1,89 @@
+﻿- name: Carbon.Cassandra.Abstractions
+  href: api/Carbon.Cassandra.Abstractions/toc.yml
+
+- name: Carbon.Cassandra
+  href: api/Carbon.Cassandra/toc.yml
+
+- name: Carbon.Common
+  href: api/Carbon.Common/toc.yml
+
+- name: Carbon.ConsoleApplication
+  href: api/Carbon.ConsoleApplication/toc.yml
+
+- name: Carbon.Domain.Abstractions
+  href: api/Carbon.Domain.Abstractions/toc.yml
+
+- name: Carbon.Domain.EntityFrameworkCore
+  href: api/Carbon.Domain.EntityFrameworkCore/toc.yml
+
+- name: Carbon.ElasticSearch.Abstractions
+  href: api/Carbon.ElasticSearch.Abstractions/toc.yml
+
+- name: Carbon.ElasticSearch
+  href: api/Carbon.ElasticSearch/toc.yml
+
+- name: Carbon.ExceptionHandling.Abstractions
+  href: api/Carbon.ExceptionHandling.Abstractions/toc.yml
+
+- name: Carbon.HttpClient.Auth
+  href: api/Carbon.HttpClient.Auth/toc.yml
+
+- name: Carbon.HttpClient
+  href: api/Carbon.HttpClient/toc.yml
+
+- name: Carbon.MassTransit.Abstractions
+  href: api/Carbon.MassTransit.Abstractions/toc.yml
+
+- name: Carbon.MassTransit
+  href: api/Carbon.MassTransit/toc.yml
+
+- name: Carbon.PagedList.EntityFrameworkCore
+  href: api/Carbon.PagedList.EntityFrameworkCore/toc.yml
+
+- name: Carbon.PagedList.Mapster
+  href: api/Carbon.PagedList.Mapster/toc.yml
+
+- name: Carbon.PagedList
+  href: api/Carbon.PagedList/toc.yml
+
+- name: Carbon.Quartz.Migrate.Context
+  href: api/Carbon.Quartz.Migrate.Context/toc.yml
+
+- name: Carbon.Quartz.Migrate.MSSQL
+  href: api/Carbon.Quartz.Migrate.MSSQL/toc.yml
+
+- name: Carbon.Quartz.Migrate.PostgreSQL
+  href: api/Carbon.Quartz.Migrate.PostgreSQL/toc.yml
+
+- name: Carbon.Quartz
+  href: api/Carbon.Quartz/toc.yml
+
+- name: Carbon.Redis
+  href: api/Carbon.Redis/toc.yml
+
+- name: Carbon.TimeScaleDb.EntityFrameworkCore
+  href: api/Carbon.TimeScaleDb.EntityFrameworkCore/toc.yml
+
+- name: Carbon.TimeScaleDb
+  href: api/Carbon.TimeScaleDb/toc.yml
+
+- name: Carbon.TimeSeriesDb.Abstractions
+  href: api/Carbon.TimeSeriesDb.Abstractions/toc.yml
+
+- name: Carbon.WebApplication.EntityFrameworkCore
+  href: api/Carbon.WebApplication.EntityFrameworkCore/toc.yml
+
+- name: Carbon.WebApplication.Grpc.Client
+  href: api/Carbon.WebApplication.Grpc.Client/toc.yml
+
+- name: Carbon.WebApplication.Grpc
+  href: api/Carbon.WebApplication.Grpc/toc.yml
+
+- name: Carbon.WebApplication.SolutionService
+  href: api/Carbon.WebApplication.SolutionService/toc.yml
+
+- name: Carbon.WebApplication
+  href: api/Carbon.WebApplication/toc.yml
+
+- name: Carbon.Zipkin4Net
+  href: api/Carbon.Zipkin4Net/toc.yml
