@@ -1,93 +1,93 @@
 ﻿- name: Carbon.Cassandra
   items:
     - name: Carbon.Cassandra
-      href: Carbon.Cassandra/
+      href: Carbon.Cassandra/toc.yml
     - name: Carbon.Cassandra.Abstractions
-      href: Carbon.Cassandra.Abstractions/
+      href: Carbon.Cassandra.Abstractions/toc.yml
 
 - name: Carbon.Common
-  href: Carbon.Common/
+  href: Carbon.Common/toc.yml
 
 - name: Carbon.ConsoleApplication
-  href: Carbon.ConsoleApplication/
+  href: Carbon.ConsoleApplication/toc.yml
 
 - name: Carbon.Domain
   items:
     - name: Carbon.Domain.Abstractions
-      href: Carbon.Domain.Abstractions/
+      href: Carbon.Domain.Abstractions/toc.yml
     - name: Carbon.Domain.EntityFrameworkCore
-      href: Carbon.Domain.EntityFrameworkCore/
+      href: Carbon.Domain.EntityFrameworkCore/toc.yml
 
 - name: Carbon.ElasticSearch
   items:
     - name: Carbon.ElasticSearch
-      href: Carbon.ElasticSearch/
+      href: Carbon.ElasticSearch/toc.yml
     - name: Carbon.ElasticSearch.Abstractions
-      href: Carbon.ElasticSearch.Abstractions/
+      href: Carbon.ElasticSearch.Abstractions/toc.yml
 
 - name: Carbon.HttpClient
   items:
     - name: Carbon.HttpClient
-      href: Carbon.HttpClient/
+      href: Carbon.HttpClient/toc.yml
     - name: Carbon.HttpClient.Auth
-      href: Carbon.HttpClient.Auth/
+      href: Carbon.HttpClient.Auth/toc.yml
 
 - name: Carbon.MassTransit
   items:
     - name: Carbon.MassTransit
-      href: Carbon.MassTransit/
+      href: Carbon.MassTransit/toc.yml
     - name: Carbon.MassTransit.Abstractions
-      href: Carbon.MassTransit.Abstractions/
+      href: Carbon.MassTransit.Abstractions/toc.yml
 
 - name: Carbon.Quartz
   items:
     - name: Carbon.Quartz
-      href: Carbon.Quartz/
+      href: Carbon.Quartz/toc.yml
     - name: Carbon.Quartz.Migrate.Context
-      href: Carbon.Quartz.Migrate.Context/
+      href: Carbon.Quartz.Migrate.Context/toc.yml
     - name: Carbon.Quartz.Migrate.MSSQL
-      href: Carbon.Quartz.Migrate.MSSQL/
+      href: Carbon.Quartz.Migrate.MSSQL/toc.yml
     - name: Carbon.Quartz.Migrate.PostgreSQL
-      href: Carbon.Quartz.Migrate.PostgreSQL/
+      href: Carbon.Quartz.Migrate.PostgreSQL/toc.yml
 
 - name: Carbon.Redis
-  href: Carbon.Redis/
+  href: Carbon.Redis/toc.yml
 
 - name: Carbon.TimeScaleDb
   items:
     - name: Carbon.TimeScaleDb
-      href: Carbon.TimeScaleDb/
+      href: Carbon.TimeScaleDb/toc.yml
     - name: Carbon.TimeScaleDb.EntityFrameworkCore
-      href: Carbon.TimeScaleDb.EntityFrameworkCore/
+      href: Carbon.TimeScaleDb.EntityFrameworkCore/toc.yml
     - name: Carbon.TimeSeriesDb.Abstractions
-      href: Carbon.TimeSeriesDb.Abstractions/
+      href: Carbon.TimeSeriesDb.Abstractions/toc.yml
 
 - name: Carbon.WebApplication
   items:
     - name: Carbon.WebApplication
-      href: Carbon.WebApplication/
+      href: Carbon.WebApplication/toc.yml
     - name: Carbon.WebApplication.EntityFrameworkCore
-      href: Carbon.WebApplication.EntityFrameworkCore/
+      href: Carbon.WebApplication.EntityFrameworkCore/toc.yml
     - name: Carbon.WebApplication.SolutionService
-      href: Carbon.WebApplication.SolutionService/
+      href: Carbon.WebApplication.SolutionService/toc.yml
     - name: GRPC
       items:
         - name: Carbon.WebApplication.Grpc
-          href: Carbon.WebApplication.Grpc/
+          href: Carbon.WebApplication.Grpc/toc.yml
         - name: Carbon.WebApplication.Grpc.Client
-          href: Carbon.WebApplication.Grpc.Client/
+          href: Carbon.WebApplication.Grpc.Client/toc.yml
 
 - name: Carbon.Zipkin4Net
-  href: Carbon.Zipkin4Net/
+  href: Carbon.Zipkin4Net/toc.yml
 
 - name: Carbon.PagedList.EntityFrameworkCore
-  href: Carbon.PagedList.EntityFrameworkCore/
+  href: Carbon.PagedList.EntityFrameworkCore/toc.yml
 
 - name: Carbon.PagedList.Mapster
-  href: Carbon.PagedList.Mapster/
+  href: Carbon.PagedList.Mapster/toc.yml
 
 - name: Carbon.PagedList
-  href: Carbon.PagedList/
+  href: Carbon.PagedList/toc.yml
   
 - name: Carbon.ExceptionHandling.Abstractions
-  href: Carbon.ExceptionHandling.Abstractions/
+  href: Carbon.ExceptionHandling.Abstractions/toc.yml

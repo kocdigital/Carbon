@@ -317,6 +317,9 @@
         "files": [ "**/*.md", "*.md", "toc.yml" ]
       },
       {
+        "files": "api_docs/**"
+      },
+      {
         "files": [ "**/*.md", "**/*.Md", "**/*.MD" ],
         "src": "../",
         "dest": "articles/api"
