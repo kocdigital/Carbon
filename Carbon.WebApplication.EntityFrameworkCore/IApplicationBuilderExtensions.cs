@@ -24,6 +24,7 @@ namespace Carbon.WebApplication.EntityFrameworkCore
         /// <param name="app"></param>
         public static void MigrateDatabase<TContext>(this IApplicationBuilder app) where TContext : DbContext
         {
+            AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
             using (var serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
             {
                 var context = serviceScope.ServiceProvider.GetRequiredService<TContext>();
