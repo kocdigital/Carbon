@@ -71,7 +71,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Carbon.WebApplication.Solut
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{E0C2B361-F1AC-4A0C-83F0-1E62BDE756CB}"
 	ProjectSection(SolutionItems) = preProject
-		SolutionItems\NuGet.Config = SolutionItems\NuGet.Config
 		README.md = README.md
 	EndProjectSection
 EndProject
