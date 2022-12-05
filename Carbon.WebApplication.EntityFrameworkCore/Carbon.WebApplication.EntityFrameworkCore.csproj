@@ -2,8 +2,8 @@
 
   <PropertyGroup>
     <TargetFrameworks>net6.0;net5.0;netstandard2.1</TargetFrameworks>
-    <Version>2.3.0</Version>
-    <Description>                                2.3.0
+    <Version>2.3.1</Version>
+    <Description>                                2.3.1
                                 Npgsql datetime conversion approach announced as dotnet 6 breaking change defered to a later time, overriding with a AppContext switch to continue using default behaviour
 
 		2.2.0
