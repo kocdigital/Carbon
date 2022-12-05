@@ -22,9 +22,11 @@ namespace Carbon.WebApplication.EntityFrameworkCore
         /// </summary>
         /// <typeparam name="TContext">Your Database Context</typeparam>
         /// <param name="app"></param>
-        public static void MigrateDatabase<TContext>(this IApplicationBuilder app) where TContext : DbContext
+        public static void MigrateDatabase<TContext>(this IApplicationBuilder app, bool EnableLegacyTimestampBehavior = true) where TContext : DbContext
         {
-            AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
+            if (EnableLegacyTimestampBehavior)
+                AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
+
             using (var serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
             {
                 var context = serviceScope.ServiceProvider.GetRequiredService<TContext>();
