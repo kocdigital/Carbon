@@ -3,8 +3,12 @@
   <PropertyGroup>
 	 <TargetFrameworks>net6.0;net5.0;netcoreapp3.1</TargetFrameworks>
 	 <LangVersion>latest</LangVersion>
-	 <Version>2.5.0-preview</Version>
-     <Description>2.5.0-preview
+	 <Version>2.6.0-preview</Version>
+     <Description>2.6.0-preview
+Enabling pub/sub is now optional, defaults to false
+HashRemove and HashCounter supports added
+
+2.5.0-preview
 Multiple Sentinel and Redis Cluster support
 More accurate healthcheck for any kind of server installation (Cluster, Sentinel, Basic)
 StackExchange.Redis upgrade
@@ -38,7 +42,7 @@ System.Text.Json (faster) is used as master serializer/deserializer replacing Ne
 - Scan Keys And Remove By Pattern</Description>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-    <AssemblyVersion>2.5.0.0</AssemblyVersion>
+    <AssemblyVersion>2.6.0.0</AssemblyVersion>
   </PropertyGroup>
 
   <ItemGroup>

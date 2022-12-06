@@ -41,6 +41,8 @@ namespace Carbon.Caching.Redis
         public CarbonRedisCache(IOptions<CarbonRedisCacheOptions> optionsAccessor, IConnectionMultiplexer connectionMultiplexer) : base(optionsAccessor)
         {
             var _redisUrl = optionsAccessor.Value.Configuration;
+            var enablePubSub = optionsAccessor.Value.EnablePubSub;
+
             _instanceName = optionsAccessor.Value.InstanceName;
             _existingConnectionMultiplexer = (ConnectionMultiplexer)connectionMultiplexer;
             var multiplexers = new List<RedLockMultiplexer>
@@ -49,25 +51,29 @@ namespace Carbon.Caching.Redis
             };
             _redlockFactory = RedLockFactory.Create(multiplexers);
             _redisServer = _existingConnectionMultiplexer.GetServer(_existingConnectionMultiplexer.GetEndPoints().FirstOrDefault());
-            var subscriber = _existingConnectionMultiplexer.GetSubscriber();
-            string keyspaceNotificationChannel = "__keyspace@" + _existingConnectionMultiplexer.GetDatabase().Database + "__:*";
-            string keyeventNotificationChannel = "__keyevent@" + _existingConnectionMultiplexer.GetDatabase().Database + "__:*";
-            subscriber.Subscribe(keyeventNotificationChannel, (channel, key) => //This needs CONFIG SET notify-keyspace-events Ex
+
+            if (enablePubSub)
             {
-                var notificationType = GetKey(channel);
-                switch (notificationType)
+                var subscriber = _existingConnectionMultiplexer.GetSubscriber();
+                string keyspaceNotificationChannel = "__keyspace@" + _existingConnectionMultiplexer.GetDatabase().Database + "__:*";
+                string keyeventNotificationChannel = "__keyevent@" + _existingConnectionMultiplexer.GetDatabase().Database + "__:*";
+                subscriber.Subscribe(keyeventNotificationChannel, (channel, key) => //This needs CONFIG SET notify-keyspace-events Ex
                 {
-                    case "expired": // requires the "Ex" keyspace notification options to be enabled
-                        if (OnExpired != null)
-                        {
-                            OnExpired(key);
-                        }
-                        break;
-                    default:
+                    var notificationType = GetKey(channel);
+                    switch (notificationType)
+                    {
+                        case "expired": // requires the "Ex" keyspace notification options to be enabled
+                            if (OnExpired != null)
+                            {
+                                OnExpired(key);
+                            }
+                            break;
+                        default:
                         //("Unhandled notificationType: " + notificationType);
-                        break;
-                }
-            });
+                            break;
+                    }
+                });
+            }
         }
 
         public RedLockFactory GetRedLockFactory()

@@ -88,7 +88,7 @@ namespace Carbon.Caching.Abstractions
         public static async Task<T> HashGetAsObject<T>(this ICarbonCache instance, string key) where T : class
         {
             var values = await instance.GetDatabase().HashGetAllAsync(key.ToRedisInstanceKey(instance), CommandFlags.PreferReplica);
-            if(values == default || !values.Any())
+            if (values == default || !values.Any())
             {
                 return default(T);
             }
@@ -139,7 +139,7 @@ namespace Carbon.Caching.Abstractions
         {
             var value = await instance.HashGetAsObject<T>(key);
 
-            if(value == default)
+            if (value == default)
             {
                 T result = await setMethodIfNotExists();
                 await instance.HashSetAsObject<T>(key, result);
@@ -253,6 +253,52 @@ namespace Carbon.Caching.Abstractions
             }
             await instance.GetDatabase().HashSetAsync(key.ToRedisInstanceKey(instance), hashEntries.ToArray());
             return (instance, key);
+        }
+
+        /// <summary>
+        /// Removes hashkey from the given Redis Key
+        /// </summary>
+        /// <param name="instance"></param>
+        /// <param name="key">Redis Key</param>
+        /// <param name="hashkey">Hash Key</param>
+        /// <returns>The number of fields that were removed</returns>
+        public static async Task<bool> HashRemove(this ICarbonCache instance, string key, string hashkey)
+        {
+            return await instance.GetDatabase().HashDeleteAsync(key.ToRedisInstanceKey(instance), hashkey);
+        }
+
+        /// <summary>
+        /// Uses HashIncrement or Decrement according to the counter you provided
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="instance"></param>
+        /// <param name="key">Redis Key</param>
+        /// <param name="hashfield">Hash Key</param>
+        /// <param name="counter">long number to sum up (positive number for increment, negative number for decrement) </param>
+        /// <param name="removeWhenZero">When true; If counter hits to 0, removes the hashkey</param>
+        /// <returns>Last state of counter</returns>
+        public static async Task<long> HashSetCounter(this ICarbonCache instance, string key, string hashfield, long counter, bool removeWhenZero = false)
+        {
+            if (counter == 0)
+                return 0;
+
+            long retVal = 0;
+            if (counter > 0)
+            {
+                retVal = await instance.GetDatabase().HashIncrementAsync(key.ToRedisInstanceKey(instance), hashfield, counter);
+            }
+            else if (counter < 0)
+            {
+                retVal = await instance.GetDatabase().HashDecrementAsync(key.ToRedisInstanceKey(instance), hashfield, counter * -1);
+            }
+
+            if (removeWhenZero && retVal == 0)
+            {
+                await instance.HashRemove(key, hashfield);
+            }
+
+            return retVal;
+
         }
 
         /// <summary>
