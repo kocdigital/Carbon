@@ -14,6 +14,8 @@ namespace Carbon.Caching.Redis
         {
             get => this;
         }
+
+        public bool EnablePubSub { get; set; }
     }
 
 }

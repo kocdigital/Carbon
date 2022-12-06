@@ -17,7 +17,7 @@ namespace Carbon.Caching.Redis
         /// <param name="builder"></param>
         /// <returns></returns>
         /// <exception cref="ArgumentNullException"></exception>
-        public static ICarbonRedisBuilder AddCarbonRedisCachingHelper(this ICarbonRedisBuilder builder)
+        public static ICarbonRedisBuilder AddCarbonRedisCachingHelper(this ICarbonRedisBuilder builder, bool enablePubSubFeature = false)
         {
             IServiceCollection services = builder.Services;
             IConfiguration configuration = builder.Configuration;
@@ -43,6 +43,7 @@ namespace Carbon.Caching.Redis
             redisSettings.Value.InstanceName = instanceName;
             redisSettings.Value.ConfigurationOptions = builder.ConfigurationOptions;
             redisSettings.Value.Configuration = builder.ConfigurationOptions.ToString();
+            redisSettings.Value.EnablePubSub = enablePubSubFeature;
 
             services.AddSingleton<ICarbonCache, CarbonRedisCache>();
 

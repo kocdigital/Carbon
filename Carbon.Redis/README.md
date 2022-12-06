@@ -203,6 +203,10 @@ Now you can use many kinds of useful extension methods for various Redis Data Ty
 
        //Removes any type of data from Redis with the given key
        await _carbonRedisCache.RemoveAsync("AnyKey");
+       //Increases the hash value which is long type by 1. You can also use -1 to have a decrement.
+       await _carbonRedisCache.HashSetCounter("myhash", "counter", 1);
+       //This overload helps you with when your counter hits to 0, removes the hashkey
+       await _carbonRedisCache.HashSetCounter("myhash", "counter", -1, true);
 
 
     }
