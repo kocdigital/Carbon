@@ -29,6 +29,7 @@ namespace Carbon.Redis
         public string InstanceName { get; set; }
         public string SentinelServiceName { get; set; }
         public int SyncTimeout { get; set; }
+        public string User { get; set; }
         public RedisSettings Value => this;
     }
 }

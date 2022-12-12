@@ -51,7 +51,7 @@ namespace Carbon.Redis
             ConfigurationOptions configurationOptions = new ConfigurationOptions();
             if (redisSettings.Value.Enabled)
             {
-                if(redisSettings.Value.EndPoints == null || !redisSettings.Value.EndPoints.Any())
+                if (redisSettings.Value.EndPoints == null || !redisSettings.Value.EndPoints.Any())
                 {
                     throw new ArgumentNullException(nameof(redisSettings.Value.EndPoints));
                 }
@@ -82,6 +82,9 @@ namespace Carbon.Redis
                     SyncTimeout = redisSettings.Value.SyncTimeout
                 };
 
+                if (!String.IsNullOrEmpty(redisSettings.Value.User))
+                    configurationOptions.User = redisSettings.Value.User;
+
                 if (redisSettings.Value.SSLEnabled)
                 {
                     configurationOptions.SslProtocols = System.Security.Authentication.SslProtocols.None;
@@ -101,7 +104,7 @@ namespace Carbon.Redis
                         if (!String.IsNullOrEmpty(configurationOptions.ServiceName))
                         {
                             var sentinelConfig = configurationOptions.Clone();
-                            var SecondsOfTimeOut = 1000;
+                            var SecondsOfTimeOut = 10000;
                             sentinelConfig.SyncTimeout = SecondsOfTimeOut;
                             sentinelConfig.AsyncTimeout = SecondsOfTimeOut;
                             SentinelConnectionMultiplexer redisSentinel = new SentinelConnectionMultiplexer(ConnectionMultiplexer.SentinelConnect(sentinelConfig));
