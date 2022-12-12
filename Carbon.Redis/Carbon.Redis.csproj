@@ -3,7 +3,7 @@
   <PropertyGroup>
 	 <TargetFrameworks>net6.0;net5.0;netcoreapp3.1</TargetFrameworks>
 	 <LangVersion>latest</LangVersion>
-	 <Version>2.6.0-preview</Version>
+	 <Version>2.6.1-preview</Version>
      <Description>2.6.0-preview
 Enabling pub/sub is now optional, defaults to false
 HashRemove and HashCounter supports added
