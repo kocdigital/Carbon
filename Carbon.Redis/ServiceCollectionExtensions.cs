@@ -79,8 +79,7 @@ namespace Carbon.Redis
                     DefaultDatabase = redisSettings.Value.DefaultDatabase,
                     Ssl = redisSettings.Value.SSLEnabled,
                     ServiceName = redisSettings.Value.SentinelServiceName,
-                    SyncTimeout = redisSettings.Value.SyncTimeout,
-
+                    SyncTimeout = redisSettings.Value.SyncTimeout
                 };
 
                 if (!String.IsNullOrEmpty(redisSettings.Value.User))
