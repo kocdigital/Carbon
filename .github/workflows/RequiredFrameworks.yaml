@@ -1,0 +1,9 @@
+RequiredPackages:
+- name: Carbon.WebApplication
+  url: github.com/kocdigital/Carbon/blob/master/Carbon.WebApplication/Carbon.WebApplication.csproj
+  minVersion: 4.0.0
+  type: required
+
+MatchingPackages:
+- name: StackExchange.Redis
+  must: Carbon.Redis
