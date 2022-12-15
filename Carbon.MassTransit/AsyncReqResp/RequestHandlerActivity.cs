@@ -21,7 +21,7 @@ namespace Carbon.MassTransit.AsyncReqResp
             try
             {
                 RequestCarrierRequest requestCarrierRequest = new RequestCarrierRequest(message.CorrelationId, message.RequestData.RequestBody);
-                var sendEp = await context.GetSendEndpoint(new Uri("queue:" + requestData.DestinationEndpointName));
+                var sendEp = await context.GetSendEndpoint(new Uri("exchange:" + requestData.DestinationEndpointName));
                 await sendEp.Send(requestCarrierRequest);
             }
             catch(Exception ex)

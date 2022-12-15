@@ -212,7 +212,7 @@ namespace Carbon.MassTransit
                 {
                     busFactoryConfig.ReceiveEndpoint("request-starter-state", e =>
                     {
-                        //e.AddAsHighAvailableQueue(configuration);
+                        e.AddAsHighAvailableQueue(configuration);
                         e.ConfigureSaga<RequestResponseState>((IBusRegistrationContext)provider);
                     });
 
@@ -220,7 +220,7 @@ namespace Carbon.MassTransit
 
                     busFactoryConfig.ReceiveEndpoint(apiname + "-Req.Resp.Async-RespHandler", configurator =>
                     {
-                        //configurator.AddAsHighAvailableQueue(configuration);
+                        configurator.AddAsHighAvailableQueue(configuration);
                         configurator.Consumer<T>(provider);
                     });
                 });
@@ -266,7 +266,7 @@ namespace Carbon.MassTransit
 
                     busFactoryConfig.ReceiveEndpoint("Req.Resp.Async-" + responseDestinationPath, configurator =>
                     {
-                        //configurator.AddAsHighAvailableQueue(configuration);
+                        configurator.AddAsHighAvailableQueue(configuration);
                         configurator.Consumer<T>(provider);
                     });
 
