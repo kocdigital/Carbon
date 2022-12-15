@@ -29,7 +29,7 @@ namespace Carbon.MassTransit.AsyncReqResp
             responseCarrier.ResponseAddress = message.RequestData.ResponseAddress;
 
 
-            var sendEp = await context.GetSendEndpoint(new Uri("queue:" + apiname + "-Req.Resp.Async-RespHandler"));
+            var sendEp = await context.GetSendEndpoint(new Uri("exchange:" + apiname + "-Req.Resp.Async-RespHandler"));
             await sendEp.Send(responseCarrier);
 
             await next.Execute(context).ConfigureAwait(false);
