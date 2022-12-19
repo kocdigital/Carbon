@@ -36,8 +36,6 @@ Supports Masstransit 7.1.x and Carbon.MassTransit 3.0.2
 
 -1.0.23
  Supports MassTransit  6.2.3 and Carbon.MassTransit 2.0.8</Description>
-    <AssemblyVersion></AssemblyVersion>
-    <FileVersion></FileVersion>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
   </PropertyGroup>
 
