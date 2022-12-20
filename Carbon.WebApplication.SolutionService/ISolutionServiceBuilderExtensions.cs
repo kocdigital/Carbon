@@ -81,10 +81,26 @@ namespace Carbon.WebApplication.SolutionService
 
                 cfg.AddRabbitMqBus(configuration, (provider, busFactoryConfig) =>
                 {
-                    busFactoryConfig.ReceiveEndpoint($"App-Solution-Fail-{apiname}", e => { e.Consumer<SolutionSagaCompletionFailedConsumer>(provider); });
-                    busFactoryConfig.ReceiveEndpoint($"App-Solution-Succeed-{apiname}", e => { e.Consumer<SolutionSagaCompletionSucceedConsumer>(provider); });
-                    busFactoryConfig.ReceiveEndpoint($"App-Featureset-Fail-{apiname}", e => { e.Consumer<FeatureSetSagaCompletionFailedConsumer>(provider); });
-                    busFactoryConfig.ReceiveEndpoint($"App-Featureset-Succeed-{apiname}", e => { e.Consumer<FeatureSetSagaCompletionSucceedConsumer>(provider); });
+                    busFactoryConfig.ReceiveEndpoint($"App-Solution-Fail-{apiname}", e =>
+                    {
+                        e.Consumer<SolutionSagaCompletionFailedConsumer>(provider);
+                        e.AddAsHighAvailableQueue(configuration);
+                    });
+                    busFactoryConfig.ReceiveEndpoint($"App-Solution-Succeed-{apiname}", e =>
+                    {
+                        e.Consumer<SolutionSagaCompletionSucceedConsumer>(provider);
+                        e.AddAsHighAvailableQueue(configuration);
+                    });
+                    busFactoryConfig.ReceiveEndpoint($"App-Featureset-Fail-{apiname}", e =>
+                    {
+                        e.Consumer<FeatureSetSagaCompletionFailedConsumer>(provider);
+                        e.AddAsHighAvailableQueue(configuration);
+                    });
+                    busFactoryConfig.ReceiveEndpoint($"App-Featureset-Succeed-{apiname}", e =>
+                    {
+                        e.Consumer<FeatureSetSagaCompletionSucceedConsumer>(provider);
+                        e.AddAsHighAvailableQueue(configuration);
+                    });
 
                     busFactoryConfig.Publish<ISolutionCreationRequest>(x => { });
                     busFactoryConfig.Publish<IFeatureSetCreationRequest>(x => { });
@@ -128,6 +144,7 @@ namespace Carbon.WebApplication.SolutionService
                 {
                     busFactoryConfig.ReceiveEndpoint($"{apiname}-featureset-notification-{featureSetId}", e =>
                     {
+                        e.AddAsHighAvailableQueue(configuration);
                         e.Consumer<T>(provider);
                         e.Bind($"featureset-notification-{featureSetId}", b => { });
                     });
