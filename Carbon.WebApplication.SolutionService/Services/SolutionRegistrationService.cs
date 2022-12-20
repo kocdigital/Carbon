@@ -39,7 +39,7 @@ namespace Carbon.WebApplication.SolutionService.Services
                 throw new IncompatibleSolutionException((int)ExceptionEnums.SolutionNameNull, "SolutionCreationRequest SolutionName cannot be Null or Default");
             }
 
-            var sendEp = await _busControl.GetSendEndpoint(new Uri("queue:solution-creation-state"));
+            var sendEp = await _busControl.GetSendEndpoint(new Uri("exchange:solution-creation-state"));
             await sendEp.Send<ISolutionCreationRequest>(data);
 
             _logger.LogInformation($"Solution Registration has successfully submitted! SolutionId: {data.Solution.SolutionId} SolutionName: {data.Solution.SolutionName}");
@@ -67,7 +67,7 @@ namespace Carbon.WebApplication.SolutionService.Services
                 throw new IncompatibleSolutionException((int)ExceptionEnums.FeatureSetNameNull, "SolutionCreationRequest SolutionName cannot be Null or Default");
             }
 
-            var sendEp = await _busControl.GetSendEndpoint(new Uri("queue:featureset-creation-state"));
+            var sendEp = await _busControl.GetSendEndpoint(new Uri("exchange:featureset-creation-state"));
             await sendEp.Send<IFeatureSetCreationRequest>(data);
 
             _logger.LogInformation($"FeatureSet Registration has successfully submitted for given Solution {data.SolutionId} FeatureSet: {data.FeatureSet.FeatureSetName}");
