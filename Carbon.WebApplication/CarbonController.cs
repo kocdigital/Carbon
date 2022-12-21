@@ -182,9 +182,7 @@ namespace Carbon.WebApplication
                 }
             }
 
-            var result = new ApiResponse<IPagedList<T>>(GetRequestIdentifier(), ApiStatusCode.OK);
-            result.SetData(entity);
-
+            var result = new ApiPagedResponse<IPagedList<T>>(GetRequestIdentifier(), ApiStatusCode.OK, entity);
             return Ok(result);
         }
 
