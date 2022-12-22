@@ -15,6 +15,7 @@ namespace Carbon.Common
         {
 
         }
+
         /// <summary>
         /// Constructor that initializes an ApiResponse with identifier and status code
         /// </summary>
@@ -25,6 +26,7 @@ namespace Carbon.Common
             StatusCode = statusCode;
             Identifier = identifier;
         }
+
         /// <summary>
         /// Constructor that initializes an ApiResponse with identifier, status code and error code
         /// </summary>
@@ -35,16 +37,19 @@ namespace Carbon.Common
         {
             ErrorCode = errorCode;
         }
+
         /// <summary>
         /// Constructor that initializes an ApiResponse with identifier, status code and messages
         /// </summary>
         /// <param name="identifier"><see cref="IApiResponse.Identifier"/></param>
         /// <param name="statusCode"><see cref="IApiResponse.StatusCode"/></param>
         /// <param name="messages"><see cref="IApiResponse.Messages"/></param>
-        public ApiResponse(string identifier, ApiStatusCode statusCode, IList<string> messages) : this(identifier, statusCode)
+        public ApiResponse(string identifier, ApiStatusCode statusCode, IList<string> messages) : this(identifier,
+            statusCode)
         {
             Messages = messages;
         }
+
         /// <summary>
         /// Constructor that initializes an ApiResponse with identifier, status code, error code and messages
         /// </summary>
@@ -52,43 +57,45 @@ namespace Carbon.Common
         /// <param name="statusCode"><see cref="IApiResponse.StatusCode"/></param>
         /// <param name="errorCode"><see cref="IApiResponse.ErrorCode"/></param>
         /// <param name="messages"><see cref="IApiResponse.Messages"/></param>
-        public ApiResponse(string identifier, ApiStatusCode statusCode, int errorCode, IList<string> messages) : this(identifier, statusCode, errorCode)
+        public ApiResponse(string identifier, ApiStatusCode statusCode, int errorCode, IList<string> messages) : this(
+            identifier, statusCode, errorCode)
         {
             Messages = messages;
         }
+
         /// <summary>
         /// Contains response data from type of <typeparamref name="T"/>
         /// </summary>
         public T Data { get; set; }
+
         /// <summary>
         /// <see cref="IApiResponse.Messages"/>
         /// </summary>
         public IList<string> Messages { get; set; }
+
         /// <summary>
         /// <see cref="IApiResponse.ErrorCode"/>
         /// </summary>
         public int? ErrorCode { get; set; }
+
         /// <summary>
         /// <see cref="IApiResponse.StatusCode"/>
         /// </summary>
         public ApiStatusCode StatusCode { get; set; }
+
         /// <summary>
-        /// Indicades status. <c>True</c> for successfull and <c>False</c> for failed requests.
+        /// Indicates status. <c>True</c> for successful and <c>False</c> for failed requests.
         /// </summary>
         /// <remarks>
         /// If ApiResponse contains <see cref="ErrorCode"/> or <see cref="StatusCode"/> differs from <c>ApiStatusCode.OK</c>
         /// </remarks>
-        public bool IsSuccess
-        {
-            get
-            {
-                return ErrorCode == null && StatusCode == ApiStatusCode.OK;
-            }
-        }
+        public bool IsSuccess => ErrorCode == null && StatusCode == ApiStatusCode.OK;
+
         /// <summary>
         /// <see cref="IApiResponse.Identifier"/>
         /// </summary>
         public string Identifier { get; set; }
+
         /// <summary>
         /// Sets response data with given type <typeparamref name="T"/>. <see cref="Data"/>
         /// </summary>
@@ -97,6 +104,7 @@ namespace Carbon.Common
         {
             Data = data;
         }
+
         /// <summary>
         /// Adds a message to <see cref="Messages"/>.
         /// </summary>
@@ -104,11 +112,10 @@ namespace Carbon.Common
         /// <remarks>If <see cref="Messages"/> is null, creates a new list for it.</remarks>
         public void AddMessage(string message)
         {
-            if (Messages == null)
-                Messages = new List<string>();
-
+            Messages ??= new List<string>();
             Messages.Add(message);
         }
+
         /// <summary>
         /// Adds multiple messages to <see cref="Messages"/>.
         /// </summary>
@@ -116,28 +123,23 @@ namespace Carbon.Common
         /// <remarks>If <see cref="Messages"/> is null, creates a new list for it.</remarks>
         public void AddMessages(params string[] messages)
         {
-            if (Messages == null)
-                Messages = new List<string>();
+            Messages ??= new List<string>();
 
-            if (messages != null)
+            if (messages is null)
             {
-                foreach (var msg in messages)
-                {
-                    Messages.Add(msg);
-                }
+                return;
             }
 
+            foreach (var msg in messages)
+            {
+                Messages.Add(msg);
+            }
         }
+
         /// <summary>
         /// Sets error code. <see cref="ErrorCode"/>
         /// </summary>
         /// <param name="errorCode"></param>
-        public void SetErrorCode(int errorCode)
-        {
-            ErrorCode = errorCode;
-        }
-
+        public void SetErrorCode(int errorCode) => ErrorCode = errorCode;
     }
-
-
 }

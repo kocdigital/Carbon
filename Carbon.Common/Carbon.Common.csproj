@@ -2,8 +2,10 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
-    <Version>1.3.1</Version>
-	  <Description>1.3.0
+    <Version>1.3.2</Version>
+	  <Description>1.3.2
+ - Minor code refactoring, typos
+1.3.0
  - Reverted default constructor.
 1.2.0
  - Tenant Management Support Added
