@@ -123,12 +123,12 @@ namespace Carbon.Common
         /// <remarks>If <see cref="Messages"/> is null, creates a new list for it.</remarks>
         public void AddMessages(params string[] messages)
         {
+            Messages ??= new List<string>();
+
             if (messages is null)
             {
                 return;
             }
-
-            Messages ??= new List<string>();
 
             foreach (var msg in messages)
             {
