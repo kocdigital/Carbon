@@ -19,7 +19,7 @@ namespace Carbon.Common
         /// Represents sorting Column
         /// </summary>
         /// <remarks>
-        /// In genegeral, used as Name of the Column
+        /// In general, used as Name of the Column
         /// </remarks>
         public string Value { get; set; }
         /// <summary>

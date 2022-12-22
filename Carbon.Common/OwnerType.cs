@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Carbon.Common
 {
-    public enum OwnerType : int
+    public enum OwnerType
     {
         None = 0,
         User = 1,
