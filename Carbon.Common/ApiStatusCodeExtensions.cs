@@ -10,9 +10,6 @@ namespace Carbon.Common
         /// </summary>
         /// <param name="apiStatusCode">Status code to convert</param>
         /// <returns>An equivalent <see cref="HttpStatusCode"/> for given <see cref="ApiStatusCode"/></returns>
-        public static HttpStatusCode GetHttpStatusCode(this ApiStatusCode apiStatusCode)
-        {
-            return ApiStatusCodeToHttpStatusMapper.GetHttpStatusCode(apiStatusCode);
-        }
+        public static HttpStatusCode GetHttpStatusCode(this ApiStatusCode apiStatusCode) => ApiStatusCodeToHttpStatusMapper.GetHttpStatusCode(apiStatusCode);
     }
 }

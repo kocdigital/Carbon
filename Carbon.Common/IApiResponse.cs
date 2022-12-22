@@ -23,7 +23,7 @@ namespace Carbon.Common
         /// </summary>
         int? ErrorCode { get; }
         /// <summary>
-        /// Indicades status. <c>True</c> for successfull and <c>False</c> for failed requests
+        /// Indicates status. <c>True</c> for successful and <c>False</c> for failed requests
         /// </summary>
         bool IsSuccess { get; }
         /// <summary>

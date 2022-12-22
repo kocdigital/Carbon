@@ -10,7 +10,7 @@ namespace Carbon.Common
     public static class ApiStatusCodeToHttpStatusMapper
     {
         /// <summary>
-        /// Holds information about which <see cref="ApiStatusCode"/> referst to which <see cref="HttpStatusCode"/>
+        /// Holds information about which <see cref="ApiStatusCode"/> refers to which <see cref="HttpStatusCode"/>
         /// </summary>
         public static IDictionary<ApiStatusCode, HttpStatusCode> ApiStatusCodes = new Dictionary<ApiStatusCode, HttpStatusCode>
         {
@@ -24,7 +24,7 @@ namespace Carbon.Common
         };
 
         /// <summary>
-        /// Holds information about which <see cref="HttpStatusCode"/> referst to which <see cref="ApiStatusCode"/>
+        /// Holds information about which <see cref="HttpStatusCode"/> refers to which <see cref="ApiStatusCode"/>
         /// </summary>
         public static IDictionary<HttpStatusCode, ApiStatusCode> HttpStatusCodes = new Dictionary<HttpStatusCode, ApiStatusCode>
         {

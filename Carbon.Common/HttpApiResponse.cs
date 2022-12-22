@@ -4,7 +4,7 @@ using System.Net;
 namespace Carbon.Common
 {
     /// <summary>
-    /// Adaptaion of <see cref="ApiResponse{T}"/> for satisfiying http requests
+    /// Adaptation of <see cref="ApiResponse{T}"/> for satisfying http requests
     /// </summary>
     /// <typeparam name="T">Indicates response's data type. <see cref="ApiResponse{T}.Data"/></typeparam>
     public class HttpApiResponse<T> : ApiResponse<T>
@@ -14,7 +14,7 @@ namespace Carbon.Common
         /// </summary>
         /// <param name="identifier"><see cref="IApiResponse.Identifier"/></param>
         /// <param name="statusCode"><see cref="HttpStatusCode"/></param>
-        /// <remarks><param name="statusCode"> equivalent to <see cref="IApiResponse.StatusCode"/>. Keeping mind <see cref="ApiStatusCode"/> While using </remarks>
+        /// <remarks><paramref name="statusCode"/> equivalent to <see cref="IApiResponse.StatusCode"/>. Keeping mind <see cref="ApiStatusCode"/> while using </remarks>
         public HttpApiResponse(string identifier, HttpStatusCode statusCode) : base(identifier, statusCode.GetApiStatusCode())
         {
            
@@ -25,7 +25,7 @@ namespace Carbon.Common
         /// <param name="identifier"><see cref="IApiResponse.Identifier"/></param>
         /// <param name="statusCode"><see cref="HttpStatusCode"/></param>
         /// <param name="errorCode"><see cref="IApiResponse.ErrorCode"/></param>
-        /// <remarks><param name="statusCode"> equivalent to <see cref="IApiResponse.StatusCode"/>. Keeping mind <see cref="ApiStatusCode"/> While using </remarks>
+        /// <remarks><paramref name="statusCode"/> equivalent to <see cref="IApiResponse.StatusCode"/>. Keeping mind <see cref="ApiStatusCode"/> while using </remarks>
         public HttpApiResponse(string identifier, HttpStatusCode statusCode, int errorCode) : base(identifier, statusCode.GetApiStatusCode(), errorCode)
         {
         }
@@ -35,7 +35,7 @@ namespace Carbon.Common
         /// <param name="identifier"><see cref="IApiResponse.Identifier"/></param>
         /// <param name="statusCode"><see cref="HttpStatusCode"/></param>
         /// <param name="messages"><see cref="IApiResponse.Messages"/></param>
-        /// <remarks><param name="statusCode"> equivalent to <see cref="IApiResponse.StatusCode"/>. Keeping mind <see cref="ApiStatusCode"/> While using </remarks>
+        /// <remarks><paramref name="statusCode"/> equivalent to <see cref="IApiResponse.StatusCode"/>. Keeping mind <see cref="ApiStatusCode"/> while using </remarks>
         public HttpApiResponse(string identifier, HttpStatusCode statusCode, IList<string> messages) : base(identifier, statusCode.GetApiStatusCode(), messages)
         {
         }
@@ -46,7 +46,7 @@ namespace Carbon.Common
         /// <param name="statusCode"><see cref="HttpStatusCode"/></param>
         /// <param name="errorCode"><see cref="IApiResponse.ErrorCode"/></param>
         /// <param name="messages"><see cref="IApiResponse.Messages"/></param>
-        /// <remarks><param name="statusCode"> equivalent to <see cref="IApiResponse.StatusCode"/>. Keeping mind <see cref="ApiStatusCode"/> While using </remarks>
+        /// <remarks><paramref name="statusCode"/> equivalent to <see cref="IApiResponse.StatusCode"/>. Keeping mind <see cref="ApiStatusCode"/> while using </remarks>
         public HttpApiResponse(string identifier, HttpStatusCode statusCode, int errorCode, IList<string> messages) : base(identifier, statusCode.GetApiStatusCode(), errorCode, messages)
         {
         }
