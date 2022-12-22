@@ -1,11 +1,14 @@
 ﻿using Carbon.Redis.Builder;
 using Carbon.Redis.Sentinel;
+
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
 using Microsoft.Extensions.Options;
+
 using StackExchange.Redis;
+
 using System;
 using System.Linq;
 using System.Security.Cryptography;
@@ -23,7 +26,6 @@ namespace Carbon.Redis
                 await redisDatabase.StringSetAsync(RedisConstants.RedisKeyLengthKey, RedisHelper.RedisKeyLength);
             }
         }
-
 
 
         /// <summary>
@@ -90,45 +92,38 @@ namespace Carbon.Redis
                     configurationOptions.SslProtocols = System.Security.Authentication.SslProtocols.None;
                 }
 
-                try
+                var redis = ConnectionMultiplexer.Connect(configurationOptions);
+                if (redis.IsConnected)
                 {
-                    var redis = ConnectionMultiplexer.Connect(configurationOptions);
-                    if (redis.IsConnected)
-                    {
-                        services.AddSingleton<ConfigurationOptions>(configurationOptions);
-                        services.AddSingleton<IConnectionMultiplexer>(redis);
-                        var db = redis.GetDatabase(redisSettings.Value.DefaultDatabase);
-                        services.AddSingleton(s => db);
-                        RedisHelper.SetRedisKeyLength(redisSettings.Value.KeyLength);
+                    services.AddSingleton<ConfigurationOptions>(configurationOptions);
+                    services.AddSingleton<IConnectionMultiplexer>(redis);
+                    var db = redis.GetDatabase(redisSettings.Value.DefaultDatabase);
+                    services.AddSingleton(s => db);
+                    RedisHelper.SetRedisKeyLength(redisSettings.Value.KeyLength);
 
-                        if (!String.IsNullOrEmpty(configurationOptions.ServiceName))
+                    if (!String.IsNullOrEmpty(configurationOptions.ServiceName))
+                    {
+                        var sentinelConfig = configurationOptions.Clone();
+                        var SecondsOfTimeOut = 10000;
+                        sentinelConfig.SyncTimeout = SecondsOfTimeOut;
+                        sentinelConfig.AsyncTimeout = SecondsOfTimeOut;
+                        SentinelConnectionMultiplexer redisSentinel = new SentinelConnectionMultiplexer(ConnectionMultiplexer.SentinelConnect(sentinelConfig));
+                        if (redisSentinel.ConnectionMultiplexer.IsConnected)
                         {
-                            var sentinelConfig = configurationOptions.Clone();
-                            var SecondsOfTimeOut = 10000;
-                            sentinelConfig.SyncTimeout = SecondsOfTimeOut;
-                            sentinelConfig.AsyncTimeout = SecondsOfTimeOut;
-                            SentinelConnectionMultiplexer redisSentinel = new SentinelConnectionMultiplexer(ConnectionMultiplexer.SentinelConnect(sentinelConfig));
-                            if (redisSentinel.ConnectionMultiplexer.IsConnected)
-                            {
-                                services.AddSingleton<ISentinelConnectionMultiplexer>(redisSentinel);
-                            }
-                        }
-                        else
-                        {
-                            NonSentinelConnectionMultiplexer redisSentinel = new NonSentinelConnectionMultiplexer(redis);
                             services.AddSingleton<ISentinelConnectionMultiplexer>(redisSentinel);
                         }
-
-                        services.AddHealthChecks().AddCheck<CustomRedisHealthCheck>("RedisConnectionCheck", HealthStatus.Unhealthy);
                     }
                     else
                     {
-                        throw new RedisConnectionException(ConnectionFailureType.UnableToConnect, ConnectionFailureType.UnableToConnect.ToString());
+                        NonSentinelConnectionMultiplexer redisSentinel = new NonSentinelConnectionMultiplexer(redis);
+                        services.AddSingleton<ISentinelConnectionMultiplexer>(redisSentinel);
                     }
+
+                    services.AddHealthChecks().AddCheck<CustomRedisHealthCheck>("RedisConnectionCheck", HealthStatus.Unhealthy);
                 }
-                catch (RedisException ex)
+                else
                 {
-                    throw ex;
+                    throw new RedisConnectionException(ConnectionFailureType.UnableToConnect, ConnectionFailureType.UnableToConnect.ToString());
                 }
             }
             else
@@ -148,7 +143,7 @@ namespace Carbon.Redis
         /// <returns> MD5 string </returns>
         public static string ConvertToMD5(string password)
         {
-            MD5CryptoServiceProvider md5 = new MD5CryptoServiceProvider();
+            MD5 md5 = MD5.Create();
             byte[] bytes = Encoding.UTF8.GetBytes(password);
             bytes = md5.ComputeHash(bytes);
             StringBuilder sb = new StringBuilder();
@@ -161,6 +156,3 @@ namespace Carbon.Redis
         }
     }
 }
-
-
-
