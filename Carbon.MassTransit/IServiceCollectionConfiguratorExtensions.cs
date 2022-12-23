@@ -210,7 +210,7 @@ namespace Carbon.MassTransit
 
                 cfg.AddRabbitMqBus(configuration, (provider, busFactoryConfig) =>
                 {
-                    busFactoryConfig.ReceiveEndpoint("request-starter-state", e =>
+                    busFactoryConfig.ReceiveEndpoint(apiname + "-request-starter-state", e =>
                     {
                         e.AddAsHighAvailableQueue(configuration);
                         e.ConfigureSaga<RequestResponseState>((IBusRegistrationContext)provider);
@@ -227,7 +227,7 @@ namespace Carbon.MassTransit
 
                 cfg.AddServiceBus(configuration, (provider, busFactoryConfig) =>
                 {
-                    busFactoryConfig.ReceiveEndpoint("request-starter-state", e =>
+                    busFactoryConfig.ReceiveEndpoint(apiname + "-request-starter-state", e =>
                     {
                         e.ConfigureSaga<RequestResponseState>((IBusRegistrationContext)provider);
                     });

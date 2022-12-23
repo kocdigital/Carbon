@@ -99,7 +99,8 @@ namespace Carbon.MassTransit.AsyncReqResp
 
         public static async Task<IResponder> GetResponseFromReqRespAsync(this IReqRespRequestorBus reqRespRequestorBus, string requestBody, string responseDestinationPath, RequestTimeout requestTimeout = default)
         {
-            var reqClient = reqRespRequestorBus.CreateRequestClient<IRequestStarterRequest>(requestTimeout);
+            var apiname = System.Reflection.Assembly.GetEntryAssembly().GetName().Name;
+            var reqClient = reqRespRequestorBus.CreateRequestClient<IRequestStarterRequest>(new Uri("exchange:" + apiname + "-request-starter-state"), requestTimeout);
 
             IRequestStarterRequest requestStarterRequest = new RequestStarterRequest(Guid.NewGuid(), requestBody, "Req.Resp.Async-" + responseDestinationPath);
             var responseTaken = await reqClient.GetResponse<IResponder>(requestStarterRequest);
@@ -133,7 +134,11 @@ namespace Carbon.MassTransit.AsyncReqResp
             }
 
             RequestStarterRequest requestStarterRequest = new RequestStarterRequest(Guid.NewGuid(), requestBody, "Req.Resp.Async-" + responseDestinationPath);
-            await reqRespRequestorBus.Publish(requestStarterRequest);
+
+            var apiname = System.Reflection.Assembly.GetEntryAssembly().GetName().Name;
+
+            var sendEp = await reqRespRequestorBus.GetSendEndpoint(new Uri("exchange:" + apiname + "-request-starter-state"));
+            await sendEp.Send(requestStarterRequest);
         }
     }
 }
