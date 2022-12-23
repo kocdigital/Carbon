@@ -18,12 +18,12 @@ namespace Carbon.ConsoleApplication
         /// <typeparam name="TProgram">Type of class which holds <see cref="IHostBuilder"/></typeparam>
         /// <param name="builder"><see cref="IHostBuilder"/> to configure</param>
         /// <param name="configureApp">Injects action for user defined configurations</param>
-        /// <param name="configureServices">Injects action for user defined service configuraitons. <see cref="IHostBuilder.ConfigureServices"/></param>
+        /// <param name="configureServices">Injects action for user defined service configurations. <see cref="IHostBuilder.ConfigureServices"/></param>
         /// <returns>Configured <paramref name="builder"/></returns>
         private static IHostBuilder UseFeatures<TProgram>(IHostBuilder builder, Action<HostBuilderContext, IConfigurationBuilder> configureApp, Action<HostBuilderContext, IServiceCollection> configureServices) where TProgram : class
         {
             var assemblyName = typeof(TProgram).Assembly.GetName().Name;
-            var currentEnviroment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
+            var currentEnvironment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
             var consulAddress = Environment.GetEnvironmentVariable("CONSUL_ADDRESS");
             var consulKeysValue = Environment.GetEnvironmentVariable(assemblyName + "_CONSUL_KEYS");
             var confType = Environment.GetEnvironmentVariable("CONFIGURATION_TYPE");
@@ -33,7 +33,7 @@ namespace Carbon.ConsoleApplication
                 c.AddEnvironmentVariables();
 
                 #region Consul Configuration
-                if (String.IsNullOrEmpty(confType) || confType?.ToUpper() == "CONSUL")
+                if (string.IsNullOrEmpty(confType) || string.Equals(confType, "CONSUL", StringComparison.InvariantCultureIgnoreCase))
                 {
                     var consulEnabled = !string.IsNullOrEmpty(consulAddress);
 
@@ -46,7 +46,7 @@ namespace Carbon.ConsoleApplication
                             foreach (var consulKey in consulKeys)
                             {
                                 c.AddConsul(
-                                   $"{consulKey}/{currentEnviroment}", (options) =>
+                                   $"{consulKey}/{currentEnvironment}", (options) =>
                                    {
                                        options.ConsulConfigurationOptions = cco => { cco.Address = new Uri(consulAddress); };
                                        options.Optional = false;
@@ -58,7 +58,7 @@ namespace Carbon.ConsoleApplication
                         else
                         {
                             c.AddConsul(
-                                        $"{assemblyName}/{currentEnviroment}", (options) =>
+                                        $"{assemblyName}/{currentEnvironment}", (options) =>
                                         {
                                             options.ConsulConfigurationOptions = cco => { cco.Address = new Uri(consulAddress); };
                                             options.Optional = false;
@@ -68,7 +68,7 @@ namespace Carbon.ConsoleApplication
                         }
                     }
                 }
-                else if (confType?.ToUpper() == "FILE" || confType == "file" || confType == "File")
+                else if (string.Equals(confType, "FILE", StringComparison.InvariantCultureIgnoreCase))
                 {
                     Console.WriteLine("Configuration Type: FILE");
                     var kubConfigPath = Environment.GetEnvironmentVariable("FILE_CONFIG_PATHS") ?? "config/appsettings.main.file.json";
@@ -93,17 +93,17 @@ namespace Carbon.ConsoleApplication
                 }
                 else
                 {
-                    Console.WriteLine($"Unknown Configuration Source Specified! Defaults to => appsettings.{currentEnviroment}.json");
-                    c.AddJsonFile($"appsettings.{currentEnviroment}.json", optional: true);
+                    Console.WriteLine($"Unknown Configuration Source Specified! Defaults to => appsettings.{currentEnvironment}.json");
+                    c.AddJsonFile($"appsettings.{currentEnvironment}.json", optional: true);
                 }
                 #endregion
 
                 var configuration = c.Build();
 
-                var _serilogSettings = configuration.GetSection("Serilog").Get<SerilogSettings>();
+                var serilogSettings = configuration.GetSection("Serilog").Get<SerilogSettings>();
 
-                if (_serilogSettings == null)
-                    throw new ArgumentNullException("Serilog settings cannot be empty!");
+                if (serilogSettings == null)
+                    throw new ArgumentNullException(nameof(serilogSettings), "Serilog settings cannot be empty!");
 
                 Log.Logger = new LoggerConfiguration().ReadFrom.Configuration(configuration).CreateLogger();
 
@@ -120,26 +120,22 @@ namespace Carbon.ConsoleApplication
         }
 
         /// <summary>
-        /// Event handler for <see cref="AppDomain.CurrentDomain.UnhandledException"/>. Adds Log as Error
+        /// Event handler for <see cref="AppDomain.UnhandledException"/>. Adds Log as Error
         /// </summary>
         /// <param name="sender">The object that generated the event.</param>
         /// <param name="e"><see cref="UnhandledExceptionEventArgs"/></param>
-        static void UnhandledExceptionTrapper(object sender, UnhandledExceptionEventArgs e)
-        {
-            Log.Logger.Error("Unhandled exception occured!", e);
-        }
+        private static void UnhandledExceptionTrapper(object sender, UnhandledExceptionEventArgs e) => Log.Logger.Error("Unhandled exception occured! {e}", e);
+
         /// <summary>
         /// Use for configuring given <see cref="IHostBuilder"/> with Carbon Standards. 
         /// </summary>
-        /// <typeparam name="TProgram">Type of class which holds <see cref="IHostBuilder"/</typeparam>
+        /// <typeparam name="TProgram">Type of class which holds <see cref="IHostBuilder"/></typeparam>
         /// <param name="builder"><see cref="IHostBuilder"/> to configure</param>
-        /// <param name="configureServices">Injects action for user defined service configuraitons. <see cref="IHostBuilder.ConfigureServices"/></param>
+        /// <param name="configureServices">Injects action for user defined service configurations. <see cref="IHostBuilder.ConfigureServices"/></param>
         /// <returns>Configured <paramref name="builder"/></returns>
         /// <remarks>Carbon adds Consul and Serilog support.</remarks>
-        public static IHostBuilder AddCarbonServices<TProgram>(this IHostBuilder builder, Action<HostBuilderContext, IServiceCollection> configureServices) where TProgram : class
-        {
-            return UseFeatures<TProgram>(builder, null, configureServices);
-        }
+        public static IHostBuilder AddCarbonServices<TProgram>(this IHostBuilder builder, Action<HostBuilderContext, IServiceCollection> configureServices) where TProgram : class => UseFeatures<TProgram>(builder, null, configureServices);
+
         /// <summary>
         /// Configures <paramref name="builder"/> with given <paramref name="configureServiceProviders"/>
         /// </summary>
@@ -159,15 +155,11 @@ namespace Carbon.ConsoleApplication
         /// <summary>
         /// Use for configuring given <see cref="IHostBuilder"/> with Carbon Standards. 
         /// </summary>
-        /// <typeparam name="TProgram">Type of class which holds <see cref="IHostBuilder"/</typeparam>
+        /// <typeparam name="TProgram">Type of class which holds <see cref="IHostBuilder"/></typeparam>
         /// <param name="builder"><see cref="IHostBuilder"/> to configure</param>
-        /// <param name="configureApp">Injects action for user defined configuraitons.</param>
+        /// <param name="configureApp">Injects action for user defined configurations.</param>
         /// <returns>Configured <paramref name="builder"/></returns>
         /// <remarks>Carbon adds Consul and Serilog support.</remarks>
-        public static IHostBuilder AddCarbonConfiguration<TProgram>(this IHostBuilder builder, Action<HostBuilderContext, IConfigurationBuilder> configureApp) where TProgram : class
-        {
-            return UseFeatures<TProgram>(builder, configureApp, null);
-        }
-
+        public static IHostBuilder AddCarbonConfiguration<TProgram>(this IHostBuilder builder, Action<HostBuilderContext, IConfigurationBuilder> configureApp) where TProgram : class => UseFeatures<TProgram>(builder, configureApp, null);
     }
 }
