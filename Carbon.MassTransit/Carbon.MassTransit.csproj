@@ -2,8 +2,10 @@
 
 	<PropertyGroup>
 		<TargetFramework>netstandard2.0</TargetFramework>
-		<Version>3.7.2</Version>
-		<Description>    3.7.2
+		<Version>3.7.3</Version>
+		<Description>   3.7.3
+   - Fixed a critical bug when ReqRespAsync is used in multiple APIs and same virtual hosts    
+    3.7.2
     -Fixed a bug for quorum ReqRespAsync patterns 
     3.7.0
     - HighAvailable Queues introduced (powered by quorum)
