@@ -17,6 +17,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Options;
 using StackExchange.Redis;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 using MassTransitNS = MassTransit;
@@ -281,6 +282,60 @@ namespace Carbon.MassTransit
                 });
             });
         }
+
+        /// <summary>
+        /// Adds AsyncRequestResponsePattern. Use this overload for only responder to requestor
+        /// </summary>
+        /// <typeparam name="T">Your request handler consumer where you respond to consumer</typeparam>
+        /// <param name="services"></param>
+        /// <param name="configuration"></param>
+        /// <param name="responseDestinationPath"></param>
+        public static void AddAsyncRequestResponsePatternForResponder(this IServiceCollection services, IConfiguration configuration, Dictionary<string, Type> responseDestinationPaths)
+        {
+            if (responseDestinationPaths == null || responseDestinationPaths.Count == 0)
+            {
+                throw new Exception("responseDestinationPath cannot be null or empty");
+            }
+
+            services.AddMassTransitBus<IReqRespResponderBus>(cfg =>
+            {
+                foreach (var respPath in responseDestinationPaths)
+                {
+                    if (!(typeof(IConsumer<IRequestCarrierRequest>).IsAssignableFrom(respPath.Value)))
+                    {
+                        throw new Exception("Consumer Type must be IConsumer<IRequestCarrierRequest>");
+                    }
+
+                    cfg.AddConsumer(respPath.Value);
+                }
+
+                cfg.AddRabbitMqBus(configuration, (provider, busFactoryConfig) =>
+                {
+                    foreach (var responseDestinationPath in responseDestinationPaths)
+                    {
+                        var consumerType = responseDestinationPath.Value;
+                        busFactoryConfig.ReceiveEndpoint("Req.Resp.Async-" + responseDestinationPath.Key, configurator =>
+                        {
+                            configurator.AddAsHighAvailableQueue(configuration);
+                            configurator.Consumer(consumerType, type => Activator.CreateInstance(consumerType));
+                        });
+                    }
+                });
+
+                cfg.AddServiceBus(configuration, (provider, busFactoryConfig) =>
+                {
+                    foreach (var responseDestinationPath in responseDestinationPaths)
+                    {
+                        var consumerType = responseDestinationPath.Value;
+                        busFactoryConfig.ReceiveEndpoint("Req.Resp.Async-" + responseDestinationPath, configurator =>
+                        {
+                            configurator.Consumer(consumerType, type => Activator.CreateInstance(consumerType));
+                        });
+                    }
+                });
+            });
+        }
+
 
         /// <summary>
         /// ReceiveEndpoint queue will be declared as a quorum queue, if it is already declared as default, it will delete the existing one and create new HA queue
