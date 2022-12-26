@@ -2,7 +2,7 @@
 
 	<PropertyGroup>
 		<TargetFramework>netstandard2.0</TargetFramework>
-		<Version>3.7.5-alpha3</Version>
+		<Version>3.7.5</Version>
 		<Description>   3.7.5
    - Fixed a critical bug when ReqRespAsync is used in multiple APIs and same virtual hosts    
    - Add multiple responder to your project
