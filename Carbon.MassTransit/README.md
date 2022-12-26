@@ -397,9 +397,14 @@ This will register your responder and request handler (in startup)
 //Use a user-friendly and sensible destination name such as **MyIntegrationApi**, this destination name can be targeted
 //by your request sender so that you request finds this responder well
 services.AddAsyncRequestResponsePatternForResponder<ExternalDataConsumer>(Configuration, "MyIntegrationApi");
-//Or use this overload to add multiple responders
-//services.AddAsyncRequestResponsePatternForResponder<ExternalDataConsumer>(Configuration, new string[]{"MyIntegrationApi", "MyIntegrationApi2"});
 
+```
+Or use this overload to register more than one consumer for each destination
+```csharp
+Dictionary<string, Type> keyValuePairs = new Dictionary<string, Type>();
+keyValuePairs.Add("MyIntegrationApi",  typeof(ExternalDataConsumer));
+keyValuePairs.Add("MyIntegrationApi2", typeof(ExternalDataConsumer2));
+services.AddAsyncRequestResponsePatternForResponder(Configuration, keyValuePairs);
 ```
 **5a. Send your request from requestor API (Async)**
 

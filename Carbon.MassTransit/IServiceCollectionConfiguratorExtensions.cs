@@ -17,6 +17,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Options;
 using StackExchange.Redis;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 using MassTransitNS = MassTransit;
@@ -289,26 +290,34 @@ namespace Carbon.MassTransit
         /// <param name="services"></param>
         /// <param name="configuration"></param>
         /// <param name="responseDestinationPath"></param>
-        public static void AddAsyncRequestResponsePatternForResponder<T>(this IServiceCollection services, IConfiguration configuration, string[] responseDestinationPaths)
-            where T : class, IConsumer<IRequestCarrierRequest>
+        public static void AddAsyncRequestResponsePatternForResponder(this IServiceCollection services, IConfiguration configuration, Dictionary<string, Type> responseDestinationPaths)
         {
-            if (responseDestinationPaths == null || responseDestinationPaths.Length == 0)
+            if (responseDestinationPaths == null || responseDestinationPaths.Count == 0)
             {
                 throw new Exception("responseDestinationPath cannot be null or empty");
             }
 
             services.AddMassTransitBus<IReqRespResponderBus>(cfg =>
             {
-                cfg.AddConsumer<T>();
+                foreach (var respPath in responseDestinationPaths)
+                {
+                    if (!(typeof(IConsumer<IRequestCarrierRequest>).IsAssignableFrom(respPath.Value)))
+                    {
+                        throw new Exception("Consumer Type must be IConsumer<IRequestCarrierRequest>");
+                    }
+
+                    cfg.AddConsumer(respPath.Value);
+                }
 
                 cfg.AddRabbitMqBus(configuration, (provider, busFactoryConfig) =>
                 {
                     foreach (var responseDestinationPath in responseDestinationPaths)
                     {
-                        busFactoryConfig.ReceiveEndpoint("Req.Resp.Async-" + responseDestinationPath, configurator =>
+                        var consumerType = responseDestinationPath.Value;
+                        busFactoryConfig.ReceiveEndpoint("Req.Resp.Async-" + responseDestinationPath.Key, configurator =>
                         {
                             configurator.AddAsHighAvailableQueue(configuration);
-                            configurator.Consumer<T>(provider);
+                            configurator.Consumer(consumerType, type => Activator.CreateInstance(consumerType));
                         });
                     }
                 });
@@ -317,9 +326,10 @@ namespace Carbon.MassTransit
                 {
                     foreach (var responseDestinationPath in responseDestinationPaths)
                     {
+                        var consumerType = responseDestinationPath.Value;
                         busFactoryConfig.ReceiveEndpoint("Req.Resp.Async-" + responseDestinationPath, configurator =>
                         {
-                            configurator.Consumer<T>(provider);
+                            configurator.Consumer(consumerType, type => Activator.CreateInstance(consumerType));
                         });
                     }
                 });
