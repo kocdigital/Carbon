@@ -27,20 +27,40 @@ namespace Carbon.MassTransit.AsyncReqResp
         /// <param name="responseCode"></param>
         /// <returns></returns>
         /// <exception cref="Exception"></exception>
-        public static async Task SendResponseToReqRespAsync<T>(this ConsumeContext<T> context, string responseBody, ResponseCode responseCode = ResponseCode.Ok, Guid? correlationId = default) 
+        public static async Task SendResponseToReqRespAsync<T>(this ConsumeContext<T> context, string responseBody, ResponseCode responseCode = ResponseCode.Ok, Guid? correlationId = default, string sourceAddress = default) 
             where T:class
         {
-            if (responseCode == ResponseCode.Ok)
+
+            if (sourceAddress == default)
             {
-                ResponseSucceed responseSucceed = new ResponseSucceed(correlationId ?? context.CorrelationId.Value);
-                responseSucceed.ResponseBody = responseBody;
-                await context.Publish(responseSucceed);
+                if (responseCode == ResponseCode.Ok)
+                {
+                    ResponseSucceed responseSucceed = new ResponseSucceed(correlationId ?? context.CorrelationId.Value);
+                    responseSucceed.ResponseBody = responseBody;
+                    await context.Publish(responseSucceed);
+                }
+                else
+                {
+                    ResponseFailed responseFailed = new ResponseFailed(correlationId ?? context.CorrelationId.Value, responseCode);
+                    responseFailed.ResponseBody = responseBody;
+                    await context.Publish(responseFailed);
+                }
             }
             else
             {
-                ResponseFailed responseFailed = new ResponseFailed(correlationId ?? context.CorrelationId.Value, responseCode);
-                responseFailed.ResponseBody = responseBody;
-                await context.Publish(responseFailed);
+                var sendEp = await context.GetSendEndpoint(new Uri("exchange:" + sourceAddress));
+                if (responseCode == ResponseCode.Ok)
+                {
+                    ResponseSucceed responseSucceed = new ResponseSucceed(correlationId ?? context.CorrelationId.Value);
+                    responseSucceed.ResponseBody = responseBody;
+                    await sendEp.Send(responseSucceed);
+                }
+                else
+                {
+                    ResponseFailed responseFailed = new ResponseFailed(correlationId ?? context.CorrelationId.Value, responseCode);
+                    responseFailed.ResponseBody = responseBody;
+                    await sendEp.Send(responseFailed);
+                }
             }
         }
 
@@ -53,24 +73,43 @@ namespace Carbon.MassTransit.AsyncReqResp
         /// <param name="responseCode"></param>
         /// <returns></returns>
         /// <exception cref="Exception"></exception>
-        public static async Task SendResponseToReqRespAsync(this IReqRespResponderBus context, Guid correlationId, string responseBody, ResponseCode responseCode = ResponseCode.Ok)
+        public static async Task SendResponseToReqRespAsync(this IReqRespResponderBus context, Guid correlationId, string responseBody, ResponseCode responseCode = ResponseCode.Ok, string sourceAddress = default)
         {
             if(correlationId == Guid.Empty)
             {
                 throw new Exception("CorrelationId cannot be Guid.Empty");
             }
 
-            if (responseCode == ResponseCode.Ok)
+            if (sourceAddress == default)
             {
-                ResponseSucceed responseSucceed = new ResponseSucceed(correlationId);
-                responseSucceed.ResponseBody = responseBody;
-                await context.Publish(responseSucceed);
+                if (responseCode == ResponseCode.Ok)
+                {
+                    ResponseSucceed responseSucceed = new ResponseSucceed(correlationId);
+                    responseSucceed.ResponseBody = responseBody;
+                    await context.Publish(responseSucceed);
+                }
+                else
+                {
+                    ResponseFailed responseFailed = new ResponseFailed(correlationId, responseCode);
+                    responseFailed.ResponseBody = responseBody;
+                    await context.Publish(responseFailed);
+                }
             }
             else
             {
-                ResponseFailed responseFailed = new ResponseFailed(correlationId, responseCode);
-                responseFailed.ResponseBody = responseBody;
-                await context.Publish(responseFailed);
+                var sendEp = await context.GetSendEndpoint(new Uri("exchange:" + sourceAddress));
+                if (responseCode == ResponseCode.Ok)
+                {
+                    ResponseSucceed responseSucceed = new ResponseSucceed(correlationId);
+                    responseSucceed.ResponseBody = responseBody;
+                    await sendEp.Send(responseSucceed);
+                }
+                else
+                {
+                    ResponseFailed responseFailed = new ResponseFailed(correlationId, responseCode);
+                    responseFailed.ResponseBody = responseBody;
+                    await sendEp.Send(responseFailed);
+                }
             }
         }
 
@@ -83,17 +122,20 @@ namespace Carbon.MassTransit.AsyncReqResp
         /// <returns></returns>
         public static async Task SendResponseToReqRespAsync(this ConsumeContext<IRequestCarrierRequest> consumeContext, string responseBody, ResponseCode responseCode = ResponseCode.Ok)
         {
+            string srcAddress = consumeContext.Message.SourceAddress;
+            var sendEp = await consumeContext.GetSendEndpoint(new Uri("exchange:" + srcAddress));
+
             if (responseCode == ResponseCode.Ok)
             {
                 ResponseSucceed responseSucceed = new ResponseSucceed(consumeContext.Message.CorrelationId);
                 responseSucceed.ResponseBody = responseBody;
-                await consumeContext.Publish(responseSucceed);
+                await sendEp.Send(responseSucceed);
             }
             else
             {
                 ResponseFailed responseFailed = new ResponseFailed(consumeContext.Message.CorrelationId, responseCode);
                 responseFailed.ResponseBody = responseBody;
-                await consumeContext.Publish(responseFailed);
+                await sendEp.Send(responseFailed);
             }
         }
 
