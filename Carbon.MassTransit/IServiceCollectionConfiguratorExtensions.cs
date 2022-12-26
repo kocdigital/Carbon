@@ -283,6 +283,51 @@ namespace Carbon.MassTransit
         }
 
         /// <summary>
+        /// Adds AsyncRequestResponsePattern. Use this overload for only responder to requestor
+        /// </summary>
+        /// <typeparam name="T">Your request handler consumer where you respond to consumer</typeparam>
+        /// <param name="services"></param>
+        /// <param name="configuration"></param>
+        /// <param name="responseDestinationPath"></param>
+        public static void AddAsyncRequestResponsePatternForResponder<T>(this IServiceCollection services, IConfiguration configuration, string[] responseDestinationPaths)
+            where T : class, IConsumer<IRequestCarrierRequest>
+        {
+            if (responseDestinationPaths == null || responseDestinationPaths.Length == 0)
+            {
+                throw new Exception("responseDestinationPath cannot be null or empty");
+            }
+
+            services.AddMassTransitBus<IReqRespResponderBus>(cfg =>
+            {
+                cfg.AddConsumer<T>();
+
+                cfg.AddRabbitMqBus(configuration, (provider, busFactoryConfig) =>
+                {
+                    foreach (var responseDestinationPath in responseDestinationPaths)
+                    {
+                        busFactoryConfig.ReceiveEndpoint("Req.Resp.Async-" + responseDestinationPath, configurator =>
+                        {
+                            configurator.AddAsHighAvailableQueue(configuration);
+                            configurator.Consumer<T>(provider);
+                        });
+                    }
+                });
+
+                cfg.AddServiceBus(configuration, (provider, busFactoryConfig) =>
+                {
+                    foreach (var responseDestinationPath in responseDestinationPaths)
+                    {
+                        busFactoryConfig.ReceiveEndpoint("Req.Resp.Async-" + responseDestinationPath, configurator =>
+                        {
+                            configurator.Consumer<T>(provider);
+                        });
+                    }
+                });
+            });
+        }
+
+
+        /// <summary>
         /// ReceiveEndpoint queue will be declared as a quorum queue, if it is already declared as default, it will delete the existing one and create new HA queue
         /// </summary>
         /// <param name="cfg"></param>

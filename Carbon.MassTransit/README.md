@@ -397,6 +397,9 @@ This will register your responder and request handler (in startup)
 //Use a user-friendly and sensible destination name such as **MyIntegrationApi**, this destination name can be targeted
 //by your request sender so that you request finds this responder well
 services.AddAsyncRequestResponsePatternForResponder<ExternalDataConsumer>(Configuration, "MyIntegrationApi");
+//Or use this overload to add multiple responders
+//services.AddAsyncRequestResponsePatternForResponder<ExternalDataConsumer>(Configuration, new string[]{"MyIntegrationApi", "MyIntegrationApi2"});
+
 ```
 **5a. Send your request from requestor API (Async)**
 
