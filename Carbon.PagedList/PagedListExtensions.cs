@@ -18,10 +18,7 @@ namespace Carbon.PagedList
         /// <param name="pageSize">The maximum size of any individual subset.</param>
         /// <returns>A subset of this collection of objects that can be individually accessed by index and containing metadata about the collection of objects the subset was created from.</returns>
         /// <seealso cref="PagedList{T}"/>
-        public static IPagedList<T> ToPagedList<T>(this IEnumerable<T> superset, int pageNumber, int pageSize)
-        {
-            return new PagedList<T>(superset, pageNumber, pageSize);
-        }
+        public static IPagedList<T> ToPagedList<T>(this IEnumerable<T> superset, int pageNumber, int pageSize) => new PagedList<T>(superset, pageNumber, pageSize);
 
         /// <summary>
         /// Creates a subset of this collection of objects that can be individually accessed by index and containing metadata about the collection of objects the subset was created from.
@@ -32,10 +29,7 @@ namespace Carbon.PagedList
         /// <param name="pageSize">The maximum size of any individual subset.</param>
         /// <returns>A subset of this collection of objects that can be individually accessed by index and containing metadata about the collection of objects the subset was created from.</returns>
         /// <seealso cref="PagedList{T}"/>
-        public static IPagedList<T> ToPagedList<T>(this IQueryable<T> superset, int pageNumber, int pageSize)
-        {
-            return new PagedList<T>(superset, pageNumber, pageSize);
-        }
+        public static IPagedList<T> ToPagedList<T>(this IQueryable<T> superset, int pageNumber, int pageSize) => new PagedList<T>(superset, pageNumber, pageSize);
 
         /// <summary>
         /// Splits a collection of objects into n pages with an (for example, if I have a list of 45 shoes and say 'shoes.Split(5)' I will now have 4 pages of 10 shoes and 1 page of 5 shoes.
@@ -44,13 +38,11 @@ namespace Carbon.PagedList
         /// <param name="superset">The collection of objects to be divided into subsets.</param>
         /// <param name="numberOfPages">The number of pages this collection should be split into.</param>
         /// <returns>A subset of this collection of objects, split into n pages.</returns>
-        public static IEnumerable<IEnumerable<T>> Split<T>(this IEnumerable<T> superset, int numberOfPages)
-        {
-            return superset
+        public static IEnumerable<IEnumerable<T>> Split<T>(this IEnumerable<T> superset, int numberOfPages) =>
+            superset
                 .Select((item, index) => new { index, item })
                 .GroupBy(x => x.index % numberOfPages)
                 .Select(x => x.Select(y => y.item));
-        }
 
         /// <summary>
         /// Splits a collection of objects into an unknown number of pages with n items per page (for example, if I have a list of 45 shoes and say 'shoes.Partition(10)' I will now have 4 pages of 10 shoes and 1 page of 5 shoes.
@@ -61,13 +53,14 @@ namespace Carbon.PagedList
         /// <returns>A subset of this collection of objects, split into pages of maximum size n.</returns>
         public static IEnumerable<IEnumerable<T>> Partition<T>(this IEnumerable<T> superset, int pageSize)
         {
-            if (superset.Count() < pageSize)
-                yield return superset;
+            var enumerableAsList = superset.ToList();
+            if (enumerableAsList.Count < pageSize)
+                yield return enumerableAsList;
             else
             {
-                var numberOfPages = Math.Ceiling(superset.Count() / (double)pageSize);
+                var numberOfPages = Math.Ceiling(enumerableAsList.Count / (double)pageSize);
                 for (var i = 0; i < numberOfPages; i++)
-                    yield return superset.Skip(pageSize * i).Take(pageSize);
+                    yield return enumerableAsList.Skip(pageSize * i).Take(pageSize);
             }
         }
     }

@@ -25,19 +25,20 @@ namespace Carbon.PagedList
         protected List<T> Subset = new List<T>();
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="PagedList{T}"/> class that divides the supplied superset into subsets the size of the supplied pageSize. The instance then only containes the objects contained in the subset specified by index.
+        /// Initializes a new instance of the <see cref="PagedList{T}"/> class that divides the supplied superset into subsets the size of the supplied pageSize. The instance then only contains the objects contained in the subset specified by index.
         /// </summary>
-        /// <param name="superset">The collection of objects to be divided into subsets. If the collection implements <see cref="IQueryable{T}"/>, it will be treated as such.</param>
+        /// <param name="subset">The collection of objects to be divided into subsets. If the collection implements <see cref="IQueryable{T}"/>, it will be treated as such.</param>
         /// <param name="pageNumber">The one-based index of the subset of objects to be contained by this instance.</param>
         /// <param name="pageSize">The maximum size of any individual subset.</param>
+        /// <param name="totalCount">Total number of objects contained within the superset.</param>
         /// <exception cref="ArgumentOutOfRangeException">The specified index cannot be less than zero.</exception>
         /// <exception cref="ArgumentOutOfRangeException">The specified page size cannot be less than one.</exception>
         public PagedList(IEnumerable<T> subset, int pageNumber, int pageSize, int totalCount)
         {
             if (pageNumber < 1)
-                throw new ArgumentOutOfRangeException("pageNumber", pageNumber, "PageNumber cannot be below 1.");
+                throw new ArgumentOutOfRangeException(nameof(pageNumber), pageNumber, "PageNumber cannot be below 1.");
             if (pageSize < 1)
-                throw new ArgumentOutOfRangeException("pageSize", pageSize, "PageSize cannot be less than 1.");
+                throw new ArgumentOutOfRangeException(nameof(pageSize), pageSize, "PageSize cannot be less than 1.");
 
             // set source to blank list if superset is null to prevent exceptions
             TotalItemCount = totalCount;
@@ -62,7 +63,7 @@ namespace Carbon.PagedList
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="PagedList{T}"/> class that divides the supplied superset into subsets the size of the supplied pageSize. The instance then only containes the objects contained in the subset specified by index.
+        /// Initializes a new instance of the <see cref="PagedList{T}"/> class that divides the supplied superset into subsets the size of the supplied pageSize. The instance then only contains the objects contained in the subset specified by index.
         /// </summary>
         /// <param name="superset">The collection of objects to be divided into subsets. If the collection implements <see cref="IQueryable{T}"/>, it will be treated as such.</param>
         /// <param name="pageNumber">The one-based index of the subset of objects to be contained by this instance.</param>
@@ -72,12 +73,12 @@ namespace Carbon.PagedList
         public PagedList(IQueryable<T> superset, int pageNumber, int pageSize)
         {
             if (pageNumber < 1)
-                throw new ArgumentOutOfRangeException("pageNumber", pageNumber, "PageNumber cannot be below 1.");
+                throw new ArgumentOutOfRangeException(nameof(pageNumber), pageNumber, "PageNumber cannot be below 1.");
             if (pageSize < 1)
-                throw new ArgumentOutOfRangeException("pageSize", pageSize, "PageSize cannot be less than 1.");
+                throw new ArgumentOutOfRangeException(nameof(pageSize), pageSize, "PageSize cannot be less than 1.");
 
             // set source to blank list if superset is null to prevent exceptions
-            TotalItemCount = superset == null ? 0 : superset.Count();
+            TotalItemCount = superset?.Count() ?? 0;
             PageSize = pageSize;
             PageNumber = pageNumber;
             PageCount = TotalItemCount > 0
@@ -99,7 +100,7 @@ namespace Carbon.PagedList
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="PagedList{T}"/> class that divides the supplied superset into subsets the size of the supplied pageSize. The instance then only containes the objects contained in the subset specified by index.
+        /// Initializes a new instance of the <see cref="PagedList{T}"/> class that divides the supplied superset into subsets the size of the supplied pageSize. The instance then only contains the objects contained in the subset specified by index.
         /// </summary>
         /// <param name="superset">The collection of objects to be divided into subsets. If the collection implements <see cref="IQueryable{T}"/>, it will be treated as such.</param>
         /// <param name="pageNumber">The one-based index of the subset of objects to be contained by this instance.</param>
@@ -107,7 +108,7 @@ namespace Carbon.PagedList
         /// <exception cref="ArgumentOutOfRangeException">The specified index cannot be less than zero.</exception>
         /// <exception cref="ArgumentOutOfRangeException">The specified page size cannot be less than one.</exception>
         public PagedList(IEnumerable<T> superset, int pageNumber, int pageSize)
-            : this(superset.AsQueryable<T>(), pageNumber, pageSize)
+            : this(superset.AsQueryable(), pageNumber, pageSize)
         {
         }
 
@@ -117,45 +118,30 @@ namespace Carbon.PagedList
         /// 	Returns an enumerator that iterates through the BasePagedList&lt;T&gt;.
         /// </summary>
         /// <returns>A BasePagedList&lt;T&gt;.Enumerator for the BasePagedList&lt;T&gt;.</returns>
-        public IEnumerator<T> GetEnumerator()
-        {
-            return Subset.GetEnumerator();
-        }
+        public IEnumerator<T> GetEnumerator() => Subset.GetEnumerator();
 
         /// <summary>
         /// 	Returns an enumerator that iterates through the BasePagedList&lt;T&gt;.
         /// </summary>
         /// <returns>A BasePagedList&lt;T&gt;.Enumerator for the BasePagedList&lt;T&gt;.</returns>
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            return GetEnumerator();
-        }
+        IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
 
         ///<summary>
         ///	Gets the element at the specified index.
         ///</summary>
         ///<param name = "index">The zero-based index of the element to get.</param>
-        public T this[int index]
-        {
-            get { return Subset[index]; }
-        }
+        public T this[int index] => Subset[index];
 
         /// <summary>
         /// 	Gets the number of elements contained on this page.
         /// </summary>
-        public int Count
-        {
-            get { return Subset.Count; }
-        }
+        public int Count => Subset.Count;
 
         ///<summary>
         /// Gets a non-enumerable copy of this paged list.
         ///</summary>
         ///<returns>A non-enumerable copy of this paged list.</returns>
-        public IPagedList GetMetaData()
-        {
-            return new PagedListMetaData(this);
-        }
+        public IPagedList GetMetaData() => new PagedListMetaData(this);
 
         #endregion
     }
