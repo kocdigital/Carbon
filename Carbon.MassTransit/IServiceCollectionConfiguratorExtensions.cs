@@ -314,10 +314,10 @@ namespace Carbon.MassTransit
                     foreach (var responseDestinationPath in responseDestinationPaths)
                     {
                         var consumerType = responseDestinationPath.Value;
+                        var dependencyConsumer = provider.GetRequiredService(responseDestinationPath.Value);
                         busFactoryConfig.ReceiveEndpoint("Req.Resp.Async-" + responseDestinationPath.Key, configurator =>
                         {
                             configurator.AddAsHighAvailableQueue(configuration);
-                            var dependencyConsumer = provider.GetRequiredService(responseDestinationPath.Value);
                             configurator.Consumer(consumerType, type => dependencyConsumer);
                         });
                     }
