@@ -314,10 +314,11 @@ namespace Carbon.MassTransit
                     foreach (var responseDestinationPath in responseDestinationPaths)
                     {
                         var consumerType = responseDestinationPath.Value;
+                        var dependencyConsumer = provider.GetRequiredService(responseDestinationPath.Value);
                         busFactoryConfig.ReceiveEndpoint("Req.Resp.Async-" + responseDestinationPath.Key, configurator =>
                         {
                             configurator.AddAsHighAvailableQueue(configuration);
-                            configurator.Consumer(consumerType, type => Activator.CreateInstance(consumerType));
+                            configurator.Consumer(consumerType, type => dependencyConsumer);
                         });
                     }
                 });
@@ -327,9 +328,10 @@ namespace Carbon.MassTransit
                     foreach (var responseDestinationPath in responseDestinationPaths)
                     {
                         var consumerType = responseDestinationPath.Value;
+                        var dependencyConsumer = provider.GetRequiredService(responseDestinationPath.Value);
                         busFactoryConfig.ReceiveEndpoint("Req.Resp.Async-" + responseDestinationPath, configurator =>
                         {
-                            configurator.Consumer(consumerType, type => Activator.CreateInstance(consumerType));
+                            configurator.Consumer(consumerType, type => dependencyConsumer);
                         });
                     }
                 });
