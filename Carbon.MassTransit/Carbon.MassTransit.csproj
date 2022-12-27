@@ -1,9 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFramework>netstandard2.0</TargetFramework>
-		<Version>3.8.0</Version>
-		<Description>
+		<TargetFrameworks>net6.0;net5.0;netcoreapp3.1</TargetFrameworks>
+		<Version>3.9.0</Version>
+		<Description>                                                3.9.0
+                                                - MultiTarget framework support (.net3.1 - 5 - 6) rather than being single target with .NetStandard 2.0 which is outdated
 			3.8.0
 			- It is now possible to supply custom configuration objects to AddRabbitMqBus and AddServiceBus extensions.
 			- It is now possible to give custom health check tags to AddRabbitMqBus extensions (helps in avoiding duplicates).

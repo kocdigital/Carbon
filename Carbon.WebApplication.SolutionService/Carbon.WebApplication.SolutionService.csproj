@@ -1,9 +1,13 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.1</TargetFramework>
-    <Version>2.8.1</Version>
-    <Description>-2.8.0
+	  <TargetFrameworks>net6.0;net5.0;netcoreapp3.1</TargetFrameworks>
+	  <Version>2.9.0</Version>
+    <Description>- 2.9.0
+- MultiTarget framework support (.net3.1 - 5 - 6) rather than being previously single target with .NetStandard 2.0 which is outdated
+-Works with MassTransit 3.9.0
+
+-2.8.0
 - Works with MassTransit 3.7.2 version which supports quorum queues as well as this package supports quorum queues as of this version
 -2.7.1
 - Carbon.Domain.Messages updated from 1.8.0 to 1.9.18 for Solution model Uri prop
