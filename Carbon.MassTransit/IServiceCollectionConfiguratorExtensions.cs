@@ -101,13 +101,7 @@ namespace Carbon.MassTransit
 
             if (massTransitSettings.BusType == MassTransitBusType.RabbitMQ)
             {
-                if (massTransitSettings.RabbitMq == null)
-                    throw new ArgumentNullException(nameof(massTransitSettings.RabbitMq));
-
-                var busSettings = massTransitSettings.RabbitMq;
-                serviceCollection.UsingRabbitMq((cfg, x) => rabbitMqBusFactory(configurator, busSettings, cfg, x));
-
-                serviceCollection.Collection.AddRabbitMqBusHealthCheck($"amqp://{busSettings.Username}:{busSettings.Password}@{busSettings.Host}:{busSettings.Port}{busSettings.VirtualHost}", HealthStatus.Unhealthy, healthCheckTag);
+                serviceCollection.AddRabbitMqBus(massTransitSettings.RabbitMq, configurator, healthCheckTag);
             }
         }
 
@@ -133,17 +127,8 @@ namespace Carbon.MassTransit
 
             if (massTransitSettings.BusType == MassTransitBusType.RabbitMQ)
             {
-                if (massTransitSettings.RabbitMq == null)
-                    throw new ArgumentNullException(nameof(massTransitSettings.RabbitMq));
 
-                var busSettings = massTransitSettings.RabbitMq;
-
-                serviceCollection.UsingRabbitMq((cfg, x) => rabbitMqBusFactory(configurator, busSettings, cfg, x));
-
-                if(string.IsNullOrEmpty(healthCheckTag))
-                    healthCheckTag = typeof(T).Name;
-
-                serviceCollection.Collection.AddRabbitMqBusHealthCheck($"amqp://{busSettings.Username}:{busSettings.Password}@{busSettings.Host}:{busSettings.Port}{busSettings.VirtualHost}", name: healthCheckTag);
+                serviceCollection.AddRabbitMqBus<T>(massTransitSettings.RabbitMq, configurator, healthCheckTag);
             }
         }
 
@@ -233,10 +218,7 @@ namespace Carbon.MassTransit
 
             if (massTransitSettings.BusType == MassTransitBusType.AzureServiceBus)
             {
-                if (massTransitSettings.ServiceBus == null)
-                    throw new ArgumentNullException(nameof(massTransitSettings.ServiceBus));
-
-                serviceCollection.AddBus(cfg => serviceBusFactory(configurator, massTransitSettings.ServiceBus, cfg));
+                serviceCollection.AddServiceBus(massTransitSettings.ServiceBus, configurator);
             }
         }
 
@@ -260,10 +242,7 @@ namespace Carbon.MassTransit
 
             if (massTransitSettings.BusType == MassTransitBusType.AzureServiceBus)
             {
-                if (massTransitSettings.ServiceBus == null)
-                    throw new ArgumentNullException(nameof(massTransitSettings.ServiceBus));
-
-                serviceCollection.AddBus(cfg => serviceBusFactory(configurator, massTransitSettings.ServiceBus, cfg));
+                serviceCollection.AddServiceBus<T>(massTransitSettings.ServiceBus, configurator);
             }
         }
 
