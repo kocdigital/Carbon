@@ -77,6 +77,8 @@ namespace Carbon.MassTransit
             }
         }
 
+        #region AddRabbitMqBus
+
         /// <summary>
         /// Rabbit MQ Add Extension Method
         /// </summary>
@@ -86,9 +88,11 @@ namespace Carbon.MassTransit
         /// <param name="serviceCollection">Service Collection Configurator</param>
         /// <param name="configuration">API Configuration Item with MassTransit Section</param>
         /// <param name="configurator">Service provider's Configuration Action</param>
+        /// <param name="healthCheckTag">Name to display in health check section</param>
         public static void AddRabbitMqBus(this IServiceCollectionBusConfigurator serviceCollection,
-                                       IConfiguration configuration, Action<IServiceProvider,
-                                       IRabbitMqBusFactoryConfigurator> configurator)
+                                       IConfiguration configuration,
+                                       Action<IServiceProvider, IRabbitMqBusFactoryConfigurator> configurator,
+                                       string healthCheckTag = "RabbitMqConnection")
         {
             var massTransitSettings = configuration.GetSection("MassTransit").Get<MassTransitSettings>();
 
@@ -101,9 +105,9 @@ namespace Carbon.MassTransit
                     throw new ArgumentNullException(nameof(massTransitSettings.RabbitMq));
 
                 var busSettings = massTransitSettings.RabbitMq;
-                serviceCollection.UsingRabbitMq((cfg, x) => busFactory(configurator, busSettings, cfg, x));
+                serviceCollection.UsingRabbitMq((cfg, x) => rabbitMqBusFactory(configurator, busSettings, cfg, x));
 
-                serviceCollection.Collection.AddRabbitMqBusHealthCheck($"amqp://{busSettings.Username}:{busSettings.Password}@{busSettings.Host}:{busSettings.Port}{busSettings.VirtualHost}", HealthStatus.Unhealthy, "RabbitMqConnection");
+                serviceCollection.Collection.AddRabbitMqBusHealthCheck($"amqp://{busSettings.Username}:{busSettings.Password}@{busSettings.Host}:{busSettings.Port}{busSettings.VirtualHost}", HealthStatus.Unhealthy, healthCheckTag);
             }
         }
 
@@ -116,9 +120,11 @@ namespace Carbon.MassTransit
         /// <param name="serviceCollection">Service Collection Configurator</param>
         /// <param name="configuration">API Configuration Item with MassTransit Section</param>
         /// <param name="configurator">Service provider's Configuration Action</param>
+        /// <param name="healthCheckTag">Name to display in health check section. If left empty name will be assigned as typeof(T).Name</param>
         public static void AddRabbitMqBus<T>(this IServiceCollectionBusConfigurator<T> serviceCollection,
-                                       IConfiguration configuration, Action<IServiceProvider,
-                                       IRabbitMqBusFactoryConfigurator> configurator) where T : class, IBus
+                                       IConfiguration configuration,
+                                       Action<IServiceProvider, IRabbitMqBusFactoryConfigurator> configurator,
+                                       string healthCheckTag = "") where T : class, IBus
         {
             var massTransitSettings = configuration.GetSection("MassTransit").Get<MassTransitSettings>();
 
@@ -132,13 +138,62 @@ namespace Carbon.MassTransit
 
                 var busSettings = massTransitSettings.RabbitMq;
 
-                serviceCollection.UsingRabbitMq((cfg, x) =>
-                {
-                    busFactory(configurator, busSettings, cfg, x);
-                });
+                serviceCollection.UsingRabbitMq((cfg, x) => rabbitMqBusFactory(configurator, busSettings, cfg, x));
 
-                serviceCollection.Collection.AddRabbitMqBusHealthCheck($"amqp://{busSettings.Username}:{busSettings.Password}@{busSettings.Host}:{busSettings.Port}{busSettings.VirtualHost}", name: typeof(T).Name);
+                if(string.IsNullOrEmpty(healthCheckTag))
+                    healthCheckTag = typeof(T).Name;
+
+                serviceCollection.Collection.AddRabbitMqBusHealthCheck($"amqp://{busSettings.Username}:{busSettings.Password}@{busSettings.Host}:{busSettings.Port}{busSettings.VirtualHost}", name: healthCheckTag);
             }
+        }
+
+        /// <summary>
+        /// Rabbit MQ Add Extension Method
+        /// </summary>
+        /// <remarks>
+        /// Adds new bus to the service collection  with the given configuration parameters in "MassTransit" config item.
+        /// </remarks>
+        /// <param name="serviceCollection">Service Collection Configurator</param>
+        /// <param name="rabbitMqSettings">RabbitMQ Settings for Host Configuration</param>
+        /// <param name="configurator">Service provider's Configuration Action</param>
+        /// <param name="healthCheckTag">Name to display in health check section</param>
+        public static void AddRabbitMqBus(this IServiceCollectionBusConfigurator serviceCollection,
+                                       RabbitMqSettings rabbitMqSettings,
+                                       Action<IServiceProvider, IRabbitMqBusFactoryConfigurator> configurator,
+                                       string healthCheckTag = "RabbitMqConnection")
+        {
+            if (rabbitMqSettings == null)
+                throw new ArgumentNullException(nameof(rabbitMqSettings));
+
+            serviceCollection.UsingRabbitMq((cfg, x) => rabbitMqBusFactory(configurator, rabbitMqSettings, cfg, x));
+
+            serviceCollection.Collection.AddRabbitMqBusHealthCheck($"amqp://{rabbitMqSettings.Username}:{rabbitMqSettings.Password}@{rabbitMqSettings.Host}:{rabbitMqSettings.Port}{rabbitMqSettings.VirtualHost}", HealthStatus.Unhealthy, healthCheckTag);
+        }
+
+        /// <summary>
+        /// Rabbit MQ Add Extension Method
+        /// </summary>
+        /// <remarks>
+        /// Adds new bus to the service collection with the given configuration parameters in "MassTransit" config item.
+        /// </remarks>
+        /// <param name="serviceCollection">Service Collection Configurator</param>
+        /// <param name="rabbitMqSettings">RabbitMQ Settings for Host Configuration</param>
+        /// <param name="configurator">Service provider's Configuration Action</param>
+        /// <param name="healthCheckTag">Name to display in health check section. If left empty name will be assigned as typeof(T).Name</param>
+        public static void AddRabbitMqBus<T>(this IServiceCollectionBusConfigurator<T> serviceCollection,
+                                       RabbitMqSettings rabbitMqSettings,
+                                       Action<IServiceProvider, IRabbitMqBusFactoryConfigurator> configurator,
+                                       string healthCheckTag = "") where T : class, IBus
+        {
+            if (rabbitMqSettings == null)
+                throw new ArgumentNullException(nameof(rabbitMqSettings));
+
+            serviceCollection.UsingRabbitMq((cfg, x) => rabbitMqBusFactory(configurator, rabbitMqSettings, cfg, x));
+
+            if (string.IsNullOrEmpty(healthCheckTag))
+                healthCheckTag = typeof(T).Name;
+
+            serviceCollection.Collection.AddRabbitMqBusHealthCheck($"amqp://{rabbitMqSettings.Username}:{rabbitMqSettings.Password}@{rabbitMqSettings.Host}:{rabbitMqSettings.Port}{rabbitMqSettings.VirtualHost}", name: healthCheckTag);
         }
 
         public static void AddRabbitMqBusHealthCheck(this IServiceCollection services,
@@ -154,6 +209,10 @@ namespace Carbon.MassTransit
             }, name: name, failureStatus: failureStatus);
         }
 
+        #endregion
+
+        #region AddServiceBus
+
         /// <summary>
         /// Azure Service Bus Add Extension Method
         /// </summary>
@@ -164,8 +223,8 @@ namespace Carbon.MassTransit
         /// <param name="configuration">API Configuration Item with MassTransit Section</param>
         /// <param name="configurator">Service provider's Configuration Action</param>
         public static void AddServiceBus(this IServiceCollectionBusConfigurator serviceCollection,
-                                       IConfiguration configuration, Action<IServiceProvider,
-                                       IServiceBusBusFactoryConfigurator> configurator)
+                                       IConfiguration configuration,
+                                       Action<IServiceProvider, IServiceBusBusFactoryConfigurator> configurator)
         {
             var massTransitSettings = configuration.GetSection("MassTransit").Get<MassTransitSettings>();
 
@@ -177,9 +236,76 @@ namespace Carbon.MassTransit
                 if (massTransitSettings.ServiceBus == null)
                     throw new ArgumentNullException(nameof(massTransitSettings.ServiceBus));
 
-                serviceCollection.AddBus(cfg => serviceBusFactory(configurator, massTransitSettings, cfg));
+                serviceCollection.AddBus(cfg => serviceBusFactory(configurator, massTransitSettings.ServiceBus, cfg));
             }
         }
+
+        /// <summary>
+        /// Azure Service Bus Add Extension Method
+        /// </summary>
+        /// <remarks>
+        /// Adds Azure Service Bus to the service collection given with the given configuration parameters in "MassTransit" config item.
+        /// </remarks>
+        /// <param name="serviceCollection">Service Collection Configurator</param>
+        /// <param name="configuration">API Configuration Item with MassTransit Section</param>
+        /// <param name="configurator">Service provider's Configuration Action</param>
+        public static void AddServiceBus<T>(this IServiceCollectionBusConfigurator<T> serviceCollection,
+                                       IConfiguration configuration,
+                                       Action<IServiceProvider, IServiceBusBusFactoryConfigurator> configurator) where T : class, IBus
+        {
+            var massTransitSettings = configuration.GetSection("MassTransit").Get<MassTransitSettings>();
+
+            if (massTransitSettings == null)
+                throw new ArgumentNullException(nameof(massTransitSettings));
+
+            if (massTransitSettings.BusType == MassTransitBusType.AzureServiceBus)
+            {
+                if (massTransitSettings.ServiceBus == null)
+                    throw new ArgumentNullException(nameof(massTransitSettings.ServiceBus));
+
+                serviceCollection.AddBus(cfg => serviceBusFactory(configurator, massTransitSettings.ServiceBus, cfg));
+            }
+        }
+
+        /// <summary>
+        /// Azure Service Bus Add Extension Method
+        /// </summary>
+        /// <remarks>
+        /// Adds Azure Service Bus to the service collection given with the given configuration parameters in "MassTransit" config item.
+        /// </remarks>
+        /// <param name="serviceCollection">Service Collection Configurator</param>
+        /// <param name="serviceBusSettings">Azure Service Bus Settings for Host Configuration</param>
+        /// <param name="configurator">Service provider's Configuration Action</param>
+        public static void AddServiceBus(this IServiceCollectionBusConfigurator serviceCollection,
+                                       ServiceBusSettings serviceBusSettings,
+                                       Action<IServiceProvider, IServiceBusBusFactoryConfigurator> configurator)
+        {
+            if (serviceBusSettings == null)
+                throw new ArgumentNullException(nameof(serviceBusSettings));
+
+            serviceCollection.AddBus(cfg => serviceBusFactory(configurator, serviceBusSettings, cfg));
+        }
+
+        /// <summary>
+        /// Azure Service Bus Add Extension Method
+        /// </summary>
+        /// <remarks>
+        /// Adds Azure Service Bus to the service collection given with the given configuration parameters in "MassTransit" config item.
+        /// </remarks>
+        /// <param name="serviceCollection">Service Collection Configurator</param>
+        /// <param name="serviceBusSettings">Azure Service Bus Settings for Host Configuration</param>
+        /// <param name="configurator">Service provider's Configuration Action</param>
+        public static void AddServiceBus<T>(this IServiceCollectionBusConfigurator<T> serviceCollection,
+                                       ServiceBusSettings serviceBusSettings,
+                                       Action<IServiceProvider, IServiceBusBusFactoryConfigurator> configurator) where T : class, IBus
+        {
+            if (serviceBusSettings == null)
+                throw new ArgumentNullException(nameof(serviceBusSettings));
+
+            serviceCollection.AddBus(cfg => serviceBusFactory(configurator, serviceBusSettings, cfg));
+        }
+
+        #endregion
 
         /// <summary>
         /// Adds AsyncRequestResponsePattern. Use this overload for only requestor
@@ -359,43 +485,14 @@ namespace Carbon.MassTransit
             cfg.ConnectReceiveEndpointObserver(new ReceiveEndpointObserver(configuration));
         }
 
-        /// <summary>
-        /// Azure Service Bus Add Extension Method
-        /// </summary>
-        /// <remarks>
-        /// Adds Azure Service Bus to the service collection given with the given configuration parameters in "MassTransit" config item.
-        /// </remarks>
-        /// <param name="serviceCollection">Service Collection Configurator</param>
-        /// <param name="configuration">API Configuration Item with MassTransit Section</param>
-        /// <param name="configurator">Service provider's Configuration Action</param>
-        public static void AddServiceBus<T>(this IServiceCollectionBusConfigurator<T> serviceCollection,
-                                       IConfiguration configuration, Action<IServiceProvider,
-                                       IServiceBusBusFactoryConfigurator> configurator) where T : class, IBus
-        {
-            var massTransitSettings = configuration.GetSection("MassTransit").Get<MassTransitSettings>();
-
-            if (massTransitSettings == null)
-                throw new ArgumentNullException(nameof(massTransitSettings));
-
-            if (massTransitSettings.BusType == MassTransitBusType.AzureServiceBus)
-            {
-                if (massTransitSettings.ServiceBus == null)
-                    throw new ArgumentNullException(nameof(massTransitSettings.ServiceBus));
-
-                serviceCollection.AddBus(cfg => serviceBusFactory(configurator, massTransitSettings, cfg));
-            }
-        }
-
         private static Func<Action<IServiceProvider, IServiceBusBusFactoryConfigurator>,
-                                        MassTransitSettings,
+                                        ServiceBusSettings,
                                         IBusRegistrationContext,
-                                        IBusControl> serviceBusFactory = (configurator, massTransitSettings, provider) =>
+                                        IBusControl> serviceBusFactory = (configurator, busSettings, provider) =>
         {
             return Bus.Factory.CreateUsingAzureServiceBus(x =>
             {
-                var busSettings = massTransitSettings.ServiceBus;
-
-                x.Host(massTransitSettings.ServiceBus.ConnectionString, (c) =>
+                x.Host(busSettings.ConnectionString, (c) =>
                 {
                     c.RetryLimit = busSettings.RetryLimit == 0 ? 1 : busSettings.RetryLimit;
 
@@ -416,7 +513,7 @@ namespace Carbon.MassTransit
                                         RabbitMqSettings,
                                         IBusRegistrationContext,
                                         IRabbitMqBusFactoryConfigurator,
-                                        IRabbitMqBusFactoryConfigurator> busFactory = (configurator, busSettings, provider, x) =>
+                                        IRabbitMqBusFactoryConfigurator> rabbitMqBusFactory = (configurator, busSettings, provider, x) =>
         {
             var host = $"rabbitmq://{busSettings.Host}:{busSettings.Port}{busSettings.VirtualHost}";
             x.Host(new Uri(host), (c) =>
