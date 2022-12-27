@@ -296,7 +296,6 @@ namespace Carbon.MassTransit
             {
                 throw new Exception("responseDestinationPath cannot be null or empty");
             }
-
             services.AddMassTransitBus<IReqRespResponderBus>(cfg =>
             {
                 foreach (var respPath in responseDestinationPaths)
@@ -308,13 +307,13 @@ namespace Carbon.MassTransit
 
                     cfg.AddConsumer(respPath.Value);
                 }
-
+                var serviceProvider = services.BuildServiceProvider();
                 cfg.AddRabbitMqBus(configuration, (provider, busFactoryConfig) =>
                 {
                     foreach (var responseDestinationPath in responseDestinationPaths)
                     {
                         var consumerType = responseDestinationPath.Value;
-                        var dependencyConsumer = provider.GetRequiredService(responseDestinationPath.Value);
+                        var dependencyConsumer = serviceProvider.GetRequiredService(responseDestinationPath.Value);
                         busFactoryConfig.ReceiveEndpoint("Req.Resp.Async-" + responseDestinationPath.Key, configurator =>
                         {
                             configurator.AddAsHighAvailableQueue(configuration);
@@ -328,7 +327,7 @@ namespace Carbon.MassTransit
                     foreach (var responseDestinationPath in responseDestinationPaths)
                     {
                         var consumerType = responseDestinationPath.Value;
-                        var dependencyConsumer = provider.GetRequiredService(responseDestinationPath.Value);
+                        var dependencyConsumer = serviceProvider.GetRequiredService(responseDestinationPath.Value);
                         busFactoryConfig.ReceiveEndpoint("Req.Resp.Async-" + responseDestinationPath, configurator =>
                         {
                             configurator.Consumer(consumerType, type => dependencyConsumer);
