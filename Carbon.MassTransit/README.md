@@ -399,7 +399,8 @@ This will register your responder and request handler (in startup)
 services.AddAsyncRequestResponsePatternForResponder<ExternalDataConsumer>(Configuration, "MyIntegrationApi");
 
 ```
-Or use this overload to register more than one consumer for each destination
+Or use this overload to register more than one consumer for each destination. 
+Please beware that you should register this pattern after all of your services, objects registered that is related to your consumer.
 ```csharp
 Dictionary<string, Type> keyValuePairs = new Dictionary<string, Type>();
 keyValuePairs.Add("MyIntegrationApi",  typeof(ExternalDataConsumer));

@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
-    <Version>2.8.0</Version>
+    <Version>2.8.1</Version>
     <Description>-2.8.0
 - Works with MassTransit 3.7.2 version which supports quorum queues as well as this package supports quorum queues as of this version
 -2.7.1
@@ -41,7 +41,6 @@ Supports Masstransit 7.1.x and Carbon.MassTransit 3.0.2
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="3.1.12" />
     <PackageReference Include="Carbon.Domain.Messages" Version="1.9.18" />
     <PackageReference Include="System.Runtime.Loader" Version="4.3.0" />
   </ItemGroup>
