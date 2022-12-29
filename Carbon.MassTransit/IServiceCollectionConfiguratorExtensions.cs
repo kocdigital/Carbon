@@ -443,23 +443,12 @@ namespace Carbon.MassTransit
         /// ReceiveEndpoint queue will be declared as a quorum queue, if it is already declared as default, it will delete the existing one and create new HA queue
         /// </summary>
         /// <param name="cfg"></param>
-        /// <param name="configuration">Configuration</param>
-        /// <remarks>Currently only works with RabbitMQ environments.</remarks>
+        /// <param name="configuration">Configuration</param>-
         public static void AddAsHighAvailableQueue(this IRabbitMqReceiveEndpointConfigurator cfg,
                                       IConfiguration configuration)
         {
             var massTransitSettings = configuration.GetSection("MassTransit").Get<MassTransitSettings>();
-            if (massTransitSettings == null)
-                throw new ArgumentNullException(nameof(massTransitSettings));
-
-            if (massTransitSettings.BusType == MassTransitBusType.RabbitMQ)
-            {
-                cfg.AddAsHighAvailableQueue(massTransitSettings.RabbitMq);
-            }
-            else
-            {
-                throw new NotImplementedException();
-            }
+            cfg.AddAsHighAvailableQueue(massTransitSettings.RabbitMq);
             
         }
 
