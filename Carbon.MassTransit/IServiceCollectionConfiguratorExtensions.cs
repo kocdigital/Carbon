@@ -127,7 +127,6 @@ namespace Carbon.MassTransit
 
             if (massTransitSettings.BusType == MassTransitBusType.RabbitMQ)
             {
-
                 serviceCollection.AddRabbitMqBus<T>(massTransitSettings.RabbitMq, configurator, healthCheckTag);
             }
         }
@@ -444,22 +443,59 @@ namespace Carbon.MassTransit
         /// ReceiveEndpoint queue will be declared as a quorum queue, if it is already declared as default, it will delete the existing one and create new HA queue
         /// </summary>
         /// <param name="cfg"></param>
-        /// <param name="configuration">Configuration</param>
+        /// <param name="configuration">Configuration</param>-
         public static void AddAsHighAvailableQueue(this IRabbitMqReceiveEndpointConfigurator cfg,
                                       IConfiguration configuration)
         {
-            cfg.SetQuorumQueue(3);
-            cfg.ConnectReceiveEndpointObserver(new ReceiveEndpointObserver(configuration));
+            var massTransitSettings = configuration.GetSection("MassTransit").Get<MassTransitSettings>();
+            cfg.AddAsHighAvailableQueue(massTransitSettings.RabbitMq);
+            
         }
+
+        /// <summary>
+        /// ReceiveEndpoint queue will be declared as a quorum queue, if it is already declared as default, it will delete the existing one and create new HA queue
+        /// </summary>
+        /// <param name="cfg"></param>
+        /// <param name="rabbitMqSettings">RabbitMQ Connection Settings</param>
+        public static void AddAsHighAvailableQueue(this IRabbitMqReceiveEndpointConfigurator cfg,
+                                      RabbitMqSettings rabbitMqSettings)
+        {
+            cfg.SetQuorumQueue(3);
+            cfg.ConnectReceiveEndpointObserver(new RabbitMQReceiveEndpointObserver(rabbitMqSettings));
+        }
+
         /// <summary>
         /// ReceiveEndpoint queue will be declared as a classic queue, if it is already declared as quorum or something else, it will delete the existing one and create new classic queue
         /// </summary>
         /// <param name="cfg"></param>
         /// <param name="configuration">Configuration</param>
+        /// <remarks>Currently only works with RabbitMQ environments.</remarks>
         public static void AddAsDefaultQueue(this IReceiveEndpointConfigurator cfg,
                                       IConfiguration configuration)
         {
-            cfg.ConnectReceiveEndpointObserver(new ReceiveEndpointObserver(configuration));
+            var massTransitSettings = configuration.GetSection("MassTransit").Get<MassTransitSettings>();
+            if (massTransitSettings == null)
+                throw new ArgumentNullException(nameof(massTransitSettings));
+
+            if (massTransitSettings.BusType == MassTransitBusType.RabbitMQ)
+            {
+                cfg.AddAsDefaultQueue(massTransitSettings.RabbitMq);
+            }
+            else
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        /// <summary>
+        /// ReceiveEndpoint queue will be declared as a classic queue, if it is already declared as quorum or something else, it will delete the existing one and create new classic queue
+        /// </summary>
+        /// <param name="cfg"></param>
+        /// <param name="rabbitMqSettings">RabbitMQ connection settings</param>
+        public static void AddAsDefaultQueue(this IReceiveEndpointConfigurator cfg,
+                                      RabbitMqSettings rabbitMqSettings)
+        {
+            cfg.ConnectReceiveEndpointObserver(new RabbitMQReceiveEndpointObserver(rabbitMqSettings));
         }
 
         private static Func<Action<IServiceProvider, IServiceBusBusFactoryConfigurator>,
