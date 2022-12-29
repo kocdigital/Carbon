@@ -411,17 +411,15 @@ namespace Carbon.MassTransit
 
                     cfg.AddConsumer(respPath.Value);
                 }
-                var serviceProvider = services.BuildServiceProvider();
                 cfg.AddRabbitMqBus(configuration, (provider, busFactoryConfig) =>
                 {
                     foreach (var responseDestinationPath in responseDestinationPaths)
                     {
                         var consumerType = responseDestinationPath.Value;
-                        var dependencyConsumer = serviceProvider.GetRequiredService(responseDestinationPath.Value);
                         busFactoryConfig.ReceiveEndpoint("Req.Resp.Async-" + responseDestinationPath.Key, configurator =>
                         {
                             configurator.AddAsHighAvailableQueue(configuration);
-                            configurator.Consumer(consumerType, type => dependencyConsumer);
+                            configurator.ConfigureConsumer((IRegistration)provider, consumerType);
                         });
                     }
                 });
@@ -431,10 +429,9 @@ namespace Carbon.MassTransit
                     foreach (var responseDestinationPath in responseDestinationPaths)
                     {
                         var consumerType = responseDestinationPath.Value;
-                        var dependencyConsumer = serviceProvider.GetRequiredService(responseDestinationPath.Value);
                         busFactoryConfig.ReceiveEndpoint("Req.Resp.Async-" + responseDestinationPath, configurator =>
                         {
-                            configurator.Consumer(consumerType, type => dependencyConsumer);
+                            configurator.ConfigureConsumer((IRegistration)provider, consumerType);
                         });
                     }
                 });
