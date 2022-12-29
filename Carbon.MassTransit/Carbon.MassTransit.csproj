@@ -2,8 +2,11 @@
 
 	<PropertyGroup>
 		<TargetFramework>netstandard2.0</TargetFramework>
-		<Version>3.8.0</Version>
+		<Version>3.8.1</Version>
 		<Description>
+			3.8.1
+			- It is now possible to call AddAsHighAvailableQueue and AddAsDefaultQueue extensions using custom
+			RabbitMQSettings objects.
 			3.8.0
 			- It is now possible to supply custom configuration objects to AddRabbitMqBus and AddServiceBus extensions.
 			- It is now possible to give custom health check tags to AddRabbitMqBus extensions (helps in avoiding duplicates).
