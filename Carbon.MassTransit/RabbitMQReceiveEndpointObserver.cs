@@ -1,17 +1,16 @@
-﻿using Carbon.MassTransit;
-using MassTransit;
+﻿using MassTransit;
 using Microsoft.Extensions.Configuration;
 using System;
 using System.Threading.Tasks;
 
 namespace Carbon.MassTransit
 {
-    public class ReceiveEndpointObserver : IReceiveEndpointObserver
+    public class RabbitMQReceiveEndpointObserver : IReceiveEndpointObserver
     {
-        private readonly IConfiguration _configuration;
-        public ReceiveEndpointObserver(IConfiguration configuration)
+        private readonly RabbitMqSettings _rabbitMqSettings;
+        public RabbitMQReceiveEndpointObserver(RabbitMqSettings rabbitMqSettings)
         {
-            _configuration = configuration;
+            _rabbitMqSettings = rabbitMqSettings;
         }
         public Task Completed(ReceiveEndpointCompleted completed)
         {
@@ -29,9 +28,7 @@ namespace Carbon.MassTransit
                 //If it is an existing queue with different type, delete it and let MassTransit create again
                 if (faultCode == 406 && faultMessage.Contains("x-queue-type"))
                 {
-                    var massTransitSettings = _configuration.GetSection("MassTransit").Get<MassTransitSettings>();
-                    var busSettings = massTransitSettings.RabbitMq;
-                    var rabbitMqUql = $"amqp://{busSettings.Username}:{busSettings.Password}@{busSettings.Host}:{busSettings.Port}{busSettings.VirtualHost}";
+                    var rabbitMqUql = $"amqp://{_rabbitMqSettings.Username}:{_rabbitMqSettings.Password}@{_rabbitMqSettings.Host}:{_rabbitMqSettings.Port}{_rabbitMqSettings.VirtualHost}";
 
                     var factory = new RabbitMQ.Client.ConnectionFactory()
                     {
