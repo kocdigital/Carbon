@@ -1,6 +1,7 @@
 ﻿using Automatonymous;
 using Carbon.MassTransit.AsyncReqResp.Events;
 using MassTransit;
+using MassTransit.Azure.ServiceBus.Core.Contexts;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Threading.Tasks;
@@ -22,12 +23,12 @@ namespace Carbon.MassTransit.AsyncReqResp
             try
             {
                 RequestCarrierRequest requestCarrierRequest = new RequestCarrierRequest(message.CorrelationId, message.RequestData.RequestBody, srcAddress);
-                var sendEp = await context.GetSendEndpoint(new Uri("exchange:" + requestData.DestinationEndpointName));
+                var sendEp = await context.GetSendEndpoint(new Uri(StaticHelpers.GetSendEndpointPrefix() + requestData.DestinationEndpointName));
                 await sendEp.Send(requestCarrierRequest);
             }
             catch (Exception ex)
             {
-                var sendEp = await context.GetSendEndpoint(new Uri("exchange:" + srcAddress));
+                var sendEp = await context.GetSendEndpoint(new Uri(StaticHelpers.GetSendEndpointPrefix() + srcAddress));
                 RequestSentFailed requestSentFailed = new RequestSentFailed(message.CorrelationId);
                 requestSentFailed.ErrorMessage = ex.Message;
                 requestSentFailed.StackTrace = ex.StackTrace;

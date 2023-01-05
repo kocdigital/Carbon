@@ -10,12 +10,28 @@ namespace Carbon.MassTransit.AsyncReqResp
 
     public static class StaticHelpers
     {
+        private static MassTransitBusType MassTransitBusType { get; set; }
         public enum ResponseCode
         {
             Ok = 200,
             BadRequest = 400,
             NotFound = 404,
             ServerError = 500
+        }
+
+        public static void SetStaticHelperBusType(MassTransitBusType massTransitBusType)
+        {
+            MassTransitBusType = massTransitBusType;
+        }
+
+        public static string GetSendEndpointPrefix()
+        {
+            if (MassTransitBusType == MassTransitBusType.RabbitMQ)
+                return "exchange:";
+            else if(MassTransitBusType == MassTransitBusType.AzureServiceBus)
+                return "queue:";
+            else
+                return "exchange:";
         }
 
         /// <summary>
@@ -30,7 +46,6 @@ namespace Carbon.MassTransit.AsyncReqResp
         public static async Task SendResponseToReqRespAsync<T>(this ConsumeContext<T> context, string responseBody, ResponseCode responseCode = ResponseCode.Ok, Guid? correlationId = default, string sourceAddress = default) 
             where T:class
         {
-
             if (sourceAddress == default)
             {
                 if (responseCode == ResponseCode.Ok)
@@ -48,7 +63,7 @@ namespace Carbon.MassTransit.AsyncReqResp
             }
             else
             {
-                var sendEp = await context.GetSendEndpoint(new Uri("exchange:" + sourceAddress));
+                var sendEp = await context.GetSendEndpoint(new Uri(GetSendEndpointPrefix() + sourceAddress));
                 if (responseCode == ResponseCode.Ok)
                 {
                     ResponseSucceed responseSucceed = new ResponseSucceed(correlationId ?? context.CorrelationId.Value);
@@ -75,7 +90,7 @@ namespace Carbon.MassTransit.AsyncReqResp
         /// <exception cref="Exception"></exception>
         public static async Task SendResponseToReqRespAsync(this IReqRespResponderBus context, Guid correlationId, string responseBody, ResponseCode responseCode = ResponseCode.Ok, string sourceAddress = default)
         {
-            if(correlationId == Guid.Empty)
+            if (correlationId == Guid.Empty)
             {
                 throw new Exception("CorrelationId cannot be Guid.Empty");
             }
@@ -97,7 +112,7 @@ namespace Carbon.MassTransit.AsyncReqResp
             }
             else
             {
-                var sendEp = await context.GetSendEndpoint(new Uri("exchange:" + sourceAddress));
+                var sendEp = await context.GetSendEndpoint(new Uri(GetSendEndpointPrefix() + sourceAddress));
                 if (responseCode == ResponseCode.Ok)
                 {
                     ResponseSucceed responseSucceed = new ResponseSucceed(correlationId);
@@ -123,7 +138,7 @@ namespace Carbon.MassTransit.AsyncReqResp
         public static async Task SendResponseToReqRespAsync(this ConsumeContext<IRequestCarrierRequest> consumeContext, string responseBody, ResponseCode responseCode = ResponseCode.Ok)
         {
             string srcAddress = consumeContext.Message.SourceAddress;
-            var sendEp = await consumeContext.GetSendEndpoint(new Uri("exchange:" + srcAddress));
+            var sendEp = await consumeContext.GetSendEndpoint(new Uri(GetSendEndpointPrefix() + srcAddress));
 
             if (responseCode == ResponseCode.Ok)
             {
@@ -142,7 +157,7 @@ namespace Carbon.MassTransit.AsyncReqResp
         public static async Task<IResponder> GetResponseFromReqRespAsync(this IReqRespRequestorBus reqRespRequestorBus, string requestBody, string responseDestinationPath, RequestTimeout requestTimeout = default)
         {
             var apiname = System.Reflection.Assembly.GetEntryAssembly().GetName().Name;
-            var reqClient = reqRespRequestorBus.CreateRequestClient<IRequestStarterRequest>(new Uri("exchange:" + apiname + "-request-starter-state"), requestTimeout);
+            var reqClient = reqRespRequestorBus.CreateRequestClient<IRequestStarterRequest>(new Uri(GetSendEndpointPrefix() + apiname + "-request-starter-state"), requestTimeout);
 
             IRequestStarterRequest requestStarterRequest = new RequestStarterRequest(Guid.NewGuid(), requestBody, "Req.Resp.Async-" + responseDestinationPath);
             var responseTaken = await reqClient.GetResponse<IResponder>(requestStarterRequest);
@@ -179,7 +194,7 @@ namespace Carbon.MassTransit.AsyncReqResp
 
             var apiname = System.Reflection.Assembly.GetEntryAssembly().GetName().Name;
 
-            var sendEp = await reqRespRequestorBus.GetSendEndpoint(new Uri("exchange:" + apiname + "-request-starter-state"));
+            var sendEp = await reqRespRequestorBus.GetSendEndpoint(new Uri(GetSendEndpointPrefix() + apiname + "-request-starter-state"));
             await sendEp.Send(requestStarterRequest);
         }
     }
