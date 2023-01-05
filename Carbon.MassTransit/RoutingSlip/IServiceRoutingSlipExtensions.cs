@@ -59,5 +59,42 @@ namespace Carbon.MassTransit.RoutingSlip
             });
         }
 
+        public static void ConsumeRoutingSlipActivity<TActivity, TArguments, TLogs>(this IServiceBusBusFactoryConfigurator cfg,
+                                       IServiceProvider provider, Action<IServiceBusReceiveEndpointConfigurator> configurator = null)
+            where TActivity : class, IActivity<TArguments, TLogs>
+            where TArguments : class, CorrelatedBy<Guid>
+            where TLogs : class, CorrelatedBy<Guid>
+        {
+            string compensationSuffix = "-faulty";
+            string executionQueuePath = "rs-" + typeof(TArguments).Name.ToLowerInvariant();
+            cfg.ReceiveEndpoint(executionQueuePath, e =>
+            {
+                e.ExecuteActivityHost<TActivity, TArguments>(new Uri(e.InputAddress.AbsoluteUri + compensationSuffix), provider);
+                if (configurator != null)
+                    configurator(e);
+            });
+
+            cfg.ReceiveEndpoint(executionQueuePath + compensationSuffix, e =>
+            {
+                e.CompensateActivityHost<TActivity, TLogs>(provider);
+                if (configurator != null)
+                    configurator(e);
+            });
+        }
+
+        public static void ConsumeRoutingSlipExecuteOnlyActivity<TActivity, TArguments>(this IServiceBusBusFactoryConfigurator cfg,
+                                       IServiceProvider provider, Action<IServiceBusReceiveEndpointConfigurator> configurator = null)
+            where TActivity : class, IExecuteActivity<TArguments>
+            where TArguments : class, CorrelatedBy<Guid>
+        {
+            string executionQueuePath = "rs-" + typeof(TArguments).Name.ToLowerInvariant();
+            cfg.ReceiveEndpoint(executionQueuePath, e =>
+            {
+                e.ExecuteActivityHost<TActivity, TArguments>(provider);
+                if (configurator != null)
+                    configurator(e);
+            });
+        }
+
     }
 }

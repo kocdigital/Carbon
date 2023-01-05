@@ -1,4 +1,5 @@
-﻿using MassTransit;
+﻿using Carbon.MassTransit.AsyncReqResp;
+using MassTransit;
 using MassTransit.Azure.ServiceBus.Core;
 using MassTransit.Courier;
 using MassTransit.ExtensionsDependencyInjectionIntegration;
@@ -28,7 +29,7 @@ namespace Carbon.MassTransit.RoutingSlip
         {
             string executionQueuePath = "rs-" + typeof(TArguments).Name.ToLowerInvariant();
             string name = "name-" + typeof(TArguments).Name.ToLowerInvariant();
-            Uri daUri = new Uri($"rabbitmq://{busControl.Address.Host}/{executionQueuePath}");
+            Uri daUri = new Uri($"{StaticHelpers.GetBusUriPrefix()}://{busControl.Address.Host}/{executionQueuePath}");
 
             if (arguments == null)
             {
