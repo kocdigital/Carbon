@@ -34,6 +34,16 @@ namespace Carbon.MassTransit.AsyncReqResp
                 return "exchange:";
         }
 
+        public static string GetBusUriPrefix()
+        {
+            if (MassTransitBusType == MassTransitBusType.RabbitMQ)
+                return "rabbitmq";
+            else if (MassTransitBusType == MassTransitBusType.AzureServiceBus)
+                return "sb";
+            else
+                return "rabbitmq";
+        }
+
         /// <summary>
         /// Use this method anywhere where you want to send a response to request.
         /// </summary>
