@@ -2,8 +2,9 @@
 
 	<PropertyGroup>
 		<TargetFrameworks>net6.0;net5.0;netcoreapp3.1</TargetFrameworks>
-		<Version>3.9.3</Version>
-		<Description>
+		<Version>3.9.5</Version>
+		<Description>                                                3.9.5
+                                                - ReqRespAsync pattern support via ServiceBus restored
 			3.9.3
 			- It is now possible to call AddAsHighAvailableQueue and AddAsDefaultQueue extensions using custom
 			RabbitMQSettings objects.
