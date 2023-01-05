@@ -2,7 +2,7 @@
 
   <PropertyGroup>
 	  <TargetFrameworks>net6.0;net5.0;netcoreapp3.1</TargetFrameworks>
-	  <Version>2.9.0</Version>
+	  <Version>2.9.1</Version>
     <Description>- 2.9.0
 - MultiTarget framework support (.net3.1 - 5 - 6) rather than being previously single target with .NetStandard 2.0 which is outdated
 -Works with MassTransit 3.9.0
