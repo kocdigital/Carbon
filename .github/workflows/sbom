@@ -1,6 +1,0 @@
-- name: Generate JSON SBOM
-  uses: CycloneDX/gh-dotnet-generate-sbom@master
-  with:
-    path: ./
-    json: true
-    github-bearer-token: ${{ secrets.GITHUB_TOKEN }}
