@@ -8,8 +8,9 @@ on:
 jobs:
   generate-sbom:
     runs-on: ubuntu-latest
-    uses: CycloneDX/gh-dotnet-generate-sbom@master
-    with:
-      path: ./
-      json: true
-      github-bearer-token: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+     - uses: CycloneDX/gh-dotnet-generate-sbom@master
+       with:
+          path: ./
+          json: true
+          github-bearer-token: ${{ secrets.GITHUB_TOKEN }}
