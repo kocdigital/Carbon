@@ -24,6 +24,6 @@ jobs:
         run: dotnet build --no-restore
       - uses: CycloneDX/gh-dotnet-generate-sbom@master
         with:
-          path: "**/*.csproj"
+          path: "Carbon/**/*.csproj"
           json: true
           github-bearer-token: ${{ secrets.GITHUB_TOKEN }}
