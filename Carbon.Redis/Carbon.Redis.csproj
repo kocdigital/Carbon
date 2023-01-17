@@ -3,8 +3,11 @@
   <PropertyGroup>
 	 <TargetFrameworks>net6.0;net5.0;netcoreapp3.1</TargetFrameworks>
 	 <LangVersion>latest</LangVersion>
-	 <Version>2.6.2-preview</Version>
-     <Description>2.6.2-preview
+	 <Version>2.7.0</Version>
+     <Description>                                 2.7.0
+                                 Main release
+
+                                 2.6.2-preview
 		 Deleted try catch expression(unnecessary and don't preserve stack trace).
 		 Replaced Obsolete method with suggested method.
 		 
