@@ -119,5 +119,12 @@ namespace Carbon.Cassandra
 			self.UsePasswordAuthenticator = usePasswordAuthenticator;
 			return self;
 		}
+
+		public static T SetSocketOptions<T>(this T self, SocketOptions socketOptions)
+			where T : ICassandraPersisterSettings
+		{
+			self.SocketOptions = socketOptions;
+			return self;
+		}
 	}
 }
