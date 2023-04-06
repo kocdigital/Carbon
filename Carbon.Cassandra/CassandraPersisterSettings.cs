@@ -43,6 +43,8 @@ namespace Carbon.Cassandra
 
 		ILoadBalancingPolicy ICassandraPersisterSettings.LoadBalancingPolicy { get; set; }
 
+		SocketOptions ICassandraPersisterSettings.SocketOptions { get; set; }
+
 		public void SetMapping(params Mappings[] mappings)
 		{
 			MappingConfiguration.Global.Define(mappings);
@@ -111,6 +113,11 @@ namespace Carbon.Cassandra
 					settings.SetLoadBalancingPolicy(new RoundRobinPolicy());
 				}
 
+				if (settings.SocketOptions is null)
+				{
+					settings.SetSocketOptions(new SocketOptions().SetConnectTimeoutMillis(30000));
+				}
+
 				#endregion
 
 				builder.WithCompression(settings.CompressionSupportType.Value);
@@ -124,6 +131,8 @@ namespace Carbon.Cassandra
 				builder.WithQueryOptions(settings.QueryOptions);
 
 				builder.WithLoadBalancingPolicy(settings.LoadBalancingPolicy);
+
+				builder.WithSocketOptions(settings.SocketOptions);
 
 				cluster = builder.Build();
 
