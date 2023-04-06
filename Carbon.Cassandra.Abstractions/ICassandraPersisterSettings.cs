@@ -31,6 +31,8 @@ namespace Carbon.Cassandra.Abstractions
 
 		ILoadBalancingPolicy LoadBalancingPolicy { get; set; }
 
+		SocketOptions SocketOptions { get; set; }
+
 		void Build();
 
 		void SetMapping(params Mappings[] mappings);
