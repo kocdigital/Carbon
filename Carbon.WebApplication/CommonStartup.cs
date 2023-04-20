@@ -161,7 +161,8 @@ namespace Carbon.WebApplication
                                     "X-Paging-TotalRecordCount",
                                     "X-Paging-Previous-Link",
                                     "X-Paging-Next-Link",
-                                    "X-CorrelationId"
+                                    "X-CorrelationId",
+                                    "Location"
                                     );
                             }
                         });
