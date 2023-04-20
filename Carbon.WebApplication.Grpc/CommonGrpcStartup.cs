@@ -133,7 +133,7 @@ namespace Carbon.WebApplication.Grpc
                             {
                                 builder = builder.AllowAnyHeader();
                             }
-                            builder.WithExposedHeaders("Grpc-Status", "Grpc-Message", "Grpc-Encoding", "Grpc-Accept-Encoding");
+                            builder.WithExposedHeaders("Grpc-Status", "Grpc-Message", "Grpc-Encoding", "Grpc-Accept-Encoding", "Location");
                         });
                 });
 

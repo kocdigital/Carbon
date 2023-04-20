@@ -2,24 +2,28 @@
 
   <PropertyGroup>
     <TargetFrameworks>net6.0;net5.0;netcoreapp3.1</TargetFrameworks>
-    <Version>3.0.1</Version>
-    <Description>3.0.1
-- Not a RC anymore
-- Cors Allow Credentials support added 
-3.0.0-preview
-- Dotnet 6 support with minimal and not minimal api added
-2.5.1
--NetCore 3.1 target framework added
-2.5.0
--Major bug fixed for UI Authorized request 401 error. Startup changed.
-2.4.3
-- Bearer Interceptor Included as default
-2.3.0
- - Can inject Interceptor as ctor parameter
-2.2.10
- - GRPC Web supported
-2.2.6
-- GRPC Extension for Carbon.WebApplication</Description>
+    <Version>3.0.2</Version>
+    <Description>
+		3.0.2
+		- Cors Policy changes(Location parameter is added to WithExposedHeaders)
+		3.0.1
+		- Not a RC anymore
+		- Cors Allow Credentials support added
+		3.0.0-preview
+		- Dotnet 6 support with minimal and not minimal api added
+		2.5.1
+		-NetCore 3.1 target framework added
+		2.5.0
+		-Major bug fixed for UI Authorized request 401 error. Startup changed.
+		2.4.3
+		- Bearer Interceptor Included as default
+		2.3.0
+		- Can inject Interceptor as ctor parameter
+		2.2.10
+		- GRPC Web supported
+		2.2.6
+		- GRPC Extension for Carbon.WebApplication
+	</Description>
     <OpenApiGenerateDocuments>false</OpenApiGenerateDocuments>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
   </PropertyGroup>
