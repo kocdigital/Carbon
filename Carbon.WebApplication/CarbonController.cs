@@ -234,19 +234,7 @@ namespace Carbon.WebApplication
         /// <returns>CorrelationId</returns>
         private string GetRequestIdentifier()
         {
-            if (Request != null && Request.Headers != null)
-            {
-                if (Request.Headers.TryGetValue("X-CorrelationId", out var xCorrelationId))
-                {
-                    return xCorrelationId;
-                }
-                else if (Request.Headers.TryGetValue("correlationId", out var correlationId))
-                {
-                    return correlationId;
-                }
-            }
-
-            return Guid.NewGuid().ToString();
+            return Request.GetIdentifier();
         }
 
 

@@ -75,7 +75,7 @@ namespace Carbon.WebApplication
         /// <param name="context">The <see cref="ExceptionContext"/>.</param>
         public void OnException(ExceptionContext context)
         {
-            context.HttpContext.Request.Headers.TryGetValue("X-CorrelationId", out var correlationId);
+            var correlationId = context.HttpContext.Request.GetIdentifier();
 
             var apiResponse = new ApiResponse<object>(correlationId, ApiStatusCode.InternalServerError);
 
@@ -85,8 +85,8 @@ namespace Carbon.WebApplication
                 {
                     var exceptionMessage = GetErrorMessage(exception.ErrorCode, exception.Arguments, context.HttpContext.Request).Result;
 
-                    _logger.LogError($" {{{ "ErrorCode"}}} {{{ "ErrorMessage"}}} {{{ "Args"}}} {{{ "StackTrace"}}}",
-                    exception.ErrorCode, exceptionMessage, exception.SerializedModel, context.Exception.StackTrace);
+                    _logger.LogError($" {{{ "ErrorCode"}}} {{{ "ErrorMessage"}}} {{{"CorrelationId"}}} {{{ "Args"}}} {{{ "StackTrace"}}}",
+                    exception.ErrorCode, exceptionMessage,correlationId, exception.SerializedModel, context.Exception.StackTrace);
 
                     if (!string.IsNullOrEmpty(exceptionMessage))
                     {
@@ -95,8 +95,8 @@ namespace Carbon.WebApplication
                 }
                 else
                 {
-                    _logger.LogError($" {{{ "ErrorCode"}}} {{{ "ErrorMessage"}}} {{{ "Args"}}} {{{ "StackTrace"}}}",
-                  exception.ErrorCode, context.Exception.Message, exception.SerializedModel, context.Exception.StackTrace);
+                    _logger.LogError($" {{{ "ErrorCode"}}} {{{ "ErrorMessage"}}} {{{"CorrelationId"}}} {{{ "Args"}}} {{{ "StackTrace"}}}",
+                  exception.ErrorCode, context.Exception.Message,correlationId, exception.SerializedModel, context.Exception.StackTrace);
 
                     if (!string.IsNullOrEmpty(context.Exception.Message))
                     {
@@ -113,8 +113,8 @@ namespace Carbon.WebApplication
             }
             else
             {
-                _logger.LogError($" {{{ "ErrorCode"}}} {{{ "ErrorMessage"}}} {{{ "StackTrace"}}}",
-                    GeneralServerErrorCode, context.Exception.Message, context.Exception.StackTrace);
+                _logger.LogError($" {{{ "ErrorCode"}}} {{{ "ErrorMessage"}}} {{{"CorrelationId"}}} {{{ "StackTrace"}}}",
+                    GeneralServerErrorCode, context.Exception.Message, correlationId, context.Exception.StackTrace);
 
                 if (!string.IsNullOrEmpty(context.Exception.Message))
                 {
