@@ -34,7 +34,7 @@ namespace Carbon.Domain.EntityFrameworkCore
         /// </summary>
         public EFTenantManagedTenantRepository(TContext context) : base(context)
         {
-                this.context = context;
+            this.context = context;
         }
 
         /// <summary>
@@ -92,7 +92,7 @@ namespace Carbon.Domain.EntityFrameworkCore
             context.Set<TEntity>().Remove(entity);
             await context.SaveChangesAsync();
 
-            await base.RemoveSolutions(entity);
+            await base.RemoveSolution(entity);
 
             return entity;
         }
@@ -168,12 +168,10 @@ namespace Carbon.Domain.EntityFrameworkCore
             }
 
             context.Set<TEntity>().RemoveRange(entities);
+
             await context.SaveChangesAsync();
 
-            foreach (var entity in entities)
-            {
-                await base.RemoveSolutions(entity);
-            }
+            await base.RemoveSolutions(entities.ToList());
 
             return entities.ToList();
         }
