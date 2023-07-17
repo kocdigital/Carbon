@@ -1,24 +1,28 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>netstandard2.1</TargetFramework>
-    <Version>1.3.0</Version>
-    <Description>- 1.3.0
-*SoftDeleteContraint added,
-Tenant Management Support Added as of 1.2.0</Description>
-    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>netstandard2.1</TargetFramework>
+		<Version>1.4.0</Version>
+		<Description>
+			- 1.4.0
+			* Added a new method(RemoveSolutions) to remove from EntitySolutionRelation during the DeleteBulk process
 
-  <ItemGroup>
-    <PackageReference Include="System.ComponentModel.Annotations" Version="4.7.0" />
-  </ItemGroup>
+			- 1.3.0
+			*SoftDeleteContraint added, Tenant Management Support Added as of 1.2.0
+		</Description>
+		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <Folder Include="Model\" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="System.ComponentModel.Annotations" Version="4.7.0" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\Carbon.Common\Carbon.Common.csproj" />
-  </ItemGroup>
+	<ItemGroup>
+		<Folder Include="Model\" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\Carbon.Common\Carbon.Common.csproj" />
+	</ItemGroup>
 
 </Project>

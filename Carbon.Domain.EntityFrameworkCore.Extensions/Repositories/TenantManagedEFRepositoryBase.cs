@@ -31,22 +31,22 @@ namespace Carbon.Domain.EntityFrameworkCore
 
         public override async Task ConnectToSolution<T>(T relatedEntity)
         {
-			if (relatedEntity == null) return;
+            if (relatedEntity == null) return;
 
-			if (relatedEntity.RelationalOwners == null)
+            if (relatedEntity.RelationalOwners == null)
             {
-				relatedEntity.RelationalOwners = new List<EntitySolutionRelation>();
+                relatedEntity.RelationalOwners = new List<EntitySolutionRelation>();
             }
 
             if (relatedEntity.RelationalOwners.Where(k => k == null).Any()) return;
 
-			foreach (var ro in relatedEntity.RelationalOwners)
-			{
-				ro.EntityId = relatedEntity.Id;
-				ro.EntityCode = relatedEntity.GetObjectTypeCode();
-			}
+            foreach (var ro in relatedEntity.RelationalOwners)
+            {
+                ro.EntityId = relatedEntity.Id;
+                ro.EntityCode = relatedEntity.GetObjectTypeCode();
+            }
 
-			var oldRelations = await TargetErDbSet.Where(k => !k.IsDeleted && k.EntityCode == relatedEntity.GetObjectTypeCode() && k.EntityId == relatedEntity.Id).ToListAsync();
+            var oldRelations = await TargetErDbSet.Where(k => !k.IsDeleted && k.EntityCode == relatedEntity.GetObjectTypeCode() && k.EntityId == relatedEntity.Id).ToListAsync();
 
             if (oldRelations == null)
             {
@@ -54,24 +54,24 @@ namespace Carbon.Domain.EntityFrameworkCore
             }
 
             var firstSet = new HashSet<Guid>(oldRelations.Select(k => k.SolutionId).ToList());
-			var secondSet = new HashSet<Guid>(relatedEntity.RelationalOwners.Select(k => k.SolutionId).ToList());
+            var secondSet = new HashSet<Guid>(relatedEntity.RelationalOwners.Select(k => k.SolutionId).ToList());
 
-			var relationsUnchanged = secondSet.SetEquals(firstSet);
-			if (!relationsUnchanged)
-			{
-				TargetErDbSet.RemoveRange(oldRelations);
+            var relationsUnchanged = secondSet.SetEquals(firstSet);
+            if (!relationsUnchanged)
+            {
+                TargetErDbSet.RemoveRange(oldRelations);
 
-				foreach (var ro in relatedEntity.RelationalOwners)
-				{
-					ro.Id = Guid.NewGuid();
-				}
+                foreach (var ro in relatedEntity.RelationalOwners)
+                {
+                    ro.Id = Guid.NewGuid();
+                }
 
-				TargetErDbSet.AddRange(relatedEntity.RelationalOwners);
-				await TargetErDbContext.SaveChangesAsync();
-			}
-		}
+                TargetErDbSet.AddRange(relatedEntity.RelationalOwners);
+                await TargetErDbContext.SaveChangesAsync();
+            }
+        }
 
-        public override async Task RemoveSolutions<T>(T relatedEntity)
+        public override async Task RemoveSolution<T>(T relatedEntity)
         {
             if (relatedEntity == null)
                 return;
@@ -81,9 +81,21 @@ namespace Carbon.Domain.EntityFrameworkCore
             await TargetErDbContext.SaveChangesAsync();
         }
 
+        public override async Task RemoveSolutions<T>(List<T> relatedEntities)
+        {
+            if (relatedEntities == null || !relatedEntities.Any())
+                return;
+            var filteredIds = relatedEntities.Where(x => x.Id != Guid.Empty).Select(x => x.Id).ToList();
+            var entitySolutionRelations = await TargetErDbSet
+                .Where(k => !k.IsDeleted && k.EntityCode == relatedEntities.FirstOrDefault().GetObjectTypeCode() && filteredIds.Contains(k.EntityId))
+                .ToListAsync();
+            TargetErDbSet.RemoveRange(entitySolutionRelations);
+            await TargetErDbContext.SaveChangesAsync();
+        }
+
         public override void CheckIfAuthorized<T>(T relatedEntity)
         {
-            if(relatedEntity.OwnerType == OwnerType.None || relatedEntity.OwnerId == Guid.Empty)
+            if (relatedEntity.OwnerType == OwnerType.None || relatedEntity.OwnerId == Guid.Empty)
             {
                 return;
             }
@@ -118,11 +130,11 @@ namespace Carbon.Domain.EntityFrameworkCore
                     permitted = true;
                 }
             }
-            if(!permitted)
+            if (!permitted)
             {
                 throw new ForbiddenOperationException();
             }
-            
+
         }
 
     }
