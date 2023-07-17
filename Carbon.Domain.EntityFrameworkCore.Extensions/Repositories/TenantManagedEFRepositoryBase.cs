@@ -87,7 +87,7 @@ namespace Carbon.Domain.EntityFrameworkCore
                 return;
             var filteredIds = relatedEntities.Where(x => x.Id != Guid.Empty).Select(x => x.Id).ToList();
             var entitySolutionRelations = await TargetErDbSet
-                .Where(k => !k.IsDeleted && k.EntityCode == relatedEntities.FirstOrDefault().GetObjectTypeCode() && filteredIds.Contains(k.EntityId))
+                .Where(k => !k.IsDeleted && filteredIds.Contains(k.EntityId))
                 .ToListAsync();
             TargetErDbSet.RemoveRange(entitySolutionRelations);
             await TargetErDbContext.SaveChangesAsync();
