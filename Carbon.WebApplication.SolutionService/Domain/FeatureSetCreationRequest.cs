@@ -13,23 +13,18 @@ namespace Carbon.WebApplication.SolutionService.Domain
         {
             FeatureSet = new FeatureSet();
         }
-        public FeatureSetCreationRequest(Guid solutionId)
+        public FeatureSetCreationRequest(Guid solutionId, bool isDynamicSolution)
         {
+            IsDynamicSolution = isDynamicSolution;
             SolutionId = solutionId;
             FeatureSet = new FeatureSet();
         }
 
-
-        public Guid CorrelationId
-        {
-            get
-            {
-                return FeatureSet.FeatureSetId;
-            }
-
-        }
+        public Guid CorrelationId => FeatureSet.FeatureSetId;
 
         public FeatureSet FeatureSet { get; set; }
         public Guid SolutionId { get; set; }
+
+        public bool IsDynamicSolution { get; set; }
     }
 }
