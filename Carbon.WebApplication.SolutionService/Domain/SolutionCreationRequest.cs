@@ -7,17 +7,8 @@ namespace Carbon.WebApplication.SolutionService.Domain
 {
     public class SolutionCreationRequest : ISolutionCreationRequest
     {
-        public SolutionCreationRequest()
-        {
-
-        }
-
-        public Guid CorrelationId { 
-            get 
-            { 
-                return this.Solution.SolutionId; 
-            } 
-        }
+        public Guid CorrelationId => Solution.SolutionId;
+        
         public Solution Solution { get; set; }
     }
 }
