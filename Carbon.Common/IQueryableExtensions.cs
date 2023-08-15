@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Reflection;
 
 namespace Carbon.Common
 {
@@ -46,26 +47,27 @@ namespace Carbon.Common
 
             foreach (var item in ordination)
             {
-                var property = query.ElementType.GetProperty(item.Value);
-                if (property == null) continue;
-
                 var parameter = Expression.Parameter(typeof(TEntity), "x");
-                var selector = Expression.PropertyOrField(parameter, item.Value);
+                Expression selector = parameter;
 
-                if (item.IsAscending)
+                foreach (var propName in item.Value.Split('.'))
                 {
-                    expression = Expression.Call(typeof(Queryable), "OrderBy",
-                        new Type[] { query.ElementType, selector.Type },
-                        expression, Expression.Quote(Expression.Lambda(selector, parameter)));
-                    count++;
+                    var propInfo = selector.Type.GetProperty(propName, BindingFlags.IgnoreCase | BindingFlags.Public | BindingFlags.Instance);
+                    if (propInfo == null) continue;
+
+                    selector = Expression.Property(selector, propInfo);
                 }
-                else
-                {
-                    expression = Expression.Call(typeof(Queryable), "OrderByDescending",
-                        new Type[] { query.ElementType, selector.Type },
-                        expression, Expression.Quote(Expression.Lambda(selector, parameter)));
-                    count++;
-                }
+
+                var lambda = Expression.Lambda(selector, parameter);
+
+                var methodName = item.IsAscending ? "OrderBy" : "OrderByDescending";
+                var resultExpression = Expression.Call(
+                    typeof(Queryable), methodName,
+                    new Type[] { query.ElementType, selector.Type },
+                    expression, Expression.Quote(lambda));
+
+                expression = resultExpression;
+                count++;
             }
 
             return count > 0 ? query.Provider.CreateQuery<TEntity>(expression) : query;
