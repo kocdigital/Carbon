@@ -1,10 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
 		<TargetFrameworks>net6.0;net5.0;netcoreapp3.1</TargetFrameworks>
-		<Version>4.1.8</Version>
+		<Version>4.1.9</Version>
 		<Description>
-			4.1.8
-			- Dependency updated
+			4.1.9
+			- Carbon.Common updated and nested ordering achieved
 			4.1.7
 			- Add CorrelationId to log OnException
 			4.1.6
