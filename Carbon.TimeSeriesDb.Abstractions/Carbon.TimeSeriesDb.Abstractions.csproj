@@ -2,9 +2,13 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
-    <Version>1.0.3</Version>
-    <Description>1.0.3
-  -Includes abstractions for any kind of TimeSerie-based Databases.</Description>
+    <Version>1.0.4</Version>
+    <Description>
+		1.0.4
+		- Carbon.Common updated and nested ordering achieved
+		1.0.3
+		- Includes abstractions for any kind of TimeSerie-based Databases.
+	</Description>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
   </PropertyGroup>
 
