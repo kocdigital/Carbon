@@ -2,16 +2,19 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
-    <Version>1.3.2</Version>
-	  <Description>1.3.2
- - Minor code refactoring, typos
-1.3.0
- - Reverted default constructor.
-1.2.0
- - Tenant Management Support Added
-
-1.1.11
-- Fixed OrderBy extension issue.
+    <Version>1.3.3</Version>
+	  <Description>
+		  1.3.3
+		  - Enhance deep property sorting in OrderBy
+		  - Added case-insensitive property lookup and multi-level access.
+		  1.3.2
+		  - Minor code refactoring, typos
+		  1.3.0
+		  - Reverted default constructor.
+		  1.2.0
+		  - Tenant Management Support Added
+		  1.1.11
+		  - Fixed OrderBy extension issue.
 		  1.1.10
 		  - ErrorCodes removed
 		  1.1.9
@@ -22,7 +25,7 @@
 		  - OrderBy BugFix
 		  1.1.6
 		  - ApiResponse parameterless private constructor added for deserialization
-	</Description>
+	  </Description>
 	  <PackageId>Carbon.Common</PackageId>
 	  <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
   </PropertyGroup>
