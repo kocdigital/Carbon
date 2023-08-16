@@ -58,6 +58,8 @@ namespace Carbon.Common
                     selector = Expression.Property(selector, propInfo);
                 }
 
+                if (selector == parameter) continue;
+
                 var lambda = Expression.Lambda(selector, parameter);
 
                 var methodName = item.IsAscending ? "OrderBy" : "OrderByDescending";

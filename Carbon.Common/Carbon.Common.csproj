@@ -2,8 +2,10 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
-    <Version>1.3.3</Version>
+    <Version>1.3.4</Version>
 	  <Description>
+		  1.3.4
+		  - IQueryable OrderBy extension method bug fixed
 		  1.3.3
 		  - Enhance deep property sorting in OrderBy
 		  - Added case-insensitive property lookup and multi-level access.
