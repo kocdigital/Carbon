@@ -1,17 +1,19 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<TargetFramework>netstandard2.1</TargetFramework>
+		<Version>1.0.10</Version>
+		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+		<Description>
+			1.0.10
+			- Carbon.Common updated and IQueryable OrderBy extension method bug fixed
+		</Description>
+	</PropertyGroup>
 
-  <PropertyGroup>
-    <TargetFramework>netstandard2.1</TargetFramework>
-    <Version>1.0.9</Version>
-    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-  </PropertyGroup>
+	<ItemGroup>
+		<PackageReference Include="Mapster" Version="4.1.1" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Mapster" Version="4.1.1" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\Carbon.PagedList\Carbon.PagedList.csproj" />
-  </ItemGroup>
-
+	<ItemGroup>
+		<ProjectReference Include="..\Carbon.PagedList\Carbon.PagedList.csproj" />
+	</ItemGroup>
 </Project>
