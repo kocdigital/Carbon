@@ -2,8 +2,10 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
-    <Version>1.0.4</Version>
+    <Version>1.0.5</Version>
     <Description>
+		1.0.5
+		- Carbon.Common updated and IQueryable OrderBy extension method bug fixed
 		1.0.4
 		- Carbon.Common updated and nested ordering achieved
 		1.0.3
