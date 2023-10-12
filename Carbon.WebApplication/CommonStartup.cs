@@ -26,6 +26,8 @@ using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using HealthChecks.UI.Client;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
+using Serilog.Enrichers.Sensitive;
+using Carbon.Serilog;
 
 namespace Carbon.WebApplication
 {
@@ -73,7 +75,18 @@ namespace Carbon.WebApplication
             if (_serilogSettings == null)
                 throw new ArgumentNullException("Serilog settings cannot be empty!");
 
-            Log.Logger = new LoggerConfiguration().ReadFrom.Configuration(Configuration).CreateLogger();
+            if (_serilogSettings.SensitiveDataMasking != null)
+            {
+                Log.Logger = new LoggerConfiguration().ReadFrom.Configuration(Configuration)
+                    .Enrich.WithSensitiveDataMasking(options =>
+                    {
+                        options.MaskingOperators.AddRange(new SerilogExtensions.PropertyMaskingOperatorCapsule(_serilogSettings.SensitiveDataMasking.PropertyNames).Operators);
+                        options.MaskingOperators.AddRange(SerilogExtensions.GetMatchingMaskingOperators(_serilogSettings.SensitiveDataMasking.Operators));
+                    })
+                    .CreateLogger();
+            }
+            else
+                Log.Logger = new LoggerConfiguration().ReadFrom.Configuration(Configuration).CreateLogger();
             #endregion
 
             AddServiceCors(services, Configuration);

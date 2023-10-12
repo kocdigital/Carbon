@@ -2,8 +2,10 @@
 
   <PropertyGroup>
     <TargetFrameworks>net6.0;net5.0;netcoreapp3.1</TargetFrameworks>
-    <Version>3.0.2</Version>
+    <Version>3.1.0</Version>
     <Description>
+		3.1.0
+		- Carbon.Common updated and Serilog.Enrichers.Sensitive Enricher added for masking sensitive values within logs.
 		3.0.2
 		- Cors Policy changes(Location parameter is added to WithExposedHeaders)
 		3.0.1
@@ -31,6 +33,7 @@
   <ItemGroup>
     <PackageReference Include="Grpc.AspNetCore" Version="2.38.0" />
     <PackageReference Include="Grpc.AspNetCore.Web" Version="2.38.0" />
+    <PackageReference Include="Serilog.Enrichers.Sensitive" Version="1.7.3" />
   </ItemGroup>
 
   <ItemGroup>

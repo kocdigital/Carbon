@@ -1,8 +1,12 @@
 ﻿using Carbon.Common;
+using Carbon.Serilog;
+
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Serilog;
+using Serilog.Enrichers.Sensitive;
+
 using System;
 using System.IO;
 using System.Linq;
@@ -104,8 +108,18 @@ namespace Carbon.ConsoleApplication
 
                 if (serilogSettings == null)
                     throw new ArgumentNullException(nameof(serilogSettings), "Serilog settings cannot be empty!");
-
-                Log.Logger = new LoggerConfiguration().ReadFrom.Configuration(configuration).CreateLogger();
+                if (serilogSettings.SensitiveDataMasking != null)
+                {
+                    Log.Logger = new LoggerConfiguration().ReadFrom.Configuration(configuration)
+                        .Enrich.WithSensitiveDataMasking(options =>
+                        {
+                            options.MaskingOperators.AddRange(new SerilogExtensions.PropertyMaskingOperatorCapsule(serilogSettings.SensitiveDataMasking.PropertyNames).Operators);
+                            options.MaskingOperators.AddRange(SerilogExtensions.GetMatchingMaskingOperators(serilogSettings.SensitiveDataMasking.Operators));
+                        })
+                        .CreateLogger();
+                }
+                else
+                    Log.Logger = new LoggerConfiguration().ReadFrom.Configuration(configuration).CreateLogger();
 
                 configureApp?.Invoke(h, c);
 
