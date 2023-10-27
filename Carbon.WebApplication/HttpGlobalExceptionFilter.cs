@@ -140,7 +140,9 @@ namespace Carbon.WebApplication
             }
             else if (context.Exception is UnauthorizedOperationException)
             {
-                var objectResult = new ObjectResult(apiResponse);
+                var unAuthorizedApiResponse = new ApiResponse<object>(correlationId, ApiStatusCode.UnAuthorized);
+                unAuthorizedApiResponse.SetErrorCode((int)ApiStatusCode.UnAuthorized);
+                var objectResult = new ObjectResult(unAuthorizedApiResponse);
                 objectResult.StatusCode = StatusCodes.Status401Unauthorized;
                 context.Result = objectResult;
                 context.HttpContext.Response.StatusCode = (int)HttpStatusCode.Unauthorized;

@@ -1,8 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
 		<TargetFrameworks>net6.0;net5.0;netcoreapp3.1</TargetFrameworks>
-		<Version>4.2.0</Version>
+		<Version>4.2.1</Version>
 		<Description>
+			4.2.1
+			- UnauthorizedOperationException response body is fixed
 			4.2.0
 			- UnauthorizedOperationException handling is added
 			4.1.9
