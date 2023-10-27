@@ -92,7 +92,9 @@ namespace Carbon.WebApplication
                         try
                         {
                             var configToRead = File.ReadAllText(kubCnf);
+#if DEBUG
                             Console.WriteLine("Inserting Config => \n" + configToRead);
+#endif
                         }
                         catch
                         {

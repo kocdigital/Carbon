@@ -1,8 +1,15 @@
-﻿using Serilog.Enrichers.Sensitive;
+﻿using Carbon.Common;
+
+using Microsoft.Extensions.Configuration;
+
+using Serilog;
+using Serilog.Enrichers.Sensitive;
 
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
+using System.Net;
 using System.Text.RegularExpressions;
 
 namespace Carbon.Serilog
@@ -21,16 +28,19 @@ namespace Carbon.Serilog
         public static List<IMaskingOperator> GetMatchingMaskingOperators(params string[] nameList)
         {
             var operatorList = new List<IMaskingOperator>();
-            foreach (var operatorName in nameList)
+            if (nameList != null && nameList.Any())
             {
-                var classAddress = $"{typeof(SerilogExtensions).FullName}+{operatorName}";
-                Type type = Type.GetType(classAddress);
+                foreach (var operatorName in nameList)
+                {
+                    var classAddress = $"{typeof(SerilogExtensions).FullName}+{operatorName}";
+                    Type type = Type.GetType(classAddress);
 
-                if (type == null)
-                    throw new ArgumentException($"Given Masking Operator Name is not valid! - {operatorName}");
+                    if (type == null)
+                        throw new ArgumentException($"Given Masking Operator Name is not valid! - {operatorName}");
 
 
-                operatorList.Add((IMaskingOperator)Activator.CreateInstance(type));
+                    operatorList.Add((IMaskingOperator)Activator.CreateInstance(type));
+                }
             }
             return operatorList;
         }
@@ -43,13 +53,20 @@ namespace Carbon.Serilog
             public IPMaskingOperator() : base(_regex, RegexOptions.IgnoreCase | RegexOptions.Compiled)
             {
             }
+
+            protected override bool ShouldMaskMatch(Match match)
+            {
+                if (IPAddress.TryParse(match.Value, out _) || IPAddress.TryParse(match.Value.Substring(0, match.Value.LastIndexOf(':')), out _))
+                    return true;
+                return false;
+            }
         }
         /// <summary>
         /// Masks Windows & Unix paths as well as files using regex.
         /// </summary>
         public class PathMaskingOperator : RegexMaskingOperator
         {
-            private const string _regex = @"((((\\|\/).*)+\.[\w:]+))|(((\\|\/).*)+)|([\w]:(\/|\\)?(((((\\|\/).*)+\.[\w:]+))|(((\\|\/).*)+)))";
+            private const string _regex = @"((((\\|\/).*)+\.[\w:]+))|(((\\|\/).*)+)|([\w]:(\/|\\)?(((((\\|\/).*)+\.[\w]+))|(((\\|\/).*)+)))";
             public PathMaskingOperator() : base(_regex, RegexOptions.IgnoreCase | RegexOptions.Compiled)
             {
             }
@@ -58,7 +75,7 @@ namespace Carbon.Serilog
             {
                 if (match.Value.IndexOfAny(Path.GetInvalidPathChars()) == -1)
                     return true;
-                return base.ShouldMaskMatch(match);
+                return false;
             }
         }
         /// <summary>
@@ -69,6 +86,13 @@ namespace Carbon.Serilog
             private const string _regex = @"((http|ftp|https|mqtt|mqtts):\/\/([\w+?\.\w+])+([a-zA-Z0-9\~\!\@\#\$\%\^\&\*\(\)_\-\=\+\\\/\?\.\:\;\'\,]*)?)|(^((localhost)|((?!-)[A-Za-z0-9-]{1,63}(?<!-)\.)+[A-Za-z]{2,253})$)";
             public URLMaskingOperator() : base(_regex, RegexOptions.IgnoreCase | RegexOptions.Compiled)
             {
+            }
+
+            protected override bool ShouldMaskMatch(Match match)
+            {
+                if (Uri.IsWellFormedUriString(match.Value, UriKind.Absolute))
+                    return true;
+                return false;
             }
         }
 
@@ -101,9 +125,10 @@ namespace Carbon.Serilog
             public PropertyMaskingOperatorCapsule(params string[] properties)
             {
                 Operators = new List<PropertyMaskingOperator>();
-                foreach (string property in properties)
+                if (properties != null)
                 {
-                    Operators.Add(new PropertyMaskingOperator("(\"?" + property + @"""?\s*(:)(([^,\n])*))"));
+                    var propRegex = string.Join("|", properties);
+                    Operators.Add(new PropertyMaskingOperator("(\"?(" + propRegex + @")""?\s*(:)\s*((((\{+.*)(?=(\}))))|(([^,\n\r\{\}])*(?!\{))))(?![^,\n\r\{\}])"));
                 }
             }
 
@@ -112,10 +137,21 @@ namespace Carbon.Serilog
             /// </summary>
             public class PropertyMaskingOperator : RegexMaskingOperator
             {
-                public PropertyMaskingOperator(string regex) : base(regex, RegexOptions.IgnoreCase | RegexOptions.Compiled)
+                public PropertyMaskingOperator(string regex) : base(regex, RegexOptions.IgnoreCase | RegexOptions.Compiled | RegexOptions.CultureInvariant)
                 {
                 }
-
+                protected override string PreprocessInput(string input)
+                {
+                    if (input.Contains("\n"))
+                    {
+                        input = input.Replace("\n", " ");
+                    }
+                    if (input.Contains("\r"))
+                    {
+                        input = input.Replace("\r", " ");
+                    }
+                    return input;
+                }
                 protected override string PreprocessMask(string mask, Match match)
                 {
 
@@ -123,6 +159,35 @@ namespace Carbon.Serilog
                     return parts[0] + ":" + mask;
                 }
             }
+        }
+
+
+        public static ILogger CreateLogger(IConfiguration configuration)
+        {
+            var serilogSettings = configuration.GetSection("Serilog").Get<SerilogSettings>();
+
+            if (serilogSettings == null)
+                throw new ArgumentNullException(nameof(serilogSettings), "Serilog settings cannot be empty!");
+
+            ILogger logger;
+            if (serilogSettings.SensitiveDataMasking != null)
+            {
+
+                Console.WriteLine($"Sensitive log masking enabled in Serilog settings");
+                logger = new LoggerConfiguration().ReadFrom.Configuration(configuration)
+                    .Enrich.WithSensitiveDataMasking(options =>
+                    {
+                        options.MaskingOperators.AddRange(new PropertyMaskingOperatorCapsule(serilogSettings.SensitiveDataMasking.PropertyNames).Operators);
+                        options.MaskingOperators.AddRange(GetMatchingMaskingOperators(serilogSettings.SensitiveDataMasking.Operators));
+                        options.MaskProperties.AddRange(serilogSettings.SensitiveDataMasking.PropertyNames);
+                    })
+                    .CreateLogger();
+
+            }
+            else
+                logger = new LoggerConfiguration().ReadFrom.Configuration(configuration).CreateLogger();
+
+            return logger;
         }
     }
 

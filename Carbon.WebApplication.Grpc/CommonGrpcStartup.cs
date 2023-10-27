@@ -83,24 +83,7 @@ namespace Carbon.WebApplication.Grpc
 
             #region Serilog Settings
 
-            var _serilogSettings = Configuration.GetSection("Serilog").Get<SerilogSettings>();
-
-            if (_serilogSettings == null)
-                throw new ArgumentNullException("Serilog settings cannot be empty!");
-
-            if (_serilogSettings.SensitiveDataMasking != null)
-            {
-                Log.Logger = new LoggerConfiguration().ReadFrom.Configuration(Configuration)
-                    .Enrich.WithSensitiveDataMasking(options =>
-                    {
-                        options.MaskingOperators.AddRange(new SerilogExtensions.PropertyMaskingOperatorCapsule(_serilogSettings.SensitiveDataMasking.PropertyNames).Operators);
-                        options.MaskingOperators.AddRange(SerilogExtensions.GetMatchingMaskingOperators(_serilogSettings.SensitiveDataMasking.Operators));
-                    })
-                    .CreateLogger();
-            }
-            else
-                Log.Logger = new LoggerConfiguration().ReadFrom.Configuration(Configuration).CreateLogger();
-
+            Log.Logger = SerilogExtensions.CreateLogger(Configuration);
             #endregion
             AddServiceCors(services, Configuration);
             if (_useAuthorization)
