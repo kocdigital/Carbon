@@ -138,6 +138,15 @@ namespace Carbon.WebApplication
                 context.HttpContext.Response.ContentType = "application/json";
                 context.ExceptionHandled = true;
             }
+            else if (context.Exception is UnauthorizedOperationException)
+            {
+                var objectResult = new ObjectResult(apiResponse);
+                objectResult.StatusCode = StatusCodes.Status401Unauthorized;
+                context.Result = objectResult;
+                context.HttpContext.Response.StatusCode = (int)HttpStatusCode.Unauthorized;
+                context.HttpContext.Response.ContentType = "application/json";
+                context.ExceptionHandled = true;
+            }
             else
             {
                 context.Result = new InternalServerErrorObjectResult(apiResponse);
