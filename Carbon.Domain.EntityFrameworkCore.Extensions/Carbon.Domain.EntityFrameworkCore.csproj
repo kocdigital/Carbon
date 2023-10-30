@@ -2,9 +2,9 @@
 
 	<PropertyGroup>
 		<TargetFrameworks>net6.0;net5.0;netstandard2.1</TargetFrameworks>
-		<Version>3.2.0</Version>
+		<Version>3.1.1</Version>
 		<Description>
-			- 3.2.0
+			- 3.1.1
 			* Fixed EFExtensions FirstOrDefaultEntity methods. Null check condition is added for the Relation object
 
 			- 3.1.0
