@@ -2,9 +2,13 @@
 
   <PropertyGroup>
     <TargetFrameworks>net6.0;net5.0;netstandard2.1</TargetFrameworks>
-    <Version>2.3.1</Version>
-    <Description>                                2.3.1
-                                Npgsql datetime conversion approach announced as dotnet 6 breaking change defered to a later time, overriding with a AppContext switch to continue using default behaviour
+    <Version>2.3.2</Version>
+    <Description>
+		2.3.2
+		Fixed EFExtensions FirstOrDefaultEntity methods. Null check condition is added for the Relation object
+
+		2.3.1
+		Npgsql datetime conversion approach announced as dotnet 6 breaking change defered to a later time, overriding with a AppContext switch to continue using default behaviour
 
 		2.2.0
 		Dotnet 6 and EfCore 6 support added when referenced by Carbon.Domain.EntityFrameworkCore 3.0.0 and Dotnet 6.0
