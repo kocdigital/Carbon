@@ -41,7 +41,7 @@ namespace Carbon.Domain.EntityFrameworkCore
             string sqlQuery = null;
             if (context.Database.IsNpgsql())
             {
-                sqlQuery = $"select * from { procedureName} ({String.Join(',', sb)});";
+                sqlQuery = $"select * from {procedureName} ({String.Join(',', sb)});";
             }
             else if (context.Database.IsSqlServer())
             {
@@ -225,7 +225,7 @@ namespace Carbon.Domain.EntityFrameworkCore
 
             if (groupedList != null)
             {
-                groupedList.Entity.RelationalOwners = await relationEntities.Select(k => k.Relation).ToListAsync();
+                groupedList.Entity.RelationalOwners = await relationEntities.Where(k => k.Relation != null).Select(k => k.Relation).ToListAsync();
                 return groupedList.Entity;
             }
             else
@@ -244,7 +244,7 @@ namespace Carbon.Domain.EntityFrameworkCore
 
             if (groupedList != null)
             {
-                groupedList.Entity.RelationalOwners = relationEntities.Select(k => k.Relation).ToList();
+                groupedList.Entity.RelationalOwners = relationEntities.Where(k => k.Relation != null).Select(k => k.Relation).ToList();
                 return groupedList.Entity;
             }
             else
