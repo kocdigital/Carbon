@@ -1,12 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
+
 using Carbon.MassTransit.AsyncReqResp;
 using Carbon.WebApplication.SolutionService.Domain;
 using Carbon.WebApplication.SolutionService.Domain.Exceptions;
-using MassTransit;
+
 using Microsoft.Extensions.Logging;
+
 using Platform360.Domain.Messages.SolutionCreationSaga;
 
 namespace Carbon.WebApplication.SolutionService.Services
