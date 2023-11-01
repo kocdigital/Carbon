@@ -2,8 +2,11 @@
 
   <PropertyGroup>
 	  <TargetFrameworks>net6.0;net5.0;netcoreapp3.1</TargetFrameworks>
-	  <Version>2.9.2</Version>
-    <Description>-2.9.2
+	  <Version>2.9.3</Version>
+    <Description>
+-2.9.3
+- MenuItems field added to SolutionCreationRequest
+-2.9.2
 - IsDynamic solution flag is added
 - 2.9.0
 - MultiTarget framework support (.net3.1 - 5 - 6) rather than being previously single target with .NetStandard 2.0 which is outdated
@@ -46,8 +49,8 @@ Supports Masstransit 7.1.x and Carbon.MassTransit 3.0.2
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Carbon.Domain.Messages" Version="1.9.25" />
     <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
-    <PackageReference Include="Carbon.Domain.Messages" Version="1.9.24" />
     <PackageReference Include="System.Runtime.Loader" Version="4.3.0" />
   </ItemGroup>
 
