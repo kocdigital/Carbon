@@ -211,7 +211,19 @@ namespace Carbon.Caching.Abstractions
         public static async Task<T> HashSingleGet<T>(this ICarbonCache instance, string key) where T : class
         {
             var value = await instance.GetDatabase().HashGetAsync(key.ToRedisInstanceKey(instance), HashData, CommandFlags.PreferReplica);
-            return ((byte[])value).FromByteArray<T>(SerializationType);
+            T result;
+
+            try
+            {
+                result = ((byte[])value).FromByteArray<T>(SerializationType);
+            }
+            catch (JsonException)
+            {
+                result = ((byte[])value).FromByteArray<T>(CarbonContentSerializationType.BinaryFormatter);
+                await instance.HashSingleSet<T>(key, result);
+            }
+
+            return result;
         }
 
         /// <summary>
@@ -503,8 +515,24 @@ namespace Carbon.Caching.Abstractions
         public static T Get<T>(this ICarbonCache instance, string key) where T : class
         {
             var value = instance.Get(key);
+            T result;
 
-            return value?.FromByteArray<T>(SerializationType);
+            try
+            {
+                result = value?.FromByteArray<T>(SerializationType);
+            }
+            catch (JsonException)
+            {
+                result = value?.FromByteArray<T>(CarbonContentSerializationType.BinaryFormatter);
+                var ttl = instance.GetDatabase().KeyTimeToLive(key);
+                if (ttl.HasValue)
+                {
+                    instance.Set<T>(key, result,(TimeSpan)ttl);
+                    return result;
+                }
+                instance.Set<T>(key, result);
+            }
+            return result;
         }
 
         /// <summary>
@@ -553,8 +581,25 @@ namespace Carbon.Caching.Abstractions
         public static async Task<T> GetAsync<T>(this ICarbonCache instance, string key, CancellationToken token = default(CancellationToken)) where T : class
         {
             var value = await instance.GetAsync(key, token).ConfigureAwait(false);
+            T result;
 
-            return value?.FromByteArray<T>(SerializationType);
+            try
+            {
+                result = value?.FromByteArray<T>(SerializationType);
+            }
+            catch (JsonException)
+            {
+                result = value?.FromByteArray<T>(CarbonContentSerializationType.BinaryFormatter);
+                var ttl = await instance.GetDatabase().KeyTimeToLiveAsync(key);
+                if (ttl.HasValue)
+                {
+                    await instance.SetAsync<T>(key, result, token, (TimeSpan)ttl, false);
+                    return result;
+                }
+                await instance.SetAsync<T>(key, result, token);
+            }
+
+            return result;
         }
 
         /// <summary>
