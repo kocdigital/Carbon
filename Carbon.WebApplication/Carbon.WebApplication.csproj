@@ -1,9 +1,9 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
 		<TargetFrameworks>net6.0;net5.0;netcoreapp3.1</TargetFrameworks>
-		<Version>4.2.2</Version>
+		<Version>4.3.0</Version>
 		<Description>
-			4.2.2
+			4.3.0
 			- OwnershipFilter check now disregards solution id header during endpoint permission check
 			4.2.1
 			- UnauthorizedOperationException response body is fixed
