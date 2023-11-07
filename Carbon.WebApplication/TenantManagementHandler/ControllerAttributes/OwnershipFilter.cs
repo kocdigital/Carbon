@@ -47,7 +47,7 @@ namespace Carbon.WebApplication.TenantManagementHandler.ControllerAttributes
         public override void OnActionExecuting(ActionExecutingContext context)
         {
             var _externalService = context.HttpContext.RequestServices.GetService<IExternalService>();
-            var solutions = context.GetSolutionFilter();
+            //var solutions = context.GetSolutionFilter();
             var userId = ((CarbonController)context.Controller).User.GetUserId();
             var tenantId = ((CarbonController)context.Controller).User.GetTenantId();
             var organizationId = ((CarbonController)context.Controller).User.GetOrganizationId();
@@ -62,11 +62,19 @@ namespace Carbon.WebApplication.TenantManagementHandler.ControllerAttributes
             if (isGodUser)
                 return;
 
-            if (solutions == null || !solutions.Any())
-                throw new ForbiddenOperationException(CarbonExceptionMessages.SolutionHeaderMustBeSet);
+            //if (solutions == null || !solutions.Any())
+            //    throw new ForbiddenOperationException(CarbonExceptionMessages.SolutionHeaderMustBeSet);
 
 
-            filterOwnershipPermissionList = _externalService.ExecuteInPolicyApi_GetRoles(new PermissionDetailedFilterDto() { TenantId = tenantId, UserPolicyId = organizationId, UserId = userId, SolutionId = solutions.FirstOrDefault(), PermissionNames = new List<string>() { _role } }, daToken.ToString().Split(' ')[1]).Result;
+            filterOwnershipPermissionList = _externalService.ExecuteInPolicyApi_GetRoles(new PermissionDetailedFilterDto() 
+                { 
+                    TenantId = tenantId, 
+                    UserPolicyId = organizationId, 
+                    UserId = userId, 
+                    SolutionId = null, 
+                    PermissionNames = new List<string>() { _role } 
+                }, daToken.ToString().Split(' ')[1]).Result;
+
             RoleExtensions.SetPermissions(filterOwnershipPermissionList);
 
             if (_ownershipType == OwnershipType.Admin)
