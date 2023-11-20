@@ -27,6 +27,8 @@ using HealthChecks.UI.Client;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
 using Carbon.WebApplication.Grpc.Interceptors;
+using Serilog.Enrichers.Sensitive;
+using Carbon.Serilog;
 
 namespace Carbon.WebApplication.Grpc
 {
@@ -81,13 +83,7 @@ namespace Carbon.WebApplication.Grpc
 
             #region Serilog Settings
 
-            var _serilogSettings = Configuration.GetSection("Serilog").Get<SerilogSettings>();
-
-            if (_serilogSettings == null)
-                throw new ArgumentNullException("Serilog settings cannot be empty!");
-
-            Log.Logger = new LoggerConfiguration().ReadFrom.Configuration(Configuration).CreateLogger();
-
+            Log.Logger = SerilogExtensions.CreateLogger(Configuration);
             #endregion
             AddServiceCors(services, Configuration);
             if (_useAuthorization)

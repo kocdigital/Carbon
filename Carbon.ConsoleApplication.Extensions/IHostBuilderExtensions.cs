@@ -1,11 +1,17 @@
 ﻿using Carbon.Common;
+using Carbon.Serilog;
+
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+
 using Serilog;
+using Serilog.Enrichers.Sensitive;
+
 using System;
 using System.IO;
 using System.Linq;
+
 using Winton.Extensions.Configuration.Consul;
 
 namespace Carbon.ConsoleApplication
@@ -82,7 +88,9 @@ namespace Carbon.ConsoleApplication
                         try
                         {
                             var configToRead = File.ReadAllText(kubCnf);
+#if DEBUG
                             Console.WriteLine("Inserting Config => \n" + configToRead);
+#endif
                         }
                         catch
                         {
@@ -100,12 +108,7 @@ namespace Carbon.ConsoleApplication
 
                 var configuration = c.Build();
 
-                var serilogSettings = configuration.GetSection("Serilog").Get<SerilogSettings>();
-
-                if (serilogSettings == null)
-                    throw new ArgumentNullException(nameof(serilogSettings), "Serilog settings cannot be empty!");
-
-                Log.Logger = new LoggerConfiguration().ReadFrom.Configuration(configuration).CreateLogger();
+                Log.Logger = SerilogExtensions.CreateLogger(configuration);
 
                 configureApp?.Invoke(h, c);
 
@@ -114,9 +117,10 @@ namespace Carbon.ConsoleApplication
                 configureServices?.Invoke(h, s);
             });
 
+            
             AppDomain.CurrentDomain.UnhandledException += UnhandledExceptionTrapper;
 
-            return builder.UseSerilog();
+            return builder.UseSerilog(); 
         }
 
         /// <summary>
@@ -124,7 +128,14 @@ namespace Carbon.ConsoleApplication
         /// </summary>
         /// <param name="sender">The object that generated the event.</param>
         /// <param name="e"><see cref="UnhandledExceptionEventArgs"/></param>
-        private static void UnhandledExceptionTrapper(object sender, UnhandledExceptionEventArgs e) => Log.Logger.Error("Unhandled exception occured! {e}", e);
+        private static void UnhandledExceptionTrapper(object sender, UnhandledExceptionEventArgs e)
+        {
+            if (e != null)
+            {
+                var ex = e.ExceptionObject as Exception;
+                Log.Logger.Error("Unhandled exception occured! {0}: {1}\n {2}", e.ExceptionObject.GetType(), ex.Message, ex.StackTrace);
+            }
+        }
 
         /// <summary>
         /// Use for configuring given <see cref="IHostBuilder"/> with Carbon Standards. 

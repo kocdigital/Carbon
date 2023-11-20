@@ -103,8 +103,8 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "articles", "articles", "{8FB4F0A8-7D43-42C4-BD60-EE1389D4C08B}"
 	ProjectSection(SolutionItems) = preProject
 		docs\articles\creating_webapi.md = docs\articles\creating_webapi.md
-		docs\articles\toc.md = docs\articles\toc.md
 		docs\articles\getting_started.md = docs\articles\getting_started.md
+		docs\articles\toc.md = docs\articles\toc.md
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "images", "images", "{7C921555-4AB7-45A6-8D47-F4A637BDF1DC}"
@@ -131,6 +131,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "api_docs", "api_docs", "{B3
 		docs\api_docs\README.md = docs\api_docs\README.md
 		docs\api_docs\toc.yml = docs\api_docs\toc.yml
 	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Carbon.Serilog", "Carbon.Serilog\Carbon.Serilog.csproj", "{5D0A11FD-38C0-474D-955A-63B3FD53AAAD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -302,6 +304,10 @@ Global
 		{BA4FCE43-E9CC-44B6-B7DD-D70C35BBD69D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BA4FCE43-E9CC-44B6-B7DD-D70C35BBD69D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BA4FCE43-E9CC-44B6-B7DD-D70C35BBD69D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5D0A11FD-38C0-474D-955A-63B3FD53AAAD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5D0A11FD-38C0-474D-955A-63B3FD53AAAD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5D0A11FD-38C0-474D-955A-63B3FD53AAAD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5D0A11FD-38C0-474D-955A-63B3FD53AAAD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

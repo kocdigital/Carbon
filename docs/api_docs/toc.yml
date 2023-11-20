@@ -53,6 +53,9 @@
 - name: Carbon.Redis
   href: Carbon.Redis/toc.yml
 
+- name: Carbon.Serilog
+  href: Carbon.Serilog/toc.yml
+
 - name: Carbon.TimeScaleDb
   items:
     - name: Carbon.TimeScaleDb

@@ -14,11 +14,17 @@ namespace Carbon.Common
         public IList<string> Using { get; set; }
         public string MinimumLevel { get; set; }
         public IList<SerilogSink> WriteTo { get; set; }
+        public DataMasking? SensitiveDataMasking { get; set; }  
 
         public class SerilogSink
         {
             public string Name { get; set; }
             public IDictionary<string, string> Args{ get; set; }
+        }
+        public class DataMasking
+        {
+            public string[] PropertyNames { get; set; }
+            public string[] Operators { get; set; }
         }
     }
 
