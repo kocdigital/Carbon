@@ -1,10 +1,16 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
 		<TargetFrameworks>net6.0;net5.0;netcoreapp3.1</TargetFrameworks>
-		<Version>4.2.0</Version>
+		<Version>4.4.0</Version>
 		<Description>
-			4.2.0
+      4.4.0
 			- Carbon.Common updated and Serilog.Enrichers.Sensitive Enricher added for masking sensitive values within logs.
+			4.3.0
+			- OwnershipFilter check now disregards solution id header during endpoint permission check
+			4.2.1
+			- UnauthorizedOperationException response body is fixed
+			4.2.0
+			- UnauthorizedOperationException handling is added
 			4.1.9
 			- Carbon.Common updated and IQueryable OrderBy extension method bug fixed
 			4.1.8

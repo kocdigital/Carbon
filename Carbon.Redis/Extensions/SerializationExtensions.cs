@@ -60,7 +60,7 @@ namespace Carbon.Caching.Abstractions.Extensions
             }
             catch(JsonException)
             {
-                return default(T);
+                throw;
             }
         }
 
