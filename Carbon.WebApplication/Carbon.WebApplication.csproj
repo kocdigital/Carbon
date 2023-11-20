@@ -1,8 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
 		<TargetFrameworks>net6.0;net5.0;netcoreapp3.1</TargetFrameworks>
-		<Version>4.3.0</Version>
+		<Version>4.4.0</Version>
 		<Description>
+      4.4.0
+			- Carbon.Common updated and Serilog.Enrichers.Sensitive Enricher added for masking sensitive values within logs.
 			4.3.0
 			- OwnershipFilter check now disregards solution id header during endpoint permission check
 			4.2.1
@@ -134,6 +136,7 @@
 		<ProjectReference Include="..\Carbon.HttpClient.Auth\Carbon.HttpClient.Auth.csproj" />
 		<ProjectReference Include="..\Carbon.HttpClient\Carbon.HttpClient.csproj" />
 		<ProjectReference Include="..\Carbon.PagedList\Carbon.PagedList.csproj" />
+		<ProjectReference Include="..\Carbon.Serilog\Carbon.Serilog.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>
