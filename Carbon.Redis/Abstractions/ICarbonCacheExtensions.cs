@@ -211,16 +211,15 @@ namespace Carbon.Caching.Abstractions
         public static async Task<T> HashSingleGet<T>(this ICarbonCache instance, string key) where T : class
         {
             var value = await instance.GetDatabase().HashGetAsync(key.ToRedisInstanceKey(instance), HashData, CommandFlags.PreferReplica);
-            T result;
-
-            try
+            T result = ((byte[])value).FromByteArray<T>(SerializationType);
+            if (result is null)
             {
-                result = ((byte[])value).FromByteArray<T>(SerializationType);
-            }
-            catch (JsonException)
-            {
-                result = ((byte[])value).FromByteArray<T>(CarbonContentSerializationType.BinaryFormatter);
-                await instance.HashSingleSet<T>(key, result);
+                result = TryAlternativeDeserialization<T>((byte[])value);
+                if (result != null)
+                {
+                    HashEntry hashEntry = new HashEntry(HashData, result.ToByteArray(CarbonContentSerializationType.Json));
+                    await instance.GetDatabase().HashSetAsync(key.ToRedisInstanceKey(instance), new HashEntry[] { hashEntry });
+                }
             }
 
             return result;
@@ -515,22 +514,20 @@ namespace Carbon.Caching.Abstractions
         public static T Get<T>(this ICarbonCache instance, string key) where T : class
         {
             var value = instance.Get(key);
-            T result;
-
-            try
+            T result = value?.FromByteArray<T>(SerializationType);
+            if (result is null)
             {
-                result = value?.FromByteArray<T>(SerializationType);
-            }
-            catch (JsonException)
-            {
-                result = value?.FromByteArray<T>(CarbonContentSerializationType.BinaryFormatter);
-                var ttl = instance.GetDatabase().KeyTimeToLive(key);
-                if (ttl.HasValue)
+                result = TryAlternativeDeserialization<T>(value);
+                if (result != null)
                 {
-                    instance.Set<T>(key, result,(TimeSpan)ttl);
-                    return result;
+                    var options = new DistributedCacheEntryOptions();
+                    var ttl = instance.GetDatabase().KeyTimeToLive(key);
+                    if (ttl.HasValue && ttl != TimeSpan.Zero)
+                    {
+                        options = options.SetAbsoluteExpiration((TimeSpan)ttl);
+                    }
+                    instance.Set(key, value.ToByteArray(CarbonContentSerializationType.Json), options);
                 }
-                instance.Set<T>(key, result);
             }
             return result;
         }
@@ -581,22 +578,20 @@ namespace Carbon.Caching.Abstractions
         public static async Task<T> GetAsync<T>(this ICarbonCache instance, string key, CancellationToken token = default(CancellationToken)) where T : class
         {
             var value = await instance.GetAsync(key, token).ConfigureAwait(false);
-            T result;
-
-            try
+            T result = value?.FromByteArray<T>(SerializationType);
+            if (result is null)
             {
-                result = value?.FromByteArray<T>(SerializationType);
-            }
-            catch (JsonException)
-            {
-                result = value?.FromByteArray<T>(CarbonContentSerializationType.BinaryFormatter);
-                var ttl = await instance.GetDatabase().KeyTimeToLiveAsync(key);
-                if (ttl.HasValue)
+                result = TryAlternativeDeserialization<T>(value);
+                if (result != null)
                 {
-                    await instance.SetAsync<T>(key, result, token, (TimeSpan)ttl, false);
-                    return result;
+                    var ttl = await instance.GetDatabase().KeyTimeToLiveAsync(key);
+                    var options = new DistributedCacheEntryOptions();
+                    if (ttl.HasValue && ttl != TimeSpan.Zero)
+                    {
+                        options = options.SetAbsoluteExpiration((TimeSpan)ttl);
+                    }
+                    await instance.SetAsync(key, value.ToByteArray(CarbonContentSerializationType.Json), options, token).ConfigureAwait(false);
                 }
-                await instance.SetAsync<T>(key, result, token);
             }
 
             return result;
@@ -732,6 +727,29 @@ namespace Carbon.Caching.Abstractions
         }
 
         #endregion
+
+        public static T TryAlternativeDeserialization<T>(byte[] value) where T : class
+        {
+            T result;
+            if (SerializationType == CarbonContentSerializationType.BinaryFormatter)
+            {
+                result = value?.FromByteArray<T>(CarbonContentSerializationType.Json);
+                if (result != null)
+                {
+                    return result;
+                }
+            }
+            else if (SerializationType == CarbonContentSerializationType.Json)
+            {
+                result = value?.FromByteArray<T>(CarbonContentSerializationType.BinaryFormatter);
+                if (result != null)
+                {
+                    return result;
+                }
+            }
+
+            return default(T);
+        }
 
         private static string ToRedisInstanceKey(this string key, ICarbonCache instance)
         {
