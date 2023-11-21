@@ -219,6 +219,11 @@ namespace Carbon.Caching.Abstractions
                 {
                     HashEntry hashEntry = new HashEntry(HashData, result.ToByteArray(CarbonContentSerializationType.Json));
                     await instance.GetDatabase().HashSetAsync(key.ToRedisInstanceKey(instance), new HashEntry[] { hashEntry });
+                    var ttl = instance.GetDatabase().KeyTimeToLive(key);
+                    if (ttl.HasValue && ttl != TimeSpan.Zero)
+                    {
+                        await instance.SetTTL(key, (TimeSpan)ttl);
+                    }
                 }
             }
 
@@ -728,6 +733,7 @@ namespace Carbon.Caching.Abstractions
 
         #endregion
 
+        //This method added to convert binary serialized keys to json serialized, will be removed after conversion.
         public static T TryAlternativeDeserialization<T>(byte[] value) where T : class
         {
             T result;
