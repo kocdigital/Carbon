@@ -3,8 +3,10 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
     <ProjectGuid>{bdcf1c00-d0d9-4328-8817-4d093f30cee1}</ProjectGuid>
-    <Version>3.5.2</Version>
+    <Version>3.6.0</Version>
     <Description>
+		3.6.0
+		- Carbon.Common Bulk index operations added (AddBulkAndReturn and AddBulkAndReturnAsync)
 		3.5.2
 		- Carbon.Common updated and IQueryable OrderBy extension method bug fixed
 		3.5.1
