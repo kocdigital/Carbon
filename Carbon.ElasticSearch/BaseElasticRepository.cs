@@ -24,7 +24,7 @@ namespace Carbon.ElasticSearch
         {
             return _client.Index(item, i => i.Index(Index));
         }
-        public BulkResponse AddBulkAndReturn(IEnumerable<T>[] items)
+        public BulkResponse AddBulkAndReturn(IEnumerable<T> items)
         {
             return _client.Bulk(i => i.Index(Index).IndexMany(items));
         }
@@ -38,7 +38,7 @@ namespace Carbon.ElasticSearch
             return await _client.IndexAsync(item, i => i.Index(Index)
             .Refresh((_forceRefresh || (refresh ?? false)) ? Elasticsearch.Net.Refresh.True : Elasticsearch.Net.Refresh.False));
         }
-        public async Task<BulkResponse> AddBulkAndReturnAsync(IEnumerable<T>[] items,CancellationToken cancellationToken = default)
+        public async Task<BulkResponse> AddBulkAndReturnAsync(IEnumerable<T> items,CancellationToken cancellationToken = default)
         {
             return await _client.BulkAsync(b => b.Index(Index).IndexMany(items),cancellationToken);
         }
