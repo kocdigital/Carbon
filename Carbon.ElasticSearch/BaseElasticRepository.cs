@@ -2,7 +2,7 @@
 using Carbon.ElasticSearch.Abstractions;
 using System;
 using System.Collections.Generic;
-using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Carbon.ElasticSearch
@@ -24,6 +24,10 @@ namespace Carbon.ElasticSearch
         {
             return _client.Index(item, i => i.Index(Index));
         }
+        public BulkResponse AddBulkAndReturn(IEnumerable<T>[] items)
+        {
+            return _client.Bulk(i => i.Index(Index).IndexMany(items));
+        }
         public async Task AddAsync(T item, bool? refresh = null)
         {
             var response = await _client.IndexAsync(item, i => i.Index(Index)
@@ -33,6 +37,10 @@ namespace Carbon.ElasticSearch
         {
             return await _client.IndexAsync(item, i => i.Index(Index)
             .Refresh((_forceRefresh || (refresh ?? false)) ? Elasticsearch.Net.Refresh.True : Elasticsearch.Net.Refresh.False));
+        }
+        public async Task<BulkResponse> AddBulkAndReturnAsync(IEnumerable<T>[] items,CancellationToken cancellationToken = default)
+        {
+            return await _client.BulkAsync(b => b.Index(Index).IndexMany(items),cancellationToken);
         }
         public void DeleteById(string id, bool? refresh = null)
         {

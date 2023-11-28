@@ -2,6 +2,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Carbon.ElasticSearch.Abstractions
@@ -49,6 +50,13 @@ namespace Carbon.ElasticSearch.Abstractions
         IndexResponse AddAndReturn(T item);
 
         /// <summary>
+        /// Creates given records and returns BulkResponse
+        /// </summary>
+        /// <param name="items">Record to be created</param>
+        /// <returns></returns>
+        BulkResponse AddBulkAndReturn(IEnumerable<T>[] items);
+
+        /// <summary>
         /// Creates given record
         /// </summary>
         /// <param name="item">Record to be created</param>
@@ -61,6 +69,14 @@ namespace Carbon.ElasticSearch.Abstractions
         /// <param name="item">Record to be created</param>
         /// <param name="refresh">if true; forces and waits for ElasticSearch to refresh the index after operation to make changes visible</param>
         Task<IndexResponse> AddAndReturnAsync(T item, bool? refresh = null);
+
+        /// <summary>
+        /// Creates given records and returns BulkResponse
+        /// </summary>
+        /// <param name="items">Record to be created</param>
+        /// <param name="cancellationToken">Token that can be used to cancel the request</param>
+        /// <returns></returns>
+        Task<BulkResponse> AddBulkAndReturnAsync(IEnumerable<T>[] items, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Updates given record
