@@ -213,6 +213,16 @@
     {
       "src": [
         {
+          "files": [ "**/Carbon.Serilog.csproj" ],
+          "exclude": [ "**/bin/**", "**/obj/**", "demos/**", "TestResults/**", "tests/**", "SolutionItems/**", "Carbon.Documentation/**" ],
+          "src": "../"
+        }
+      ],
+      "dest": "api_docs/Carbon.Serilog"
+    },
+    {
+      "src": [
+        {
           "files": [ "**/Carbon.TimeScaleDb.csproj" ],
           "exclude": [ "**/bin/**", "**/obj/**", "demos/**", "TestResults/**", "tests/**", "SolutionItems/**", "Carbon.Documentation/**" ],
           "src": "../"
