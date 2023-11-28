@@ -54,7 +54,7 @@ namespace Carbon.ElasticSearch.Abstractions
         /// </summary>
         /// <param name="items">Record to be created</param>
         /// <returns></returns>
-        BulkResponse AddBulkAndReturn(IEnumerable<T>[] items);
+        BulkResponse AddBulkAndReturn(IEnumerable<T> items);
 
         /// <summary>
         /// Creates given record
@@ -76,7 +76,7 @@ namespace Carbon.ElasticSearch.Abstractions
         /// <param name="items">Record to be created</param>
         /// <param name="cancellationToken">Token that can be used to cancel the request</param>
         /// <returns></returns>
-        Task<BulkResponse> AddBulkAndReturnAsync(IEnumerable<T>[] items, CancellationToken cancellationToken = default);
+        Task<BulkResponse> AddBulkAndReturnAsync(IEnumerable<T> items, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Updates given record
