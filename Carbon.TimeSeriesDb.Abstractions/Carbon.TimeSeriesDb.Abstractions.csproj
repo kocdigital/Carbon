@@ -2,9 +2,11 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
-    <Version>1.0.5</Version>
+    <Version>1.1.0</Version>
     <Description>
-		1.0.5
+		1.1.O
+        - Carbon.Common added CancellationToken to all applicable methods in ITimeSeriesEntityRepository 
+        1.0.5
 		- Carbon.Common updated and IQueryable OrderBy extension method bug fixed
 		1.0.4
 		- Carbon.Common updated and nested ordering achieved
