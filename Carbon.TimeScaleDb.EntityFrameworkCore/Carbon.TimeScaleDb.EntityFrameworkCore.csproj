@@ -3,8 +3,11 @@
   <PropertyGroup>
     <TargetFrameworks>net5.0;netcoreapp3.1</TargetFrameworks>
     <LangVersion>8.0</LangVersion>
-    <Version>1.1.6</Version>
-    <Description>1.1.6
+    <Version>1.2.0</Version>
+    <Description>
+1.2.0 
+- Added CancellationToken to all applicable methods in ITimeSeriesEntityRepository 
+1.1.6
 - TimeScaleDb converts to existing tables to hypertables by migrating data
 1.1.3
   -TimeScaleDb is disabled when no connection string found
