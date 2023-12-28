@@ -581,7 +581,7 @@ namespace Carbon.Caching.Abstractions
         /// <param name="keys">Redis Keys as string list</param>
         /// <param name="token">Cancellation Token</param>
         /// <returns>Dictionary as key, value pair.Missing items won't be appear in the dictionary.</returns>
-        public static async Task<Dictionary<string,T>> GetMultiAsync<T>(this ICarbonCache instance, List<string> keys, CancellationToken token = default(CancellationToken)) where T : class
+        public static async Task<Dictionary<string,T>> GetMultiAsync<T>(this ICarbonCache instance, List<string> keys) where T : class
         {
             var redisKeys = keys.Select(k => new RedisKey(k)).ToArray();
             var redisValues = await instance.GetDatabase().StringGetAsync(redisKeys);
