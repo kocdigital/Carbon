@@ -3,8 +3,11 @@
   <PropertyGroup>
 	 <TargetFrameworks>net6.0;net5.0;netcoreapp3.1</TargetFrameworks>
 	 <LangVersion>latest</LangVersion>
-	 <Version>2.8.0</Version>
+	 <Version>2.8.1</Version>
      <Description>
+		 2.8.1
+		 Multi get async support.
+
 		 2.8.0
 		 Keys can be fetched in both binary and json formatter serialized, but can only be set in json formatter serialized to transform binary formatter serialized keys which is unsupported.
 
