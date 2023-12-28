@@ -574,13 +574,13 @@ namespace Carbon.Caching.Abstractions
         #region IPlatform360Cache - async
         
         /// <summary>
-        /// Simple awaitable get multi async operation.
+        /// Simple awaitable get-multi async operation.
         /// </summary>
         /// <typeparam name="T">Any object type that is serializable</typeparam>
         /// <param name="instance"></param>
-        /// <param name="keys">Redis Keys as string list </param>
+        /// <param name="keys">Redis Keys as string list</param>
         /// <param name="token">Cancellation Token</param>
-        /// <returns>Dictionary as key, value poir. Missing items won't be appear in the dictionary.</returns>
+        /// <returns>Dictionary as key, value pair.Missing items won't be appear in the dictionary.</returns>
         public static async Task<Dictionary<string,T>> GetMultiAsync<T>(this ICarbonCache instance, List<string> keys, CancellationToken token = default(CancellationToken)) where T : class
         {
             var redisKeys = keys.Select(k => new RedisKey(k)).ToArray();
@@ -591,8 +591,12 @@ namespace Carbon.Caching.Abstractions
             {
                 if (redisValue is { IsNull: false, HasValue: true })
                 {
-                    T result = Encoding.UTF8.GetBytes(redisValue.ToString()).FromByteArray<T>(CarbonContentSerializationType.Json);
-                    output.Add(redisKeys[i].ToString(),result);
+                    byte[] bytes = Encoding.UTF8.GetBytes(redisValue.ToString());
+                    T result = bytes.FromByteArray<T>(SerializationType) ?? TryAlternativeDeserialization<T>(bytes);
+                    if (result is not null)
+                    {
+                        output.Add(redisKeys[i].ToString(),result);
+                    }
                 }
                 i++;
             }
