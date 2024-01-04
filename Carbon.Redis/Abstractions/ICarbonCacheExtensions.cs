@@ -532,7 +532,7 @@ namespace Carbon.Caching.Abstractions
                     {
                         options = options.SetAbsoluteExpiration((TimeSpan)ttl);
                     }
-                    instance.Set(key, value.ToByteArray(CarbonContentSerializationType.Json), options);
+                    instance.Set(key, result.ToByteArray(CarbonContentSerializationType.Json), options);
                 }
             }
             return result;
@@ -626,7 +626,7 @@ namespace Carbon.Caching.Abstractions
                     {
                         options = options.SetAbsoluteExpiration((TimeSpan)ttl);
                     }
-                    await instance.SetAsync(key, value.ToByteArray(CarbonContentSerializationType.Json), options, token).ConfigureAwait(false);
+                    await instance.SetAsync(key, result.ToByteArray(CarbonContentSerializationType.Json), options, token).ConfigureAwait(false);
                 }
             }
 
