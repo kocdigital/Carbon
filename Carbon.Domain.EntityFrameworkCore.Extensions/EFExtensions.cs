@@ -267,11 +267,11 @@ namespace Carbon.Domain.EntityFrameworkCore
             {
                 if (rp.PrivilegeLevelType == PermissionGroupImpactLevel.OnlyPolicyItself || rp.PrivilegeLevelType == PermissionGroupImpactLevel.PolicyItselfAndItsChildPolicies || rp.PrivilegeLevelType == PermissionGroupImpactLevel.AllPoliciesIncludedInZone)
                 {
-                    return relationEntities.Where(k => (orgs.Contains(k.Entity.OrganizationId) && (k.Entity.OwnerType != OwnerType.Role)) || (k.Entity.OwnerType == OwnerType.Role && k.Entity.OwnerId == rp.RoleId) || (k.Entity.OrganizationId == Guid.Empty) || (k.Entity.OwnerType == OwnerType.CustomerBased));
+                    return relationEntities.Where(k => (orgs.Contains(k.Entity.OrganizationId) && (k.Entity.OwnerType != OwnerType.Role)) || (k.Entity.OwnerType == OwnerType.Role && k.Entity.OwnerId == rp.RoleId) || (k.Entity.OrganizationId == Guid.Empty) || k.Entity.OwnerType == OwnerType.CustomerBased || k.Entity.OwnerType == OwnerType.None);
                 }
                 else if (rp.PrivilegeLevelType == PermissionGroupImpactLevel.User)
                 {
-                    return relationEntities.Where(k => k.Entity.OwnerType == OwnerType.User && k.Entity.OwnerId == rp.UserId || (k.Entity.OwnerType == OwnerType.Role && k.Entity.OwnerId == rp.RoleId) || (k.Entity.OwnerType == OwnerType.CustomerBased));
+                    return relationEntities.Where(k => k.Entity.OwnerType == OwnerType.User && k.Entity.OwnerId == rp.UserId || (k.Entity.OwnerType == OwnerType.Role && k.Entity.OwnerId == rp.RoleId) || k.Entity.OwnerType == OwnerType.CustomerBased || k.Entity.OwnerType == OwnerType.None);
                 }
             }
             return relationEntities;
@@ -292,11 +292,11 @@ namespace Carbon.Domain.EntityFrameworkCore
             {
                 if (rp.PrivilegeLevelType == PermissionGroupImpactLevel.OnlyPolicyItself || rp.PrivilegeLevelType == PermissionGroupImpactLevel.PolicyItselfAndItsChildPolicies || rp.PrivilegeLevelType == PermissionGroupImpactLevel.AllPoliciesIncludedInZone)
                 {
-                    return relationEntities.Where(k => (orgs.Contains(k.Entity.OrganizationId) && (k.Entity.OwnerType != OwnerType.Role)) || (k.Entity.OwnerType == OwnerType.Role && k.Entity.OwnerId == rp.RoleId) || (k.Entity.OrganizationId == Guid.Empty) || (k.Entity.OwnerType == OwnerType.CustomerBased));
+                    return relationEntities.Where(k => (orgs.Contains(k.Entity.OrganizationId) && (k.Entity.OwnerType != OwnerType.Role)) || (k.Entity.OwnerType == OwnerType.Role && k.Entity.OwnerId == rp.RoleId) || (k.Entity.OrganizationId == Guid.Empty) || k.Entity.OwnerType == OwnerType.CustomerBased || k.Entity.OwnerType == OwnerType.None);
                 }
                 else if (rp.PrivilegeLevelType == PermissionGroupImpactLevel.User)
                 {
-                    return relationEntities.Where(k => k.Entity.OwnerType == OwnerType.User && k.Entity.OwnerId == rp.UserId || (k.Entity.OwnerType == OwnerType.Role && k.Entity.OwnerId == rp.RoleId) || (k.Entity.OwnerType == OwnerType.CustomerBased));
+                    return relationEntities.Where(k => k.Entity.OwnerType == OwnerType.User && k.Entity.OwnerId == rp.UserId || (k.Entity.OwnerType == OwnerType.Role && k.Entity.OwnerId == rp.RoleId) || k.Entity.OwnerType == OwnerType.CustomerBased || k.Entity.OwnerType == OwnerType.None);
                 }
             }
             return relationEntities;
@@ -316,11 +316,11 @@ namespace Carbon.Domain.EntityFrameworkCore
             {
                 if (rp.PrivilegeLevelType == PermissionGroupImpactLevel.OnlyPolicyItself || rp.PrivilegeLevelType == PermissionGroupImpactLevel.PolicyItselfAndItsChildPolicies || rp.PrivilegeLevelType == PermissionGroupImpactLevel.AllPoliciesIncludedInZone)
                 {
-                    return relationEntities.Where(k => (orgs.Contains(k.OrganizationId) && (k.OwnerType != OwnerType.Role)) || (k.OwnerType == OwnerType.Role && k.OwnerId == rp.RoleId) || (k.OrganizationId == Guid.Empty) || (k.OwnerType == OwnerType.CustomerBased));
+                    return relationEntities.Where(k => (orgs.Contains(k.OrganizationId) && (k.OwnerType != OwnerType.Role)) || (k.OwnerType == OwnerType.Role && k.OwnerId == rp.RoleId) || (k.OrganizationId == Guid.Empty) || k.OwnerType == OwnerType.CustomerBased || k.OwnerType == OwnerType.None);
                 }
                 else if (rp.PrivilegeLevelType == PermissionGroupImpactLevel.User)
                 {
-                    return relationEntities.Where(k => k.OwnerType == OwnerType.User && k.OwnerId == rp.UserId || (k.OwnerType == OwnerType.Role && k.OwnerId == rp.RoleId) || (k.OwnerType == OwnerType.CustomerBased));
+                    return relationEntities.Where(k => k.OwnerType == OwnerType.User && k.OwnerId == rp.UserId || (k.OwnerType == OwnerType.Role && k.OwnerId == rp.RoleId) || k.OwnerType == OwnerType.CustomerBased || k.OwnerType == OwnerType.None);
                 }
             }
             return relationEntities;
@@ -339,11 +339,11 @@ namespace Carbon.Domain.EntityFrameworkCore
             {
                 if (rp.PrivilegeLevelType == PermissionGroupImpactLevel.OnlyPolicyItself || rp.PrivilegeLevelType == PermissionGroupImpactLevel.PolicyItselfAndItsChildPolicies || rp.PrivilegeLevelType == PermissionGroupImpactLevel.AllPoliciesIncludedInZone)
                 {
-                    return relationEntities.Where(k => (orgs.Contains(k.OrganizationId) && (k.OwnerType != OwnerType.Role)) || (k.OwnerType == OwnerType.Role && k.OwnerId == rp.RoleId) || (k.OrganizationId == Guid.Empty) || (k.OwnerType == OwnerType.CustomerBased));
+                    return relationEntities.Where(k => (orgs.Contains(k.OrganizationId) && (k.OwnerType != OwnerType.Role)) || (k.OwnerType == OwnerType.Role && k.OwnerId == rp.RoleId) || (k.OrganizationId == Guid.Empty) || k.OwnerType == OwnerType.CustomerBased || k.OwnerType == OwnerType.None);
                 }
                 else if (rp.PrivilegeLevelType == PermissionGroupImpactLevel.User)
                 {
-                    return relationEntities.Where(k => k.OwnerType == OwnerType.User && k.OwnerId == rp.UserId || (k.OwnerType == OwnerType.Role && k.OwnerId == rp.RoleId) || (k.OwnerType == OwnerType.CustomerBased));
+                    return relationEntities.Where(k => k.OwnerType == OwnerType.User && k.OwnerId == rp.UserId || (k.OwnerType == OwnerType.Role && k.OwnerId == rp.RoleId) || k.OwnerType == OwnerType.CustomerBased || k.OwnerType == OwnerType.None);
                 }
             }
             return relationEntities;
