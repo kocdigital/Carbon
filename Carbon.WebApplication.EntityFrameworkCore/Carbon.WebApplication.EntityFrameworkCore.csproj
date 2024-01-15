@@ -2,8 +2,11 @@
 
   <PropertyGroup>
     <TargetFrameworks>net6.0;net5.0;netstandard2.1</TargetFrameworks>
-    <Version>2.3.2</Version>
+    <Version>2.3.3</Version>
     <Description>
+		2.3.3
+		Upgrade Carbon.Domain.EntityFramework version (Added OwnerType.None in ownership filter)
+
 		2.3.2
 		Fixed EFExtensions FirstOrDefaultEntity methods. Null check condition is added for the Relation object
 
