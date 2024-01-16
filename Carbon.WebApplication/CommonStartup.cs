@@ -257,6 +257,11 @@ namespace Carbon.WebApplication
 
         internal static void AddAppAuths(IApplicationBuilder app, bool useAuthentication, bool useAuthorization)
         {
+            if (_corsPolicySettings != null && (_corsPolicySettings.AllowAnyOrigin || (_corsPolicySettings.Origins != null && _corsPolicySettings.Origins.Count > 0)))
+            {
+                app.UseCors(MyAllowSpecificOrigins);
+            }
+            
             _useAuthentication = useAuthentication;
             _useAuthorization = useAuthorization;
             if (_useAuthentication)
@@ -268,11 +273,7 @@ namespace Carbon.WebApplication
             {
                 app.UseAuthorization();
             }
-
-            if (_corsPolicySettings != null && (_corsPolicySettings.AllowAnyOrigin || (_corsPolicySettings.Origins != null && _corsPolicySettings.Origins.Count > 0)))
-            {
-                app.UseCors(MyAllowSpecificOrigins);
-            }
+            
         }
 
         internal static void AddAppEndpoints(IEndpointRouteBuilder endpoints)
