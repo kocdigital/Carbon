@@ -105,7 +105,7 @@ namespace Carbon.Redis
                 if (!String.IsNullOrEmpty(configurationOptions.ServiceName))
                 {
                     var sentinelConfig = configurationOptions.Clone();
-                    var secondsOfTimeOut = 10000;//10 seconds
+                    var secondsOfTimeOut = 1000;//1 seconds, if the value becomes lower than a second, it can cause errors.
                     sentinelConfig.SyncTimeout = sentinelConfig.SyncTimeout < secondsOfTimeOut ? secondsOfTimeOut : sentinelConfig.SyncTimeout;
                     sentinelConfig.AsyncTimeout = sentinelConfig.AsyncTimeout < secondsOfTimeOut ? secondsOfTimeOut : sentinelConfig.AsyncTimeout;
                     sentinelConfig.CommandMap = CommandMap.Sentinel;
