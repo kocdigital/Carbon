@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Security.Authentication;
 
 namespace Carbon.Redis
 {
@@ -49,6 +50,10 @@ namespace Carbon.Redis
         /// </summary>
         string Password { get; set; }
         /// <summary>
+        /// User for the redis server (for use with ACLs on redis 6 and above)
+        /// </summary>
+        string User { get; set; }
+        /// <summary>
         /// Enables a range of commands that are considered risky
         /// </summary>
         bool AllowAdmin { get; set; }
@@ -72,7 +77,10 @@ namespace Carbon.Redis
         /// Enable if redis port uses TLS
         /// </summary>
         bool SSLEnabled { get; set; }
-
+        /// <summary>
+        /// Ssl/Tls versions supported when using an encrypted connection. Use ‘|’ to provide multiple values.
+        /// </summary>
+        SslProtocols? SslProtocols { get; set; }
         /// <summary>
         /// Sentinel Enablement
         /// </summary>

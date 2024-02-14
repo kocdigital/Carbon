@@ -3,8 +3,12 @@
   <PropertyGroup>
 	 <TargetFrameworks>net6.0;net5.0;netcoreapp3.1</TargetFrameworks>
 	 <LangVersion>latest</LangVersion>
-	 <Version>2.8.2</Version>
+	 <Version>2.9.0</Version>
      <Description>
+		 2.9.0
+		 Fix: Redis Sentinel support added correctly.
+		 Feat: Degraded health status added for sentinel mode only.
+		 
 		 2.8.1
 		 Multi get async support.
 
@@ -72,7 +76,7 @@
     <PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks" Version="6.0.11" />
     <PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions" Version="6.0.11" />
     <PackageReference Include="RedLock.net" Version="2.3.2" />
-    <PackageReference Include="StackExchange.Redis" Version="2.6.70" />
+    <PackageReference Include="StackExchange.Redis" Version="2.7.17" />
     <PackageReference Include="System.Text.Json" Version="6.0.6" />
   </ItemGroup>
 

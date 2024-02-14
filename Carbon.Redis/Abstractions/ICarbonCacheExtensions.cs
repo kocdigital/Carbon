@@ -88,7 +88,7 @@ namespace Carbon.Caching.Abstractions
         /// <returns>Your entire object</returns>
         public static async Task<T> HashGetAsObject<T>(this ICarbonCache instance, string key) where T : class
         {
-            var values = await instance.GetDatabase().HashGetAllAsync(key.ToRedisInstanceKey(instance), CommandFlags.PreferReplica);
+            var values = await instance.GetDatabase().HashGetAllAsync(key.ToRedisInstanceKey(instance), CommandFlags.PreferMaster);
             if (values == default || !values.Any())
             {
                 return default(T);
@@ -117,7 +117,7 @@ namespace Carbon.Caching.Abstractions
             {
                 redisValues[i] = hashfields[i];
             }
-            var values = await instance.GetDatabase().HashGetAsync(key.ToRedisInstanceKey(instance), redisValues, CommandFlags.PreferReplica);
+            var values = await instance.GetDatabase().HashGetAsync(key.ToRedisInstanceKey(instance), redisValues, CommandFlags.PreferMaster);
 
             Dictionary<string, object> keyValuePairs = new Dictionary<string, object>();
             for (int i = 0; i < values.Length; i++)
@@ -211,7 +211,7 @@ namespace Carbon.Caching.Abstractions
         /// <returns>A single value for the given hash field</returns>
         public static async Task<T> HashSingleGet<T>(this ICarbonCache instance, string key) where T : class
         {
-            var value = await instance.GetDatabase().HashGetAsync(key.ToRedisInstanceKey(instance), HashData, CommandFlags.PreferReplica);
+            var value = await instance.GetDatabase().HashGetAsync(key.ToRedisInstanceKey(instance), HashData, CommandFlags.PreferMaster);
             T result = ((byte[])value).FromByteArray<T>(SerializationType);
             if (result is null)
             {
@@ -328,7 +328,7 @@ namespace Carbon.Caching.Abstractions
         /// <returns>A single value for the given hash field</returns>
         public static async Task<T> HashGet<T>(this ICarbonCache instance, string key, string hashfield) where T : class
         {
-            var value = await instance.GetDatabase().HashGetAsync(key.ToRedisInstanceKey(instance), hashfield, CommandFlags.PreferReplica);
+            var value = await instance.GetDatabase().HashGetAsync(key.ToRedisInstanceKey(instance), hashfield, CommandFlags.PreferMaster);
             return ((byte[])value).FromByteArray<T>(SerializationType);
         }
 
@@ -347,7 +347,7 @@ namespace Carbon.Caching.Abstractions
             {
                 redisValues[i] = hashfields[i];
             }
-            var values = await instance.GetDatabase().HashGetAsync(key.ToRedisInstanceKey(instance), redisValues, CommandFlags.PreferReplica);
+            var values = await instance.GetDatabase().HashGetAsync(key.ToRedisInstanceKey(instance), redisValues, CommandFlags.PreferMaster);
             Dictionary<string, T> keyValuePairs = new Dictionary<string, T>();
             for (int i = 0; i < values.Length; i++)
             {
@@ -366,7 +366,7 @@ namespace Carbon.Caching.Abstractions
         /// <returns>Dictionary of the all hash fields</returns>
         public static async Task<Dictionary<string, T>> HashGet<T>(this ICarbonCache instance, string key) where T : class
         {
-            var values = await instance.GetDatabase().HashGetAllAsync(key.ToRedisInstanceKey(instance), CommandFlags.PreferReplica);
+            var values = await instance.GetDatabase().HashGetAllAsync(key.ToRedisInstanceKey(instance), CommandFlags.PreferMaster);
             Dictionary<string, T> keyValuePairs = new Dictionary<string, T>();
             foreach (var k in values)
             {
@@ -476,7 +476,7 @@ namespace Carbon.Caching.Abstractions
         public static async Task<List<T>> SetGetMembers<T>(this ICarbonCache instance, string key)
             where T : class
         {
-            var members = await instance.GetDatabase().SetMembersAsync(key.ToRedisInstanceKey(instance), CommandFlags.PreferReplica);
+            var members = await instance.GetDatabase().SetMembersAsync(key.ToRedisInstanceKey(instance), CommandFlags.PreferMaster);
             return members.Select(k => ((byte[])k).FromByteArray<T>(SerializationType)).ToList();
         }
 
@@ -494,7 +494,7 @@ namespace Carbon.Caching.Abstractions
             List<RedisKey> redisKeys = new List<RedisKey>();
             redisKeys.AddRange(keys.ToRedisInstanceKey(instance).Select(k => new RedisKey(k)));
 
-            var combinedMembers = await instance.GetDatabase().SetCombineAsync(setOperation, redisKeys.ToArray(), CommandFlags.PreferReplica);
+            var combinedMembers = await instance.GetDatabase().SetCombineAsync(setOperation, redisKeys.ToArray(), CommandFlags.PreferMaster);
             return combinedMembers.Select(k => ((byte[])k).FromByteArray<T>(SerializationType)).ToList();
         }
 

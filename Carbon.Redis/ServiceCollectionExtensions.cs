@@ -11,8 +11,11 @@ using StackExchange.Redis;
 
 using System;
 using System.Linq;
+using System.Net.Security;
 using System.Security.Cryptography;
 using System.Text;
+
+using static StackExchange.Redis.Role;
 
 namespace Carbon.Redis
 {
@@ -72,7 +75,7 @@ namespace Carbon.Redis
                     ConfigurationChannel = redisSettings.Value.ConfigurationChannel,
                     TieBreaker = redisSettings.Value.TieBreaker,
                     ConfigCheckSeconds = redisSettings.Value.ConfigCheckSeconds,
-                    CommandMap = CommandMap.Create(redisSettings.Value.CommandMap, available: redisSettings.Value.CommandMapAvailable),
+                    CommandMap = redisSettings.Value.CommandMap != null && redisSettings.Value.CommandMap.Any() ? CommandMap.Create(redisSettings.Value.CommandMap, available: redisSettings.Value.CommandMapAvailable) : CommandMap.Default,
                     Password = redisSettings.Value.Password,
                     AllowAdmin = redisSettings.Value.AllowAdmin,
                     AsyncTimeout = redisSettings.Value.AsyncTimeout,
@@ -81,50 +84,66 @@ namespace Carbon.Redis
                     DefaultDatabase = redisSettings.Value.DefaultDatabase,
                     Ssl = redisSettings.Value.SSLEnabled,
                     ServiceName = redisSettings.Value.SentinelServiceName,
-                    SyncTimeout = redisSettings.Value.SyncTimeout
+                    SyncTimeout = redisSettings.Value.SyncTimeout,
+                    Protocol = RedisProtocol.Resp2
+                    //CheckCertificateRevocation = false
                 };
+                //configurationOptions.CertificateValidation += ConfigurationOptions_CertificateValidation;
 
                 if (!String.IsNullOrEmpty(redisSettings.Value.User))
                     configurationOptions.User = redisSettings.Value.User;
 
                 if (redisSettings.Value.SSLEnabled)
                 {
-                    configurationOptions.SslProtocols = System.Security.Authentication.SslProtocols.None;
+                    if (redisSettings.Value.SslProtocols.HasValue)
+                        configurationOptions.SslProtocols = redisSettings.Value.SslProtocols.Value;
+                    else
+                        configurationOptions.SslProtocols = System.Security.Authentication.SslProtocols.None;
                 }
 
-                var redis = ConnectionMultiplexer.Connect(configurationOptions);
-                if (redis.IsConnected)
+                services.AddSingleton<ConfigurationOptions>(configurationOptions);
+                if (!String.IsNullOrEmpty(configurationOptions.ServiceName))
                 {
-                    services.AddSingleton<ConfigurationOptions>(configurationOptions);
-                    services.AddSingleton<IConnectionMultiplexer>(redis);
-                    var db = redis.GetDatabase(redisSettings.Value.DefaultDatabase);
-                    services.AddSingleton(s => db);
-                    RedisHelper.SetRedisKeyLength(redisSettings.Value.KeyLength);
-
-                    if (!String.IsNullOrEmpty(configurationOptions.ServiceName))
+                    var sentinelConfig = configurationOptions.Clone();
+                    var secondsOfTimeOut = 10000;//10 seconds
+                    sentinelConfig.SyncTimeout = sentinelConfig.SyncTimeout < secondsOfTimeOut ? secondsOfTimeOut : sentinelConfig.SyncTimeout;
+                    sentinelConfig.AsyncTimeout = sentinelConfig.AsyncTimeout < secondsOfTimeOut ? secondsOfTimeOut : sentinelConfig.AsyncTimeout;
+                    sentinelConfig.CommandMap = CommandMap.Sentinel;
+                    SentinelConnectionMultiplexer redisSentinel = new SentinelConnectionMultiplexer(ConnectionMultiplexer.SentinelConnect(sentinelConfig));
+                    if (redisSentinel.ConnectionMultiplexer.IsConnected)
                     {
-                        var sentinelConfig = configurationOptions.Clone();
-                        var SecondsOfTimeOut = 10000;
-                        sentinelConfig.SyncTimeout = SecondsOfTimeOut;
-                        sentinelConfig.AsyncTimeout = SecondsOfTimeOut;
-                        SentinelConnectionMultiplexer redisSentinel = new SentinelConnectionMultiplexer(ConnectionMultiplexer.SentinelConnect(sentinelConfig));
-                        if (redisSentinel.ConnectionMultiplexer.IsConnected)
-                        {
-                            services.AddSingleton<ISentinelConnectionMultiplexer>(redisSentinel);
-                        }
+                        var master = redisSentinel.ConnectionMultiplexer.GetSentinelMasterConnection(configurationOptions);
+                        services.AddSingleton<IConnectionMultiplexer>(master);
+                        var db = master.GetDatabase(redisSettings.Value.DefaultDatabase);
+                        services.AddSingleton(s => db);
+                        RedisHelper.SetRedisKeyLength(redisSettings.Value.KeyLength);
+                        services.AddSingleton<ISentinelConnectionMultiplexer>(redisSentinel);
                     }
                     else
                     {
-                        NonSentinelConnectionMultiplexer redisSentinel = new NonSentinelConnectionMultiplexer(redis);
-                        services.AddSingleton<ISentinelConnectionMultiplexer>(redisSentinel);
+                        throw new RedisConnectionException(ConnectionFailureType.UnableToConnect, ConnectionFailureType.UnableToConnect.ToString());
                     }
-
-                    services.AddHealthChecks().AddCheck<CustomRedisHealthCheck>("RedisConnectionCheck", HealthStatus.Unhealthy);
                 }
                 else
                 {
-                    throw new RedisConnectionException(ConnectionFailureType.UnableToConnect, ConnectionFailureType.UnableToConnect.ToString());
+                    var redis = ConnectionMultiplexer.Connect(configurationOptions);
+                    if (redis.IsConnected)
+                    {
+                        services.AddSingleton<IConnectionMultiplexer>(redis);
+                        var db = redis.GetDatabase(redisSettings.Value.DefaultDatabase);
+                        services.AddSingleton(s => db);
+                        RedisHelper.SetRedisKeyLength(redisSettings.Value.KeyLength);
+                        NonSentinelConnectionMultiplexer redisSentinel = new NonSentinelConnectionMultiplexer(redis);
+                        services.AddSingleton<ISentinelConnectionMultiplexer>(redisSentinel);
+
+                    }
+                    else
+                    {
+                        throw new RedisConnectionException(ConnectionFailureType.UnableToConnect, ConnectionFailureType.UnableToConnect.ToString());
+                    }
                 }
+                services.AddHealthChecks().AddCheck<CustomRedisHealthCheck>("RedisConnectionCheck", HealthStatus.Unhealthy);
+                
             }
             else
             {
@@ -132,8 +151,18 @@ namespace Carbon.Redis
                 services.AddSingleton<IConnectionMultiplexer, DummyConnectionMultiplexer>();
             }
 
-
+            
             return new CarbonRedisBuilder(services, configurationOptions, configuration);
+        }
+
+        private static bool ConfigurationOptions_CertificateValidation(object sender, System.Security.Cryptography.X509Certificates.X509Certificate certificate, System.Security.Cryptography.X509Certificates.X509Chain chain, System.Net.Security.SslPolicyErrors sslPolicyErrors)
+        {
+            if (sslPolicyErrors == SslPolicyErrors.None)
+                return true;
+
+            Console.WriteLine("Certificate error: {0}", sslPolicyErrors);
+
+            return false;
         }
 
         /// <summary>
