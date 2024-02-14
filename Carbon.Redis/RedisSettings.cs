@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Options;
 using System.Collections.Generic;
+using System.Security.Authentication;
 
 namespace Carbon.Redis
 {
@@ -19,6 +20,7 @@ namespace Carbon.Redis
         public int ConfigCheckSeconds { get; set; }
         public HashSet<string> CommandMap { get; set; }
         public string Password { get; set; }
+        public string Name { get; set; }
         public bool AllowAdmin { get; set; }
         public bool CommandMapAvailable { get; set; }
         public int AsyncTimeout { get; set; }
@@ -26,6 +28,7 @@ namespace Carbon.Redis
         public int ConnectTimeout { get; set; }
         public int DefaultDatabase { get; set; }
         public bool SSLEnabled { get; set; }
+        public SslProtocols? SslProtocols { get; set; } 
         public string InstanceName { get; set; }
         public string SentinelServiceName { get; set; }
         public int SyncTimeout { get; set; }

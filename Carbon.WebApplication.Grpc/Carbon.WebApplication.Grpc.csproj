@@ -2,8 +2,10 @@
 
   <PropertyGroup>
     <TargetFrameworks>net6.0;net5.0;netcoreapp3.1</TargetFrameworks>
-    <Version>3.1.0</Version>
+    <Version>3.2.0</Version>
     <Description>
+		3.2.0
+		- Degraded health check HTTP status code changed as custom 218 (This Is Fine) status code. Because even if system is degraed it should be working normally, so returning 5XX status code is not right for degraded state.
 		3.1.0
 		- Carbon.Common updated and Serilog.Enrichers.Sensitive Enricher added for masking sensitive values within logs.
 		3.0.2

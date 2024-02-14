@@ -285,7 +285,7 @@ namespace Carbon.WebApplication
                 ResultStatusCodes =
                 {
                     [HealthStatus.Healthy] = StatusCodes.Status200OK,
-                    [HealthStatus.Degraded] = StatusCodes.Status500InternalServerError,
+                    [HealthStatus.Degraded] = 218,
                     [HealthStatus.Unhealthy] = StatusCodes.Status503ServiceUnavailable
                 }
 

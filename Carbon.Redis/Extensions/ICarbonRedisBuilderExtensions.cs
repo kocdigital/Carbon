@@ -5,6 +5,9 @@ using Microsoft.Extensions.Caching.Distributed;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
+
+using StackExchange.Redis;
+
 using System;
 
 namespace Carbon.Caching.Redis
@@ -39,16 +42,17 @@ namespace Carbon.Caching.Redis
             {
                 throw new ArgumentNullException("InstanceName cannot be null");
             }
-
             redisSettings.Value.InstanceName = instanceName;
             redisSettings.Value.ConfigurationOptions = builder.ConfigurationOptions;
             redisSettings.Value.Configuration = builder.ConfigurationOptions.ToString();
             redisSettings.Value.EnablePubSub = enablePubSubFeature;
+            var sp = services.BuildServiceProvider();
+            var connectionMultiplexer =  sp.GetService<IConnectionMultiplexer>();
+            var cache = new CarbonRedisCache(redisSettings, connectionMultiplexer);
+            services.AddSingleton<ICarbonCache>(cache);
 
-            services.AddSingleton<ICarbonCache, CarbonRedisCache>();
-
-            services.AddSingleton<IDistributedCache, CarbonRedisCache>();
-            services.AddSingleton<ICarbonRedisCache, CarbonRedisCache>();
+            services.AddSingleton<IDistributedCache>(cache);
+            services.AddSingleton<ICarbonRedisCache>(cache);
             services.AddSingleton(redisSettings);
 
 
