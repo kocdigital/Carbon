@@ -1,4 +1,5 @@
 ﻿using StackExchange.Redis;
+using StackExchange.Redis.Maintenance;
 using StackExchange.Redis.Profiling;
 using System;
 using System.IO;
@@ -39,6 +40,7 @@ namespace Carbon.Redis
         public event EventHandler<EndPointEventArgs> ConfigurationChanged;
         public event EventHandler<EndPointEventArgs> ConfigurationChangedBroadcast;
         public event EventHandler<HashSlotMovedEventArgs> HashSlotMoved;
+        public event EventHandler<ServerMaintenanceEvent> ServerMaintenanceEvent;
 
         public void Close(bool allowCommandsToComplete = true)
         {

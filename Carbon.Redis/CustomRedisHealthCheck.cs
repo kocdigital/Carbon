@@ -1,12 +1,16 @@
 ﻿using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
+
 using Carbon.Redis.Sentinel;
+
 using Microsoft.Extensions.Diagnostics.HealthChecks;
+
 using StackExchange.Redis;
 using StackExchange.Redis.Configuration;
 using StackExchange.Redis.Maintenance;
@@ -74,6 +78,7 @@ namespace Carbon.Redis
                 else
                 {
                     var allSentinelServers = _sentinelConnectionMultiplexer.ConnectionMultiplexer.GetServers();
+                    var allSentinelEndpoints = _connection.GetServers();
                     string serviceName = _configurationOptions.ServiceName;
                     EndPoint foundRunningMasterUrl = default;
 
@@ -96,13 +101,49 @@ namespace Carbon.Redis
                             }
                         }));
                     }
-
+                    var degradedServers = new List<(IServer Server, bool timedOut, int latency)>();
+                    foreach (var server in allSentinelEndpoints)
+                    {
+                        sentinelCheckTasks.Add(Task.Run(async () =>
+                        {
+                            try
+                            {
+                                var task = server.PingAsync();
+                                if (await Task.WhenAny(task, Task.Delay(_configurationOptions.ConnectTimeout)) == task && !task.IsFaulted)
+                                {
+                                    // task completed within timeout
+                                }
+                                else
+                                {
+                                    var connected = server.IsConnected;
+                                    degradedServers.Add((server, connected, connected ? (int)task?.Result.TotalMilliseconds : -1));
+                                }
+                            }
+                            catch
+                            {
+                                degradedServers.Add((server, false, -1));
+                            }
+                        }));
+                    }
                     await Task.WhenAll(sentinelCheckTasks);
 
 
                     if (foundRunningMasterUrl == default)
                     {
                         return new HealthCheckResult(context.Registration.FailureStatus, description: $"Unhealthy Redis Sentinel: No healthy master found in the given server set: {String.Join(",", allSentinelServers.Select(k => k.EndPoint.ToString()).ToList())}");
+                    }
+                    if (degradedServers.Any())
+                    {
+                        return HealthCheckResult.Degraded($"Degraded Redis Sentinel with given sentinel servers: " +
+                            $"{String.Join(",", allSentinelServers.Select(k => k.EndPoint.ToString()).ToList())} and selected master is {foundRunningMasterUrl}" +
+                            $" and degraded servers are: {String.Join(",", degradedServers.Select(k => k.Server.EndPoint.ToString()).ToList())}", null,
+                            (new Dictionary<string, object>
+                            {
+                                {"Sentinels", allSentinelServers.Select(k => k.EndPoint.ToString()).ToList()},
+                                {"Servers", allSentinelEndpoints.Select(k => k.EndPoint.ToString()).ToList()},
+                                {"UnhealthyServers", degradedServers.Where(x => !x.timedOut).Select(k => k.Server.EndPoint.ToString()).ToList()},
+                                {"TimedOutServers", degradedServers.Where(x => x.timedOut).Select(k => new LatencyContainer {Server= k.Server.EndPoint.ToString(), Latency=k.latency }).ToList()}
+                            }));
                     }
                     return HealthCheckResult.Healthy($"Healthy Redis Sentinel with given sentinel servers: {String.Join(",", allSentinelServers.Select(k => k.EndPoint.ToString()).ToList())} and selected master is {foundRunningMasterUrl}");
                 }
@@ -114,4 +155,9 @@ namespace Carbon.Redis
             }
         }
     }
+}
+class LatencyContainer
+{
+    public string Server { get; set; }
+    public int Latency { get; set; }
 }
