@@ -134,7 +134,6 @@ namespace Carbon.Redis
                     }
                     if (degradedServers.Any())
                     {
-                        
                         return HealthCheckResult.Degraded($"Degraded Redis Sentinel with given sentinel servers: " +
                             $"{String.Join(",", allSentinelServers.Select(k => k.EndPoint.ToString()).ToList())} and selected master is {foundRunningMasterUrl}" +
                             $" and degraded servers are: {String.Join(",", degradedServers.Select(k => k.Server.EndPoint.ToString()).ToList())}", null,
