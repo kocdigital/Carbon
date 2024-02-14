@@ -31,6 +31,7 @@ namespace Carbon.Redis
         public bool IsReplica { get; }
 
         public bool AllowReplicaWrites { get; set; }
+        public RedisProtocol Protocol { get; }
 
         public async Task<TimeSpan> PingAsync(CommandFlags flags = CommandFlags.None)
         {
@@ -573,72 +574,72 @@ namespace Carbon.Redis
 
         public Task ReplicaOfAsync(EndPoint master, CommandFlags flags = CommandFlags.None)
         {
-            throw new NotImplementedException();
+            return default;
         }
 
         public EndPoint[] SentinelGetReplicaAddresses(string serviceName, CommandFlags flags = CommandFlags.None)
         {
-            throw new NotImplementedException();
+            return default;
         }
 
         public Task<EndPoint[]> SentinelGetReplicaAddressesAsync(string serviceName, CommandFlags flags = CommandFlags.None)
         {
-            throw new NotImplementedException();
+            return default;
         }
 
         public KeyValuePair<string, string>[][] SentinelReplicas(string serviceName, CommandFlags flags = CommandFlags.None)
         {
-            throw new NotImplementedException();
+            return default;
         }
 
         public Task<KeyValuePair<string, string>[][]> SentinelReplicasAsync(string serviceName, CommandFlags flags = CommandFlags.None)
         {
-            throw new NotImplementedException();
+            return default;
         }
 
         public Role Role(CommandFlags flags = CommandFlags.None)
         {
-            throw new NotImplementedException();
+            return default;
         }
 
         public Task<Role> RoleAsync(CommandFlags flags = CommandFlags.None)
         {
-            throw new NotImplementedException();
+            return default;
         }
 
         public long CommandCount(CommandFlags flags = CommandFlags.None)
         {
-            throw new NotImplementedException();
+            return default;
         }
 
         public Task<long> CommandCountAsync(CommandFlags flags = CommandFlags.None)
         {
-            throw new NotImplementedException();
+            return default;
         }
 
         public RedisKey[] CommandGetKeys(RedisValue[] command, CommandFlags flags = CommandFlags.None)
         {
-            throw new NotImplementedException();
+            return default;
         }
 
         public Task<RedisKey[]> CommandGetKeysAsync(RedisValue[] command, CommandFlags flags = CommandFlags.None)
         {
-            throw new NotImplementedException();
+            return default;
         }
 
         public string[] CommandList(RedisValue? moduleName = null, RedisValue? category = null, RedisValue? pattern = null, CommandFlags flags = CommandFlags.None)
         {
-            throw new NotImplementedException();
+            return default;
         }
 
         public Task<string[]> CommandListAsync(RedisValue? moduleName = null, RedisValue? category = null, RedisValue? pattern = null, CommandFlags flags = CommandFlags.None)
         {
-            throw new NotImplementedException();
+            return default;
         }
 
         public Task MakePrimaryAsync(ReplicationChangeOptions options, TextWriter log = null)
         {
-            throw new NotImplementedException();
+            return default;
         }
     }
 }

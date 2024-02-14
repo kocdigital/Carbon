@@ -1099,6 +1099,26 @@ namespace Carbon.Redis
             return default;
         }
 
+        public RedisResult ScriptEvaluateReadOnly(string script, RedisKey[] keys = null, RedisValue[] values = null, CommandFlags flags = CommandFlags.None)
+        {
+            return default;
+        }
+
+        public RedisResult ScriptEvaluateReadOnly(byte[] hash, RedisKey[] keys = null, RedisValue[] values = null, CommandFlags flags = CommandFlags.None)
+        {
+            return default;
+        }
+
+        public Task<RedisResult> ScriptEvaluateReadOnlyAsync(string script, RedisKey[] keys = null, RedisValue[] values = null, CommandFlags flags = CommandFlags.None)
+        {
+            return default;
+        }
+
+        public Task<RedisResult> ScriptEvaluateReadOnlyAsync(byte[] hash, RedisKey[] keys = null, RedisValue[] values = null, CommandFlags flags = CommandFlags.None)
+        {
+            return default;
+        }
+
         public bool SetAdd(RedisKey key, RedisValue value, CommandFlags flags = CommandFlags.None)
         {
             return default;

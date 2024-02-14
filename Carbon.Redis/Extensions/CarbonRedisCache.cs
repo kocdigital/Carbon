@@ -1,8 +1,11 @@
 ﻿using Microsoft.Extensions.Caching.StackExchangeRedis;
 using Microsoft.Extensions.Options;
+
 using RedLockNet.SERedis;
 using RedLockNet.SERedis.Configuration;
+
 using StackExchange.Redis;
+
 using System.Collections.Generic;
 using System.Linq;
 
@@ -10,7 +13,7 @@ namespace Carbon.Caching.Redis
 {
     public class CarbonRedisCache : RedisCache, ICarbonRedisCache
     {
-        private readonly RedLockFactory _redlockFactory; 
+        private readonly RedLockFactory _redlockFactory;
         private readonly IServer _redisServer;
         private ConnectionMultiplexer _existingConnectionMultiplexer;
         public delegate void OnExpiredHandler(string tagName);
@@ -57,6 +60,11 @@ namespace Carbon.Caching.Redis
                 var subscriber = _existingConnectionMultiplexer.GetSubscriber();
                 string keyspaceNotificationChannel = "__keyspace@" + _existingConnectionMultiplexer.GetDatabase().Database + "__:*";
                 string keyeventNotificationChannel = "__keyevent@" + _existingConnectionMultiplexer.GetDatabase().Database + "__:*";
+                if (!subscriber.IsConnected())
+                {
+                    subscriber.Ping();
+                }
+                //_redisServer.ConfigSet("notify-keyspace-events", "Ex");
                 subscriber.Subscribe(keyeventNotificationChannel, (channel, key) => //This needs CONFIG SET notify-keyspace-events Ex
                 {
                     var notificationType = GetKey(channel);
@@ -69,7 +77,7 @@ namespace Carbon.Caching.Redis
                             }
                             break;
                         default:
-                        //("Unhandled notificationType: " + notificationType);
+                            //("Unhandled notificationType: " + notificationType);
                             break;
                     }
                 });
