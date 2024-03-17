@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Carbon.PagedList;
 
 namespace Carbon.Domain.EntityFrameworkCore
 {
@@ -347,6 +348,59 @@ namespace Carbon.Domain.EntityFrameworkCore
                 }
             }
             return relationEntities;
+        }
+
+        public static async Task<List<T>> ToListEntityFilteredWithIncludeAsync<T, U>(
+            this IQueryable<T> relationEntities,
+            List<PermissionDetailedDto> roleDetails,
+            List<Guid> solutionFilter,
+            DbContext ctx)
+            where T : IHaveOwnership<U>, IEntity
+            where U : EntitySolutionRelation
+        {
+            return await relationEntities
+                .IncludeOwnershipFilter<T, U>(roleDetails)
+                .IncludeSolutionRelation<T, U>(ctx)
+                .ToListEntityFilteredWithSolutionAsync(solutionFilter);
+        }
+        
+        public static async Task<PagedList<T>> ToPagedListEntityFilteredWithIncludeAsync<T, U>(
+            this IQueryable<T> relationEntities,
+            BaseRequestPageDto dto,
+            List<PermissionDetailedDto> roleDetails,
+            List<Guid> solutionFilter,
+            DbContext ctx)
+            where T : IHaveOwnership<U>, IEntity
+            where U : EntitySolutionRelation
+        {
+            var entities = await relationEntities.ToListEntityFilteredWithIncludeAsync<T, U>(roleDetails, solutionFilter, ctx);
+            
+            var filteredQuery = entities.AsQueryable().OrderBy(dto.Orderables);
+            var totalDataCount = filteredQuery.Count();
+            if (dto.PageSize != 0)
+            {
+                filteredQuery = filteredQuery.SkipTake(dto.PageIndex, dto.PageSize);
+            }
+
+            var result  = new PagedList<T>(filteredQuery.ToList(), dto.PageIndex, dto.PageSize, totalDataCount);
+            return result;
+        }
+        
+        public static async Task<PagedList<T>> ToPagedListEntityAsync<T, U>(
+            this IQueryable<T> entities,
+            BaseRequestPageDto dto)
+            where T : IHaveOwnership<U>, IEntity
+            where U : EntitySolutionRelation
+        {
+            var filteredQuery = entities.AsQueryable().OrderBy(dto.Orderables);
+            var totalDataCount = filteredQuery.Count();
+            if (dto.PageSize != 0)
+            {
+                filteredQuery = filteredQuery.SkipTake(dto.PageIndex, dto.PageSize);
+            }
+
+            var result  = new PagedList<T>(filteredQuery.ToList(), dto.PageIndex, dto.PageSize, totalDataCount);
+            return result;
         }
     }
 }
