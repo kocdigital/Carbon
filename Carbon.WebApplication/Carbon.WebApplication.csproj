@@ -4,7 +4,7 @@
 		<Version>4.5.1</Version>
 		<Description>
 			4.5.1
-			- Updated Carbon.Common nuget package(Added new EFExtension methods)
+			- Updated Carbon.Common nuget package(Added BaseRequestPageDto class)
 			4.5.0
 			- Degraded health check HTTP status code changed as custom 218 (This Is Fine) status code. Because even if system is degraed it should be working normally, so returning 5XX status code is not right for degraded state. 
 			4.4.1
