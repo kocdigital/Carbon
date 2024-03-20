@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Carbon.PagedList;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace Carbon.Domain.EntityFrameworkCore
 {
@@ -213,6 +214,38 @@ namespace Carbon.Domain.EntityFrameworkCore
             //groupedList.ForEach(k => k.Entity.RelationalOwners = k.Relations);
             return await relationEntities.Select(k => k.Entity).ToListAsync();
         }
+        
+        public static async Task<PagedList<T>> ToListEntityFilteredWithSolutionPagedAsync<T, U>(this IQueryable<RelationEntityPair<T, U>> relationEntities, BaseRequestPageDto dto, List<Guid> filter)
+            where T : IHaveOwnership<U>, IEntity
+            where U : EntitySolutionRelation
+        {
+            var filterContainsData = filter != null && filter.Any();
+
+            var query = relationEntities
+                .Where(k => !filterContainsData || k.Relation == null || filter.Contains(k.Relation.SolutionId))
+                .GroupBy(k => k.Entity, k => k.Relation, (key, g) => new RelationEntity<T, U> { Entity = key, Relations = g.ToList()})
+                .Select(k => k.Entity)
+                .AsQueryable();
+
+            var filteredQuery = query.OrderBy(dto.Orderables);;
+            if (dto.PageSize != 0)
+            {
+                filteredQuery = filteredQuery.SkipTake(dto.PageIndex, dto.PageSize);
+            }
+
+            var entities = await filteredQuery.ToListAsync();
+            
+            var relationEntitiesAsList = relationEntities.Where(k => k.Relation != null).Select(k => k.Relation).ToList();
+
+            entities.ForEach(entity =>
+            {
+                entity.RelationalOwners = relationEntitiesAsList.Where(rel => rel != null && rel.EntityId == entity.Id).ToList();
+            });
+
+            var totalDataCount = await query.CountAsync();
+            var result = new PagedList<T>(entities, dto.PageIndex, dto.PageSize, totalDataCount);
+            return result;
+        }
 
         public static async Task<T> FirstOrDefaultEntityFilteredWithSolutionAsync<T, U>(this IQueryable<RelationEntityPair<T, U>> relationEntities, List<Guid> filter)
             where T : IHaveOwnership<U>, IEntity
@@ -362,28 +395,6 @@ namespace Carbon.Domain.EntityFrameworkCore
                 .IncludeOwnershipFilter<T, U>(roleDetails)
                 .IncludeSolutionRelation<T, U>(ctx)
                 .ToListEntityFilteredWithSolutionAsync(solutionFilter);
-        }
-        
-        public static async Task<PagedList<T>> ToPagedListEntityFilteredWithIncludeAsync<T, U>(
-            this IQueryable<T> relationEntities,
-            BaseRequestPageDto dto,
-            List<PermissionDetailedDto> roleDetails,
-            List<Guid> solutionFilter,
-            DbContext ctx)
-            where T : IHaveOwnership<U>, IEntity
-            where U : EntitySolutionRelation
-        {
-            var entities = await relationEntities.ToListEntityFilteredWithIncludeAsync<T, U>(roleDetails, solutionFilter, ctx);
-            
-            var filteredQuery = entities.AsQueryable().OrderBy(dto.Orderables);
-            var totalDataCount = filteredQuery.Count();
-            if (dto.PageSize != 0)
-            {
-                filteredQuery = filteredQuery.SkipTake(dto.PageIndex, dto.PageSize);
-            }
-
-            var result  = new PagedList<T>(filteredQuery.ToList(), dto.PageIndex, dto.PageSize, totalDataCount);
-            return result;
         }
         
         public static async Task<PagedList<T>> ToPagedListEntityAsync<T, U>(
