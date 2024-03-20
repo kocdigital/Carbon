@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
 		<TargetFrameworks>net6.0;net5.0;netcoreapp3.1</TargetFrameworks>
-		<Version>4.5.1-preview</Version>
+		<Version>4.5.1-preview2</Version>
 		<Description>
 			4.5.1
 			- Updated Carbon.Common nuget package(Added BaseRequestPageDto class)

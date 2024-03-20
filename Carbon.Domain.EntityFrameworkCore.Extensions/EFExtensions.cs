@@ -7,7 +7,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Carbon.PagedList;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace Carbon.Domain.EntityFrameworkCore
 {
