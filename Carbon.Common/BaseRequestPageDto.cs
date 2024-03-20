@@ -4,6 +4,7 @@ namespace Carbon.Common
 {
     public class BaseRequestPageDto : IOrderableDto, IPageableDto
     {
+        // TODO : Since there are differences in UI and API requests, there are 2 orderable properties. It is a development waiting to be fixed as a technical debt.
         public IList<Orderable> Ordination { set { Orderables = value; } }
         public IList<Orderable> Orderables { get; set; }
 
@@ -14,8 +15,8 @@ namespace Carbon.Common
 
         public BaseRequestPageDto()
         {
-            this.PageSize = 250;
             this.PageIndex = 1;
+            this.PageSize = 250;
             Orderables = Ordination = new List<Orderable>()
             {
                 new Orderable()
