@@ -262,7 +262,7 @@ namespace Carbon.Domain.EntityFrameworkCore
         /// The resulting entities are ordered based on the specified ordering criteria and returned as a paged list.
         /// </remarks>
         public static PagedList<T> ToPagedListEntityFilteredWithSolution<T, U>(
-            IQueryable<EFExtensions.RelationEntityPair<T, U>> relationEntities,
+            this IQueryable<EFExtensions.RelationEntityPair<T, U>> relationEntities,
             List<Guid> filter,
             IList<Orderable> orderables,
             int pageIndex,
