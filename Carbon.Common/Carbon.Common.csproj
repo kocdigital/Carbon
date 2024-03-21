@@ -2,10 +2,9 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
-    <Version>1.5.0-preview</Version>
+    <Version>1.5.0</Version>
 	  <Description>
 		  1.5.0
-		  - Added BaseRequestPageDto
 		  - Added StringExtensions
 		  1.4.0
 		  - SensitiveDataMasking added to SerilogSettings.
