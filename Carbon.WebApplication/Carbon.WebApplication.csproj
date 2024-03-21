@@ -1,10 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
 		<TargetFrameworks>net6.0;net5.0;netcoreapp3.1</TargetFrameworks>
-		<Version>4.5.1-preview2</Version>
+		<Version>4.5.1</Version>
 		<Description>
 			4.5.1
-			- Updated Carbon.Common nuget package(Added BaseRequestPageDto class)
+			- Updated Carbon.Common nuget package (Added StringExtensions class with ReplaceTurkishChars and ContainsTurkishIgnoreCase methods)
 			4.5.0
 			- Degraded health check HTTP status code changed as custom 218 (This Is Fine) status code. Because even if system is degraed it should be working normally, so returning 5XX status code is not right for degraded state. 
 			4.4.1
