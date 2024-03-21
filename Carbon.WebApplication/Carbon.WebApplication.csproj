@@ -1,9 +1,9 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
 		<TargetFrameworks>net6.0;net5.0;netcoreapp3.1</TargetFrameworks>
-		<Version>4.5.1</Version>
+		<Version>4.5.2</Version>
 		<Description>
-			4.5.1
+			4.5.2
 			- Updated Carbon.Common nuget package (Added StringExtensions class with ReplaceTurkishChars and ContainsTurkishIgnoreCase methods)
 			4.5.0
 			- Degraded health check HTTP status code changed as custom 218 (This Is Fine) status code. Because even if system is degraed it should be working normally, so returning 5XX status code is not right for degraded state. 
@@ -71,40 +71,6 @@
 			- Tenant Ownership new features and performance improvements
 			3.0.0
 			- Added new error handling mechanism
-			2.3.7
-			- Goduser Implementation added for tenant management
-			- Solution header is must (p360-solution-id) for tenant management adopters
-			- Goduser bypasses any Ownership Filter
-			- Some performance improvements for tenant management
-
-			2.2.10
-			- Carbon.Common 1.3.0 Support
-
-			2.2.7
-			Carbon Webapplication now supports GRPC with Carbon.WebApplication.Grpc package
-
-			2.1.3
-			Added healthcheck ui response writer.
-			2.1.2
-			-Kubernetes ConfigMap support added. Use CONFIGURATION_TYPE = CONSUL / FILE [Default = CONSUL]. Use     FILE for Kubernetes Environment.
-			2.0.1
-			-Logging system added in HttpGlobalException.
-
-			2.0.0-preview.1
-			-Carbon Web Application now supports .Net 5.0 alongside .Net Core 3.1 (Preview usage only)
-
-			1.9.0
-			-IIS and Kestrel configuration added to Hostbuilder extension  UseCarbonFeatures for Environment var "ENVIRONMENT_TYPE"
-
-			1.8.13
-			-Add HttpClient to service registration
-			1.8.x
-			-Tenant Management Support Added
-
-			1.7.0
-			- Serilog.Sinks.ElasticSearch package removed.Reason =&gt; ElasticSearch.Net Dependency problem for 7.x update of ElasticSearch.
-			note : add if your app uses ElasticSearch for logging
-			- Serilog.Sinks.RollingFile deleted .Reason =&gt; Deprecated: new applications should use https://github.com/serilog/serilog-sinks-file instead
 		</Description>
 		<OpenApiGenerateDocuments>false</OpenApiGenerateDocuments>
 		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
