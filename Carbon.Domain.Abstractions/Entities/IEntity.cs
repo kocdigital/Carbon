@@ -11,13 +11,4 @@ namespace Carbon.Domain.Abstractions.Entities
         public Guid Id { get; set; }
 
     }
-
-    /// <summary>
-    /// An interface for entity objects with generic unique id.
-    /// </summary>
-    /// <typeparam name="K"></typeparam>
-    public interface IEntity<K>
-    {
-        public K Id { get; set; }
-    }
 }
