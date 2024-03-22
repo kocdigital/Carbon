@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.CompilerServices;
 
 namespace Carbon.Domain.Abstractions.Entities
 {
@@ -10,5 +11,4 @@ namespace Carbon.Domain.Abstractions.Entities
         public Guid Id { get; set; }
 
     }
-
 }
