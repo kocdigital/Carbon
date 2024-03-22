@@ -25,7 +25,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\Carbon.Common\Carbon.Common.csproj" />
+	  <ProjectReference Include="..\Carbon.Common\Carbon.Common.csproj" />
 	</ItemGroup>
 
 </Project>

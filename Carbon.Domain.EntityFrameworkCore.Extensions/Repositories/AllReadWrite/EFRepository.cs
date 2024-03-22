@@ -50,9 +50,18 @@ namespace Carbon.Domain.EntityFrameworkCore
         /// <returns> A task that returns the <typeparamref name="TEntity"/> object saved to database. </returns>
         public virtual async Task<TEntity> CreateAsync(TEntity entity)
         {
-            context.Set<TEntity>().Add(entity);
-            await context.SaveChangesAsync();
-            return entity;
+            try
+            {
+                context.Set<TEntity>().Add(entity);
+                await context.SaveChangesAsync();
+                return entity;
+            }
+            catch (Exception E)
+            {
+
+                throw;
+            }
+       
         }
 
         /// <summary>

@@ -29,8 +29,17 @@ namespace Carbon.WebApplication.EntityFrameworkCore
 
             using (var serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
             {
-                var context = serviceScope.ServiceProvider.GetRequiredService<TContext>();
-                context.Database.Migrate();
+
+                try
+                {
+                    var context = serviceScope.ServiceProvider.GetRequiredService<TContext>();
+                    context.Database.Migrate();
+                }
+                catch (Exception e)
+                {
+
+                    throw;
+                }
             }
         }
 

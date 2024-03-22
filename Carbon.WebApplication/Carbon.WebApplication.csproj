@@ -103,7 +103,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\Carbon.Common\Carbon.Common.csproj" />
 		<ProjectReference Include="..\Carbon.ExceptionHandling\Carbon.ExceptionHandling.Abstractions.csproj" />
 		<ProjectReference Include="..\Carbon.HttpClient.Auth\Carbon.HttpClient.Auth.csproj" />
 		<ProjectReference Include="..\Carbon.HttpClient\Carbon.HttpClient.csproj" />
