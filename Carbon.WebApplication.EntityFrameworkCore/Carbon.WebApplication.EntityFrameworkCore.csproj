@@ -2,8 +2,11 @@
 
   <PropertyGroup>
     <TargetFrameworks>net6.0;net5.0;netstandard2.1</TargetFrameworks>
-    <Version>2.3.3</Version>
+    <Version>2.3.4</Version>
     <Description>
+		2.3.4
+		Upgrade Carbon.PagedList (Remove pageSize and pageNumber validation check)
+		
 		2.3.3
 		Upgrade Carbon.Domain.EntityFramework version (Added OwnerType.None in ownership filter)
 

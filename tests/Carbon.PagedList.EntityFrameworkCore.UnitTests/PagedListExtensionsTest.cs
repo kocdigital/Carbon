@@ -32,19 +32,5 @@ namespace Carbon.PagedList.EntityFrameworkCore.UnitTests
 
             _testOutputHelper.WriteLine("Test passed!");
         }
-
-        [Theory]
-        [InValidToPagedListQueryableExtensions]
-        public void ToPagedListAsync_Exception_PagedListExtensions(IQueryable<TEntity> entity, int pageNumber, int pageSize)
-        {
-            // Arrange
-            // Act
-            var wrapper = new QueryableExtensionsWrapper<TEntity>();
-            var response = wrapper.ToPagedListAsync(entity, pageNumber, pageSize);
-            // Assert
-            Assert.NotNull(response.Exception);
-
-            _testOutputHelper.WriteLine("Test passed!");
-        }
     }
 }
