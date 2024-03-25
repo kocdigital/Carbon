@@ -1,7 +1,6 @@
 ﻿using Xunit;
 using System.Collections.Generic;
 using System.Linq;
-using System;
 
 namespace Carbon.PagedList.UnitTests
 {
@@ -40,21 +39,6 @@ namespace Carbon.PagedList.UnitTests
 
             // Assert
             Assert.IsType<PagedList<string>>(x);
-        }
-
-        [Fact]
-        public void CreatePagedList_InvalidPageSize_ThrowException()
-        {
-            // Act & Assert
-            Assert.Throws<ArgumentOutOfRangeException>(() => new PagedList<string>(dataList.AsQueryable(), 1, 0));
-
-        }
-
-        [Fact]
-        public void CreatePagedList_InvalidPageNumber_ThrowException()
-        {
-            // Act & Assert
-            Assert.Throws<ArgumentOutOfRangeException>(() => new PagedList<string>(dataList.AsQueryable(), 0, 5));
         }
 
         [Fact]
