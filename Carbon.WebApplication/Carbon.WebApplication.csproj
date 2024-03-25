@@ -1,8 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
 		<TargetFrameworks>net6.0;net5.0;netcoreapp3.1</TargetFrameworks>
-		<Version>4.5.2</Version>
+		<Version>4.5.3</Version>
 		<Description>
+			4.5.3
+			- Upgrade Carbon.PagedList (Remove pageSize and pageNumber validation check)
 			4.5.2
 			- Updated Carbon.Common nuget package (Added StringExtensions class with ReplaceTurkishChars and ContainsTurkishIgnoreCase methods)
 			4.5.0
@@ -34,7 +36,6 @@
 			- Cors Wildcards accepted
 			4.1.1
 			- CarbonException messages are take arguments for dynamic exception messages
-
 			4.1.0
 			- Critical bug fixed for Directory separator char to specific platform (Windows,Linux)
 			4.0.0
@@ -43,34 +44,6 @@
 			- Swagger Upgraded
 			- BodyRewind deprecated, thus RoleFilteredDto is now unsupported as it is unnecessary just after repository-level validation introduced
 			- Some Performance Improvements
-
-			3.7.0
-			- Swagger server definition added
-			3.6.0
-			- ConfigureEndpoint is now a virtual class rather than an abstract
-			- HealthCheck partial healthy (degraded) also causes endpoint to generate 5xx http status code
-			3.5.0
-			- ConfigureEndpoint support added when needed
-			3.4.5
-			- Bearer Authenticator can now be passed some events
-			3.4.4
-			- Swager Header tenantId added if not exist
-			3.4.0
-			- GetUserName extension method added
-			3.3.2
-			-Swagger Header(P360SolutonId) Added
-			3.3.1
-			- Swagger RoutePrefix added
-			3.3.0
-			- Cors ExposeHeaders added
-			3.2.0
-			- Fluent Validation crash on dotnet 5 applications fixed
-			- CarbonValidator class moved here from ExceptionHandling Package
-			- Fluent Validation upgraded
-			3.1.0
-			- Tenant Ownership new features and performance improvements
-			3.0.0
-			- Added new error handling mechanism
 		</Description>
 		<OpenApiGenerateDocuments>false</OpenApiGenerateDocuments>
 		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
