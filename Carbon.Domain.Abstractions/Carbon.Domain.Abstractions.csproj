@@ -2,8 +2,10 @@
 
 	<PropertyGroup>
 		<TargetFramework>netstandard2.1</TargetFramework>
-		<Version>1.4.2</Version>
+		<Version>1.5.0</Version>
 		<Description>
+			1.5.0
+			- A New IEntity object, which can be parameterized for the purpose of transforming Primary Id columns found in the product roadmap into Long, has been added.
 			1.4.2
 			- Carbon.Common updated and IQueryable OrderBy extension method bug fixed
 			1.4.1
