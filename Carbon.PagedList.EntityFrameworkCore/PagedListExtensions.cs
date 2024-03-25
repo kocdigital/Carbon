@@ -23,20 +23,22 @@ namespace Carbon.PagedList.EntityFrameworkCore
         /// <seealso cref="PagedList{T}"/>
         public static async Task<IPagedList<T>> ToPagedListAsync<T>(this IQueryable<T> superset, int pageNumber, int pageSize)
         {
-            if (pageNumber < 1)
-                throw new ArgumentOutOfRangeException(nameof(pageNumber), pageNumber, "PageNumber cannot be below 1.");
-            if (pageSize < 1)
-                throw new ArgumentOutOfRangeException(nameof(pageSize), pageSize, "PageSize cannot be less than 1.");
-
+            var isAllDataRequest = pageSize == 0 && pageNumber == 1;
+            
             var totalItemCount = superset?.Count() ?? 0;
             var result = new List<T>();
-            
+
             if (superset != null && totalItemCount > 0)
             {
-                if (pageNumber == 1)
-                    result = await superset.Skip(0).Take(pageSize).ToListAsync();
+                if (isAllDataRequest)
+                {
+                    result = await superset.ToListAsync();
+                }
                 else
-                    result = await superset.Skip((pageNumber - 1) * pageSize).Take(pageSize).ToListAsync();
+                {
+                    var skipCount = pageNumber == 1 ? 0 : (pageNumber - 1) * pageSize;
+                    result = await superset.Skip(skipCount).Take(pageSize).ToListAsync();
+                }
             }
 
             return new PagedList<T>(result, pageNumber, pageSize, totalItemCount);
