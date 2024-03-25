@@ -1,9 +1,11 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
 		<TargetFramework>netstandard2.1</TargetFramework>
-		<Version>1.0.10</Version>
+		<Version>1.0.11</Version>
 		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 		<Description>
+			1.0.11
+			- Upgrade Carbon.PagedList (Remove pageSize and pageNumber validation check)
 			1.0.10
 			- Carbon.Common updated and IQueryable OrderBy extension method bug fixed
 		</Description>

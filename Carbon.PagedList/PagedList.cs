@@ -35,10 +35,7 @@ namespace Carbon.PagedList
         /// <exception cref="ArgumentOutOfRangeException">The specified page size cannot be less than one.</exception>
         public PagedList(IEnumerable<T> subset, int pageNumber, int pageSize, int totalCount)
         {
-            if (pageNumber < 1)
-                throw new ArgumentOutOfRangeException(nameof(pageNumber), pageNumber, "PageNumber cannot be below 1.");
-            if (pageSize < 1)
-                throw new ArgumentOutOfRangeException(nameof(pageSize), pageSize, "PageSize cannot be less than 1.");
+            var isAllDataRequest = pageSize == 0 && pageNumber == 1;
 
             // set source to blank list if superset is null to prevent exceptions
             TotalItemCount = totalCount;
@@ -49,8 +46,8 @@ namespace Carbon.PagedList
                         : 0;
             HasPreviousPage = PageNumber > 1;
             HasNextPage = PageNumber < PageCount;
-            IsFirstPage = PageNumber == 1;
-            IsLastPage = PageNumber >= PageCount;
+            IsFirstPage = isAllDataRequest || PageNumber == 1;
+            IsLastPage = isAllDataRequest || PageNumber >= PageCount;
             FirstItemOnPage = (PageNumber - 1) * PageSize + 1;
             var numberOfLastItemOnPage = FirstItemOnPage + PageSize - 1;
             LastItemOnPage = numberOfLastItemOnPage > TotalItemCount
@@ -72,10 +69,7 @@ namespace Carbon.PagedList
         /// <exception cref="ArgumentOutOfRangeException">The specified page size cannot be less than one.</exception>
         public PagedList(IQueryable<T> superset, int pageNumber, int pageSize)
         {
-            if (pageNumber < 1)
-                throw new ArgumentOutOfRangeException(nameof(pageNumber), pageNumber, "PageNumber cannot be below 1.");
-            if (pageSize < 1)
-                throw new ArgumentOutOfRangeException(nameof(pageSize), pageSize, "PageSize cannot be less than 1.");
+            var isAllDataRequest = pageSize == 0 && pageNumber == 1;
 
             // set source to blank list if superset is null to prevent exceptions
             TotalItemCount = superset?.Count() ?? 0;
@@ -86,8 +80,8 @@ namespace Carbon.PagedList
                         : 0;
             HasPreviousPage = PageNumber > 1;
             HasNextPage = PageNumber < PageCount;
-            IsFirstPage = PageNumber == 1;
-            IsLastPage = PageNumber >= PageCount;
+            IsFirstPage = isAllDataRequest || PageNumber == 1;
+            IsLastPage = isAllDataRequest || PageNumber >= PageCount;
             FirstItemOnPage = (PageNumber - 1) * PageSize + 1;
             var numberOfLastItemOnPage = FirstItemOnPage + PageSize - 1;
             LastItemOnPage = numberOfLastItemOnPage > TotalItemCount
