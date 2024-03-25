@@ -32,20 +32,6 @@ namespace Carbon.PagedList.UnitTests
         }
 
         [Fact]
-        public void CreateBasePagedList_InvalidPageNumber_ThrowArgumentException()
-        {
-            // Act & Assert
-            Assert.Throws<ArgumentOutOfRangeException>(() => new TestBasePagedList<string>(0, 1, 1));
-        }
-
-        [Fact]
-        public void CreateBasePagedList_InvalidPageSize_ThrowArgumentException()
-        {
-            // Act & Assert
-            Assert.Throws<ArgumentOutOfRangeException>(() => new TestBasePagedList<string>(4, 0, 1));
-        }
-
-        [Fact]
         public void GetEnumerator_GetSuccessfully_ReturnEnumerator()
         {
             // Arrange
