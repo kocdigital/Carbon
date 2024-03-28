@@ -1,0 +1,217 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Carbon.ConsoleApplication  | Carbon Framework </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Carbon.ConsoleApplication  | Carbon Framework ">
+    <meta name="generator" content="docfx 2.59.4.0">
+    
+    <link rel="shortcut icon" href="../../../images/logo.png">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="../../toc.html">
+    
+    <meta property="docfx:rel" content="../../../">
+    
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../images/logo.png" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="carbonconsoleapplication-">Carbon.ConsoleApplication <a href="https://www.nuget.org/packages/Carbon.ConsoleApplication"><img alt="Nuget (with prereleases)" src="https://img.shields.io/nuget/vpre/Carbon.ConsoleApplication"></a></h1>
+
+<p>Standardization for Console Applications. Add this library and have a working console application immediately with some most commonly used approaches for console applications
+such as Containerization, Logging, Config Management, Hosting Service etc.</p>
+<h2 id="add-carbonconsoleapplication-support-to-your-project">Add Carbon.ConsoleApplication Support to Your Project</h2>
+<h3 id="get-started">Get Started</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Out-of-the-box Support</th>
+<th style="text-align: center;">Availability</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Kubernetes-enabled (Containerization-enabled)</td>
+<td style="text-align: center;">Yes</td>
+<td style="text-align: left;">When base helm chart is used as in the <a href="https://github.com/kocdigital/Carbon.Sample/tree/master/helm/CarbonSample-api">Carbon.Sample Helm Chart</a>, it has the best harmony, it simply manages many kubernetes features in one place. Just plug and play.</td>
+</tr>
+<tr>
+<td style="text-align: left;">Logging</td>
+<td style="text-align: center;">Yes</td>
+<td style="text-align: left;">Serilog-based</td>
+</tr>
+<tr>
+<td style="text-align: left;">Config Management</td>
+<td style="text-align: center;">Yes</td>
+<td style="text-align: left;">Identifies Configmaps when kubernetes used, static config files can be also configured or enables a centralized configuration management via Consul</td>
+</tr>
+</tbody>
+</table>
+<h3 id="1-configuring-main-method">1. Configuring Main Method</h3>
+<p>For using Carbon features you must enable Carbon using Carbon.ConsoleApplication package as shown below;</p>
+<blockquote>
+<p>Simply create a host builder and call Carbon functions</p>
+</blockquote>
+<pre><code class="lang-csharp">    public static async Task Main(string[] args)
+    {
+        var host = new HostBuilder()
+        .AddCarbonServices&lt;Program&gt;((hostContext, services) =&gt;
+        {
+            ....
+        })
+        .UseServiceProvider(app =&gt;
+        {
+            ....
+        });
+        .....
+        await host.RunConsoleAsync();
+    }
+</code></pre>
+<p>For details about method descriptions you can use <a href="https://kocdigital.github.io/Carbon/api/Carbon.ConsoleApplication.html">Api Documentation</a>.</p>
+<h3 id="2-configurations">2. Configurations</h3>
+<p>Use the base-configuration as given below</p>
+<pre><code class="lang-json">  &quot;Logging&quot;: {
+    &quot;LogLevel&quot;: {
+      &quot;Default&quot;: &quot;Information&quot;,
+      &quot;Microsoft&quot;: &quot;Warning&quot;,
+      &quot;Microsoft.Hosting.Lifetime&quot;: &quot;Information&quot;
+    }
+  },
+&quot;Serilog&quot;: {
+    &quot;Using&quot;: [ &quot;Serilog.Sinks.Console&quot;, &quot;Serilog.Sinks.Elasticsearch&quot; ],
+    &quot;MinimumLevel&quot;: &quot;Information&quot;,
+    &quot;WriteTo&quot;: [
+      { &quot;Name&quot;: &quot;Console&quot; },
+      {
+        &quot;Name&quot;: &quot;Elasticsearch&quot;,
+        &quot;Args&quot;: {
+          &quot;nodeUris&quot;: &quot;http://elasticsearch&quot;,
+          &quot;indexFormat&quot;: &quot;yourapi-log-{0:yyyy.MM.dd}&quot;
+        }
+      }
+    ],
+    &quot;Enrich&quot;: [ &quot;FromLogContext&quot;, &quot;WithMachineName&quot;, &quot;WithThreadId&quot; ],
+    &quot;Properties&quot;: { &quot;Application&quot;: &quot;Your.API&quot; }
+  }
+</code></pre>
+<h3 id="3-some-other-useful-tweaks">3. Some other useful tweaks</h3>
+<p>Use this Environment Variables (either in your launch profile or machine environment variables)
+to get your api up and running by using appsettings.Development.json in the debug folder by running with Kestrel standalone hosting type</p>
+<pre><code>ASPNETCORE_ENVIRONMENT=Development,
+CONFIGURATION_TYPE=FILE,
+ENVIRONMENT_TYPE=Kestrel,
+FILE_CONFIG_PATHS=appsettings.Development.json
+</code></pre>
+<p>Now you are good to go, Carbon will handle any standards on behalf of you that is introduced at the very beginning.</p>
+<h2 id="advanced-usage-and-more-details">Advanced Usage and More Details</h2>
+<p>In this section, you can find more information about advanced usage of Carbon.ConsoleApplication to make your API more customized and fine-tuned.</p>
+<h3 id="get-to-know-more-about-environment-variables">Get to know more about Environment Variables</h3>
+<hr>
+<p>Set your aspnetcore environment type. Use <strong>Development</strong> for development purposes (enables some advanced error handling etc.) or <strong>Production</strong> for production environments.</p>
+<pre><code>ASPNETCORE_ENVIRONMENT=Development
+</code></pre>
+<p>You can set your configuration management type as FILE which will consume any configuration json files into your API,
+or as CONSUL in order to set your configurations in a centralized way (Only recommended for dev purposes).</p>
+<pre><code>CONFIGURATION_TYPE=FILE
+</code></pre>
+<p>If you set your Configuration type as file, as given above, you can set which configs should be consumed by your APIs in-which the application context contains. Comma-seperated for multiple paths</p>
+<pre><code>FILE_CONFIG_PATHS=appsettings.Development.json,config/appsettings.Other.json
+</code></pre>
+<p>For Environment type, Kestrel will be your the best friend in any containerized environment, such as Kubernetes or Docker.</p>
+<pre><code>ENVIRONMENT_TYPE=Kestrel
+</code></pre>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            Carbon Framework
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

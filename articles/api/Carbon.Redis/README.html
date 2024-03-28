@@ -1,0 +1,340 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Carbon.Redis | Carbon Framework </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Carbon.Redis | Carbon Framework ">
+    <meta name="generator" content="docfx 2.59.4.0">
+    
+    <link rel="shortcut icon" href="../../../images/logo.png">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="../../toc.html">
+    
+    <meta property="docfx:rel" content="../../../">
+    
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../images/logo.png" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="carbonredis">Carbon.Redis</h1>
+
+<p>This package is powered up by multiple useful Redis libraries such as Stackexchange.Redis [1], RedLock.net [2], Microsoft.Extensions.Caching.StackExchangeRedis [3]  that provide remarkable Redis capabilities
+to your projects in many aspects.</p>
+<blockquote>
+<p>[1] <a href="https://github.com/StackExchange/StackExchange.Redis">https://github.com/StackExchange/StackExchange.Redis</a></p>
+<p>[2] <a href="https://github.com/samcook/RedLock.net">https://github.com/samcook/RedLock.net</a></p>
+<p>[3] <a href="https://github.com/dotnet/aspnetcore">https://github.com/dotnet/aspnetcore</a></p>
+</blockquote>
+<p>This package wraps up some capabilities such as (Redis Lock, Redis PubSub, Redis Key Operations) in a single pack and presents them you with an easier and more maintainable way. It also creates some handy logics for Redis Operations which
+creates ease of usage and out-of-the-box serialization switch enablement which provides you with some object conversions. Also a Redis Healthcheck will be added
+automatically to your <strong>/health</strong> endpoint.</p>
+<h2 id="adding-redis-support-to-your-project">Adding Redis Support to Your Project</h2>
+<h3 id="basic-usage">Basic Usage</h3>
+<p>You can add Carbon.Redis support only with StackExchange.Redis capabilities (without the other two libraries). With this package
+you can have a Redis connection (ConnectionMultiplexer) in order to be used for any purpose you like. This usage gives you a good set of functionalities
+and provides you with automatic heath check capability at <strong>/health</strong> endpoint.</p>
+<p>This usage also is a baseline for <a href="../Carbon.MassTransit/README.html">Carbon.MassTransit</a> Saga Pattern persistency.</p>
+<p><strong>1. Register Carbon.Redis to your service</strong></p>
+<pre><code class="lang-csharp">//IServiceCollection services
+services.AddRedisPersister(Configuration);
+</code></pre>
+<p><strong>2. Get to start by configuring as below</strong></p>
+<p>Using the configuration given below, all the connections are managed by StackExchange.Redis, however this configuration may not contain all connection properties that StackExchange offers.</p>
+<pre><code class="lang-json">&quot;Redis&quot;: {
+    &quot;Enabled&quot;:true,
+    &quot;KeyLength&quot;: 1000,
+    &quot;EndPoints&quot;: [&quot;redis1:6379&quot;, &quot;redis2:6379&quot;],
+    &quot;KeepAlive&quot; :0,
+    &quot;AbortOnConnectFail&quot;:false,
+    &quot;ConfigurationChannel&quot;:&quot;&quot;,
+    &quot;TieBreaker&quot;:&quot;&quot;,
+    &quot;ConfigCheckSeconds&quot;:0,
+    &quot;CommandMap&quot;:null,
+    &quot;Password&quot;:&quot;passwd&quot;,
+    &quot;AllowAdmin&quot;:true,
+    &quot;AsyncTimeout&quot;:10000,
+    &quot;SyncTimeout&quot;:10000,
+    &quot;ConnectRetry&quot;:0,
+    &quot;ConnectTimeout&quot;:1000,
+    &quot;DefaultDatabase&quot;:14,
+    &quot;InstanceName&quot; : &quot;YourInstance:&quot;,
+  }
+</code></pre>
+<p><strong>3. Use IDatabase that is powered by StackExchange.Redis</strong></p>
+<pre><code class="lang-csharp">        private readonly IDatabase _redisCache;
+        public PolicyService(IDatabase redisCache)
+        {
+            _redisCache = redisCache;
+        }
+
+        public async Task YourMethod()
+        {
+            //IDatabase brings you all methods provided by StackExchange.Redis
+            await _redisCache.StringGetAsync(&quot;MyKey&quot;);
+        }
+
+</code></pre>
+<hr>
+<h3 id="level-up-your-usage">Level-up your usage</h3>
+<hr>
+<p>Basic usage does not add a huge value indeed, it simply wraps StackExchange and unveils its power as-is. In this section, you can
+increase your control on Redis and have lots of privileges including Redis Lock, Redis Pub/Sub, useful extensions and operations by
+considering infrastructural best practices (by CQRS) (Read operations prefers replicas, Write operations prefers masters)</p>
+<h4 id="extension-methods">Extension Methods</h4>
+<p><strong>1. Register Carbon.Redis with Helper Extension in your service provider</strong></p>
+<pre><code class="lang-csharp">//IServiceCollection services
+services.AddRedisPersister(Configuration).AddCarbonRedisCachingHelper();
+</code></pre>
+<p><strong>2. Get it to start by configuring as you do in Basic Usage</strong></p>
+<p>On the top of basic usage configuration, you can tweak this <a href="RedisSettings.cs">RedisSettings</a> class that can be used for more control.</p>
+<p><strong>3. Set your serialization type anywhere you want (Startup, OnAppStart, in your Controller etc.)</strong></p>
+<pre><code class="lang-csharp">//Defaults to BinaryFormatter which is obsolete as of Dotnet 5. So change it to Json if you need
+ICarbonCacheExtensions.SetSerializationType(CarbonContentSerializationType.Json);
+</code></pre>
+<p><strong>4. Use ICarbonCache that is powered by Carbon.Redis</strong></p>
+<pre><code class="lang-csharp">    [Serializable]
+    public class TestClass
+    {
+        public int MyProperty { get; set; }
+        public string MyPropertyStr { get; set; }
+        public bool MyPropertyBool { get; set; }
+        public DateTime MyPropertyDateTime { get; set; }
+        public TestClass2 MyTestClass2 { get; set; }
+    }
+
+    [Serializable]
+    public class TestClass2
+    {
+        public string MyProperty2 { get; set; }
+        public string MyProperty22 { get; set; }
+    }
+
+    private readonly ICarbonCache _carbonRedisCache;
+    public PolicyService(ICarbonCache carbonRedisCache)
+    {
+        _carbonRedisCache = carbonRedisCache;
+    }
+    public async Task YourMethod()
+    {
+        //Use ICarbonCache here
+        var ts = new TestClass();
+        ts.MyPropertyStr = &quot;Test&quot;;
+        ts.MyProperty = 229;
+        ts.MyPropertyBool = true;
+        ts.MyPropertyDateTime = DateTime.Now;
+        ts.MyTestClass2 = new TestClass2() { MyProperty22 = &quot;test22&quot;, MyProperty2 = &quot;2&quot; };
+        //...
+    }
+</code></pre>
+<p><strong>5. You are all set, now unleash the power!</strong></p>
+<p>Now you can use many kinds of useful extension methods for various Redis Data Types (e.g. Redis Set, Hash etc.)</p>
+<pre><code class="lang-csharp">    
+    public async Task YourMethod()
+    {
+       //...   
+        
+       //Converts your flat object into hash key-value pairs within a single redis hash key, you can retrieve single or multiple fields later
+       await _carbonRedisCache.HashSetAsObject&lt;TestClass&gt;(&quot;MyObjectInHash&quot;, ts);
+       //Gets your entire object that is converted into hash key-value pairs within a single redis hash key.
+       TestClass myTsFromRedis = await _carbonRedisCache.HashGetAsObject&lt;TestClass&gt;(&quot;MyObjectInHash&quot;);
+       //Gets your entire object with the given fields that is converted into hash key-value pairs within a single redis hash key.
+       TestClass myPartlyTsFromRedis = await _carbonRedisCache.HashGetAsObject&lt;TestClass&gt;(&quot;MyObjectInHash&quot;, new string[] { nameof(ts.MyPropertyStr), nameof(ts.MyPropertyDateTime) });
+        
+       //Gets your entire object with the given fields that is converted into hash key-value pairs within a single redis hash key, if key does not exist, it tries to fill with the given function
+       TestClass getOrSetObj = await _carbonRedisCache.HashGetAsObject&lt;TestClass&gt;(&quot;MyObjectInHashFromSql&quot;, () =&gt;
+            {
+                TestClass tsFromDb = GetFromSQLDatabase();
+                return Task.FromResult(tsFromDb);
+            });
+
+       //Use SetTTL extension method after Set operations to set an expiry time in Redis
+       await _carbonRedisCache.HashSetAsObject&lt;TestClass&gt;(&quot;MyTTLedHashObject&quot;, ts).SetTTL(new TimeSpan(0, 1, 0));
+       // Or providing a key whenever you want to set TTL
+       await _carbonRedisCache.SetTTL(&quot;MyTTLedHashObject&quot;, new TimeSpan(0, 1, 0));
+
+
+       //Set a hash in redis with the given dictionary where each key will be another hash field in the same hash key
+       Dictionary&lt;String, String&gt; dd = new Dictionary&lt;String, String&gt;();
+       dd.Add(&quot;field1&quot;, &quot;yolo&quot;);
+       dd.Add(&quot;field2&quot;, &quot;bolo&quot;);
+       dd.Add(&quot;field3&quot;, &quot;dolo&quot;);
+       await _carbonRedisCache.HashSet&lt;String&gt;(&quot;MyHashFields&quot;, dd);
+       //Gets your entire information in a dictionary with the given fields within a single redis hash key.
+       Dictionary&lt;String, String&gt; onlySelectedFields = await _carbonRedisCache.HashGet&lt;String&gt;(&quot;MyHashFields&quot;, new string[] { &quot;field1&quot;, &quot;field2&quot; });
+       //Gets your entire information in a dictionary for all fields within a single redis hash key.
+       Dictionary&lt;String, String&gt; allFields = await _carbonRedisCache.HashGet&lt;String&gt;(&quot;MyHashFields&quot;);
+       //Gets the selected field from entire dictionary that is converted into hash key-value pairs within a single redis hash key.
+       String singleField = await _carbonRedisCache.HashGet&lt;String&gt;(&quot;MyHashFields&quot;, &quot;field1&quot;);
+
+       //Add an object to a Redis Set within the given key (One by one)
+       await _carbonRedisCache.SetAdd(&quot;myset&quot;, &quot;yolo&quot;);
+       await _carbonRedisCache.SetAdd(&quot;myset&quot;, &quot;bolo&quot;);
+       await _carbonRedisCache.SetAdd(&quot;myset&quot;, &quot;dolo&quot;);
+       await _carbonRedisCache.SetAdd(&quot;myset2&quot;, &quot;folo&quot;);
+       await _carbonRedisCache.SetAdd(&quot;myset2&quot;, &quot;yolo&quot;);
+       await _carbonRedisCache.SetAdd(&quot;myset2&quot;, &quot;bolo&quot;);
+       await _carbonRedisCache.SetAdd(&quot;myset2&quot;, &quot;zolo&quot;);
+       //Add multiple set members at a time
+       await _carbonRedisCache.SetAdd(&quot;myset3&quot;, new string[] { &quot;yolo&quot;, &quot;golo&quot; });
+       //Get all the members in Redis Set
+       List&lt;String&gt; allMembersOfMySet = await _carbonRedisCache.SetGetMembers&lt;String&gt;(&quot;myset&quot;);
+       //Get Members of a Redis Set by applying set operations such as Union, Intersect, Difference for multiple keys
+       List&lt;String&gt; intersectionMembersOfMySetAndMySet2 = await _carbonRedisCache.SetMultiGetMembers&lt;String&gt;(StackExchange.Redis.SetOperation.Intersect, new string[] { &quot;myset&quot;, &quot;myset2&quot; });
+       //Removes given members in a Redis Set
+       await _carbonRedisCache.SetRemove&lt;String&gt;(&quot;myset&quot;, new string[] { &quot;yolo&quot;, &quot;bolo&quot; });
+
+       //Simply gets your entire object as single that is converted into single hash field within that redis hash key, if key does not exist, it tries to fill with the given function
+       var getOrSetHash = await _carbonRedisCache.HashSingleGet&lt;String&gt;(&quot;SingleDataOfHash&quot;, () =&gt;
+            {
+                return Task.FromResult(&quot;OnlyThisDataWillBeStored&quot;);
+            });
+       //Simple set operation which is inherited from IDistributedCache interface, all the set logic is managed by Microsoft.Extensions.Caching.Distributed with TTL and absolute or sliding expiration time as you wish
+       await _carbonRedisCache.SetAsync(&quot;MyAnotherKey&quot;, ts, new CancellationToken(), new TimeSpan(0, 1, 0), true);
+
+       //Removes any type of data from Redis with the given key
+       await _carbonRedisCache.RemoveAsync(&quot;AnyKey&quot;);
+       //Increases the hash value which is long type by 1. You can also use -1 to have a decrement.
+       await _carbonRedisCache.HashSetCounter(&quot;myhash&quot;, &quot;counter&quot;, 1);
+       //This overload helps you with when your counter hits to 0, removes the hashkey
+       await _carbonRedisCache.HashSetCounter(&quot;myhash&quot;, &quot;counter&quot;, -1, true);
+
+
+    }
+</code></pre>
+<h4 id="redislock-for-distributed-lock">RedisLock for Distributed Lock</h4>
+<blockquote>
+<p>Distributed locks are useful for ensuring only one process is using a particular resource at any given time (even if the processes are running on different machines).
+<a href="https://github.com/samcook/RedLock.net">https://github.com/samcook/RedLock.net</a></p>
+</blockquote>
+<pre><code class="lang-csharp">    private readonly ICarbonCache _carbonRedisCache;
+    private readonly RedLockFactory _redlockFactory;
+
+    public PolicyService(ICarbonCache carbonRedisCache)
+    {
+        _carbonRedisCache = carbonRedisCache;
+        _redlockFactory = _carbonRedisCache.GetRedLockFactory();
+
+    }
+    public async Task YourMethod()
+    {
+        //Locks the given 'AnIdentifierToLock' identifier and make them others wait for 30 seconds, where redis key will expire 30 seconds later as well, and awaiter side will try to unlock per 2 seconds.
+        using (var redlock = await _redlockFactory.CreateLockAsync(&quot;AnIdentifierToLock&quot;, TimeSpan.FromSeconds(30), TimeSpan.FromSeconds(30), TimeSpan.FromSeconds(2)))
+              {
+                  if (redlock.IsAcquired)
+                  {
+                      //implement your distributed locked logic here, so that ensure any other instance of your API will wait this operation to end before it starts
+                  }
+              }
+    }
+</code></pre>
+<h4 id="redis-pubsub-for-notifications">Redis Pub/Sub for Notifications</h4>
+<p>To be filled later...</p>
+<hr>
+<h4 id="accessing-stackexchange-based-objects-server-database-etc">Accessing Stack.Exchange Based Objects (Server, Database etc.)</h4>
+<p>Access server object to execute server-based commands</p>
+<pre><code class="lang-csharp">//Provides configuration controls of a redis server
+IServer server = _carbonRedisCache.GetServer();
+</code></pre>
+<p>Access to database object to unveil all the redis operations via IDatabase</p>
+<pre><code class="lang-csharp">IDatabase database = _carbonRedisCache.GetDatabase();
+</code></pre>
+<p>Get the current database number in use</p>
+<pre><code class="lang-csharp">int dbnumber = _carbonRedisCache.GetRedisDatabaseNumber();
+</code></pre>
+<p>Get the current instance name</p>
+<pre><code class="lang-csharp">string instancename = _carbonRedisCache.GetInstanceName();
+</code></pre>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            Carbon Framework
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>
