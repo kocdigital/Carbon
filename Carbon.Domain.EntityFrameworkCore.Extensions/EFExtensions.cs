@@ -4,6 +4,7 @@ using Carbon.Domain.Abstractions.Entities;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
@@ -554,7 +555,8 @@ namespace Carbon.Domain.EntityFrameworkCore
                 return query;
             }
 
-            var normalizedSearch = search.ToLowerInvariant().ReplaceTurkishChars();
+            var trCulture = new CultureInfo("tr-TR", useUserOverride: false);
+            var normalizedSearch = search.ToLower(trCulture);
 
             var parameter = Expression.Parameter(typeof(T), "x");
             var member = Expression.Invoke(selector, parameter);
