@@ -4,10 +4,11 @@ using Carbon.Domain.EntityFrameworkCore.CentralizedAudit;
 using EFCoreAuditing;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
-
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -19,14 +20,16 @@ namespace Carbon.Domain.EntityFrameworkCore
     /// <typeparam name="TContext"> A database context object to be wrapped. </typeparam>
     public class CarbonContext<TContext> : AuditLogDbContext<Guid> where TContext : DbContext
     {
+        private readonly ILogger<CarbonContext<TContext>> _logger;
         private Dictionary<EntityState, List<(string AttributeName, Action<EntityEntry> Action)>> navigationOps;
 
         /// <summary>
         ///     Constructor that initializes the CarbonContext with the given options for database context
         /// </summary>
         /// <param name="options"> Options for DbContext constructor </param>
-        public CarbonContext(DbContextOptions options) : base(options)
+        public CarbonContext(DbContextOptions options, ILogger<CarbonContext<TContext>> logger) : base(options)
         {
+            _logger = logger ?? new LoggerFactory().CreateLogger<CarbonContext<TContext>>();
             navigationOps = new Dictionary<EntityState, List<(string, Action<EntityEntry>)>>();
             navigationOps[EntityState.Deleted] = new List<(string AttributeName, Action<EntityEntry> Action)>
             {
@@ -44,7 +47,7 @@ namespace Carbon.Domain.EntityFrameworkCore
         public override int SaveChanges(bool acceptAllChangesOnSuccess)
         {
             OnBeforeSaving();
-
+            LogChanges();
             return base.SaveChanges(acceptAllChangesOnSuccess);
         }
 
@@ -60,8 +63,8 @@ namespace Carbon.Domain.EntityFrameworkCore
 
         public override Task<int> SaveChangesAsync(bool acceptAllChangesOnSuccess, CancellationToken cancellationToken = default(CancellationToken))
         {
-            OnBeforeSaving();
-
+            OnBeforeSaving(); 
+            LogChanges();
             return base.SaveChangesAsync(acceptAllChangesOnSuccess, cancellationToken);
         }
 
@@ -228,6 +231,35 @@ namespace Carbon.Domain.EntityFrameworkCore
                         }
                     }
                 }
+            }
+        }
+
+        /// <summary>
+        /// This method is prepared to find and log changes made in the entity in debug mode.
+        /// </summary>
+        private void LogChanges()
+        {
+            var entityStates = new List<EntityState> { EntityState.Added, EntityState.Modified, EntityState.Deleted };
+            var modifiedEntries = ChangeTracker.Entries().Where(e => entityStates.Contains(e.State));
+
+            foreach (var entry in modifiedEntries)
+            {
+                var entityType = entry.Entity.GetType().Name;
+                var state = Enum.GetName(typeof(EntityState), entry.State);
+                var changes = new StringBuilder();
+
+                foreach (var prop in entry.OriginalValues.Properties)
+                {
+                    var originalValue = entry.OriginalValues[prop]?.ToString();
+                    var currentValue = entry.CurrentValues[prop]?.ToString();
+
+                    if (originalValue != currentValue)
+                    {
+                        changes.AppendLine($"Property '{prop.Name}': '{originalValue}' -> '{currentValue}'");
+                    }
+                }
+
+                _logger.LogDebug($"Entity Type: {entityType}, State: {state}, Changes: {changes}");
             }
         }
     }
