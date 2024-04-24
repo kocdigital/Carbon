@@ -583,7 +583,7 @@ namespace Carbon.Domain.EntityFrameworkCore
                     }
                     else
                     {
-                        finalExpression = Expression.OrElse(finalExpression, wordContainsExpression);
+                        finalExpression = Expression.AndAlso(finalExpression, wordContainsExpression);
                     }
                 }
             }
