@@ -6,7 +6,7 @@
 		<Description>
 			- 3.2.1
 			* WhereContains overloaded
-
+		
 			- 3.2.0
 			* WhereContains use to AndAlso or OrElse
 
