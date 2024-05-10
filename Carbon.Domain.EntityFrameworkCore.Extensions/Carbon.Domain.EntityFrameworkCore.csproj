@@ -2,8 +2,11 @@
 
 	<PropertyGroup>
 		<TargetFrameworks>net6.0;net5.0;netstandard2.1</TargetFrameworks>
-		<Version>3.2.0</Version>
+		<Version>3.2.1</Version>
 		<Description>
+			- 3.2.1
+			* WhereContains overloaded
+
 			- 3.2.0
 			* WhereContains use to AndAlso or OrElse
 
