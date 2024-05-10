@@ -10,6 +10,7 @@ using System.Linq.Expressions;
 using System.Threading.Tasks;
 using Carbon.Common.Extensions;
 using Carbon.PagedList;
+using System.Reflection;
 
 namespace Carbon.Domain.EntityFrameworkCore
 {
@@ -547,57 +548,38 @@ namespace Carbon.Domain.EntityFrameworkCore
         public static IQueryable<T> WhereContains<T>(
             this IQueryable<T> query,
             Expression<Func<T, string>> selector,
-            string search,
+            List<string> search,
             bool searchByWords = false)
         {
-            if (query == null || selector == null || string.IsNullOrEmpty(search))
+            if (query == null || selector == null || !search.Any())
             {
                 return query;
             }
 
-            var trCulture = new CultureInfo("tr-TR", useUserOverride: false);
-            var normalizedSearch = search.ToLower(trCulture);
+            CultureInfo culture = new CultureInfo("tr-TR", useUserOverride: false);
+            ParameterExpression parameterExpression = Expression.Parameter(typeof(T), "x");
+            InvocationExpression instance = Expression.Invoke(selector, parameterExpression);
+            MethodInfo method = typeof(string).GetMethod("ToLower", Type.EmptyTypes);
+            MethodCallExpression instance2 = Expression.Call(instance, method);
+            Expression expression = null;
 
-            var parameter = Expression.Parameter(typeof(T), "x");
-            var member = Expression.Invoke(selector, parameter);
-
-            var toLowerMethod = typeof(string).GetMethod("ToLower", Type.EmptyTypes);
-            var toLowerExpression = Expression.Call(member, toLowerMethod);
-
-            Expression finalExpression = null;
-
-            if (searchByWords)
+            foreach (string value in search)
             {
-                var searchWords = normalizedSearch.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
-                if (!searchWords.Any()) return query;
+                ConstantExpression constantExpression = Expression.Constant(value.ToLower(culture));
+                MethodCallExpression methodCallExpression = Expression.Call(instance2, "Contains", Type.EmptyTypes, constantExpression);
 
-                foreach (var word in searchWords)
+                if (searchByWords)
                 {
-                    var normalizedSearchExpression = Expression.Constant(word);
-                    var wordContainsExpression = Expression.Call(toLowerExpression, "Contains", Type.EmptyTypes,
-                        normalizedSearchExpression);
-
-                    if (finalExpression == null)
-                    {
-                        finalExpression = wordContainsExpression;
-                    }
-                    else
-                    {
-                        finalExpression = Expression.AndAlso(finalExpression, wordContainsExpression);
-                    }
+                    expression = ((expression != null) ? ((Expression)Expression.AndAlso(expression, methodCallExpression)) : ((Expression)methodCallExpression));
+                }
+                else
+                {
+                    expression = ((expression != null) ? ((Expression)Expression.OrElse(expression, methodCallExpression)) : ((Expression)methodCallExpression));
                 }
             }
-            else
-            {
-                var normalizedSearchExpression = Expression.Constant(normalizedSearch);
-                var containsExpression = Expression.Call(toLowerExpression, "Contains", Type.EmptyTypes,
-                    normalizedSearchExpression);
-                finalExpression = containsExpression;
-            }
 
-            var lambda = Expression.Lambda<Func<T, bool>>(finalExpression, parameter);
-            query = query.Where(lambda);
-
+            Expression<Func<T, bool>> predicate = Expression.Lambda<Func<T, bool>>(expression, new ParameterExpression[1] { parameterExpression });
+            query = query.Where(predicate);
             return query;
         }
     }
