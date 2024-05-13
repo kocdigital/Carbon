@@ -545,6 +545,23 @@ namespace Carbon.Domain.EntityFrameworkCore
         /// <remarks>
         /// This method performs a case-insensitive search. If searchByWords is false, it performs a normal contains search for the entire search term. If searchByWords is true, it splits the search term into words and checks if any word exists in the specified property's string value.
         /// </remarks>
+        public static IQueryable<T> WhereContains<T>(this IQueryable<T> query, Expression<Func<T, string>> selector, string search, bool searchByWords = false)
+        {
+            return WhereContains(query, selector, new List<string> { search }, searchByWords);
+        }
+
+        /// <summary>
+        /// Filters an IQueryable based on whether any word in the search term exists in the specified property's string value, using a case-insensitive comparison.
+        /// </summary>
+        /// <typeparam name="T">The type of elements in the IQueryable.</typeparam>
+        /// <param name="query">The IQueryable to filter.</param>
+        /// <param name="selector">Expression specifying the property to search within.</param>
+        /// <param name="search">The search term containing one or more words.</param>
+        /// <param name="searchByWords">A boolean value indicating whether to search for individual words in the search term (default is false).</param>
+        /// <returns>The filtered IQueryable containing elements where any word in the search term exists in the specified property's string value.</returns>
+        /// <remarks>
+        /// This method performs a case-insensitive search. If searchByWords is false, it performs a normal contains search for the entire search term. If searchByWords is true, it splits the search term into words and checks if any word exists in the specified property's string value.
+        /// </remarks>
         public static IQueryable<T> WhereContains<T>(
             this IQueryable<T> query,
             Expression<Func<T, string>> selector,
