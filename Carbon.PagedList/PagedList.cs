@@ -41,7 +41,7 @@ namespace Carbon.PagedList
             TotalItemCount = totalCount;
             PageSize = pageSize;
             PageNumber = pageNumber;
-            PageCount = TotalItemCount > 0
+            PageCount = (TotalItemCount > 0 && !isAllDataRequest)
                         ? (int)Math.Ceiling(TotalItemCount / (double)PageSize)
                         : 0;
             HasPreviousPage = PageNumber > 1;
@@ -75,7 +75,7 @@ namespace Carbon.PagedList
             TotalItemCount = superset?.Count() ?? 0;
             PageSize = pageSize;
             PageNumber = pageNumber;
-            PageCount = TotalItemCount > 0
+            PageCount = (TotalItemCount > 0 && !isAllDataRequest)
                         ? (int)Math.Ceiling(TotalItemCount / (double)PageSize)
                         : 0;
             HasPreviousPage = PageNumber > 1;
@@ -90,7 +90,16 @@ namespace Carbon.PagedList
 
             // add items to internal list
             if (superset != null && TotalItemCount > 0)
-                Subset.AddRange(superset.Skip((pageNumber - 1) * pageSize).Take(pageSize).ToList());
+            {
+                if (isAllDataRequest)
+                {
+                    Subset.AddRange(superset.ToList());
+                }
+                else
+                {
+                    Subset.AddRange(superset.Skip((pageNumber - 1) * pageSize).Take(pageSize).ToList());
+                }
+            }
         }
 
         /// <summary>
