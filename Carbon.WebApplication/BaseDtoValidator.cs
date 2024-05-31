@@ -20,7 +20,9 @@ namespace Carbon.WebApplication
             if (typeof(IPageableDto).IsAssignableFrom(typeof(T)))
             {
                 RuleFor(x => ((IPageableDto)x).PageIndex).GreaterThanOrEqualTo(1);
-                RuleFor(x => ((IPageableDto)x).PageSize).InclusiveBetween(10, 250);
+                RuleFor(x => ((IPageableDto)x).PageSize).InclusiveBetween(10, 250)
+                    .When(x => ((IPageableDto)x).PageSize != 0)
+                    .WithMessage("PageSize must be 0 or between 10 and 250.");
             }
         }
     }
