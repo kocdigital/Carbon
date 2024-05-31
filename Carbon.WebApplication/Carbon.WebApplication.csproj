@@ -1,14 +1,16 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
 		<TargetFrameworks>net6.0;net5.0;netcoreapp3.1</TargetFrameworks>
-		<Version>4.5.3</Version>
+		<Version>4.5.4</Version>
 		<Description>
+			4.5.4
+			- Update IPageableDto validator for assign PageSize 0. When PageSize 0 the datas returns without pagination with development in version 4.5.3.
 			4.5.3
 			- Upgrade Carbon.PagedList (Remove pageSize and pageNumber validation check)
 			4.5.2
 			- Updated Carbon.Common nuget package (Added StringExtensions class with ReplaceTurkishChars and ContainsTurkishIgnoreCase methods)
 			4.5.0
-			- Degraded health check HTTP status code changed as custom 218 (This Is Fine) status code. Because even if system is degraed it should be working normally, so returning 5XX status code is not right for degraded state. 
+			- Degraded health check HTTP status code changed as custom 218 (This Is Fine) status code. Because even if system is degraed it should be working normally, so returning 5XX status code is not right for degraded state.
 			4.4.1
 			- Cors should come first before authentication and authorization in startup pipeline
 			4.4.0
