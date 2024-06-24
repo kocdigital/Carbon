@@ -1,12 +1,11 @@
-﻿using Carbon.Common.TenantManagementHandler.Classes;
-using Carbon.Common.TenantManagementHandler.Interfaces;
-using Carbon.Domain.Abstractions.Entities;
+﻿using Carbon.Domain.Abstractions.Entities;
 using Carbon.Domain.Abstractions.Repositories;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Transactions;
 
@@ -43,30 +42,33 @@ namespace Carbon.Domain.EntityFrameworkCore
         /// 	Retrieves and returns the <typeparamref name="TEntity"/> specified by <paramref name="id"/> from the database context.
         /// </summary>
         /// <param name="id"> Id of the requested <typeparamref name="TEntity"/> object. </param>
+        /// <param name="cancellationToken"> Token to monitor for cancellation requests. </param>
         /// <returns> A task whose result is the requested <typeparamref name="TEntity"/> object. </returns>
-        public new virtual async Task<TEntity> GetByIdAsync(Guid id, Guid tenantId)
+        public new virtual async Task<TEntity> GetByIdAsync(Guid id, Guid tenantId, CancellationToken cancellationToken = default)
         {
-            return await readOnlyContext.Set<TEntity>().FirstOrDefaultAsync(x => x.Id == id && x.TenantId == tenantId);
+            return await readOnlyContext.Set<TEntity>().FirstOrDefaultAsync(x => x.Id == id && x.TenantId == tenantId,cancellationToken);
         }
 
 
         /// <summary>
         ///     Retrieves and returns all <typeparamref name="TEntity"/> objects related to the given <paramref name="tenantId"/> from the database.
         /// </summary>
+        /// <param name="cancellationToken"> Token to monitor for cancellation requests. </param>
         /// <returns> A task which results in a list that contains all <typeparamref name="TEntity"/> objects in the database context.</returns>
-        public new virtual async Task<List<TEntity>> GetAllAsync(Guid tenantId)
+        public new virtual async Task<List<TEntity>> GetAllAsync(Guid tenantId, CancellationToken cancellationToken = default)
         {
-            return await readOnlyContext.Set<TEntity>().Where(x => x.TenantId == tenantId).ToListAsync();
+            return await readOnlyContext.Set<TEntity>().Where(x => x.TenantId == tenantId).ToListAsync(cancellationToken);
         }
 
         /// <summary>
         ///     Retrieves and returns the first <typeparamref name="TEntity"/> element that satisfies the given <paramref name="predicate"/>.
         /// </summary>
         /// <param name="predicate"> An expression that returns binary results for <typeparamref name="TEntity"/> objects. </param>
+        /// <param name="cancellationToken"> Token to monitor for cancellation requests. </param>
         /// <returns>The first <typeparamref name="TEntity"/> element that is related to <paramref name="tenantId"/> and also satisfies the given <paramref name="predicate"/> in the database.</returns>
-        public new virtual async Task<TEntity> GetAsync(Guid tenantId, Expression<Func<TEntity, bool>> predicate)
+        public new virtual async Task<TEntity> GetAsync(Guid tenantId, Expression<Func<TEntity, bool>> predicate, CancellationToken cancellationToken = default)
         {
-            return await readOnlyContext.Set<TEntity>().AsQueryable().Where(x => x.TenantId == tenantId).FirstOrDefaultAsync(predicate);
+            return await readOnlyContext.Set<TEntity>().AsQueryable().Where(x => x.TenantId == tenantId).FirstOrDefaultAsync(predicate,cancellationToken);
         }
 
         /// <summary>
@@ -97,6 +99,46 @@ namespace Carbon.Domain.EntityFrameworkCore
                 return readOnlyContext.Set<TEntity>().Where(c => c.TenantId == tenantId).AsNoTracking();
 
             }
+        } 
+        /// <summary>
+        /// Retrieves and returns all <typeparamref name="TEntity"/> objects related to the given <paramref name="tenantId"/> from the read-only database context.
+        /// </summary>
+        /// <param name="tenantId">Id of the tenant whose related entities will be retrieved.</param>
+        /// <param name="selector">Expression to select properties to return. Null to return all properties.</param>
+        /// <param name="cancellationToken">Token to monitor for cancellation requests.</param>
+        /// <returns>A task which results in a list that contains the <typeparamref name="TEntity"/> objects related to the specified tenant.</returns>
+        public new virtual async Task<List<TResult>> GetAllAsync<TResult>(Guid tenantId, Expression<Func<TEntity, TResult>> selector = null, CancellationToken cancellationToken = default)
+        { 
+            if (selector == null)
+            {
+                return await readOnlyContext.Set<TEntity>().Where(x => x.TenantId == tenantId).Cast<TResult>().ToListAsync(cancellationToken);
+            }
+
+            return await readOnlyContext.Set<TEntity>().Where(x => x.TenantId == tenantId).Select(selector).ToListAsync(cancellationToken);
         }
+
+        /// <summary>
+        /// 	Retrieves and returns the <typeparamref name="TEntity"/> specified by <paramref name="id"/> from the database context.
+        /// If <paramref name="selector"/> is not null, returns the entity projected by the selector.
+        /// </summary>
+        /// <param name="id"> Id of the requested <typeparamref name="TEntity"/> object. </param>
+        /// <param name="tenantId"> Id of the tenant. </param>
+        /// <param name="selector"> Optional selector to project the entity properties. </param>
+        /// <param name="cancellationToken"> Token to monitor for cancellation requests. </param>
+        /// <returns> A task whose result is the requested <typeparamref name="TEntity"/> object or the projection if <paramref name="selector"/> is not null. </returns>
+        public new virtual async Task<TResult> GetByIdAsync<TResult>(Guid id, Guid tenantId, Expression<Func<TEntity, TResult>> selector, CancellationToken cancellationToken = default)
+        {
+            if (selector == null)
+            {
+                var entity = await GetByIdAsync(id, tenantId, cancellationToken);
+                return (TResult)(object)entity;
+            }
+
+            return await readOnlyContext.Set<TEntity>()
+                                        .Where(x => EF.Property<Guid>(x, "Id") == id && EF.Property<Guid>(x, "TenantId") == tenantId)
+                                        .Select(selector)
+                                        .FirstOrDefaultAsync(cancellationToken);
+        }
+
     }
 }
