@@ -1,0 +1,534 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class CarbonSagaActivity&lt;T&gt;
+   | Carbon Framework </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class CarbonSagaActivity&lt;T&gt;
+   | Carbon Framework ">
+    <meta name="generator" content="docfx 2.59.4.0">
+    
+    <link rel="shortcut icon" href="../../images/logo.png">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
+    
+    <meta property="docfx:rel" content="../../">
+    
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../images/logo.png" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Carbon.MassTransit.CarbonSagaActivity`1">
+  
+  
+  <h1 id="Carbon_MassTransit_CarbonSagaActivity_1" data-uid="Carbon.MassTransit.CarbonSagaActivity`1" class="text-break">Class CarbonSagaActivity&lt;T&gt;
+  </h1>
+  <div class="markdown level0 summary"><p>Carbon Saga Activity Class</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">CarbonSagaActivity&lt;T&gt;</span></div>
+      <div class="level2"><a class="xref" href="Carbon.MassTransit.AsyncReqResp.RequestHandlerActivity.html">RequestHandlerActivity</a></div>
+      <div class="level2"><a class="xref" href="Carbon.MassTransit.AsyncReqResp.ResponseHandlerActivity.html">ResponseHandlerActivity</a></div>
+  </div>
+  <div class="implements">
+    <h5>Implements</h5>
+    <div><span class="xref">Automatonymous.Activity</span>&lt;T&gt;</div>
+    <div><span class="xref">Automatonymous.Activity</span></div>
+    <div><span class="xref">Automatonymous.Visitable</span></div>
+    <div><span class="xref">GreenPipes.IProbeSite</span></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Carbon.MassTransit.html">Carbon.MassTransit</a></h6>
+  <h6><strong>Assembly</strong>: Carbon.MassTransit.dll</h6>
+  <h5 id="Carbon_MassTransit_CarbonSagaActivity_1_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract class CarbonSagaActivity&lt;T&gt; : Activity&lt;T&gt;, Activity, Visitable, IProbeSite</code></pre>
+  </div>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td><p>Type of Instance</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Carbon_MassTransit_CarbonSagaActivity_1_remarks"><strong>Remarks</strong></h5>
+  <div class="markdown level0 remarks"><p>An activity is part of a behavoir than is executed in order</p>
+</div>
+  <h3 id="constructors">Constructors
+  </h3>
+  <a id="Carbon_MassTransit_CarbonSagaActivity_1__ctor_" data-uid="Carbon.MassTransit.CarbonSagaActivity`1.#ctor*"></a>
+  <h4 id="Carbon_MassTransit_CarbonSagaActivity_1__ctor_Microsoft_Extensions_Logging_ILogger__0__MassTransit_ConsumeContext_" data-uid="Carbon.MassTransit.CarbonSagaActivity`1.#ctor(Microsoft.Extensions.Logging.ILogger{`0},MassTransit.ConsumeContext)">CarbonSagaActivity(ILogger&lt;T&gt;, ConsumeContext)</h4>
+  <div class="markdown level1 summary"><p>CarbonSagaActivity Constructor</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public CarbonSagaActivity(ILogger&lt;T&gt; logger, ConsumeContext context)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Microsoft.Extensions.Logging.ILogger</span>&lt;T&gt;</td>
+        <td><span class="parametername">logger</span></td>
+        <td><p>Microsoft logger for logging</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">MassTransit.ConsumeContext</span></td>
+        <td><span class="parametername">context</span></td>
+        <td><p>Mass Transit consume context for consuming incoming messages</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  <a id="Carbon_MassTransit_CarbonSagaActivity_1_Accept_" data-uid="Carbon.MassTransit.CarbonSagaActivity`1.Accept*"></a>
+  <h4 id="Carbon_MassTransit_CarbonSagaActivity_1_Accept_Automatonymous_StateMachineVisitor_" data-uid="Carbon.MassTransit.CarbonSagaActivity`1.Accept(Automatonymous.StateMachineVisitor)">Accept(StateMachineVisitor)</h4>
+  <div class="markdown level1 summary"><p>Accepts the State Machine Visitor to visit caller of method</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Accept(StateMachineVisitor visitor)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Automatonymous.StateMachineVisitor</span></td>
+        <td><span class="parametername">visitor</span></td>
+        <td><p>Visitor of Activity</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Carbon_MassTransit_CarbonSagaActivity_1_Execute_" data-uid="Carbon.MassTransit.CarbonSagaActivity`1.Execute*"></a>
+  <h4 id="Carbon_MassTransit_CarbonSagaActivity_1_Execute_Automatonymous_BehaviorContext__0__Automatonymous_Behavior__0__" data-uid="Carbon.MassTransit.CarbonSagaActivity`1.Execute(Automatonymous.BehaviorContext{`0},Automatonymous.Behavior{`0})">Execute(BehaviorContext&lt;T&gt;, Behavior&lt;T&gt;)</h4>
+  <div class="markdown level1 summary"><p>Saga execution of operation abstact method</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract Task Execute(BehaviorContext&lt;T&gt; context, Behavior&lt;T&gt; next)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Automatonymous.BehaviorContext</span>&lt;T&gt;</td>
+        <td><span class="parametername">context</span></td>
+        <td><p>Behavior Exception Context with T : instance and TException : acception type</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">Automatonymous.Behavior</span>&lt;T&gt;</td>
+        <td><span class="parametername">next</span></td>
+        <td><p>Next Behavior after fault occured</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Carbon_MassTransit_CarbonSagaActivity_1_Execute_" data-uid="Carbon.MassTransit.CarbonSagaActivity`1.Execute*"></a>
+  <h4 id="Carbon_MassTransit_CarbonSagaActivity_1_Execute__1_Automatonymous_BehaviorContext__0___0__Automatonymous_Behavior__0___0__" data-uid="Carbon.MassTransit.CarbonSagaActivity`1.Execute``1(Automatonymous.BehaviorContext{`0,``0},Automatonymous.Behavior{`0,``0})">Execute&lt;T1&gt;(BehaviorContext&lt;T, T1&gt;, Behavior&lt;T, T1&gt;)</h4>
+  <div class="markdown level1 summary"><p>Saga execution of behavoir.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public async Task Execute&lt;T1&gt;(BehaviorContext&lt;T, T1&gt; context, Behavior&lt;T, T1&gt; next)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Automatonymous.BehaviorContext</span>&lt;T, T1&gt;</td>
+        <td><span class="parametername">context</span></td>
+        <td><p>Behavior Exception Context with T : instance and TException : acception type</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">Automatonymous.Behavior</span>&lt;T, T1&gt;</td>
+        <td><span class="parametername">next</span></td>
+        <td><p>Behavior to make fault handling</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T1</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Carbon_MassTransit_CarbonSagaActivity_1_Faulted_" data-uid="Carbon.MassTransit.CarbonSagaActivity`1.Faulted*"></a>
+  <h4 id="Carbon_MassTransit_CarbonSagaActivity_1_Faulted__1_Automatonymous_BehaviorExceptionContext__0___0__Automatonymous_Behavior__0__" data-uid="Carbon.MassTransit.CarbonSagaActivity`1.Faulted``1(Automatonymous.BehaviorExceptionContext{`0,``0},Automatonymous.Behavior{`0})">Faulted&lt;TException&gt;(BehaviorExceptionContext&lt;T, TException&gt;, Behavior&lt;T&gt;)</h4>
+  <div class="markdown level1 summary"><p>Saga fault handling for behavoir.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task Faulted&lt;TException&gt;(BehaviorExceptionContext&lt;T, TException&gt; context, Behavior&lt;T&gt; next)
+    where TException : Exception</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Automatonymous.BehaviorExceptionContext</span>&lt;T, TException&gt;</td>
+        <td><span class="parametername">context</span></td>
+        <td><p>Behavior Exception Context with T : instance and TException : acception type</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">Automatonymous.Behavior</span>&lt;T&gt;</td>
+        <td><span class="parametername">next</span></td>
+        <td><p>Behavior to make fault handling</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">TException</span></td>
+        <td><p>Exception type to be thrown</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Carbon_MassTransit_CarbonSagaActivity_1_Faulted_" data-uid="Carbon.MassTransit.CarbonSagaActivity`1.Faulted*"></a>
+  <h4 id="Carbon_MassTransit_CarbonSagaActivity_1_Faulted__2_Automatonymous_BehaviorExceptionContext__0___0___1__Automatonymous_Behavior__0___0__" data-uid="Carbon.MassTransit.CarbonSagaActivity`1.Faulted``2(Automatonymous.BehaviorExceptionContext{`0,``0,``1},Automatonymous.Behavior{`0,``0})">Faulted&lt;T1, TException&gt;(BehaviorExceptionContext&lt;T, T1, TException&gt;, Behavior&lt;T, T1&gt;)</h4>
+  <div class="markdown level1 summary"><p>Saga fault handling for behavoir.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task Faulted&lt;T1, TException&gt;(BehaviorExceptionContext&lt;T, T1, TException&gt; context, Behavior&lt;T, T1&gt; next)
+    where TException : Exception</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Automatonymous.BehaviorExceptionContext</span>&lt;T, T1, TException&gt;</td>
+        <td><span class="parametername">context</span></td>
+        <td><p>Exceptional Behavior  Context with T : Instance and T1 : Data TException : acception type</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">Automatonymous.Behavior</span>&lt;T, T1&gt;</td>
+        <td><span class="parametername">next</span></td>
+        <td><p>Behavior to make fault handling</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T1</span></td>
+        <td><p>Data type for Behavior Exception Context</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="parametername">TException</span></td>
+        <td><p>Exception type to be thrown</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Carbon_MassTransit_CarbonSagaActivity_1_Probe_" data-uid="Carbon.MassTransit.CarbonSagaActivity`1.Probe*"></a>
+  <h4 id="Carbon_MassTransit_CarbonSagaActivity_1_Probe_GreenPipes_ProbeContext_" data-uid="Carbon.MassTransit.CarbonSagaActivity`1.Probe(GreenPipes.ProbeContext)">Probe(ProbeContext)</h4>
+  <div class="markdown level1 summary"><p>Adds scope to Probe Context as &quot;publisher&quot;</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Probe(ProbeContext context)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">GreenPipes.ProbeContext</span></td>
+        <td><span class="parametername">context</span></td>
+        <td><p>Greenpipes.ProbeContext to add scope<span class="xref">GreenPipes.ProbeContext</span></p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <span class="xref">Automatonymous.Activity&lt;TInstance&gt;</span>
+  </div>
+  <div>
+      <span class="xref">Automatonymous.Activity</span>
+  </div>
+  <div>
+      <span class="xref">Automatonymous.Visitable</span>
+  </div>
+  <div>
+      <span class="xref">GreenPipes.IProbeSite</span>
+  </div>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            Carbon Framework
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>
