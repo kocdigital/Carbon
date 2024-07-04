@@ -2,8 +2,11 @@
 
 	<PropertyGroup>
 		<TargetFrameworks>net6.0;net5.0;netstandard2.1</TargetFrameworks>
-		<Version>3.2.1</Version>
+		<Version>3.2.2</Version>
 		<Description>
+			- 3.2.2
+			* Add WhereIf and WhereIfContains extensions method
+			
 			- 3.2.1
 			* WhereContains overloaded
 		
