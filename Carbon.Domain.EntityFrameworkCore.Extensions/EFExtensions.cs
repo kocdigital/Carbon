@@ -599,5 +599,37 @@ namespace Carbon.Domain.EntityFrameworkCore
             query = query.Where(predicate);
             return query;
         }
+        
+        
+        /// <summary>
+        /// Applies a predicate filter to the source sequence based on the specified condition.
+        /// </summary>
+        /// <typeparam name="T">The type of elements in the sequence.</typeparam>
+        /// <param name="query">The queryable sequence.</param>
+        /// <param name="condition">The condition that determines whether the predicate should be applied.</param>
+        /// <param name="predicate">The filtering predicate.</param>
+        /// <returns>The initial sequence potentially filtered by the predicate based on the specified condition.</returns>
+        public static IQueryable<T> WhereIf<T>(this IQueryable<T> query, bool condition, Expression<Func<T, bool>> predicate)
+        {
+            return condition ? query.Where(predicate) : query;
+        }
+
+        /// <summary>
+        /// Applies a 'Contains' filtering operation to the source sequence based on the specified condition.
+        /// </summary>
+        /// <typeparam name="T">The type of elements in the sequence.</typeparam>
+        /// <param name="query">The queryable sequence.</param>
+        /// <param name="condition">The condition that determines whether the 'Contains' filter should be applied.</param>
+        /// <param name="predicate">The filtering predicate.</param>
+        /// <param name="search">The filtering value to be searched within the property specified by the predicate.</param>
+        /// <param name="searchByWords">Specifies whether the 'Contains' operation should be applied to each word in the property or to the property as a whole.</param>
+        /// <returns>The initial sequence potentially filtered by the 'Contains' operation based on the specified condition.</returns>
+        public static IQueryable<T> WhereIfContains<T>(this IQueryable<T> query, bool condition,
+            Expression<Func<T, string>> predicate,
+            string search,
+            bool searchByWords = false)
+        {
+            return condition ? query.WhereContains(predicate, search, searchByWords) : query;
+        }
     }
 }
