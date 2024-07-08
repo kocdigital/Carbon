@@ -42,7 +42,7 @@ namespace Carbon.Domain.EntityFrameworkCore
         /// <returns> A task whose result is the requested <typeparamref name="TEntity"/> object. </returns>
         public virtual async Task<TEntity> GetByIdAsync(Guid id, CancellationToken cancellationToken = default)
         {
-            return await context.Set<TEntity>().FindAsync(id, cancellationToken);
+            return await context.Set<TEntity>().FindAsync(new object[] { id }, cancellationToken);
         }
 
         /// <summary>
@@ -79,7 +79,7 @@ namespace Carbon.Domain.EntityFrameworkCore
         /// <returns> A task whose result is the deleted <typeparamref name="TEntity"/> object. If no matching entry is found, returns null instead. </returns>
         public virtual async Task<TEntity> DeleteAsync(Guid id, CancellationToken cancellationToken = default)
         {
-            var entity = await context.Set<TEntity>().FindAsync(id,cancellationToken);
+            var entity = await context.Set<TEntity>().FindAsync(new object[] { id }, cancellationToken);
             if (entity == null)
             {
                 return entity;
@@ -151,7 +151,7 @@ namespace Carbon.Domain.EntityFrameworkCore
         /// <returns>The first <typeparamref name="TEntity"/> element that is related to <paramref name="tenantId"/> and also satisfies the given <paramref name="predicate"/> in the database.</returns>
         public virtual async Task<TEntity> GetAsync(Expression<Func<TEntity, bool>> predicate, CancellationToken cancellationToken = default)
         {
-            return await context.Set<TEntity>().AsQueryable().FirstOrDefaultAsync(predicate,cancellationToken);
+            return await context.Set<TEntity>().AsQueryable().FirstOrDefaultAsync(predicate, cancellationToken);
         }
 
         /// <summary> 
@@ -182,7 +182,7 @@ namespace Carbon.Domain.EntityFrameworkCore
                 return context.Set<TEntity>().AsNoTracking();
 
             }
-        }  
+        }
 
         /// <summary>
         ///     Saves changes made to the database.
@@ -192,7 +192,7 @@ namespace Carbon.Domain.EntityFrameworkCore
         public async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
         {
             return await context.SaveChangesAsync(cancellationToken);
-        } 
+        }
 
         /// <summary>
         ///     Retrieves and returns all <typeparamref name="TEntity"/> objects from the database.
