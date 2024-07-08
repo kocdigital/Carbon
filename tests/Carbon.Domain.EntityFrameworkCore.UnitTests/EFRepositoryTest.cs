@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using Xunit;
 
@@ -19,15 +20,15 @@ namespace Carbon.Domain.EntityFrameworkCore.UnitTests
         {
 
         }
-     
+
         [Theory]
         [FoundEntityGetByIdAsyncEFRepository]
         public async Task GetByIdAsync_Successfully_ReturnEntity(Guid Id)
         {
             // Arrange
             EFRepositoryFixture.CreateData(base.context, Id, Guid.NewGuid());
-              // Act
-              var response = await base.GetByIdAsync(Id);
+            // Act
+            var response = await base.GetByIdAsync(Id);
 
             // Assert
             Assert.Equal("Name 1", response.Name);
@@ -125,11 +126,11 @@ namespace Carbon.Domain.EntityFrameworkCore.UnitTests
             var response = await base.UpdateRangeAsync(createResponse);
 
             // Assert
-            for(var a = 0; a < response.Count; a++)
+            for (var a = 0; a < response.Count; a++)
             {
                 Assert.Equal(createResponse[a].Name, response[a].Name);
             }
-            
+
         }
 
         [Theory]
