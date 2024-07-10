@@ -582,15 +582,19 @@ namespace Carbon.Domain.EntityFrameworkCore
 
             foreach (string value in search)
             {
-                ConstantExpression constantExpression = Expression.Constant(value.ToLower(culture));
-                MethodCallExpression methodCallExpression = Expression.Call(instance2, "Contains", Type.EmptyTypes, constantExpression);
-
                 if (searchByWords)
                 {
-                    expression = ((expression != null) ? ((Expression)Expression.AndAlso(expression, methodCallExpression)) : ((Expression)methodCallExpression));
+                    foreach (var valuePerItem in value.Split(" "))
+                    {
+                        ConstantExpression constantExpression = Expression.Constant(valuePerItem.ToLower(culture));
+                        MethodCallExpression methodCallExpression = Expression.Call(instance2, "Contains", Type.EmptyTypes, constantExpression);
+                        expression = ((expression != null) ? ((Expression)Expression.AndAlso(expression, methodCallExpression)) : ((Expression)methodCallExpression));
+                    }
                 }
                 else
                 {
+                    ConstantExpression constantExpression = Expression.Constant(value.ToLower(culture));
+                    MethodCallExpression methodCallExpression = Expression.Call(instance2, "Contains", Type.EmptyTypes, constantExpression);
                     expression = ((expression != null) ? ((Expression)Expression.OrElse(expression, methodCallExpression)) : ((Expression)methodCallExpression));
                 }
             }
