@@ -94,10 +94,10 @@ namespace Carbon.Domain.EntityFrameworkCore
         {
             //var daList = query.Join(ctx.Set<U>(), k => k.Id, k1 => k1.EntityId, (k, k1) => new RelationEntityPair<T, U> { Entity = k, Relation = k1 });
             var daList = (from q in query
-                join io in ctx.Set<U>().Where(k => !k.IsDeleted) on q.Id equals io.EntityId
-                    into ljoin
-                from lj in ljoin.DefaultIfEmpty()
-                select new RelationEntityPair<T, U> { Entity = q, Relation = lj });
+                          join io in ctx.Set<U>().Where(k => !k.IsDeleted) on q.Id equals io.EntityId
+                              into ljoin
+                          from lj in ljoin.DefaultIfEmpty()
+                          select new RelationEntityPair<T, U> { Entity = q, Relation = lj });
 
             return daList;
         }
@@ -108,10 +108,10 @@ namespace Carbon.Domain.EntityFrameworkCore
             where U : class, IOwnerRelation, ISoftDelete
         {
             var daList = (from q in query
-                join io in ctx.Set<U>().Where(k => !k.IsDeleted) on q.Id equals io.EntityId
-                    into ljoin
-                from lj in ljoin.DefaultIfEmpty()
-                select new RelationEntityPair<T, U> { Entity = q, Relation = lj });
+                          join io in ctx.Set<U>().Where(k => !k.IsDeleted) on q.Id equals io.EntityId
+                              into ljoin
+                          from lj in ljoin.DefaultIfEmpty()
+                          select new RelationEntityPair<T, U> { Entity = q, Relation = lj });
 
             return daList;
         }
@@ -562,6 +562,7 @@ namespace Carbon.Domain.EntityFrameworkCore
         /// <remarks>
         /// This method performs a case-insensitive search. If searchByWords is false, it performs a normal contains search for the entire search term. If searchByWords is true, it splits the search term into words and checks if any word exists in the specified property's string value.
         /// </remarks>
+
         public static IQueryable<T> WhereContains<T>(
             this IQueryable<T> query,
             Expression<Func<T, string>> selector,
@@ -582,15 +583,21 @@ namespace Carbon.Domain.EntityFrameworkCore
 
             foreach (string value in search)
             {
-                ConstantExpression constantExpression = Expression.Constant(value.ToLower(culture));
-                MethodCallExpression methodCallExpression = Expression.Call(instance2, "Contains", Type.EmptyTypes, constantExpression);
-
                 if (searchByWords)
                 {
-                    expression = ((expression != null) ? ((Expression)Expression.AndAlso(expression, methodCallExpression)) : ((Expression)methodCallExpression));
+                    var splittedText = value.Split(" ");
+
+                    foreach (var splittedTextItem in splittedText)
+                    {
+                        ConstantExpression constantExpression = Expression.Constant(splittedTextItem.ToLower(culture));
+                        MethodCallExpression methodCallExpression = Expression.Call(instance2, "Contains", Type.EmptyTypes, constantExpression);
+                        expression = ((expression != null) ? ((Expression)Expression.AndAlso(expression, methodCallExpression)) : ((Expression)methodCallExpression));
+                    }
                 }
                 else
                 {
+                    ConstantExpression constantExpression = Expression.Constant(value.ToLower(culture));
+                    MethodCallExpression methodCallExpression = Expression.Call(instance2, "Contains", Type.EmptyTypes, constantExpression);
                     expression = ((expression != null) ? ((Expression)Expression.OrElse(expression, methodCallExpression)) : ((Expression)methodCallExpression));
                 }
             }
@@ -599,8 +606,8 @@ namespace Carbon.Domain.EntityFrameworkCore
             query = query.Where(predicate);
             return query;
         }
-        
-        
+
+
         /// <summary>
         /// Applies a predicate filter to the source sequence based on the specified condition.
         /// </summary>
