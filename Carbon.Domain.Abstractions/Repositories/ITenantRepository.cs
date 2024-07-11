@@ -22,7 +22,15 @@ namespace Carbon.Domain.Abstractions.Repositories
         /// <param name="tenantId"> Id of the tenant that is related to the <typeparamref name="T"/> object. </param>
         /// <param name="cancellationToken"></param>
         /// <returns> A task whose result is the requested <typeparamref name="T"/> object. </returns>
-        Task<T> GetByIdAsync(Guid id, Guid tenantId, CancellationToken cancellationToken = default);
+        Task<T> GetByIdAsync(Guid id, Guid tenantId);
+        /// <summary>
+        /// 	Retrieves and returns the <typeparamref name="T"/> specified by <paramref name="id"/> and <paramref name="tenantId"/> from the database context.
+        /// </summary>
+        /// <param name="id"> Id of the requested <typeparamref name="T"/> object. </param>
+        /// <param name="tenantId"> Id of the tenant that is related to the <typeparamref name="T"/> object. </param>
+        /// <param name="cancellationToken"></param>
+        /// <returns> A task whose result is the requested <typeparamref name="T"/> object. </returns>
+        Task<T> GetByIdAsync(Guid id, Guid tenantId, CancellationToken cancellationToken);
 
         /// <summary>
         ///     Creates and saves the given <typeparamref name="T"/> object in the database.
