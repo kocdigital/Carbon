@@ -40,12 +40,23 @@ namespace Carbon.Domain.EntityFrameworkCore
         /// 	Retrieves and returns the <typeparamref name="TEntity"/> specified by <paramref name="id"/> and <paramref name="tenantId"/> from the database context.
         /// </summary>
         /// <param name="id"> Id of the requested <typeparamref name="TEntity"/> object. </param>
+        /// <param name="tenantId"> Id of the tenant that is related to the <typeparamref name="TEntity"/> object. </param> 
+        /// <returns> A task whose result is the requested <typeparamref name="TEntity"/> object. </returns>
+        public new async Task<TEntity> GetByIdAsync(Guid id, Guid tenantId)
+        {
+            return await readOnlyContext.Set<TEntity>().FirstOrDefaultAsync(x => x.Id == id && x.TenantId == tenantId);
+        }
+
+        /// <summary>
+        /// 	Retrieves and returns the <typeparamref name="TEntity"/> specified by <paramref name="id"/> and <paramref name="tenantId"/> from the database context.
+        /// </summary>
+        /// <param name="id"> Id of the requested <typeparamref name="TEntity"/> object. </param>
         /// <param name="tenantId"> Id of the tenant that is related to the <typeparamref name="TEntity"/> object. </param>
         /// <param name="cancellationToken"> Token to monitor for cancellation requests. </param>
         /// <returns> A task whose result is the requested <typeparamref name="TEntity"/> object. </returns>
-        public new async Task<TEntity> GetByIdAsync(Guid id, Guid tenantId, CancellationToken cancellationToken = default)
+        public new async Task<TEntity> GetByIdAsync(Guid id, Guid tenantId, CancellationToken cancellationToken)
         {
-            return await readOnlyContext.Set<TEntity>().FirstOrDefaultAsync(x => x.Id == id && x.TenantId == tenantId,cancellationToken);
+            return await readOnlyContext.Set<TEntity>().FirstOrDefaultAsync(x => x.Id == id && x.TenantId == tenantId, cancellationToken);
         }
 
 
