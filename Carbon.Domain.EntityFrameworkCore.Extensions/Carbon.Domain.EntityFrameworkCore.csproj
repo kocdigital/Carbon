@@ -5,7 +5,7 @@
 		<Version>3.3.3</Version>
 		<Description>
 			- 3.3.3
-			* "New functions with CancellationToken have been added in Repositories."
+			* New functions with CancellationToken have been added in Repositories.
 
 			- 3.3.2
 			* Selector and CancellationToken properties added in Repositories
