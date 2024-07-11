@@ -2,8 +2,11 @@
 
 	<PropertyGroup>
 		<TargetFrameworks>net6.0;net5.0;netstandard2.1</TargetFrameworks>
-		<Version>3.3.2</Version>
+		<Version>3.3.3</Version>
 		<Description>
+			- 3.3.3
+			* "New functions with CancellationToken have been added in Repositories."
+
 			- 3.3.2
 			* Selector and CancellationToken properties added in Repositories
 
