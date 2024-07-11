@@ -2,11 +2,14 @@
 
 	<PropertyGroup>
 		<TargetFrameworks>net6.0;net5.0;netstandard2.1</TargetFrameworks>
-		<Version>3.3.1</Version>
+		<Version>3.3.2</Version>
 		<Description>
+			- 3.3.2
+			* Selector and CancellationToken properties added in Repositories
+
 			- 3.3.1
 			* Add WhereContains extensions method fixed
-			
+
 			- 3.3.0
 			* Add WhereIf and WhereIfContains extensions method
 
