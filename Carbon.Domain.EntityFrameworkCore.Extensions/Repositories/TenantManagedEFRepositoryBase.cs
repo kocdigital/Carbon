@@ -1,6 +1,5 @@
 ﻿using Carbon.Common;
 using Carbon.Common.TenantManagementHandler.Classes;
-using Carbon.Common.TenantManagementHandler.Interfaces;
 using Carbon.Domain.Abstractions.Entities;
 using Carbon.Domain.Abstractions.Repositories;
 using Carbon.ExceptionHandling.Abstractions;
@@ -8,7 +7,6 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Carbon.Domain.EntityFrameworkCore
