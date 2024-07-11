@@ -39,10 +39,20 @@ namespace Carbon.Domain.EntityFrameworkCore
         /// <summary>
         /// 	Retrieves and returns the <typeparamref name="TEntity"/> specified by <paramref name="id"/> from the database context.
         /// </summary>
+        /// <param name="id"> Id of the requested <typeparamref name="TEntity"/> object. </param> 
+        /// <returns> A task whose result is the requested <typeparamref name="TEntity"/> object. </returns>
+        public virtual async Task<TEntity> GetByIdAsync(Guid id)
+        {
+            return await context.Set<TEntity>().FindAsync(id);
+        }
+
+        /// <summary>
+        /// 	Retrieves and returns the <typeparamref name="TEntity"/> specified by <paramref name="id"/> from the database context.
+        /// </summary>
         /// <param name="id"> Id of the requested <typeparamref name="TEntity"/> object. </param>
         /// <param name="cancellationToken"> Token to monitor for cancellation requests. </param>
         /// <returns> A task whose result is the requested <typeparamref name="TEntity"/> object. </returns>
-        public virtual async Task<TEntity> GetByIdAsync(Guid id,CancellationToken cancellationToken=default)
+        public virtual async Task<TEntity> GetByIdAsync(Guid id, CancellationToken cancellationToken)
         {
             return await context.Set<TEntity>().FindAsync(id, cancellationToken);
         }

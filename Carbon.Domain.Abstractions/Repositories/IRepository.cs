@@ -19,7 +19,13 @@ namespace Carbon.Domain.Abstractions.Repositories
         /// </summary>
         /// <param name="id"> Id of the requested <typeparamref name="TEntity"/> object. </param>
         /// <returns> A task whose result is the requested <typeparamref name="TEntity"/> object. </returns>
-        Task<T> GetByIdAsync(Guid id, CancellationToken cancellationToken = default);
+        Task<T> GetByIdAsync(Guid id);
+        /// <summary>
+        /// 	Retrieves and returns the <typeparamref name="TEntity"/> specified by <paramref name="id"/> from the database context.
+        /// </summary>
+        /// <param name="id"> Id of the requested <typeparamref name="TEntity"/> object. </param>
+        /// <returns> A task whose result is the requested <typeparamref name="TEntity"/> object. </returns>
+        Task<T> GetByIdAsync(Guid id, CancellationToken cancellationToken);
 
         /// <summary>
         ///     Creates and saves the given <typeparamref name="TEntity"/> object in the database.
