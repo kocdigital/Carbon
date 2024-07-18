@@ -545,9 +545,9 @@ namespace Carbon.Domain.EntityFrameworkCore
         /// <remarks>
         /// This method performs a case-insensitive search. If searchByWords is false, it performs a normal contains search for the entire search term. If searchByWords is true, it splits the search term into words and checks if any word exists in the specified property's string value.
         /// </remarks>
-        public static IQueryable<T> WhereContains<T>(this IQueryable<T> query, Expression<Func<T, string>> selector, string search, bool searchByWords = false)
+        public static IQueryable<T> WhereContains<T>(this IQueryable<T> query, Expression<Func<T, string>> selector, string search, bool searchByWords = false, bool useTrEnSearch = true)
         {
-            return WhereContains(query, selector, new List<string> { search }, searchByWords);
+            return WhereContains(query, selector, new List<string> { search }, searchByWords, useTrEnSearch);
         }
 
         /// <summary>
