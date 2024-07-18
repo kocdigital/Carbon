@@ -1,0 +1,268 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Carbon.HttpClient.Auth | Carbon Framework </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Carbon.HttpClient.Auth | Carbon Framework ">
+    <meta name="generator" content="docfx 2.59.4.0">
+    
+    <link rel="shortcut icon" href="../../../images/logo.png">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="../../toc.html">
+    
+    <meta property="docfx:rel" content="../../../">
+    
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../images/logo.png" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="carbonhttpclientauth">Carbon.HttpClient.Auth</h1>
+
+<p>Simple HTTP Handler for inter-microservices communication. Recommended for only purpose of in-cluster communication.
+Supports oAuth2 client_credentials grant typed authorization. Both HTTP 1.1 (REST-based) and HTTP 2.0 (GRPC-based)
+when <a href="../Carbon.WebApplication.Grpc.Client/README.md">Carbon.WebApplication.Grpc.Client</a> used are supported.</p>
+<p>It handles the token retreival from identity server supported by oauth2 and
+In case of having 401 status code from microservices due to token expiration or something, it refreshes the token and resends
+the http request again.</p>
+<p><a href="../Carbon.WebApplication.Grpc.Client/README.md">Carbon.WebApplication.Grpc.Client</a> uses this package as-is for the
+inter-microservices authorized communication.</p>
+<p><strong>1a. Simply register this httpclient (For HTTP 1.1 REST-based)</strong></p>
+<pre><code class="lang-csharp">//IServiceCollection services
+services.AddHttpClientAuth();
+</code></pre>
+<p>or..</p>
+<p><strong>1b. Or register this grpchttpclient (For HTTP 2.0 GRPC-based)</strong></p>
+<pre><code class="lang-csharp">//IServiceCollection services
+services.AddGrpcHttpClientAuth();
+</code></pre>
+<p><strong>2. Create an authentication with the name just as it is writing in the configuration file</strong></p>
+<p>This creates the token at startup by communicating with identity server and stores it until you ask for.</p>
+<pre><code class="lang-csharp">//IApplicationBuilder - Let the name be 'RAM'. You can say 'Thing'. It is the identifier.
+app.CreateAuthentication(&quot;RAM&quot;);
+</code></pre>
+<p>And use the configuration as given below.
+AuthenticationType 4 is type of <em>client_credentials</em> in <em>oAuth2</em>. AuthenticationType 1, 2 or 3 is legacy and unsupported.</p>
+<pre><code class="lang-json">&quot;Authorizations&quot;:
+{
+    &quot;RAM&quot;:
+        {
+            &quot;AuthenticationType&quot;: 4,
+            &quot;Secret&quot;:&quot;yoursecret&quot;,
+            &quot;Scope&quot;:&quot;scope1 scope2&quot;,
+            &quot;ClientId&quot;:&quot;yourclient&quot;
+        }
+},
+&quot;JwtSettings&quot;: {
+    &quot;Authority&quot;: &quot;http://youridentityurl.com&quot;,
+  }
+</code></pre>
+<blockquote>
+<p><a href="http://youridentityurl.com/connect/token">http://youridentityurl.com/connect/token</a> will be requested for the token operations as this is the default approach of IdentityServer <a href="https://github.com/IdentityServer/IdentityServer4">https://github.com/IdentityServer/IdentityServer4</a></p>
+</blockquote>
+<p>If you are already using Carbon.WebApplication, JwtSettings section already exists. You don't have to take care of it.</p>
+<p><strong>3. Use it in your code</strong></p>
+<p>When there is a scenario such as resulted with 401 Unauthorized for your request, it will refresh the token and store the new one for future references by replacing the old one and resends the
+request from the stracth automatically.</p>
+<pre><code class="lang-csharp">    public class ExternalService : IExternalService
+    {
+        // Inject your Authed Http Client Factory by DI
+        private readonly AuthHttpClientFactory _clientFactory;
+
+        public ExternalService(AuthHttpClientFactory clientFactory)
+        {
+            _clientFactory = clientFactory;
+        }
+
+
+        public async Task&lt;bool&gt; DoSomethingByUsingAuthClient()
+        {
+            try
+            {
+                //Get your auth client with the given name in service registrations
+                var authClient = _clientFactory.CreateAuthClient(&quot;RAM&quot;);
+                //Have your httpclient
+                var clientForAsset = authClient.HttpClient;
+                //Do whatever you want to do with your master httpclient
+                clientForAsset.DefaultRequestHeaders.Accept.Clear();
+                clientForAsset.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue(&quot;application/json&quot;));
+                //Create a HTTP request message for the purpose of HTTP payload
+                HttpRequestMessage httpRequestMessageToAsset = new HttpRequestMessage();
+                httpRequestMessageToAsset.Headers.Add(&quot;tenantId&quot;, &quot;123&quot;);
+                httpRequestMessageToAsset.Method = HttpMethod.Post;
+
+                var jStr = JsonConvert.SerializeObject(new {test = &quot;test&quot;});
+
+                httpRequestMessageToAsset.Content = new StringContent(jStr, Encoding.UTF8, &quot;application/json&quot;);
+
+                var uribuilder = new UriBuilder(&quot;http://theapiurl&quot;);
+                string daUrl = uribuilder.ToString();
+
+                httpRequestMessageToAsset.RequestUri = new Uri(daUrl);
+                //Send your request and collect the response
+                var resp = await _clientFactory.SendAsync(authClient, httpRequestMessageToAsset);
+                if (resp.IsSuccessStatusCode)
+                {
+                    return true;
+                }
+
+                return false;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(&quot;Exception caught while notifying for subscription: {0} \n Stack trace: {1}&quot;, ex.Message, ex.StackTrace);
+                throw ex;
+            }
+        }
+    }
+</code></pre>
+<p>Check here also <a href="https://github.com/kocdigital/Carbon.Sample/blob/master/Carbon.Sample.API/Domain/Services/DataService.cs#L45">https://github.com/kocdigital/Carbon.Sample/blob/master/Carbon.Sample.API/Domain/Services/DataService.cs#L45</a> for
+a sample in detail.</p>
+<h2 id="advanced-usage">Advanced Usage</h2>
+<p>You can use multiple instances of authorizations. In order to do that, simply CreateAuthentication more than one by defining
+multiple authorizations in the config file:</p>
+<pre><code class="lang-json">&quot;Authorizations&quot;:
+{
+    &quot;RAM&quot;:
+        {
+            &quot;AuthenticationType&quot;: 4,
+            &quot;Secret&quot;:&quot;yoursecret&quot;,
+            &quot;Scope&quot;:&quot;scope1 scope2&quot;,
+            &quot;ClientId&quot;:&quot;yourclient&quot;
+        },
+     &quot;Other&quot;:
+        {
+            &quot;AuthenticationType&quot;: 4,
+            &quot;Secret&quot;:&quot;myothersecret&quot;,
+            &quot;Scope&quot;:&quot;scope1 scope2 scope3&quot;,
+            &quot;ClientId&quot;:&quot;yourotherclient&quot;
+        }
+},
+&quot;JwtSettings&quot;: {
+    &quot;Authority&quot;: &quot;http://youridentityurl.com&quot;,
+  }
+</code></pre>
+<p>Create authentication for each (RAM and Other):</p>
+<pre><code class="lang-csharp">//Register it as usual
+services.AddHttpClientAuth();
+
+//IApplicationBuilder - Create two instead of one as in the basic usage
+app.CreateAuthentication(&quot;RAM&quot;);
+app.CreateAuthentication(&quot;Other&quot;);
+
+</code></pre>
+<p>And use whichever you want:</p>
+<pre><code class="lang-csharp">    public class ExternalService : IExternalService
+    {
+        // Inject your Authed Http Client Factory by DI
+        private readonly AuthHttpClientFactory _clientFactory;
+
+        public ExternalService(AuthHttpClientFactory clientFactory)
+        {
+            _clientFactory = clientFactory;
+        }
+
+
+        public async Task&lt;bool&gt; DoSomethingByUsingAuthClient()
+        {
+          //Get your auth client with the given name in service registrations
+          //RAM-based token and authorization will be used in this client
+          var authClientForRAM = _clientFactory.CreateAuthClient(&quot;RAM&quot;);
+          //Other-based token and authorization will be used in this client
+          var authClientForOther = _clientFactory.CreateAuthClient(&quot;Other&quot;);            
+        }
+    }
+</code></pre>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            Carbon Framework
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

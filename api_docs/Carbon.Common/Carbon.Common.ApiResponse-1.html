@@ -1,0 +1,611 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class ApiResponse&lt;T&gt;
+   | Carbon Framework </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class ApiResponse&lt;T&gt;
+   | Carbon Framework ">
+    <meta name="generator" content="docfx 2.59.4.0">
+    
+    <link rel="shortcut icon" href="../../images/logo.png">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
+    
+    <meta property="docfx:rel" content="../../">
+    
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../images/logo.png" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Carbon.Common.ApiResponse`1">
+  
+  
+  <h1 id="Carbon_Common_ApiResponse_1" data-uid="Carbon.Common.ApiResponse`1" class="text-break">Class ApiResponse&lt;T&gt;
+  </h1>
+  <div class="markdown level0 summary"><p>Creates a api response with given type</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">ApiResponse&lt;T&gt;</span></div>
+      <div class="level2"><a class="xref" href="Carbon.Common.HttpApiResponse-1.html">HttpApiResponse&lt;T&gt;</a></div>
+  </div>
+  <div class="implements">
+    <h5>Implements</h5>
+    <div><a class="xref" href="Carbon.Common.IApiResponse.html">IApiResponse</a></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Carbon.Common.html">Carbon.Common</a></h6>
+  <h6><strong>Assembly</strong>: Carbon.Common.dll</h6>
+  <h5 id="Carbon_Common_ApiResponse_1_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class ApiResponse&lt;T&gt; : IApiResponse</code></pre>
+  </div>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td><p>Indicates response's data type. <a class="xref" href="Carbon.Common.ApiResponse-1.html#Carbon_Common_ApiResponse_1_Data">Data</a></p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="constructors">Constructors
+  </h3>
+  <a id="Carbon_Common_ApiResponse_1__ctor_" data-uid="Carbon.Common.ApiResponse`1.#ctor*"></a>
+  <h4 id="Carbon_Common_ApiResponse_1__ctor" data-uid="Carbon.Common.ApiResponse`1.#ctor">ApiResponse()</h4>
+  <div class="markdown level1 summary"><p>Default Constructor. Creates an Api Response</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ApiResponse()</code></pre>
+  </div>
+  <a id="Carbon_Common_ApiResponse_1__ctor_" data-uid="Carbon.Common.ApiResponse`1.#ctor*"></a>
+  <h4 id="Carbon_Common_ApiResponse_1__ctor_System_String_Carbon_Common_ApiStatusCode_" data-uid="Carbon.Common.ApiResponse`1.#ctor(System.String,Carbon.Common.ApiStatusCode)">ApiResponse(String, ApiStatusCode)</h4>
+  <div class="markdown level1 summary"><p>Constructor that initializes an ApiResponse with identifier and status code</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ApiResponse(string identifier, ApiStatusCode statusCode)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">identifier</span></td>
+        <td><p><a class="xref" href="Carbon.Common.IApiResponse.html#Carbon_Common_IApiResponse_Identifier">Identifier</a></p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Carbon.Common.ApiStatusCode.html">ApiStatusCode</a></td>
+        <td><span class="parametername">statusCode</span></td>
+        <td><p><a class="xref" href="Carbon.Common.IApiResponse.html#Carbon_Common_IApiResponse_StatusCode">StatusCode</a></p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Carbon_Common_ApiResponse_1__ctor_" data-uid="Carbon.Common.ApiResponse`1.#ctor*"></a>
+  <h4 id="Carbon_Common_ApiResponse_1__ctor_System_String_Carbon_Common_ApiStatusCode_System_Collections_Generic_IList_System_String__" data-uid="Carbon.Common.ApiResponse`1.#ctor(System.String,Carbon.Common.ApiStatusCode,System.Collections.Generic.IList{System.String})">ApiResponse(String, ApiStatusCode, IList&lt;String&gt;)</h4>
+  <div class="markdown level1 summary"><p>Constructor that initializes an ApiResponse with identifier, status code and messages</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ApiResponse(string identifier, ApiStatusCode statusCode, IList&lt;string&gt; messages)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">identifier</span></td>
+        <td><p><a class="xref" href="Carbon.Common.IApiResponse.html#Carbon_Common_IApiResponse_Identifier">Identifier</a></p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Carbon.Common.ApiStatusCode.html">ApiStatusCode</a></td>
+        <td><span class="parametername">statusCode</span></td>
+        <td><p><a class="xref" href="Carbon.Common.IApiResponse.html#Carbon_Common_IApiResponse_StatusCode">StatusCode</a></p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IList</span>&lt;<span class="xref">System.String</span>&gt;</td>
+        <td><span class="parametername">messages</span></td>
+        <td><p><a class="xref" href="Carbon.Common.IApiResponse.html#Carbon_Common_IApiResponse_Messages">Messages</a></p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Carbon_Common_ApiResponse_1__ctor_" data-uid="Carbon.Common.ApiResponse`1.#ctor*"></a>
+  <h4 id="Carbon_Common_ApiResponse_1__ctor_System_String_Carbon_Common_ApiStatusCode_System_Int32_" data-uid="Carbon.Common.ApiResponse`1.#ctor(System.String,Carbon.Common.ApiStatusCode,System.Int32)">ApiResponse(String, ApiStatusCode, Int32)</h4>
+  <div class="markdown level1 summary"><p>Constructor that initializes an ApiResponse with identifier, status code and error code</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ApiResponse(string identifier, ApiStatusCode statusCode, int errorCode)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">identifier</span></td>
+        <td><p><a class="xref" href="Carbon.Common.IApiResponse.html#Carbon_Common_IApiResponse_Identifier">Identifier</a></p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Carbon.Common.ApiStatusCode.html">ApiStatusCode</a></td>
+        <td><span class="parametername">statusCode</span></td>
+        <td><p><a class="xref" href="Carbon.Common.IApiResponse.html#Carbon_Common_IApiResponse_StatusCode">StatusCode</a></p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">errorCode</span></td>
+        <td><p><a class="xref" href="Carbon.Common.IApiResponse.html#Carbon_Common_IApiResponse_ErrorCode">ErrorCode</a></p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Carbon_Common_ApiResponse_1__ctor_" data-uid="Carbon.Common.ApiResponse`1.#ctor*"></a>
+  <h4 id="Carbon_Common_ApiResponse_1__ctor_System_String_Carbon_Common_ApiStatusCode_System_Int32_System_Collections_Generic_IList_System_String__" data-uid="Carbon.Common.ApiResponse`1.#ctor(System.String,Carbon.Common.ApiStatusCode,System.Int32,System.Collections.Generic.IList{System.String})">ApiResponse(String, ApiStatusCode, Int32, IList&lt;String&gt;)</h4>
+  <div class="markdown level1 summary"><p>Constructor that initializes an ApiResponse with identifier, status code, error code and messages</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ApiResponse(string identifier, ApiStatusCode statusCode, int errorCode, IList&lt;string&gt; messages)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">identifier</span></td>
+        <td><p><a class="xref" href="Carbon.Common.IApiResponse.html#Carbon_Common_IApiResponse_Identifier">Identifier</a></p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Carbon.Common.ApiStatusCode.html">ApiStatusCode</a></td>
+        <td><span class="parametername">statusCode</span></td>
+        <td><p><a class="xref" href="Carbon.Common.IApiResponse.html#Carbon_Common_IApiResponse_StatusCode">StatusCode</a></p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">errorCode</span></td>
+        <td><p><a class="xref" href="Carbon.Common.IApiResponse.html#Carbon_Common_IApiResponse_ErrorCode">ErrorCode</a></p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IList</span>&lt;<span class="xref">System.String</span>&gt;</td>
+        <td><span class="parametername">messages</span></td>
+        <td><p><a class="xref" href="Carbon.Common.IApiResponse.html#Carbon_Common_IApiResponse_Messages">Messages</a></p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="properties">Properties
+  </h3>
+  <a id="Carbon_Common_ApiResponse_1_Data_" data-uid="Carbon.Common.ApiResponse`1.Data*"></a>
+  <h4 id="Carbon_Common_ApiResponse_1_Data" data-uid="Carbon.Common.ApiResponse`1.Data">Data</h4>
+  <div class="markdown level1 summary"><p>Contains response data from type of <code data-dev-comment-type="typeparamref" class="typeparamref">T</code></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public T Data { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Carbon_Common_ApiResponse_1_ErrorCode_" data-uid="Carbon.Common.ApiResponse`1.ErrorCode*"></a>
+  <h4 id="Carbon_Common_ApiResponse_1_ErrorCode" data-uid="Carbon.Common.ApiResponse`1.ErrorCode">ErrorCode</h4>
+  <div class="markdown level1 summary"><p><a class="xref" href="Carbon.Common.IApiResponse.html#Carbon_Common_IApiResponse_ErrorCode">ErrorCode</a></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int? ErrorCode { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Int32</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Carbon_Common_ApiResponse_1_Identifier_" data-uid="Carbon.Common.ApiResponse`1.Identifier*"></a>
+  <h4 id="Carbon_Common_ApiResponse_1_Identifier" data-uid="Carbon.Common.ApiResponse`1.Identifier">Identifier</h4>
+  <div class="markdown level1 summary"><p><a class="xref" href="Carbon.Common.IApiResponse.html#Carbon_Common_IApiResponse_Identifier">Identifier</a></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string Identifier { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Carbon_Common_ApiResponse_1_IsSuccess_" data-uid="Carbon.Common.ApiResponse`1.IsSuccess*"></a>
+  <h4 id="Carbon_Common_ApiResponse_1_IsSuccess" data-uid="Carbon.Common.ApiResponse`1.IsSuccess">IsSuccess</h4>
+  <div class="markdown level1 summary"><p>Indicates status. <code>True</code> for successful and <code>False</code> for failed requests.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsSuccess { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Carbon_Common_ApiResponse_1_IsSuccess_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>If ApiResponse contains <a class="xref" href="Carbon.Common.ApiResponse-1.html#Carbon_Common_ApiResponse_1_ErrorCode">ErrorCode</a> or <a class="xref" href="Carbon.Common.ApiResponse-1.html#Carbon_Common_ApiResponse_1_StatusCode">StatusCode</a> differs from <code>ApiStatusCode.OK</code></p>
+</div>
+  <a id="Carbon_Common_ApiResponse_1_Messages_" data-uid="Carbon.Common.ApiResponse`1.Messages*"></a>
+  <h4 id="Carbon_Common_ApiResponse_1_Messages" data-uid="Carbon.Common.ApiResponse`1.Messages">Messages</h4>
+  <div class="markdown level1 summary"><p><a class="xref" href="Carbon.Common.IApiResponse.html#Carbon_Common_IApiResponse_Messages">Messages</a></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IList&lt;string&gt; Messages { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IList</span>&lt;<span class="xref">System.String</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Carbon_Common_ApiResponse_1_StatusCode_" data-uid="Carbon.Common.ApiResponse`1.StatusCode*"></a>
+  <h4 id="Carbon_Common_ApiResponse_1_StatusCode" data-uid="Carbon.Common.ApiResponse`1.StatusCode">StatusCode</h4>
+  <div class="markdown level1 summary"><p><a class="xref" href="Carbon.Common.IApiResponse.html#Carbon_Common_IApiResponse_StatusCode">StatusCode</a></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ApiStatusCode StatusCode { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Carbon.Common.ApiStatusCode.html">ApiStatusCode</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  <a id="Carbon_Common_ApiResponse_1_AddMessage_" data-uid="Carbon.Common.ApiResponse`1.AddMessage*"></a>
+  <h4 id="Carbon_Common_ApiResponse_1_AddMessage_System_String_" data-uid="Carbon.Common.ApiResponse`1.AddMessage(System.String)">AddMessage(String)</h4>
+  <div class="markdown level1 summary"><p>Adds a message to <a class="xref" href="Carbon.Common.ApiResponse-1.html#Carbon_Common_ApiResponse_1_Messages">Messages</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void AddMessage(string message)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">message</span></td>
+        <td><p>Message to add</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Carbon_Common_ApiResponse_1_AddMessage_System_String__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>If <a class="xref" href="Carbon.Common.ApiResponse-1.html#Carbon_Common_ApiResponse_1_Messages">Messages</a> is null, creates a new list for it.</p>
+</div>
+  <a id="Carbon_Common_ApiResponse_1_AddMessages_" data-uid="Carbon.Common.ApiResponse`1.AddMessages*"></a>
+  <h4 id="Carbon_Common_ApiResponse_1_AddMessages_System_String___" data-uid="Carbon.Common.ApiResponse`1.AddMessages(System.String[])">AddMessages(String[])</h4>
+  <div class="markdown level1 summary"><p>Adds multiple messages to <a class="xref" href="Carbon.Common.ApiResponse-1.html#Carbon_Common_ApiResponse_1_Messages">Messages</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void AddMessages(params string[] messages)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span>[]</td>
+        <td><span class="parametername">messages</span></td>
+        <td><p>Messages to add</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Carbon_Common_ApiResponse_1_AddMessages_System_String____remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>If <a class="xref" href="Carbon.Common.ApiResponse-1.html#Carbon_Common_ApiResponse_1_Messages">Messages</a> is null, creates a new list for it.</p>
+</div>
+  <a id="Carbon_Common_ApiResponse_1_SetData_" data-uid="Carbon.Common.ApiResponse`1.SetData*"></a>
+  <h4 id="Carbon_Common_ApiResponse_1_SetData__0_" data-uid="Carbon.Common.ApiResponse`1.SetData(`0)">SetData(T)</h4>
+  <div class="markdown level1 summary"><p>Sets response data with given type <code data-dev-comment-type="typeparamref" class="typeparamref">T</code>. <a class="xref" href="Carbon.Common.ApiResponse-1.html#Carbon_Common_ApiResponse_1_Data">Data</a></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetData(T data)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td><span class="parametername">data</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Carbon_Common_ApiResponse_1_SetErrorCode_" data-uid="Carbon.Common.ApiResponse`1.SetErrorCode*"></a>
+  <h4 id="Carbon_Common_ApiResponse_1_SetErrorCode_System_Int32_" data-uid="Carbon.Common.ApiResponse`1.SetErrorCode(System.Int32)">SetErrorCode(Int32)</h4>
+  <div class="markdown level1 summary"><p>Sets error code. <a class="xref" href="Carbon.Common.ApiResponse-1.html#Carbon_Common_ApiResponse_1_ErrorCode">ErrorCode</a></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetErrorCode(int errorCode)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">errorCode</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <a class="xref" href="Carbon.Common.IApiResponse.html">IApiResponse</a>
+  </div>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            Carbon Framework
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>
