@@ -567,7 +567,8 @@ namespace Carbon.Domain.EntityFrameworkCore
             this IQueryable<T> query,
             Expression<Func<T, string>> selector,
             List<string> search,
-            bool searchByWords = false)
+            bool searchByWords = false,
+            bool useTrEnSearch = true)
         {
             if (query == null || selector == null || !search.Any())
             {
@@ -596,9 +597,20 @@ namespace Carbon.Domain.EntityFrameworkCore
                 }
                 else
                 {
-                    ConstantExpression constantExpression = Expression.Constant(value.ToLower(culture));
-                    MethodCallExpression methodCallExpression = Expression.Call(instance2, "Contains", Type.EmptyTypes, constantExpression);
-                    expression = ((expression != null) ? ((Expression)Expression.OrElse(expression, methodCallExpression)) : ((Expression)methodCallExpression));
+                    if (useTrEnSearch)
+                    {
+                        ConstantExpression constantExpression = Expression.Constant(value.ToLower(culture));
+                        MethodCallExpression methodCallExpression = Expression.Call(instance2, "Contains", Type.EmptyTypes, constantExpression);
+                        expression = ((expression != null) ? ((Expression)Expression.OrElse(expression, methodCallExpression)) : ((Expression)methodCallExpression));
+                    }
+                    else
+                    {
+                        MethodInfo methodEquals = typeof(string).GetMethod("Equals", new[] { typeof(string) });
+
+                        ConstantExpression constantExpression = Expression.Constant(value.ToLower(culture));
+                        MethodCallExpression methodCallExpression = Expression.Call(instance2, methodEquals, constantExpression);
+                        expression = ((expression != null) ? ((Expression)Expression.OrElse(expression, methodCallExpression)) : ((Expression)methodCallExpression));
+                    }
                 }
             }
 
