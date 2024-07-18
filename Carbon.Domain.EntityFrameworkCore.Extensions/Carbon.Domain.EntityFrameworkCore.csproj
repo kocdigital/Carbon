@@ -2,8 +2,11 @@
 
 	<PropertyGroup>
 		<TargetFrameworks>net6.0;net5.0;netstandard2.1</TargetFrameworks>
-		<Version>3.3.4</Version>
+		<Version>3.3.5</Version>
 		<Description>
+			- 3.3.5
+			* WhereContains supported Equals method by "useTrEnSearch" property in overloaded method
+
 			- 3.3.4
 			* WhereContains supported Equals method by "useTrEnSearch" property
 
