@@ -558,6 +558,7 @@ namespace Carbon.Domain.EntityFrameworkCore
         /// <param name="selector">Expression specifying the property to search within.</param>
         /// <param name="search">The search term containing one or more words.</param>
         /// <param name="searchByWords">A boolean value indicating whether to search for individual words in the search term (default is false).</param>
+        /// <param name="useTrEnSearch">A boolean value if is TRUE then generates Contains expression or if is FALSE then generates Equals expression (default is true)</param>
         /// <returns>The filtered IQueryable containing elements where any word in the search term exists in the specified property's string value.</returns>
         /// <remarks>
         /// This method performs a case-insensitive search. If searchByWords is false, it performs a normal contains search for the entire search term. If searchByWords is true, it splits the search term into words and checks if any word exists in the specified property's string value.
@@ -567,7 +568,8 @@ namespace Carbon.Domain.EntityFrameworkCore
             this IQueryable<T> query,
             Expression<Func<T, string>> selector,
             List<string> search,
-            bool searchByWords = false)
+            bool searchByWords = false,
+            bool useTrEnSearch = true)
         {
             if (query == null || selector == null || !search.Any())
             {
@@ -596,9 +598,20 @@ namespace Carbon.Domain.EntityFrameworkCore
                 }
                 else
                 {
-                    ConstantExpression constantExpression = Expression.Constant(value.ToLower(culture));
-                    MethodCallExpression methodCallExpression = Expression.Call(instance2, "Contains", Type.EmptyTypes, constantExpression);
-                    expression = ((expression != null) ? ((Expression)Expression.OrElse(expression, methodCallExpression)) : ((Expression)methodCallExpression));
+                    if (useTrEnSearch)
+                    {
+                        ConstantExpression constantExpression = Expression.Constant(value.ToLower(culture));
+                        MethodCallExpression methodCallExpression = Expression.Call(instance2, "Contains", Type.EmptyTypes, constantExpression);
+                        expression = ((expression != null) ? ((Expression)Expression.OrElse(expression, methodCallExpression)) : ((Expression)methodCallExpression));
+                    }
+                    else
+                    {
+                        MethodInfo methodEquals = typeof(string).GetMethod("Equals", new[] { typeof(string) });
+
+                        ConstantExpression constantExpression = Expression.Constant(value.ToLower(culture));
+                        MethodCallExpression methodCallExpression = Expression.Call(instance2, methodEquals, constantExpression);
+                        expression = ((expression != null) ? ((Expression)Expression.OrElse(expression, methodCallExpression)) : ((Expression)methodCallExpression));
+                    }
                 }
             }
 
