@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
+using Carbon.Common.Constant;
 
 namespace Carbon.ElasticSearch
 {
@@ -61,6 +62,14 @@ namespace Carbon.ElasticSearch
         {
             return await _client.DeleteAsync<T>(new DocumentPath<T>(id), x => x.Index(Index)
             .Refresh((_forceRefresh || (refresh ?? false)) ? Elasticsearch.Net.Refresh.True : Elasticsearch.Net.Refresh.False));
+        }
+        public async Task<DeleteByQueryResponse> DeleteAllAsync(string tenantId, CancellationToken cancellationToken = default)
+        {
+            return await _client.DeleteByQueryAsync<T>(del => del
+                    .Index(Index)
+                    .Query(q => q.Term(t => t.Field(ElasticQueryConstant.KEYWORD_TENANTID).Value(tenantId)))
+                    .Refresh()
+                , cancellationToken);
         }
 
         public async Task UpdateAsync(T item, bool? refresh = null)
