@@ -109,5 +109,14 @@ namespace Carbon.ElasticSearch.Abstractions
         /// <param name="item">Record to be updated</param>
         /// <param name="refresh">if true; forces and waits for ElasticSearch to refresh the index after operation to make changes visible</param>
         Task<UpdateResponse<T>> UpdateAndReturnAsync(T item, bool? refresh = null);
+
+        /// <summary>
+        /// Deletes all records in the index
+        /// </summary>
+        /// <remarks>  Uses _id field for matching items, for detail <see href="https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-update.html"/> </remarks>
+        /// <param name="tenantId">tenantId is for the delete all data to match on index</param>
+        /// <param name="cancellationToken">Token that can be used to cancel the request</param>
+        /// <returns></returns>
+        Task<DeleteByQueryResponse> DeleteAllAsync(string tenantId, CancellationToken cancellationToken = default);
     }
 }
