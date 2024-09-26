@@ -2,8 +2,10 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
-    <Version>1.5.0</Version>
+    <Version>1.5.1</Version>
 	  <Description>
+		  1.5.1
+		  - ElasticQueryConstant class is added. It will help the elastic query creation
 		  1.5.0
 		  - Added StringExtensions
 		  1.4.0
