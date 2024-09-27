@@ -81,7 +81,7 @@ namespace Carbon.WebApplication
 
             if (context.Exception is CarbonException exception)
             {
-                if (!string.IsNullOrEmpty(_errorHandling))
+                if (!string.IsNullOrEmpty(_errorHandling) && exception.OverrideExceptionDetail)
                 {
                     var exceptionMessage = GetErrorMessage(exception.ErrorCode, exception.Arguments, context.HttpContext.Request).Result;
 

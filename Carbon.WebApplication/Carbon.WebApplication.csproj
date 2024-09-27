@@ -1,9 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
 		<TargetFrameworks>net6.0;net5.0;netcoreapp3.1</TargetFrameworks>
-		<Version>4.5.4</Version>
+		<Version>4.5.6</Version>
 		<Description>
-			4.5.4
+			4.5.6
+			- Added a property named overrideMessageAndCode to the CarbonException class. The default value of this property is set to true. In the constructor of CarbonException, check this property to determine whether the message and code are overridden or not.
 			- Update IPageableDto validator for assign PageSize 0. When PageSize 0 the datas returns without pagination with development in version 4.5.3.
 			4.5.3
 			- Upgrade Carbon.PagedList (Remove pageSize and pageNumber validation check)
