@@ -23,6 +23,8 @@ namespace Carbon.ExceptionHandling.Abstractions
         /// </summary>
         public object[] Arguments { get; set; }
 
+        public bool OverrideExceptionDetail { get; set; } = true;
+
         /// <summary>
         /// CarbonException with only error code 5000.
         /// </summary>
