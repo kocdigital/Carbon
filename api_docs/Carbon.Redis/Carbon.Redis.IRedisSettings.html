@@ -1,0 +1,637 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Interface IRedisSettings
+   | Carbon Framework </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Interface IRedisSettings
+   | Carbon Framework ">
+    <meta name="generator" content="docfx 2.59.4.0">
+    
+    <link rel="shortcut icon" href="../../images/logo.png">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
+    
+    <meta property="docfx:rel" content="../../">
+    
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../images/logo.png" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Carbon.Redis.IRedisSettings">
+  
+  
+  <h1 id="Carbon_Redis_IRedisSettings" data-uid="Carbon.Redis.IRedisSettings" class="text-break">Interface IRedisSettings
+  </h1>
+  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 conceptual"></div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Carbon.Redis.html">Carbon.Redis</a></h6>
+  <h6><strong>Assembly</strong>: Carbon.Redis.dll</h6>
+  <h5 id="Carbon_Redis_IRedisSettings_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public interface IRedisSettings</code></pre>
+  </div>
+  <h3 id="properties">Properties
+  </h3>
+  <a id="Carbon_Redis_IRedisSettings_AbortOnConnectFail_" data-uid="Carbon.Redis.IRedisSettings.AbortOnConnectFail*"></a>
+  <h4 id="Carbon_Redis_IRedisSettings_AbortOnConnectFail" data-uid="Carbon.Redis.IRedisSettings.AbortOnConnectFail">AbortOnConnectFail</h4>
+  <div class="markdown level1 summary"><p>If true, Connect will not create a connection while no servers are available</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool AbortOnConnectFail { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Carbon_Redis_IRedisSettings_AllowAdmin_" data-uid="Carbon.Redis.IRedisSettings.AllowAdmin*"></a>
+  <h4 id="Carbon_Redis_IRedisSettings_AllowAdmin" data-uid="Carbon.Redis.IRedisSettings.AllowAdmin">AllowAdmin</h4>
+  <div class="markdown level1 summary"><p>Enables a range of commands that are considered risky</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool AllowAdmin { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Carbon_Redis_IRedisSettings_AsyncTimeout_" data-uid="Carbon.Redis.IRedisSettings.AsyncTimeout*"></a>
+  <h4 id="Carbon_Redis_IRedisSettings_AsyncTimeout" data-uid="Carbon.Redis.IRedisSettings.AsyncTimeout">AsyncTimeout</h4>
+  <div class="markdown level1 summary"><p>Time (ms) to allow for asynchronous operations</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">int AsyncTimeout { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Carbon_Redis_IRedisSettings_CommandMap_" data-uid="Carbon.Redis.IRedisSettings.CommandMap*"></a>
+  <h4 id="Carbon_Redis_IRedisSettings_CommandMap" data-uid="Carbon.Redis.IRedisSettings.CommandMap">CommandMap</h4>
+  <div class="markdown level1 summary"><p>&quot;INFO&quot;, &quot;CONFIG&quot;, &quot;CLUSTER&quot;,&quot;PING&quot;, &quot;ECHO&quot;, &quot;CLIENT&quot;</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">HashSet&lt;string&gt; CommandMap { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.HashSet</span>&lt;<span class="xref">System.String</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Carbon_Redis_IRedisSettings_CommandMapAvailable_" data-uid="Carbon.Redis.IRedisSettings.CommandMapAvailable*"></a>
+  <h4 id="Carbon_Redis_IRedisSettings_CommandMapAvailable" data-uid="Carbon.Redis.IRedisSettings.CommandMapAvailable">CommandMapAvailable</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool CommandMapAvailable { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Carbon_Redis_IRedisSettings_ConfigCheckSeconds_" data-uid="Carbon.Redis.IRedisSettings.ConfigCheckSeconds*"></a>
+  <h4 id="Carbon_Redis_IRedisSettings_ConfigCheckSeconds" data-uid="Carbon.Redis.IRedisSettings.ConfigCheckSeconds">ConfigCheckSeconds</h4>
+  <div class="markdown level1 summary"><p>Time (seconds) to check configuration. This serves as a keep-alive for interactive sockets, if it is supported.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">int ConfigCheckSeconds { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Carbon_Redis_IRedisSettings_ConfigurationChannel_" data-uid="Carbon.Redis.IRedisSettings.ConfigurationChannel*"></a>
+  <h4 id="Carbon_Redis_IRedisSettings_ConfigurationChannel" data-uid="Carbon.Redis.IRedisSettings.ConfigurationChannel">ConfigurationChannel</h4>
+  <div class="markdown level1 summary"><p>Broadcast channel name for communicating configuration changes</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">string ConfigurationChannel { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Carbon_Redis_IRedisSettings_ConnectRetry_" data-uid="Carbon.Redis.IRedisSettings.ConnectRetry*"></a>
+  <h4 id="Carbon_Redis_IRedisSettings_ConnectRetry" data-uid="Carbon.Redis.IRedisSettings.ConnectRetry">ConnectRetry</h4>
+  <div class="markdown level1 summary"><p>The number of times to repeat connect attempts during initial Connect</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">int ConnectRetry { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Carbon_Redis_IRedisSettings_ConnectTimeout_" data-uid="Carbon.Redis.IRedisSettings.ConnectTimeout*"></a>
+  <h4 id="Carbon_Redis_IRedisSettings_ConnectTimeout" data-uid="Carbon.Redis.IRedisSettings.ConnectTimeout">ConnectTimeout</h4>
+  <div class="markdown level1 summary"><p>Timeout (ms) for connect operations</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">int ConnectTimeout { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Carbon_Redis_IRedisSettings_DefaultDatabase_" data-uid="Carbon.Redis.IRedisSettings.DefaultDatabase*"></a>
+  <h4 id="Carbon_Redis_IRedisSettings_DefaultDatabase" data-uid="Carbon.Redis.IRedisSettings.DefaultDatabase">DefaultDatabase</h4>
+  <div class="markdown level1 summary"><p>Default database index, from 0 to databases - 1</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">int DefaultDatabase { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Carbon_Redis_IRedisSettings_Enabled_" data-uid="Carbon.Redis.IRedisSettings.Enabled*"></a>
+  <h4 id="Carbon_Redis_IRedisSettings_Enabled" data-uid="Carbon.Redis.IRedisSettings.Enabled">Enabled</h4>
+  <div class="markdown level1 summary"><p>Redis is enabled or not</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool Enabled { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Carbon_Redis_IRedisSettings_EndPoints_" data-uid="Carbon.Redis.IRedisSettings.EndPoints*"></a>
+  <h4 id="Carbon_Redis_IRedisSettings_EndPoints" data-uid="Carbon.Redis.IRedisSettings.EndPoints">EndPoints</h4>
+  <div class="markdown level1 summary"><p>redis server endpoints</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IList&lt;string&gt; EndPoints { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IList</span>&lt;<span class="xref">System.String</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Carbon_Redis_IRedisSettings_KeepAlive_" data-uid="Carbon.Redis.IRedisSettings.KeepAlive*"></a>
+  <h4 id="Carbon_Redis_IRedisSettings_KeepAlive" data-uid="Carbon.Redis.IRedisSettings.KeepAlive">KeepAlive</h4>
+  <div class="markdown level1 summary"><p>Time (seconds) at which to send a message to help keep sockets alive (60 sec default)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">int KeepAlive { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Carbon_Redis_IRedisSettings_KeyLength_" data-uid="Carbon.Redis.IRedisSettings.KeyLength*"></a>
+  <h4 id="Carbon_Redis_IRedisSettings_KeyLength" data-uid="Carbon.Redis.IRedisSettings.KeyLength">KeyLength</h4>
+  <div class="markdown level1 summary"><p>Default Redis Cache Key Length</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">int KeyLength { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Carbon_Redis_IRedisSettings_Password_" data-uid="Carbon.Redis.IRedisSettings.Password*"></a>
+  <h4 id="Carbon_Redis_IRedisSettings_Password" data-uid="Carbon.Redis.IRedisSettings.Password">Password</h4>
+  <div class="markdown level1 summary"><p>Password for the redis server</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">string Password { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Carbon_Redis_IRedisSettings_SentinelServiceName_" data-uid="Carbon.Redis.IRedisSettings.SentinelServiceName*"></a>
+  <h4 id="Carbon_Redis_IRedisSettings_SentinelServiceName" data-uid="Carbon.Redis.IRedisSettings.SentinelServiceName">SentinelServiceName</h4>
+  <div class="markdown level1 summary"><p>Sentinel Enablement</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">string SentinelServiceName { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Carbon_Redis_IRedisSettings_SSLEnabled_" data-uid="Carbon.Redis.IRedisSettings.SSLEnabled*"></a>
+  <h4 id="Carbon_Redis_IRedisSettings_SSLEnabled" data-uid="Carbon.Redis.IRedisSettings.SSLEnabled">SSLEnabled</h4>
+  <div class="markdown level1 summary"><p>Enable if redis port uses TLS</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool SSLEnabled { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Carbon_Redis_IRedisSettings_SslProtocols_" data-uid="Carbon.Redis.IRedisSettings.SslProtocols*"></a>
+  <h4 id="Carbon_Redis_IRedisSettings_SslProtocols" data-uid="Carbon.Redis.IRedisSettings.SslProtocols">SslProtocols</h4>
+  <div class="markdown level1 summary"><p>Ssl/Tls versions supported when using an encrypted connection. Use ‘|’ to provide multiple values.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">SslProtocols? SslProtocols { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Security.Authentication.SslProtocols</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Carbon_Redis_IRedisSettings_SyncTimeout_" data-uid="Carbon.Redis.IRedisSettings.SyncTimeout*"></a>
+  <h4 id="Carbon_Redis_IRedisSettings_SyncTimeout" data-uid="Carbon.Redis.IRedisSettings.SyncTimeout">SyncTimeout</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">int SyncTimeout { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Carbon_Redis_IRedisSettings_TieBreaker_" data-uid="Carbon.Redis.IRedisSettings.TieBreaker*"></a>
+  <h4 id="Carbon_Redis_IRedisSettings_TieBreaker" data-uid="Carbon.Redis.IRedisSettings.TieBreaker">TieBreaker</h4>
+  <div class="markdown level1 summary"><p>Key to use for selecting a server in an ambiguous master scenario</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">string TieBreaker { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Carbon_Redis_IRedisSettings_User_" data-uid="Carbon.Redis.IRedisSettings.User*"></a>
+  <h4 id="Carbon_Redis_IRedisSettings_User" data-uid="Carbon.Redis.IRedisSettings.User">User</h4>
+  <div class="markdown level1 summary"><p>User for the redis server (for use with ACLs on redis 6 and above)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">string User { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="extensionmethods">Extension Methods</h3>
+  <div>
+      <a class="xref" href="Carbon.Redis.RedisHelper.html#Carbon_Redis_RedisHelper_ConvertObjectToJson_System_Object_">RedisHelper.ConvertObjectToJson(Object)</a>
+  </div>
+  <div>
+      <a class="xref" href="Carbon.Caching.Abstractions.Extensions.SerializationExtensions.html#Carbon_Caching_Abstractions_Extensions_SerializationExtensions_ToByteArray_System_Object_Carbon_Caching_Abstractions_CarbonContentSerializationType_">SerializationExtensions.ToByteArray(Object, CarbonContentSerializationType)</a>
+  </div>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            Carbon Framework
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>
