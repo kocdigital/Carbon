@@ -4,6 +4,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Carbon.ElasticSearch.Abstractions;
 using System.Linq;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
+using Nest;
+using System.Runtime;
 
 namespace Carbon.ElasticSearch
 {
@@ -56,18 +58,29 @@ namespace Carbon.ElasticSearch
         /// Enables health check for ElasticSearch 
         /// </summary>
         /// <param name="failureStatus">Specifies for which state the system will say there is an error</param>
-        public static IServiceCollection AddElasticSearchPersisterHealthCheck(this IServiceCollection services, IElasticSettings settings, HealthStatus failureStatus = HealthStatus.Unhealthy)
+        public static IServiceCollection AddElasticSearchPersisterHealthCheck(this IServiceCollection services, IElasticSettings elasticSettings)
         {
-            var healthCheck = services.AddHealthChecks();
-            foreach (var es in settings.Urls)
-            {
-                healthCheck = healthCheck.AddElasticsearch(x =>
-                {
-                    x.UseServer(es.AbsoluteUri);
-                    x.UseBasicAuthentication(settings.UserName, settings.Password);
-                }, $"/es-node[{es.Host}]", failureStatus, settings.Indexes.Select(x => x));
-            }
 
+            var healthCheck = services.AddHealthChecks()
+                .AddAsyncCheck("elasticsearch-hc", async (cancellationToken) =>
+            {
+                var _elasticClient = new ElasticClient(elasticSettings.ConnectionSettings);
+
+                var healthResponse = await _elasticClient.Cluster.HealthAsync();
+
+                if (healthResponse.IsValid && healthResponse.Status == Elasticsearch.Net.Health.Green)
+                {
+                    return HealthCheckResult.Healthy("Elasticsearch cluster is healthy.");
+                }
+                else if (healthResponse.Status == Elasticsearch.Net.Health.Yellow)
+                {
+                    return HealthCheckResult.Degraded("Elasticsearch cluster is in a yellow state.");
+                }
+                else
+                {
+                    return HealthCheckResult.Unhealthy("Elasticsearch cluster is unhealthy.");
+                }
+            });
             return services;
         }
     }
