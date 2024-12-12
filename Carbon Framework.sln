@@ -134,6 +134,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "api_docs", "api_docs", "{B3
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Carbon.Serilog", "Carbon.Serilog\Carbon.Serilog.csproj", "{5D0A11FD-38C0-474D-955A-63B3FD53AAAD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Carbon.Sample.API", "..\Carbon.Sample\Carbon.Sample.API\Carbon.Sample.API.csproj", "{53893581-65CF-4417-A0A5-A0FC08D623B1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -308,6 +310,10 @@ Global
 		{5D0A11FD-38C0-474D-955A-63B3FD53AAAD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5D0A11FD-38C0-474D-955A-63B3FD53AAAD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5D0A11FD-38C0-474D-955A-63B3FD53AAAD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{53893581-65CF-4417-A0A5-A0FC08D623B1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{53893581-65CF-4417-A0A5-A0FC08D623B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{53893581-65CF-4417-A0A5-A0FC08D623B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{53893581-65CF-4417-A0A5-A0FC08D623B1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

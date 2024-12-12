@@ -42,6 +42,11 @@ namespace Carbon.Redis
         public event EventHandler<HashSlotMovedEventArgs> HashSlotMoved;
         public event EventHandler<ServerMaintenanceEvent> ServerMaintenanceEvent;
 
+        public void AddLibraryNameSuffix(string suffix)
+        {
+            
+        }
+
         public void Close(bool allowCommandsToComplete = true)
         {
 

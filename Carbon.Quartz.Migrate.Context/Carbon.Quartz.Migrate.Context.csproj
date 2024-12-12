@@ -1,10 +1,14 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>net6.0;net5.0;netcoreapp3.1</TargetFrameworks>
+    <TargetFrameworks>net8.0;net6.0</TargetFrameworks>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-    <Version>1.2.0</Version>
-    <Description>Quartz Persistence handled in this context, if you have persistency use this package</Description>
+    <Version>1.3.0</Version>
+    <Description>
+    1.3.0
+    - Dotnet 8.0 target framework added, older versions removed
+    1.2.0
+    - Quartz Persistence handled in this context, if you have persistency use this package</Description>
   </PropertyGroup>
 
   <ItemGroup>

@@ -1,11 +1,14 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>net6.0;net5.0;netcoreapp3.1</TargetFrameworks>
+    <TargetFrameworks>net8.0;net6.0</TargetFrameworks>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-    <Version>1.3.0</Version>
+    <Version>1.4.0</Version>
     <GenerateDocumentationFile>False</GenerateDocumentationFile>
-    <Description>1.3.0
+    <Description>
+1.4.0
+- Dotnet 8.0 target framework added, older versions removed
+1.3.0
 - Job Delete added to service
 - QuartzService auto registered when AddQuartzScheduler used
 - Scheduler now can be retrieved for purpose of raw Quartz usage instead of QuartzService based usage
@@ -19,10 +22,10 @@ This quartz package may be a cumbersome when it is used for the first time. So t
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Quartz" Version="3.3.3" />
-    <PackageReference Include="Quartz.Extensions.DependencyInjection" Version="3.3.3" />
-    <PackageReference Include="Quartz.Extensions.Hosting" Version="3.3.3" />
-    <PackageReference Include="Quartz.Serialization.Json" Version="3.3.3" />
+    <PackageReference Include="Quartz" Version="3.13.1" />
+    <PackageReference Include="Quartz.Extensions.DependencyInjection" Version="3.13.1" />
+    <PackageReference Include="Quartz.Extensions.Hosting" Version="3.13.1" />
+    <PackageReference Include="Quartz.Serialization.Json" Version="3.13.1" />
   </ItemGroup>
 
   <ItemGroup>

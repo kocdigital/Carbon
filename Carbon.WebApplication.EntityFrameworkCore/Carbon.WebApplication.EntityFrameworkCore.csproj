@@ -1,9 +1,12 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>net6.0;net5.0;netstandard2.1</TargetFrameworks>
-    <Version>2.3.5</Version>
+    <TargetFrameworks>net8.0;net6.0;netstandard2.1</TargetFrameworks>
+    <Version>2.4.0</Version>
     <Description>
+		2.4.0
+		Dotnet 8 and EntityFrameworkCore 8 support added.
+
 		2.3.5
 		Upgrade Carbon.Domain.EntityFrameworkCore (WhereContains extension method bug resolved)
 		
