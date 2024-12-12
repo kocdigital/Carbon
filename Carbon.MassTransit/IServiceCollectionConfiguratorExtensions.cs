@@ -187,14 +187,7 @@ namespace Carbon.MassTransit
         public static void AddRabbitMqBusHealthCheck(this IServiceCollection services,
                                        string host, HealthStatus failureStatus = HealthStatus.Unhealthy, string name = null)
         {
-            services.AddHealthChecks().AddRabbitMQ(sp =>
-            {
-                var factory = new RabbitMQ.Client.ConnectionFactory()
-                {
-                    Uri = new Uri(host)
-                };
-                return factory.CreateConnection();
-            }, name: name, failureStatus: failureStatus);
+            services.AddHealthChecks().AddRabbitMQ(new Uri(host), name: name, failureStatus: failureStatus);
         }
 
         #endregion

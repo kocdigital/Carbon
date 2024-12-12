@@ -1,68 +1,68 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFrameworks>net8.0;net6.0</TargetFrameworks>
+		<TargetFrameworks>netstandard2.0</TargetFrameworks>
 		<Version>3.10.0</Version>
-		<Description>      
-			3.10.0
-			- Dotnet 8.0 target framework added, older versions removed
-			3.9.6
-			- ReqRespAsync pattern support via ServiceBus restored
-			- RoutingSlip ServiceBus support added
-			3.9.3
-			- It is now possible to call AddAsHighAvailableQueue and AddAsDefaultQueue extensions using custom
-			RabbitMQSettings objects.
-			3.9.2
-			- Fixes a dependency injection unexpected behaviour when multi reqrespasync used
-			3.9.0
-			- MultiTarget framework support (.net3.1 - 5 - 6) rather than being single target with .NetStandard 2.0 which is outdated
-			3.8.0
-			- It is now possible to supply custom configuration objects to AddRabbitMqBus and AddServiceBus extensions.
-			- It is now possible to give custom health check tags to AddRabbitMqBus extensions (helps in avoiding duplicates).
-			3.7.8
-			- Fixed a critical bug when ReqRespAsync is used in multiple APIs and same virtual hosts
-			- Add multiple responder to your project
-			3.7.2
-			-Fixed a bug for quorum ReqRespAsync patterns
-			3.7.0
-			- HighAvailable Queues introduced (powered by quorum)
-			3.6.0
-			- ReqRespAsync as GetResponse/Respond Pattern introduced
-			- Awaitable saga, routing slip or ReqRespAsync
-			- Some other useful extension methods
-			3.5.2
-			- Minor fixes
-			- Request Response Async Pattern response sender can send response from anywhere thanks to bus
-			3.5.0
-			- Request-Response Async Pattern introduced
-			3.4.0
-			- Masstransit upgraded to latest 7.x.x version
-			- Masstransit HostedService is now using the as-is one comes directly from MassTransit package
-			- RabbitMQ Healthchecks are now more accurate including all the consumers and their healthiness
-			3.3.0
-			- RoutingSlip pattern Added (ConsumeRoutingSlipActivity as consumer)
-			3.1.1
-			- MultiBus Hosted Service registration fixed
-			3.1.0
-			- MultiBus Support Added
-			3.0.4
-			-Health Check with IConnection
-			3.0.3
-			-Buggy Rabbitmq healthcheck removed temporarily, will be fixed in a later version
-			3.0.2
-			-Added Health Check
-			3.0.1
-			-Recovered the port settings feature from 2.0.8
-			3.0.0
-			-MassTransit 7.1.5 support added
-			2.1.0
-			-MassTransit 6.3.1 support added. Use this version, if MassTransit 6.3.1 required in your project.
-			2.0.8
-			-Port Issue fixed (RabbitMQ started using the port number in settings.)
-			2.0.7
-			-Prefetch Count Added
+		<Description>
+      3.10.0
+      - Target framework changed to netstandard2.0 for better .net version support
+      3.9.6
+      - ReqRespAsync pattern support via ServiceBus restored
+      - RoutingSlip ServiceBus support added
+      3.9.3
+      - It is now possible to call AddAsHighAvailableQueue and AddAsDefaultQueue extensions using custom
+      RabbitMQSettings objects.
+      3.9.2
+      - Fixes a dependency injection unexpected behaviour when multi reqrespasync used
+      3.9.0
+      - MultiTarget framework support (.net3.1 - 5 - 6) rather than being single target with .NetStandard 2.0 which is outdated
+      3.8.0
+      - It is now possible to supply custom configuration objects to AddRabbitMqBus and AddServiceBus extensions.
+      - It is now possible to give custom health check tags to AddRabbitMqBus extensions (helps in avoiding duplicates).
+      3.7.8
+      - Fixed a critical bug when ReqRespAsync is used in multiple APIs and same virtual hosts
+      - Add multiple responder to your project
+      3.7.2
+      -Fixed a bug for quorum ReqRespAsync patterns
+      3.7.0
+      - HighAvailable Queues introduced (powered by quorum)
+      3.6.0
+      - ReqRespAsync as GetResponse/Respond Pattern introduced
+      - Awaitable saga, routing slip or ReqRespAsync
+      - Some other useful extension methods
+      3.5.2
+      - Minor fixes
+      - Request Response Async Pattern response sender can send response from anywhere thanks to bus
+      3.5.0
+      - Request-Response Async Pattern introduced
+      3.4.0
+      - Masstransit upgraded to latest 7.x.x version
+      - Masstransit HostedService is now using the as-is one comes directly from MassTransit package
+      - RabbitMQ Healthchecks are now more accurate including all the consumers and their healthiness
+      3.3.0
+      - RoutingSlip pattern Added (ConsumeRoutingSlipActivity as consumer)
+      3.1.1
+      - MultiBus Hosted Service registration fixed
+      3.1.0
+      - MultiBus Support Added
+      3.0.4
+      -Health Check with IConnection
+      3.0.3
+      -Buggy Rabbitmq healthcheck removed temporarily, will be fixed in a later version
+      3.0.2
+      -Added Health Check
+      3.0.1
+      -Recovered the port settings feature from 2.0.8
+      3.0.0
+      -MassTransit 7.1.5 support added
+      2.1.0
+      -MassTransit 6.3.1 support added. Use this version, if MassTransit 6.3.1 required in your project.
+      2.0.8
+      -Port Issue fixed (RabbitMQ started using the port number in settings.)
+      2.0.7
+      -Prefetch Count Added
 
-		</Description>
+    </Description>
 		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 	</PropertyGroup>
 

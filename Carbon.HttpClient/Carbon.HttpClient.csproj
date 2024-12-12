@@ -11,8 +11,13 @@
 		</Description>
 	</PropertyGroup>
 
+  <ItemGroup Condition="'$(TargetFramework)' == 'net8.0'">
+    <PackageReference Include="Microsoft.AspNetCore.HeaderPropagation" Version="8.0.11" />
+  </ItemGroup>
+  <ItemGroup Condition="'$(TargetFramework)' == 'net6.0'">
+    <PackageReference Include="Microsoft.AspNetCore.HeaderPropagation" Version="6.0.36" />
+  </ItemGroup>
 	<ItemGroup>
-		<PackageReference Include="Microsoft.AspNetCore.HeaderPropagation" Version="6.0.36" />
 		<FrameworkReference Include="Microsoft.AspNetCore.App" />
 	</ItemGroup>
 </Project>

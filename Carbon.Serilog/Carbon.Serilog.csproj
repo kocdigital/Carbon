@@ -2,16 +2,20 @@
 
 	<PropertyGroup>
 		<TargetFramework>netstandard2.1</TargetFramework>
-		<Version>1.0.0</Version>
+		<Version>1.1.0</Version>
 		<PackageId>Carbon.Serilog</PackageId>
 		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <Description>
+      1.1.0
+      - Dotnet 8.0 support added
+    </Description>
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="7.0.0" />
-		<PackageReference Include="Serilog" Version="3.0.1" />
+		<PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="8.0.0" />
+		<PackageReference Include="Serilog" Version="4.2.0" />
 		<PackageReference Include="Serilog.Enrichers.Sensitive" Version="1.7.3" />
-		<PackageReference Include="Serilog.Settings.Configuration" Version="7.0.1" />
+		<PackageReference Include="Serilog.Settings.Configuration" Version="8.0.4" />
 	</ItemGroup>
 
 	<ItemGroup>

@@ -5,10 +5,10 @@
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <Version>1.3.0</Version>
     <Description>
-    1.3.0
-    - Dotnet 8.0 target framework added, older versions removed
-    1.2.0
-    - Quartz PostgreSQL Persistency auto migrator
+      1.3.0
+      - Dotnet 8.0 target framework added, older versions removed
+      1.2.0
+      - Quartz PostgreSQL Persistency auto migrator
     </Description>
   </PropertyGroup>
 
