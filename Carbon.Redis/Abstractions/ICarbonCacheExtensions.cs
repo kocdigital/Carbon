@@ -23,12 +23,7 @@ namespace Carbon.Caching.Abstractions
         /// <exception cref="NotImplementedException">Protobuf serialization is not implemented yet!</exception>
         public static void SetSerializationType(CarbonContentSerializationType PreferredSerializationType)
         {
-            if (PreferredSerializationType == CarbonContentSerializationType.BinaryFormatter)
-            {
-                Console.WriteLine(PreferredSerializationType + " is obsolete, handle with care or consider changing it!");
-                SerializationType = PreferredSerializationType;
-            }
-            else if (PreferredSerializationType == CarbonContentSerializationType.Json)
+            if (PreferredSerializationType == CarbonContentSerializationType.Json)
             {
                 SerializationType = PreferredSerializationType;
             }
@@ -213,21 +208,6 @@ namespace Carbon.Caching.Abstractions
         {
             var value = await instance.GetDatabase().HashGetAsync(key.ToRedisInstanceKey(instance), HashData, CommandFlags.PreferMaster);
             T result = ((byte[])value).FromByteArray<T>(SerializationType);
-            if (result is null)
-            {
-                result = TryAlternativeDeserialization<T>((byte[])value);
-                if (result != null)
-                {
-                    HashEntry hashEntry = new HashEntry(HashData, result.ToByteArray(CarbonContentSerializationType.Json));
-                    await instance.GetDatabase().HashSetAsync(key.ToRedisInstanceKey(instance), new HashEntry[] { hashEntry });
-                    var ttl = instance.GetDatabase().KeyTimeToLive(key);
-                    if (ttl.HasValue && ttl != TimeSpan.Zero)
-                    {
-                        await instance.SetTTL(key, (TimeSpan)ttl);
-                    }
-                }
-            }
-
             return result;
         }
 
@@ -521,20 +501,6 @@ namespace Carbon.Caching.Abstractions
         {
             var value = instance.Get(key);
             T result = value?.FromByteArray<T>(SerializationType);
-            if (result is null)
-            {
-                result = TryAlternativeDeserialization<T>(value);
-                if (result != null)
-                {
-                    var options = new DistributedCacheEntryOptions();
-                    var ttl = instance.GetDatabase().KeyTimeToLive(key);
-                    if (ttl.HasValue && ttl != TimeSpan.Zero)
-                    {
-                        options = options.SetAbsoluteExpiration((TimeSpan)ttl);
-                    }
-                    instance.Set(key, result.ToByteArray(CarbonContentSerializationType.Json), options);
-                }
-            }
             return result;
         }
 
@@ -592,7 +558,7 @@ namespace Carbon.Caching.Abstractions
                 if (redisValue is { IsNull: false, HasValue: true })
                 {
                     byte[] bytes = Encoding.UTF8.GetBytes(redisValue.ToString());
-                    T result = bytes.FromByteArray<T>(SerializationType) ?? TryAlternativeDeserialization<T>(bytes);
+                    T result = bytes.FromByteArray<T>(SerializationType);
                     if (result is not null)
                     {
                         output.Add(redisKeys[i].ToString(),result);
@@ -615,21 +581,6 @@ namespace Carbon.Caching.Abstractions
         {
             var value = await instance.GetAsync(key, token).ConfigureAwait(false);
             T result = value?.FromByteArray<T>(SerializationType);
-            if (result is null)
-            {
-                result = TryAlternativeDeserialization<T>(value);
-                if (result != null)
-                {
-                    var ttl = await instance.GetDatabase().KeyTimeToLiveAsync(key);
-                    var options = new DistributedCacheEntryOptions();
-                    if (ttl.HasValue && ttl != TimeSpan.Zero)
-                    {
-                        options = options.SetAbsoluteExpiration((TimeSpan)ttl);
-                    }
-                    await instance.SetAsync(key, result.ToByteArray(CarbonContentSerializationType.Json), options, token).ConfigureAwait(false);
-                }
-            }
-
             return result;
         }
 
@@ -763,30 +714,6 @@ namespace Carbon.Caching.Abstractions
         }
 
         #endregion
-
-        //This method added to convert binary serialized keys to json serialized, will be removed after conversion.
-        public static T TryAlternativeDeserialization<T>(byte[] value) where T : class
-        {
-            T result;
-            if (SerializationType == CarbonContentSerializationType.BinaryFormatter)
-            {
-                result = value?.FromByteArray<T>(CarbonContentSerializationType.Json);
-                if (result != null)
-                {
-                    return result;
-                }
-            }
-            else if (SerializationType == CarbonContentSerializationType.Json)
-            {
-                result = value?.FromByteArray<T>(CarbonContentSerializationType.BinaryFormatter);
-                if (result != null)
-                {
-                    return result;
-                }
-            }
-
-            return default(T);
-        }
 
         private static string ToRedisInstanceKey(this string key, ICarbonCache instance)
         {

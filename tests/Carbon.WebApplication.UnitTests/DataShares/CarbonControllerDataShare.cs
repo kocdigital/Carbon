@@ -66,7 +66,7 @@ namespace Carbon.WebApplication.UnitTests.DataShares
             base.AddParameter(key, ordination, pageSize, pageIndex);
         }
 
-        public OkObjectResult PagedOkTest<T>(T TEntity, OrdinatedPageDto ordinatedPageDto, int totalCount)
+        public OkObjectResult PagedOkTest<T>(T TEntity, IOrdinatedPageDto ordinatedPageDto, int totalCount)
         {
             return base.PagedOk<T>(TEntity, ordinatedPageDto, totalCount);
         }
