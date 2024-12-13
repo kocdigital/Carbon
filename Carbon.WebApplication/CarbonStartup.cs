@@ -81,8 +81,10 @@ namespace Carbon.WebApplication
         /// <param name="services">Specifies the contract for a collection of service descriptors.</param>
         public void ConfigureServices(IServiceCollection services)
         {
-#if NET6_0
-            Console.WriteLine($"Carbon is compiled with .Net 6.0 and working on .Net {System.Environment.Version.ToString()}. (not minimal api)");
+#if NET8_0
+            Console.WriteLine($"Carbon is compiled with .Net 8.0 and working on .Net {System.Environment.Version.ToString()}. (not minimal api)");
+#elif NET6_0       
+            Console.WriteLine($"Carbon is compiled with .Net 6.0 and working on .Net {System.Environment.Version.ToString()}.");
 #elif NET5_0       
             Console.WriteLine($"Carbon is compiled with .Net 5.0 and working on .Net {System.Environment.Version.ToString()}.");
 #elif NETCOREAPP3_1

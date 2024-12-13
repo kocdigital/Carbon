@@ -5,8 +5,8 @@
     <Version>1.1.0</Version>
     <Description>
 		1.1.O
-        - Carbon.Common added CancellationToken to all applicable methods in ITimeSeriesEntityRepository 
-        1.0.5
+    - Carbon.Common added CancellationToken to all applicable methods in ITimeSeriesEntityRepository 
+    1.0.5
 		- Carbon.Common updated and IQueryable OrderBy extension method bug fixed
 		1.0.4
 		- Carbon.Common updated and nested ordering achieved

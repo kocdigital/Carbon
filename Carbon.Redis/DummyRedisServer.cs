@@ -641,5 +641,16 @@ namespace Carbon.Redis
         {
             return default;
         }
+#if NET8_0_OR_GREATER
+        public long ClientKill(ClientKillFilter filter, CommandFlags flags = CommandFlags.None)
+        {
+            return default;
+        }
+
+        public Task<long> ClientKillAsync(ClientKillFilter filter, CommandFlags flags = CommandFlags.None)
+        {
+            return default;
+        }
+#endif
     }
 }

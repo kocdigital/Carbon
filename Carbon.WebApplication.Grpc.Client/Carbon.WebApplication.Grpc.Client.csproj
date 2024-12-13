@@ -1,9 +1,12 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>net6.0;net5.0;netcoreapp3.1</TargetFrameworks>
-    <Version>2.5.0</Version>
-    <Description>2.5.0
+    <TargetFrameworks>net8.0;net6.0</TargetFrameworks>
+    <Version>2.6.0</Version>
+    <Description>
+2.6.0
+- Dotnet 8.0 target framework added, older versions removed
+2.5.0
  - Dotnet 6.0 target framework added
 2.4.1
  - NetCore 3.1 target framework added
@@ -22,9 +25,9 @@
 
   <ItemGroup>
     <PackageReference Include="Google.Protobuf" Version="3.17.3" />
-    <PackageReference Include="Grpc.Net.Client" Version="2.38.0" />
-    <PackageReference Include="Grpc.Net.ClientFactory" Version="2.38.0" />
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="3.1.12" />
+    <PackageReference Include="Grpc.Net.Client" Version="2.67.0" />
+    <PackageReference Include="Grpc.Net.ClientFactory" Version="2.67.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.1" />
   </ItemGroup>
 
   <ItemGroup>

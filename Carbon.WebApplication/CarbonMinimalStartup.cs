@@ -45,8 +45,15 @@ namespace Carbon.WebApplication
             builder.WebHost.UseCarbonFeatures();
             var services = builder.Services;
             Configuration = builder.Configuration;
+#if NET8_0
+            Console.WriteLine($"Carbon is compiled with .Net 8.0 and working on .Net {System.Environment.Version.ToString()}. (Minimal api)");
+#elif NET6_0       
             Console.WriteLine($"Carbon is compiled with .Net 6.0 and working on .Net {System.Environment.Version.ToString()}. (Minimal api)");
-
+#elif NET5_0       
+            Console.WriteLine($"Carbon is compiled with .Net 5.0 and working on .Net {System.Environment.Version.ToString()}. (Minimal api)");
+#elif NETCOREAPP3_1
+            Console.WriteLine($"Carbon is compiled with .NetCore 3.1 and working on .Net {System.Environment.Version.ToString()}. (Minimal api)");
+#endif
             CommonStartup.AddServiceBaseLogic(services, Configuration);
 
             services = serviceCollector(services);

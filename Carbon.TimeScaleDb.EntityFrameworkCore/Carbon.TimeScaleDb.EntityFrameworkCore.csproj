@@ -1,10 +1,12 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>net5.0;netcoreapp3.1</TargetFrameworks>
+    <TargetFrameworks>net8.0;net6.0</TargetFrameworks>
     <LangVersion>8.0</LangVersion>
-    <Version>1.2.0</Version>
+    <Version>1.3.0</Version>
     <Description>
+1.3.0
+- Dotnet 8.0 and 6.0 target framework added, older version support dropped!
 1.2.0 
 - Added CancellationToken to all applicable methods in ITimeSeriesEntityRepository 
 1.1.6
@@ -17,24 +19,33 @@
 - Brings native EntityFramework Core support to TimeScaleDb as if you are using an SQL Database. Implements TimescaleDb logic based-on abstraction of Carbon.TimeSeriesDb.Abstractions.</Description>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
   </PropertyGroup>
-
-  <ItemGroup>
-    <PackageReference Include="Carbon.PagedList.EntityFrameworkCore" Version="1.0.6" />
-    <PackageReference Include="EFCore.NamingConventions" Version="5.0.2" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.7" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="5.0.7" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.7">
+<ItemGroup Condition="'$(TargetFramework)' == 'net8.0'">
+    <PackageReference Include="EFCore.NamingConventions" Version="8.0.3" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.11" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="8.0.11" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.11">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="5.0.7" />
-  </ItemGroup>
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="8.0.11" />
+	</ItemGroup>
+	<ItemGroup Condition="'$(TargetFramework)' == 'net6.0'">
+    <PackageReference Include="EFCore.NamingConventions" Version="6.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.29" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="6.0.29" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.29">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="6.0.29" />
+	</ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Carbon.Domain.Abstractions\Carbon.Domain.Abstractions.csproj" />
     <ProjectReference Include="..\Carbon.ExceptionHandling\Carbon.ExceptionHandling.Abstractions.csproj" />
     <ProjectReference Include="..\Carbon.TimeScaleDb\Carbon.TimeScaleDb.csproj" />
     <ProjectReference Include="..\Carbon.TimeSeriesDb.Abstractions\Carbon.TimeSeriesDb.Abstractions.csproj" />
+    <ProjectReference Include="..\Carbon.PagedList.EntityFrameworkCore\Carbon.PagedList.EntityFrameworkCore.csproj" />
   </ItemGroup>
 
 </Project>

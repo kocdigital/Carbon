@@ -5,27 +5,25 @@ using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Text.Json;
+using ProtoBuf;
 
 namespace Carbon.Caching.Abstractions.Extensions
 {
     public static class SerializationExtensions
     {
-        public static byte[] ToByteArray(this object obj, CarbonContentSerializationType serializationType = CarbonContentSerializationType.BinaryFormatter)
+        public static byte[] ToByteArray(this object obj, CarbonContentSerializationType serializationType = CarbonContentSerializationType.Json)
         {
-            if (serializationType == CarbonContentSerializationType.BinaryFormatter)
-                return BinaryFormatterSerializer(obj);
-            else if (serializationType == CarbonContentSerializationType.Json)
+            if (serializationType == CarbonContentSerializationType.Json)
                 return JsonBinarySerializer(obj);
             else if (serializationType == CarbonContentSerializationType.Protobuf)
                 return ProtobufSerializer(obj);
             else
                 throw new NotImplementedException();
         }
-        public static T FromByteArray<T>(this byte[] byteArray, CarbonContentSerializationType serializationType = CarbonContentSerializationType.BinaryFormatter) where T : class
+        public static T FromByteArray<T>(this byte[] byteArray, CarbonContentSerializationType serializationType = CarbonContentSerializationType.Json) where T : class
         {
-            if (serializationType == CarbonContentSerializationType.BinaryFormatter)
-                return BinaryFormatterDeserializer<T>(byteArray);
-            else if (serializationType == CarbonContentSerializationType.Json)
+            
+            if (serializationType == CarbonContentSerializationType.Json)
                 return JsonBinaryDeserializer<T>(byteArray);
             else if (serializationType == CarbonContentSerializationType.Protobuf)
                 return ProtobufDeserializer<T>(byteArray);
@@ -36,15 +34,30 @@ namespace Carbon.Caching.Abstractions.Extensions
         private static T ProtobufDeserializer<T>(byte[] byteArray)
             where T : class
         {
-            throw new NotImplementedException();
+            if (byteArray == null)
+            {
+                return default(T);
+            }
+            using (var memoryStream = new MemoryStream(byteArray))
+            {
+                return Serializer.Deserialize<T>(memoryStream);
+            }
         }
 
         private static byte[] ProtobufSerializer(object obj)
         {
-            throw new NotImplementedException();
+            if (obj == null)
+            {
+                return null;
+            }
+            using (var memoryStream = new MemoryStream())
+            {
+                Serializer.Serialize(memoryStream, obj);
+                return memoryStream.ToArray();
+            }
         }
 
-        private static T JsonBinaryDeserializer<T>(byte[] byteArray) 
+        private static T JsonBinaryDeserializer<T>(byte[] byteArray)
             where T : class
         {
             if (byteArray == null)
@@ -58,7 +71,7 @@ namespace Carbon.Caching.Abstractions.Extensions
                 var objectReturn = JsonSerializer.Deserialize<T>(objAsJsonString);
                 return objectReturn;
             }
-            catch(JsonException)
+            catch (JsonException)
             {
                 return default(T);
             }
@@ -72,41 +85,6 @@ namespace Carbon.Caching.Abstractions.Extensions
             }
             var serializedObj = JsonSerializer.Serialize(obj);
             return Encoding.UTF8.GetBytes(serializedObj);
-        }
-
-        private static byte[] BinaryFormatterSerializer(object obj)
-        {
-            if (obj == null)
-            {
-                return null;
-            }
-            var binaryFormatter = new BinaryFormatter();
-            using (var memoryStream = new MemoryStream())
-            {
-                binaryFormatter.Serialize(memoryStream, obj);
-                return memoryStream.ToArray();
-            }
-        }
-
-        private static T BinaryFormatterDeserializer<T>(byte[] byteArray) 
-            where T : class
-        {
-            if (byteArray == null)
-            {
-                return default(T);
-            }
-            var binaryFormatter = new BinaryFormatter();
-            using (var memoryStream = new MemoryStream(byteArray))
-            {
-                try
-                {
-                    return binaryFormatter.Deserialize(memoryStream) as T;
-                }
-                catch(SerializationException)
-                {
-                    return default(T);
-                }
-            }
         }
     }
 }
