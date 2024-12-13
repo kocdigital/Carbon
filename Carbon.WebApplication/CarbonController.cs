@@ -249,69 +249,19 @@ namespace Carbon.WebApplication
         /// <param name="totalCount">Total count of response data</param>
         //// <returns>The created <see cref="OkObjectResult"/> for the response with some paged data.</returns>
         [ApiExplorerSettings(IgnoreApi = true)]
-        [Obsolete("This method is obsolete. Usage for only apis dependant to P360Controller")]
-        protected OkObjectResult PagedOk<T>(T TEntity, OrdinatedPageDto ordinatedPageDto, int totalCount)
+        protected OkObjectResult PagedOk<T>(T TEntity, IOrdinatedPageDto ordinatedPageDto, int totalCount)
         {
             if (ordinatedPageDto.PageIndex > 1)
             {
-                Response.Headers.AddParameter(Request, "X-Paging-Previous-Link", ordinatedPageDto.Ordination, ordinatedPageDto.PageSize, ordinatedPageDto.PageIndex - 1);
+                Response.Headers.AddParameter(Request, "X-Paging-Previous-Link", ordinatedPageDto.Orderables, ordinatedPageDto.PageSize, ordinatedPageDto.PageIndex - 1);
             }
             if (ordinatedPageDto.PageIndex < totalCount)
             {
-                Response.Headers.AddParameter(Request, "X-Paging-Next-Link", ordinatedPageDto.Ordination, ordinatedPageDto.PageSize, ordinatedPageDto.PageIndex + 1);
+                Response.Headers.AddParameter(Request, "X-Paging-Next-Link", ordinatedPageDto.Orderables, ordinatedPageDto.PageSize, ordinatedPageDto.PageIndex + 1);
             }
             return Ok(TEntity);
         }
     }
-
-    /// <summary>
-    /// Ordination object for ordering the response data
-    /// </summary>
-    [Obsolete("This class is obsolete. Usage for only apis dependant to P360Controller")]
-    [ApiExplorerSettings(IgnoreApi = true)]
-    public class OrdinatedPageDto
-    {
-        /// <summary>
-        /// List of Ordination data
-        /// </summary>
-        public List<Ordination> Ordination { get; set; }
-        /// <summary>
-        /// Size of data of each page
-        /// </summary>
-        public int PageSize { get; set; }
-        /// <summary>
-        /// Page index of the requested data
-        /// </summary>
-        public int PageIndex { get; set; }
-
-        /// <summary>
-        /// Constructor of OrdinatedPageDto that sets PageSize and PageIndex to their default values
-        /// </summary>
-        public OrdinatedPageDto()
-        {
-            PageSize = 250;
-            PageIndex = 1;
-            //Ordination = new List<Ordination>() { new Common.Ordination() {IsAscending = false, Value = "Id" } };
-        }
-    }
-
-    /// <summary>
-    /// The Ordination object that orders the data according to the <see cref="Value"/> property
-    /// </summary>
-    [Obsolete("This class is obsolete. Usage for only apis dependent to P360Controller")]
-    [ApiExplorerSettings(IgnoreApi = true)]
-    public class Ordination
-    {
-        /// <summary>
-        /// A key sorting property name of data.
-        /// </summary>
-        public string Value { get; set; }
-        /// <summary>
-        /// Indicates Ascending or descending order
-        /// </summary>
-        public bool IsAscending { get; set; }
-    }
-
 
     [Obsolete("This extension is obsolete. Usage for only apis dependant to P360Controller")]
     public static class P360ControllerExtensionMethod
@@ -325,7 +275,7 @@ namespace Carbon.WebApplication
         /// <param name="ordination"> A list of <code>Orderable</code> objects.</param>
         /// <param name="pageSize"> Used for indicating how many data are on the page</param>
         /// <param name="pageIndex"> Used for indicating which page it is</param>
-        public static void AddParameter(this IHeaderDictionary headers, HttpRequest request, string key, List<Ordination> ordination, int pageSize, int pageIndex)
+        public static void AddParameter(this IHeaderDictionary headers, HttpRequest request, string key, IList<Orderable> ordination, int pageSize, int pageIndex)
         {
             var builder = new StringBuilder();
 
