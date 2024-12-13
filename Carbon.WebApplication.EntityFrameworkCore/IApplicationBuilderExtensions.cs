@@ -106,7 +106,7 @@ namespace Carbon.WebApplication.EntityFrameworkCore
 
             try
             {
-                AssemblyLoadContext.Default.LoadFromAssemblyPath($"{path}\\{migrationsAssembly}.dll");
+                AssemblyLoadContext.Default.LoadFromAssemblyPath($"{path}{Path.AltDirectorySeparatorChar}{migrationsAssembly}.dll");
             }
             catch
             {
@@ -162,7 +162,7 @@ namespace Carbon.WebApplication.EntityFrameworkCore
 
             try
             {
-                AssemblyLoadContext.Default.LoadFromAssemblyPath($"{path}\\{migrationsAssembly}.dll");
+                AssemblyLoadContext.Default.LoadFromAssemblyPath($"{path}{Path.AltDirectorySeparatorChar}{migrationsAssembly}.dll");
             }
             catch
             {
