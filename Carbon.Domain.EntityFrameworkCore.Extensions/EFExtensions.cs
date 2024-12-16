@@ -276,7 +276,6 @@ namespace Carbon.Domain.EntityFrameworkCore
 
             var query = relationEntities
                 .Where(k => !filterContainsData || k.Relation == null || filter.Contains(k.Relation.SolutionId))
-                .AsEnumerable()
                 .GroupBy(k => k.Entity, k => k.Relation,
                     (key, g) => new EFExtensions.RelationEntity<T, U> { Entity = key, Relations = g.ToList() })
                 .Select(k => k.Entity)
