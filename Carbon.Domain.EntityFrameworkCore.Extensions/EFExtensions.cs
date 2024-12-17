@@ -275,11 +275,8 @@ namespace Carbon.Domain.EntityFrameworkCore
             var filterContainsData = filter != null && filter.Any();
 
             var query = relationEntities
-                .Where(k => !filterContainsData || k.Relation == null || filter.Contains(k.Relation.SolutionId))
-                .GroupBy(k => k.Entity, k => k.Relation,
-                    (key, g) => new EFExtensions.RelationEntity<T, U> { Entity = key, Relations = g.ToList() })
-                .Select(k => k.Entity)
-                .AsQueryable();
+                .Where(k => !filterContainsData || k.Relation == null || filter.Contains(k.Relation.SolutionId));
+
 
             var filteredQuery = query.OrderBy(orderables);
             if (pageSize != 0)
@@ -287,7 +284,12 @@ namespace Carbon.Domain.EntityFrameworkCore
                 filteredQuery = filteredQuery.SkipTake(pageIndex, pageSize);
             }
 
-            var entities = filteredQuery.ToList();
+            var queryResult = filteredQuery.ToList();
+
+            var entities = queryResult
+                .GroupBy(k => k.Entity, k => k.Relation,
+                    (key, g) => new RelationEntity<T, U> { Entity = key, Relations = g.ToList() })
+                .Select(k => k.Entity).ToList();
 
             var relationEntitiesAsList =
                 relationEntities.Where(k => k.Relation != null).Select(k => k.Relation).ToList();
@@ -303,6 +305,64 @@ namespace Carbon.Domain.EntityFrameworkCore
             return result;
         }
 
+        /// <summary>
+        /// Retrieves a paged list of entities with filtered relations based on specified criteria and ordering.
+        /// In this method, data is filtered according to ownership information.
+        /// </summary>
+        /// <typeparam name="T">The type of entities that have ownership relationships with type U and implement IEntity and IHaveOwnership interfaces.</typeparam>
+        /// <typeparam name="U">The type of entity relations that are associated with type T and implement EntitySolutionRelation interface.</typeparam>
+        /// <param name="relationEntities">The IQueryable of relation entities containing pairs of entities of type T and relations of type U.</param>
+        /// <param name="filter">A list of Guids used to filter the relations based on SolutionId, can be null or empty to include all relations.</param>
+        /// <param name="orderables">A list of Orderable objects specifying the ordering of the entities.</param>
+        /// <param name="pageIndex">The index of the page to retrieve (starting from 0).</param>
+        /// <param name="pageSize">The maximum number of entities per page.</param>
+        /// <returns>A PagedList containing the requested page of entities with filtered relations, based on the specified criteria.</returns>
+        /// <remarks>
+        /// This method retrieves a paged list of entities of type T that have ownership relationships with type U.
+        /// The method filters the relations based on the provided list of Guids, which represent SolutionIds, if the filter list is not null or empty.
+        /// The resulting entities are ordered based on the specified ordering criteria and returned as a paged list.
+        /// </remarks>
+        public static async Task<PagedList<T>> ToPagedListEntityFilteredWithSolutionAsync<T, U>(
+            this IQueryable<EFExtensions.RelationEntityPair<T, U>> relationEntities,
+            List<Guid> filter,
+            IList<Orderable> orderables,
+            int pageIndex,
+            int pageSize)
+            where T : IHaveOwnership<U>, IEntity
+            where U : EntitySolutionRelation
+        {
+            var filterContainsData = filter != null && filter.Any();
+
+            var query = relationEntities
+                .Where(k => !filterContainsData || k.Relation == null || filter.Contains(k.Relation.SolutionId));
+
+
+            var filteredQuery = query.OrderBy(orderables);
+            if (pageSize != 0)
+            {
+                filteredQuery = filteredQuery.SkipTake(pageIndex, pageSize);
+            }
+
+            var queryResult = await filteredQuery.ToListAsync();
+
+            var entities = queryResult
+                .GroupBy(k => k.Entity, k => k.Relation,
+                    (key, g) => new RelationEntity<T, U> { Entity = key, Relations = g.ToList() })
+                .Select(k => k.Entity).ToList();
+
+            var relationEntitiesAsList =
+                relationEntities.Where(k => k.Relation != null).Select(k => k.Relation).ToList();
+
+            entities.ForEach(entity =>
+            {
+                entity.RelationalOwners = relationEntitiesAsList
+                    .Where(rel => rel != null && rel.EntityId == entity.Id).ToList();
+            });
+
+            var totalDataCount = await query.CountAsync();
+            var result = new PagedList<T>(entities, pageIndex, pageSize, totalDataCount);
+            return result;
+        }
         public static async Task<T> FirstOrDefaultEntityFilteredWithSolutionAsync<T, U>(
             this IQueryable<RelationEntityPair<T, U>> relationEntities, List<Guid> filter)
             where T : IHaveOwnership<U>, IEntity
