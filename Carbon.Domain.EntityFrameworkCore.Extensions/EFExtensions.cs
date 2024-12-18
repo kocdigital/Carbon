@@ -278,7 +278,9 @@ namespace Carbon.Domain.EntityFrameworkCore
                 .Where(k => !filterContainsData || k.Relation == null || filter.Contains(k.Relation.SolutionId));
 
 
-            var filteredQuery = query.OrderBy(orderables);
+            var filteredQuery = query;
+            if(orderables != null && orderables.Any())
+                filteredQuery = query.OrderBy(orderables);
             if (pageSize != 0)
             {
                 filteredQuery = filteredQuery.SkipTake(pageIndex, pageSize);
@@ -337,7 +339,9 @@ namespace Carbon.Domain.EntityFrameworkCore
                 .Where(k => !filterContainsData || k.Relation == null || filter.Contains(k.Relation.SolutionId));
 
 
-            var filteredQuery = query.OrderBy(orderables);
+            var filteredQuery = query;
+            if(orderables != null && orderables.Any())
+                filteredQuery = query.OrderBy(orderables);
             if (pageSize != 0)
             {
                 filteredQuery = filteredQuery.SkipTake(pageIndex, pageSize);
