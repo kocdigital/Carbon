@@ -5,7 +5,7 @@
 		<Version>3.10.1</Version>
 		<Description>
       3.10.1
-      - Target framework changed to netstandard2.0 for better .net version support
+      - Dotnet 8.0 target framework added, older versions removed
       3.9.6
       - ReqRespAsync pattern support via ServiceBus restored
       - RoutingSlip ServiceBus support added
