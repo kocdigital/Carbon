@@ -1,10 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
 		<TargetFrameworks>net8.0;net6.0</TargetFrameworks>
-		<Version>1.1.0</Version>
+		<Version>1.1.1</Version>
 		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 		<Description>
-			1.1.0
+			1.1.1
 			- .Net 6.0 and 8.0 support added
 			1.0.10
 			- Carbon.Common updated and IQueryable OrderBy extension method bug fixed
