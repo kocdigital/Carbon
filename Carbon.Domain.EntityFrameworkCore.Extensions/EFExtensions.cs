@@ -275,23 +275,17 @@ namespace Carbon.Domain.EntityFrameworkCore
             var filterContainsData = filter != null && filter.Any();
 
             var query = relationEntities
-                .Where(k => !filterContainsData || k.Relation == null || filter.Contains(k.Relation.SolutionId));
+                .Where(k => !filterContainsData || k.Relation == null || filter.Contains(k.Relation.SolutionId))
+                .Select(k => k.Entity)
+                .Distinct();
 
-
-            var filteredQuery = query;
-            if(orderables != null && orderables.Any())
-                filteredQuery = query.OrderBy(orderables);
+            var filteredQuery = query.OrderBy(orderables);
             if (pageSize != 0)
             {
                 filteredQuery = filteredQuery.SkipTake(pageIndex, pageSize);
             }
 
-            var queryResult = filteredQuery.ToList();
-
-            var entities = queryResult
-                .GroupBy(k => k.Entity, k => k.Relation,
-                    (key, g) => new RelationEntity<T, U> { Entity = key, Relations = g.ToList() })
-                .Select(k => k.Entity).ToList();
+            var entities = filteredQuery.ToList();
 
             var relationEntitiesAsList =
                 relationEntities.Where(k => k.Relation != null).Select(k => k.Relation).ToList();
@@ -336,23 +330,17 @@ namespace Carbon.Domain.EntityFrameworkCore
             var filterContainsData = filter != null && filter.Any();
 
             var query = relationEntities
-                .Where(k => !filterContainsData || k.Relation == null || filter.Contains(k.Relation.SolutionId));
+                .Where(k => !filterContainsData || k.Relation == null || filter.Contains(k.Relation.SolutionId))
+                .Select(k => k.Entity)
+                .Distinct();
 
-
-            var filteredQuery = query;
-            if(orderables != null && orderables.Any())
-                filteredQuery = query.OrderBy(orderables);
+            var filteredQuery = query.OrderBy(orderables);
             if (pageSize != 0)
             {
                 filteredQuery = filteredQuery.SkipTake(pageIndex, pageSize);
             }
 
-            var queryResult = await filteredQuery.ToListAsync();
-
-            var entities = queryResult
-                .GroupBy(k => k.Entity, k => k.Relation,
-                    (key, g) => new RelationEntity<T, U> { Entity = key, Relations = g.ToList() })
-                .Select(k => k.Entity).ToList();
+            var entities = await filteredQuery.ToListAsync();
 
             var relationEntitiesAsList =
                 relationEntities.Where(k => k.Relation != null).Select(k => k.Relation).ToList();

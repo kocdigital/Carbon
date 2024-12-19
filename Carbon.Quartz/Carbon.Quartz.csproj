@@ -3,10 +3,10 @@
   <PropertyGroup>
     <TargetFrameworks>net8.0;net6.0</TargetFrameworks>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-    <Version>1.4.1</Version>
+    <Version>1.4.2</Version>
     <GenerateDocumentationFile>False</GenerateDocumentationFile>
     <Description>
-      1.4.1
+      1.4.2
       - Dotnet 8.0 target framework added, older versions removed
       1.3.0
       - Job Delete added to service
