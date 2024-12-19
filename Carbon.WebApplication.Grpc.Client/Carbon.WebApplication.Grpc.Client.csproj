@@ -2,9 +2,9 @@
 
   <PropertyGroup>
     <TargetFrameworks>net8.0;net6.0</TargetFrameworks>
-    <Version>2.6.1</Version>
+    <Version>2.6.2</Version>
     <Description>
-2.6.1
+2.6.2
 - Dotnet 8.0 target framework added, older versions removed
 2.5.0
  - Dotnet 6.0 target framework added
