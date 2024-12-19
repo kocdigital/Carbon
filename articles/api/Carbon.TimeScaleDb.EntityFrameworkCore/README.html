@@ -1,0 +1,423 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Carbon.TimeScaleDb.EntityFrameworkCore | Carbon Framework </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Carbon.TimeScaleDb.EntityFrameworkCore | Carbon Framework ">
+    <meta name="generator" content="docfx 2.59.4.0">
+    
+    <link rel="shortcut icon" href="../../../images/logo.png">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="../../toc.html">
+    
+    <meta property="docfx:rel" content="../../../">
+    
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../images/logo.png" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="carbontimescaledbentityframeworkcore">Carbon.TimeScaleDb.EntityFrameworkCore</h1>
+
+<blockquote>
+<p>TimescaleDB is an open-source database designed to make SQL scalable for time-series data.
+It is engineered up from PostgreSQL and packaged as a PostgreSQL extension,
+providing automatic partitioning across time and space (partitioning key), as well as full SQL support.[**]</p>
+</blockquote>
+<p>[**] <a href="https://github.com/timescale/timescaledb">https://github.com/timescale/timescaledb</a></p>
+<p>This package brings you essential timescale capabilities by makes you leverage the benefits of
+entity framework core without leaving your comfort zone over dbcontext, linq queries, code-first database-table migrations.</p>
+<p>This package can simply create a code-first timescale database and table by migrating your database object and
+entity configurations + some timeserie-based ready-to-use TsDb queries and free-style linq .net queries. More incoming...</p>
+<p>Beside of all the benefits, this package also supports CQRS pattern where a read-only replica available for TimeScaleDb and does the
+read operations through read-replica, write operations through master.</p>
+<h2 id="add-timescaledb-support-to-your-project">Add TimeScaleDb Support to Your Project</h2>
+<p>This package contains some other related building block packages. Those packages are the base and the abstractions and also powerful ones.
+Nevertheless, this package wraps up everything and works fine for you!</p>
+<table>
+<thead>
+<tr>
+<th>Related Package</th>
+<th style="text-align: center;">Required</th>
+<th style="text-align: center;">Auto-Included</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../Carbon.TimeScaleDb/README.html">Carbon.TimeScaleDb</a></td>
+<td style="text-align: center;">Yes</td>
+<td style="text-align: center;">Yes</td>
+</tr>
+<tr>
+<td><a href="../Carbon.TimeSeriesDb.Abstractions/README.html">Carbon.TimeSeriesDb.Abstractions</a></td>
+<td style="text-align: center;">Yes</td>
+<td style="text-align: center;">Yes</td>
+</tr>
+</tbody>
+</table>
+<h3 id="basic-usage">Basic Usage</h3>
+<p><strong>1. Create a database object and inherit from <em>TimeSerieEntityBase</em></strong></p>
+<p>Use <strong>[TimeSerie]</strong> tag for a DateTime field that you want it to be timeserie indexed. This will also create an PK index with a composition of Id + Date where <em>Id</em> is auto generated field.</p>
+<pre><code class="lang-csharp">    public class TimeSerieDataLog : TimeSerieEntityBase
+    {
+        public Guid AssetId { get; set; }
+        public Guid TelemetryId { get; set; }
+        public decimal Value { get; set; }
+        [TimeSerie]
+        public DateTime Date { get; set; }
+        
+        //You can have some other relations with other tables
+        public Guid? TimeSerieDataLogLabelRelationId { get; set; }
+        public virtual TimeSerieDataLogLabelRelation TimeSerieDataLogLabelRelation { get; set; }
+
+    }
+</code></pre>
+<p><strong>2. Create your Entity Configuration</strong></p>
+<p>You can create such an Entity Configurator by using the given base class to inherit. Simply override and implement your
+configurations, then refer to the base.</p>
+<pre><code class="lang-csharp">public class TimeSerieDataLogConfiguration : TimeSeriesEntityTypeConfiguration&lt;TimeSerieDataLog&gt;
+    {
+        public override void Configure(EntityTypeBuilder&lt;TimeSerieDataLog&gt; builder)
+        {
+            //Create some FK relation with other table when needed (Optional, when needed)
+            builder.HasOne(x =&gt; x.TimeSerieDataLogLabelRelation).WithOne(x =&gt; x.TimeSerieDataLog).HasForeignKey&lt;TimeSerieDataLog&gt;(x =&gt; x.TimeSerieDataLogLabelRelationId);
+            builder.HasIndex(x =&gt; x.TimeSerieDataLogLabelRelationId).IsUnique(false);
+            //Jump to the base (Required)
+            base.Configure(builder);
+        }
+    }
+</code></pre>
+<p><strong>3. Create your DBContext</strong></p>
+<pre><code class="lang-csharp">public class TimeSerieDataLogContext : CarbonTimeScaleDbContext&lt;TimeSerieDataLogContext&gt;
+    {
+        public TimeSerieDataLogContext(DbContextOptions&lt;TimeSerieDataLogContext&gt; options) : base(options)
+        {
+
+        }
+        public DbSet&lt;TimeSerieDataLog&gt; TimeSerieDataLog { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.ApplyConfiguration(new TimeSerieDataLogConfiguration());
+
+            base.OnModelCreating(modelBuilder);
+        }
+    }
+</code></pre>
+<p><strong>4. Create your Repository Pattern</strong></p>
+<p>Now you can create a repository by inheriting from base of EFTimeScaleDbRepository which enables a timescaledb context and useful Create, Read, Update, Delete operations.
+You can add more custom methods to your repository with your own way and also you can add a repository interface.</p>
+<pre><code class="lang-csharp">public class TimeScaleDataLogRepository : EFTimeScaleDbRepository&lt;TimeSerieDataLog, TimeSerieDataLogContext&gt;, ITimeScaleDataLogRepository&lt;TimeSerieDataLog&gt;
+    {
+        private readonly TimeSerieDataLogContext _timeSerieDataLogContext;
+
+        public TimeScaleDataLogRepository(TimeSerieDataLogContext context) : base(context)
+        {
+            _timeSerieDataLogContext = context;
+        }
+
+    }
+
+
+public interface ITimeScaleDataLogRepository&lt;TEntity&gt; : ITimeSeriesEntityRepository&lt;TEntity&gt;
+        where TEntity : class, ITimeSeriesEntity
+    {
+        
+    }
+</code></pre>
+<p>Don't forget to register your repository at startup!</p>
+<pre><code class="lang-csharp">//IServiceCollection services
+services.AddScoped&lt;ITimeScaleDataLogRepository&lt;TimeSerieDataLog&gt;, TimeScaleDataLogRepository&gt;();
+</code></pre>
+<p><strong>5. Register the Context and Migrate your code-first objects to TSDB</strong></p>
+<p>This startup extension will check if the given database is timescale enabled and if yes, will create the necessary
+database objects with the given ones. If there is such a non-timescale table with the same name, it will convert it into timescale-based table
+and migrate the data if possible.</p>
+<ul>
+<li>If you use startup just like in Dotnet 5 or backwards, or a non-minimal api in Dotnet 6 or more</li>
+</ul>
+<pre><code class="lang-csharp">//IServiceCollection services
+services.AddTimeScaleDatabaseContext&lt;TimeSerieDataLogContext, Startup&gt;(Configuration);
+</code></pre>
+<ul>
+<li>If you use minimal API</li>
+</ul>
+<pre><code class="lang-csharp">//IServiceCollection services
+services.AddTimeScaleDatabaseContext&lt;TimeSerieDataLogContext, Program&gt;(Configuration);
+</code></pre>
+<p>Do the Migration:</p>
+<pre><code class="lang-csharp">//IApplicationBuilder app
+app.MigrateTimeScaleDatabase&lt;TimeSerieDataLogContext&gt;();
+</code></pre>
+<p><strong>5. Finally use a configuration section as given below</strong></p>
+<pre><code class="lang-json"> &quot;ConnectionStrings&quot;: {
+    &quot;TimeScaleDbConnectionString&quot;: &quot;Server=tsdbserver;Database=tsdatalogdb_test;Port=5432;User Id=tsdbuser;Password=xxxxxx;&quot;,
+  }
+</code></pre>
+<h2 id="advanced-usage">Advanced Usage</h2>
+<h3 id="cqrs-pattern-with-read-replica">CQRS pattern with Read-Replica</h3>
+<p>If you have another read-replica for your master timescaledb, you can use that replica for read-purposes in order to more efficient read operations and not to
+keep occupied master one.</p>
+<p>Prior to reading this part, please make sure you have already read the Basic Usage section and implemented the neccessary operations.</p>
+<p><strong>1. Create another Read-Only Context on the top of usual one</strong></p>
+<pre><code class="lang-csharp">public class TimeSerieDataLogReadOnlyContext : CarbonTimeScaleDbReadOnlyContext&lt;TimeSerieDataLogReadOnlyContext&gt;
+    {
+        public TimeSerieDataLogReadOnlyContext(DbContextOptions&lt;TimeSerieDataLogReadOnlyContext&gt; options) : base(options)
+        {
+
+        }
+        public DbSet&lt;TimeSerieDataLog&gt; TimeSerieDataLog { get; set; }
+
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.ApplyConfiguration(new TimeSerieDataLogConfiguration());
+
+            base.OnModelCreating(modelBuilder);
+        }
+    }
+</code></pre>
+<p><strong>2. Create new one or Update your existing repository to EFTimeScaleDbWithReadOnlyRepository</strong></p>
+<p>If you have already a repository as it is explained in the basic usage, you can convert it into WithReadOnlyRepository</p>
+<pre><code class="lang-csharp">public class TimeScaleDataLogRepository : EFTimeScaleDbWithReadOnlyRepository&lt;TimeSerieDataLog, TimeSerieDataLogContext, TimeSerieDataLogReadOnlyContext&gt;, ITimeScaleDataLogRepository&lt;TimeSerieDataLog&gt;
+    {
+        //Your read-write context
+        private readonly TimeSerieDataLogContext _timeSerieDataLogContext;
+        //Your read-only context
+        private readonly TimeSerieDataLogReadOnlyContext _timeSerieDataLogReadOnlyContext;
+
+        public TimeScaleDataLogRepository(TimeSerieDataLogContext context, TimeSerieDataLogReadOnlyContext rContext) : base(context, rContext)
+        {
+            _timeSerieDataLogContext = context;
+            _timeSerieDataLogReadOnlyContext = rContext;
+        }
+    }
+</code></pre>
+<p>You can also add new methods as you wish. Please note that, if your method is doing read-only operations, you can use readOnly context for such operations.</p>
+<p><strong>3. Change the registration way of your Context</strong></p>
+<p>In the basic usage you used AddTimeScaleDatabaseContext, now change it into <em>AddTimeScaleDatabaseWithReadOnlyReplicaContext</em> to register your read-only context as well</p>
+<pre><code class="lang-csharp">services.AddTimeScaleDatabaseWithReadOnlyReplicaContext&lt;TimeSerieDataLogContext, TimeSerieDataLogReadOnlyContext, Startup&gt;(Configuration);
+</code></pre>
+<p>or...</p>
+<pre><code class="lang-csharp">services.AddTimeScaleDatabaseWithReadOnlyReplicaContext&lt;TimeSerieDataLogContext, TimeSerieDataLogReadOnlyContext, Program&gt;(Configuration);
+</code></pre>
+<p><strong>4. Extend your configuration with read-only replica information</strong></p>
+<p>You can switch on/off Read Replica Enabled property. If set <em>false</em>, then read-only context will also use the master one instead of read replica.</p>
+<pre><code class="lang-json">&quot;ConnectionStrings&quot;: {
+    &quot;ReadReplicaEnabled&quot;: true,
+    &quot;TimeScaleDbConnectionString&quot;: &quot;Server=tsdbserver;Database=tsdatalogdb_test;Port=5432;User Id=tsdbuser;Password=xxxxxx;&quot;,
+    &quot;TimeScaleDbReadOnlyConnectionString&quot;: &quot;Server=tsdbserver_readonly;Database=tsdatalogdb_test;Port=5432;User Id=tsdbuser;Password=xxxxxx;&quot;
+  }
+</code></pre>
+<p>Now, you are all set and good to go!</p>
+<h3 id="timescale-based-functions-usage">TimeScale-Based Functions Usage</h3>
+<p>You can use hyperfunctions or other tsdb based functions in your repository. The only thing you have to do is to define them as a free-text,
+and use FromSqlRaw efcore extension.</p>
+<p>Assume that you have a <strong>TimeBucket</strong> method introduced additionally to your repository and a view object <em>TimeSerieDataLogTimeBucketView</em>.</p>
+<pre><code class="lang-csharp">        public async Task&lt;List&lt;TimeSerieDataLogTimeBucketView&gt;&gt; GetTelemetryByTimeBucket(AssetTelemetryAggregatedTimeBucketRequestData assetTelemetryAggregatedTimeBucketRequestData)
+        {
+            string ersanQuery = &quot;&quot;;
+            string daTimeBucket = assetTelemetryAggregatedTimeBucketRequestData.TimeBucketDuration + &quot; &quot; + assetTelemetryAggregatedTimeBucketRequestData.TimeBucketType.ToString();
+
+            if (assetTelemetryAggregatedTimeBucketRequestData.TimeBucketType != TimeBucketType.year &amp;&amp; assetTelemetryAggregatedTimeBucketRequestData.TimeBucketType != TimeBucketType.month)
+                ersanQuery = @$&quot;SELECT assetid , MAX(assetname) as assetname , telemetryid , MAX(telemetryname) as telemetryname , time_bucket('{daTimeBucket}', date) AS bucketdatetime, {assetTelemetryAggregatedTimeBucketRequestData.AggregationType}(value) as value
+                        FROM timeseriedatalog
+                        where telemetryid  = ANY(@telemetryids) and assetid = ANY(@assetids) and date &lt; @enddate and date &gt; @startdate and tenantid = @tenantid 
+                        GROUP BY bucketdatetime, assetid, telemetryid
+                        ORDER BY bucketdatetime DESC;&quot;;
+            else if (assetTelemetryAggregatedTimeBucketRequestData.TimeBucketType == TimeBucketType.year || assetTelemetryAggregatedTimeBucketRequestData.TimeBucketType == TimeBucketType.month)
+                ersanQuery = @$&quot;SELECT assetid , MAX(assetname) as assetname , telemetryid , MAX(telemetryname) as telemetryname, timescaledb_experimental.time_bucket_ng('{daTimeBucket}', date) AS bucketdatetime, {assetTelemetryAggregatedTimeBucketRequestData.AggregationType}(value) as value
+                        FROM timeseriedatalog
+                        where telemetryid  = ANY(@telemetryids) and assetid = ANY(@assetids) and date &lt; @enddate and date &gt; @startdate and tenantid = @tenantid 
+                        GROUP BY bucketdatetime, assetid, telemetryid
+                        ORDER BY bucketdatetime DESC;&quot;;
+
+            NpgsqlParameter start = new NpgsqlParameter(&quot;@startdate&quot;, assetTelemetryAggregatedTimeBucketRequestData.StartDate);
+            NpgsqlParameter end = new NpgsqlParameter(&quot;@enddate&quot;, assetTelemetryAggregatedTimeBucketRequestData.EndDate);
+            NpgsqlParameter tenantId = new NpgsqlParameter(&quot;@tenantid&quot;, assetTelemetryAggregatedTimeBucketRequestData.TenantId);
+            NpgsqlParameter telemetryIds = new NpgsqlParameter(&quot;@telemetryids&quot;, NpgsqlDbType.Array | NpgsqlDbType.Uuid);
+            telemetryIds.Value = assetTelemetryAggregatedTimeBucketRequestData.TelemetryIds.ToArray();
+
+            NpgsqlParameter assetIds = new NpgsqlParameter(&quot;@assetids&quot;, NpgsqlDbType.Array | NpgsqlDbType.Uuid);
+            assetIds.Value = assetTelemetryAggregatedTimeBucketRequestData.AssetIds.ToArray();
+
+            return await _timeSerieDataLogReadOnlyContext.Set&lt;TimeSerieDataLogTimeBucketView&gt;().FromSqlRaw(ersanQuery, start, end, telemetryIds, tenantId, assetIds).AsNoTracking().ToListAsync();
+        }
+
+        //This is a custom object pretends to be a view object
+        public class TimeSerieDataLogTimeBucketView
+        {
+            public Guid AssetId { get; set; }
+            public string AssetName { get; set; }
+            public Guid TelemetryId { get; set; }
+            public string TelemetryName { get; set; }
+            public DateTime BucketDateTime { get; set; }
+            public double Value { get; set; }
+        }
+</code></pre>
+<p>Define the custom view in your readonly context</p>
+<blockquote>
+<p>As this is a read-only query, this is the most appropriate place to define it. However, defining in your usual context is also fine!</p>
+</blockquote>
+<pre><code class="lang-csharp">public class TimeSerieDataLogReadOnlyContext : CarbonTimeScaleDbReadOnlyContext&lt;TimeSerieDataLogReadOnlyContext&gt;
+    {
+        public TimeSerieDataLogReadOnlyContext(DbContextOptions&lt;TimeSerieDataLogReadOnlyContext&gt; options) : base(options)
+        {
+
+        }
+        public DbSet&lt;TimeSerieDataLog&gt; TimeSerieDataLog { get; set; }
+
+        //Add this view to your context
+        public DbSet&lt;TimeSerieDataLogTimeBucketView&gt; TimeSerieDataLogTimeBucketView { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.ApplyConfiguration(new TimeSerieDataLogConfiguration());
+
+            //Tell Entity Configurator not to do with this database object at timescale-side
+            modelBuilder.Entity&lt;TimeSerieDataLogTimeBucketView&gt;(entity =&gt;
+            {
+                entity.HasNoKey();
+            });
+
+            base.OnModelCreating(modelBuilder);
+        }
+    }
+</code></pre>
+<hr>
+<h3 id="non-timescaledb-tables-raw-postgresql-tables">Non-TimeScaleDb Tables (Raw PostgreSQL Tables)</h3>
+<p>It is possible to create non-timescaledb tables, in other words, raw (usual) postgre tables. As this package is also powered by PostgreSQL EF core packages
+you have a combined and mighty ruling capability. Those tables and database objects are also migrated within the same migration session.</p>
+<pre><code class="lang-csharp">public class TimeSerieDataLogContext : CarbonTimeScaleDbContext&lt;TimeSerieDataLogContext&gt;
+    {
+        public TimeSerieDataLogContext(DbContextOptions&lt;TimeSerieDataLogContext&gt; options) : base(options)
+        {
+
+        }
+        //Tsdb based table
+        public DbSet&lt;TimeSerieDataLog&gt; TimeSerieDataLog { get; set; }
+        //non-tsdb, pure postgresql relation table
+        public DbSet&lt;TimeSerieDataLogLabelRelation&gt; TimeSerieDataLogLabelRelation { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.ApplyConfiguration(new TimeSerieDataLogConfiguration());
+            modelBuilder.ApplyConfiguration(new TimeSerieDataLogLabelRelationConfiguration());
+
+            base.OnModelCreating(modelBuilder);
+        }
+    }
+
+   //Not a timescaledb table
+   public class TimeSerieDataLogLabelRelation : IEntity
+    {
+        public Guid Id { get; set; }
+        public virtual TimeSerieDataLog TimeSerieDataLog { get; set; }
+        public virtual ICollection&lt;TimeSerieDataLogLabel&gt; TimeSerieDataLogLabel { get; set; }
+
+    }
+
+    public class TimeSerieDataLogLabelRelationConfiguration : IEntityTypeConfiguration&lt;TimeSerieDataLogLabelRelation&gt;
+    {
+        public void Configure(EntityTypeBuilder&lt;TimeSerieDataLogLabelRelation&gt; builder)
+        {
+            builder.HasKey(x =&gt; x.Id);
+            builder.HasOne(x =&gt; x.TimeSerieDataLog).WithOne(x =&gt; x.TimeSerieDataLogLabelRelation).HasForeignKey&lt;TimeSerieDataLog&gt;(x =&gt; x.TimeSerieDataLogLabelRelationId);
+            builder.HasMany(x =&gt; x.TimeSerieDataLogLabel).WithOne(x =&gt; x.TimeSerieDataLogLabelRelation).HasForeignKey(x =&gt; x.DataLogLabelRelationId);
+
+        }
+    }
+</code></pre>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            Carbon Framework
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>
