@@ -1,10 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFrameworks>netstandard2.0</TargetFrameworks>
-		<Version>3.10.0</Version>
+		<TargetFrameworks>net8.0;net6.0</TargetFrameworks>
+		<Version>3.10.1</Version>
 		<Description>
-      3.10.0
+      3.10.1
       - Target framework changed to netstandard2.0 for better .net version support
       3.9.6
       - ReqRespAsync pattern support via ServiceBus restored
@@ -66,16 +66,27 @@
 		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 	</PropertyGroup>
 
-	<ItemGroup>
-		<PackageReference Include="AspNetCore.HealthChecks.Rabbitmq" Version="8.0.2" />
-		<PackageReference Include="MassTransit" Version="7.3.1" />
-		<PackageReference Include="MassTransit.AspNetCore" Version="7.3.1" />
-		<PackageReference Include="MassTransit.Azure.ServiceBus.Core" Version="7.3.1" />
-		<PackageReference Include="MassTransit.Extensions.DependencyInjection" Version="7.3.1" />
-		<PackageReference Include="MassTransit.RabbitMQ" Version="7.3.1" />
-		<PackageReference Include="MassTransit.Redis" Version="7.3.1" />
-		<PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="8.0.2" />
-		<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.1" />
+  <ItemGroup Condition="'$(TargetFramework)' == 'net8.0'">
+    <PackageReference Include="AspNetCore.HealthChecks.Rabbitmq" Version="8.0.2" />
+    <PackageReference Include="MassTransit" Version="7.3.1" />
+    <PackageReference Include="MassTransit.AspNetCore" Version="7.3.1" />
+    <PackageReference Include="MassTransit.Azure.ServiceBus.Core" Version="7.3.1" />
+    <PackageReference Include="MassTransit.Extensions.DependencyInjection" Version="7.3.1" />
+    <PackageReference Include="MassTransit.RabbitMQ" Version="7.3.1" />
+    <PackageReference Include="MassTransit.Redis" Version="7.3.1" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="8.0.2" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.1" />
+  </ItemGroup>
+	<ItemGroup Condition="'$(TargetFramework)' == 'net6.0'">
+    <PackageReference Include="AspNetCore.HealthChecks.Rabbitmq" Version="5.0.1" />
+    <PackageReference Include="MassTransit" Version="7.3.1" />
+    <PackageReference Include="MassTransit.AspNetCore" Version="7.3.1" />
+    <PackageReference Include="MassTransit.Azure.ServiceBus.Core" Version="7.3.1" />
+    <PackageReference Include="MassTransit.Extensions.DependencyInjection" Version="7.3.1" />
+    <PackageReference Include="MassTransit.RabbitMQ" Version="7.3.1" />
+    <PackageReference Include="MassTransit.Redis" Version="7.3.1" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="3.1.12" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="5.0.0" />
 	</ItemGroup>
 
 </Project>

@@ -71,9 +71,10 @@ namespace Carbon.WebApplication
             #region Serilog Settings
 
             Log.Logger = SerilogExtensions.CreateLogger(Configuration);
+#if NET8_0
             services.AddSerilog(Log.Logger);
-
-            #endregion
+#endif
+#endregion
 
             AddServiceCors(services, Configuration);
 
@@ -89,7 +90,7 @@ namespace Carbon.WebApplication
                 options.JsonSerializerOptions.DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull;
 #elif NET5_0 || NETCOREAPP3_1
                 options.JsonSerializerOptions.IgnoreNullValues = true;
-#endif       
+#endif
             })
             .AddNewtonsoftJson(options =>
             {
