@@ -2,9 +2,9 @@
 
   <PropertyGroup>
     <TargetFrameworks>net8.0;net6.0;netstandard2.1</TargetFrameworks>
-    <Version>2.4.0</Version>
+    <Version>2.4.1</Version>
     <Description>
-		2.4.0
+		2.4.1
 		Dotnet 8 and EntityFrameworkCore 8 support added.
 
 		2.3.5
@@ -48,8 +48,13 @@
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
   </PropertyGroup>
 
-  <ItemGroup>
+  <ItemGroup Condition="'$(TargetFramework)' == 'net8.0'">
     <PackageReference Include="AspNetCore.HealthChecks.NpgSql" Version="8.0.2" />
+  </ItemGroup>
+  <ItemGroup Condition="'$(TargetFramework)' == 'net6.0' Or '$(TargetFramework)' == 'netstandard2.1'">
+    <PackageReference Include="AspNetCore.HealthChecks.NpgSql" Version="5.0.2" />
+  </ItemGroup>
+  <ItemGroup>
     <PackageReference Include="AspNetCore.HealthChecks.SqlServer" Version="5.0.3" />
     <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
     <PackageReference Include="System.Runtime.Loader" Version="4.3.0" />

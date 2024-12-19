@@ -111,6 +111,9 @@ namespace Carbon.WebApplication
 
                 #endregion
             });
+#if NET6_0
+            builder.UseSerilog();
+#endif
         }
 
     }

@@ -2,9 +2,9 @@
 
   <PropertyGroup>
 	  <TargetFrameworks>net8.0;net6.0</TargetFrameworks>
-	  <Version>2.10.0</Version>
+	  <Version>2.10.1</Version>
     <Description>
--2.10.0
+-2.10.1
 - Dotnet 8.0 target framework added, older versions removed
 -2.9.3
 - MenuItems field added to SolutionCreationRequest

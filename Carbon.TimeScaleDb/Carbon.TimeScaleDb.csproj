@@ -2,9 +2,9 @@
 
   <PropertyGroup>
     <TargetFrameworks>net8.0;net6.0</TargetFrameworks>
-    <Version>1.2.0</Version>
+    <Version>1.2.1</Version>
     <Description>
-1.2.0
+1.2.1
 Dotnet 8.0 target framework added, older versions removed
 1.1.2
 TimeScaleDb converts to existing tables to hypertables by migrating data
@@ -15,10 +15,16 @@ Library for some specific TimeScaleDb methods</Description>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
   </PropertyGroup>
 
-  <ItemGroup>
+  <ItemGroup  Condition="'$(TargetFramework)' == 'net8.0'">
     <PackageReference Include="AspNetCore.HealthChecks.NpgSql" Version="8.0.2" />
     <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
     <PackageReference Include="Npgsql" Version="8.0.6" />
+    <PackageReference Include="System.Runtime.Loader" Version="4.3.0" />
+  </ItemGroup>
+  <ItemGroup  Condition="'$(TargetFramework)' == 'net6.0'">
+    <PackageReference Include="AspNetCore.HealthChecks.NpgSql" Version="6.0.2" />
+    <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
+    <PackageReference Include="Npgsql" Version="6.0.13" />
     <PackageReference Include="System.Runtime.Loader" Version="4.3.0" />
   </ItemGroup>
 
