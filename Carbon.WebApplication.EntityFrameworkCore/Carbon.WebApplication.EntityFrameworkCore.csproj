@@ -2,9 +2,9 @@
 
   <PropertyGroup>
     <TargetFrameworks>net8.0;net6.0;netstandard2.1</TargetFrameworks>
-    <Version>2.4.1</Version>
+    <Version>2.4.2</Version>
     <Description>
-		2.4.1
+		2.4.2
 		Dotnet 8 and EntityFrameworkCore 8 support added.
 
 		2.3.5
