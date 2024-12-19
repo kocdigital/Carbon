@@ -2,9 +2,9 @@
 
   <PropertyGroup>
     <TargetFrameworks>net8.0;net6.0;netstandard2.1</TargetFrameworks>
-    <Version>3.5.1</Version>
+    <Version>3.5.2</Version>
     <Description>
-      - 3.5.1
+      - 3.5.2
       * ToPagedListEntityFilteredWithSolutionAsync method added to EFExtensions
       * ToPagedListEntityFilteredWithSolution method client side filtering fixed
 
