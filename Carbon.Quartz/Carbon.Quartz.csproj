@@ -3,9 +3,11 @@
   <PropertyGroup>
     <TargetFrameworks>net8.0;net6.0</TargetFrameworks>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-    <Version>1.4.2</Version>
+    <Version>1.5.0</Version>
     <GenerateDocumentationFile>False</GenerateDocumentationFile>
     <Description>
+      1.5.0
+      - Dependent Carbon.Domain packages updated.
       1.4.2
       - Dotnet 8.0 target framework added, older versions removed
       1.3.0
