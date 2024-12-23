@@ -1,4 +1,4 @@
-﻿#if NET6_0
+#if (NET6_0_OR_GREATER || NET8_0_OR_GREATER)
 using Carbon.Common;
 using Carbon.WebApplication.TenantManagementHandler.Extensions;
 using Carbon.WebApplication.TenantManagementHandler.Services;
