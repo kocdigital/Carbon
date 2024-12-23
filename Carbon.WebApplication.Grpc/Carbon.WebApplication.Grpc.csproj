@@ -2,8 +2,10 @@
 
   <PropertyGroup>
     <TargetFrameworks>net8.0;net6.0</TargetFrameworks>
-    <Version>3.3.3</Version>
+    <Version>3.3.4</Version>
     <Description>
+		3.3.4
+		- HybridModelBinding updated to 0.17.0 on net8.0 target framework
 		3.3.3
 		- Dotnet 8.0 target framework added for minimal api
 		3.3.2

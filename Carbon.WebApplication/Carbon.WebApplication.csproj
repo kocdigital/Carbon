@@ -1,8 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
 		<TargetFrameworks>net8.0;net6.0</TargetFrameworks>
-		<Version>4.6.3-alpha1</Version>
+		<Version>4.6.4</Version>
 		<Description>
+			4.6.4
+			- HybridModelBinding updated to 0.17.0 on net8.0 target framework
 			4.6.3
 			- Dotnet 8.0 target framework added for minimal api
 			4.6.2
