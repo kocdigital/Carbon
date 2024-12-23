@@ -39,36 +39,12 @@ namespace Carbon.Domain.EntityFrameworkCore
         /// <summary>
         /// 	Retrieves and returns the <typeparamref name="TEntity"/> specified by <paramref name="id"/> from the database context.
         /// </summary>
-        /// <param name="id"> Id of the requested <typeparamref name="TEntity"/> object. </param> 
-        /// <returns> A task whose result is the requested <typeparamref name="TEntity"/> object. </returns>
-        public virtual async Task<TEntity> GetByIdAsync(Guid id)
-        {
-            return await context.Set<TEntity>().FindAsync(id);
-        }
-
-        /// <summary>
-        /// 	Retrieves and returns the <typeparamref name="TEntity"/> specified by <paramref name="id"/> from the database context.
-        /// </summary>
         /// <param name="id"> Id of the requested <typeparamref name="TEntity"/> object. </param>
         /// <param name="cancellationToken"> Token to monitor for cancellation requests. </param>
         /// <returns> A task whose result is the requested <typeparamref name="TEntity"/> object. </returns>
-        public virtual async Task<TEntity> GetByIdAsync(Guid id, CancellationToken? cancellationToken = default)
+        public virtual async Task<TEntity> GetByIdAsync(Guid id, CancellationToken cancellationToken)
         {
-            return await context.Set<TEntity>().FindAsync(id, cancellationToken?? CancellationToken.None);
-        }
-
-        /// <summary>
-        ///     Creates and saves the given <typeparamref name="TEntity"/> object in the database.
-        /// </summary>
-        /// <param name="entity"> Object to be saved to the database </param> 
-        /// <returns> A task that returns the <typeparamref name="TEntity"/> object saved to database. </returns>
-        public virtual async Task<TEntity> CreateAsync(TEntity entity)
-        {
-            base.CheckIfAuthorized(entity);
-            context.Set<TEntity>().Add(entity);
-            await context.SaveChangesAsync();
-            await base.ConnectToSolution(entity);
-            return entity;
+            return await context.Set<TEntity>().FindAsync(id, cancellationToken);
         }
 
         /// <summary>
@@ -77,11 +53,11 @@ namespace Carbon.Domain.EntityFrameworkCore
         /// <param name="entity"> Object to be saved to the database </param>
         /// <param name="cancellationToken"> Token to monitor for cancellation requests. </param>
         /// <returns> A task that returns the <typeparamref name="TEntity"/> object saved to database. </returns>
-        public virtual async Task<TEntity> CreateAsync(TEntity entity, CancellationToken? cancellationToken = default)
+        public virtual async Task<TEntity> CreateAsync(TEntity entity, CancellationToken cancellationToken)
         {
             base.CheckIfAuthorized(entity);
             context.Set<TEntity>().Add(entity);
-            await context.SaveChangesAsync(cancellationToken?? CancellationToken.None);
+            await context.SaveChangesAsync(cancellationToken);
             await base.ConnectToSolution(entity);
             return entity;
         }
@@ -92,50 +68,12 @@ namespace Carbon.Domain.EntityFrameworkCore
         /// <param name="entity"> Object to be updated to the database </param>
         /// <param name="cancellationToken"> Token to monitor for cancellation requests. </param>
         /// <returns> A task that returns the <typeparamref name="TEntity"/> object updated in database. </returns>
-        public virtual async Task<TEntity> UpdateAsync(TEntity entity)
+        public virtual async Task<TEntity> UpdateAsync(TEntity entity, CancellationToken cancellationToken)
         {
             base.CheckIfAuthorized(entity);
             context.Entry(entity).State = EntityState.Modified;
-            await context.SaveChangesAsync();
+            await context.SaveChangesAsync(cancellationToken);
             await base.ConnectToSolution(entity);
-            return entity;
-        }
-
-        /// <summary>
-        ///     Updates and saves the given <typeparamref name="TEntity"/> object in the database.
-        /// </summary>
-        /// <param name="entity"> Object to be updated to the database </param>
-        /// <param name="cancellationToken"> Token to monitor for cancellation requests. </param>
-        /// <returns> A task that returns the <typeparamref name="TEntity"/> object updated in database. </returns>
-        public virtual async Task<TEntity> UpdateAsync(TEntity entity, CancellationToken? cancellationToken = default)
-        {
-            base.CheckIfAuthorized(entity);
-            context.Entry(entity).State = EntityState.Modified;
-            await context.SaveChangesAsync(cancellationToken ?? CancellationToken.None);
-            await base.ConnectToSolution(entity);
-            return entity;
-        }
-
-        /// <summary>
-        /// 	Deletes and returns the <typeparamref name="TEntity"/> specified by <paramref name="id"/> from the database context.
-        /// </summary>
-        /// <param name="id"> Id of the specified <typeparamref name="TEntity"/> object. </param> 
-        /// <returns> A task whose result is the deleted <typeparamref name="TEntity"/> object. If no matching entry is found, returns null instead. </returns>
-        public virtual async Task<TEntity> DeleteAsync(Guid id)
-        {
-            var entity = await context.Set<TEntity>().FindAsync(id);
-            if (entity == null)
-            {
-                return entity;
-            }
-            base.CheckIfAuthorized(entity);
-
-            context.Set<TEntity>().Remove(entity);
-
-            await context.SaveChangesAsync();
-
-            await base.RemoveSolution(entity);
-
             return entity;
         }
 
@@ -145,9 +83,9 @@ namespace Carbon.Domain.EntityFrameworkCore
         /// <param name="id"> Id of the specified <typeparamref name="TEntity"/> object. </param>
         /// <param name="cancellationToken"> Token to monitor for cancellation requests. </param>
         /// <returns> A task whose result is the deleted <typeparamref name="TEntity"/> object. If no matching entry is found, returns null instead. </returns>
-        public virtual async Task<TEntity> DeleteAsync(Guid id, CancellationToken? cancellationToken = default)
+        public virtual async Task<TEntity> DeleteAsync(Guid id, CancellationToken cancellationToken)
         {
-            var entity = await context.Set<TEntity>().FindAsync(id, cancellationToken?? CancellationToken.None);
+            var entity = await context.Set<TEntity>().FindAsync(id, cancellationToken);
             if (entity == null)
             {
                 return entity;
@@ -156,7 +94,7 @@ namespace Carbon.Domain.EntityFrameworkCore
 
             context.Set<TEntity>().Remove(entity);
 
-            await context.SaveChangesAsync(cancellationToken?? CancellationToken.None);
+            await context.SaveChangesAsync(cancellationToken);
 
             await base.RemoveSolution(entity);
 
@@ -164,47 +102,15 @@ namespace Carbon.Domain.EntityFrameworkCore
         }
 
         /// <summary>
-        ///     Retrieves and returns all <typeparamref name="TEntity"/> objects related to the given <paramref name="tenantId"/> from the database. 
-        /// </summary>
-        /// <returns> A task which results in a list that contains all <typeparamref name="TEntity"/> objects in the database context.</returns>
-        public virtual async Task<List<TEntity>> GetAllAsync()
-        {
-            return await context.Set<TEntity>().ToListAsync();
-        }
-
-        /// <summary>
         ///     Retrieves and returns all <typeparamref name="TEntity"/> objects related to the given <paramref name="tenantId"/> from the database.
         /// <param name="cancellationToken"> Token to monitor for cancellation requests. </param>
         /// </summary>
         /// <returns> A task which results in a list that contains all <typeparamref name="TEntity"/> objects in the database context.</returns>
-        public virtual async Task<List<TEntity>> GetAllAsync(CancellationToken? cancellationToken = default)
+        public virtual async Task<List<TEntity>> GetAllAsync(CancellationToken cancellationToken)
         {
-            return await context.Set<TEntity>().ToListAsync(cancellationToken?? CancellationToken.None);
+            return await context.Set<TEntity>().ToListAsync(cancellationToken);
         }
 
-        /// <summary>
-        ///     Creates and saves the <typeparamref name="TEntity"/> objects in the given <code>IEnumerable</code> to the database.
-        /// </summary>
-        /// <param name="entities"> The collection that contains the entities to be created. </param> 
-        /// <returns>A task which results in a list that contains the <typeparamref name="TEntity"/> objects created in the database.</returns>
-        /// <seealso cref="IEnumerable{T}"/>
-        public virtual async Task<List<TEntity>> CreateRangeAsync(IEnumerable<TEntity> entities)
-        {
-            foreach (var entity in entities)
-            {
-                base.CheckIfAuthorized(entity);
-            }
-
-            context.Set<TEntity>().AddRange(entities);
-            await context.SaveChangesAsync();
-
-            foreach (var entity in entities)
-            {
-                await base.ConnectToSolution(entity);
-            }
-
-            return entities.ToList();
-        }
 
         /// <summary>
         ///     Creates and saves the <typeparamref name="TEntity"/> objects in the given <code>IEnumerable</code> to the database.
@@ -213,7 +119,7 @@ namespace Carbon.Domain.EntityFrameworkCore
         /// <param name="cancellationToken"> Token to monitor for cancellation requests. </param>
         /// <returns>A task which results in a list that contains the <typeparamref name="TEntity"/> objects created in the database.</returns>
         /// <seealso cref="IEnumerable{T}"/>
-        public virtual async Task<List<TEntity>> CreateRangeAsync(IEnumerable<TEntity> entities, CancellationToken? cancellationToken = default)
+        public virtual async Task<List<TEntity>> CreateRangeAsync(IEnumerable<TEntity> entities, CancellationToken cancellationToken)
         {
             foreach (var entity in entities)
             {
@@ -221,7 +127,7 @@ namespace Carbon.Domain.EntityFrameworkCore
             }
 
             context.Set<TEntity>().AddRange(entities);
-            await context.SaveChangesAsync(cancellationToken ??   CancellationToken.None);
+            await context.SaveChangesAsync(cancellationToken);
 
             foreach (var entity in entities)
             {
@@ -230,32 +136,6 @@ namespace Carbon.Domain.EntityFrameworkCore
 
             return entities.ToList();
         }
-
-
-        /// <summary>
-        ///     Updates and saves the <typeparamref name="TEntity"/> objects in the given <code>IEnumerable</code> to the database.
-        /// </summary>
-        /// <param name="entities"> The collection that contains the entities to be updated. </param> 
-        /// <returns>A task which results in a list that contains the <typeparamref name="TEntity"/> objects updated in the database.</returns>
-        /// <seealso cref="IEnumerable{T}"/>
-        public virtual async Task<List<TEntity>> UpdateRangeAsync(IEnumerable<TEntity> entities)
-        {
-            foreach (var entity in entities)
-            {
-                base.CheckIfAuthorized(entity);
-            }
-
-            context.Set<TEntity>().UpdateRange(entities);
-            await context.SaveChangesAsync();
-
-            foreach (var entity in entities)
-            {
-                await base.ConnectToSolution(entity);
-            }
-
-            return entities.ToList();
-        }
-
 
         /// <summary>
         ///     Updates and saves the <typeparamref name="TEntity"/> objects in the given <code>IEnumerable</code> to the database.
@@ -264,7 +144,7 @@ namespace Carbon.Domain.EntityFrameworkCore
         /// <param name="cancellationToken"> Token to monitor for cancellation requests. </param>
         /// <returns>A task which results in a list that contains the <typeparamref name="TEntity"/> objects updated in the database.</returns>
         /// <seealso cref="IEnumerable{T}"/>
-        public virtual async Task<List<TEntity>> UpdateRangeAsync(IEnumerable<TEntity> entities, CancellationToken? cancellationToken = default)
+        public virtual async Task<List<TEntity>> UpdateRangeAsync(IEnumerable<TEntity> entities, CancellationToken cancellationToken)
         {
             foreach (var entity in entities)
             {
@@ -272,34 +152,12 @@ namespace Carbon.Domain.EntityFrameworkCore
             }
 
             context.Set<TEntity>().UpdateRange(entities);
-            await context.SaveChangesAsync(cancellationToken?? CancellationToken.None);
+            await context.SaveChangesAsync(cancellationToken);
 
             foreach (var entity in entities)
             {
                 await base.ConnectToSolution(entity);
             }
-
-            return entities.ToList();
-        }
-
-        /// <summary>
-        ///     Removes the <typeparamref name="TEntity"/> objects in the given <code>IEnumerable</code> from the database.
-        /// </summary>
-        /// <param name="entities"> The collection that contains the entities to be deleted. </param> 
-        /// <returns>A task which results in a list that contains the <typeparamref name="TEntity"/> objects deleted from the database.</returns>
-        /// <seealso cref="IEnumerable{T}"/>
-        public virtual async Task<List<TEntity>> DeleteRangeAsync(IEnumerable<TEntity> entities)
-        {
-            foreach (var entity in entities)
-            {
-                base.CheckIfAuthorized(entity);
-            }
-
-            context.Set<TEntity>().RemoveRange(entities);
-
-            await context.SaveChangesAsync();
-
-            await base.RemoveSolutions(entities.ToList());
 
             return entities.ToList();
         }
@@ -311,7 +169,7 @@ namespace Carbon.Domain.EntityFrameworkCore
         /// <param name="cancellationToken"> Token to monitor for cancellation requests. </param>
         /// <returns>A task which results in a list that contains the <typeparamref name="TEntity"/> objects deleted from the database.</returns>
         /// <seealso cref="IEnumerable{T}"/>
-        public virtual async Task<List<TEntity>> DeleteRangeAsync(IEnumerable<TEntity> entities, CancellationToken? cancellationToken = default)
+        public virtual async Task<List<TEntity>> DeleteRangeAsync(IEnumerable<TEntity> entities, CancellationToken cancellationToken)
         {
             foreach (var entity in entities)
             {
@@ -320,22 +178,13 @@ namespace Carbon.Domain.EntityFrameworkCore
 
             context.Set<TEntity>().RemoveRange(entities);
 
-            await context.SaveChangesAsync(cancellationToken?? CancellationToken.None);
+            await context.SaveChangesAsync(cancellationToken);
 
             await base.RemoveSolutions(entities.ToList());
 
             return entities.ToList();
         }
 
-        /// <summary>
-        ///     Retrieves and returns the first <typeparamref name="TEntity"/> element that satisfies the given <paramref name="predicate"/>.
-        /// </summary>
-        /// <param name="predicate"> An expression that returns binary results for <typeparamref name="TEntity"/> objects. </param> 
-        /// <returns>The first <typeparamref name="TEntity"/> element that is related to <paramref name="tenantId"/> and also satisfies the given <paramref name="predicate"/> in the database.</returns>
-        public virtual async Task<TEntity> GetAsync(Expression<Func<TEntity, bool>> predicate)
-        {
-            return await context.Set<TEntity>().AsQueryable().FirstOrDefaultAsync(predicate);
-        }
 
         /// <summary>
         ///     Retrieves and returns the first <typeparamref name="TEntity"/> element that satisfies the given <paramref name="predicate"/>.
@@ -343,9 +192,9 @@ namespace Carbon.Domain.EntityFrameworkCore
         /// <param name="predicate"> An expression that returns binary results for <typeparamref name="TEntity"/> objects. </param>
         /// <param name="cancellationToken"> Token to monitor for cancellation requests. </param>
         /// <returns>The first <typeparamref name="TEntity"/> element that is related to <paramref name="tenantId"/> and also satisfies the given <paramref name="predicate"/> in the database.</returns>
-        public virtual async Task<TEntity> GetAsync(Expression<Func<TEntity, bool>> predicate, CancellationToken? cancellationToken = default)
+        public virtual async Task<TEntity> GetAsync(Expression<Func<TEntity, bool>> predicate, CancellationToken cancellationToken)
         {
-            return await context.Set<TEntity>().AsQueryable().FirstOrDefaultAsync(predicate, cancellationToken ?? CancellationToken.None);
+            return await context.Set<TEntity>().AsQueryable().FirstOrDefaultAsync(predicate, cancellationToken);
         }
 
         /// <summary>
@@ -383,30 +232,9 @@ namespace Carbon.Domain.EntityFrameworkCore
         /// </summary>
         /// <param name="cancellationToken"> Token to monitor for cancellation requests. </param>
         /// <returns>A task that gives the number of state entries changed in the database as its result.</returns>
-        public async Task<int> SaveChangesAsync()
+        public async Task<int> SaveChangesAsync(CancellationToken cancellationToken)
         {
-            return await context.SaveChangesAsync();
-        }
-
-        /// <summary>
-        ///     Saves changes made to the database.
-        /// </summary>
-        /// <param name="cancellationToken"> Token to monitor for cancellation requests. </param>
-        /// <returns>A task that gives the number of state entries changed in the database as its result.</returns>
-        public async Task<int> SaveChangesAsync(CancellationToken? cancellationToken = default)
-        {
-            return await context.SaveChangesAsync(cancellationToken ?? CancellationToken.None);
-        }
-
-        /// <summary>
-        ///     Retrieves and returns all <typeparamref name="TEntity"/> objects related to the given <paramref name="tenantId"/> from the database.
-        /// </summary>
-        /// <typeparam name="TResult">The type of the result.</typeparam>
-        /// <param name="selector">A function to select the result type.</param> 
-        /// <returns> A task which results in a list that contains all <typeparamref name="TEntity"/> objects in the database context.</returns>
-        public virtual async Task<List<TResult>> GetAllAsync<TResult>(Expression<Func<TEntity, TResult>> selector)
-        {  
-            return await context.Set<TEntity>().Select(selector).ToListAsync();
+            return await context.SaveChangesAsync(cancellationToken);
         }
 
         /// <summary>
@@ -416,25 +244,9 @@ namespace Carbon.Domain.EntityFrameworkCore
         /// <param name="selector">A function to select the result type.</param>
         /// <param name="cancellationToken"> Token to monitor for cancellation requests. </param> 
         /// <returns> A task which results in a list that contains all <typeparamref name="TEntity"/> objects in the database context.</returns>
-        public virtual async Task<List<TResult>> GetAllAsync<TResult>(Expression<Func<TEntity, TResult>> selector, CancellationToken? cancellationToken= default)
+        public virtual async Task<List<TResult>> GetAllAsync<TResult>(Expression<Func<TEntity, TResult>> selector, CancellationToken cancellationToken)
         {  
-            return await context.Set<TEntity>().Select(selector).ToListAsync(cancellationToken?? CancellationToken.None);
-        }
-
-
-        /// <summary>
-        /// 	Retrieves and returns the <typeparamref name="TEntity"/> specified by <paramref name="id"/> from the database context.
-        /// If <paramref name="selector"/> is not null, returns the entity projected by the selector.
-        /// </summary>
-        /// <param name="id"> Id of the requested <typeparamref name="TEntity"/> object. </param>
-        /// <param name="selector"> Optional selector to project the entity properties. </param> 
-        /// <returns> A task whose result is the requested <typeparamref name="TEntity"/> object or the projection if <paramref name="selector"/> is not null. </returns>
-        public virtual async Task<TResult> GetByIdAsync<TResult>(Guid id, Expression<Func<TEntity, TResult>> selector)
-        { 
-            return await context.Set<TEntity>()
-                                .Where(e => EF.Property<Guid>(e, "Id") == id)
-                                .Select(selector)
-                                .FirstOrDefaultAsync();
+            return await context.Set<TEntity>().Select(selector).ToListAsync(cancellationToken);
         }
 
         /// <summary>
@@ -445,12 +257,12 @@ namespace Carbon.Domain.EntityFrameworkCore
         /// <param name="selector"> Optional selector to project the entity properties. </param>
         /// <param name="cancellationToken"> Token to monitor for cancellation requests. </param>
         /// <returns> A task whose result is the requested <typeparamref name="TEntity"/> object or the projection if <paramref name="selector"/> is not null. </returns>
-        public virtual async Task<TResult> GetByIdAsync<TResult>(Guid id, Expression<Func<TEntity, TResult>> selector, CancellationToken? cancellationToken = default)
+        public virtual async Task<TResult> GetByIdAsync<TResult>(Guid id, Expression<Func<TEntity, TResult>> selector, CancellationToken cancellationToken)
         {
             return await context.Set<TEntity>()
                                 .Where(e => EF.Property<Guid>(e, "Id") == id)
                                 .Select(selector)
-                                .FirstOrDefaultAsync(cancellationToken?? CancellationToken.None);
+                                .FirstOrDefaultAsync(cancellationToken);
         }
     }
 }
