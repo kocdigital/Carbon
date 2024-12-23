@@ -1,8 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
 		<TargetFrameworks>net8.0;net6.0</TargetFrameworks>
-		<Version>4.6.2</Version>
+		<Version>4.6.3</Version>
 		<Description>
+			4.6.3
+			- Dotnet 8.0 target framework added for minimal api
 			4.6.2
 			- Dotnet 8.0 target framework added
 			4.5.6
