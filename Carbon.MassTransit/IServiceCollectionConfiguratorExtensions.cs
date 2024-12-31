@@ -154,7 +154,7 @@ namespace Carbon.MassTransit
             serviceCollection.UsingRabbitMq((cfg, x) => rabbitMqBusFactory(configurator, rabbitMqSettings, cfg, x));
             StaticHelpers.SetStaticHelperBusType(MassTransitBusType.RabbitMQ);
 
-            serviceCollection.Collection.AddRabbitMqBusHealthCheck($"amqp://{rabbitMqSettings.Username}:{rabbitMqSettings.Password}@{rabbitMqSettings.Host}:{rabbitMqSettings.Port}{rabbitMqSettings.VirtualHost}", HealthStatus.Unhealthy, healthCheckTag);
+            serviceCollection.Collection.AddRabbitMqBusHealthCheck($"amqp://{Uri.EscapeDataString(rabbitMqSettings.Username)}:{Uri.EscapeDataString(rabbitMqSettings.Password)}@{rabbitMqSettings.Host}:{rabbitMqSettings.Port}{rabbitMqSettings.VirtualHost}", HealthStatus.Unhealthy, healthCheckTag);
         }
 
         /// <summary>
@@ -181,7 +181,7 @@ namespace Carbon.MassTransit
                 healthCheckTag = typeof(T).Name;
 
             StaticHelpers.SetStaticHelperBusType(MassTransitBusType.RabbitMQ);
-            serviceCollection.Collection.AddRabbitMqBusHealthCheck($"amqp://{rabbitMqSettings.Username}:{rabbitMqSettings.Password}@{rabbitMqSettings.Host}:{rabbitMqSettings.Port}{rabbitMqSettings.VirtualHost}", name: healthCheckTag);
+            serviceCollection.Collection.AddRabbitMqBusHealthCheck($"amqp://{Uri.EscapeDataString(rabbitMqSettings.Username)}:{Uri.EscapeDataString(rabbitMqSettings.Password)}@{rabbitMqSettings.Host}:{rabbitMqSettings.Port}{rabbitMqSettings.VirtualHost}", name: healthCheckTag);
         }
 
         public static void AddRabbitMqBusHealthCheck(this IServiceCollection services,
