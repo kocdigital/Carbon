@@ -2,8 +2,10 @@
 
 	<PropertyGroup>
 		<TargetFrameworks>net8.0;net6.0</TargetFrameworks>
-		<Version>3.10.1</Version>
+		<Version>3.10.2</Version>
 		<Description>
+      3.10.2
+      - Healthcheck for RabbitMQ fixed; special characters inthe username and password are now supported
       3.10.1
       - Dotnet 8.0 target framework added, older versions removed
       3.9.6
