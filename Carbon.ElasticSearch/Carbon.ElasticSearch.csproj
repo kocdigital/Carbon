@@ -3,8 +3,10 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
     <ProjectGuid>{7AEAD788-E78D-4825-9761-AEB2570DE3E0}</ProjectGuid>
-    <Version>3.7.1</Version>
+    <Version>3.7.2</Version>
     <Description>
+	  3.7.2	
+	  - Added bulkUpdate operations.
       3.7.1
       - Health check fixed
       3.7.0
