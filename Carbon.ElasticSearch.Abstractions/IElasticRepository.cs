@@ -118,5 +118,22 @@ namespace Carbon.ElasticSearch.Abstractions
         /// <param name="cancellationToken">Token that can be used to cancel the request</param>
         /// <returns></returns>
         Task<DeleteByQueryResponse> DeleteAllAsync(string tenantId, CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// Performs a bulk update operation for the given items.
+        /// </summary>
+        /// <param name="items">The items to be updated.</param>
+        /// <param name="refresh">Whether to refresh the index after the operation.</param>
+        /// <returns>The response of the bulk operation.</returns>
+        BulkResponse BulkUpdate(IEnumerable<T> items, bool? refresh = null);
+
+        /// <summary>
+        /// Performs a bulk update operation asynchronously for the given items.
+        /// </summary>
+        /// <param name="items">The items to be updated.</param>
+        /// <param name="refresh">Whether to refresh the index after the operation.</param>
+        /// <param name="cancellationToken">The cancellation token.</param>
+        /// <returns>The response of the bulk operation.</returns>
+        Task<BulkResponse> BulkUpdateAsync(IEnumerable<T> items, bool? refresh = null, CancellationToken cancellationToken = default);
     }
 }

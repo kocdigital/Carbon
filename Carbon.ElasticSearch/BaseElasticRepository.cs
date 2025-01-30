@@ -92,6 +92,33 @@ namespace Carbon.ElasticSearch
             return _client.Update<T>(item, u => u.Index(Index).Doc(item).RetryOnConflict(3)
             .Refresh((_forceRefresh || (refresh ?? false)) ? Elasticsearch.Net.Refresh.True : Elasticsearch.Net.Refresh.False));
         }
+
+        public BulkResponse BulkUpdate(IEnumerable<T> items, bool? refresh = null)
+        {
+            var bulkDescriptor = new BulkDescriptor();
+            foreach (var item in items)
+            {
+                bulkDescriptor.Update<T>(u => u
+                    .Index(Index)
+                    .Doc(item)
+                    .RetriesOnConflict(3)
+                ).Refresh((_forceRefresh || (refresh ?? false)) ? Elasticsearch.Net.Refresh.True : Elasticsearch.Net.Refresh.False);
+            }
+            return _client.Bulk(bulkDescriptor);
+        }
+        public async Task<BulkResponse> BulkUpdateAsync(IEnumerable<T> items, bool? refresh = null, CancellationToken cancellationToken = default)
+        {
+            var bulkDescriptor = new BulkDescriptor();
+            foreach (var item in items)
+            {
+                bulkDescriptor.Update<T>(u => u
+                    .Index(Index)
+                    .Doc(item)
+                    .RetriesOnConflict(3)
+                ).Refresh((_forceRefresh || (refresh ?? false)) ? Elasticsearch.Net.Refresh.True : Elasticsearch.Net.Refresh.False);
+            }
+            return await _client.BulkAsync(bulkDescriptor, cancellationToken);
+        }
     }
 }
 
