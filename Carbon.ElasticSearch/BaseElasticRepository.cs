@@ -43,6 +43,11 @@ namespace Carbon.ElasticSearch
         {
             return await _client.BulkAsync(b => b.Index(Index).IndexMany(items),cancellationToken);
         }
+        public async Task<BulkResponse> AddBulkAndReturnAsync(IEnumerable<T> items, CancellationToken cancellationToken = default, bool? refresh = null)
+        {
+            return await _client.BulkAsync(b => b.Index(Index).IndexMany(items)
+            .Refresh((_forceRefresh || (refresh ?? false)) ? Elasticsearch.Net.Refresh.True : Elasticsearch.Net.Refresh.False), cancellationToken);
+        }
         public void DeleteById(string id, bool? refresh = null)
         {
             var response = _client.Delete<T>(new DocumentPath<T>(id), x => x.Index(Index)
