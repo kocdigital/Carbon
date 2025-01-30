@@ -2,100 +2,103 @@
 
   <PropertyGroup>
     <TargetFrameworks>net8.0;net6.0;netstandard2.1</TargetFrameworks>
-    <Version>3.6.0</Version>
+    <Version>3.6.1</Version>
     <Description>
-      - 3.6.0
-      * CancellationToken handling changed on EFRepository and EFTenantManagetTenantRepository classes.
+		- 3.6.1
+		* The input parameter type of the FindAsync method has been changed.
 
-      - 3.5.2
-      * ToPagedListEntityFilteredWithSolutionAsync method added to EFExtensions
-      * ToPagedListEntityFilteredWithSolution method client side filtering fixed
+		- 3.6.0
+		* CancellationToken handling changed on EFRepository and EFTenantManagetTenantRepository classes.
 
-      - 3.4.1
-      * AsEnumerable usage removed from ToPagedListEntityFilteredWithSolution method.
+		- 3.5.2
+		* ToPagedListEntityFilteredWithSolutionAsync method added to EFExtensions
+		* ToPagedListEntityFilteredWithSolution method client side filtering fixed
 
-      - 3.4.0
-      * Dotnet 8 and EntityFrameworkCore 8 support added.
+		- 3.4.1
+		* AsEnumerable usage removed from ToPagedListEntityFilteredWithSolution method.
 
-      - 3.3.5
-      * WhereContains supported Equals method by "useTrEnSearch" property in overloaded method
+		- 3.4.0
+		* Dotnet 8 and EntityFrameworkCore 8 support added.
 
-      - 3.3.4
-      * WhereContains supported Equals method by "useTrEnSearch" property
+		- 3.3.5
+		* WhereContains supported Equals method by "useTrEnSearch" property in overloaded method
 
-      - 3.3.3
-      * New functions with CancellationToken have been added in Repositories.
+		- 3.3.4
+		* WhereContains supported Equals method by "useTrEnSearch" property
 
-      - 3.3.2
-      * Selector and CancellationToken properties added in Repositories
+		- 3.3.3
+		* New functions with CancellationToken have been added in Repositories.
 
-      - 3.3.1
-      * Add WhereContains extensions method fixed
+		- 3.3.2
+		* Selector and CancellationToken properties added in Repositories
 
-      - 3.3.0
-      * Add WhereIf and WhereIfContains extensions method
+		- 3.3.1
+		* Add WhereContains extensions method fixed
 
-      - 3.2.1
-      * WhereContains overloaded
+		- 3.3.0
+		* Add WhereIf and WhereIfContains extensions method
 
-      - 3.2.0
-      * WhereContains use to AndAlso or OrElse
+		- 3.2.1
+		* WhereContains overloaded
 
-      - 3.1.7
-      * WhereContains or extension change to and
+		- 3.2.0
+		* WhereContains use to AndAlso or OrElse
 
-      - 3.1.6
-      * WhereContains extension method bug resolved
+		- 3.1.7
+		* WhereContains or extension change to and
 
-      - 3.1.5
-      * Upgrade Carbon.PagedList (Remove pageSize and pageNumber validation check)
+		- 3.1.6
+		* WhereContains extension method bug resolved
 
-      - 3.1.3
-      * Added new extension method to EFExtensions (ToPagedListEntityFilteredWithSolution, ToPagedListEntityAsync, WhereContains)
+		- 3.1.5
+		* Upgrade Carbon.PagedList (Remove pageSize and pageNumber validation check)
 
-      - 3.1.2
-      * Refactor ownership filtering logic; include 'OwnerType.None' in conditions for more comprehensive permission assessment.
+		- 3.1.3
+		* Added new extension method to EFExtensions (ToPagedListEntityFilteredWithSolution, ToPagedListEntityAsync, WhereContains)
 
-      - 3.1.1
-      * Fixed EFExtensions FirstOrDefaultEntity methods. Null check condition is added for the Relation object
+		- 3.1.2
+		* Refactor ownership filtering logic; include 'OwnerType.None' in conditions for more comprehensive permission assessment.
 
-      - 3.1.0
-      * Added a new method(RemoveSolutions) to remove from EntitySolutionRelation during the DeleteBulk process
+		- 3.1.1
+		* Fixed EFExtensions FirstOrDefaultEntity methods. Null check condition is added for the Relation object
 
-      - 3.0.0
-      * Dotnet 6 and EntityFrameworkCore 6 support added.
+		- 3.1.0
+		* Added a new method(RemoveSolutions) to remove from EntitySolutionRelation during the DeleteBulk process
 
-      - 2.5.1
-      *ConnectToSolution method on repositoryBase now allows entities to be removed from any solutions altogether.
+		- 3.0.0
+		* Dotnet 6 and EntityFrameworkCore 6 support added.
 
-      - 2.5.0
-      *SoftDeleteConstraint which checks entity relations on soft delete, added
+		- 2.5.1
+		*ConnectToSolution method on repositoryBase now allows entities to be removed from any solutions altogether.
 
-      - 2.4.1
-      *Removed unnecessary and problematical usings
+		- 2.5.0
+		*SoftDeleteConstraint which checks entity relations on soft delete, added
 
-      -2.4.0
-      *Read-Only Context and Repository support added in order to implement CQRS over replicated SQL servers
+		- 2.4.1
+		*Removed unnecessary and problematical usings
 
-      -2.3.8
-      *Some performance improvements on Tenant Management EF Extensions and bug fixes
-      -2.3.0
-      *IEnumerable extensions added for Tenant Management EF Extensions
-      -2.2.0
-      *EFTenantManagetTenantRepository Added for ITenantRepository supported repos
+		-2.4.0
+		*Read-Only Context and Repository support added in order to implement CQRS over replicated SQL servers
 
-      -2.1.1
-      *FilteredIndex Error on EntitySolutionRelation in PostgreSQL mitigated
+		-2.3.8
+		*Some performance improvements on Tenant Management EF Extensions and bug fixes
+		-2.3.0
+		*IEnumerable extensions added for Tenant Management EF Extensions
+		-2.2.0
+		*EFTenantManagetTenantRepository Added for ITenantRepository supported repos
 
-      -2.1.0
-      * Compatible with Carbon.WebApplication Goduser feature
+		-2.1.1
+		*FilteredIndex Error on EntitySolutionRelation in PostgreSQL mitigated
 
-      -2.0.0
-      * Entity Framework Core 5 support added.
+		-2.1.0
+		* Compatible with Carbon.WebApplication Goduser feature
 
-      ExecuteProcedureSql added 1.2.8
-      UpdatedDate,deletedDate set for soft deletion 1.2.6
-    </Description>
+		-2.0.0
+		* Entity Framework Core 5 support added.
+
+		ExecuteProcedureSql added 1.2.8
+		UpdatedDate,deletedDate set for soft deletion 1.2.6
+	</Description>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
   </PropertyGroup>
 
