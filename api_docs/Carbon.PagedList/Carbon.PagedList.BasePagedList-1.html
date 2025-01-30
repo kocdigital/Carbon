@@ -1,0 +1,465 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class BasePagedList&lt;T&gt;
+   | Carbon Framework </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class BasePagedList&lt;T&gt;
+   | Carbon Framework ">
+    <meta name="generator" content="docfx 2.59.4.0">
+    
+    <link rel="shortcut icon" href="../../images/logo.png">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
+    
+    <meta property="docfx:rel" content="../../">
+    
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../images/logo.png" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Carbon.PagedList.BasePagedList`1">
+  
+  
+  <h1 id="Carbon_PagedList_BasePagedList_1" data-uid="Carbon.PagedList.BasePagedList`1" class="text-break">Class BasePagedList&lt;T&gt;
+  </h1>
+  <div class="markdown level0 summary"><p>Represents a subset of a collection of objects that can be individually accessed by index and containing metadata about the superset collection of objects this subset was created from.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><a class="xref" href="Carbon.PagedList.PagedListMetaData.html">PagedListMetaData</a></div>
+    <div class="level2"><span class="xref">BasePagedList&lt;T&gt;</span></div>
+      <div class="level3"><a class="xref" href="Carbon.PagedList.StaticPagedList-1.html">StaticPagedList&lt;T&gt;</a></div>
+  </div>
+  <div class="implements">
+    <h5>Implements</h5>
+    <div><a class="xref" href="Carbon.PagedList.IPagedList-1.html">IPagedList</a>&lt;T&gt;</div>
+    <div><a class="xref" href="Carbon.PagedList.IPagedList.html">IPagedList</a></div>
+    <div><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;T&gt;</div>
+    <div><span class="xref">System.Collections.IEnumerable</span></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="Carbon.PagedList.PagedListMetaData.html#Carbon_PagedList_PagedListMetaData_PageCount">PagedListMetaData.PageCount</a>
+    </div>
+    <div>
+      <a class="xref" href="Carbon.PagedList.PagedListMetaData.html#Carbon_PagedList_PagedListMetaData_TotalItemCount">PagedListMetaData.TotalItemCount</a>
+    </div>
+    <div>
+      <a class="xref" href="Carbon.PagedList.PagedListMetaData.html#Carbon_PagedList_PagedListMetaData_PageNumber">PagedListMetaData.PageNumber</a>
+    </div>
+    <div>
+      <a class="xref" href="Carbon.PagedList.PagedListMetaData.html#Carbon_PagedList_PagedListMetaData_PageSize">PagedListMetaData.PageSize</a>
+    </div>
+    <div>
+      <a class="xref" href="Carbon.PagedList.PagedListMetaData.html#Carbon_PagedList_PagedListMetaData_HasPreviousPage">PagedListMetaData.HasPreviousPage</a>
+    </div>
+    <div>
+      <a class="xref" href="Carbon.PagedList.PagedListMetaData.html#Carbon_PagedList_PagedListMetaData_HasNextPage">PagedListMetaData.HasNextPage</a>
+    </div>
+    <div>
+      <a class="xref" href="Carbon.PagedList.PagedListMetaData.html#Carbon_PagedList_PagedListMetaData_IsFirstPage">PagedListMetaData.IsFirstPage</a>
+    </div>
+    <div>
+      <a class="xref" href="Carbon.PagedList.PagedListMetaData.html#Carbon_PagedList_PagedListMetaData_IsLastPage">PagedListMetaData.IsLastPage</a>
+    </div>
+    <div>
+      <a class="xref" href="Carbon.PagedList.PagedListMetaData.html#Carbon_PagedList_PagedListMetaData_FirstItemOnPage">PagedListMetaData.FirstItemOnPage</a>
+    </div>
+    <div>
+      <a class="xref" href="Carbon.PagedList.PagedListMetaData.html#Carbon_PagedList_PagedListMetaData_LastItemOnPage">PagedListMetaData.LastItemOnPage</a>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Carbon.PagedList.html">Carbon.PagedList</a></h6>
+  <h6><strong>Assembly</strong>: Carbon.PagedList.dll</h6>
+  <h5 id="Carbon_PagedList_BasePagedList_1_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Serializable]
+public abstract class BasePagedList&lt;T&gt; : PagedListMetaData, IPagedList&lt;T&gt;, IPagedList, IEnumerable&lt;T&gt;, IEnumerable</code></pre>
+  </div>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td><p>The type of object the collection should contain.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Carbon_PagedList_BasePagedList_1_remarks"><strong>Remarks</strong></h5>
+  <div class="markdown level0 remarks"><p>Represents a subset of a collection of objects that can be individually accessed by index and containing metadata about the superset collection of objects this subset was created from.</p>
+</div>
+  <h3 id="constructors">Constructors
+  </h3>
+  <a id="Carbon_PagedList_BasePagedList_1__ctor_" data-uid="Carbon.PagedList.BasePagedList`1.#ctor*"></a>
+  <h4 id="Carbon_PagedList_BasePagedList_1__ctor" data-uid="Carbon.PagedList.BasePagedList`1.#ctor">BasePagedList()</h4>
+  <div class="markdown level1 summary"><p>Parameterless constructor.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected BasePagedList()</code></pre>
+  </div>
+  <a id="Carbon_PagedList_BasePagedList_1__ctor_" data-uid="Carbon.PagedList.BasePagedList`1.#ctor*"></a>
+  <h4 id="Carbon_PagedList_BasePagedList_1__ctor_System_Int32_System_Int32_System_Int32_" data-uid="Carbon.PagedList.BasePagedList`1.#ctor(System.Int32,System.Int32,System.Int32)">BasePagedList(Int32, Int32, Int32)</h4>
+  <div class="markdown level1 summary"><p>Initializes a new instance of a type deriving from <a class="xref" href="Carbon.PagedList.BasePagedList-1.html">BasePagedList&lt;T&gt;</a> and sets properties needed to calculate position and size data on the subset and superset.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected BasePagedList(int pageNumber, int pageSize, int totalItemCount)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">pageNumber</span></td>
+        <td><p>The one-based index of the subset of objects contained by this instance.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">pageSize</span></td>
+        <td><p>The maximum size of any individual subset.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">totalItemCount</span></td>
+        <td><p>The size of the superset.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="fields">Fields
+  </h3>
+  <h4 id="Carbon_PagedList_BasePagedList_1_Subset" data-uid="Carbon.PagedList.BasePagedList`1.Subset">Subset</h4>
+  <div class="markdown level1 summary"><p>The subset of items contained only within this one page of the superset.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected readonly List&lt;T&gt; Subset</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;T&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="properties">Properties
+  </h3>
+  <a id="Carbon_PagedList_BasePagedList_1_Count_" data-uid="Carbon.PagedList.BasePagedList`1.Count*"></a>
+  <h4 id="Carbon_PagedList_BasePagedList_1_Count" data-uid="Carbon.PagedList.BasePagedList`1.Count">Count</h4>
+  <div class="markdown level1 summary"><p>Gets the number of elements contained on this page.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int Count { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Carbon_PagedList_BasePagedList_1_Item_" data-uid="Carbon.PagedList.BasePagedList`1.Item*"></a>
+  <h4 id="Carbon_PagedList_BasePagedList_1_Item_System_Int32_" data-uid="Carbon.PagedList.BasePagedList`1.Item(System.Int32)">Item[Int32]</h4>
+  <div class="markdown level1 summary"><p>Gets the element at the specified index.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public T this[int index] { get; }</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">index</span></td>
+        <td><p>The zero-based index of the element to get.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  <a id="Carbon_PagedList_BasePagedList_1_GetEnumerator_" data-uid="Carbon.PagedList.BasePagedList`1.GetEnumerator*"></a>
+  <h4 id="Carbon_PagedList_BasePagedList_1_GetEnumerator" data-uid="Carbon.PagedList.BasePagedList`1.GetEnumerator">GetEnumerator()</h4>
+  <div class="markdown level1 summary"><p>Returns an enumerator that iterates through the BasePagedList&lt;T&gt;.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IEnumerator&lt;T&gt; GetEnumerator()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IEnumerator</span>&lt;T&gt;</td>
+        <td><p>A BasePagedList&lt;T&gt;.Enumerator for the BasePagedList&lt;T&gt;.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Carbon_PagedList_BasePagedList_1_GetMetaData_" data-uid="Carbon.PagedList.BasePagedList`1.GetMetaData*"></a>
+  <h4 id="Carbon_PagedList_BasePagedList_1_GetMetaData" data-uid="Carbon.PagedList.BasePagedList`1.GetMetaData">GetMetaData()</h4>
+  <div class="markdown level1 summary"><p>Gets a non-enumerable copy of this paged list.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IPagedList GetMetaData()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Carbon.PagedList.IPagedList.html">IPagedList</a></td>
+        <td><p>A non-enumerable copy of this paged list.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="eii">Explicit Interface Implementations
+  </h3>
+  <a id="Carbon_PagedList_BasePagedList_1_System_Collections_IEnumerable_GetEnumerator_" data-uid="Carbon.PagedList.BasePagedList`1.System#Collections#IEnumerable#GetEnumerator*"></a>
+  <h4 id="Carbon_PagedList_BasePagedList_1_System_Collections_IEnumerable_GetEnumerator" data-uid="Carbon.PagedList.BasePagedList`1.System#Collections#IEnumerable#GetEnumerator">IEnumerable.GetEnumerator()</h4>
+  <div class="markdown level1 summary"><p>Returns an enumerator that iterates through the BasePagedList&lt;T&gt;.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IEnumerator IEnumerable.GetEnumerator()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.IEnumerator</span></td>
+        <td><p>A BasePagedList&lt;T&gt;.Enumerator for the BasePagedList&lt;T&gt;.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <a class="xref" href="Carbon.PagedList.IPagedList-1.html">IPagedList&lt;T&gt;</a>
+  </div>
+  <div>
+      <a class="xref" href="Carbon.PagedList.IPagedList.html">IPagedList</a>
+  </div>
+  <div>
+      <span class="xref">System.Collections.Generic.IEnumerable&lt;T&gt;</span>
+  </div>
+  <div>
+      <span class="xref">System.Collections.IEnumerable</span>
+  </div>
+  <h3 id="extensionmethods">Extension Methods</h3>
+  <div>
+      <a class="xref" href="Carbon.PagedList.PagedListExtensions.html#Carbon_PagedList_PagedListExtensions_ToPagedList__1_System_Collections_Generic_IEnumerable___0__System_Int32_System_Int32_">PagedListExtensions.ToPagedList&lt;T&gt;(IEnumerable&lt;T&gt;, Int32, Int32)</a>
+  </div>
+  <div>
+      <a class="xref" href="Carbon.PagedList.PagedListExtensions.html#Carbon_PagedList_PagedListExtensions_Split__1_System_Collections_Generic_IEnumerable___0__System_Int32_">PagedListExtensions.Split&lt;T&gt;(IEnumerable&lt;T&gt;, Int32)</a>
+  </div>
+  <div>
+      <a class="xref" href="Carbon.PagedList.PagedListExtensions.html#Carbon_PagedList_PagedListExtensions_Partition__1_System_Collections_Generic_IEnumerable___0__System_Int32_">PagedListExtensions.Partition&lt;T&gt;(IEnumerable&lt;T&gt;, Int32)</a>
+  </div>
+  <h3 id="seealso">See Also</h3>
+  <div class="seealso">
+      <div><a class="xref" href="Carbon.PagedList.IPagedList-1.html">IPagedList</a>&lt;T&gt;</div>
+      <div><span class="xref">System.Collections.Generic.List</span>&lt;T&gt;</div>
+  </div>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            Carbon Framework
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>
