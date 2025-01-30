@@ -79,6 +79,15 @@ namespace Carbon.ElasticSearch.Abstractions
         Task<BulkResponse> AddBulkAndReturnAsync(IEnumerable<T> items, CancellationToken cancellationToken = default);
 
         /// <summary>
+        /// Creates given records and returns BulkResponse
+        /// </summary>
+        /// <param name="items">Record to be created</param>
+        /// <param name="cancellationToken">Token that can be used to cancel the request</param>
+        /// <param name="refresh">Whether to refresh the index after the operation.</param>
+        /// <returns></returns>
+        Task<BulkResponse> AddBulkAndReturnAsync(IEnumerable<T> items, CancellationToken cancellationToken = default, bool? refresh = null);
+
+        /// <summary>
         /// Updates given record
         /// </summary>
         /// <remarks> Uses _id field for matching items, for detail <see href="https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-update.html"/> </remarks>
