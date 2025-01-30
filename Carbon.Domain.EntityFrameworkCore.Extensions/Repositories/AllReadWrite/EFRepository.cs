@@ -42,7 +42,7 @@ namespace Carbon.Domain.EntityFrameworkCore
         /// <returns> A task whose result is the requested <typeparamref name="TEntity"/> object. </returns>
         public virtual async Task<TEntity> GetByIdAsync(Guid id, CancellationToken cancellationToken)
         {
-            return await context.Set<TEntity>().FindAsync(new object[] { id }, cancellationToken);
+            return await context.Set<TEntity>().FindAsync(id, cancellationToken);
         }
 
         /// <summary>
@@ -81,7 +81,7 @@ namespace Carbon.Domain.EntityFrameworkCore
         /// <returns> A task whose result is the deleted <typeparamref name="TEntity"/> object. If no matching entry is found, returns null instead. </returns>
         public virtual async Task<TEntity> DeleteAsync(Guid id, CancellationToken cancellationToken)
         {
-            var entity = await context.Set<TEntity>().FindAsync(new object[] { id }, cancellationToken);
+            var entity = await context.Set<TEntity>().FindAsync(id, cancellationToken);
             if (entity == null)
             {
                 return entity;
