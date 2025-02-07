@@ -100,29 +100,55 @@ namespace Carbon.ElasticSearch
 
         public BulkResponse BulkUpdate(IEnumerable<T> items, bool? refresh = null)
         {
-            var bulkDescriptor = new BulkDescriptor();
+           var bulkDescriptor = new BulkDescriptor();
             foreach (var item in items)
             {
+                var documentId = GetDocumentId(item); 
                 bulkDescriptor.Update<T>(u => u
                     .Index(Index)
+                    .Id(documentId)  
                     .Doc(item)
                     .RetriesOnConflict(3)
                 ).Refresh((_forceRefresh || (refresh ?? false)) ? Elasticsearch.Net.Refresh.True : Elasticsearch.Net.Refresh.False);
             }
-            return _client.Bulk(bulkDescriptor);
+
+            var result =  _client.Bulk(bulkDescriptor);
+
+            return result;
         }
         public async Task<BulkResponse> BulkUpdateAsync(IEnumerable<T> items, bool? refresh = null, CancellationToken cancellationToken = default)
         {
             var bulkDescriptor = new BulkDescriptor();
             foreach (var item in items)
             {
+                var documentId = GetDocumentId(item); 
                 bulkDescriptor.Update<T>(u => u
                     .Index(Index)
+                    .Id(documentId) 
                     .Doc(item)
                     .RetriesOnConflict(3)
                 ).Refresh((_forceRefresh || (refresh ?? false)) ? Elasticsearch.Net.Refresh.True : Elasticsearch.Net.Refresh.False);
             }
-            return await _client.BulkAsync(bulkDescriptor, cancellationToken);
+
+            var result = await _client.BulkAsync(bulkDescriptor, cancellationToken);
+
+            return result;
+
+        }
+
+        public string GetDocumentId<T>(T item)
+        {
+            var idProperty = item.GetType().GetProperty("Id");
+            if (idProperty != null)
+            {
+                var id = idProperty.GetValue(item)?.ToString();
+                if (!string.IsNullOrEmpty(id))
+                {
+                    return id;
+                }
+            }
+
+            throw new InvalidOperationException("Item does not have a valid ID.");
         }
     }
 }
