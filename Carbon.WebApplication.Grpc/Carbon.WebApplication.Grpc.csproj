@@ -2,8 +2,10 @@
 
   <PropertyGroup>
     <TargetFrameworks>net8.0;net6.0</TargetFrameworks>
-    <Version>3.3.4</Version>
+    <Version>3.3.5</Version>
     <Description>
+		3.3.5
+		- Microsoft.Extensions.Logging package added
 		3.3.4
 		- HybridModelBinding updated to 0.17.0 on net8.0 target framework
 		3.3.3
