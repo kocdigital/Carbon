@@ -1,0 +1,231 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Carbon.Cassandra  | Carbon Framework </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Carbon.Cassandra  | Carbon Framework ">
+    <meta name="generator" content="docfx 2.59.4.0">
+    
+    <link rel="shortcut icon" href="../../../images/logo.png">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="../../toc.html">
+    
+    <meta property="docfx:rel" content="../../../">
+    
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../images/logo.png" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="carboncassandra-">Carbon.Cassandra <a href="https://www.nuget.org/packages/Carbon.Cassandra"><img alt="Nuget (with prereleases)" src="https://img.shields.io/nuget/vpre/Carbon.Cassandra"></a></h1>
+
+<blockquote>
+<p>Cassandra is an open source NoSQL distributed database trusted by thousands of companies for scalability and high availability without compromising performance. Linear scalability and proven fault-tolerance on commodity hardware or cloud infrastructure make it the perfect platform for mission-critical data.[<strong>]
+[</strong>] <a href="https://cassandra.apache.org/_/">https://cassandra.apache.org/_/</a></p>
+</blockquote>
+<p>This package brings you a good wrapper and extension library for CassandraCsharpDriver which is directly compatible with any scalable, clusterable, fail-over capable and persistent enviroment.
+If you have such environment, you can easily refer to this library and quickly start using CassandraCsharpDriver capabilities.</p>
+<p>CassandraCsharpDriver, out of the box, offers all the capabilities which this package offers, however in a long-way. You need to have a good knowledge set about the usage of Cassandra, CassandraCsharpDriver and know what you are doing.</p>
+<p>Let Carbon know about CassandraCsharpDriver, you simply use!</p>
+<h2 id="add-cassandra-support-to-your-project">Add Cassandra Support to Your Project</h2>
+<table>
+<thead>
+<tr>
+<th>Related Package</th>
+<th style="text-align: center;">Required</th>
+<th style="text-align: center;">Auto-Included</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../Carbon.Cassandra.Abstractions/README.html">Carbon.Cassandra.Abstractions</a></td>
+<td style="text-align: center;">No</td>
+<td style="text-align: center;">No</td>
+</tr>
+</tbody>
+</table>
+<h3 id="basic-usage">Basic Usage</h3>
+<p>You can add a Cassandra support with this code snippet which binds cassandra settings from config and injects
+<a href="https://github.com/kocdigital/Carbon/blob/master/Carbon.Cassandra.Abstractions/ICassandraSessionFactory.cs">ICassandraSessionFactory</a>,
+<a href="https://github.com/kocdigital/Carbon/blob/master/Carbon.Cassandra.Abstractions/ICassandraPersisterSettings.cs">ICassandraPersisterSettings</a> classes for usage.</p>
+<p>At first step, you need a mapping class for your entites like below;</p>
+<pre><code class="lang-csharp">    public class CassandraMappings : Mappings
+    {
+        public CassandraMappings()
+        {
+            For&lt;MyEntity&gt;().TableName(&quot;my_entity&quot;)
+            .PartitionKey(x =&gt; x.Name)
+            .Column(x =&gt; x.Name, n =&gt; n.WithName(&quot;name&quot;))
+            .Column(x =&gt; x.Id, n =&gt; n.WithName(&quot;id&quot;))
+            .Column(x =&gt; x.IsDeleted, n =&gt; n.WithName(&quot;is_deleted&quot;));            
+        }
+    }
+</code></pre>
+<p>And when you have that kind of mapping you can basically add code snipped below to your startup.cs/program.cs file.</p>
+<pre><code class="lang-csharp">    services.AddCassandraPersister(hostContext.Configuration, options =&gt;
+    {
+        options.SetMapping(new CassandraMappings());
+        options.Build();
+    });    
+</code></pre>
+<p>Your basic cassandra configuration should be like below.</p>
+<pre><code class="lang-json">&quot;Cassandra&quot;: {
+    &quot;EndPoints&quot;: [ &quot;cassandrahost&quot; ],
+    &quot;Username&quot;: &quot;cassandrauser&quot;,
+    &quot;Password&quot;: &quot;cassandrapassword&quot;,
+    &quot;Port&quot;: &quot;9042&quot;,
+    &quot;Keyspace&quot;: &quot;yourkeyspace&quot;
+},
+</code></pre>
+<p>So, when you want to use cassandra you need an <a href="https://github.com/kocdigital/Carbon/blob/master/Carbon.Cassandra.Abstractions/ICassandraSessionFactory.cs">ICassandraSessionFactory</a> instance.
+You can directly use it on your service or your repository(preferred).</p>
+<blockquote>
+<p>Note that this repository derives from <a href="https://github.com/kocdigital/Carbon/blob/master/Carbon.Cassandra/BaseCassandraRepository.cs">BaseCassandraRepository<t></t></a> which already implements crud methods.</p>
+</blockquote>
+<pre><code class="lang-csharp">    public class MyEntityCassandraRepository : BaseCassandraRepository&lt;MyEntity&gt;
+    {
+        private readonly ICassandraPersisterSettings _cassandraSetting;
+        public MyEntityCassandraRepository(ICassandraSessionFactory sessionFactory, ICassandraPersisterSettings cassandraSetting) : base(sessionFactory)
+        {
+            _cassandraSetting = cassandraSetting;
+        }
+        public override string Keyspace =&gt; _cassandraSetting.Keyspace;
+    }
+</code></pre>
+<h3 id="advanced-configuration">Advanced Configuration</h3>
+<p>On a basic; you can read &amp; write from already defined keyspaces and tables. But from domain driven design point; sharing a domain object/table is undesirable.
+Your application is the responsible one from all the domain objects including tables &amp; keyspaces. So it must create them if they are not exist.</p>
+<p>With this code examples below, you can initialize your db.</p>
+<h4 id="create-a-db-initializer-class">Create a DB Initializer Class</h4>
+<p>There should be settings class which derives from <a href="https://github.com/kocdigital/Carbon/blob/master/Carbon.Cassandra/CassandraPersisterSettings.cs">CassandraPersisterSettings</a>
+or if you need some customizations <a href="https://github.com/kocdigital/Carbon/blob/master/Carbon.Cassandra.Abstractions/ICassandraPersisterSettings.cs">ICassandraPersisterSettings</a>.</p>
+<pre><code class="lang-csharp">    public class CassandraSettings : CassandraPersisterSettings
+    {
+    }
+</code></pre>
+<p>After that you can create your initialization class like below.</p>
+<pre><code class="lang-csharp">    public interface ICassandraDatabaseInitializer
+    {
+        void Init();
+    }
+    public class CassandraDatabaseInitializer : ICassandraDatabaseInitializer
+    {
+        private readonly ICassandraSessionFactory _sessionFactory;
+        private readonly CassandraPersisterSettings _cassandraSettings;
+        public CassandraDatabaseInitializer(ICassandraSessionFactory sessionFactory, IOptions&lt;CassandraSettings&gt; cassandraSettings)
+        {
+            _sessionFactory = sessionFactory;
+            _cassandraSettings = cassandraSettings.Value;
+        }
+        public void Init()
+        {
+            var session = _sessionFactory.GetSessionFromDefaultCluster();
+            session.CreateKeySpaceIfNotExists(_cassandraSettings.Keyspace);
+            session.CreateTableIfNotExists&lt;MyEntity&gt;(_cassandraSettings.Keyspace);
+        }
+    }
+</code></pre>
+<h4 id="use-db-initializer">Use DB Initializer</h4>
+<p>First; inject your database initializer class</p>
+<pre><code class="lang-csharp">    services.Configure&lt;CassandraSettings&gt;(hostContext.Configuration.GetSection(&quot;Cassandra&quot;));
+    services.AddTransient&lt;ICassandraDatabaseInitializer, CassandraDatabaseInitializer&gt;();
+</code></pre>
+<p>After that call init method of database initializer. You can call it on Configure step or your desired place.</p>
+<pre><code class="lang-csharp">    using (var serviceScope = app.GetService&lt;IServiceScopeFactory&gt;().CreateScope())
+    {
+        serviceScope.ServiceProvider.GetService&lt;ICassandraDatabaseInitializer&gt;().Init();
+    }
+</code></pre>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            Carbon Framework
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>
