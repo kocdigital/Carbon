@@ -1,0 +1,293 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Carbon.Quartz | Carbon Framework </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Carbon.Quartz | Carbon Framework ">
+    <meta name="generator" content="docfx 2.59.4.0">
+    
+    <link rel="shortcut icon" href="../../../images/logo.png">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="../../toc.html">
+    
+    <meta property="docfx:rel" content="../../../">
+    
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../images/logo.png" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="carbonquartz">Carbon.Quartz</h1>
+
+<blockquote>
+<p>Quartz.NET is a full-featured, open source job scheduling system that can be used from smallest apps to large scale enterprise systems.[**]</p>
+</blockquote>
+<p>[**] <a href="https://www.quartz-scheduler.net/">https://www.quartz-scheduler.net/</a></p>
+<p>This package brings you a good wrapper and extension library for Quartz.Net which is directly compatible with any scalable, clusterable, fail-over capable and persistent enviroment such as Kubernetes.
+If you have such environment, you can easily refer to this library and quickly start using Quartz.Net capabilities.</p>
+<p>Quartz.Net, out of the box, offers all the capabilities which this package offers, however in a long-way. You need to have a
+good knowledge set about the usage of Quartz.Net and know what you are doing. This package also eases the usage and gives you some one-click
+of deployment enablement for the persistency context which Quartz.Net does not offer directly where it expects you to run some SQL scripts manually before deployment.</p>
+<p>Let Carbon know about Quartz.Net, you simply use!</p>
+<h2 id="add-carbonquartz-support-to-your-project">Add Carbon.Quartz Support to Your Project</h2>
+<h3 id="basic-usage">Basic Usage</h3>
+<table>
+<thead>
+<tr>
+<th>Related Package</th>
+<th style="text-align: center;">Required</th>
+<th style="text-align: center;">Auto-Included</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../Carbon.Quartz.Migrate.Context/README.html">Carbon.Quartz.Migrate.Context</a></td>
+<td style="text-align: center;">No</td>
+<td style="text-align: center;">No</td>
+</tr>
+<tr>
+<td><a href="../Carbon.Quartz.Migrate.MSSQL/README.html">Carbon.Quartz.Migrate.MSSQL</a></td>
+<td style="text-align: center;">No</td>
+<td style="text-align: center;">No</td>
+</tr>
+<tr>
+<td><a href="../Carbon.Quartz.Migrate.PostgreSQL/README.html">Carbon.Quartz.Migrate.PostgreSQL</a></td>
+<td style="text-align: center;">No</td>
+<td style="text-align: center;">No</td>
+</tr>
+</tbody>
+</table>
+<p>This basic usage introduces a non-persistent, thus not scalable Quartz.Net approach. It is recommended dev-purposes only.</p>
+<p><strong>1. Register Quartz To Your Application</strong></p>
+<p>Add these registrations at startup</p>
+<pre><code class="lang-csharp">//IServiceCollection services
+services.AddScoped&lt;IQuartzClusterableService, QuartzService&gt;();
+services.AddQuartzScheduler(configuration, false, &quot;MyQuartz&quot;);
+</code></pre>
+<p><strong>2. Create a Quartz Job</strong></p>
+<p>In a controller method, or at startup when application is booted, you can resolve the <em>IQuartzClusterableService</em> and start using it.</p>
+<pre><code class="lang-csharp">
+//To be resolved by DI
+private readonly IQuartzClusterableService _quartzService;
+
+//Set your scheduler for the service, scheduler name should be the same with the one you registered at startup
+_quartzService.SetSchedulerId(&quot;MyQuartz&quot;);
+
+//Create a job data to be stored in job, so that you receive this object from the context (check step 3) for each cycle
+var jobData = new ExternalApiMessageCarrier()
+                {
+                    DataSourceId = dto.ExternalDataSourceId,
+                    SchedulerId = dto.Id,
+                    DataSourceName = dto.SourceName,
+                    RequestBody = dto.IntegrationDetails,
+                    TenantId = dto.TenantId,
+                    IsStoreData = dto.IsStoreData
+                };
+
+//Create and start a job which triggers per 10 seconds
+await _quartzService.AddAndStartClusterableBasicJob&lt;DataManagerSingleJob&gt;(&quot;MyJob&quot;, jobData, 10);
+</code></pre>
+<p><strong>3. Create a Job Executer at each cycle</strong></p>
+<pre><code class="lang-csharp">    public class DataManagerSingleJob : IJob
+    {
+        private readonly ILogger&lt;DataManagerSingleJob&gt; _logger;
+        public DataManagerSingleJob(ILogger&lt;DataManagerSingleJob&gt; logger,
+            IConfiguration configuration)
+        {
+            _logger = logger;
+        }
+        public async Task Execute(IJobExecutionContext context)
+        {
+              _logger.LogInformation($&quot; DataManagerSingleJob sending start&quot;);
+              //Retrieve the stored instance object
+              var messageModel = context.GetDefaultData&lt;ExternalApiMessageCarrier&gt;();
+
+              //Do sth with the object
+              _logger.LogInformation($&quot;{messageModel} DataManagerSingleJob doing its job&quot;);
+        }
+    }
+</code></pre>
+<p>You are good to go, your DataManagerSingleJob will be triggered per 10 Seconds, and let you do your business logic as you build in step 3</p>
+<h2 id="advanced-usage-recommended-for-production">Advanced Usage (Recommended for production)</h2>
+<h3 id="carbonquartz-with-persistent-and-scalable-and-clusterable">Carbon.Quartz with persistent and scalable and clusterable</h3>
+<p>Let your Quartz be persistent, otherwise you cannot scale your application up. So, this part depicts
+a usage of Quartz.Net in a persistent and clusterable way.</p>
+<p>In order to use this approach, you have to add these packages to your library on the top of Carbon.Quartz package. Migrate.Context package is required,
+however MSSQL or PostgreSQL is selectable regarding of which type of database you want to use.
+If you will have both, you can add both of them. Migrations are switchable via configuration file from one to the other.</p>
+<p>Quartz.Net, behind the scenes, uses an SQL database to enable persistency. Carbon.Quartz supports two most popular database (MSSQL and PostgreSQL).
+Finally it migrates the tables to the selected database, so that you don't have to concern with anything about it.</p>
+<table>
+<thead>
+<tr>
+<th>Related Package</th>
+<th style="text-align: center;">Required</th>
+<th style="text-align: center;">Auto-Included</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../Carbon.Quartz.Migrate.Context/README.html">Carbon.Quartz.Migrate.Context</a></td>
+<td style="text-align: center;">Yes</td>
+<td style="text-align: center;">No</td>
+</tr>
+<tr>
+<td><a href="../Carbon.Quartz.Migrate.MSSQL/README.html">Carbon.Quartz.Migrate.MSSQL</a></td>
+<td style="text-align: center;">Yes</td>
+<td style="text-align: center;">No</td>
+</tr>
+<tr>
+<td><a href="../Carbon.Quartz.Migrate.PostgreSQL/README.html">Carbon.Quartz.Migrate.PostgreSQL</a></td>
+<td style="text-align: center;">Yes</td>
+<td style="text-align: center;">No</td>
+</tr>
+</tbody>
+</table>
+<p><strong>1. Register Quartz To Your Application</strong></p>
+<p><em>On startup =&gt;</em></p>
+<p>Register quartz context</p>
+<pre><code class="lang-csharp">services.AddQuartzContext&lt;Program&gt;(configuration);
+</code></pre>
+<p>or...</p>
+<pre><code class="lang-csharp">services.AddQuartzContext&lt;Startup&gt;(configuration);
+</code></pre>
+<p>Then register the service and scheduler as you do in basic usage</p>
+<pre><code class="lang-csharp">services.AddScoped&lt;IQuartzClusterableService, QuartzService&gt;();
+
+//Your scheduler (api) executes 10 job at a time concurrently which is the max concurrency.
+//Persistent, clusterable, scalable and failover enabled scheduler
+services.AddQuartzScheduler(configuration, true, &quot;MyQuartz&quot;, 10);
+</code></pre>
+<p><strong>2. Migrate Quartz Persistency Tables To Your Database</strong></p>
+<p><em>On startup =&gt;</em></p>
+<p>This migration happens depending on your configuration.</p>
+<pre><code class="lang-csharp">//IApplicationBuilder app
+app.MigrateQuartz();
+</code></pre>
+<p>Using the configuration below:</p>
+<pre><code class="lang-json">&quot;Quartz&quot;: {
+    &quot;ConnectionStrings&quot;: {
+      &quot;DefaultConnection&quot;: &quot;Server=yourdatabase;Database=yourquartzdb;User ID=user;Password='pass';Connect Timeout=30;&quot;,
+      &quot;ConnectionTarget&quot;: &quot;MSSQL&quot;
+    }
+  }
+</code></pre>
+<blockquote>
+<p>&quot;ConnectionTarget&quot;: &quot;MSSQL&quot; or &quot;PostgreSQL&quot;</p>
+</blockquote>
+<p>This will automatically migrate your quartz database if not exist or ignore if exists. Now, you are persisted,
+and create multiple instances of your APIs. Each API will share the load for the same scheduler id while triggering and executing the jobs, so there will be
+no duplicate triggers.</p>
+<p>Check how persistency works in Quartz.Net: <a href="https://www.quartz-scheduler.net/documentation/quartz-3.x/tutorial/job-stores.html#ado-net-job-store-adojobstore">https://www.quartz-scheduler.net/documentation/quartz-3.x/tutorial/job-stores.html#ado-net-job-store-adojobstore</a></p>
+<p><strong>3. Create a Quartz Job and job executer</strong></p>
+<p>As the last but not the least, you can create your quartz job and job executer as defined in the <strong>basic usage</strong> section (Step 2 and 3).</p>
+<h2 id="more-usage-details">More Usage Details</h2>
+<p>QuartzService that you register to your API contains couple of useful methods.</p>
+<hr>
+<pre><code class="lang-csharp">AddAndStartClusterableCustomJob&lt;TJob&gt;(string jobName, object jobData, ITrigger trigger) where TJob : IJob
+</code></pre>
+<p>This method lets you add a custom job as IJob (which is Quartz.Net specific object). You can configure your triggers customly
+as it is done in Quartz.Net package. Please check the documentation.</p>
+<hr>
+<pre><code class="lang-csharp">DeleteJob(string jobName)
+</code></pre>
+<p>Deletes a job with a name that you already added with AddAndStartClusterableJob or CustomJob</p>
+<hr>
+<pre><code class="lang-csharp">ClearAllJobsExceptFor(List&lt;string&gt; excludingJobKeyList)
+</code></pre>
+<p>Clears all the jobs except for given job names. If empty list of job given, it clears all the jobs you added
+for the given schedulerId.</p>
+<hr>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            Carbon Framework
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,1005 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class RedisExtension
+   | Carbon Framework </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class RedisExtension
+   | Carbon Framework ">
+    <meta name="generator" content="docfx 2.59.4.0">
+    
+    <link rel="shortcut icon" href="../../images/logo.png">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
+    
+    <meta property="docfx:rel" content="../../">
+    
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../images/logo.png" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Carbon.Redis.RedisExtension">
+  
+  
+  <h1 id="Carbon_Redis_RedisExtension" data-uid="Carbon.Redis.RedisExtension" class="text-break">Class RedisExtension
+  </h1>
+  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">RedisExtension</span></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Carbon.Redis.html">Carbon.Redis</a></h6>
+  <h6><strong>Assembly</strong>: Carbon.Redis.dll</h6>
+  <h5 id="Carbon_Redis_RedisExtension_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static class RedisExtension</code></pre>
+  </div>
+  <h3 id="methods">Methods
+  </h3>
+  <a id="Carbon_Redis_RedisExtension_Get_" data-uid="Carbon.Redis.RedisExtension.Get*"></a>
+  <h4 id="Carbon_Redis_RedisExtension_Get__1_StackExchange_Redis_IDatabase_System_String_" data-uid="Carbon.Redis.RedisExtension.Get``1(StackExchange.Redis.IDatabase,System.String)">Get&lt;T&gt;(IDatabase, String)</h4>
+  <div class="markdown level1 summary"><p>Get cached object <br>Returns:</br>
+<br></p>
+<ul><li>cachedObject (<em>cached object</em>)</li></ul>
+<br>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static async Task&lt;(T cachedObject, string errorMessage)&gt; Get&lt;T&gt;(this IDatabase redisDb, string key)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">StackExchange.Redis.IDatabase</span></td>
+        <td><span class="parametername">redisDb</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">key</span></td>
+        <td><p>Cache Key</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.ValueTuple</span>&lt;T, <span class="xref">System.String</span>&gt;&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Carbon_Redis_RedisExtension_GetByPattern_" data-uid="Carbon.Redis.RedisExtension.GetByPattern*"></a>
+  <h4 id="Carbon_Redis_RedisExtension_GetByPattern__1_StackExchange_Redis_IDatabase_System_String_StackExchange_Redis_IConnectionMultiplexer_" data-uid="Carbon.Redis.RedisExtension.GetByPattern``1(StackExchange.Redis.IDatabase,System.String,StackExchange.Redis.IConnectionMultiplexer)">GetByPattern&lt;T&gt;(IDatabase, String, IConnectionMultiplexer)</h4>
+  <div class="markdown level1 summary"><p>Get multiple data by pattern  <br>Returns:</br>
+<br></p>
+<ul><li>dataList(<em>List of return data</em>)</li></ul>
+<br>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static async Task&lt;(IEnumerable&lt;T&gt; dataList, string errorMessage)&gt; GetByPattern&lt;T&gt;(this IDatabase redisDb, string keyPattern, IConnectionMultiplexer connectionMultiplexer)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">StackExchange.Redis.IDatabase</span></td>
+        <td><span class="parametername">redisDb</span></td>
+        <td><p>database object</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">keyPattern</span></td>
+        <td><p>It represents cache key pattern. Sample pattern =&gt; Customer:b0cbb0a2-4feb-4655-aeb5-ce55fad71699:Home:*</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">StackExchange.Redis.IConnectionMultiplexer</span></td>
+        <td><span class="parametername">connectionMultiplexer</span></td>
+        <td><p>connectionMultiplexer object</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.ValueTuple</span>&lt;<span class="xref">System.Collections.Generic.IEnumerable</span>&lt;T&gt;, <span class="xref">System.String</span>&gt;&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Carbon_Redis_RedisExtension_GetByPatternWithLogging_" data-uid="Carbon.Redis.RedisExtension.GetByPatternWithLogging*"></a>
+  <h4 id="Carbon_Redis_RedisExtension_GetByPatternWithLogging__1_Carbon_Redis_CacheObject_StackExchange_Redis_IConnectionMultiplexer_" data-uid="Carbon.Redis.RedisExtension.GetByPatternWithLogging``1(Carbon.Redis.CacheObject,StackExchange.Redis.IConnectionMultiplexer)">GetByPatternWithLogging&lt;T&gt;(CacheObject, IConnectionMultiplexer)</h4>
+  <div class="markdown level1 summary"><p>Get cache with logger.
+<br>
+<example>After class initialization, call this method:<p>
+<pre><code>var cacheObject = new CacheObject&lt;T>(cacheKeyPattern, dto.TenantId, _cache, _logger);
+<br>
+var (data, message) = await cacheObject.GetWithLogging&lt;T><code data-dev-comment-type="typeparamref" class="typeparamref">T</code>();
+</code></pre>
+</example>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static async Task&lt;(IEnumerable&lt;T&gt; cachedDataList, string errorMessage)&gt; GetByPatternWithLogging&lt;T&gt;(this CacheObject cacheObject, IConnectionMultiplexer connectionMultiplexer)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Carbon.Redis.CacheObject.html">CacheObject</a></td>
+        <td><span class="parametername">cacheObject</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">StackExchange.Redis.IConnectionMultiplexer</span></td>
+        <td><span class="parametername">connectionMultiplexer</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.ValueTuple</span>&lt;<span class="xref">System.Collections.Generic.IEnumerable</span>&lt;T&gt;, <span class="xref">System.String</span>&gt;&gt;</td>
+        <td><p>a boolean isSuccess flag and an error message.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td><p>the type of expected data object</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Carbon_Redis_RedisExtension_GetKeysValues_" data-uid="Carbon.Redis.RedisExtension.GetKeysValues*"></a>
+  <h4 id="Carbon_Redis_RedisExtension_GetKeysValues__1_StackExchange_Redis_IDatabase_System_String_" data-uid="Carbon.Redis.RedisExtension.GetKeysValues``1(StackExchange.Redis.IDatabase,System.String)">GetKeysValues&lt;T&gt;(IDatabase, String)</h4>
+  <div class="markdown level1 summary"><p>Get multiple data by pattern  <br>Returns:</br>
+<br></p>
+<ul><li>dataList(<em>List of return data</em>)</li></ul>
+<br>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static async Task&lt;(IEnumerable&lt;T&gt; dataList, string errorMessage)&gt; GetKeysValues&lt;T&gt;(this IDatabase redisDb, string keyPattern)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">StackExchange.Redis.IDatabase</span></td>
+        <td><span class="parametername">redisDb</span></td>
+        <td><p>database object</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">keyPattern</span></td>
+        <td><p>It represents cache key pattern. Sample pattern =&gt; Customer:b0cbb0a2-4feb-4655-aeb5-ce55fad71699:*</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.ValueTuple</span>&lt;<span class="xref">System.Collections.Generic.IEnumerable</span>&lt;T&gt;, <span class="xref">System.String</span>&gt;&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Carbon_Redis_RedisExtension_GetWithLogging_" data-uid="Carbon.Redis.RedisExtension.GetWithLogging*"></a>
+  <h4 id="Carbon_Redis_RedisExtension_GetWithLogging__1_Carbon_Redis_CacheObject_" data-uid="Carbon.Redis.RedisExtension.GetWithLogging``1(Carbon.Redis.CacheObject)">GetWithLogging&lt;T&gt;(CacheObject)</h4>
+  <div class="markdown level1 summary"><p>Get cache with logger.
+<br>
+<example>After class initialization, call this method:<p>
+<pre><code>var cacheObject = new CacheObject&lt;T>(cacheKeyPattern, dto.TenantId, _cache, _logger);
+<br>
+var (data, message) = await cacheObject.GetWithLogging&lt;T><code data-dev-comment-type="typeparamref" class="typeparamref">T</code>();
+</code></pre>
+</example>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static async Task&lt;(T cachedData, string errorMessage)&gt; GetWithLogging&lt;T&gt;(this CacheObject cacheObject)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Carbon.Redis.CacheObject.html">CacheObject</a></td>
+        <td><span class="parametername">cacheObject</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.ValueTuple</span>&lt;T, <span class="xref">System.String</span>&gt;&gt;</td>
+        <td><p>a boolean isSuccess flag and an error message.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td><p>the type of expected data object</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Carbon_Redis_RedisExtension_IsCacheKeyValid_" data-uid="Carbon.Redis.RedisExtension.IsCacheKeyValid*"></a>
+  <h4 id="Carbon_Redis_RedisExtension_IsCacheKeyValid_StackExchange_Redis_IDatabase_System_String_" data-uid="Carbon.Redis.RedisExtension.IsCacheKeyValid(StackExchange.Redis.IDatabase,System.String)">IsCacheKeyValid(IDatabase, String)</h4>
+  <div class="markdown level1 summary"><p>Is given key valid? <br>Returns:</br>
+<br></p>
+<ul><li>isValid (<em>Is given key valid?</em>)</li></ul>
+<br>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static async Task&lt;(bool isValid, string errorMessage)&gt; IsCacheKeyValid(this IDatabase redisDb, string key)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">StackExchange.Redis.IDatabase</span></td>
+        <td><span class="parametername">redisDb</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">key</span></td>
+        <td><p>Cache Key</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.ValueTuple</span>&lt;<span class="xref">System.Boolean</span>, <span class="xref">System.String</span>&gt;&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Carbon_Redis_RedisExtension_RemoveKey_" data-uid="Carbon.Redis.RedisExtension.RemoveKey*"></a>
+  <h4 id="Carbon_Redis_RedisExtension_RemoveKey_StackExchange_Redis_IDatabase_System_String_" data-uid="Carbon.Redis.RedisExtension.RemoveKey(StackExchange.Redis.IDatabase,System.String)">RemoveKey(IDatabase, String)</h4>
+  <div class="markdown level1 summary"><p>Remove key and key's value from the cache
+The key <strong>should be less than 1024 byte</strong>
+and
+key should contains <strong>':'</strong> character between meaningful separations.
+The sample key is <strong>object-type:id:field(user:100:password)</strong><br>Returns:</br>
+<br></p>
+<ul><li>isSucess (<em> Is given key removed from the cache?</em>)</li></ul>
+<br>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static async Task&lt;(bool isSuccess, string errorMessage)&gt; RemoveKey(this IDatabase redisDb, string key)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">StackExchange.Redis.IDatabase</span></td>
+        <td><span class="parametername">redisDb</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">key</span></td>
+        <td><p>It represents cache key</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.ValueTuple</span>&lt;<span class="xref">System.Boolean</span>, <span class="xref">System.String</span>&gt;&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Carbon_Redis_RedisExtension_RemoveKeysByPattern_" data-uid="Carbon.Redis.RedisExtension.RemoveKeysByPattern*"></a>
+  <h4 id="Carbon_Redis_RedisExtension_RemoveKeysByPattern_StackExchange_Redis_IDatabase_System_String_StackExchange_Redis_IConnectionMultiplexer_" data-uid="Carbon.Redis.RedisExtension.RemoveKeysByPattern(StackExchange.Redis.IDatabase,System.String,StackExchange.Redis.IConnectionMultiplexer)">RemoveKeysByPattern(IDatabase, String, IConnectionMultiplexer)</h4>
+  <div class="markdown level1 summary"><p>Delete multiple key. <br>Returns:</br>
+<br></p>
+<ul><li>removedKeys (<em>key list that removed from cache</em>)</li></ul>
+<br>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Obsolete(&quot;RemoveKeysByPattern is deprecated, please use Post ScanKeysAndRemoveByPattern instead. If redis server support Scan!&quot;)]
+public static async Task&lt;(List&lt;string&gt; removedKeys, List&lt;string&gt; couldNotBeRemovedKeys, string errorMessage)&gt; RemoveKeysByPattern(this IDatabase redisDb, string keyPattern, IConnectionMultiplexer connectionMultiplexer)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">StackExchange.Redis.IDatabase</span></td>
+        <td><span class="parametername">redisDb</span></td>
+        <td><p>database object</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">keyPattern</span></td>
+        <td><p>It represents cache key pattern. Sample pattern =&gt; Customer:b0cbb0a2-4feb-4655-aeb5-ce55fad71699:Home:*</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">StackExchange.Redis.IConnectionMultiplexer</span></td>
+        <td><span class="parametername">connectionMultiplexer</span></td>
+        <td><p>connectionMultiplexer object</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.ValueTuple</span>&lt;<span class="xref">System.Collections.Generic.List</span>&lt;<span class="xref">System.String</span>&gt;, <span class="xref">System.Collections.Generic.List</span>&lt;<span class="xref">System.String</span>&gt;, <span class="xref">System.String</span>&gt;&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Carbon_Redis_RedisExtension_RemoveKeysByPatternWithLogging_" data-uid="Carbon.Redis.RedisExtension.RemoveKeysByPatternWithLogging*"></a>
+  <h4 id="Carbon_Redis_RedisExtension_RemoveKeysByPatternWithLogging_Carbon_Redis_CacheObject_StackExchange_Redis_IConnectionMultiplexer_" data-uid="Carbon.Redis.RedisExtension.RemoveKeysByPatternWithLogging(Carbon.Redis.CacheObject,StackExchange.Redis.IConnectionMultiplexer)">RemoveKeysByPatternWithLogging(CacheObject, IConnectionMultiplexer)</h4>
+  <div class="markdown level1 summary"><p>Delete multiple cache data by pattern with logger.
+<br>
+<example>After class initialization, call this method:<p>
+<pre><code>var cacheObject = new CacheObject&lt;T>(cacheKeyPattern, dto.TenantId, _cache, _logger);
+<br>
+var (isSuccess, message) = await cacheObject.RemoveKeysByPatternWithLogging(connectionMultiplexer);</code></pre>
+</example>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static async Task&lt;(bool isSuccess, string errorMessage)&gt; RemoveKeysByPatternWithLogging(this CacheObject cacheObject, IConnectionMultiplexer connectionMultiplexer)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Carbon.Redis.CacheObject.html">CacheObject</a></td>
+        <td><span class="parametername">cacheObject</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">StackExchange.Redis.IConnectionMultiplexer</span></td>
+        <td><span class="parametername">connectionMultiplexer</span></td>
+        <td><p>the connection multiplexer of the proper Redis Server</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.ValueTuple</span>&lt;<span class="xref">System.Boolean</span>, <span class="xref">System.String</span>&gt;&gt;</td>
+        <td><p>a boolean isSuccess flag and an error message.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Carbon_Redis_RedisExtension_RemoveKeyWithLogging_" data-uid="Carbon.Redis.RedisExtension.RemoveKeyWithLogging*"></a>
+  <h4 id="Carbon_Redis_RedisExtension_RemoveKeyWithLogging_Carbon_Redis_CacheObject_" data-uid="Carbon.Redis.RedisExtension.RemoveKeyWithLogging(Carbon.Redis.CacheObject)">RemoveKeyWithLogging(CacheObject)</h4>
+  <div class="markdown level1 summary"><p>Delete cache with logger.
+<br>
+<example>After class initialization, call this method:<p>
+<pre><code>var cacheObject = new CacheObject&lt;T>(cacheKeyPattern, dto.TenantId, _cache, _logger);
+<br>
+var (isSuccess, message) = await cacheObject.RemoveKeyWithLogging();</code></pre>
+</example>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static async Task&lt;(bool isSuccess, string errorMessage)&gt; RemoveKeyWithLogging(this CacheObject cacheObject)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Carbon.Redis.CacheObject.html">CacheObject</a></td>
+        <td><span class="parametername">cacheObject</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.ValueTuple</span>&lt;<span class="xref">System.Boolean</span>, <span class="xref">System.String</span>&gt;&gt;</td>
+        <td><p>a boolean isSuccess flag and an error message.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Carbon_Redis_RedisExtension_ScanKeysAndRemoveByPattern_" data-uid="Carbon.Redis.RedisExtension.ScanKeysAndRemoveByPattern*"></a>
+  <h4 id="Carbon_Redis_RedisExtension_ScanKeysAndRemoveByPattern_StackExchange_Redis_IDatabase_System_String_" data-uid="Carbon.Redis.RedisExtension.ScanKeysAndRemoveByPattern(StackExchange.Redis.IDatabase,System.String)">ScanKeysAndRemoveByPattern(IDatabase, String)</h4>
+  <div class="markdown level1 summary"><p>Delete multiple key. key searchin in redis server with &quot;scan&quot; keyword
+<br></p>
+<ul><li>removedKeys (<em>key list that removed from cache</em>)</li></ul>
+<br>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static async Task&lt;(List&lt;string&gt; removedKeys, List&lt;string&gt; couldNotBeRemovedKeys, string errorMessage)&gt; ScanKeysAndRemoveByPattern(this IDatabase redisDb, string keyPattern)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">StackExchange.Redis.IDatabase</span></td>
+        <td><span class="parametername">redisDb</span></td>
+        <td><p>database object</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">keyPattern</span></td>
+        <td><p>It represents cache key pattern. Sample pattern =&gt; Customer:b0cbb0a2-4feb-4655-aeb5-ce55fad71699:Home:*</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.ValueTuple</span>&lt;<span class="xref">System.Collections.Generic.List</span>&lt;<span class="xref">System.String</span>&gt;, <span class="xref">System.Collections.Generic.List</span>&lt;<span class="xref">System.String</span>&gt;, <span class="xref">System.String</span>&gt;&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Carbon_Redis_RedisExtension_SearchKeysAsync_" data-uid="Carbon.Redis.RedisExtension.SearchKeysAsync*"></a>
+  <h4 id="Carbon_Redis_RedisExtension_SearchKeysAsync_StackExchange_Redis_IDatabase_System_String_" data-uid="Carbon.Redis.RedisExtension.SearchKeysAsync(StackExchange.Redis.IDatabase,System.String)">SearchKeysAsync(IDatabase, String)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static async Task&lt;(IEnumerable&lt;string&gt;, string errorMessage)&gt; SearchKeysAsync(this IDatabase redisDb, string pattern)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">StackExchange.Redis.IDatabase</span></td>
+        <td><span class="parametername">redisDb</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">pattern</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.ValueTuple</span>&lt;<span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<span class="xref">System.String</span>&gt;, <span class="xref">System.String</span>&gt;&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Carbon_Redis_RedisExtension_Set_" data-uid="Carbon.Redis.RedisExtension.Set*"></a>
+  <h4 id="Carbon_Redis_RedisExtension_Set__1_StackExchange_Redis_IDatabase_System_String___0_System_Nullable_System_TimeSpan__" data-uid="Carbon.Redis.RedisExtension.Set``1(StackExchange.Redis.IDatabase,System.String,``0,System.Nullable{System.TimeSpan})">Set&lt;T&gt;(IDatabase, String, T, Nullable&lt;TimeSpan&gt;)</h4>
+  <div class="markdown level1 summary"><p>Insert an object to the cache
+The key <strong>should be less than 1024 byte</strong>
+and
+key should contains <strong>':'</strong> character between meaningful seperations.
+The sample key is <strong>object-type:id:field(user:100:password)</strong><br>Returns:</br>
+<br></p>
+<ul><li>isSucess (<em> Is given object cached?</em>)</li></ul>
+<br>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static async Task&lt;(bool isSucess, string errorMessage)&gt; Set&lt;T&gt;(this IDatabase redisDb, string key, T data, TimeSpan? expiry = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">StackExchange.Redis.IDatabase</span></td>
+        <td><span class="parametername">redisDb</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">key</span></td>
+        <td><p>It represents cache key</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td><span class="parametername">data</span></td>
+        <td><p>It represents cache object value</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.TimeSpan</span>&gt;</td>
+        <td><span class="parametername">expiry</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.ValueTuple</span>&lt;<span class="xref">System.Boolean</span>, <span class="xref">System.String</span>&gt;&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Carbon_Redis_RedisExtension_SetWithLogging_" data-uid="Carbon.Redis.RedisExtension.SetWithLogging*"></a>
+  <h4 id="Carbon_Redis_RedisExtension_SetWithLogging__1_Carbon_Redis_CacheObject___0_" data-uid="Carbon.Redis.RedisExtension.SetWithLogging``1(Carbon.Redis.CacheObject,``0)">SetWithLogging&lt;T&gt;(CacheObject, T)</h4>
+  <div class="markdown level1 summary"><p>Set cache with logger.
+<br>
+<example>After class initialization, call this method:<p>
+<pre><code>var cacheObject = new CacheObject&lt;T>(cacheKey, dto.TenantId, _cache, _logger);
+<br>
+var (isSuccess, message) = await cacheObject.SetWithLogging&lt;T>(data);</code></pre>
+</example>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static async Task&lt;(bool isSuccess, string errorMessage)&gt; SetWithLogging&lt;T&gt;(this CacheObject cacheObject, T data)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Carbon.Redis.CacheObject.html">CacheObject</a></td>
+        <td><span class="parametername">cacheObject</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td><span class="parametername">data</span></td>
+        <td><p>the object to be cached</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.ValueTuple</span>&lt;<span class="xref">System.Boolean</span>, <span class="xref">System.String</span>&gt;&gt;</td>
+        <td><p>a boolean isSuccess flag and an error message.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td><p>the type of object to be cached</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            Carbon Framework
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>

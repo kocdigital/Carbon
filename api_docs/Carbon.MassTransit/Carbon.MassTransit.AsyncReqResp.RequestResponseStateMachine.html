@@ -1,0 +1,750 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class RequestResponseStateMachine
+   | Carbon Framework </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class RequestResponseStateMachine
+   | Carbon Framework ">
+    <meta name="generator" content="docfx 2.59.4.0">
+    
+    <link rel="shortcut icon" href="../../images/logo.png">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
+    
+    <meta property="docfx:rel" content="../../">
+    
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../images/logo.png" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Carbon.MassTransit.AsyncReqResp.RequestResponseStateMachine">
+  
+  
+  <h1 id="Carbon_MassTransit_AsyncReqResp_RequestResponseStateMachine" data-uid="Carbon.MassTransit.AsyncReqResp.RequestResponseStateMachine" class="text-break">Class RequestResponseStateMachine
+  </h1>
+  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">Automatonymous.AutomatonymousStateMachine</span>&lt;<a class="xref" href="Carbon.MassTransit.AsyncReqResp.RequestResponseState.html">RequestResponseState</a>&gt;</div>
+    <div class="level2"><span class="xref">Automatonymous.MassTransitStateMachine</span>&lt;<a class="xref" href="Carbon.MassTransit.AsyncReqResp.RequestResponseState.html">RequestResponseState</a>&gt;</div>
+    <div class="level3"><span class="xref">RequestResponseStateMachine</span></div>
+  </div>
+  <div class="implements">
+    <h5>Implements</h5>
+    <div><span class="xref">Automatonymous.SagaStateMachine</span>&lt;<a class="xref" href="Carbon.MassTransit.AsyncReqResp.RequestResponseState.html">RequestResponseState</a>&gt;</div>
+    <div><span class="xref">Automatonymous.StateMachine</span>&lt;<a class="xref" href="Carbon.MassTransit.AsyncReqResp.RequestResponseState.html">RequestResponseState</a>&gt;</div>
+    <div><span class="xref">Automatonymous.StateMachine</span></div>
+    <div><span class="xref">Automatonymous.Visitable</span></div>
+    <div><span class="xref">GreenPipes.IProbeSite</span></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <span class="xref">Automatonymous.MassTransitStateMachine&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState&gt;.Automatonymous.SagaStateMachine&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState&gt;.IsCompleted(Carbon.MassTransit.AsyncReqResp.RequestResponseState)</span>
+    </div>
+    <div>
+      <span class="xref">Automatonymous.MassTransitStateMachine&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState&gt;.SetCompleted(System.Func&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState, System.Threading.Tasks.Task&lt;System.Boolean&gt;&gt;)</span>
+    </div>
+    <div>
+      <span class="xref">Automatonymous.MassTransitStateMachine&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState&gt;.SetCompletedWhenFinalized()</span>
+    </div>
+    <div>
+      <span class="xref">Automatonymous.MassTransitStateMachine&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState&gt;.Event&lt;T&gt;(System.Linq.Expressions.Expression&lt;System.Func&lt;Automatonymous.Event&lt;T&gt;&gt;&gt;, System.Action&lt;Automatonymous.IEventCorrelationConfigurator&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState, T&gt;&gt;)</span>
+    </div>
+    <div>
+      <span class="xref">Automatonymous.MassTransitStateMachine&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState&gt;.Event&lt;TProperty, T&gt;(System.Linq.Expressions.Expression&lt;System.Func&lt;TProperty&gt;&gt;, System.Linq.Expressions.Expression&lt;System.Func&lt;TProperty, Automatonymous.Event&lt;T&gt;&gt;&gt;, System.Action&lt;Automatonymous.IEventCorrelationConfigurator&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState, T&gt;&gt;)</span>
+    </div>
+    <div>
+      <span class="xref">Automatonymous.MassTransitStateMachine&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState&gt;.Event&lt;T&gt;(System.Linq.Expressions.Expression&lt;System.Func&lt;Automatonymous.Event&lt;T&gt;&gt;&gt;)</span>
+    </div>
+    <div>
+      <span class="xref">Automatonymous.MassTransitStateMachine&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState&gt;.Event&lt;T&gt;(System.String)</span>
+    </div>
+    <div>
+      <span class="xref">Automatonymous.MassTransitStateMachine&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState&gt;.Event&lt;T&gt;(System.String, System.Action&lt;Automatonymous.IEventCorrelationConfigurator&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState, T&gt;&gt;)</span>
+    </div>
+    <div>
+      <span class="xref">Automatonymous.MassTransitStateMachine&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState&gt;.Request&lt;TRequest, TResponse&gt;(System.Linq.Expressions.Expression&lt;System.Func&lt;Automatonymous.Request&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState, TRequest, TResponse&gt;&gt;&gt;, System.Linq.Expressions.Expression&lt;System.Func&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState, System.Nullable&lt;System.Guid&gt;&gt;&gt;, System.Action&lt;Automatonymous.IRequestConfigurator&gt;)</span>
+    </div>
+    <div>
+      <span class="xref">Automatonymous.MassTransitStateMachine&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState&gt;.Request&lt;TRequest, TResponse&gt;(System.Linq.Expressions.Expression&lt;System.Func&lt;Automatonymous.Request&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState, TRequest, TResponse&gt;&gt;&gt;, System.Action&lt;Automatonymous.IRequestConfigurator&gt;)</span>
+    </div>
+    <div>
+      <span class="xref">Automatonymous.MassTransitStateMachine&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState&gt;.Request&lt;TRequest, TResponse&gt;(System.Linq.Expressions.Expression&lt;System.Func&lt;Automatonymous.Request&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState, TRequest, TResponse&gt;&gt;&gt;, System.Linq.Expressions.Expression&lt;System.Func&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState, System.Nullable&lt;System.Guid&gt;&gt;&gt;, Automatonymous.RequestSettings)</span>
+    </div>
+    <div>
+      <span class="xref">Automatonymous.MassTransitStateMachine&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState&gt;.Request&lt;TRequest, TResponse&gt;(System.Linq.Expressions.Expression&lt;System.Func&lt;Automatonymous.Request&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState, TRequest, TResponse&gt;&gt;&gt;, Automatonymous.RequestSettings)</span>
+    </div>
+    <div>
+      <span class="xref">Automatonymous.MassTransitStateMachine&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState&gt;.Request&lt;TRequest, TResponse, TResponse2&gt;(System.Linq.Expressions.Expression&lt;System.Func&lt;Automatonymous.Request&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState, TRequest, TResponse, TResponse2&gt;&gt;&gt;, System.Linq.Expressions.Expression&lt;System.Func&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState, System.Nullable&lt;System.Guid&gt;&gt;&gt;, System.Action&lt;Automatonymous.IRequestConfigurator&gt;)</span>
+    </div>
+    <div>
+      <span class="xref">Automatonymous.MassTransitStateMachine&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState&gt;.Request&lt;TRequest, TResponse, TResponse2&gt;(System.Linq.Expressions.Expression&lt;System.Func&lt;Automatonymous.Request&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState, TRequest, TResponse, TResponse2&gt;&gt;&gt;, System.Action&lt;Automatonymous.IRequestConfigurator&gt;)</span>
+    </div>
+    <div>
+      <span class="xref">Automatonymous.MassTransitStateMachine&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState&gt;.Request&lt;TRequest, TResponse, TResponse2&gt;(System.Linq.Expressions.Expression&lt;System.Func&lt;Automatonymous.Request&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState, TRequest, TResponse, TResponse2&gt;&gt;&gt;, System.Linq.Expressions.Expression&lt;System.Func&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState, System.Nullable&lt;System.Guid&gt;&gt;&gt;, Automatonymous.RequestSettings)</span>
+    </div>
+    <div>
+      <span class="xref">Automatonymous.MassTransitStateMachine&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState&gt;.Request&lt;TRequest, TResponse, TResponse2&gt;(System.Linq.Expressions.Expression&lt;System.Func&lt;Automatonymous.Request&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState, TRequest, TResponse, TResponse2&gt;&gt;&gt;, Automatonymous.RequestSettings)</span>
+    </div>
+    <div>
+      <span class="xref">Automatonymous.MassTransitStateMachine&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState&gt;.Request&lt;TRequest, TResponse, TResponse2, TResponse3&gt;(System.Linq.Expressions.Expression&lt;System.Func&lt;Automatonymous.Request&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState, TRequest, TResponse, TResponse2, TResponse3&gt;&gt;&gt;, System.Linq.Expressions.Expression&lt;System.Func&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState, System.Nullable&lt;System.Guid&gt;&gt;&gt;, System.Action&lt;Automatonymous.IRequestConfigurator&gt;)</span>
+    </div>
+    <div>
+      <span class="xref">Automatonymous.MassTransitStateMachine&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState&gt;.Request&lt;TRequest, TResponse, TResponse2, TResponse3&gt;(System.Linq.Expressions.Expression&lt;System.Func&lt;Automatonymous.Request&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState, TRequest, TResponse, TResponse2, TResponse3&gt;&gt;&gt;, System.Action&lt;Automatonymous.IRequestConfigurator&gt;)</span>
+    </div>
+    <div>
+      <span class="xref">Automatonymous.MassTransitStateMachine&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState&gt;.Request&lt;TRequest, TResponse, TResponse2, TResponse3&gt;(System.Linq.Expressions.Expression&lt;System.Func&lt;Automatonymous.Request&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState, TRequest, TResponse, TResponse2, TResponse3&gt;&gt;&gt;, System.Linq.Expressions.Expression&lt;System.Func&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState, System.Nullable&lt;System.Guid&gt;&gt;&gt;, Automatonymous.RequestSettings)</span>
+    </div>
+    <div>
+      <span class="xref">Automatonymous.MassTransitStateMachine&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState&gt;.Request&lt;TRequest, TResponse, TResponse2, TResponse3&gt;(System.Linq.Expressions.Expression&lt;System.Func&lt;Automatonymous.Request&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState, TRequest, TResponse, TResponse2, TResponse3&gt;&gt;&gt;, Automatonymous.RequestSettings)</span>
+    </div>
+    <div>
+      <span class="xref">Automatonymous.MassTransitStateMachine&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState&gt;.Schedule&lt;TMessage&gt;(System.Linq.Expressions.Expression&lt;System.Func&lt;Automatonymous.Schedule&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState, TMessage&gt;&gt;&gt;, System.Linq.Expressions.Expression&lt;System.Func&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState, System.Nullable&lt;System.Guid&gt;&gt;&gt;, System.Action&lt;Automatonymous.IScheduleConfigurator&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState, TMessage&gt;&gt;)</span>
+    </div>
+    <div>
+      <span class="xref">Automatonymous.MassTransitStateMachine&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState&gt;.Schedule&lt;TMessage&gt;(System.Linq.Expressions.Expression&lt;System.Func&lt;Automatonymous.Schedule&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState, TMessage&gt;&gt;&gt;, System.Linq.Expressions.Expression&lt;System.Func&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState, System.Nullable&lt;System.Guid&gt;&gt;&gt;, Automatonymous.ScheduleSettings&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState, TMessage&gt;)</span>
+    </div>
+    <div>
+      <span class="xref">Automatonymous.MassTransitStateMachine&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState&gt;.Correlations</span>
+    </div>
+    <div>
+      <span class="xref">Automatonymous.AutomatonymousStateMachine&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState&gt;.Automatonymous.StateMachine.GetState(System.String)</span>
+    </div>
+    <div>
+      <span class="xref">Automatonymous.AutomatonymousStateMachine&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState&gt;.Automatonymous.StateMachine&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState&gt;.RaiseEvent(Automatonymous.EventContext&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState&gt;)</span>
+    </div>
+    <div>
+      <span class="xref">Automatonymous.AutomatonymousStateMachine&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState&gt;.Automatonymous.StateMachine&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState&gt;.RaiseEvent&lt;T&gt;(Automatonymous.EventContext&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState, T&gt;)</span>
+    </div>
+    <div>
+      <span class="xref">Automatonymous.AutomatonymousStateMachine&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState&gt;.GetState(System.String)</span>
+    </div>
+    <div>
+      <span class="xref">Automatonymous.AutomatonymousStateMachine&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState&gt;.Automatonymous.StateMachine.GetEvent(System.String)</span>
+    </div>
+    <div>
+      <span class="xref">Automatonymous.AutomatonymousStateMachine&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState&gt;.Automatonymous.StateMachine.NextEvents(Automatonymous.State)</span>
+    </div>
+    <div>
+      <span class="xref">Automatonymous.AutomatonymousStateMachine&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState&gt;.Automatonymous.Visitable.Accept(Automatonymous.StateMachineVisitor)</span>
+    </div>
+    <div>
+      <span class="xref">Automatonymous.AutomatonymousStateMachine&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState&gt;.Probe(GreenPipes.ProbeContext)</span>
+    </div>
+    <div>
+      <span class="xref">Automatonymous.AutomatonymousStateMachine&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState&gt;.Automatonymous.StateMachine&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState&gt;.ConnectEventObserver(Automatonymous.EventObserver&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState&gt;)</span>
+    </div>
+    <div>
+      <span class="xref">Automatonymous.AutomatonymousStateMachine&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState&gt;.Automatonymous.StateMachine&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState&gt;.ConnectEventObserver(Automatonymous.Event, Automatonymous.EventObserver&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState&gt;)</span>
+    </div>
+    <div>
+      <span class="xref">Automatonymous.AutomatonymousStateMachine&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState&gt;.Automatonymous.StateMachine&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState&gt;.ConnectStateObserver(Automatonymous.StateObserver&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState&gt;)</span>
+    </div>
+    <div>
+      <span class="xref">Automatonymous.AutomatonymousStateMachine&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState&gt;.TryGetState(System.String, Automatonymous.State&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState&gt;)</span>
+    </div>
+    <div>
+      <span class="xref">Automatonymous.AutomatonymousStateMachine&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState&gt;.InstanceState(System.Linq.Expressions.Expression&lt;System.Func&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState, Automatonymous.State&gt;&gt;)</span>
+    </div>
+    <div>
+      <span class="xref">Automatonymous.AutomatonymousStateMachine&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState&gt;.InstanceState(System.Linq.Expressions.Expression&lt;System.Func&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState, System.String&gt;&gt;)</span>
+    </div>
+    <div>
+      <span class="xref">Automatonymous.AutomatonymousStateMachine&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState&gt;.InstanceState(System.Linq.Expressions.Expression&lt;System.Func&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState, System.Int32&gt;&gt;, Automatonymous.State[])</span>
+    </div>
+    <div>
+      <span class="xref">Automatonymous.AutomatonymousStateMachine&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState&gt;.Name(System.String)</span>
+    </div>
+    <div>
+      <span class="xref">Automatonymous.AutomatonymousStateMachine&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState&gt;.Event(System.Linq.Expressions.Expression&lt;System.Func&lt;Automatonymous.Event&gt;&gt;)</span>
+    </div>
+    <div>
+      <span class="xref">Automatonymous.AutomatonymousStateMachine&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState&gt;.Event(System.String)</span>
+    </div>
+    <div>
+      <span class="xref">Automatonymous.AutomatonymousStateMachine&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState&gt;.Event&lt;TProperty, T&gt;(System.Linq.Expressions.Expression&lt;System.Func&lt;TProperty&gt;&gt;, System.Linq.Expressions.Expression&lt;System.Func&lt;TProperty, Automatonymous.Event&lt;T&gt;&gt;&gt;)</span>
+    </div>
+    <div>
+      <span class="xref">Automatonymous.AutomatonymousStateMachine&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState&gt;.CompositeEvent(System.Linq.Expressions.Expression&lt;System.Func&lt;Automatonymous.Event&gt;&gt;, System.Linq.Expressions.Expression&lt;System.Func&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState, Automatonymous.CompositeEventStatus&gt;&gt;, Automatonymous.Event[])</span>
+    </div>
+    <div>
+      <span class="xref">Automatonymous.AutomatonymousStateMachine&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState&gt;.CompositeEvent(System.Linq.Expressions.Expression&lt;System.Func&lt;Automatonymous.Event&gt;&gt;, System.Linq.Expressions.Expression&lt;System.Func&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState, Automatonymous.CompositeEventStatus&gt;&gt;, Automatonymous.CompositeEventOptions, Automatonymous.Event[])</span>
+    </div>
+    <div>
+      <span class="xref">Automatonymous.AutomatonymousStateMachine&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState&gt;.CompositeEvent(System.Linq.Expressions.Expression&lt;System.Func&lt;Automatonymous.Event&gt;&gt;, System.Linq.Expressions.Expression&lt;System.Func&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState, System.Int32&gt;&gt;, Automatonymous.Event[])</span>
+    </div>
+    <div>
+      <span class="xref">Automatonymous.AutomatonymousStateMachine&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState&gt;.CompositeEvent(System.Linq.Expressions.Expression&lt;System.Func&lt;Automatonymous.Event&gt;&gt;, System.Linq.Expressions.Expression&lt;System.Func&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState, System.Int32&gt;&gt;, Automatonymous.CompositeEventOptions, Automatonymous.Event[])</span>
+    </div>
+    <div>
+      <span class="xref">Automatonymous.AutomatonymousStateMachine&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState&gt;.CompositeEvent(Automatonymous.Event, System.Linq.Expressions.Expression&lt;System.Func&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState, Automatonymous.CompositeEventStatus&gt;&gt;, Automatonymous.Event[])</span>
+    </div>
+    <div>
+      <span class="xref">Automatonymous.AutomatonymousStateMachine&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState&gt;.CompositeEvent(Automatonymous.Event, System.Linq.Expressions.Expression&lt;System.Func&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState, Automatonymous.CompositeEventStatus&gt;&gt;, Automatonymous.CompositeEventOptions, Automatonymous.Event[])</span>
+    </div>
+    <div>
+      <span class="xref">Automatonymous.AutomatonymousStateMachine&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState&gt;.CompositeEvent(Automatonymous.Event, System.Linq.Expressions.Expression&lt;System.Func&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState, System.Int32&gt;&gt;, Automatonymous.Event[])</span>
+    </div>
+    <div>
+      <span class="xref">Automatonymous.AutomatonymousStateMachine&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState&gt;.CompositeEvent(Automatonymous.Event, System.Linq.Expressions.Expression&lt;System.Func&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState, System.Int32&gt;&gt;, Automatonymous.CompositeEventOptions, Automatonymous.Event[])</span>
+    </div>
+    <div>
+      <span class="xref">Automatonymous.AutomatonymousStateMachine&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState&gt;.State(System.Linq.Expressions.Expression&lt;System.Func&lt;Automatonymous.State&gt;&gt;)</span>
+    </div>
+    <div>
+      <span class="xref">Automatonymous.AutomatonymousStateMachine&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState&gt;.State(System.String)</span>
+    </div>
+    <div>
+      <span class="xref">Automatonymous.AutomatonymousStateMachine&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState&gt;.State&lt;TProperty&gt;(System.Linq.Expressions.Expression&lt;System.Func&lt;TProperty&gt;&gt;, System.Linq.Expressions.Expression&lt;System.Func&lt;TProperty, Automatonymous.State&gt;&gt;)</span>
+    </div>
+    <div>
+      <span class="xref">Automatonymous.AutomatonymousStateMachine&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState&gt;.SubState(System.Linq.Expressions.Expression&lt;System.Func&lt;Automatonymous.State&gt;&gt;, Automatonymous.State)</span>
+    </div>
+    <div>
+      <span class="xref">Automatonymous.AutomatonymousStateMachine&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState&gt;.SubState(System.String, Automatonymous.State)</span>
+    </div>
+    <div>
+      <span class="xref">Automatonymous.AutomatonymousStateMachine&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState&gt;.SubState&lt;TProperty&gt;(System.Linq.Expressions.Expression&lt;System.Func&lt;TProperty&gt;&gt;, System.Linq.Expressions.Expression&lt;System.Func&lt;TProperty, Automatonymous.State&gt;&gt;, Automatonymous.State)</span>
+    </div>
+    <div>
+      <span class="xref">Automatonymous.AutomatonymousStateMachine&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState&gt;.During(Automatonymous.State, Automatonymous.Binders.EventActivities&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState&gt;[])</span>
+    </div>
+    <div>
+      <span class="xref">Automatonymous.AutomatonymousStateMachine&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState&gt;.During(Automatonymous.State, Automatonymous.State, Automatonymous.Binders.EventActivities&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState&gt;[])</span>
+    </div>
+    <div>
+      <span class="xref">Automatonymous.AutomatonymousStateMachine&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState&gt;.During(Automatonymous.State, Automatonymous.State, Automatonymous.State, Automatonymous.Binders.EventActivities&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState&gt;[])</span>
+    </div>
+    <div>
+      <span class="xref">Automatonymous.AutomatonymousStateMachine&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState&gt;.During(Automatonymous.State, Automatonymous.State, Automatonymous.State, Automatonymous.State, Automatonymous.Binders.EventActivities&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState&gt;[])</span>
+    </div>
+    <div>
+      <span class="xref">Automatonymous.AutomatonymousStateMachine&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState&gt;.During(System.Collections.Generic.IEnumerable&lt;Automatonymous.State&gt;, Automatonymous.Binders.EventActivities&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState&gt;[])</span>
+    </div>
+    <div>
+      <span class="xref">Automatonymous.AutomatonymousStateMachine&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState&gt;.Initially(Automatonymous.Binders.EventActivities&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState&gt;[])</span>
+    </div>
+    <div>
+      <span class="xref">Automatonymous.AutomatonymousStateMachine&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState&gt;.DuringAny(Automatonymous.Binders.EventActivities&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState&gt;[])</span>
+    </div>
+    <div>
+      <span class="xref">Automatonymous.AutomatonymousStateMachine&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState&gt;.Finally(System.Func&lt;Automatonymous.Binders.EventActivityBinder&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState&gt;, Automatonymous.Binders.EventActivityBinder&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState&gt;&gt;)</span>
+    </div>
+    <div>
+      <span class="xref">Automatonymous.AutomatonymousStateMachine&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState&gt;.When(Automatonymous.Event)</span>
+    </div>
+    <div>
+      <span class="xref">Automatonymous.AutomatonymousStateMachine&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState&gt;.When(Automatonymous.Event, Automatonymous.StateMachineEventFilter&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState&gt;)</span>
+    </div>
+    <div>
+      <span class="xref">Automatonymous.AutomatonymousStateMachine&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState&gt;.WhenEnter(Automatonymous.State, System.Func&lt;Automatonymous.Binders.EventActivityBinder&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState&gt;, Automatonymous.Binders.EventActivityBinder&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState&gt;&gt;)</span>
+    </div>
+    <div>
+      <span class="xref">Automatonymous.AutomatonymousStateMachine&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState&gt;.WhenEnterAny(System.Func&lt;Automatonymous.Binders.EventActivityBinder&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState&gt;, Automatonymous.Binders.EventActivityBinder&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState&gt;&gt;)</span>
+    </div>
+    <div>
+      <span class="xref">Automatonymous.AutomatonymousStateMachine&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState&gt;.WhenLeaveAny(System.Func&lt;Automatonymous.Binders.EventActivityBinder&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState&gt;, Automatonymous.Binders.EventActivityBinder&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState&gt;&gt;)</span>
+    </div>
+    <div>
+      <span class="xref">Automatonymous.AutomatonymousStateMachine&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState&gt;.BeforeEnterAny(System.Func&lt;Automatonymous.Binders.EventActivityBinder&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState, Automatonymous.State&gt;, Automatonymous.Binders.EventActivityBinder&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState, Automatonymous.State&gt;&gt;)</span>
+    </div>
+    <div>
+      <span class="xref">Automatonymous.AutomatonymousStateMachine&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState&gt;.AfterLeaveAny(System.Func&lt;Automatonymous.Binders.EventActivityBinder&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState, Automatonymous.State&gt;, Automatonymous.Binders.EventActivityBinder&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState, Automatonymous.State&gt;&gt;)</span>
+    </div>
+    <div>
+      <span class="xref">Automatonymous.AutomatonymousStateMachine&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState&gt;.WhenLeave(Automatonymous.State, System.Func&lt;Automatonymous.Binders.EventActivityBinder&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState&gt;, Automatonymous.Binders.EventActivityBinder&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState&gt;&gt;)</span>
+    </div>
+    <div>
+      <span class="xref">Automatonymous.AutomatonymousStateMachine&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState&gt;.BeforeEnter(Automatonymous.State, System.Func&lt;Automatonymous.Binders.EventActivityBinder&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState, Automatonymous.State&gt;, Automatonymous.Binders.EventActivityBinder&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState, Automatonymous.State&gt;&gt;)</span>
+    </div>
+    <div>
+      <span class="xref">Automatonymous.AutomatonymousStateMachine&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState&gt;.AfterLeave(Automatonymous.State, System.Func&lt;Automatonymous.Binders.EventActivityBinder&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState, Automatonymous.State&gt;, Automatonymous.Binders.EventActivityBinder&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState, Automatonymous.State&gt;&gt;)</span>
+    </div>
+    <div>
+      <span class="xref">Automatonymous.AutomatonymousStateMachine&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState&gt;.When&lt;TData&gt;(Automatonymous.Event&lt;TData&gt;)</span>
+    </div>
+    <div>
+      <span class="xref">Automatonymous.AutomatonymousStateMachine&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState&gt;.When&lt;TData&gt;(Automatonymous.Event&lt;TData&gt;, Automatonymous.StateMachineEventFilter&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState, TData&gt;)</span>
+    </div>
+    <div>
+      <span class="xref">Automatonymous.AutomatonymousStateMachine&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState&gt;.Ignore(Automatonymous.Event)</span>
+    </div>
+    <div>
+      <span class="xref">Automatonymous.AutomatonymousStateMachine&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState&gt;.Ignore&lt;TData&gt;(Automatonymous.Event&lt;TData&gt;)</span>
+    </div>
+    <div>
+      <span class="xref">Automatonymous.AutomatonymousStateMachine&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState&gt;.Ignore&lt;TData&gt;(Automatonymous.Event&lt;TData&gt;, Automatonymous.StateMachineEventFilter&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState, TData&gt;)</span>
+    </div>
+    <div>
+      <span class="xref">Automatonymous.AutomatonymousStateMachine&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState&gt;.OnUnhandledEvent(Automatonymous.UnhandledEventCallback&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState&gt;)</span>
+    </div>
+    <div>
+      <span class="xref">Automatonymous.AutomatonymousStateMachine&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState&gt;.New(System.Action&lt;Automatonymous.Builder.StateMachineModifier&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState&gt;&gt;)</span>
+    </div>
+    <div>
+      <span class="xref">Automatonymous.AutomatonymousStateMachine&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState&gt;.Automatonymous.StateMachine.Name</span>
+    </div>
+    <div>
+      <span class="xref">Automatonymous.AutomatonymousStateMachine&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState&gt;.Automatonymous.StateMachine&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState&gt;.Accessor</span>
+    </div>
+    <div>
+      <span class="xref">Automatonymous.AutomatonymousStateMachine&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState&gt;.Initial</span>
+    </div>
+    <div>
+      <span class="xref">Automatonymous.AutomatonymousStateMachine&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState&gt;.Final</span>
+    </div>
+    <div>
+      <span class="xref">Automatonymous.AutomatonymousStateMachine&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState&gt;.States</span>
+    </div>
+    <div>
+      <span class="xref">Automatonymous.AutomatonymousStateMachine&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState&gt;.Events</span>
+    </div>
+    <div>
+      <span class="xref">Automatonymous.AutomatonymousStateMachine&lt;Carbon.MassTransit.AsyncReqResp.RequestResponseState&gt;.Automatonymous.StateMachine.InstanceType</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Carbon.MassTransit.AsyncReqResp.html">Carbon.MassTransit.AsyncReqResp</a></h6>
+  <h6><strong>Assembly</strong>: Carbon.MassTransit.dll</h6>
+  <h5 id="Carbon_MassTransit_AsyncReqResp_RequestResponseStateMachine_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class RequestResponseStateMachine : MassTransitStateMachine&lt;RequestResponseState&gt;, SagaStateMachine&lt;RequestResponseState&gt;, StateMachine&lt;RequestResponseState&gt;, StateMachine, Visitable, IProbeSite</code></pre>
+  </div>
+  <h3 id="constructors">Constructors
+  </h3>
+  <a id="Carbon_MassTransit_AsyncReqResp_RequestResponseStateMachine__ctor_" data-uid="Carbon.MassTransit.AsyncReqResp.RequestResponseStateMachine.#ctor*"></a>
+  <h4 id="Carbon_MassTransit_AsyncReqResp_RequestResponseStateMachine__ctor_Microsoft_Extensions_Logging_ILogger_Carbon_MassTransit_AsyncReqResp_RequestResponseStateMachine__" data-uid="Carbon.MassTransit.AsyncReqResp.RequestResponseStateMachine.#ctor(Microsoft.Extensions.Logging.ILogger{Carbon.MassTransit.AsyncReqResp.RequestResponseStateMachine})">RequestResponseStateMachine(ILogger&lt;RequestResponseStateMachine&gt;)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public RequestResponseStateMachine(ILogger&lt;RequestResponseStateMachine&gt; logger)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Microsoft.Extensions.Logging.ILogger</span>&lt;<a class="xref" href="Carbon.MassTransit.AsyncReqResp.RequestResponseStateMachine.html">RequestResponseStateMachine</a>&gt;</td>
+        <td><span class="parametername">logger</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="properties">Properties
+  </h3>
+  <a id="Carbon_MassTransit_AsyncReqResp_RequestResponseStateMachine_RequestFailedState_" data-uid="Carbon.MassTransit.AsyncReqResp.RequestResponseStateMachine.RequestFailedState*"></a>
+  <h4 id="Carbon_MassTransit_AsyncReqResp_RequestResponseStateMachine_RequestFailedState" data-uid="Carbon.MassTransit.AsyncReqResp.RequestResponseStateMachine.RequestFailedState">RequestFailedState</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public State RequestFailedState { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Automatonymous.State</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Carbon_MassTransit_AsyncReqResp_RequestResponseStateMachine_RequestFinalizingState_" data-uid="Carbon.MassTransit.AsyncReqResp.RequestResponseStateMachine.RequestFinalizingState*"></a>
+  <h4 id="Carbon_MassTransit_AsyncReqResp_RequestResponseStateMachine_RequestFinalizingState" data-uid="Carbon.MassTransit.AsyncReqResp.RequestResponseStateMachine.RequestFinalizingState">RequestFinalizingState</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public State RequestFinalizingState { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Automatonymous.State</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Carbon_MassTransit_AsyncReqResp_RequestResponseStateMachine_RequestSentFailed_" data-uid="Carbon.MassTransit.AsyncReqResp.RequestResponseStateMachine.RequestSentFailed*"></a>
+  <h4 id="Carbon_MassTransit_AsyncReqResp_RequestResponseStateMachine_RequestSentFailed" data-uid="Carbon.MassTransit.AsyncReqResp.RequestResponseStateMachine.RequestSentFailed">RequestSentFailed</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Event&lt;IRequestSentFailed&gt; RequestSentFailed { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Automatonymous.Event</span>&lt;<a class="xref" href="Carbon.MassTransit.AsyncReqResp.Events.IRequestSentFailed.html">IRequestSentFailed</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Carbon_MassTransit_AsyncReqResp_RequestResponseStateMachine_RequestSentSucceed_" data-uid="Carbon.MassTransit.AsyncReqResp.RequestResponseStateMachine.RequestSentSucceed*"></a>
+  <h4 id="Carbon_MassTransit_AsyncReqResp_RequestResponseStateMachine_RequestSentSucceed" data-uid="Carbon.MassTransit.AsyncReqResp.RequestResponseStateMachine.RequestSentSucceed">RequestSentSucceed</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Event&lt;IRequestSentSucceed&gt; RequestSentSucceed { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Automatonymous.Event</span>&lt;<a class="xref" href="Carbon.MassTransit.AsyncReqResp.Events.IRequestSentSucceed.html">IRequestSentSucceed</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Carbon_MassTransit_AsyncReqResp_RequestResponseStateMachine_RequestStartedState_" data-uid="Carbon.MassTransit.AsyncReqResp.RequestResponseStateMachine.RequestStartedState*"></a>
+  <h4 id="Carbon_MassTransit_AsyncReqResp_RequestResponseStateMachine_RequestStartedState" data-uid="Carbon.MassTransit.AsyncReqResp.RequestResponseStateMachine.RequestStartedState">RequestStartedState</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public State RequestStartedState { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Automatonymous.State</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Carbon_MassTransit_AsyncReqResp_RequestResponseStateMachine_RequestStarterRequest_" data-uid="Carbon.MassTransit.AsyncReqResp.RequestResponseStateMachine.RequestStarterRequest*"></a>
+  <h4 id="Carbon_MassTransit_AsyncReqResp_RequestResponseStateMachine_RequestStarterRequest" data-uid="Carbon.MassTransit.AsyncReqResp.RequestResponseStateMachine.RequestStarterRequest">RequestStarterRequest</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Event&lt;IRequestStarterRequest&gt; RequestStarterRequest { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Automatonymous.Event</span>&lt;<a class="xref" href="Carbon.MassTransit.AsyncReqResp.Events.IRequestStarterRequest.html">IRequestStarterRequest</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Carbon_MassTransit_AsyncReqResp_RequestResponseStateMachine_RequestSucceedState_" data-uid="Carbon.MassTransit.AsyncReqResp.RequestResponseStateMachine.RequestSucceedState*"></a>
+  <h4 id="Carbon_MassTransit_AsyncReqResp_RequestResponseStateMachine_RequestSucceedState" data-uid="Carbon.MassTransit.AsyncReqResp.RequestResponseStateMachine.RequestSucceedState">RequestSucceedState</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public State RequestSucceedState { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Automatonymous.State</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Carbon_MassTransit_AsyncReqResp_RequestResponseStateMachine_ResponseFailed_" data-uid="Carbon.MassTransit.AsyncReqResp.RequestResponseStateMachine.ResponseFailed*"></a>
+  <h4 id="Carbon_MassTransit_AsyncReqResp_RequestResponseStateMachine_ResponseFailed" data-uid="Carbon.MassTransit.AsyncReqResp.RequestResponseStateMachine.ResponseFailed">ResponseFailed</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Event&lt;IResponseFailed&gt; ResponseFailed { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Automatonymous.Event</span>&lt;<a class="xref" href="Carbon.MassTransit.AsyncReqResp.Events.IResponseFailed.html">IResponseFailed</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Carbon_MassTransit_AsyncReqResp_RequestResponseStateMachine_ResponseFailedState_" data-uid="Carbon.MassTransit.AsyncReqResp.RequestResponseStateMachine.ResponseFailedState*"></a>
+  <h4 id="Carbon_MassTransit_AsyncReqResp_RequestResponseStateMachine_ResponseFailedState" data-uid="Carbon.MassTransit.AsyncReqResp.RequestResponseStateMachine.ResponseFailedState">ResponseFailedState</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public State ResponseFailedState { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Automatonymous.State</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Carbon_MassTransit_AsyncReqResp_RequestResponseStateMachine_ResponsePendingState_" data-uid="Carbon.MassTransit.AsyncReqResp.RequestResponseStateMachine.ResponsePendingState*"></a>
+  <h4 id="Carbon_MassTransit_AsyncReqResp_RequestResponseStateMachine_ResponsePendingState" data-uid="Carbon.MassTransit.AsyncReqResp.RequestResponseStateMachine.ResponsePendingState">ResponsePendingState</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public State ResponsePendingState { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Automatonymous.State</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Carbon_MassTransit_AsyncReqResp_RequestResponseStateMachine_ResponseSucceed_" data-uid="Carbon.MassTransit.AsyncReqResp.RequestResponseStateMachine.ResponseSucceed*"></a>
+  <h4 id="Carbon_MassTransit_AsyncReqResp_RequestResponseStateMachine_ResponseSucceed" data-uid="Carbon.MassTransit.AsyncReqResp.RequestResponseStateMachine.ResponseSucceed">ResponseSucceed</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Event&lt;IResponseSucceed&gt; ResponseSucceed { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Automatonymous.Event</span>&lt;<a class="xref" href="Carbon.MassTransit.AsyncReqResp.Events.IResponseSucceed.html">IResponseSucceed</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Carbon_MassTransit_AsyncReqResp_RequestResponseStateMachine_ResponseSucceedState_" data-uid="Carbon.MassTransit.AsyncReqResp.RequestResponseStateMachine.ResponseSucceedState*"></a>
+  <h4 id="Carbon_MassTransit_AsyncReqResp_RequestResponseStateMachine_ResponseSucceedState" data-uid="Carbon.MassTransit.AsyncReqResp.RequestResponseStateMachine.ResponseSucceedState">ResponseSucceedState</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public State ResponseSucceedState { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Automatonymous.State</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <span class="xref">Automatonymous.SagaStateMachine&lt;TInstance&gt;</span>
+  </div>
+  <div>
+      <span class="xref">Automatonymous.StateMachine&lt;TInstance&gt;</span>
+  </div>
+  <div>
+      <span class="xref">Automatonymous.StateMachine</span>
+  </div>
+  <div>
+      <span class="xref">Automatonymous.Visitable</span>
+  </div>
+  <div>
+      <span class="xref">GreenPipes.IProbeSite</span>
+  </div>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            Carbon Framework
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>

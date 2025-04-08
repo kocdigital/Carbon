@@ -1,0 +1,269 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Carbon.Domain.EntityFrameworkCore  | Carbon Framework </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Carbon.Domain.EntityFrameworkCore  | Carbon Framework ">
+    <meta name="generator" content="docfx 2.59.4.0">
+    
+    <link rel="shortcut icon" href="../../../images/logo.png">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="../../toc.html">
+    
+    <meta property="docfx:rel" content="../../../">
+    
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../images/logo.png" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="carbondomainentityframeworkcore-">Carbon.Domain.EntityFrameworkCore <a href="https://www.nuget.org/packages/Carbon.Domain.EntityFrameworkCore"><img alt="Nuget (with prereleases)" src="https://img.shields.io/nuget/vpre/Carbon.Domain.EntityFrameworkCore"></a></h1>
+
+<p>This package contains EntityFramework-based wrappers and libraries.
+Also introduces CQRS and Repository Pattern for SQL-based infrastructures. Makes you manage your SQL context in a secure, and multi-tenant managed way.</p>
+<h2 id="carbondomainentityframeworkcore-features">Carbon.Domain.EntityFrameworkCore Features</h2>
+<ol>
+<li><strong>Predefined Business Objects</strong>: Carbon.Domain.EntityFrameworkCore offers some predefined business objects like; softdelete, active/passive entities, autditing, ownership etc.
+You can review those on <a href="../Carbon.Domain.Abstractions/README.html">Carbon.Domain.Abstractions</a>.</li>
+<li><strong>Read Only Context</strong>: Some cases there should be only one api which can write to db, other ones just read the data.
+For cases like that Carbon offers built-in readonly db context and when implementing api you can use that context.</li>
+<li><strong>Multi Tenant Management</strong>: If your entity needs to serve for multiple tenants; first you must derive your entity from <a href="../Carbon.Domain.Abstractions/Entities/IMustHaveTenant.cs">IMustHaveTenant</a>.
+And after that you can use TenantManaged repositories. With that you don't need to filter tenant id every time.</li>
+<li><strong>Entity Solution Relation</strong>: If your entities serves more than one solution, Carbon offers you a way to manage that in a built-in way. What is the &quot;Solution&quot; here?
+It's basically some distinct business areas like banking, e-commerce etc. that you serve. Let's assume you have an Category entity in both Solutions but you don't want to show e-commerce categories on banking solution.
+On cases like those you can specify a solution to entity.</li>
+</ol>
+<h2 id="add-carbondomainentityframeworkcore-to-your-project">Add Carbon.Domain.EntityFrameworkCore to Your Project</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Related Package</th>
+<th style="text-align: center;">Required</th>
+<th style="text-align: center;">Auto-Included</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><a href="../Carbon.Domain.Abstractions/README.html">Carbon.Domain.Abstractions</a></td>
+<td style="text-align: center;">No</td>
+<td style="text-align: center;">No</td>
+</tr>
+<tr>
+<td style="text-align: left;"><a href="../Carbon.WebApplication/README.html">Carbon.WebApplication</a></td>
+<td style="text-align: center;">No</td>
+<td style="text-align: center;">No</td>
+</tr>
+<tr>
+<td style="text-align: left;"><a href="../Carbon.WebApplication.EntityFrameworkCore/README.md">Carbon.WebApplication.EntityFrameworkCore</a></td>
+<td style="text-align: center;">No</td>
+<td style="text-align: center;">No</td>
+</tr>
+</tbody>
+</table>
+<h3 id="1-create-an-entity-and-entity-configuration">1. Create an Entity and Entity Configuration</h3>
+<p>Let's assume we have an entity like below;</p>
+<pre><code class="lang-csharp">	public class MyEntity : IEntity, IMustHaveTenant, IHaveOwnership&lt;EntitySolutionRelation&gt;
+	{
+		public Guid Id { get; set; }
+		public string Name { get; set; }
+		public Guid TenantId { get; set; } //Comes from IMustHaveTenant interface
+		
+		//Those below comes from IHaveOwnership interface
+		public Guid OwnerId { get; set; }
+		public OwnerType OwnerType { get; set; }
+		public Guid OrganizationId { get; set; }
+		public ICollection&lt;EntitySolutionRelation&gt; RelationalOwners { get; set; }
+	}
+</code></pre>
+<p>And for this entity we need a configuration, because we're using <strong>code first</strong> approach. So create an entity configuration file like shown below.</p>
+<pre><code class="lang-csharp">	public class MyEntityConfiguration : TenantManagedEntityConfigurationBase&lt;MyEntity&gt;
+	{
+		public override void Configure(EntityTypeBuilder&lt;MyEntity&gt; builder)
+		{
+			builder.HasKey(x =&gt; x.Id);
+			builder.Property(x =&gt; x.Name)
+				   .IsRequired(true)
+				   .HasMaxLength(512);
+			builder.Property(x =&gt; x.TenantId)
+				   .IsRequired(true);
+			base.Configure(builder);
+		}
+	}
+</code></pre>
+<blockquote>
+<p>Note that our entity uses tenant based approach
+so we are using <a href="https://github.com/kocdigital/Carbon/blob/master/Carbon.Domain.EntityFrameworkCore.Extensions/TenantManagedEntityConfigurationBase.cs">TenantManagedEntityConfigurationBase</a> class.</p>
+</blockquote>
+<h3 id="2-create-a-db-context">2. Create a DB Context</h3>
+<p>We can use CarbonTenantManagedContext as base class because our entity has a tenantid and at the same time it derives from IHaveOwnership interface.</p>
+<pre><code class="lang-csharp">	public class MyDBContext : CarbonTenantManagedContext&lt;MyDBContext&gt;
+	{
+		public MyDBContext(DbContextOptions options) : base(options)
+		{
+		}
+		public virtual DbSet&lt;MyEntity&gt; MyEntity { get; set; }
+		protected override void OnModelCreating(ModelBuilder modelBuilder)
+		{
+			modelBuilder.ApplyConfiguration(new MyEntityConfiguration());
+			//Don't forget to call base.OnModelCreating method.This is important!
+			base.OnModelCreating(modelBuilder);
+		}
+	}
+</code></pre>
+<h3 id="3-register-db-context">3. Register DB Context</h3>
+<p>In this step, you need to use the <a href="https://www.nuget.org/packages/Carbon.WebApplication">Carbon.WebApplication</a>
+&amp; <a href="https://www.nuget.org/packages/Carbon.WebApplication.EntityFrameworkCore">Carbon.WebApplication.EntityFrameworkCore</a>
+packages, otherwise you have to do some operations manually.</p>
+<p>On your Startup.cs;</p>
+<pre><code class="lang-csharp">	public override void CustomConfigureServices(IServiceCollection services)
+	{
+		...
+		services.AddDatabaseContext&lt;MyDBContext, Startup&gt;(Configuration);
+		...
+		services.ConfigureAsSolutionService(Configuration);//We need to add this because our entity is solution based
+	}
+	public override void CustomConfigure(IApplicationBuilder app, IWebHostEnvironment env)
+	{
+		...
+		app.MigrateDatabase&lt;MyDBContext&gt;();
+		...
+	}
+</code></pre>
+<p>At this point you can access MyDBContext wherever you wanted but there is a one last step; migration!</p>
+<h3 id="4-create-a-migration">4. Create a Migration</h3>
+<p>Code First needs migrations to sync with the database. And there are multiple db providers like postgresql, mssql, sqlite etc.
+So we must create migrations in a different project than the one containing our DbContext.</p>
+<h4 id="41-create-a-class-library-for-provider-migrations">4.1 Create a Class Library for Provider Migrations</h4>
+<p>Create a new class library project on your solution.</p>
+<h4 id="42-add-a-reference-to-your-dbcontext-project">4.2 Add a reference to your DbContext project</h4>
+<h4 id="43-create-contextdesignfactory">4.3 Create ContextDesignFactory</h4>
+<pre><code class="lang-csharp">	public class MyDBContextDesignFactory : IDesignTimeDbContextFactory&lt;MyDBContext&gt;
+	{
+		public MyDBContext CreateDbContext(string[] args)
+		{
+			var connectionString = &quot;your connection string&quot;;
+			var migrationsAssembly = typeof(MyDBContextDesignFactory).GetTypeInfo().Assembly.GetName().Name;
+			var optionsBuilder = new DbContextOptionsBuilder&lt;MyDBContext&gt;()
+		   .UseSqlServer(connectionString, sql =&gt; sql.MigrationsAssembly(migrationsAssembly));
+		   //.UseNpgsql(connectionString, sql =&gt; sql.MigrationsAssembly(migrationsAssembly));// Use tihs when using postgre sql
+			return new MyDBContext(optionsBuilder.Options);
+		}
+	}
+</code></pre>
+<h4 id="44-add-a-reference-to-your-migrations-project-from-the-startup-project">4.4 Add a reference to your migrations project from the startup project.</h4>
+<pre><code class="lang-xml">&lt;ItemGroup&gt;
+  &lt;ProjectReference Include=&quot;..\WebApplication1.MSSQLMigrations\WebApplication1.MSSQLMigrations.csproj&quot;&gt;
+&lt;/ItemGroup&gt;
+</code></pre>
+<blockquote>
+<p>If this causes a circular dependency, you can update the base output path of the migrations project instead:</p>
+</blockquote>
+<pre><code class="lang-xml">&lt;PropertyGroup&gt;
+  &lt;BaseOutputPath&gt;..\WebApplication1\bin\&lt;/BaseOutputPath&gt;
+&lt;/PropertyGroup&gt;
+</code></pre>
+<h4 id="45-create-migration">4.5 Create migration.</h4>
+<p>If you did everything correctly, you should be able to add new migrations to the project.</p>
+<pre><code class="lang-PowerShell">Add-Migration NewMigration -Project WebApplication1.MSSQLMigrations
+</code></pre>
+<blockquote>
+<p>Change project parameter for other providers.</p>
+</blockquote>
+<h4 id="46-repeat-these-steps-for-other-supported-providers">4.6 Repeat these steps for other supported providers.</h4>
+<hr>
+<blockquote>
+<p>If you have problems please check <a href="https://learn.microsoft.com/en-us/ef/core/managing-schemas/migrations/projects">Microsoft documentation</a> about migrations.</p>
+</blockquote>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            Carbon Framework
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

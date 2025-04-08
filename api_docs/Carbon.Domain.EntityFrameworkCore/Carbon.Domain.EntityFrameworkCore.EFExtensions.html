@@ -1,0 +1,1856 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class EFExtensions
+   | Carbon Framework </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class EFExtensions
+   | Carbon Framework ">
+    <meta name="generator" content="docfx 2.59.4.0">
+    
+    <link rel="shortcut icon" href="../../images/logo.png">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
+    
+    <meta property="docfx:rel" content="../../">
+    
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../images/logo.png" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Carbon.Domain.EntityFrameworkCore.EFExtensions">
+  
+  
+  <h1 id="Carbon_Domain_EntityFrameworkCore_EFExtensions" data-uid="Carbon.Domain.EntityFrameworkCore.EFExtensions" class="text-break">Class EFExtensions
+  </h1>
+  <div class="markdown level0 summary"><p>Contains extension methods like IncludeSolutionFilter, ToListEntityFilteredWithSolutionAsync etc.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">EFExtensions</span></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Carbon.Domain.EntityFrameworkCore.html">Carbon.Domain.EntityFrameworkCore</a></h6>
+  <h6><strong>Assembly</strong>: Carbon.Domain.EntityFrameworkCore.dll</h6>
+  <h5 id="Carbon_Domain_EntityFrameworkCore_EFExtensions_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static class EFExtensions</code></pre>
+  </div>
+  <h3 id="methods">Methods
+  </h3>
+  <a id="Carbon_Domain_EntityFrameworkCore_EFExtensions_EntityFirstOrDefaultIncludeOwnershipAsync_" data-uid="Carbon.Domain.EntityFrameworkCore.EFExtensions.EntityFirstOrDefaultIncludeOwnershipAsync*"></a>
+  <h4 id="Carbon_Domain_EntityFrameworkCore_EFExtensions_EntityFirstOrDefaultIncludeOwnershipAsync__2_System_Linq_IQueryable___0__Microsoft_EntityFrameworkCore_DbContext_" data-uid="Carbon.Domain.EntityFrameworkCore.EFExtensions.EntityFirstOrDefaultIncludeOwnershipAsync``2(System.Linq.IQueryable{``0},Microsoft.EntityFrameworkCore.DbContext)">EntityFirstOrDefaultIncludeOwnershipAsync&lt;T, U&gt;(IQueryable&lt;T&gt;, DbContext)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static async Task&lt;T&gt; EntityFirstOrDefaultIncludeOwnershipAsync&lt;T, U&gt;(this IQueryable&lt;T&gt; query, DbContext ctx)
+    where T : IHaveOwnership&lt;U&gt;, IEntity where U : class, IOwnerRelation</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Linq.IQueryable</span>&lt;T&gt;</td>
+        <td><span class="parametername">query</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">Microsoft.EntityFrameworkCore.DbContext</span></td>
+        <td><span class="parametername">ctx</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;T&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="parametername">U</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Carbon_Domain_EntityFrameworkCore_EFExtensions_ExecuteProcedureSql_" data-uid="Carbon.Domain.EntityFrameworkCore.EFExtensions.ExecuteProcedureSql*"></a>
+  <h4 id="Carbon_Domain_EntityFrameworkCore_EFExtensions_ExecuteProcedureSql__1_Microsoft_EntityFrameworkCore_DbContext_System_String_System_Object___" data-uid="Carbon.Domain.EntityFrameworkCore.EFExtensions.ExecuteProcedureSql``1(Microsoft.EntityFrameworkCore.DbContext,System.String,System.Object[])">ExecuteProcedureSql&lt;T&gt;(DbContext, String, Object[])</h4>
+  <div class="markdown level1 summary"><p>Executes a StoredProcedure in MSSQL and Function in PostgreSQL, generally used for procedures that returns a table result</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static IQueryable&lt;T&gt; ExecuteProcedureSql&lt;T&gt;(this DbContext context, string procedureName, params object[] parameters)
+    where T : class</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Microsoft.EntityFrameworkCore.DbContext</span></td>
+        <td><span class="parametername">context</span></td>
+        <td><p>DbContext Inherited Context</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">procedureName</span></td>
+        <td><p>Your Stored Procedure or Function Name</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Object</span>[]</td>
+        <td><span class="parametername">parameters</span></td>
+        <td><p>Your parameters respectively as in the procedure (Same Order)</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Linq.IQueryable</span>&lt;T&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Carbon_Domain_EntityFrameworkCore_EFExtensions_FirstOrDefaultEntityFilteredWithSolutionAsync_" data-uid="Carbon.Domain.EntityFrameworkCore.EFExtensions.FirstOrDefaultEntityFilteredWithSolutionAsync*"></a>
+  <h4 id="Carbon_Domain_EntityFrameworkCore_EFExtensions_FirstOrDefaultEntityFilteredWithSolutionAsync__2_System_Collections_Generic_IEnumerable_Carbon_Domain_EntityFrameworkCore_EFExtensions_RelationEntityPair___0___1___System_Collections_Generic_List_System_Guid__" data-uid="Carbon.Domain.EntityFrameworkCore.EFExtensions.FirstOrDefaultEntityFilteredWithSolutionAsync``2(System.Collections.Generic.IEnumerable{Carbon.Domain.EntityFrameworkCore.EFExtensions.RelationEntityPair{``0,``1}},System.Collections.Generic.List{System.Guid})">FirstOrDefaultEntityFilteredWithSolutionAsync&lt;T, U&gt;(IEnumerable&lt;EFExtensions.RelationEntityPair&lt;T, U&gt;&gt;, List&lt;Guid&gt;)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static T FirstOrDefaultEntityFilteredWithSolutionAsync&lt;T, U&gt;(this IEnumerable&lt;EFExtensions.RelationEntityPair&lt;T, U&gt;&gt; relationEntities, List&lt;Guid&gt; filter)
+    where T : IHaveOwnership&lt;U&gt;, IEntity where U : EntitySolutionRelation</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<a class="xref" href="Carbon.Domain.EntityFrameworkCore.EFExtensions.RelationEntityPair-2.html">EFExtensions.RelationEntityPair</a>&lt;T, U&gt;&gt;</td>
+        <td><span class="parametername">relationEntities</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<span class="xref">System.Guid</span>&gt;</td>
+        <td><span class="parametername">filter</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="parametername">U</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Carbon_Domain_EntityFrameworkCore_EFExtensions_FirstOrDefaultEntityFilteredWithSolutionAsync_" data-uid="Carbon.Domain.EntityFrameworkCore.EFExtensions.FirstOrDefaultEntityFilteredWithSolutionAsync*"></a>
+  <h4 id="Carbon_Domain_EntityFrameworkCore_EFExtensions_FirstOrDefaultEntityFilteredWithSolutionAsync__2_System_Linq_IQueryable_Carbon_Domain_EntityFrameworkCore_EFExtensions_RelationEntityPair___0___1___System_Collections_Generic_List_System_Guid__" data-uid="Carbon.Domain.EntityFrameworkCore.EFExtensions.FirstOrDefaultEntityFilteredWithSolutionAsync``2(System.Linq.IQueryable{Carbon.Domain.EntityFrameworkCore.EFExtensions.RelationEntityPair{``0,``1}},System.Collections.Generic.List{System.Guid})">FirstOrDefaultEntityFilteredWithSolutionAsync&lt;T, U&gt;(IQueryable&lt;EFExtensions.RelationEntityPair&lt;T, U&gt;&gt;, List&lt;Guid&gt;)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static async Task&lt;T&gt; FirstOrDefaultEntityFilteredWithSolutionAsync&lt;T, U&gt;(this IQueryable&lt;EFExtensions.RelationEntityPair&lt;T, U&gt;&gt; relationEntities, List&lt;Guid&gt; filter)
+    where T : IHaveOwnership&lt;U&gt;, IEntity where U : EntitySolutionRelation</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Linq.IQueryable</span>&lt;<a class="xref" href="Carbon.Domain.EntityFrameworkCore.EFExtensions.RelationEntityPair-2.html">EFExtensions.RelationEntityPair</a>&lt;T, U&gt;&gt;</td>
+        <td><span class="parametername">relationEntities</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<span class="xref">System.Guid</span>&gt;</td>
+        <td><span class="parametername">filter</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;T&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="parametername">U</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Carbon_Domain_EntityFrameworkCore_EFExtensions_IncludeOwnershipFilter_" data-uid="Carbon.Domain.EntityFrameworkCore.EFExtensions.IncludeOwnershipFilter*"></a>
+  <h4 id="Carbon_Domain_EntityFrameworkCore_EFExtensions_IncludeOwnershipFilter__2_System_Collections_Generic_IEnumerable___0__System_Collections_Generic_List_Carbon_Common_TenantManagementHandler_Classes_PermissionDetailedDto__" data-uid="Carbon.Domain.EntityFrameworkCore.EFExtensions.IncludeOwnershipFilter``2(System.Collections.Generic.IEnumerable{``0},System.Collections.Generic.List{Carbon.Common.TenantManagementHandler.Classes.PermissionDetailedDto})">IncludeOwnershipFilter&lt;T, U&gt;(IEnumerable&lt;T&gt;, List&lt;PermissionDetailedDto&gt;)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static IEnumerable&lt;T&gt; IncludeOwnershipFilter&lt;T, U&gt;(this IEnumerable&lt;T&gt; relationEntities, List&lt;PermissionDetailedDto&gt; roleDetails)
+    where T : IHaveOwnership&lt;U&gt;, IEntity where U : EntitySolutionRelation</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;T&gt;</td>
+        <td><span class="parametername">relationEntities</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<a class="xref" href="../Carbon.Common/Carbon.Common.TenantManagementHandler.Classes.PermissionDetailedDto.html">PermissionDetailedDto</a>&gt;</td>
+        <td><span class="parametername">roleDetails</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;T&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="parametername">U</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Carbon_Domain_EntityFrameworkCore_EFExtensions_IncludeOwnershipFilter_" data-uid="Carbon.Domain.EntityFrameworkCore.EFExtensions.IncludeOwnershipFilter*"></a>
+  <h4 id="Carbon_Domain_EntityFrameworkCore_EFExtensions_IncludeOwnershipFilter__2_System_Collections_Generic_IEnumerable_Carbon_Domain_EntityFrameworkCore_EFExtensions_RelationEntityPair___0___1___System_Collections_Generic_List_Carbon_Common_TenantManagementHandler_Classes_PermissionDetailedDto__" data-uid="Carbon.Domain.EntityFrameworkCore.EFExtensions.IncludeOwnershipFilter``2(System.Collections.Generic.IEnumerable{Carbon.Domain.EntityFrameworkCore.EFExtensions.RelationEntityPair{``0,``1}},System.Collections.Generic.List{Carbon.Common.TenantManagementHandler.Classes.PermissionDetailedDto})">IncludeOwnershipFilter&lt;T, U&gt;(IEnumerable&lt;EFExtensions.RelationEntityPair&lt;T, U&gt;&gt;, List&lt;PermissionDetailedDto&gt;)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static IEnumerable&lt;EFExtensions.RelationEntityPair&lt;T, U&gt;&gt; IncludeOwnershipFilter&lt;T, U&gt;(this IEnumerable&lt;EFExtensions.RelationEntityPair&lt;T, U&gt;&gt; relationEntities, List&lt;PermissionDetailedDto&gt; roleDetails)
+    where T : IHaveOwnership&lt;U&gt;, IEntity where U : EntitySolutionRelation</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<a class="xref" href="Carbon.Domain.EntityFrameworkCore.EFExtensions.RelationEntityPair-2.html">EFExtensions.RelationEntityPair</a>&lt;T, U&gt;&gt;</td>
+        <td><span class="parametername">relationEntities</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<a class="xref" href="../Carbon.Common/Carbon.Common.TenantManagementHandler.Classes.PermissionDetailedDto.html">PermissionDetailedDto</a>&gt;</td>
+        <td><span class="parametername">roleDetails</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<a class="xref" href="Carbon.Domain.EntityFrameworkCore.EFExtensions.RelationEntityPair-2.html">EFExtensions.RelationEntityPair</a>&lt;T, U&gt;&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="parametername">U</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Carbon_Domain_EntityFrameworkCore_EFExtensions_IncludeOwnershipFilter_" data-uid="Carbon.Domain.EntityFrameworkCore.EFExtensions.IncludeOwnershipFilter*"></a>
+  <h4 id="Carbon_Domain_EntityFrameworkCore_EFExtensions_IncludeOwnershipFilter__2_System_Linq_IQueryable___0__System_Collections_Generic_List_Carbon_Common_TenantManagementHandler_Classes_PermissionDetailedDto__" data-uid="Carbon.Domain.EntityFrameworkCore.EFExtensions.IncludeOwnershipFilter``2(System.Linq.IQueryable{``0},System.Collections.Generic.List{Carbon.Common.TenantManagementHandler.Classes.PermissionDetailedDto})">IncludeOwnershipFilter&lt;T, U&gt;(IQueryable&lt;T&gt;, List&lt;PermissionDetailedDto&gt;)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static IQueryable&lt;T&gt; IncludeOwnershipFilter&lt;T, U&gt;(this IQueryable&lt;T&gt; relationEntities, List&lt;PermissionDetailedDto&gt; roleDetails)
+    where T : IHaveOwnership&lt;U&gt;, IEntity where U : EntitySolutionRelation</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Linq.IQueryable</span>&lt;T&gt;</td>
+        <td><span class="parametername">relationEntities</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<a class="xref" href="../Carbon.Common/Carbon.Common.TenantManagementHandler.Classes.PermissionDetailedDto.html">PermissionDetailedDto</a>&gt;</td>
+        <td><span class="parametername">roleDetails</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Linq.IQueryable</span>&lt;T&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="parametername">U</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Carbon_Domain_EntityFrameworkCore_EFExtensions_IncludeOwnershipFilter_" data-uid="Carbon.Domain.EntityFrameworkCore.EFExtensions.IncludeOwnershipFilter*"></a>
+  <h4 id="Carbon_Domain_EntityFrameworkCore_EFExtensions_IncludeOwnershipFilter__2_System_Linq_IQueryable_Carbon_Domain_EntityFrameworkCore_EFExtensions_RelationEntityPair___0___1___System_Collections_Generic_List_Carbon_Common_TenantManagementHandler_Classes_PermissionDetailedDto__" data-uid="Carbon.Domain.EntityFrameworkCore.EFExtensions.IncludeOwnershipFilter``2(System.Linq.IQueryable{Carbon.Domain.EntityFrameworkCore.EFExtensions.RelationEntityPair{``0,``1}},System.Collections.Generic.List{Carbon.Common.TenantManagementHandler.Classes.PermissionDetailedDto})">IncludeOwnershipFilter&lt;T, U&gt;(IQueryable&lt;EFExtensions.RelationEntityPair&lt;T, U&gt;&gt;, List&lt;PermissionDetailedDto&gt;)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static IQueryable&lt;EFExtensions.RelationEntityPair&lt;T, U&gt;&gt; IncludeOwnershipFilter&lt;T, U&gt;(this IQueryable&lt;EFExtensions.RelationEntityPair&lt;T, U&gt;&gt; relationEntities, List&lt;PermissionDetailedDto&gt; roleDetails)
+    where T : IHaveOwnership&lt;U&gt;, IEntity where U : EntitySolutionRelation</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Linq.IQueryable</span>&lt;<a class="xref" href="Carbon.Domain.EntityFrameworkCore.EFExtensions.RelationEntityPair-2.html">EFExtensions.RelationEntityPair</a>&lt;T, U&gt;&gt;</td>
+        <td><span class="parametername">relationEntities</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<a class="xref" href="../Carbon.Common/Carbon.Common.TenantManagementHandler.Classes.PermissionDetailedDto.html">PermissionDetailedDto</a>&gt;</td>
+        <td><span class="parametername">roleDetails</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Linq.IQueryable</span>&lt;<a class="xref" href="Carbon.Domain.EntityFrameworkCore.EFExtensions.RelationEntityPair-2.html">EFExtensions.RelationEntityPair</a>&lt;T, U&gt;&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="parametername">U</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Carbon_Domain_EntityFrameworkCore_EFExtensions_IncludeSolutionFilter_" data-uid="Carbon.Domain.EntityFrameworkCore.EFExtensions.IncludeSolutionFilter*"></a>
+  <h4 id="Carbon_Domain_EntityFrameworkCore_EFExtensions_IncludeSolutionFilter__2_System_Collections_Generic_IEnumerable_Carbon_Domain_EntityFrameworkCore_EFExtensions_RelationEntityPair___0___1___System_Collections_Generic_List_System_Guid__" data-uid="Carbon.Domain.EntityFrameworkCore.EFExtensions.IncludeSolutionFilter``2(System.Collections.Generic.IEnumerable{Carbon.Domain.EntityFrameworkCore.EFExtensions.RelationEntityPair{``0,``1}},System.Collections.Generic.List{System.Guid})">IncludeSolutionFilter&lt;T, U&gt;(IEnumerable&lt;EFExtensions.RelationEntityPair&lt;T, U&gt;&gt;, List&lt;Guid&gt;)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static IEnumerable&lt;EFExtensions.RelationEntityPair&lt;T, U&gt;&gt; IncludeSolutionFilter&lt;T, U&gt;(this IEnumerable&lt;EFExtensions.RelationEntityPair&lt;T, U&gt;&gt; relationEntities, List&lt;Guid&gt; filter)
+    where T : IHaveOwnership&lt;U&gt;, IEntity where U : EntitySolutionRelation</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<a class="xref" href="Carbon.Domain.EntityFrameworkCore.EFExtensions.RelationEntityPair-2.html">EFExtensions.RelationEntityPair</a>&lt;T, U&gt;&gt;</td>
+        <td><span class="parametername">relationEntities</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<span class="xref">System.Guid</span>&gt;</td>
+        <td><span class="parametername">filter</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<a class="xref" href="Carbon.Domain.EntityFrameworkCore.EFExtensions.RelationEntityPair-2.html">EFExtensions.RelationEntityPair</a>&lt;T, U&gt;&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="parametername">U</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Carbon_Domain_EntityFrameworkCore_EFExtensions_IncludeSolutionFilter_" data-uid="Carbon.Domain.EntityFrameworkCore.EFExtensions.IncludeSolutionFilter*"></a>
+  <h4 id="Carbon_Domain_EntityFrameworkCore_EFExtensions_IncludeSolutionFilter__2_System_Linq_IQueryable_Carbon_Domain_EntityFrameworkCore_EFExtensions_RelationEntityPair___0___1___System_Collections_Generic_List_System_Guid__" data-uid="Carbon.Domain.EntityFrameworkCore.EFExtensions.IncludeSolutionFilter``2(System.Linq.IQueryable{Carbon.Domain.EntityFrameworkCore.EFExtensions.RelationEntityPair{``0,``1}},System.Collections.Generic.List{System.Guid})">IncludeSolutionFilter&lt;T, U&gt;(IQueryable&lt;EFExtensions.RelationEntityPair&lt;T, U&gt;&gt;, List&lt;Guid&gt;)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static IQueryable&lt;EFExtensions.RelationEntityPair&lt;T, U&gt;&gt; IncludeSolutionFilter&lt;T, U&gt;(this IQueryable&lt;EFExtensions.RelationEntityPair&lt;T, U&gt;&gt; relationEntities, List&lt;Guid&gt; filter)
+    where T : IHaveOwnership&lt;U&gt;, IEntity where U : EntitySolutionRelation</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Linq.IQueryable</span>&lt;<a class="xref" href="Carbon.Domain.EntityFrameworkCore.EFExtensions.RelationEntityPair-2.html">EFExtensions.RelationEntityPair</a>&lt;T, U&gt;&gt;</td>
+        <td><span class="parametername">relationEntities</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<span class="xref">System.Guid</span>&gt;</td>
+        <td><span class="parametername">filter</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Linq.IQueryable</span>&lt;<a class="xref" href="Carbon.Domain.EntityFrameworkCore.EFExtensions.RelationEntityPair-2.html">EFExtensions.RelationEntityPair</a>&lt;T, U&gt;&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="parametername">U</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Carbon_Domain_EntityFrameworkCore_EFExtensions_IncludeSolutionRelation_" data-uid="Carbon.Domain.EntityFrameworkCore.EFExtensions.IncludeSolutionRelation*"></a>
+  <h4 id="Carbon_Domain_EntityFrameworkCore_EFExtensions_IncludeSolutionRelation__2_System_Collections_Generic_IEnumerable___0__Microsoft_EntityFrameworkCore_DbContext_" data-uid="Carbon.Domain.EntityFrameworkCore.EFExtensions.IncludeSolutionRelation``2(System.Collections.Generic.IEnumerable{``0},Microsoft.EntityFrameworkCore.DbContext)">IncludeSolutionRelation&lt;T, U&gt;(IEnumerable&lt;T&gt;, DbContext)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static IEnumerable&lt;EFExtensions.RelationEntityPair&lt;T, U&gt;&gt; IncludeSolutionRelation&lt;T, U&gt;(this IEnumerable&lt;T&gt; query, DbContext ctx)
+    where T : IHaveOwnership&lt;U&gt;, IEntity where U : class, IOwnerRelation, ISoftDelete</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;T&gt;</td>
+        <td><span class="parametername">query</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">Microsoft.EntityFrameworkCore.DbContext</span></td>
+        <td><span class="parametername">ctx</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<a class="xref" href="Carbon.Domain.EntityFrameworkCore.EFExtensions.RelationEntityPair-2.html">EFExtensions.RelationEntityPair</a>&lt;T, U&gt;&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="parametername">U</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Carbon_Domain_EntityFrameworkCore_EFExtensions_IncludeSolutionRelation_" data-uid="Carbon.Domain.EntityFrameworkCore.EFExtensions.IncludeSolutionRelation*"></a>
+  <h4 id="Carbon_Domain_EntityFrameworkCore_EFExtensions_IncludeSolutionRelation__2_System_Linq_IQueryable___0__Microsoft_EntityFrameworkCore_DbContext_" data-uid="Carbon.Domain.EntityFrameworkCore.EFExtensions.IncludeSolutionRelation``2(System.Linq.IQueryable{``0},Microsoft.EntityFrameworkCore.DbContext)">IncludeSolutionRelation&lt;T, U&gt;(IQueryable&lt;T&gt;, DbContext)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static IQueryable&lt;EFExtensions.RelationEntityPair&lt;T, U&gt;&gt; IncludeSolutionRelation&lt;T, U&gt;(this IQueryable&lt;T&gt; query, DbContext ctx)
+    where T : IHaveOwnership&lt;U&gt;, IEntity where U : class, IOwnerRelation, ISoftDelete</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Linq.IQueryable</span>&lt;T&gt;</td>
+        <td><span class="parametername">query</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">Microsoft.EntityFrameworkCore.DbContext</span></td>
+        <td><span class="parametername">ctx</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Linq.IQueryable</span>&lt;<a class="xref" href="Carbon.Domain.EntityFrameworkCore.EFExtensions.RelationEntityPair-2.html">EFExtensions.RelationEntityPair</a>&lt;T, U&gt;&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="parametername">U</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Carbon_Domain_EntityFrameworkCore_EFExtensions_ToEntityListIncludeOwnershipAsync_" data-uid="Carbon.Domain.EntityFrameworkCore.EFExtensions.ToEntityListIncludeOwnershipAsync*"></a>
+  <h4 id="Carbon_Domain_EntityFrameworkCore_EFExtensions_ToEntityListIncludeOwnershipAsync__2_System_Collections_Generic_IEnumerable___0__Microsoft_EntityFrameworkCore_DbContext_" data-uid="Carbon.Domain.EntityFrameworkCore.EFExtensions.ToEntityListIncludeOwnershipAsync``2(System.Collections.Generic.IEnumerable{``0},Microsoft.EntityFrameworkCore.DbContext)">ToEntityListIncludeOwnershipAsync&lt;T, U&gt;(IEnumerable&lt;T&gt;, DbContext)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static ICollection&lt;T&gt; ToEntityListIncludeOwnershipAsync&lt;T, U&gt;(this IEnumerable&lt;T&gt; query, DbContext ctx)
+    where T : IHaveOwnership&lt;U&gt;, IEntity where U : class, IOwnerRelation</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;T&gt;</td>
+        <td><span class="parametername">query</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">Microsoft.EntityFrameworkCore.DbContext</span></td>
+        <td><span class="parametername">ctx</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.ICollection</span>&lt;T&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="parametername">U</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Carbon_Domain_EntityFrameworkCore_EFExtensions_ToEntityListIncludeOwnershipAsync_" data-uid="Carbon.Domain.EntityFrameworkCore.EFExtensions.ToEntityListIncludeOwnershipAsync*"></a>
+  <h4 id="Carbon_Domain_EntityFrameworkCore_EFExtensions_ToEntityListIncludeOwnershipAsync__2_System_Linq_IQueryable___0__Microsoft_EntityFrameworkCore_DbContext_" data-uid="Carbon.Domain.EntityFrameworkCore.EFExtensions.ToEntityListIncludeOwnershipAsync``2(System.Linq.IQueryable{``0},Microsoft.EntityFrameworkCore.DbContext)">ToEntityListIncludeOwnershipAsync&lt;T, U&gt;(IQueryable&lt;T&gt;, DbContext)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static async Task&lt;ICollection&lt;T&gt;&gt; ToEntityListIncludeOwnershipAsync&lt;T, U&gt;(this IQueryable&lt;T&gt; query, DbContext ctx)
+    where T : IHaveOwnership&lt;U&gt;, IEntity where U : class, IOwnerRelation</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Linq.IQueryable</span>&lt;T&gt;</td>
+        <td><span class="parametername">query</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">Microsoft.EntityFrameworkCore.DbContext</span></td>
+        <td><span class="parametername">ctx</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.Collections.Generic.ICollection</span>&lt;T&gt;&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="parametername">U</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Carbon_Domain_EntityFrameworkCore_EFExtensions_ToListEntityFilteredWithSolutionAsync_" data-uid="Carbon.Domain.EntityFrameworkCore.EFExtensions.ToListEntityFilteredWithSolutionAsync*"></a>
+  <h4 id="Carbon_Domain_EntityFrameworkCore_EFExtensions_ToListEntityFilteredWithSolutionAsync__2_System_Collections_Generic_IEnumerable_Carbon_Domain_EntityFrameworkCore_EFExtensions_RelationEntityPair___0___1___System_Collections_Generic_List_System_Guid__" data-uid="Carbon.Domain.EntityFrameworkCore.EFExtensions.ToListEntityFilteredWithSolutionAsync``2(System.Collections.Generic.IEnumerable{Carbon.Domain.EntityFrameworkCore.EFExtensions.RelationEntityPair{``0,``1}},System.Collections.Generic.List{System.Guid})">ToListEntityFilteredWithSolutionAsync&lt;T, U&gt;(IEnumerable&lt;EFExtensions.RelationEntityPair&lt;T, U&gt;&gt;, List&lt;Guid&gt;)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static List&lt;T&gt; ToListEntityFilteredWithSolutionAsync&lt;T, U&gt;(this IEnumerable&lt;EFExtensions.RelationEntityPair&lt;T, U&gt;&gt; relationEntities, List&lt;Guid&gt; filter)
+    where T : IHaveOwnership&lt;U&gt;, IEntity where U : EntitySolutionRelation</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<a class="xref" href="Carbon.Domain.EntityFrameworkCore.EFExtensions.RelationEntityPair-2.html">EFExtensions.RelationEntityPair</a>&lt;T, U&gt;&gt;</td>
+        <td><span class="parametername">relationEntities</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<span class="xref">System.Guid</span>&gt;</td>
+        <td><span class="parametername">filter</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;T&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="parametername">U</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Carbon_Domain_EntityFrameworkCore_EFExtensions_ToListEntityFilteredWithSolutionAsync_" data-uid="Carbon.Domain.EntityFrameworkCore.EFExtensions.ToListEntityFilteredWithSolutionAsync*"></a>
+  <h4 id="Carbon_Domain_EntityFrameworkCore_EFExtensions_ToListEntityFilteredWithSolutionAsync__2_System_Linq_IQueryable_Carbon_Domain_EntityFrameworkCore_EFExtensions_RelationEntityPair___0___1___System_Collections_Generic_List_System_Guid__" data-uid="Carbon.Domain.EntityFrameworkCore.EFExtensions.ToListEntityFilteredWithSolutionAsync``2(System.Linq.IQueryable{Carbon.Domain.EntityFrameworkCore.EFExtensions.RelationEntityPair{``0,``1}},System.Collections.Generic.List{System.Guid})">ToListEntityFilteredWithSolutionAsync&lt;T, U&gt;(IQueryable&lt;EFExtensions.RelationEntityPair&lt;T, U&gt;&gt;, List&lt;Guid&gt;)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static async Task&lt;List&lt;T&gt;&gt; ToListEntityFilteredWithSolutionAsync&lt;T, U&gt;(this IQueryable&lt;EFExtensions.RelationEntityPair&lt;T, U&gt;&gt; relationEntities, List&lt;Guid&gt; filter)
+    where T : IHaveOwnership&lt;U&gt;, IEntity where U : EntitySolutionRelation</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Linq.IQueryable</span>&lt;<a class="xref" href="Carbon.Domain.EntityFrameworkCore.EFExtensions.RelationEntityPair-2.html">EFExtensions.RelationEntityPair</a>&lt;T, U&gt;&gt;</td>
+        <td><span class="parametername">relationEntities</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<span class="xref">System.Guid</span>&gt;</td>
+        <td><span class="parametername">filter</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.Collections.Generic.List</span>&lt;T&gt;&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="parametername">U</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Carbon_Domain_EntityFrameworkCore_EFExtensions_ToListEntityWithSolutionAsync_" data-uid="Carbon.Domain.EntityFrameworkCore.EFExtensions.ToListEntityWithSolutionAsync*"></a>
+  <h4 id="Carbon_Domain_EntityFrameworkCore_EFExtensions_ToListEntityWithSolutionAsync__2_System_Linq_IQueryable_Carbon_Domain_EntityFrameworkCore_EFExtensions_RelationEntityPair___0___1___" data-uid="Carbon.Domain.EntityFrameworkCore.EFExtensions.ToListEntityWithSolutionAsync``2(System.Linq.IQueryable{Carbon.Domain.EntityFrameworkCore.EFExtensions.RelationEntityPair{``0,``1}})">ToListEntityWithSolutionAsync&lt;T, U&gt;(IQueryable&lt;EFExtensions.RelationEntityPair&lt;T, U&gt;&gt;)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static async Task&lt;List&lt;T&gt;&gt; ToListEntityWithSolutionAsync&lt;T, U&gt;(this IQueryable&lt;EFExtensions.RelationEntityPair&lt;T, U&gt;&gt; relationEntities)
+    where T : IHaveOwnership&lt;U&gt;, IEntity where U : EntitySolutionRelation</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Linq.IQueryable</span>&lt;<a class="xref" href="Carbon.Domain.EntityFrameworkCore.EFExtensions.RelationEntityPair-2.html">EFExtensions.RelationEntityPair</a>&lt;T, U&gt;&gt;</td>
+        <td><span class="parametername">relationEntities</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.Collections.Generic.List</span>&lt;T&gt;&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="parametername">U</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Carbon_Domain_EntityFrameworkCore_EFExtensions_ToPagedListEntityAsync_" data-uid="Carbon.Domain.EntityFrameworkCore.EFExtensions.ToPagedListEntityAsync*"></a>
+  <h4 id="Carbon_Domain_EntityFrameworkCore_EFExtensions_ToPagedListEntityAsync__1_System_Linq_IQueryable___0__System_Collections_Generic_IList_Carbon_Common_Orderable__System_Int32_System_Int32_" data-uid="Carbon.Domain.EntityFrameworkCore.EFExtensions.ToPagedListEntityAsync``1(System.Linq.IQueryable{``0},System.Collections.Generic.IList{Carbon.Common.Orderable},System.Int32,System.Int32)">ToPagedListEntityAsync&lt;T&gt;(IQueryable&lt;T&gt;, IList&lt;Orderable&gt;, Int32, Int32)</h4>
+  <div class="markdown level1 summary"><p>Converts an IQueryable of entities into a paged list asynchronously based on the specified ordering, page index, and page size.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static async Task&lt;PagedList&lt;T&gt;&gt; ToPagedListEntityAsync&lt;T&gt;(this IQueryable&lt;T&gt; query, IList&lt;Orderable&gt; orderables, int pageIndex, int pageSize)
+    where T : IEntity</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Linq.IQueryable</span>&lt;T&gt;</td>
+        <td><span class="parametername">query</span></td>
+        <td><p>The IQueryable of entities to be paged.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IList</span>&lt;<a class="xref" href="../Carbon.Common/Carbon.Common.Orderable.html">Orderable</a>&gt;</td>
+        <td><span class="parametername">orderables</span></td>
+        <td><p>A list of Orderable objects specifying the ordering of the entities.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">pageIndex</span></td>
+        <td><p>The index of the page to retrieve (starting from 0).</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">pageSize</span></td>
+        <td><p>The maximum number of entities per page.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="../Carbon.PagedList/Carbon.PagedList.PagedList-1.html">PagedList</a>&lt;T&gt;&gt;</td>
+        <td><p>A Task representing the asynchronous operation that returns a PagedList containing the requested page of entities.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td><p>The type of entities in the IQueryable, must implement IEntity interface.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Carbon_Domain_EntityFrameworkCore_EFExtensions_ToPagedListEntityFilteredWithSolution_" data-uid="Carbon.Domain.EntityFrameworkCore.EFExtensions.ToPagedListEntityFilteredWithSolution*"></a>
+  <h4 id="Carbon_Domain_EntityFrameworkCore_EFExtensions_ToPagedListEntityFilteredWithSolution__2_System_Linq_IQueryable_Carbon_Domain_EntityFrameworkCore_EFExtensions_RelationEntityPair___0___1___System_Collections_Generic_List_System_Guid__System_Collections_Generic_IList_Carbon_Common_Orderable__System_Int32_System_Int32_" data-uid="Carbon.Domain.EntityFrameworkCore.EFExtensions.ToPagedListEntityFilteredWithSolution``2(System.Linq.IQueryable{Carbon.Domain.EntityFrameworkCore.EFExtensions.RelationEntityPair{``0,``1}},System.Collections.Generic.List{System.Guid},System.Collections.Generic.IList{Carbon.Common.Orderable},System.Int32,System.Int32)">ToPagedListEntityFilteredWithSolution&lt;T, U&gt;(IQueryable&lt;EFExtensions.RelationEntityPair&lt;T, U&gt;&gt;, List&lt;Guid&gt;, IList&lt;Orderable&gt;, Int32, Int32)</h4>
+  <div class="markdown level1 summary"><p>Retrieves a paged list of entities with filtered relations based on specified criteria and ordering.
+In this method, data is filtered according to ownership information.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static PagedList&lt;T&gt; ToPagedListEntityFilteredWithSolution&lt;T, U&gt;(this IQueryable&lt;EFExtensions.RelationEntityPair&lt;T, U&gt;&gt; relationEntities, List&lt;Guid&gt; filter, IList&lt;Orderable&gt; orderables, int pageIndex, int pageSize)
+    where T : IHaveOwnership&lt;U&gt;, IEntity where U : EntitySolutionRelation</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Linq.IQueryable</span>&lt;<a class="xref" href="Carbon.Domain.EntityFrameworkCore.EFExtensions.RelationEntityPair-2.html">EFExtensions.RelationEntityPair</a>&lt;T, U&gt;&gt;</td>
+        <td><span class="parametername">relationEntities</span></td>
+        <td><p>The IQueryable of relation entities containing pairs of entities of type T and relations of type U.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<span class="xref">System.Guid</span>&gt;</td>
+        <td><span class="parametername">filter</span></td>
+        <td><p>A list of Guids used to filter the relations based on SolutionId, can be null or empty to include all relations.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IList</span>&lt;<a class="xref" href="../Carbon.Common/Carbon.Common.Orderable.html">Orderable</a>&gt;</td>
+        <td><span class="parametername">orderables</span></td>
+        <td><p>A list of Orderable objects specifying the ordering of the entities.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">pageIndex</span></td>
+        <td><p>The index of the page to retrieve (starting from 0).</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">pageSize</span></td>
+        <td><p>The maximum number of entities per page.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="../Carbon.PagedList/Carbon.PagedList.PagedList-1.html">PagedList</a>&lt;T&gt;</td>
+        <td><p>A PagedList containing the requested page of entities with filtered relations, based on the specified criteria.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td><p>The type of entities that have ownership relationships with type U and implement IEntity and IHaveOwnership interfaces.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="parametername">U</span></td>
+        <td><p>The type of entity relations that are associated with type T and implement EntitySolutionRelation interface.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Carbon_Domain_EntityFrameworkCore_EFExtensions_ToPagedListEntityFilteredWithSolution__2_System_Linq_IQueryable_Carbon_Domain_EntityFrameworkCore_EFExtensions_RelationEntityPair___0___1___System_Collections_Generic_List_System_Guid__System_Collections_Generic_IList_Carbon_Common_Orderable__System_Int32_System_Int32__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>This method retrieves a paged list of entities of type T that have ownership relationships with type U.
+The method filters the relations based on the provided list of Guids, which represent SolutionIds, if the filter list is not null or empty.
+The resulting entities are ordered based on the specified ordering criteria and returned as a paged list.</p>
+</div>
+  <a id="Carbon_Domain_EntityFrameworkCore_EFExtensions_ToPagedListEntityFilteredWithSolutionAsync_" data-uid="Carbon.Domain.EntityFrameworkCore.EFExtensions.ToPagedListEntityFilteredWithSolutionAsync*"></a>
+  <h4 id="Carbon_Domain_EntityFrameworkCore_EFExtensions_ToPagedListEntityFilteredWithSolutionAsync__2_System_Linq_IQueryable_Carbon_Domain_EntityFrameworkCore_EFExtensions_RelationEntityPair___0___1___System_Collections_Generic_List_System_Guid__System_Collections_Generic_IList_Carbon_Common_Orderable__System_Int32_System_Int32_" data-uid="Carbon.Domain.EntityFrameworkCore.EFExtensions.ToPagedListEntityFilteredWithSolutionAsync``2(System.Linq.IQueryable{Carbon.Domain.EntityFrameworkCore.EFExtensions.RelationEntityPair{``0,``1}},System.Collections.Generic.List{System.Guid},System.Collections.Generic.IList{Carbon.Common.Orderable},System.Int32,System.Int32)">ToPagedListEntityFilteredWithSolutionAsync&lt;T, U&gt;(IQueryable&lt;EFExtensions.RelationEntityPair&lt;T, U&gt;&gt;, List&lt;Guid&gt;, IList&lt;Orderable&gt;, Int32, Int32)</h4>
+  <div class="markdown level1 summary"><p>Retrieves a paged list of entities with filtered relations based on specified criteria and ordering.
+In this method, data is filtered according to ownership information.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static async Task&lt;PagedList&lt;T&gt;&gt; ToPagedListEntityFilteredWithSolutionAsync&lt;T, U&gt;(this IQueryable&lt;EFExtensions.RelationEntityPair&lt;T, U&gt;&gt; relationEntities, List&lt;Guid&gt; filter, IList&lt;Orderable&gt; orderables, int pageIndex, int pageSize)
+    where T : IHaveOwnership&lt;U&gt;, IEntity where U : EntitySolutionRelation</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Linq.IQueryable</span>&lt;<a class="xref" href="Carbon.Domain.EntityFrameworkCore.EFExtensions.RelationEntityPair-2.html">EFExtensions.RelationEntityPair</a>&lt;T, U&gt;&gt;</td>
+        <td><span class="parametername">relationEntities</span></td>
+        <td><p>The IQueryable of relation entities containing pairs of entities of type T and relations of type U.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<span class="xref">System.Guid</span>&gt;</td>
+        <td><span class="parametername">filter</span></td>
+        <td><p>A list of Guids used to filter the relations based on SolutionId, can be null or empty to include all relations.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IList</span>&lt;<a class="xref" href="../Carbon.Common/Carbon.Common.Orderable.html">Orderable</a>&gt;</td>
+        <td><span class="parametername">orderables</span></td>
+        <td><p>A list of Orderable objects specifying the ordering of the entities.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">pageIndex</span></td>
+        <td><p>The index of the page to retrieve (starting from 0).</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">pageSize</span></td>
+        <td><p>The maximum number of entities per page.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="../Carbon.PagedList/Carbon.PagedList.PagedList-1.html">PagedList</a>&lt;T&gt;&gt;</td>
+        <td><p>A PagedList containing the requested page of entities with filtered relations, based on the specified criteria.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td><p>The type of entities that have ownership relationships with type U and implement IEntity and IHaveOwnership interfaces.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="parametername">U</span></td>
+        <td><p>The type of entity relations that are associated with type T and implement EntitySolutionRelation interface.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Carbon_Domain_EntityFrameworkCore_EFExtensions_ToPagedListEntityFilteredWithSolutionAsync__2_System_Linq_IQueryable_Carbon_Domain_EntityFrameworkCore_EFExtensions_RelationEntityPair___0___1___System_Collections_Generic_List_System_Guid__System_Collections_Generic_IList_Carbon_Common_Orderable__System_Int32_System_Int32__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>This method retrieves a paged list of entities of type T that have ownership relationships with type U.
+The method filters the relations based on the provided list of Guids, which represent SolutionIds, if the filter list is not null or empty.
+The resulting entities are ordered based on the specified ordering criteria and returned as a paged list.</p>
+</div>
+  <a id="Carbon_Domain_EntityFrameworkCore_EFExtensions_WhereContains_" data-uid="Carbon.Domain.EntityFrameworkCore.EFExtensions.WhereContains*"></a>
+  <h4 id="Carbon_Domain_EntityFrameworkCore_EFExtensions_WhereContains__1_System_Linq_IQueryable___0__System_Linq_Expressions_Expression_System_Func___0_System_String___System_Collections_Generic_List_System_String__System_Boolean_System_Boolean_" data-uid="Carbon.Domain.EntityFrameworkCore.EFExtensions.WhereContains``1(System.Linq.IQueryable{``0},System.Linq.Expressions.Expression{System.Func{``0,System.String}},System.Collections.Generic.List{System.String},System.Boolean,System.Boolean)">WhereContains&lt;T&gt;(IQueryable&lt;T&gt;, Expression&lt;Func&lt;T, String&gt;&gt;, List&lt;String&gt;, Boolean, Boolean)</h4>
+  <div class="markdown level1 summary"><p>Filters an IQueryable based on whether any word in the search term exists in the specified property's string value, using a case-insensitive comparison.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static IQueryable&lt;T&gt; WhereContains&lt;T&gt;(this IQueryable&lt;T&gt; query, Expression&lt;Func&lt;T, string&gt;&gt; selector, List&lt;string&gt; search, bool searchByWords = false, bool useTrEnSearch = true)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Linq.IQueryable</span>&lt;T&gt;</td>
+        <td><span class="parametername">query</span></td>
+        <td><p>The IQueryable to filter.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Linq.Expressions.Expression</span>&lt;<span class="xref">System.Func</span>&lt;T, <span class="xref">System.String</span>&gt;&gt;</td>
+        <td><span class="parametername">selector</span></td>
+        <td><p>Expression specifying the property to search within.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<span class="xref">System.String</span>&gt;</td>
+        <td><span class="parametername">search</span></td>
+        <td><p>The search term containing one or more words.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">searchByWords</span></td>
+        <td><p>A boolean value indicating whether to search for individual words in the search term (default is false).</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">useTrEnSearch</span></td>
+        <td><p>A boolean value if is TRUE then generates Contains expression or if is FALSE then generates Equals expression (default is true)</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Linq.IQueryable</span>&lt;T&gt;</td>
+        <td><p>The filtered IQueryable containing elements where any word in the search term exists in the specified property's string value.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td><p>The type of elements in the IQueryable.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Carbon_Domain_EntityFrameworkCore_EFExtensions_WhereContains__1_System_Linq_IQueryable___0__System_Linq_Expressions_Expression_System_Func___0_System_String___System_Collections_Generic_List_System_String__System_Boolean_System_Boolean__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>This method performs a case-insensitive search. If searchByWords is false, it performs a normal contains search for the entire search term. If searchByWords is true, it splits the search term into words and checks if any word exists in the specified property's string value.</p>
+</div>
+  <a id="Carbon_Domain_EntityFrameworkCore_EFExtensions_WhereContains_" data-uid="Carbon.Domain.EntityFrameworkCore.EFExtensions.WhereContains*"></a>
+  <h4 id="Carbon_Domain_EntityFrameworkCore_EFExtensions_WhereContains__1_System_Linq_IQueryable___0__System_Linq_Expressions_Expression_System_Func___0_System_String___System_String_System_Boolean_System_Boolean_" data-uid="Carbon.Domain.EntityFrameworkCore.EFExtensions.WhereContains``1(System.Linq.IQueryable{``0},System.Linq.Expressions.Expression{System.Func{``0,System.String}},System.String,System.Boolean,System.Boolean)">WhereContains&lt;T&gt;(IQueryable&lt;T&gt;, Expression&lt;Func&lt;T, String&gt;&gt;, String, Boolean, Boolean)</h4>
+  <div class="markdown level1 summary"><p>Filters an IQueryable based on whether any word in the search term exists in the specified property's string value, using a case-insensitive comparison.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static IQueryable&lt;T&gt; WhereContains&lt;T&gt;(this IQueryable&lt;T&gt; query, Expression&lt;Func&lt;T, string&gt;&gt; selector, string search, bool searchByWords = false, bool useTrEnSearch = true)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Linq.IQueryable</span>&lt;T&gt;</td>
+        <td><span class="parametername">query</span></td>
+        <td><p>The IQueryable to filter.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Linq.Expressions.Expression</span>&lt;<span class="xref">System.Func</span>&lt;T, <span class="xref">System.String</span>&gt;&gt;</td>
+        <td><span class="parametername">selector</span></td>
+        <td><p>Expression specifying the property to search within.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">search</span></td>
+        <td><p>The search term containing one or more words.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">searchByWords</span></td>
+        <td><p>A boolean value indicating whether to search for individual words in the search term (default is false).</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">useTrEnSearch</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Linq.IQueryable</span>&lt;T&gt;</td>
+        <td><p>The filtered IQueryable containing elements where any word in the search term exists in the specified property's string value.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td><p>The type of elements in the IQueryable.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Carbon_Domain_EntityFrameworkCore_EFExtensions_WhereContains__1_System_Linq_IQueryable___0__System_Linq_Expressions_Expression_System_Func___0_System_String___System_String_System_Boolean_System_Boolean__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>This method performs a case-insensitive search. If searchByWords is false, it performs a normal contains search for the entire search term. If searchByWords is true, it splits the search term into words and checks if any word exists in the specified property's string value.</p>
+</div>
+  <a id="Carbon_Domain_EntityFrameworkCore_EFExtensions_WhereIf_" data-uid="Carbon.Domain.EntityFrameworkCore.EFExtensions.WhereIf*"></a>
+  <h4 id="Carbon_Domain_EntityFrameworkCore_EFExtensions_WhereIf__1_System_Linq_IQueryable___0__System_Boolean_System_Linq_Expressions_Expression_System_Func___0_System_Boolean___" data-uid="Carbon.Domain.EntityFrameworkCore.EFExtensions.WhereIf``1(System.Linq.IQueryable{``0},System.Boolean,System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}})">WhereIf&lt;T&gt;(IQueryable&lt;T&gt;, Boolean, Expression&lt;Func&lt;T, Boolean&gt;&gt;)</h4>
+  <div class="markdown level1 summary"><p>Applies a predicate filter to the source sequence based on the specified condition.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static IQueryable&lt;T&gt; WhereIf&lt;T&gt;(this IQueryable&lt;T&gt; query, bool condition, Expression&lt;Func&lt;T, bool&gt;&gt; predicate)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Linq.IQueryable</span>&lt;T&gt;</td>
+        <td><span class="parametername">query</span></td>
+        <td><p>The queryable sequence.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">condition</span></td>
+        <td><p>The condition that determines whether the predicate should be applied.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Linq.Expressions.Expression</span>&lt;<span class="xref">System.Func</span>&lt;T, <span class="xref">System.Boolean</span>&gt;&gt;</td>
+        <td><span class="parametername">predicate</span></td>
+        <td><p>The filtering predicate.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Linq.IQueryable</span>&lt;T&gt;</td>
+        <td><p>The initial sequence potentially filtered by the predicate based on the specified condition.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td><p>The type of elements in the sequence.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Carbon_Domain_EntityFrameworkCore_EFExtensions_WhereIfContains_" data-uid="Carbon.Domain.EntityFrameworkCore.EFExtensions.WhereIfContains*"></a>
+  <h4 id="Carbon_Domain_EntityFrameworkCore_EFExtensions_WhereIfContains__1_System_Linq_IQueryable___0__System_Boolean_System_Linq_Expressions_Expression_System_Func___0_System_String___System_String_System_Boolean_" data-uid="Carbon.Domain.EntityFrameworkCore.EFExtensions.WhereIfContains``1(System.Linq.IQueryable{``0},System.Boolean,System.Linq.Expressions.Expression{System.Func{``0,System.String}},System.String,System.Boolean)">WhereIfContains&lt;T&gt;(IQueryable&lt;T&gt;, Boolean, Expression&lt;Func&lt;T, String&gt;&gt;, String, Boolean)</h4>
+  <div class="markdown level1 summary"><p>Applies a 'Contains' filtering operation to the source sequence based on the specified condition.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static IQueryable&lt;T&gt; WhereIfContains&lt;T&gt;(this IQueryable&lt;T&gt; query, bool condition, Expression&lt;Func&lt;T, string&gt;&gt; predicate, string search, bool searchByWords = false)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Linq.IQueryable</span>&lt;T&gt;</td>
+        <td><span class="parametername">query</span></td>
+        <td><p>The queryable sequence.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">condition</span></td>
+        <td><p>The condition that determines whether the 'Contains' filter should be applied.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Linq.Expressions.Expression</span>&lt;<span class="xref">System.Func</span>&lt;T, <span class="xref">System.String</span>&gt;&gt;</td>
+        <td><span class="parametername">predicate</span></td>
+        <td><p>The filtering predicate.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">search</span></td>
+        <td><p>The filtering value to be searched within the property specified by the predicate.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">searchByWords</span></td>
+        <td><p>Specifies whether the 'Contains' operation should be applied to each word in the property or to the property as a whole.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Linq.IQueryable</span>&lt;T&gt;</td>
+        <td><p>The initial sequence potentially filtered by the 'Contains' operation based on the specified condition.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td><p>The type of elements in the sequence.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            Carbon Framework
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>

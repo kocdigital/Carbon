@@ -1,0 +1,1002 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class EFTenantRepository&lt;TEntity, TContext&gt;
+   | Carbon Framework </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class EFTenantRepository&lt;TEntity, TContext&gt;
+   | Carbon Framework ">
+    <meta name="generator" content="docfx 2.59.4.0">
+    
+    <link rel="shortcut icon" href="../../images/logo.png">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
+    
+    <meta property="docfx:rel" content="../../">
+    
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../images/logo.png" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Carbon.Domain.EntityFrameworkCore.EFTenantRepository`2">
+  
+  
+  <h1 id="Carbon_Domain_EntityFrameworkCore_EFTenantRepository_2" data-uid="Carbon.Domain.EntityFrameworkCore.EFTenantRepository`2" class="text-break">Class EFTenantRepository&lt;TEntity, TContext&gt;
+  </h1>
+  <div class="markdown level0 summary"><p>Defines a repository for an entity that contains tenant information, and its related database context.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">EFTenantRepository&lt;TEntity, TContext&gt;</span></div>
+      <div class="level2"><a class="xref" href="Carbon.Domain.EntityFrameworkCore.EFTenantWithReadOnlyRepository-3.html">EFTenantWithReadOnlyRepository&lt;TEntity, TContext, RContext&gt;</a></div>
+  </div>
+  <div class="implements">
+    <h5>Implements</h5>
+    <div><a class="xref" href="../Carbon.Domain.Abstractions/Carbon.Domain.Abstractions.Repositories.ITenantRepository-1.html">ITenantRepository</a>&lt;TEntity&gt;</div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Carbon.Domain.EntityFrameworkCore.html">Carbon.Domain.EntityFrameworkCore</a></h6>
+  <h6><strong>Assembly</strong>: Carbon.Domain.EntityFrameworkCore.dll</h6>
+  <h5 id="Carbon_Domain_EntityFrameworkCore_EFTenantRepository_2_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract class EFTenantRepository&lt;TEntity, TContext&gt; : ITenantRepository&lt;TEntity&gt; where TEntity : class, IEntity, IMustHaveTenant where TContext : DbContext</code></pre>
+  </div>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">TEntity</span></td>
+        <td><p>An entity type that contains tenant information.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="parametername">TContext</span></td>
+        <td><p>A database context containing records of <code data-dev-comment-type="typeparamref" class="typeparamref">TEntity</code> type entries.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="constructors">Constructors
+  </h3>
+  <a id="Carbon_Domain_EntityFrameworkCore_EFTenantRepository_2__ctor_" data-uid="Carbon.Domain.EntityFrameworkCore.EFTenantRepository`2.#ctor*"></a>
+  <h4 id="Carbon_Domain_EntityFrameworkCore_EFTenantRepository_2__ctor__1_" data-uid="Carbon.Domain.EntityFrameworkCore.EFTenantRepository`2.#ctor(`1)">EFTenantRepository(TContext)</h4>
+  <div class="markdown level1 summary"><p>Constructor that initializes the working context as the given <code data-dev-comment-type="paramref" class="paramref">context</code>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public EFTenantRepository(TContext context)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">TContext</span></td>
+        <td><span class="parametername">context</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="fields">Fields
+  </h3>
+  <h4 id="Carbon_Domain_EntityFrameworkCore_EFTenantRepository_2_context" data-uid="Carbon.Domain.EntityFrameworkCore.EFTenantRepository`2.context">context</h4>
+  <div class="markdown level1 summary"><p>The database context on which the repository will operate on.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public readonly TContext context</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">TContext</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  <a id="Carbon_Domain_EntityFrameworkCore_EFTenantRepository_2_CreateAsync_" data-uid="Carbon.Domain.EntityFrameworkCore.EFTenantRepository`2.CreateAsync*"></a>
+  <h4 id="Carbon_Domain_EntityFrameworkCore_EFTenantRepository_2_CreateAsync__0_System_Threading_CancellationToken_" data-uid="Carbon.Domain.EntityFrameworkCore.EFTenantRepository`2.CreateAsync(`0,System.Threading.CancellationToken)">CreateAsync(TEntity, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Creates and saves the given <code data-dev-comment-type="typeparamref" class="typeparamref">TEntity</code> object in the database.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public async Task&lt;TEntity&gt; CreateAsync(TEntity entity, CancellationToken cancellationToken)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">TEntity</span></td>
+        <td><span class="parametername">entity</span></td>
+        <td><p>Object to be saved to the database</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>Token to monitor for cancellation requests.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;TEntity&gt;</td>
+        <td><p>A task that returns the <code data-dev-comment-type="typeparamref" class="typeparamref">TEntity</code> object saved to database.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Carbon_Domain_EntityFrameworkCore_EFTenantRepository_2_CreateRangeAsync_" data-uid="Carbon.Domain.EntityFrameworkCore.EFTenantRepository`2.CreateRangeAsync*"></a>
+  <h4 id="Carbon_Domain_EntityFrameworkCore_EFTenantRepository_2_CreateRangeAsync_System_Collections_Generic_IEnumerable__0__System_Threading_CancellationToken_" data-uid="Carbon.Domain.EntityFrameworkCore.EFTenantRepository`2.CreateRangeAsync(System.Collections.Generic.IEnumerable{`0},System.Threading.CancellationToken)">CreateRangeAsync(IEnumerable&lt;TEntity&gt;, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Creates and saves the <code data-dev-comment-type="typeparamref" class="typeparamref">TEntity</code> objects in the given <pre><code>IEnumerable</code></pre> to the database.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public async Task&lt;List&lt;TEntity&gt;&gt; CreateRangeAsync(IEnumerable&lt;TEntity&gt; entities, CancellationToken cancellationToken)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;TEntity&gt;</td>
+        <td><span class="parametername">entities</span></td>
+        <td><p>The collection that contains the entities to be created.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>Token to monitor for cancellation requests.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.Collections.Generic.List</span>&lt;TEntity&gt;&gt;</td>
+        <td><p>A task which results in a list that contains the <code data-dev-comment-type="typeparamref" class="typeparamref">TEntity</code> objects created in the database.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Carbon_Domain_EntityFrameworkCore_EFTenantRepository_2_CreateRangeAsync_System_Collections_Generic_IEnumerable__0__System_Threading_CancellationToken__seealso">See Also</h5>
+  <div class="seealso">
+      <div><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;T&gt;</div>
+  </div>
+  <a id="Carbon_Domain_EntityFrameworkCore_EFTenantRepository_2_DeleteAsync_" data-uid="Carbon.Domain.EntityFrameworkCore.EFTenantRepository`2.DeleteAsync*"></a>
+  <h4 id="Carbon_Domain_EntityFrameworkCore_EFTenantRepository_2_DeleteAsync_System_Guid_System_Guid_System_Threading_CancellationToken_" data-uid="Carbon.Domain.EntityFrameworkCore.EFTenantRepository`2.DeleteAsync(System.Guid,System.Guid,System.Threading.CancellationToken)">DeleteAsync(Guid, Guid, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Deletes and returns the <code data-dev-comment-type="typeparamref" class="typeparamref">TEntity</code> specified by <code data-dev-comment-type="paramref" class="paramref">id</code> and <code data-dev-comment-type="paramref" class="paramref">tenantId</code> from the database context.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public async Task&lt;TEntity&gt; DeleteAsync(Guid id, Guid tenantId, CancellationToken cancellationToken)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Guid</span></td>
+        <td><span class="parametername">id</span></td>
+        <td><p>Id of the specified <code data-dev-comment-type="typeparamref" class="typeparamref">TEntity</code> object.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Guid</span></td>
+        <td><span class="parametername">tenantId</span></td>
+        <td><p>Id of the tenant that is related to the <code data-dev-comment-type="typeparamref" class="typeparamref">TEntity</code> object.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>Token to monitor for cancellation requests.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;TEntity&gt;</td>
+        <td><p>A task whose result is the deleted <code data-dev-comment-type="typeparamref" class="typeparamref">TEntity</code> object. If no matching entry is found, returns null instead.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Carbon_Domain_EntityFrameworkCore_EFTenantRepository_2_DeleteRangeAsync_" data-uid="Carbon.Domain.EntityFrameworkCore.EFTenantRepository`2.DeleteRangeAsync*"></a>
+  <h4 id="Carbon_Domain_EntityFrameworkCore_EFTenantRepository_2_DeleteRangeAsync_System_Collections_Generic_IEnumerable__0__System_Threading_CancellationToken_" data-uid="Carbon.Domain.EntityFrameworkCore.EFTenantRepository`2.DeleteRangeAsync(System.Collections.Generic.IEnumerable{`0},System.Threading.CancellationToken)">DeleteRangeAsync(IEnumerable&lt;TEntity&gt;, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Removes the <code data-dev-comment-type="typeparamref" class="typeparamref">TEntity</code> objects in the given <pre><code>IEnumerable</code></pre> from the database.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public async Task&lt;List&lt;TEntity&gt;&gt; DeleteRangeAsync(IEnumerable&lt;TEntity&gt; entities, CancellationToken cancellationToken)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;TEntity&gt;</td>
+        <td><span class="parametername">entities</span></td>
+        <td><p>The collection that contains the entities to be deleted.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>Token to monitor for cancellation requests.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.Collections.Generic.List</span>&lt;TEntity&gt;&gt;</td>
+        <td><p>A task which results in a list that contains the <code data-dev-comment-type="typeparamref" class="typeparamref">TEntity</code> objects deleted from the database.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Carbon_Domain_EntityFrameworkCore_EFTenantRepository_2_DeleteRangeAsync_System_Collections_Generic_IEnumerable__0__System_Threading_CancellationToken__seealso">See Also</h5>
+  <div class="seealso">
+      <div><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;T&gt;</div>
+  </div>
+  <a id="Carbon_Domain_EntityFrameworkCore_EFTenantRepository_2_GetAllAsync_" data-uid="Carbon.Domain.EntityFrameworkCore.EFTenantRepository`2.GetAllAsync*"></a>
+  <h4 id="Carbon_Domain_EntityFrameworkCore_EFTenantRepository_2_GetAllAsync_System_Guid_System_Threading_CancellationToken_" data-uid="Carbon.Domain.EntityFrameworkCore.EFTenantRepository`2.GetAllAsync(System.Guid,System.Threading.CancellationToken)">GetAllAsync(Guid, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Retrieves and returns all <code data-dev-comment-type="typeparamref" class="typeparamref">TEntity</code> objects related to the given <code data-dev-comment-type="paramref" class="paramref">tenantId</code> from the database.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public async Task&lt;List&lt;TEntity&gt;&gt; GetAllAsync(Guid tenantId, CancellationToken cancellationToken)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Guid</span></td>
+        <td><span class="parametername">tenantId</span></td>
+        <td><p>Id of the tenant whose related entities will be retrieved.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>Token to monitor for cancellation requests.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.Collections.Generic.List</span>&lt;TEntity&gt;&gt;</td>
+        <td><p>A task which results in a list that contains the <code data-dev-comment-type="typeparamref" class="typeparamref">TEntity</code> objects related to the specified tenant.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Carbon_Domain_EntityFrameworkCore_EFTenantRepository_2_GetAllAsync_" data-uid="Carbon.Domain.EntityFrameworkCore.EFTenantRepository`2.GetAllAsync*"></a>
+  <h4 id="Carbon_Domain_EntityFrameworkCore_EFTenantRepository_2_GetAllAsync__1_System_Guid_System_Linq_Expressions_Expression_System_Func__0___0___System_Threading_CancellationToken_" data-uid="Carbon.Domain.EntityFrameworkCore.EFTenantRepository`2.GetAllAsync``1(System.Guid,System.Linq.Expressions.Expression{System.Func{`0,``0}},System.Threading.CancellationToken)">GetAllAsync&lt;TResult&gt;(Guid, Expression&lt;Func&lt;TEntity, TResult&gt;&gt;, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Retrieves and returns all <code data-dev-comment-type="typeparamref" class="typeparamref">TEntity</code> objects related to the given <code data-dev-comment-type="paramref" class="paramref">tenantId</code> from the database.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual async Task&lt;List&lt;TResult&gt;&gt; GetAllAsync&lt;TResult&gt;(Guid tenantId, Expression&lt;Func&lt;TEntity, TResult&gt;&gt; selector, CancellationToken cancellationToken)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Guid</span></td>
+        <td><span class="parametername">tenantId</span></td>
+        <td><p>Id of the tenant whose related entities will be retrieved.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Linq.Expressions.Expression</span>&lt;<span class="xref">System.Func</span>&lt;TEntity, TResult&gt;&gt;</td>
+        <td><span class="parametername">selector</span></td>
+        <td><p>A function to select the result type.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>Token to monitor for cancellation requests.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.Collections.Generic.List</span>&lt;TResult&gt;&gt;</td>
+        <td><p>A task which results in a list that contains the <code data-dev-comment-type="typeparamref" class="typeparamref">TEntity</code> objects related to the specified tenant.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">TResult</span></td>
+        <td><p>The type of the result.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Carbon_Domain_EntityFrameworkCore_EFTenantRepository_2_GetAsync_" data-uid="Carbon.Domain.EntityFrameworkCore.EFTenantRepository`2.GetAsync*"></a>
+  <h4 id="Carbon_Domain_EntityFrameworkCore_EFTenantRepository_2_GetAsync_System_Guid_System_Linq_Expressions_Expression_System_Func__0_System_Boolean___System_Threading_CancellationToken_" data-uid="Carbon.Domain.EntityFrameworkCore.EFTenantRepository`2.GetAsync(System.Guid,System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Threading.CancellationToken)">GetAsync(Guid, Expression&lt;Func&lt;TEntity, Boolean&gt;&gt;, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Retrieves and returns the first <code data-dev-comment-type="typeparamref" class="typeparamref">TEntity</code> element that is related to <code data-dev-comment-type="paramref" class="paramref">tenantId</code> and also satisfies the given <code data-dev-comment-type="paramref" class="paramref">predicate</code>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public async Task&lt;TEntity&gt; GetAsync(Guid tenantId, Expression&lt;Func&lt;TEntity, bool&gt;&gt; predicate, CancellationToken cancellationToken)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Guid</span></td>
+        <td><span class="parametername">tenantId</span></td>
+        <td><p>Id of the tenant that the entity is related to.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Linq.Expressions.Expression</span>&lt;<span class="xref">System.Func</span>&lt;TEntity, <span class="xref">System.Boolean</span>&gt;&gt;</td>
+        <td><span class="parametername">predicate</span></td>
+        <td><p>An expression that returns binary results for <code data-dev-comment-type="typeparamref" class="typeparamref">TEntity</code> objects.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>Token to monitor for cancellation requests.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;TEntity&gt;</td>
+        <td><p>The first <code data-dev-comment-type="typeparamref" class="typeparamref">TEntity</code> element that is related to <code data-dev-comment-type="paramref" class="paramref">tenantId</code> and also satisfies the given <code data-dev-comment-type="paramref" class="paramref">predicate</code> in the database.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Carbon_Domain_EntityFrameworkCore_EFTenantRepository_2_GetByIdAsync_" data-uid="Carbon.Domain.EntityFrameworkCore.EFTenantRepository`2.GetByIdAsync*"></a>
+  <h4 id="Carbon_Domain_EntityFrameworkCore_EFTenantRepository_2_GetByIdAsync_System_Guid_System_Guid_System_Threading_CancellationToken_" data-uid="Carbon.Domain.EntityFrameworkCore.EFTenantRepository`2.GetByIdAsync(System.Guid,System.Guid,System.Threading.CancellationToken)">GetByIdAsync(Guid, Guid, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Retrieves and returns the <code data-dev-comment-type="typeparamref" class="typeparamref">TEntity</code> specified by <code data-dev-comment-type="paramref" class="paramref">id</code> and <code data-dev-comment-type="paramref" class="paramref">tenantId</code> from the database context.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public async Task&lt;TEntity&gt; GetByIdAsync(Guid id, Guid tenantId, CancellationToken cancellationToken)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Guid</span></td>
+        <td><span class="parametername">id</span></td>
+        <td><p>Id of the requested <code data-dev-comment-type="typeparamref" class="typeparamref">TEntity</code> object.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Guid</span></td>
+        <td><span class="parametername">tenantId</span></td>
+        <td><p>Id of the tenant that is related to the <code data-dev-comment-type="typeparamref" class="typeparamref">TEntity</code> object.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>Token to monitor for cancellation requests.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;TEntity&gt;</td>
+        <td><p>A task whose result is the requested <code data-dev-comment-type="typeparamref" class="typeparamref">TEntity</code> object.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Carbon_Domain_EntityFrameworkCore_EFTenantRepository_2_GetByIdAsync_" data-uid="Carbon.Domain.EntityFrameworkCore.EFTenantRepository`2.GetByIdAsync*"></a>
+  <h4 id="Carbon_Domain_EntityFrameworkCore_EFTenantRepository_2_GetByIdAsync__1_System_Guid_System_Guid_System_Linq_Expressions_Expression_System_Func__0___0___System_Threading_CancellationToken_" data-uid="Carbon.Domain.EntityFrameworkCore.EFTenantRepository`2.GetByIdAsync``1(System.Guid,System.Guid,System.Linq.Expressions.Expression{System.Func{`0,``0}},System.Threading.CancellationToken)">GetByIdAsync&lt;TResult&gt;(Guid, Guid, Expression&lt;Func&lt;TEntity, TResult&gt;&gt;, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Retrieves and returns the <code data-dev-comment-type="typeparamref" class="typeparamref">TEntity</code> specified by <code data-dev-comment-type="paramref" class="paramref">id</code> from the database context.
+If <code data-dev-comment-type="paramref" class="paramref">selector</code> is not null, returns the entity projected by the selector.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual async Task&lt;TResult&gt; GetByIdAsync&lt;TResult&gt;(Guid id, Guid tenantId, Expression&lt;Func&lt;TEntity, TResult&gt;&gt; selector, CancellationToken cancellationToken)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Guid</span></td>
+        <td><span class="parametername">id</span></td>
+        <td><p>Id of the requested <code data-dev-comment-type="typeparamref" class="typeparamref">TEntity</code> object.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Guid</span></td>
+        <td><span class="parametername">tenantId</span></td>
+        <td><p>Id of the tenant.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Linq.Expressions.Expression</span>&lt;<span class="xref">System.Func</span>&lt;TEntity, TResult&gt;&gt;</td>
+        <td><span class="parametername">selector</span></td>
+        <td><p>Optional selector to project the entity properties.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>Token to monitor for cancellation requests.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;TResult&gt;</td>
+        <td><p>A task whose result is the requested <code data-dev-comment-type="typeparamref" class="typeparamref">TEntity</code> object or the projection if <code data-dev-comment-type="paramref" class="paramref">selector</code> is not null.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">TResult</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Carbon_Domain_EntityFrameworkCore_EFTenantRepository_2_Query_" data-uid="Carbon.Domain.EntityFrameworkCore.EFTenantRepository`2.Query*"></a>
+  <h4 id="Carbon_Domain_EntityFrameworkCore_EFTenantRepository_2_Query_System_Guid_" data-uid="Carbon.Domain.EntityFrameworkCore.EFTenantRepository`2.Query(System.Guid)">Query(Guid)</h4>
+  <div class="markdown level1 summary"><p>Returns a query on the <code data-dev-comment-type="typeparamref" class="typeparamref">TEntity</code> items related to <code data-dev-comment-type="paramref" class="paramref">tenantId</code> in the database.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IQueryable&lt;TEntity&gt; Query(Guid tenantId)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Guid</span></td>
+        <td><span class="parametername">tenantId</span></td>
+        <td><p>Id of the tenant that is related to the entities.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Linq.IQueryable</span>&lt;TEntity&gt;</td>
+        <td><p>A query on the entities related to the given tenant in the database.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Carbon_Domain_EntityFrameworkCore_EFTenantRepository_2_Query_System_Guid__seealso">See Also</h5>
+  <div class="seealso">
+      <div><span class="xref">System.Linq.IQueryable</span></div>
+  </div>
+  <a id="Carbon_Domain_EntityFrameworkCore_EFTenantRepository_2_QueryAsNoTracking_" data-uid="Carbon.Domain.EntityFrameworkCore.EFTenantRepository`2.QueryAsNoTracking*"></a>
+  <h4 id="Carbon_Domain_EntityFrameworkCore_EFTenantRepository_2_QueryAsNoTracking_System_Guid_" data-uid="Carbon.Domain.EntityFrameworkCore.EFTenantRepository`2.QueryAsNoTracking(System.Guid)">QueryAsNoTracking(Guid)</h4>
+  <div class="markdown level1 summary"><p>Returns a query that does not track changes on the <code data-dev-comment-type="typeparamref" class="typeparamref">TEntity</code> items related to <code data-dev-comment-type="paramref" class="paramref">tenantId</code> in the database.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IQueryable&lt;TEntity&gt; QueryAsNoTracking(Guid tenantId)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Guid</span></td>
+        <td><span class="parametername">tenantId</span></td>
+        <td><p>Id of the tenant that is related to the entities.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Linq.IQueryable</span>&lt;TEntity&gt;</td>
+        <td><p>A no-tracking query on the entities related to the given tenant in the database.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Carbon_Domain_EntityFrameworkCore_EFTenantRepository_2_QueryAsNoTracking_System_Guid__seealso">See Also</h5>
+  <div class="seealso">
+      <div><span class="xref">System.Linq.IQueryable</span></div>
+  </div>
+  <a id="Carbon_Domain_EntityFrameworkCore_EFTenantRepository_2_SaveChangesAsync_" data-uid="Carbon.Domain.EntityFrameworkCore.EFTenantRepository`2.SaveChangesAsync*"></a>
+  <h4 id="Carbon_Domain_EntityFrameworkCore_EFTenantRepository_2_SaveChangesAsync_System_Threading_CancellationToken_" data-uid="Carbon.Domain.EntityFrameworkCore.EFTenantRepository`2.SaveChangesAsync(System.Threading.CancellationToken)">SaveChangesAsync(CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Saves changes made to the database.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public async Task&lt;int&gt; SaveChangesAsync(CancellationToken cancellationToken)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>Token to monitor for cancellation requests.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.Int32</span>&gt;</td>
+        <td><p>A task that gives the number of state entries changed in the database as its result.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Carbon_Domain_EntityFrameworkCore_EFTenantRepository_2_UpdateAsync_" data-uid="Carbon.Domain.EntityFrameworkCore.EFTenantRepository`2.UpdateAsync*"></a>
+  <h4 id="Carbon_Domain_EntityFrameworkCore_EFTenantRepository_2_UpdateAsync__0_System_Threading_CancellationToken_" data-uid="Carbon.Domain.EntityFrameworkCore.EFTenantRepository`2.UpdateAsync(`0,System.Threading.CancellationToken)">UpdateAsync(TEntity, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Updates and saves the given <code data-dev-comment-type="typeparamref" class="typeparamref">TEntity</code> object in the database.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public async Task&lt;TEntity&gt; UpdateAsync(TEntity entity, CancellationToken cancellationToken)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">TEntity</span></td>
+        <td><span class="parametername">entity</span></td>
+        <td><p>Object to be updated to the database</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>Token to monitor for cancellation requests.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;TEntity&gt;</td>
+        <td><p>A task that returns the <code data-dev-comment-type="typeparamref" class="typeparamref">TEntity</code> object updated in database.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Carbon_Domain_EntityFrameworkCore_EFTenantRepository_2_UpdateRangeAsync_" data-uid="Carbon.Domain.EntityFrameworkCore.EFTenantRepository`2.UpdateRangeAsync*"></a>
+  <h4 id="Carbon_Domain_EntityFrameworkCore_EFTenantRepository_2_UpdateRangeAsync_System_Collections_Generic_IEnumerable__0__System_Threading_CancellationToken_" data-uid="Carbon.Domain.EntityFrameworkCore.EFTenantRepository`2.UpdateRangeAsync(System.Collections.Generic.IEnumerable{`0},System.Threading.CancellationToken)">UpdateRangeAsync(IEnumerable&lt;TEntity&gt;, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Updates and saves the <code data-dev-comment-type="typeparamref" class="typeparamref">TEntity</code> objects in the given <pre><code>IEnumerable</code></pre> to the database.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public async Task&lt;List&lt;TEntity&gt;&gt; UpdateRangeAsync(IEnumerable&lt;TEntity&gt; entities, CancellationToken cancellationToken)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;TEntity&gt;</td>
+        <td><span class="parametername">entities</span></td>
+        <td><p>The collection that contains the entities to be updated.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>Token to monitor for cancellation requests.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.Collections.Generic.List</span>&lt;TEntity&gt;&gt;</td>
+        <td><p>A task which results in a list that contains the <code data-dev-comment-type="typeparamref" class="typeparamref">TEntity</code> objects updated in the database.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Carbon_Domain_EntityFrameworkCore_EFTenantRepository_2_UpdateRangeAsync_System_Collections_Generic_IEnumerable__0__System_Threading_CancellationToken__seealso">See Also</h5>
+  <div class="seealso">
+      <div><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;T&gt;</div>
+  </div>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <a class="xref" href="../Carbon.Domain.Abstractions/Carbon.Domain.Abstractions.Repositories.ITenantRepository-1.html">ITenantRepository&lt;T&gt;</a>
+  </div>
+  <h3 id="seealso">See Also</h3>
+  <div class="seealso">
+      <div><a class="xref" href="../Carbon.Domain.Abstractions/Carbon.Domain.Abstractions.Entities.IMustHaveTenant.html">IMustHaveTenant</a></div>
+      <div><a class="xref" href="../Carbon.Domain.Abstractions/Carbon.Domain.Abstractions.Repositories.ITenantRepository-1.html">ITenantRepository</a>&lt;T&gt;</div>
+  </div>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            Carbon Framework
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>

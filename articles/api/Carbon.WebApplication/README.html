@@ -1,0 +1,502 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Carbon.WebApplication | Carbon Framework </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Carbon.WebApplication | Carbon Framework ">
+    <meta name="generator" content="docfx 2.59.4.0">
+    
+    <link rel="shortcut icon" href="../../../images/logo.png">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="../../toc.html">
+    
+    <meta property="docfx:rel" content="../../../">
+    
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../images/logo.png" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="carbonwebapplication">Carbon.WebApplication</h1>
+
+<p>Standardization for RESTful (HTTP 1.1) Web Applications. Add this library and have a working web application immediately with some most commonly used approaches for web applications such as Containerization,
+Logging, Config Management, Hosting Service, Kubernetes Enablement, OpenAPI standards (Swagger), Authorization, Authentication, Multi-tenant management, exception handling, security etc. Use this package to easily boot a fully
+equipped web application with a couple line of codes.</p>
+<h2 id="add-carbonwebapplication-support-to-your-project">Add Carbon.WebApplication Support to Your Project</h2>
+<h3 id="get-started">Get Started</h3>
+<table>
+<thead>
+<tr>
+<th>Out-of-the-box Support</th>
+<th style="text-align: center;">Availability</th>
+<th style="text-align: center;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Kubernetes-enabled (Containerization-enabled)</td>
+<td style="text-align: center;">Yes</td>
+<td style="text-align: center;">When base helm chart is used as in the <a href="https://github.com/kocdigital/Carbon.Sample/tree/master/helm/CarbonSample-api">Carbon.Sample Helm Chart</a>, it has the best harmony, it simply manages many kubernetes features in one place. Just plug and play.</td>
+</tr>
+<tr>
+<td>Logging</td>
+<td style="text-align: center;">Yes</td>
+<td style="text-align: center;">Serilog-based</td>
+</tr>
+<tr>
+<td>Config Management</td>
+<td style="text-align: center;">Yes</td>
+<td style="text-align: center;">Identifies Configmaps when kubernetes used, static config files can be also configured or enables a centralized configuration management via Consul</td>
+</tr>
+<tr>
+<td>Multi-Hosting Type</td>
+<td style="text-align: center;">Yes</td>
+<td style="text-align: center;">Kestrel or IIS</td>
+</tr>
+<tr>
+<td>Open-API support</td>
+<td style="text-align: center;">Yes</td>
+<td style="text-align: center;">Swagger via Swashbuckle</td>
+</tr>
+<tr>
+<td>Authorization</td>
+<td style="text-align: center;">Yes</td>
+<td style="text-align: center;">OAuth2 with Bearer Jwt Token via IdentityServer</td>
+</tr>
+<tr>
+<td>Authentication</td>
+<td style="text-align: center;">Yes</td>
+<td style="text-align: center;">Multi-Tenant Management via Platform360</td>
+</tr>
+<tr>
+<td>Exception Handling</td>
+<td style="text-align: center;">Yes</td>
+<td style="text-align: center;">Static or customizable exception handling available</td>
+</tr>
+<tr>
+<td>CORS</td>
+<td style="text-align: center;">Yes</td>
+<td style="text-align: center;">Configurable by Configurations</td>
+</tr>
+<tr>
+<td>Observability</td>
+<td style="text-align: center;">Yes</td>
+<td style="text-align: center;">Basic health-check enablement or Advanced when used with other infrastructural Carbon libraries</td>
+</tr>
+<tr>
+<td>Json Options for request and response</td>
+<td style="text-align: center;">Yes</td>
+<td style="text-align: center;">Built-in and standardized (IgnoreNullValues, StringEnumConverter, PascalCase), can be overriden when desired</td>
+</tr>
+<tr>
+<td>Request Validation</td>
+<td style="text-align: center;">Yes</td>
+<td style="text-align: center;">Rules can run against Dtos from controllers. Supported via Fluent Validation</td>
+</tr>
+<tr>
+<td>Multi .Net Run Time Support</td>
+<td style="text-align: center;">Yes</td>
+<td style="text-align: center;">Supports Dotnet 3.1 - 5 and 6 directly. (Complied against these versions)</td>
+</tr>
+<tr>
+<td>Hands-free MVC initialization</td>
+<td style="text-align: center;">Yes</td>
+<td style="text-align: center;">Manages MVC core features on its own. Simply use carbon, and your controllers or other simple MVC settings handled automatically</td>
+</tr>
+<tr>
+<td>Serialization</td>
+<td style="text-align: center;">Yes</td>
+<td style="text-align: center;">Uses Newtonsoft.Json under the hood</td>
+</tr>
+</tbody>
+</table>
+<p><strong>1a. Build your API Startup if it is non-minimal</strong></p>
+<p>Design your Startup.cs as given below:</p>
+<pre><code class="lang-csharp">public class Startup : CarbonStartup&lt;Startup&gt;
+    {
+        //Base your startup and use authorization and authentication as enabled
+        public Startup(IConfiguration configuration, IWebHostEnvironment environment) : base(configuration, environment, true, true)
+        {
+        }
+
+        public override void CustomConfigureServices(IServiceCollection services)
+        {
+           //Register your services with DI
+            services.AddScoped&lt;IAssetService, AssetService&gt;();
+        }
+
+        public override void CustomConfigure(IApplicationBuilder app, IWebHostEnvironment env)
+        {
+            //Tweak over your app builder
+            app.CreateAuthentication(&quot;RAM&quot;);
+        }
+
+        //Optional
+        public override void ConfigureEndpoints(IEndpointRouteBuilder endpoints)
+        {
+            //Define some endpoints here if needed(such as SignalR Hub Mappings etc.)
+            base.ConfigureEndpoints(endpoints);
+        }
+    }
+
+</code></pre>
+<p>Design your Program.cs as given below:</p>
+<pre><code class="lang-csharp">public class Program
+    {
+        public static void Main(string[] args)
+        {
+            CreateHostBuilder(args).Build().Run();
+        }
+
+        private static IHostBuilder CreateHostBuilder(string[] args) =&gt;
+            Host.CreateDefaultBuilder(args)
+                .ConfigureWebHostDefaults(webBuilder =&gt;
+                {
+                    webBuilder.UseCarbonFeatures();
+                    webBuilder.UseStartup&lt;Startup&gt;();
+                });
+    }
+</code></pre>
+<p><strong>1b. Build your API Startup if it is minimal (Introduced as of dotnet 6)</strong></p>
+<p>//Design your Program.cs as given below</p>
+<pre><code class="lang-csharp">var builder = WebApplication.CreateBuilder(args);
+
+builder.AddCarbonServices((services) =&gt; 
+{          
+    //Register your services with DI
+    services.AddScoped&lt;IAssetService, AssetService&gt;();
+
+    return services;
+});
+
+var app = builder.Build();
+app.AddCarbonApplication((app) =&gt;
+{            
+    //Tweak over your app builder
+    app.CreateAuthentication(&quot;RAM&quot;);
+
+    return app;
+});
+</code></pre>
+<p><strong>2. Configurations</strong></p>
+<p>Use the base-configuration as given below</p>
+<pre><code class="lang-json">  &quot;Logging&quot;: {
+    &quot;LogLevel&quot;: {
+      &quot;Default&quot;: &quot;Information&quot;,
+      &quot;Microsoft&quot;: &quot;Warning&quot;,
+      &quot;Microsoft.Hosting.Lifetime&quot;: &quot;Information&quot;
+    }
+  },
+  &quot;CorsPolicy&quot;: {
+    &quot;AllowAnyMethods&quot;: true,
+    &quot;AllowAnyHeaders&quot;: true,
+    &quot;AllowAnyOrigin&quot;: true,
+    &quot;Origins&quot;: [ &quot;http://localhost:*&quot;, &quot;http://*:*&quot;, &quot;http://localhost:8080&quot; ]
+  },
+  &quot;JwtSettings&quot;: {
+    &quot;Authority&quot;: &quot;http://youridentityserver:10067&quot;,
+    &quot;RequireHttpsMetaData&quot;: false,
+    &quot;Audience&quot;: &quot;YourScopeForAPI&quot;,
+    &quot;TokenValidationSettings&quot;: {
+      &quot;ValidIssuers&quot;: [ &quot;http://someidentityserver:10067&quot;, &quot;https://somesecureotheridentityserver:40067&quot;, &quot;https://maybeanotheridentityserver.com&quot; ]
+    }
+  },
+&quot;Serilog&quot;: {
+    &quot;Using&quot;: [ &quot;Serilog.Sinks.Console&quot;, &quot;Serilog.Sinks.Elasticsearch&quot; ],
+    &quot;MinimumLevel&quot;: &quot;Information&quot;,
+    &quot;WriteTo&quot;: [
+      { &quot;Name&quot;: &quot;Console&quot; },
+      {
+        &quot;Name&quot;: &quot;Elasticsearch&quot;,
+        &quot;Args&quot;: {
+          &quot;nodeUris&quot;: &quot;http://elasticsearch&quot;,
+          &quot;indexFormat&quot;: &quot;yourapi-log-{0:yyyy.MM.dd}&quot;
+        }
+      }
+    ],
+    &quot;Enrich&quot;: [ &quot;FromLogContext&quot;, &quot;WithMachineName&quot;, &quot;WithThreadId&quot; ],
+    &quot;Properties&quot;: { &quot;Application&quot;: &quot;Your.API&quot; }
+  },
+ &quot;Swagger&quot;: {
+    &quot;EndpointUrl&quot;: &quot;http://yourswaggerUrlThatYouWantToShowUp&quot;,
+    &quot;EndpointPath&quot;: &quot;/swagger/v1/swagger.json&quot;,
+    &quot;EndpointName&quot;: &quot;Your API V1&quot;,
+    &quot;Documents&quot;: [
+      {
+        &quot;DocumentName&quot;: &quot;v1&quot;,
+        &quot;OpenApiInfo&quot;: {
+          &quot;Title&quot;: &quot;Your  API&quot;,
+          &quot;Version&quot;: &quot;v1&quot;,
+          &quot;Description&quot;: &quot;Your API&quot;
+        },
+        &quot;Security&quot;: {
+          &quot;AuthorizationUrl&quot;: &quot;http://youridentityserver:10067&quot;,
+          &quot;Scopes&quot;: [
+            {
+              &quot;Key&quot;: &quot;YourScopeForAPI&quot;,
+              &quot;Description&quot;: &quot;My Scope As In the JWTSettings&quot;
+            }
+          ]
+        }
+      }
+    ]
+  }
+</code></pre>
+<p><strong>3. Some other useful tweaks</strong></p>
+<p>Use this Environment Variables (either in your launch profile or machine environment variables)
+to get your api up and running by using appsettings.Development.json in the debug folder by running with Kestrel standalone hosting type</p>
+<pre><code>ASPNETCORE_ENVIRONMENT=Development,
+CONFIGURATION_TYPE=FILE,
+ENVIRONMENT_TYPE=Kestrel,
+FILE_CONFIG_PATHS=appsettings.Development.json
+</code></pre>
+<p>Now you are good to go, Carbon will handle any standards on behalf of you that is introduced at the very beginning.</p>
+<h2 id="advanced-usage-and-more-details">Advanced Usage and More Details</h2>
+<p>In this section, you can find more information about advanced usage of Carbon.WebApplication to make your API more customized and fine-tuned.</p>
+<h3 id="get-to-know-more-about-environment-variables">Get to know more about Environment Variables</h3>
+<hr>
+<p>Set your aspnetcore environment type. Use <strong>Development</strong> for development purposes (enables some advanced error handling etc.) or <strong>Production</strong> for production environments.</p>
+<pre><code>ASPNETCORE_ENVIRONMENT=Development
+</code></pre>
+<p>You can set your configuration management type as FILE which will consume any configuration json files into your API,
+or as CONSUL in order to set your configurations in a centralized way (Only recommended for dev purposes).</p>
+<pre><code>CONFIGURATION_TYPE=FILE
+</code></pre>
+<p>If you set your Configuration type as file, as given above, you can set which configs should be consumed by your APIs in-which the application context contains. Comma-seperated for multiple paths</p>
+<pre><code>FILE_CONFIG_PATHS=appsettings.Development.json,config/appsettings.Other.json
+</code></pre>
+<p>For Environment type, Kestrel will be your the best friend in any containerized environment, such as Kubernetes or Docker. Nevertheless, if you still insist on
+using IIS, you can set the Environment_Type as IIS to host your API in IIS environments.</p>
+<pre><code>ENVIRONMENT_TYPE=Kestrel
+</code></pre>
+<h3 id="get-to-know-more-about-api-startups">Get to know more about API Startups</h3>
+<hr>
+<h4 id="remove-authorization-and-authentication-from-your-api-insecure-not-recommended-by-setting-the-last-two-parameters-as-false-false">Remove authorization and authentication from your API (insecure, not recommended!) by setting the last two parameters as (false, false)</h4>
+<pre><code class="lang-csharp">public class Startup : CarbonStartup&lt;Startup&gt;
+    {
+        //Base your startup and use authorization and authentication as enabled
+        public Startup(IConfiguration configuration, IWebHostEnvironment environment) : base(configuration, environment, base(configuration, environment, useAuthentication: false, useAuthorization: false))
+        {
+        }
+
+      
+    }
+
+</code></pre>
+<p>or for the minimal APIs, use app.AddCarbonApplication method's parameters.</p>
+<pre><code class="lang-csharp">var builder = WebApplication.CreateBuilder(args);
+
+builder.AddCarbonServices((services) =&gt; 
+{          
+    services.AddScoped&lt;IAssetService, AssetService&gt;();
+    return services;
+});
+
+var app = builder.Build();
+app.AddCarbonApplication((app) =&gt;
+{            
+    app.CreateAuthentication(&quot;RAM&quot;);
+    return app;
+}, useAuthentication: false, useAuthorization: false);
+</code></pre>
+<h4 id="add-custom-endpoints-to-minimal-api-in-programcs">Add custom endpoints to minimal API in Program.cs</h4>
+<p>You can add custom endpoints such as SignalR Hubs and so on in the appbuilder phase.</p>
+<pre><code class="lang-csharp">var builder = WebApplication.CreateBuilder(args);
+
+builder.AddCarbonServices((services) =&gt; 
+{          
+    services.AddScoped&lt;IAssetService, AssetService&gt;();
+    return services;
+});
+
+var app = builder.Build();
+app.AddCarbonApplication((app) =&gt;
+{            
+    app.CreateAuthentication(&quot;RAM&quot;);
+    return app;
+}, true, true,
+(e) =&gt; {
+    //Do your extra mappings here
+    e.MapHub&lt;SomeHub&gt;();
+    return e;
+});
+</code></pre>
+<h3 id="get-to-know-more-about-carbon-based-configurations">Get to know more about Carbon-based configurations</h3>
+<hr>
+<h4 id="jwtsettings">JWTSettings</h4>
+<p><strong>Authority</strong> is your prefered identity server's URL.</p>
+<p><strong>ValidIssuers</strong> also allow you to come with tokens provided that all are issued with the given identity servers in ValidIssuers array.</p>
+<p><strong>Audience</strong> is your API scope</p>
+<pre><code class="lang-json"> &quot;JwtSettings&quot;: {
+    &quot;Authority&quot;: &quot;http://youridentityserver:10067&quot;,
+    &quot;RequireHttpsMetaData&quot;: false,
+    &quot;Audience&quot;: &quot;YourScopeForAPI&quot;,
+    &quot;TokenValidationSettings&quot;: {
+      &quot;ValidIssuers&quot;: [ &quot;http://someidentityserver:10067&quot;, &quot;https://somesecureotheridentityserver:40067&quot;, &quot;https://maybeanotheridentityserver.com&quot; ]
+    }
+  },
+</code></pre>
+<h4 id="swagger">Swagger</h4>
+<p><strong>EndpointUrl</strong> should be the same where you advertise your API
+<strong>EndpointPath</strong> can be kept as-is
+<strong>EndpointName</strong> should be a well-descriptive name for your API
+<strong>AuthorizationUrl</strong> should be your identityserver URL where swagger is supposed to collect tokens
+<strong>Scopes</strong> should contain at least your APIs scope, plus what is necessary.</p>
+<pre><code class="lang-json"> &quot;Swagger&quot;: {
+    &quot;EndpointUrl&quot;: &quot;http://yourswaggerUrlThatYouWantToShowUp&quot;,
+    &quot;EndpointPath&quot;: &quot;/swagger/v1/swagger.json&quot;,
+    &quot;EndpointName&quot;: &quot;Your API V1&quot;,
+    &quot;Documents&quot;: [
+      {
+        &quot;DocumentName&quot;: &quot;v1&quot;,
+        &quot;OpenApiInfo&quot;: {
+          &quot;Title&quot;: &quot;Your  API&quot;,
+          &quot;Version&quot;: &quot;v1&quot;,
+          &quot;Description&quot;: &quot;Your API&quot;
+        },
+        &quot;Security&quot;: {
+          &quot;AuthorizationUrl&quot;: &quot;http://youridentityserver:10067&quot;,
+          &quot;Scopes&quot;: [
+            {
+              &quot;Key&quot;: &quot;YourScopeForAPI&quot;,
+              &quot;Description&quot;: &quot;My Scope As In the JWTSettings&quot;
+            }
+          ]
+        }
+      }
+    ]
+  }
+</code></pre>
+<h4 id="serilog-for-logging">Serilog for logging</h4>
+<p><a href="https://github.com/serilog/serilog">Check here</a> for more serilog configurations. Serilog in Carbon comes
+with only Console support out-of-the-box. However, if you need more sinks such as elastic search, SQL, File etc.
+You need to add those sinks seperately to your project as nuget packages. In the example
+below, elastic search is enabled by adding the given nuget packages</p>
+<blockquote>
+<p>Serilog.Formatting.Elasticsearch</p>
+<p>Serilog.Sinks.Elasticsearch</p>
+</blockquote>
+<p>You can enrich this serilog config by other serilog-based configurations in order to have
+more powerful and comprehensive logging features.</p>
+<p>Given configuration logs the necessary logs into console and elasticsearch with the provided url in a defined index with at least information severity level</p>
+<pre><code class="lang-json">&quot;Serilog&quot;: {
+    &quot;Using&quot;: [ &quot;Serilog.Sinks.Console&quot;, &quot;Serilog.Sinks.Elasticsearch&quot; ],
+    &quot;MinimumLevel&quot;: &quot;Information&quot;,
+    &quot;WriteTo&quot;: [
+      { &quot;Name&quot;: &quot;Console&quot; },
+      {
+        &quot;Name&quot;: &quot;Elasticsearch&quot;,
+        &quot;Args&quot;: {
+          &quot;nodeUris&quot;: &quot;http://elasticsearch&quot;,
+          &quot;indexFormat&quot;: &quot;yourapi-log-{0:yyyy.MM.dd}&quot;
+        }
+      }
+    ],
+    &quot;Enrich&quot;: [ &quot;FromLogContext&quot;, &quot;WithMachineName&quot;, &quot;WithThreadId&quot; ],
+    &quot;Properties&quot;: { &quot;Application&quot;: &quot;Your.API&quot; }
+  },
+</code></pre>
+<h4 id="cors-for-security">Cors for security</h4>
+<p>Given cors policy is the most priviliged approach which allows any kind of CORS security considerations.
+Check more about CORS from the internet and see how you can secure your application by tweaking this section.</p>
+<pre><code class="lang-json">  &quot;CorsPolicy&quot;: {
+    &quot;AllowAnyMethods&quot;: true,
+    &quot;AllowAnyHeaders&quot;: true,
+    &quot;AllowAnyOrigin&quot;: true,
+    &quot;AllowCredentials&quot;: true,
+    &quot;Origins&quot;: [ &quot;http://localhost:*&quot;, &quot;http://*:*&quot;, &quot;http://localhost:8080&quot; ]
+  },
+</code></pre>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            Carbon Framework
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

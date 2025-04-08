@@ -1,0 +1,588 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class CassandraPersisterSettings
+   | Carbon Framework </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class CassandraPersisterSettings
+   | Carbon Framework ">
+    <meta name="generator" content="docfx 2.59.4.0">
+    
+    <link rel="shortcut icon" href="../../images/logo.png">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
+    
+    <meta property="docfx:rel" content="../../">
+    
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../images/logo.png" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Carbon.Cassandra.CassandraPersisterSettings">
+  
+  
+  <h1 id="Carbon_Cassandra_CassandraPersisterSettings" data-uid="Carbon.Cassandra.CassandraPersisterSettings" class="text-break">Class CassandraPersisterSettings
+  </h1>
+  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">CassandraPersisterSettings</span></div>
+  </div>
+  <div class="implements">
+    <h5>Implements</h5>
+    <div><a class="xref" href="../Carbon.Cassandra.Abstractions/Carbon.Cassandra.Abstractions.ICassandraPersisterSettings.html">ICassandraPersisterSettings</a></div>
+    <div><span class="xref">Microsoft.Extensions.Options.IOptions</span>&lt;<a class="xref" href="Carbon.Cassandra.CassandraPersisterSettings.html">CassandraPersisterSettings</a>&gt;</div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Carbon.Cassandra.html">Carbon.Cassandra</a></h6>
+  <h6><strong>Assembly</strong>: Carbon.Cassandra.dll</h6>
+  <h5 id="Carbon_Cassandra_CassandraPersisterSettings_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class CassandraPersisterSettings : ICassandraPersisterSettings, IOptions&lt;CassandraPersisterSettings&gt;</code></pre>
+  </div>
+  <h3 id="properties">Properties
+  </h3>
+  <a id="Carbon_Cassandra_CassandraPersisterSettings_CompressionSupportType_" data-uid="Carbon.Cassandra.CassandraPersisterSettings.CompressionSupportType*"></a>
+  <h4 id="Carbon_Cassandra_CassandraPersisterSettings_CompressionSupportType" data-uid="Carbon.Cassandra.CassandraPersisterSettings.CompressionSupportType">CompressionSupportType</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public CompressionType? CompressionSupportType { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">Cassandra.CompressionType</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Carbon_Cassandra_CassandraPersisterSettings_EndPoints_" data-uid="Carbon.Cassandra.CassandraPersisterSettings.EndPoints*"></a>
+  <h4 id="Carbon_Cassandra_CassandraPersisterSettings_EndPoints" data-uid="Carbon.Cassandra.CassandraPersisterSettings.EndPoints">EndPoints</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string[] EndPoints { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span>[]</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Carbon_Cassandra_CassandraPersisterSettings_Keyspace_" data-uid="Carbon.Cassandra.CassandraPersisterSettings.Keyspace*"></a>
+  <h4 id="Carbon_Cassandra_CassandraPersisterSettings_Keyspace" data-uid="Carbon.Cassandra.CassandraPersisterSettings.Keyspace">Keyspace</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string Keyspace { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Carbon_Cassandra_CassandraPersisterSettings_Password_" data-uid="Carbon.Cassandra.CassandraPersisterSettings.Password*"></a>
+  <h4 id="Carbon_Cassandra_CassandraPersisterSettings_Password" data-uid="Carbon.Cassandra.CassandraPersisterSettings.Password">Password</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string Password { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Carbon_Cassandra_CassandraPersisterSettings_Port_" data-uid="Carbon.Cassandra.CassandraPersisterSettings.Port*"></a>
+  <h4 id="Carbon_Cassandra_CassandraPersisterSettings_Port" data-uid="Carbon.Cassandra.CassandraPersisterSettings.Port">Port</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int Port { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Carbon_Cassandra_CassandraPersisterSettings_UsePasswordAuthenticator_" data-uid="Carbon.Cassandra.CassandraPersisterSettings.UsePasswordAuthenticator*"></a>
+  <h4 id="Carbon_Cassandra_CassandraPersisterSettings_UsePasswordAuthenticator" data-uid="Carbon.Cassandra.CassandraPersisterSettings.UsePasswordAuthenticator">UsePasswordAuthenticator</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool UsePasswordAuthenticator { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Carbon_Cassandra_CassandraPersisterSettings_UserName_" data-uid="Carbon.Cassandra.CassandraPersisterSettings.UserName*"></a>
+  <h4 id="Carbon_Cassandra_CassandraPersisterSettings_UserName" data-uid="Carbon.Cassandra.CassandraPersisterSettings.UserName">UserName</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string UserName { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Carbon_Cassandra_CassandraPersisterSettings_Value_" data-uid="Carbon.Cassandra.CassandraPersisterSettings.Value*"></a>
+  <h4 id="Carbon_Cassandra_CassandraPersisterSettings_Value" data-uid="Carbon.Cassandra.CassandraPersisterSettings.Value">Value</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public CassandraPersisterSettings Value { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Carbon.Cassandra.CassandraPersisterSettings.html">CassandraPersisterSettings</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  <a id="Carbon_Cassandra_CassandraPersisterSettings_Build_" data-uid="Carbon.Cassandra.CassandraPersisterSettings.Build*"></a>
+  <h4 id="Carbon_Cassandra_CassandraPersisterSettings_Build" data-uid="Carbon.Cassandra.CassandraPersisterSettings.Build">Build()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Build()</code></pre>
+  </div>
+  <a id="Carbon_Cassandra_CassandraPersisterSettings_SetMapping_" data-uid="Carbon.Cassandra.CassandraPersisterSettings.SetMapping*"></a>
+  <h4 id="Carbon_Cassandra_CassandraPersisterSettings_SetMapping_Cassandra_Mapping_Mappings___" data-uid="Carbon.Cassandra.CassandraPersisterSettings.SetMapping(Cassandra.Mapping.Mappings[])">SetMapping(Mappings[])</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetMapping(params Mappings[] mappings)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Cassandra.Mapping.Mappings</span>[]</td>
+        <td><span class="parametername">mappings</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="eii">Explicit Interface Implementations
+  </h3>
+  <a id="Carbon_Cassandra_CassandraPersisterSettings_Carbon_Cassandra_Abstractions_ICassandraPersisterSettings_Cluster_" data-uid="Carbon.Cassandra.CassandraPersisterSettings.Carbon#Cassandra#Abstractions#ICassandraPersisterSettings#Cluster*"></a>
+  <h4 id="Carbon_Cassandra_CassandraPersisterSettings_Carbon_Cassandra_Abstractions_ICassandraPersisterSettings_Cluster" data-uid="Carbon.Cassandra.CassandraPersisterSettings.Carbon#Cassandra#Abstractions#ICassandraPersisterSettings#Cluster">ICassandraPersisterSettings.Cluster</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Cluster ICassandraPersisterSettings.Cluster { get; set; }</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Cassandra.Cluster</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Carbon_Cassandra_CassandraPersisterSettings_Carbon_Cassandra_Abstractions_ICassandraPersisterSettings_LoadBalancingPolicy_" data-uid="Carbon.Cassandra.CassandraPersisterSettings.Carbon#Cassandra#Abstractions#ICassandraPersisterSettings#LoadBalancingPolicy*"></a>
+  <h4 id="Carbon_Cassandra_CassandraPersisterSettings_Carbon_Cassandra_Abstractions_ICassandraPersisterSettings_LoadBalancingPolicy" data-uid="Carbon.Cassandra.CassandraPersisterSettings.Carbon#Cassandra#Abstractions#ICassandraPersisterSettings#LoadBalancingPolicy">ICassandraPersisterSettings.LoadBalancingPolicy</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">ILoadBalancingPolicy ICassandraPersisterSettings.LoadBalancingPolicy { get; set; }</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Cassandra.ILoadBalancingPolicy</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Carbon_Cassandra_CassandraPersisterSettings_Carbon_Cassandra_Abstractions_ICassandraPersisterSettings_PoolingOptions_" data-uid="Carbon.Cassandra.CassandraPersisterSettings.Carbon#Cassandra#Abstractions#ICassandraPersisterSettings#PoolingOptions*"></a>
+  <h4 id="Carbon_Cassandra_CassandraPersisterSettings_Carbon_Cassandra_Abstractions_ICassandraPersisterSettings_PoolingOptions" data-uid="Carbon.Cassandra.CassandraPersisterSettings.Carbon#Cassandra#Abstractions#ICassandraPersisterSettings#PoolingOptions">ICassandraPersisterSettings.PoolingOptions</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">PoolingOptions ICassandraPersisterSettings.PoolingOptions { get; set; }</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Cassandra.PoolingOptions</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Carbon_Cassandra_CassandraPersisterSettings_Carbon_Cassandra_Abstractions_ICassandraPersisterSettings_QueryOptions_" data-uid="Carbon.Cassandra.CassandraPersisterSettings.Carbon#Cassandra#Abstractions#ICassandraPersisterSettings#QueryOptions*"></a>
+  <h4 id="Carbon_Cassandra_CassandraPersisterSettings_Carbon_Cassandra_Abstractions_ICassandraPersisterSettings_QueryOptions" data-uid="Carbon.Cassandra.CassandraPersisterSettings.Carbon#Cassandra#Abstractions#ICassandraPersisterSettings#QueryOptions">ICassandraPersisterSettings.QueryOptions</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">QueryOptions ICassandraPersisterSettings.QueryOptions { get; set; }</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Cassandra.QueryOptions</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Carbon_Cassandra_CassandraPersisterSettings_Carbon_Cassandra_Abstractions_ICassandraPersisterSettings_ReconnectionPolicy_" data-uid="Carbon.Cassandra.CassandraPersisterSettings.Carbon#Cassandra#Abstractions#ICassandraPersisterSettings#ReconnectionPolicy*"></a>
+  <h4 id="Carbon_Cassandra_CassandraPersisterSettings_Carbon_Cassandra_Abstractions_ICassandraPersisterSettings_ReconnectionPolicy" data-uid="Carbon.Cassandra.CassandraPersisterSettings.Carbon#Cassandra#Abstractions#ICassandraPersisterSettings#ReconnectionPolicy">ICassandraPersisterSettings.ReconnectionPolicy</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IReconnectionPolicy ICassandraPersisterSettings.ReconnectionPolicy { get; set; }</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Cassandra.IReconnectionPolicy</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Carbon_Cassandra_CassandraPersisterSettings_Carbon_Cassandra_Abstractions_ICassandraPersisterSettings_RetryPolicy_" data-uid="Carbon.Cassandra.CassandraPersisterSettings.Carbon#Cassandra#Abstractions#ICassandraPersisterSettings#RetryPolicy*"></a>
+  <h4 id="Carbon_Cassandra_CassandraPersisterSettings_Carbon_Cassandra_Abstractions_ICassandraPersisterSettings_RetryPolicy" data-uid="Carbon.Cassandra.CassandraPersisterSettings.Carbon#Cassandra#Abstractions#ICassandraPersisterSettings#RetryPolicy">ICassandraPersisterSettings.RetryPolicy</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IRetryPolicy ICassandraPersisterSettings.RetryPolicy { get; set; }</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Cassandra.IRetryPolicy</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Carbon_Cassandra_CassandraPersisterSettings_Carbon_Cassandra_Abstractions_ICassandraPersisterSettings_SocketOptions_" data-uid="Carbon.Cassandra.CassandraPersisterSettings.Carbon#Cassandra#Abstractions#ICassandraPersisterSettings#SocketOptions*"></a>
+  <h4 id="Carbon_Cassandra_CassandraPersisterSettings_Carbon_Cassandra_Abstractions_ICassandraPersisterSettings_SocketOptions" data-uid="Carbon.Cassandra.CassandraPersisterSettings.Carbon#Cassandra#Abstractions#ICassandraPersisterSettings#SocketOptions">ICassandraPersisterSettings.SocketOptions</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">SocketOptions ICassandraPersisterSettings.SocketOptions { get; set; }</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Cassandra.SocketOptions</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <a class="xref" href="../Carbon.Cassandra.Abstractions/Carbon.Cassandra.Abstractions.ICassandraPersisterSettings.html">ICassandraPersisterSettings</a>
+  </div>
+  <div>
+      <span class="xref">Microsoft.Extensions.Options.IOptions&lt;TOptions&gt;</span>
+  </div>
+  <h3 id="extensionmethods">Extension Methods</h3>
+  <div>
+      <a class="xref" href="Carbon.Cassandra.ServiceCollectionExtensions.html#Carbon_Cassandra_ServiceCollectionExtensions_SetEndPoints__1___0_System_String___">ServiceCollectionExtensions.SetEndPoints&lt;T&gt;(T, String[])</a>
+  </div>
+  <div>
+      <a class="xref" href="Carbon.Cassandra.ServiceCollectionExtensions.html#Carbon_Cassandra_ServiceCollectionExtensions_SetPort__1___0_System_Int32_">ServiceCollectionExtensions.SetPort&lt;T&gt;(T, Int32)</a>
+  </div>
+  <div>
+      <a class="xref" href="Carbon.Cassandra.ServiceCollectionExtensions.html#Carbon_Cassandra_ServiceCollectionExtensions_SetAuthentication__1___0_System_String_System_String_">ServiceCollectionExtensions.SetAuthentication&lt;T&gt;(T, String, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="Carbon.Cassandra.ServiceCollectionExtensions.html#Carbon_Cassandra_ServiceCollectionExtensions_SetCompression__1___0_Cassandra_CompressionType_">ServiceCollectionExtensions.SetCompression&lt;T&gt;(T, CompressionType)</a>
+  </div>
+  <div>
+      <a class="xref" href="Carbon.Cassandra.ServiceCollectionExtensions.html#Carbon_Cassandra_ServiceCollectionExtensions_SetCluster__1___0_Cassandra_Cluster_">ServiceCollectionExtensions.SetCluster&lt;T&gt;(T, Cluster)</a>
+  </div>
+  <div>
+      <a class="xref" href="Carbon.Cassandra.ServiceCollectionExtensions.html#Carbon_Cassandra_ServiceCollectionExtensions_SetReconnectionPolicy__1___0_Cassandra_IReconnectionPolicy_">ServiceCollectionExtensions.SetReconnectionPolicy&lt;T&gt;(T, IReconnectionPolicy)</a>
+  </div>
+  <div>
+      <a class="xref" href="Carbon.Cassandra.ServiceCollectionExtensions.html#Carbon_Cassandra_ServiceCollectionExtensions_SetRetryPolicy__1___0_Cassandra_IRetryPolicy_">ServiceCollectionExtensions.SetRetryPolicy&lt;T&gt;(T, IRetryPolicy)</a>
+  </div>
+  <div>
+      <a class="xref" href="Carbon.Cassandra.ServiceCollectionExtensions.html#Carbon_Cassandra_ServiceCollectionExtensions_SetPoolingOptions__1___0_Cassandra_PoolingOptions_">ServiceCollectionExtensions.SetPoolingOptions&lt;T&gt;(T, PoolingOptions)</a>
+  </div>
+  <div>
+      <a class="xref" href="Carbon.Cassandra.ServiceCollectionExtensions.html#Carbon_Cassandra_ServiceCollectionExtensions_SetQueryOptions__1___0_Cassandra_QueryOptions_">ServiceCollectionExtensions.SetQueryOptions&lt;T&gt;(T, QueryOptions)</a>
+  </div>
+  <div>
+      <a class="xref" href="Carbon.Cassandra.ServiceCollectionExtensions.html#Carbon_Cassandra_ServiceCollectionExtensions_SetLoadBalancingPolicy__1___0_Cassandra_ILoadBalancingPolicy_">ServiceCollectionExtensions.SetLoadBalancingPolicy&lt;T&gt;(T, ILoadBalancingPolicy)</a>
+  </div>
+  <div>
+      <a class="xref" href="Carbon.Cassandra.ServiceCollectionExtensions.html#Carbon_Cassandra_ServiceCollectionExtensions_SetPasswordAuthenticatorUsage__1___0_System_Boolean_">ServiceCollectionExtensions.SetPasswordAuthenticatorUsage&lt;T&gt;(T, Boolean)</a>
+  </div>
+  <div>
+      <a class="xref" href="Carbon.Cassandra.ServiceCollectionExtensions.html#Carbon_Cassandra_ServiceCollectionExtensions_SetSocketOptions__1___0_Cassandra_SocketOptions_">ServiceCollectionExtensions.SetSocketOptions&lt;T&gt;(T, SocketOptions)</a>
+  </div>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            Carbon Framework
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>

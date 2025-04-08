@@ -1,0 +1,2612 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class ICarbonCacheExtensions
+   | Carbon Framework </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class ICarbonCacheExtensions
+   | Carbon Framework ">
+    <meta name="generator" content="docfx 2.59.4.0">
+    
+    <link rel="shortcut icon" href="../../images/logo.png">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
+    
+    <meta property="docfx:rel" content="../../">
+    
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../images/logo.png" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Carbon.Caching.Abstractions.ICarbonCacheExtensions">
+  
+  
+  <h1 id="Carbon_Caching_Abstractions_ICarbonCacheExtensions" data-uid="Carbon.Caching.Abstractions.ICarbonCacheExtensions" class="text-break">Class ICarbonCacheExtensions
+  </h1>
+  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">ICarbonCacheExtensions</span></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Carbon.Caching.Abstractions.html">Carbon.Caching.Abstractions</a></h6>
+  <h6><strong>Assembly</strong>: Carbon.Redis.dll</h6>
+  <h5 id="Carbon_Caching_Abstractions_ICarbonCacheExtensions_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static class ICarbonCacheExtensions</code></pre>
+  </div>
+  <h3 id="methods">Methods
+  </h3>
+  <a id="Carbon_Caching_Abstractions_ICarbonCacheExtensions_Get_" data-uid="Carbon.Caching.Abstractions.ICarbonCacheExtensions.Get*"></a>
+  <h4 id="Carbon_Caching_Abstractions_ICarbonCacheExtensions_Get__1_Carbon_Caching_Abstractions_ICarbonCache_System_String_" data-uid="Carbon.Caching.Abstractions.ICarbonCacheExtensions.Get``1(Carbon.Caching.Abstractions.ICarbonCache,System.String)">Get&lt;T&gt;(ICarbonCache, String)</h4>
+  <div class="markdown level1 summary"><p>Simple get operation which is inherited from IDistributedCache interface, all the get logic is managed by Microsoft.Extensions.Caching.Distributed.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static T Get&lt;T&gt;(this ICarbonCache instance, string key)
+    where T : class</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Carbon.Caching.Abstractions.ICarbonCache.html">ICarbonCache</a></td>
+        <td><span class="parametername">instance</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">key</span></td>
+        <td><p>Redis Key to be retrieved</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td><p>Any object type that is serializable</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Carbon_Caching_Abstractions_ICarbonCacheExtensions_GetAsync_" data-uid="Carbon.Caching.Abstractions.ICarbonCacheExtensions.GetAsync*"></a>
+  <h4 id="Carbon_Caching_Abstractions_ICarbonCacheExtensions_GetAsync__1_Carbon_Caching_Abstractions_ICarbonCache_System_String_System_Func_System_Threading_Tasks_Task___0___System_Threading_CancellationToken_System_TimeSpan_System_Boolean_" data-uid="Carbon.Caching.Abstractions.ICarbonCacheExtensions.GetAsync``1(Carbon.Caching.Abstractions.ICarbonCache,System.String,System.Func{System.Threading.Tasks.Task{``0}},System.Threading.CancellationToken,System.TimeSpan,System.Boolean)">GetAsync&lt;T&gt;(ICarbonCache, String, Func&lt;Task&lt;T&gt;&gt;, CancellationToken, TimeSpan, Boolean)</h4>
+  <div class="markdown level1 summary"><p>Simple awaitable get async operation which is inherited from IDistributedCache interface, all the get logic is managed by Microsoft.Extensions.Caching.Distributed.
+This method gets a key from redis. If the key does not exist, it executes the method you provided, and the return value that is returned from this method will be set
+as a Simple Redis Key with a given TTL.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static async Task&lt;T&gt; GetAsync&lt;T&gt;(this ICarbonCache instance, string key, Func&lt;Task&lt;T&gt;&gt; setMethodIfNotExists, CancellationToken token = default(CancellationToken), TimeSpan timeSpan = default(TimeSpan), bool isSlidingExpiration = true)
+    where T : class</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Carbon.Caching.Abstractions.ICarbonCache.html">ICarbonCache</a></td>
+        <td><span class="parametername">instance</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">key</span></td>
+        <td><p>Redis Key</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Func</span>&lt;<span class="xref">System.Threading.Tasks.Task</span>&lt;T&gt;&gt;</td>
+        <td><span class="parametername">setMethodIfNotExists</span></td>
+        <td><p>Execute if this key does not exist</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">token</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.TimeSpan</span></td>
+        <td><span class="parametername">timeSpan</span></td>
+        <td><p>TTL time span</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">isSlidingExpiration</span></td>
+        <td><p>Is sliding or absolute</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;T&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td><p>Any object type that is serializable</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Carbon_Caching_Abstractions_ICarbonCacheExtensions_GetAsync_" data-uid="Carbon.Caching.Abstractions.ICarbonCacheExtensions.GetAsync*"></a>
+  <h4 id="Carbon_Caching_Abstractions_ICarbonCacheExtensions_GetAsync__1_Carbon_Caching_Abstractions_ICarbonCache_System_String_System_Threading_CancellationToken_" data-uid="Carbon.Caching.Abstractions.ICarbonCacheExtensions.GetAsync``1(Carbon.Caching.Abstractions.ICarbonCache,System.String,System.Threading.CancellationToken)">GetAsync&lt;T&gt;(ICarbonCache, String, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Simple awaitable get async operation which is inherited from IDistributedCache interface, all the get logic is managed by Microsoft.Extensions.Caching.Distributed.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static async Task&lt;T&gt; GetAsync&lt;T&gt;(this ICarbonCache instance, string key, CancellationToken token = default(CancellationToken))
+    where T : class</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Carbon.Caching.Abstractions.ICarbonCache.html">ICarbonCache</a></td>
+        <td><span class="parametername">instance</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">key</span></td>
+        <td><p>Redis Key</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">token</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;T&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td><p>Any object type that is serializable</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Carbon_Caching_Abstractions_ICarbonCacheExtensions_GetMultiAsync_" data-uid="Carbon.Caching.Abstractions.ICarbonCacheExtensions.GetMultiAsync*"></a>
+  <h4 id="Carbon_Caching_Abstractions_ICarbonCacheExtensions_GetMultiAsync__1_Carbon_Caching_Abstractions_ICarbonCache_System_Collections_Generic_List_System_String__" data-uid="Carbon.Caching.Abstractions.ICarbonCacheExtensions.GetMultiAsync``1(Carbon.Caching.Abstractions.ICarbonCache,System.Collections.Generic.List{System.String})">GetMultiAsync&lt;T&gt;(ICarbonCache, List&lt;String&gt;)</h4>
+  <div class="markdown level1 summary"><p>Simple awaitable get-multi async operation.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static async Task&lt;Dictionary&lt;string, T&gt;&gt; GetMultiAsync&lt;T&gt;(this ICarbonCache instance, List&lt;string&gt; keys)
+    where T : class</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Carbon.Caching.Abstractions.ICarbonCache.html">ICarbonCache</a></td>
+        <td><span class="parametername">instance</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<span class="xref">System.String</span>&gt;</td>
+        <td><span class="parametername">keys</span></td>
+        <td><p>Redis Keys as string list</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.Collections.Generic.Dictionary</span>&lt;<span class="xref">System.String</span>, T&gt;&gt;</td>
+        <td><p>Dictionary as key, value pair.Missing items won't be appear in the dictionary.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td><p>Any object type that is serializable</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Carbon_Caching_Abstractions_ICarbonCacheExtensions_HashGet_" data-uid="Carbon.Caching.Abstractions.ICarbonCacheExtensions.HashGet*"></a>
+  <h4 id="Carbon_Caching_Abstractions_ICarbonCacheExtensions_HashGet__1_Carbon_Caching_Abstractions_ICarbonCache_System_String_" data-uid="Carbon.Caching.Abstractions.ICarbonCacheExtensions.HashGet``1(Carbon.Caching.Abstractions.ICarbonCache,System.String)">HashGet&lt;T&gt;(ICarbonCache, String)</h4>
+  <div class="markdown level1 summary"><p>Gets your entire information in a dictionary for all fields within a single redis hash key.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static async Task&lt;Dictionary&lt;string, T&gt;&gt; HashGet&lt;T&gt;(this ICarbonCache instance, string key)
+    where T : class</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Carbon.Caching.Abstractions.ICarbonCache.html">ICarbonCache</a></td>
+        <td><span class="parametername">instance</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">key</span></td>
+        <td><p>Redis Key</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.Collections.Generic.Dictionary</span>&lt;<span class="xref">System.String</span>, T&gt;&gt;</td>
+        <td><p>Dictionary of the all hash fields</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td><p>The value type that you want to retrieve from given field/dictionary key, use object if all the types may differ, then convert it later</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Carbon_Caching_Abstractions_ICarbonCacheExtensions_HashGet_" data-uid="Carbon.Caching.Abstractions.ICarbonCacheExtensions.HashGet*"></a>
+  <h4 id="Carbon_Caching_Abstractions_ICarbonCacheExtensions_HashGet__1_Carbon_Caching_Abstractions_ICarbonCache_System_String_System_Func_System_Threading_Tasks_Task_System_Collections_Generic_Dictionary_System_String___0____" data-uid="Carbon.Caching.Abstractions.ICarbonCacheExtensions.HashGet``1(Carbon.Caching.Abstractions.ICarbonCache,System.String,System.Func{System.Threading.Tasks.Task{System.Collections.Generic.Dictionary{System.String,``0}}})">HashGet&lt;T&gt;(ICarbonCache, String, Func&lt;Task&lt;Dictionary&lt;String, T&gt;&gt;&gt;)</h4>
+  <div class="markdown level1 summary"><p>Gets your entire information in a dictionary for all fields within a single redis hash key, if key does not exist, it tries to fill with the given function</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static async Task&lt;Dictionary&lt;string, T&gt;&gt; HashGet&lt;T&gt;(this ICarbonCache instance, string key, Func&lt;Task&lt;Dictionary&lt;string, T&gt;&gt;&gt; setMethodIfNotExists)
+    where T : class</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Carbon.Caching.Abstractions.ICarbonCache.html">ICarbonCache</a></td>
+        <td><span class="parametername">instance</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">key</span></td>
+        <td><p>Redis Key</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Func</span>&lt;<span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.Collections.Generic.Dictionary</span>&lt;<span class="xref">System.String</span>, T&gt;&gt;&gt;</td>
+        <td><span class="parametername">setMethodIfNotExists</span></td>
+        <td><p>Execute if this key does not exist</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.Collections.Generic.Dictionary</span>&lt;<span class="xref">System.String</span>, T&gt;&gt;</td>
+        <td><p>Dictionary of the all hash fields</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td><p>The value type that you want to retrieve from given field/dictionary key, use object if all the types may differ, then convert it later</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Carbon_Caching_Abstractions_ICarbonCacheExtensions_HashGet_" data-uid="Carbon.Caching.Abstractions.ICarbonCacheExtensions.HashGet*"></a>
+  <h4 id="Carbon_Caching_Abstractions_ICarbonCacheExtensions_HashGet__1_Carbon_Caching_Abstractions_ICarbonCache_System_String_System_String_" data-uid="Carbon.Caching.Abstractions.ICarbonCacheExtensions.HashGet``1(Carbon.Caching.Abstractions.ICarbonCache,System.String,System.String)">HashGet&lt;T&gt;(ICarbonCache, String, String)</h4>
+  <div class="markdown level1 summary"><p>Gets the selected field from entire dictionary that is converted into hash key-value pairs within a single redis hash key.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static async Task&lt;T&gt; HashGet&lt;T&gt;(this ICarbonCache instance, string key, string hashfield)
+    where T : class</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Carbon.Caching.Abstractions.ICarbonCache.html">ICarbonCache</a></td>
+        <td><span class="parametername">instance</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">key</span></td>
+        <td><p>Redis Key</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">hashfield</span></td>
+        <td><p>The field/dictionary key's value you want to retrieve</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;T&gt;</td>
+        <td><p>A single value for the given hash field</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td><p>The value type that you want to retrieve from given field/dictionary key</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Carbon_Caching_Abstractions_ICarbonCacheExtensions_HashGet_" data-uid="Carbon.Caching.Abstractions.ICarbonCacheExtensions.HashGet*"></a>
+  <h4 id="Carbon_Caching_Abstractions_ICarbonCacheExtensions_HashGet__1_Carbon_Caching_Abstractions_ICarbonCache_System_String_System_String___" data-uid="Carbon.Caching.Abstractions.ICarbonCacheExtensions.HashGet``1(Carbon.Caching.Abstractions.ICarbonCache,System.String,System.String[])">HashGet&lt;T&gt;(ICarbonCache, String, String[])</h4>
+  <div class="markdown level1 summary"><p>Gets your entire information in a dictionary with the given fields within a single redis hash key.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static async Task&lt;Dictionary&lt;string, T&gt;&gt; HashGet&lt;T&gt;(this ICarbonCache instance, string key, string[] hashfields)
+    where T : class</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Carbon.Caching.Abstractions.ICarbonCache.html">ICarbonCache</a></td>
+        <td><span class="parametername">instance</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">key</span></td>
+        <td><p>Redis Key</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span>[]</td>
+        <td><span class="parametername">hashfields</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.Collections.Generic.Dictionary</span>&lt;<span class="xref">System.String</span>, T&gt;&gt;</td>
+        <td><p>Dictionary of the requested hash fields</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td><p>The value type that you want to retrieve from given field/dictionary key, use object if all the types may differ, then convert it later</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Carbon_Caching_Abstractions_ICarbonCacheExtensions_HashGetAsObject_" data-uid="Carbon.Caching.Abstractions.ICarbonCacheExtensions.HashGetAsObject*"></a>
+  <h4 id="Carbon_Caching_Abstractions_ICarbonCacheExtensions_HashGetAsObject__1_Carbon_Caching_Abstractions_ICarbonCache_System_String_" data-uid="Carbon.Caching.Abstractions.ICarbonCacheExtensions.HashGetAsObject``1(Carbon.Caching.Abstractions.ICarbonCache,System.String)">HashGetAsObject&lt;T&gt;(ICarbonCache, String)</h4>
+  <div class="markdown level1 summary"><p>Gets your entire object that is converted into hash key-value pairs within a single redis hash key.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static async Task&lt;T&gt; HashGetAsObject&lt;T&gt;(this ICarbonCache instance, string key)
+    where T : class</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Carbon.Caching.Abstractions.ICarbonCache.html">ICarbonCache</a></td>
+        <td><span class="parametername">instance</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">key</span></td>
+        <td><p>Redis Key</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;T&gt;</td>
+        <td><p>Your entire object</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td><p>Any object type that is serializable</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Carbon_Caching_Abstractions_ICarbonCacheExtensions_HashGetAsObject_" data-uid="Carbon.Caching.Abstractions.ICarbonCacheExtensions.HashGetAsObject*"></a>
+  <h4 id="Carbon_Caching_Abstractions_ICarbonCacheExtensions_HashGetAsObject__1_Carbon_Caching_Abstractions_ICarbonCache_System_String_System_Func_System_Threading_Tasks_Task___0___" data-uid="Carbon.Caching.Abstractions.ICarbonCacheExtensions.HashGetAsObject``1(Carbon.Caching.Abstractions.ICarbonCache,System.String,System.Func{System.Threading.Tasks.Task{``0}})">HashGetAsObject&lt;T&gt;(ICarbonCache, String, Func&lt;Task&lt;T&gt;&gt;)</h4>
+  <div class="markdown level1 summary"><p>Gets your entire object with the given fields that is converted into hash key-value pairs within a single redis hash key, if key does not exist, it tries to fill with the given function</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static async Task&lt;T&gt; HashGetAsObject&lt;T&gt;(this ICarbonCache instance, string key, Func&lt;Task&lt;T&gt;&gt; setMethodIfNotExists)
+    where T : class</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Carbon.Caching.Abstractions.ICarbonCache.html">ICarbonCache</a></td>
+        <td><span class="parametername">instance</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">key</span></td>
+        <td><p>Redis Key</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Func</span>&lt;<span class="xref">System.Threading.Tasks.Task</span>&lt;T&gt;&gt;</td>
+        <td><span class="parametername">setMethodIfNotExists</span></td>
+        <td><p>Execute if this key does not exist</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;T&gt;</td>
+        <td><p>Your entire object</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Carbon_Caching_Abstractions_ICarbonCacheExtensions_HashGetAsObject_" data-uid="Carbon.Caching.Abstractions.ICarbonCacheExtensions.HashGetAsObject*"></a>
+  <h4 id="Carbon_Caching_Abstractions_ICarbonCacheExtensions_HashGetAsObject__1_Carbon_Caching_Abstractions_ICarbonCache_System_String_System_String___" data-uid="Carbon.Caching.Abstractions.ICarbonCacheExtensions.HashGetAsObject``1(Carbon.Caching.Abstractions.ICarbonCache,System.String,System.String[])">HashGetAsObject&lt;T&gt;(ICarbonCache, String, String[])</h4>
+  <div class="markdown level1 summary"><p>Gets your entire object with the given fields that is converted into hash key-value pairs within a single redis hash key.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static async Task&lt;T&gt; HashGetAsObject&lt;T&gt;(this ICarbonCache instance, string key, string[] hashfields)
+    where T : class</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Carbon.Caching.Abstractions.ICarbonCache.html">ICarbonCache</a></td>
+        <td><span class="parametername">instance</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">key</span></td>
+        <td><p>Redis Key</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span>[]</td>
+        <td><span class="parametername">hashfields</span></td>
+        <td><p>Pass which fields to be returned, not provided ones will be null or default</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;T&gt;</td>
+        <td><p>Your entire object filled for the given fields</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td><p>Any object type that is serializable</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Carbon_Caching_Abstractions_ICarbonCacheExtensions_HashRemove_" data-uid="Carbon.Caching.Abstractions.ICarbonCacheExtensions.HashRemove*"></a>
+  <h4 id="Carbon_Caching_Abstractions_ICarbonCacheExtensions_HashRemove_Carbon_Caching_Abstractions_ICarbonCache_System_String_System_String_" data-uid="Carbon.Caching.Abstractions.ICarbonCacheExtensions.HashRemove(Carbon.Caching.Abstractions.ICarbonCache,System.String,System.String)">HashRemove(ICarbonCache, String, String)</h4>
+  <div class="markdown level1 summary"><p>Removes hashkey from the given Redis Key</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static async Task&lt;bool&gt; HashRemove(this ICarbonCache instance, string key, string hashkey)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Carbon.Caching.Abstractions.ICarbonCache.html">ICarbonCache</a></td>
+        <td><span class="parametername">instance</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">key</span></td>
+        <td><p>Redis Key</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">hashkey</span></td>
+        <td><p>Hash Key</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.Boolean</span>&gt;</td>
+        <td><p>The number of fields that were removed</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Carbon_Caching_Abstractions_ICarbonCacheExtensions_HashSet_" data-uid="Carbon.Caching.Abstractions.ICarbonCacheExtensions.HashSet*"></a>
+  <h4 id="Carbon_Caching_Abstractions_ICarbonCacheExtensions_HashSet__1_Carbon_Caching_Abstractions_ICarbonCache_System_String_System_Collections_Generic_Dictionary_System_String___0__" data-uid="Carbon.Caching.Abstractions.ICarbonCacheExtensions.HashSet``1(Carbon.Caching.Abstractions.ICarbonCache,System.String,System.Collections.Generic.Dictionary{System.String,``0})">HashSet&lt;T&gt;(ICarbonCache, String, Dictionary&lt;String, T&gt;)</h4>
+  <div class="markdown level1 summary"><p>Set a hash in redis with the given dictionary where each key will be another hash field in the same hash key</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static async Task&lt;(ICarbonCache, string)&gt; HashSet&lt;T&gt;(this ICarbonCache instance, string key, Dictionary&lt;string, T&gt; content)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Carbon.Caching.Abstractions.ICarbonCache.html">ICarbonCache</a></td>
+        <td><span class="parametername">instance</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">key</span></td>
+        <td><p>Redis Key</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.Dictionary</span>&lt;<span class="xref">System.String</span>, T&gt;</td>
+        <td><span class="parametername">content</span></td>
+        <td><p>Content to be serialized into binary</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.ValueTuple</span>&lt;<a class="xref" href="Carbon.Caching.Abstractions.ICarbonCache.html">ICarbonCache</a>, <span class="xref">System.String</span>&gt;&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td><p>Any object type that is serializable</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Carbon_Caching_Abstractions_ICarbonCacheExtensions_HashSetAsObject_" data-uid="Carbon.Caching.Abstractions.ICarbonCacheExtensions.HashSetAsObject*"></a>
+  <h4 id="Carbon_Caching_Abstractions_ICarbonCacheExtensions_HashSetAsObject__1_Carbon_Caching_Abstractions_ICarbonCache_System_String___0_" data-uid="Carbon.Caching.Abstractions.ICarbonCacheExtensions.HashSetAsObject``1(Carbon.Caching.Abstractions.ICarbonCache,System.String,``0)">HashSetAsObject&lt;T&gt;(ICarbonCache, String, T)</h4>
+  <div class="markdown level1 summary"><p>Converts your flat object into hash key-value pairs within a single redis hash key, you can retrieve single or multiple fields later</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static async Task&lt;(ICarbonCache, string)&gt; HashSetAsObject&lt;T&gt;(this ICarbonCache instance, string key, T content)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Carbon.Caching.Abstractions.ICarbonCache.html">ICarbonCache</a></td>
+        <td><span class="parametername">instance</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">key</span></td>
+        <td><p>Redis Key</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td><span class="parametername">content</span></td>
+        <td><p>Content to be serialized into binary</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.ValueTuple</span>&lt;<a class="xref" href="Carbon.Caching.Abstractions.ICarbonCache.html">ICarbonCache</a>, <span class="xref">System.String</span>&gt;&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td><p>Any object type that is serializable</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Carbon_Caching_Abstractions_ICarbonCacheExtensions_HashSetCounter_" data-uid="Carbon.Caching.Abstractions.ICarbonCacheExtensions.HashSetCounter*"></a>
+  <h4 id="Carbon_Caching_Abstractions_ICarbonCacheExtensions_HashSetCounter_Carbon_Caching_Abstractions_ICarbonCache_System_String_System_String_System_Int64_System_Boolean_" data-uid="Carbon.Caching.Abstractions.ICarbonCacheExtensions.HashSetCounter(Carbon.Caching.Abstractions.ICarbonCache,System.String,System.String,System.Int64,System.Boolean)">HashSetCounter(ICarbonCache, String, String, Int64, Boolean)</h4>
+  <div class="markdown level1 summary"><p>Uses HashIncrement or Decrement according to the counter you provided</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static async Task&lt;long&gt; HashSetCounter(this ICarbonCache instance, string key, string hashfield, long counter, bool removeWhenZero = false)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Carbon.Caching.Abstractions.ICarbonCache.html">ICarbonCache</a></td>
+        <td><span class="parametername">instance</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">key</span></td>
+        <td><p>Redis Key</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">hashfield</span></td>
+        <td><p>Hash Key</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int64</span></td>
+        <td><span class="parametername">counter</span></td>
+        <td><p>long number to sum up (positive number for increment, negative number for decrement)</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">removeWhenZero</span></td>
+        <td><p>When true; If counter hits to 0, removes the hashkey</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.Int64</span>&gt;</td>
+        <td><p>Last state of counter</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Carbon_Caching_Abstractions_ICarbonCacheExtensions_HashSingleGet_" data-uid="Carbon.Caching.Abstractions.ICarbonCacheExtensions.HashSingleGet*"></a>
+  <h4 id="Carbon_Caching_Abstractions_ICarbonCacheExtensions_HashSingleGet__1_Carbon_Caching_Abstractions_ICarbonCache_System_String_" data-uid="Carbon.Caching.Abstractions.ICarbonCacheExtensions.HashSingleGet``1(Carbon.Caching.Abstractions.ICarbonCache,System.String)">HashSingleGet&lt;T&gt;(ICarbonCache, String)</h4>
+  <div class="markdown level1 summary"><p>Simple gets your entire object as single that is converted into single hash field within that redis hash key.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static async Task&lt;T&gt; HashSingleGet&lt;T&gt;(this ICarbonCache instance, string key)
+    where T : class</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Carbon.Caching.Abstractions.ICarbonCache.html">ICarbonCache</a></td>
+        <td><span class="parametername">instance</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">key</span></td>
+        <td><p>Redis Key</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;T&gt;</td>
+        <td><p>A single value for the given hash field</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td><p>The value type that you want to retrieve from given field/dictionary key</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Carbon_Caching_Abstractions_ICarbonCacheExtensions_HashSingleGet_" data-uid="Carbon.Caching.Abstractions.ICarbonCacheExtensions.HashSingleGet*"></a>
+  <h4 id="Carbon_Caching_Abstractions_ICarbonCacheExtensions_HashSingleGet__1_Carbon_Caching_Abstractions_ICarbonCache_System_String_System_Func_System_Threading_Tasks_Task___0___" data-uid="Carbon.Caching.Abstractions.ICarbonCacheExtensions.HashSingleGet``1(Carbon.Caching.Abstractions.ICarbonCache,System.String,System.Func{System.Threading.Tasks.Task{``0}})">HashSingleGet&lt;T&gt;(ICarbonCache, String, Func&lt;Task&lt;T&gt;&gt;)</h4>
+  <div class="markdown level1 summary"><p>Simple gets your entire object as single that is converted into single hash field within that redis hash key, if key does not exist, it tries to fill with the given function</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static async Task&lt;T&gt; HashSingleGet&lt;T&gt;(this ICarbonCache instance, string key, Func&lt;Task&lt;T&gt;&gt; setMethodIfNotExists)
+    where T : class</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Carbon.Caching.Abstractions.ICarbonCache.html">ICarbonCache</a></td>
+        <td><span class="parametername">instance</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">key</span></td>
+        <td><p>Redis Key</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Func</span>&lt;<span class="xref">System.Threading.Tasks.Task</span>&lt;T&gt;&gt;</td>
+        <td><span class="parametername">setMethodIfNotExists</span></td>
+        <td><p>Execute if this key does not exist</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;T&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Carbon_Caching_Abstractions_ICarbonCacheExtensions_HashSingleSet_" data-uid="Carbon.Caching.Abstractions.ICarbonCacheExtensions.HashSingleSet*"></a>
+  <h4 id="Carbon_Caching_Abstractions_ICarbonCacheExtensions_HashSingleSet__1_Carbon_Caching_Abstractions_ICarbonCache_System_String___0_" data-uid="Carbon.Caching.Abstractions.ICarbonCacheExtensions.HashSingleSet``1(Carbon.Caching.Abstractions.ICarbonCache,System.String,``0)">HashSingleSet&lt;T&gt;(ICarbonCache, String, T)</h4>
+  <div class="markdown level1 summary"><p>Simple set a hash in redis with a single object where your content will be a single hash field in the hash key</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static async Task&lt;(ICarbonCache, string)&gt; HashSingleSet&lt;T&gt;(this ICarbonCache instance, string key, T content)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Carbon.Caching.Abstractions.ICarbonCache.html">ICarbonCache</a></td>
+        <td><span class="parametername">instance</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">key</span></td>
+        <td><p>Redis Key</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td><span class="parametername">content</span></td>
+        <td><p>Content to be serialized into binary</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.ValueTuple</span>&lt;<a class="xref" href="Carbon.Caching.Abstractions.ICarbonCache.html">ICarbonCache</a>, <span class="xref">System.String</span>&gt;&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td><p>Any object type that is serializable</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Carbon_Caching_Abstractions_ICarbonCacheExtensions_RemoveMultiKey_" data-uid="Carbon.Caching.Abstractions.ICarbonCacheExtensions.RemoveMultiKey*"></a>
+  <h4 id="Carbon_Caching_Abstractions_ICarbonCacheExtensions_RemoveMultiKey_Carbon_Caching_Abstractions_ICarbonCache_System_Collections_Generic_IList_System_String__" data-uid="Carbon.Caching.Abstractions.ICarbonCacheExtensions.RemoveMultiKey(Carbon.Caching.Abstractions.ICarbonCache,System.Collections.Generic.IList{System.String})">RemoveMultiKey(ICarbonCache, IList&lt;String&gt;)</h4>
+  <div class="markdown level1 summary"><p>Simple remove multiple operation which is inherited from IDistributedCache interface, all the set logic is managed by Microsoft.Extensions.Caching.Distributed.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void RemoveMultiKey(this ICarbonCache instance, IList&lt;string&gt; keys)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Carbon.Caching.Abstractions.ICarbonCache.html">ICarbonCache</a></td>
+        <td><span class="parametername">instance</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IList</span>&lt;<span class="xref">System.String</span>&gt;</td>
+        <td><span class="parametername">keys</span></td>
+        <td><p>keys to be removed</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Carbon_Caching_Abstractions_ICarbonCacheExtensions_RemoveMultiKeyAsync_" data-uid="Carbon.Caching.Abstractions.ICarbonCacheExtensions.RemoveMultiKeyAsync*"></a>
+  <h4 id="Carbon_Caching_Abstractions_ICarbonCacheExtensions_RemoveMultiKeyAsync_Carbon_Caching_Abstractions_ICarbonCache_System_Collections_Generic_IList_System_String__System_Threading_CancellationToken_" data-uid="Carbon.Caching.Abstractions.ICarbonCacheExtensions.RemoveMultiKeyAsync(Carbon.Caching.Abstractions.ICarbonCache,System.Collections.Generic.IList{System.String},System.Threading.CancellationToken)">RemoveMultiKeyAsync(ICarbonCache, IList&lt;String&gt;, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Simple remove multiple async operation which is inherited from IDistributedCache interface, all the set logic is managed by Microsoft.Extensions.Caching.Distributed.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static async Task RemoveMultiKeyAsync(this ICarbonCache instance, IList&lt;string&gt; keys, CancellationToken token = default(CancellationToken))</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Carbon.Caching.Abstractions.ICarbonCache.html">ICarbonCache</a></td>
+        <td><span class="parametername">instance</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IList</span>&lt;<span class="xref">System.String</span>&gt;</td>
+        <td><span class="parametername">keys</span></td>
+        <td><p>keys to be removed</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">token</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Carbon_Caching_Abstractions_ICarbonCacheExtensions_Set_" data-uid="Carbon.Caching.Abstractions.ICarbonCacheExtensions.Set*"></a>
+  <h4 id="Carbon_Caching_Abstractions_ICarbonCacheExtensions_Set__1_Carbon_Caching_Abstractions_ICarbonCache_System_String___0_" data-uid="Carbon.Caching.Abstractions.ICarbonCacheExtensions.Set``1(Carbon.Caching.Abstractions.ICarbonCache,System.String,``0)">Set&lt;T&gt;(ICarbonCache, String, T)</h4>
+  <div class="markdown level1 summary"><p>Simple set operation which is inherited from IDistributedCache interface, all the set logic is managed by Microsoft.Extensions.Caching.Distributed. No TTL - Persistant Key</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void Set&lt;T&gt;(this ICarbonCache instance, string key, T content)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Carbon.Caching.Abstractions.ICarbonCache.html">ICarbonCache</a></td>
+        <td><span class="parametername">instance</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">key</span></td>
+        <td><p>Redis Key</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td><span class="parametername">content</span></td>
+        <td><p>Content to be serialized into binary</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td><p>Any object type that is serializable</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Carbon_Caching_Abstractions_ICarbonCacheExtensions_Set_" data-uid="Carbon.Caching.Abstractions.ICarbonCacheExtensions.Set*"></a>
+  <h4 id="Carbon_Caching_Abstractions_ICarbonCacheExtensions_Set__1_Carbon_Caching_Abstractions_ICarbonCache_System_String___0_System_TimeSpan_" data-uid="Carbon.Caching.Abstractions.ICarbonCacheExtensions.Set``1(Carbon.Caching.Abstractions.ICarbonCache,System.String,``0,System.TimeSpan)">Set&lt;T&gt;(ICarbonCache, String, T, TimeSpan)</h4>
+  <div class="markdown level1 summary"><p>Simple set operation which is inherited from IDistributedCache interface, all the set logic is managed by Microsoft.Extensions.Caching.Distributed</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void Set&lt;T&gt;(this ICarbonCache instance, string key, T content, TimeSpan period)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Carbon.Caching.Abstractions.ICarbonCache.html">ICarbonCache</a></td>
+        <td><span class="parametername">instance</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">key</span></td>
+        <td><p>Redis Key</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td><span class="parametername">content</span></td>
+        <td><p>Content to be serialized into binary</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.TimeSpan</span></td>
+        <td><span class="parametername">period</span></td>
+        <td><p>Set Sliding TTL</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td><p>Any object type that is serializable</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Carbon_Caching_Abstractions_ICarbonCacheExtensions_SetAdd_" data-uid="Carbon.Caching.Abstractions.ICarbonCacheExtensions.SetAdd*"></a>
+  <h4 id="Carbon_Caching_Abstractions_ICarbonCacheExtensions_SetAdd__1_Carbon_Caching_Abstractions_ICarbonCache_System_String___0_" data-uid="Carbon.Caching.Abstractions.ICarbonCacheExtensions.SetAdd``1(Carbon.Caching.Abstractions.ICarbonCache,System.String,``0)">SetAdd&lt;T&gt;(ICarbonCache, String, T)</h4>
+  <div class="markdown level1 summary"><p>Add an object to a Redis Set within the given key</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static async Task&lt;(ICarbonCache, string)&gt; SetAdd&lt;T&gt;(this ICarbonCache instance, string key, T value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Carbon.Caching.Abstractions.ICarbonCache.html">ICarbonCache</a></td>
+        <td><span class="parametername">instance</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">key</span></td>
+        <td><p>Redis Key</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td><span class="parametername">value</span></td>
+        <td><p>Your content to be stored in redis set</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.ValueTuple</span>&lt;<a class="xref" href="Carbon.Caching.Abstractions.ICarbonCache.html">ICarbonCache</a>, <span class="xref">System.String</span>&gt;&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td><p>Any object type that is serializable</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Carbon_Caching_Abstractions_ICarbonCacheExtensions_SetAdd_" data-uid="Carbon.Caching.Abstractions.ICarbonCacheExtensions.SetAdd*"></a>
+  <h4 id="Carbon_Caching_Abstractions_ICarbonCacheExtensions_SetAdd__1_Carbon_Caching_Abstractions_ICarbonCache_System_String___0___" data-uid="Carbon.Caching.Abstractions.ICarbonCacheExtensions.SetAdd``1(Carbon.Caching.Abstractions.ICarbonCache,System.String,``0[])">SetAdd&lt;T&gt;(ICarbonCache, String, T[])</h4>
+  <div class="markdown level1 summary"><p>Add multiple objects at a time to a Redis Set within the given key</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static async Task&lt;(ICarbonCache, string)&gt; SetAdd&lt;T&gt;(this ICarbonCache instance, string key, T[] values)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Carbon.Caching.Abstractions.ICarbonCache.html">ICarbonCache</a></td>
+        <td><span class="parametername">instance</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">key</span></td>
+        <td><p>Redis Key</p>
+</td>
+      </tr>
+      <tr>
+        <td>T[]</td>
+        <td><span class="parametername">values</span></td>
+        <td><p>Your content list to be stored in redis set</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.ValueTuple</span>&lt;<a class="xref" href="Carbon.Caching.Abstractions.ICarbonCache.html">ICarbonCache</a>, <span class="xref">System.String</span>&gt;&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td><p>Any object type that is serializable</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Carbon_Caching_Abstractions_ICarbonCacheExtensions_SetAsync_" data-uid="Carbon.Caching.Abstractions.ICarbonCacheExtensions.SetAsync*"></a>
+  <h4 id="Carbon_Caching_Abstractions_ICarbonCacheExtensions_SetAsync__1_Carbon_Caching_Abstractions_ICarbonCache_System_String___0_System_Threading_CancellationToken_System_TimeSpan_System_Boolean_" data-uid="Carbon.Caching.Abstractions.ICarbonCacheExtensions.SetAsync``1(Carbon.Caching.Abstractions.ICarbonCache,System.String,``0,System.Threading.CancellationToken,System.TimeSpan,System.Boolean)">SetAsync&lt;T&gt;(ICarbonCache, String, T, CancellationToken, TimeSpan, Boolean)</h4>
+  <div class="markdown level1 summary"><p>Simple set operation which is inherited from IDistributedCache interface, all the set logic is managed by Microsoft.Extensions.Caching.Distributed with TTL and absolute or sliding expiration time as you wish</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static async Task SetAsync&lt;T&gt;(this ICarbonCache instance, string key, T content, CancellationToken token = default(CancellationToken), TimeSpan timeSpan = default(TimeSpan), bool isSlidingExpiration = true)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Carbon.Caching.Abstractions.ICarbonCache.html">ICarbonCache</a></td>
+        <td><span class="parametername">instance</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">key</span></td>
+        <td><p>Redis Key</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td><span class="parametername">content</span></td>
+        <td><p>Content to be serialized into binary</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">token</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.TimeSpan</span></td>
+        <td><span class="parametername">timeSpan</span></td>
+        <td><p>TTL time span</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">isSlidingExpiration</span></td>
+        <td><p>Is sliding or absolute</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td><p>Any object type that is serializable</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Carbon_Caching_Abstractions_ICarbonCacheExtensions_SetAsync_" data-uid="Carbon.Caching.Abstractions.ICarbonCacheExtensions.SetAsync*"></a>
+  <h4 id="Carbon_Caching_Abstractions_ICarbonCacheExtensions_SetAsync__1_Carbon_Caching_Abstractions_ICarbonCache_System_String___0_System_TimeSpan_System_Threading_CancellationToken_System_Boolean_" data-uid="Carbon.Caching.Abstractions.ICarbonCacheExtensions.SetAsync``1(Carbon.Caching.Abstractions.ICarbonCache,System.String,``0,System.TimeSpan,System.Threading.CancellationToken,System.Boolean)">SetAsync&lt;T&gt;(ICarbonCache, String, T, TimeSpan, CancellationToken, Boolean)</h4>
+  <div class="markdown level1 summary"><p>Simple set operation which is inherited from IDistributedCache interface, all the set logic is managed by Microsoft.Extensions.Caching.Distributed with TTL and absolute or sliding expiration time as you wish</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static async Task SetAsync&lt;T&gt;(this ICarbonCache instance, string key, T content, TimeSpan period, CancellationToken token = default(CancellationToken), bool isSlidingExpiration = true)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Carbon.Caching.Abstractions.ICarbonCache.html">ICarbonCache</a></td>
+        <td><span class="parametername">instance</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">key</span></td>
+        <td><p>Redis Key</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td><span class="parametername">content</span></td>
+        <td><p>Content to be serialized into binary</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.TimeSpan</span></td>
+        <td><span class="parametername">period</span></td>
+        <td><p>TTL time span</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">token</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">isSlidingExpiration</span></td>
+        <td><p>Is sliding or absolute</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td><p>Any object type that is serializable</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Carbon_Caching_Abstractions_ICarbonCacheExtensions_SetGetMembers_" data-uid="Carbon.Caching.Abstractions.ICarbonCacheExtensions.SetGetMembers*"></a>
+  <h4 id="Carbon_Caching_Abstractions_ICarbonCacheExtensions_SetGetMembers__1_Carbon_Caching_Abstractions_ICarbonCache_System_String_" data-uid="Carbon.Caching.Abstractions.ICarbonCacheExtensions.SetGetMembers``1(Carbon.Caching.Abstractions.ICarbonCache,System.String)">SetGetMembers&lt;T&gt;(ICarbonCache, String)</h4>
+  <div class="markdown level1 summary"><p>Get all the members in Redis Set</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static async Task&lt;List&lt;T&gt;&gt; SetGetMembers&lt;T&gt;(this ICarbonCache instance, string key)
+    where T : class</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Carbon.Caching.Abstractions.ICarbonCache.html">ICarbonCache</a></td>
+        <td><span class="parametername">instance</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">key</span></td>
+        <td><p>Redis Key</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.Collections.Generic.List</span>&lt;T&gt;&gt;</td>
+        <td><p>List of your members</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td><p>The value type that you want to retrieve from set, use object if all the types may differ, then convert it later</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Carbon_Caching_Abstractions_ICarbonCacheExtensions_SetMultiGetMembers_" data-uid="Carbon.Caching.Abstractions.ICarbonCacheExtensions.SetMultiGetMembers*"></a>
+  <h4 id="Carbon_Caching_Abstractions_ICarbonCacheExtensions_SetMultiGetMembers__1_Carbon_Caching_Abstractions_ICarbonCache_StackExchange_Redis_SetOperation_System_String___" data-uid="Carbon.Caching.Abstractions.ICarbonCacheExtensions.SetMultiGetMembers``1(Carbon.Caching.Abstractions.ICarbonCache,StackExchange.Redis.SetOperation,System.String[])">SetMultiGetMembers&lt;T&gt;(ICarbonCache, SetOperation, String[])</h4>
+  <div class="markdown level1 summary"><p>Get Members of a Redis Set by applying set operations such as Union, Intersect, Difference for multiple keys</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static async Task&lt;List&lt;T&gt;&gt; SetMultiGetMembers&lt;T&gt;(this ICarbonCache instance, SetOperation setOperation, string[] keys)
+    where T : class</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Carbon.Caching.Abstractions.ICarbonCache.html">ICarbonCache</a></td>
+        <td><span class="parametername">instance</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">StackExchange.Redis.SetOperation</span></td>
+        <td><span class="parametername">setOperation</span></td>
+        <td><p>Union, Intersect, Difference</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span>[]</td>
+        <td><span class="parametername">keys</span></td>
+        <td><p>Which keys you want to apply operations against</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.Collections.Generic.List</span>&lt;T&gt;&gt;</td>
+        <td><p>List of found members after the operation</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td><p>The value type that you want to retrieve from set, use object if all the types may differ, then convert it later</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Carbon_Caching_Abstractions_ICarbonCacheExtensions_SetMultiKey_" data-uid="Carbon.Caching.Abstractions.ICarbonCacheExtensions.SetMultiKey*"></a>
+  <h4 id="Carbon_Caching_Abstractions_ICarbonCacheExtensions_SetMultiKey__1_Carbon_Caching_Abstractions_ICarbonCache_System_Collections_Generic_IList_System_String____0_" data-uid="Carbon.Caching.Abstractions.ICarbonCacheExtensions.SetMultiKey``1(Carbon.Caching.Abstractions.ICarbonCache,System.Collections.Generic.IList{System.String},``0)">SetMultiKey&lt;T&gt;(ICarbonCache, IList&lt;String&gt;, T)</h4>
+  <div class="markdown level1 summary"><p>Simple multiple set operation which is inherited from IDistributedCache interface, all the set logic is managed by Microsoft.Extensions.Caching.Distributed.
+Set the same object into multiple keys without any TTL - Persistent key.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void SetMultiKey&lt;T&gt;(this ICarbonCache instance, IList&lt;string&gt; keys, T content)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Carbon.Caching.Abstractions.ICarbonCache.html">ICarbonCache</a></td>
+        <td><span class="parametername">instance</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IList</span>&lt;<span class="xref">System.String</span>&gt;</td>
+        <td><span class="parametername">keys</span></td>
+        <td><p>Redis Keys</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td><span class="parametername">content</span></td>
+        <td><p>Content to be serialized into binary</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Carbon_Caching_Abstractions_ICarbonCacheExtensions_SetMultiKey_" data-uid="Carbon.Caching.Abstractions.ICarbonCacheExtensions.SetMultiKey*"></a>
+  <h4 id="Carbon_Caching_Abstractions_ICarbonCacheExtensions_SetMultiKey__1_Carbon_Caching_Abstractions_ICarbonCache_System_Collections_Generic_IList_System_String____0_System_TimeSpan_" data-uid="Carbon.Caching.Abstractions.ICarbonCacheExtensions.SetMultiKey``1(Carbon.Caching.Abstractions.ICarbonCache,System.Collections.Generic.IList{System.String},``0,System.TimeSpan)">SetMultiKey&lt;T&gt;(ICarbonCache, IList&lt;String&gt;, T, TimeSpan)</h4>
+  <div class="markdown level1 summary"><p>Simple multiple set operation which is inherited from IDistributedCache interface, all the set logic is managed by Microsoft.Extensions.Caching.Distributed.
+Set the same object into multiple keys</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void SetMultiKey&lt;T&gt;(this ICarbonCache instance, IList&lt;string&gt; keys, T content, TimeSpan period)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Carbon.Caching.Abstractions.ICarbonCache.html">ICarbonCache</a></td>
+        <td><span class="parametername">instance</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IList</span>&lt;<span class="xref">System.String</span>&gt;</td>
+        <td><span class="parametername">keys</span></td>
+        <td><p>Redis Keys</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td><span class="parametername">content</span></td>
+        <td><p>Content to be serialized into binary</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.TimeSpan</span></td>
+        <td><span class="parametername">period</span></td>
+        <td><p>Set Sliding TTL for all keys</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td><p>Any object type that is serializable</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Carbon_Caching_Abstractions_ICarbonCacheExtensions_SetMultiKeyAsync_" data-uid="Carbon.Caching.Abstractions.ICarbonCacheExtensions.SetMultiKeyAsync*"></a>
+  <h4 id="Carbon_Caching_Abstractions_ICarbonCacheExtensions_SetMultiKeyAsync__1_Carbon_Caching_Abstractions_ICarbonCache_System_Collections_Generic_IList_System_String____0_" data-uid="Carbon.Caching.Abstractions.ICarbonCacheExtensions.SetMultiKeyAsync``1(Carbon.Caching.Abstractions.ICarbonCache,System.Collections.Generic.IList{System.String},``0)">SetMultiKeyAsync&lt;T&gt;(ICarbonCache, IList&lt;String&gt;, T)</h4>
+  <div class="markdown level1 summary"><p>Simple multiple set async operation which is inherited from IDistributedCache interface, all the set logic is managed by Microsoft.Extensions.Caching.Distributed.
+Set the same object into multiple keys without any TTL - Persistent key.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static async Task SetMultiKeyAsync&lt;T&gt;(this ICarbonCache instance, IList&lt;string&gt; keys, T content)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Carbon.Caching.Abstractions.ICarbonCache.html">ICarbonCache</a></td>
+        <td><span class="parametername">instance</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IList</span>&lt;<span class="xref">System.String</span>&gt;</td>
+        <td><span class="parametername">keys</span></td>
+        <td><p>Redis Keys</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td><span class="parametername">content</span></td>
+        <td><p>Content to be serialized into binary</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Carbon_Caching_Abstractions_ICarbonCacheExtensions_SetMultiKeyAsync_" data-uid="Carbon.Caching.Abstractions.ICarbonCacheExtensions.SetMultiKeyAsync*"></a>
+  <h4 id="Carbon_Caching_Abstractions_ICarbonCacheExtensions_SetMultiKeyAsync__1_Carbon_Caching_Abstractions_ICarbonCache_System_Collections_Generic_IList_System_String____0_System_TimeSpan_System_Threading_CancellationToken_" data-uid="Carbon.Caching.Abstractions.ICarbonCacheExtensions.SetMultiKeyAsync``1(Carbon.Caching.Abstractions.ICarbonCache,System.Collections.Generic.IList{System.String},``0,System.TimeSpan,System.Threading.CancellationToken)">SetMultiKeyAsync&lt;T&gt;(ICarbonCache, IList&lt;String&gt;, T, TimeSpan, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Simple multiple set async operation which is inherited from IDistributedCache interface, all the set logic is managed by Microsoft.Extensions.Caching.Distributed.
+Set the same object into multiple keys without any TTL - Persistent key.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static async Task SetMultiKeyAsync&lt;T&gt;(this ICarbonCache instance, IList&lt;string&gt; keys, T content, TimeSpan period, CancellationToken token = default(CancellationToken))</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Carbon.Caching.Abstractions.ICarbonCache.html">ICarbonCache</a></td>
+        <td><span class="parametername">instance</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IList</span>&lt;<span class="xref">System.String</span>&gt;</td>
+        <td><span class="parametername">keys</span></td>
+        <td><p>Redis Keys</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td><span class="parametername">content</span></td>
+        <td><p>Content to be serialized into binary</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.TimeSpan</span></td>
+        <td><span class="parametername">period</span></td>
+        <td><p>TTL</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">token</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Carbon_Caching_Abstractions_ICarbonCacheExtensions_SetOverrideAdd_" data-uid="Carbon.Caching.Abstractions.ICarbonCacheExtensions.SetOverrideAdd*"></a>
+  <h4 id="Carbon_Caching_Abstractions_ICarbonCacheExtensions_SetOverrideAdd__1_Carbon_Caching_Abstractions_ICarbonCache_System_String___0___" data-uid="Carbon.Caching.Abstractions.ICarbonCacheExtensions.SetOverrideAdd``1(Carbon.Caching.Abstractions.ICarbonCache,System.String,``0[])">SetOverrideAdd&lt;T&gt;(ICarbonCache, String, T[])</h4>
+  <div class="markdown level1 summary"><p>Removes the given Redis Set and then recreates with the given values</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static async Task&lt;(ICarbonCache, string)&gt; SetOverrideAdd&lt;T&gt;(this ICarbonCache instance, string key, T[] values)
+    where T : class</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Carbon.Caching.Abstractions.ICarbonCache.html">ICarbonCache</a></td>
+        <td><span class="parametername">instance</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">key</span></td>
+        <td><p>Redis Key</p>
+</td>
+      </tr>
+      <tr>
+        <td>T[]</td>
+        <td><span class="parametername">values</span></td>
+        <td><p>Your content list to be stored in redis set</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.ValueTuple</span>&lt;<a class="xref" href="Carbon.Caching.Abstractions.ICarbonCache.html">ICarbonCache</a>, <span class="xref">System.String</span>&gt;&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Carbon_Caching_Abstractions_ICarbonCacheExtensions_SetRemove_" data-uid="Carbon.Caching.Abstractions.ICarbonCacheExtensions.SetRemove*"></a>
+  <h4 id="Carbon_Caching_Abstractions_ICarbonCacheExtensions_SetRemove__1_Carbon_Caching_Abstractions_ICarbonCache_System_String___0___" data-uid="Carbon.Caching.Abstractions.ICarbonCacheExtensions.SetRemove``1(Carbon.Caching.Abstractions.ICarbonCache,System.String,``0[])">SetRemove&lt;T&gt;(ICarbonCache, String, T[])</h4>
+  <div class="markdown level1 summary"><p>Removes given members in a Redis Set</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static async Task SetRemove&lt;T&gt;(this ICarbonCache instance, string key, T[] values)
+    where T : class</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Carbon.Caching.Abstractions.ICarbonCache.html">ICarbonCache</a></td>
+        <td><span class="parametername">instance</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">key</span></td>
+        <td><p>Redis Key</p>
+</td>
+      </tr>
+      <tr>
+        <td>T[]</td>
+        <td><span class="parametername">values</span></td>
+        <td><p>Values to be removed from the set</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td><p>Type of set value to be removed</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Carbon_Caching_Abstractions_ICarbonCacheExtensions_SetSerializationType_" data-uid="Carbon.Caching.Abstractions.ICarbonCacheExtensions.SetSerializationType*"></a>
+  <h4 id="Carbon_Caching_Abstractions_ICarbonCacheExtensions_SetSerializationType_Carbon_Caching_Abstractions_CarbonContentSerializationType_" data-uid="Carbon.Caching.Abstractions.ICarbonCacheExtensions.SetSerializationType(Carbon.Caching.Abstractions.CarbonContentSerializationType)">SetSerializationType(CarbonContentSerializationType)</h4>
+  <div class="markdown level1 summary"><p>Sets the serialization type for all these extensions</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void SetSerializationType(CarbonContentSerializationType PreferredSerializationType)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Carbon.Caching.Abstractions.CarbonContentSerializationType.html">CarbonContentSerializationType</a></td>
+        <td><span class="parametername">PreferredSerializationType</span></td>
+        <td><p>BinaryFormatter (Obsolete), Json, Protobuf (Not implemented Yet)</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.NotImplementedException</span></td>
+        <td><p>Protobuf serialization is not implemented yet!</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Carbon_Caching_Abstractions_ICarbonCacheExtensions_SetTTL_" data-uid="Carbon.Caching.Abstractions.ICarbonCacheExtensions.SetTTL*"></a>
+  <h4 id="Carbon_Caching_Abstractions_ICarbonCacheExtensions_SetTTL_Carbon_Caching_Abstractions_ICarbonCache_System_String_System_TimeSpan_" data-uid="Carbon.Caching.Abstractions.ICarbonCacheExtensions.SetTTL(Carbon.Caching.Abstractions.ICarbonCache,System.String,System.TimeSpan)">SetTTL(ICarbonCache, String, TimeSpan)</h4>
+  <div class="markdown level1 summary"><p>Set an expiration time for your redis key (TTL) Time-To-Live</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static async Task&lt;bool&gt; SetTTL(this ICarbonCache instance, string key, TimeSpan expiryTimeSpan)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Carbon.Caching.Abstractions.ICarbonCache.html">ICarbonCache</a></td>
+        <td><span class="parametername">instance</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">key</span></td>
+        <td><p>Redis Key</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.TimeSpan</span></td>
+        <td><span class="parametername">expiryTimeSpan</span></td>
+        <td><p>Absolute Time Span starting as of now</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.Boolean</span>&gt;</td>
+        <td><p>Successful or Failed response directly from Redis</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.NotSupportedException</span></td>
+        <td><p>Expiry Time cannot be set to 0</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Carbon_Caching_Abstractions_ICarbonCacheExtensions_SetTTL_" data-uid="Carbon.Caching.Abstractions.ICarbonCacheExtensions.SetTTL*"></a>
+  <h4 id="Carbon_Caching_Abstractions_ICarbonCacheExtensions_SetTTL_System_Threading_Tasks_Task_System_ValueTuple_Carbon_Caching_Abstractions_ICarbonCache_System_String___System_TimeSpan_" data-uid="Carbon.Caching.Abstractions.ICarbonCacheExtensions.SetTTL(System.Threading.Tasks.Task{System.ValueTuple{Carbon.Caching.Abstractions.ICarbonCache,System.String}},System.TimeSpan)">SetTTL(Task&lt;(ICarbonCache, String)&gt;, TimeSpan)</h4>
+  <div class="markdown level1 summary"><p>Set an expiration time for your redis key (TTL) Time-To-Live</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static async Task&lt;bool&gt; SetTTL(this Task&lt;(ICarbonCache, string)&gt; instanceWithKey, TimeSpan expiryTimeSpan)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.ValueTuple</span>&lt;<a class="xref" href="Carbon.Caching.Abstractions.ICarbonCache.html">ICarbonCache</a>, <span class="xref">System.String</span>&gt;&gt;</td>
+        <td><span class="parametername">instanceWithKey</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.TimeSpan</span></td>
+        <td><span class="parametername">expiryTimeSpan</span></td>
+        <td><p>Absolute Time Span starting as of now</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.Boolean</span>&gt;</td>
+        <td><p>Successful or Failed response directly from Redis</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.NotSupportedException</span></td>
+        <td><p>Expiry Time cannot be set to 0</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            Carbon Framework
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>

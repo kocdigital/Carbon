@@ -1,0 +1,4949 @@
+{
+  "homepages": [],
+  "source_base_path": "D:/a/Carbon/Carbon/docs",
+  "xrefmap": "xrefmap.yml",
+  "files": [
+    {
+      "type": "Resource",
+      "output": {
+        "resource": {
+          "relative_path": "index.json"
+        }
+      },
+      "is_incremental": false
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "../Carbon.Cassandra.Abstractions/README.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/api/Carbon.Cassandra.Abstractions/README.html",
+          "hash": "qpUsoNhU0PkBohyThShIETURibD3NLkr3wX8Aau5Weo="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "../Carbon.Cassandra/README.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/api/Carbon.Cassandra/README.html",
+          "hash": "HdQcNhRKSZKSraCAYVRKaGhdxMA0Ht2lFrR5o4rsk5k="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "../Carbon.Common/README.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/api/Carbon.Common/README.html",
+          "hash": "6vAb5yFBJ7riQIWSdjx4/DEyiQVS3ip649+rzv6l4ow="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "../Carbon.ConsoleApplication.Extensions/README.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/api/Carbon.ConsoleApplication.Extensions/README.html",
+          "hash": "xCt1IY7PdanLOYkg9wfOpUfUMzFpijgmvVA3F3Sd9hQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "../Carbon.Domain.Abstractions/README.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/api/Carbon.Domain.Abstractions/README.html",
+          "hash": "d/efA/th648R3yOXQSv/XGR5i5O08T3E90BiswGgct0="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "../Carbon.Domain.EntityFrameworkCore.Extensions/README.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/api/Carbon.Domain.EntityFrameworkCore.Extensions/README.html",
+          "hash": "3CI3Bm4X+8fthyZFSiADXb4iJXm+jf73dSKG2f5YK+w="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "../Carbon.ElasticSearch.Abstractions/README.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/api/Carbon.ElasticSearch.Abstractions/README.html",
+          "hash": "k1P2/ghi7Kjc/Tlc/Ms5/UTvDVyEaoITRvliKkEDkjU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "../Carbon.ElasticSearch/README.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/api/Carbon.ElasticSearch/README.html",
+          "hash": "cClyz/44K6AeFZ1O/Qi+LIxASrfM7LY12RLoXcOKhuE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "../Carbon.ExceptionHandling/README.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/api/Carbon.ExceptionHandling/README.html",
+          "hash": "Se+f/zWUuCG3x//6lgply8XbDHCimnbzRYj8e0zYZUw="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "../Carbon.HttpClient.Auth/README.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/api/Carbon.HttpClient.Auth/README.html",
+          "hash": "4j9cWOc1xyAFDHEAtFhWBWOg0xSWYy7sadtp8j8FHWg="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "../Carbon.MassTransit/README.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/api/Carbon.MassTransit/README.html",
+          "hash": "y5n2uwZVg07IU/TU7aOSKHI9WDKo4YpSYZ4k2vcQhQY="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "../Carbon.Quartz.Migrate.Context/README.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/api/Carbon.Quartz.Migrate.Context/README.html",
+          "hash": "oSbr1x/36pIfkn3Ls2E5a6iTO5n4Ip1r49mhjPDG2N8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "../Carbon.Quartz.Migrate.MSSQL/README.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/api/Carbon.Quartz.Migrate.MSSQL/README.html",
+          "hash": "/S30vhvvqcD6gKkceVf8H04XWhY0IZIJRRfYQ8rHyfQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "../Carbon.Quartz.Migrate.PostgreSQL/README.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/api/Carbon.Quartz.Migrate.PostgreSQL/README.html",
+          "hash": "1BfpQuUuGW7yv1tXd9HQ07hvf7nnPxWmgMuNEMg4Vug="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "../Carbon.Quartz/README.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/api/Carbon.Quartz/README.html",
+          "hash": "BHvLJzpIE3sjh3CSXf/cvEpxjkfM8oSm9TuMkmKcFWk="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "../Carbon.Redis/README.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/api/Carbon.Redis/README.html",
+          "hash": "NMeNqS21dlDZMHGkehoLVzXNLIdIkiouDlQKpSJTnMo="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "../Carbon.Serilog/README.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/api/Carbon.Serilog/README.html",
+          "hash": "YzRksRCz1Uc4BcVNhJulA2t1Ks72BOOYTdOTAizyLjQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "../Carbon.TimeScaleDb.EntityFrameworkCore/README.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/api/Carbon.TimeScaleDb.EntityFrameworkCore/README.html",
+          "hash": "/goGjYsTTgkvcOu7Z8s2If68TPB3Yb0ta8JjJG38UkE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "../Carbon.TimeScaleDb/README.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/api/Carbon.TimeScaleDb/README.html",
+          "hash": "dQMFEQXdOPvo/bJgl9fdH0x+LVo2fxmxy7e9h5/H7Zg="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "../Carbon.TimeSeriesDb.Abstractions/README.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/api/Carbon.TimeSeriesDb.Abstractions/README.html",
+          "hash": "GXp9AO8zUIzFZjWaA8NlWVggKuXLD5KXplvTNYJ9jXU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "../Carbon.WebApplication.SolutionService/README.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/api/Carbon.WebApplication.SolutionService/README.html",
+          "hash": "rPkXfqJrBgGtldz0j9k1LuFvH8GbNpx3lMUljzOYgVA="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "../Carbon.WebApplication/README.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/api/Carbon.WebApplication/README.html",
+          "hash": "q47Wenj/dZ2LJuFTZ8mopE+hCAli4p7wn8nBmWAZtwQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "../README.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/api/README.html",
+          "hash": "NdJRUdx1HCn1x3LJMCZlQzQq4+GHGY+36yv6pxWfmPU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.Cassandra.Abstractions/Carbon.Cassandra.Abstractions.ICassandraPersisterSettings.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.Cassandra.Abstractions/Carbon.Cassandra.Abstractions.ICassandraPersisterSettings.html",
+          "hash": "FoY9TaAHkbEThhKrGUIRQDw5e2kl89QP8Za3XeVZZzc="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.Cassandra.Abstractions/Carbon.Cassandra.Abstractions.ICassandraReplicationStrategy.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.Cassandra.Abstractions/Carbon.Cassandra.Abstractions.ICassandraReplicationStrategy.html",
+          "hash": "rkxHl/QwN6w3FreG8ej6tG1ZohiypVKzluIettnoN44="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.Cassandra.Abstractions/Carbon.Cassandra.Abstractions.ICassandraRepository-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.Cassandra.Abstractions/Carbon.Cassandra.Abstractions.ICassandraRepository-1.html",
+          "hash": "aeypVIG277VsLg+Dt4rB6lhdufDU5sNwhcQR+cIQcL0="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.Cassandra.Abstractions/Carbon.Cassandra.Abstractions.ICassandraSessionFactory.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.Cassandra.Abstractions/Carbon.Cassandra.Abstractions.ICassandraSessionFactory.html",
+          "hash": "MQ6dQ/EbUtajL3kXVWbKeHU+WgKrd2xjG58Uh1XvGGk="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.Cassandra.Abstractions/Carbon.Cassandra.Abstractions.ICassandraUnitOfWork.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.Cassandra.Abstractions/Carbon.Cassandra.Abstractions.ICassandraUnitOfWork.html",
+          "hash": "ZeAkdt6xGxuRFHYial87F0tOvj7+CpHQT97LXFjuMXo="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.Cassandra.Abstractions/Carbon.Cassandra.Abstractions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.Cassandra.Abstractions/Carbon.Cassandra.Abstractions.html",
+          "hash": "2iP/j2YL5hy7Atb+3sA89KWc5GVrJPsZ3NBQOWIDH/c="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.Cassandra/Carbon.Cassandra.BaseCassandraRepository-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.Cassandra/Carbon.Cassandra.BaseCassandraRepository-1.html",
+          "hash": "d+xGAw/m+GS0JOhsBiD2fVasW3WIGU4QQ4/M7+tZ+u8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.Cassandra/Carbon.Cassandra.CassandraPersisterSettings.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.Cassandra/Carbon.Cassandra.CassandraPersisterSettings.html",
+          "hash": "U6AmL0UVSjP6v8xlFXbAfZwg2foxMVLzHLJzPSvLfqY="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.Cassandra/Carbon.Cassandra.CassandraSessionFactory.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.Cassandra/Carbon.Cassandra.CassandraSessionFactory.html",
+          "hash": "5BFtVARIVN8gmYjXmMaWxZQzz3JQM/4cliAOA3Nc+4A="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.Cassandra/Carbon.Cassandra.CassandraUnitOfWork.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.Cassandra/Carbon.Cassandra.CassandraUnitOfWork.html",
+          "hash": "SatyW3+2uWNe0sQU70zhIx2vYnsjyOVenOFNWGSjAgA="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.Cassandra/Carbon.Cassandra.CasssandraExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.Cassandra/Carbon.Cassandra.CasssandraExtensions.html",
+          "hash": "skZ1fh6NaMiNNy0Kd/rGI+fJq4ItbjX94Mjsbw7BFTU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.Cassandra/Carbon.Cassandra.ServiceCollectionExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.Cassandra/Carbon.Cassandra.ServiceCollectionExtensions.html",
+          "hash": "ZQzIOvkeRcWeHGbceQGbkEOvpdsC83cBmRii6HEsCT0="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.Cassandra/Carbon.Cassandra.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.Cassandra/Carbon.Cassandra.html",
+          "hash": "opN3i4VkN6FMTLdDdS8skUG+K5U0DzAWyhXgB8Q4sEI="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.Common/Carbon.Common.ApiResponse-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.Common/Carbon.Common.ApiResponse-1.html",
+          "hash": "mPZDI/9C1RCskWqOnrSqmGsiFT2Qc22fqwCu8oC5XxU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.Common/Carbon.Common.ApiStatusCode.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.Common/Carbon.Common.ApiStatusCode.html",
+          "hash": "dWN02wI0eblYB5X2J1YmBxVsgceVGPrF8FTMvyiMLo0="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.Common/Carbon.Common.ApiStatusCodeExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.Common/Carbon.Common.ApiStatusCodeExtensions.html",
+          "hash": "l2Sh5HM2MvhQhIAh4yI1GdwnE31ey8B2Q6/XMcbI8gs="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.Common/Carbon.Common.ApiStatusCodeToHttpStatusMapper.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.Common/Carbon.Common.ApiStatusCodeToHttpStatusMapper.html",
+          "hash": "GKdUkK499k1lc1z2a3h/eFmgTRbrEbkvzblkqpE2x2w="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.Common/Carbon.Common.Constant.ElasticQueryConstant.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.Common/Carbon.Common.Constant.ElasticQueryConstant.html",
+          "hash": "GC9cUMQQqRbLH4T+J+ujxpCaAHVubIqgh4kV1XfMCpw="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.Common/Carbon.Common.Constant.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.Common/Carbon.Common.Constant.html",
+          "hash": "l1vDKgO7qS/4kOzmWpKUqQzC3jC22mx5PTridk72xLg="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.Common/Carbon.Common.Extensions.StringExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.Common/Carbon.Common.Extensions.StringExtensions.html",
+          "hash": "rq5Rlj4b1BGh+e/IAtZFmTF6FWzuMbjYJStkWETlDjs="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.Common/Carbon.Common.Extensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.Common/Carbon.Common.Extensions.html",
+          "hash": "d548yHnDYg/Ggk62HDGuxjOh+NI/CJqhPVLzsBLXMaA="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.Common/Carbon.Common.HttpApiResponse-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.Common/Carbon.Common.HttpApiResponse-1.html",
+          "hash": "qTUi6zMEb7JVCcvXR/s9TshWv8q6XM4p0aQb6F+N7K4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.Common/Carbon.Common.HttpStatusCodeExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.Common/Carbon.Common.HttpStatusCodeExtensions.html",
+          "hash": "t94UgDqG+ejB7zy9GL3Jrb+S/shqNrz1BynqprJNA0Y="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.Common/Carbon.Common.IApiResponse.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.Common/Carbon.Common.IApiResponse.html",
+          "hash": "udEtAQI1q0q5jCUDqLAP0PVX5qvvJfjTvgwSNBQUCo8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.Common/Carbon.Common.IOrderableDto.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.Common/Carbon.Common.IOrderableDto.html",
+          "hash": "E0J1cE1FaWRq2EP4D9TORUKs9drHSh7TKzz6LJ12C8A="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.Common/Carbon.Common.IOrdinatedPageDto.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.Common/Carbon.Common.IOrdinatedPageDto.html",
+          "hash": "EjDwA/AO7rvFBjcCzUm1yQY2Z6O1LNmRfp/AcOY+QVw="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.Common/Carbon.Common.IPageableDto.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.Common/Carbon.Common.IPageableDto.html",
+          "hash": "k0Qkka9vjit5WxdN8a6+Q8hQOlj13ayp1n6/ealgK7U="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.Common/Carbon.Common.IQueryableExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.Common/Carbon.Common.IQueryableExtensions.html",
+          "hash": "mqZ+CGXKHoVd4gZ+oHv1r8zhs3EYujrdVfyFcGed/aU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.Common/Carbon.Common.IRequestDto.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.Common/Carbon.Common.IRequestDto.html",
+          "hash": "4VLl0BwWsQJIeRt1nx7SuUSwdc5mVZGF5ExTxd3y4gY="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.Common/Carbon.Common.IResponseDto.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.Common/Carbon.Common.IResponseDto.html",
+          "hash": "T6ySPMdrVLcm/TZRgephJFkvaKriD1FiTWSmFbR8rZ4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.Common/Carbon.Common.Orderable.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.Common/Carbon.Common.Orderable.html",
+          "hash": "uWjDUGGThQNVzQFTWv9+gxzh4/yuxY5F6dhMKtlD5m8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.Common/Carbon.Common.OrdinatedPageDto.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.Common/Carbon.Common.OrdinatedPageDto.html",
+          "hash": "cdnQx7lFgpY3VdG+rCIKQlIEB1RLaY2p/044UToHEP0="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.Common/Carbon.Common.OwnerType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.Common/Carbon.Common.OwnerType.html",
+          "hash": "ry/uP5c3yJ8tZzekXQpJsLfbpucj/QN9T07E8PVRNmI="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.Common/Carbon.Common.SerilogSettings.DataMasking.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.Common/Carbon.Common.SerilogSettings.DataMasking.html",
+          "hash": "2YYvluci6uAmG6oX3cmQC7ryMBzTICdtUhEDeq4WOeA="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.Common/Carbon.Common.SerilogSettings.SerilogSink.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.Common/Carbon.Common.SerilogSettings.SerilogSink.html",
+          "hash": "OjM63Eng9jNNpXGCRTycRkwlruKU7DjRJLj4EOPxx0Y="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.Common/Carbon.Common.SerilogSettings.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.Common/Carbon.Common.SerilogSettings.html",
+          "hash": "neVPGGP4GXjOBWOtAB2MiSlFUAxDZkdTTzjZhw6LKmo="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.Common/Carbon.Common.TenantManagementHandler.Classes.PermissionDetailedDto.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.Common/Carbon.Common.TenantManagementHandler.Classes.PermissionDetailedDto.html",
+          "hash": "XNNEN4demwfoC6eLAVTlwRra/JQVqC7j7HwcbgYYtVw="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.Common/Carbon.Common.TenantManagementHandler.Classes.PermissionGroupImpactLevel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.Common/Carbon.Common.TenantManagementHandler.Classes.PermissionGroupImpactLevel.html",
+          "hash": "+yjdvKzyKAhRUgK+CMEPP09LnIZi12buqmwYsiZuVFc="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.Common/Carbon.Common.TenantManagementHandler.Classes.PermissionType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.Common/Carbon.Common.TenantManagementHandler.Classes.PermissionType.html",
+          "hash": "FwKXfQ1gCQF0PQvd660GRDYGM7vBeR9JP8cRH6e0QO0="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.Common/Carbon.Common.TenantManagementHandler.Classes.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.Common/Carbon.Common.TenantManagementHandler.Classes.html",
+          "hash": "uX8l5F8MLeZQp1m+IP5eU2KZGRJyqRok0qxXe1IR06o="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.Common/Carbon.Common.TenantManagementHandler.Interfaces.IOwnershipFilteredRepository.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.Common/Carbon.Common.TenantManagementHandler.Interfaces.IOwnershipFilteredRepository.html",
+          "hash": "/07a+bn4ZZ9tcY55ALS9KwRTCAvKsfsF3CjyPtYeRHE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.Common/Carbon.Common.TenantManagementHandler.Interfaces.ISolutionFilteredRepository.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.Common/Carbon.Common.TenantManagementHandler.Interfaces.ISolutionFilteredRepository.html",
+          "hash": "kC7mB9E1R5CgD3D89OYrqOvrd9HJNVoG0HQ/+VmobYo="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.Common/Carbon.Common.TenantManagementHandler.Interfaces.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.Common/Carbon.Common.TenantManagementHandler.Interfaces.html",
+          "hash": "oPoZZqhAFgnM6WEtsQIRa8BTvRA0Zny3JRMBlOEsiJw="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.Common/Carbon.Common.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.Common/Carbon.Common.html",
+          "hash": "9fW8Ms14rByP2Ky4Evbloxr1pOp9EomD/LlVi/7ytYs="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.ConsoleApplication/Carbon.ConsoleApplication.HostManager.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.ConsoleApplication/Carbon.ConsoleApplication.HostManager.html",
+          "hash": "7iOAoBb2A3qrOQr++fIZC/0LoT8Csbda0ijN/C00ChU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.ConsoleApplication/Carbon.ConsoleApplication.IHostBuilderExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.ConsoleApplication/Carbon.ConsoleApplication.IHostBuilderExtensions.html",
+          "hash": "FsPc0Ao794dUIYBL4A6UlONUqd6LBB+fa6xNS8JMOUc="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.ConsoleApplication/Carbon.ConsoleApplication.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.ConsoleApplication/Carbon.ConsoleApplication.html",
+          "hash": "2jZJ7ZAgXzClEulFvc8lhqMnktfY6MHWCuw0Wbh0ODM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.Domain.Abstractions/Carbon.Domain.Abstractions.Attributes.DoCascadeDelete.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.Domain.Abstractions/Carbon.Domain.Abstractions.Attributes.DoCascadeDelete.html",
+          "hash": "GWMzCDQxoIn35H2JRH1zuEznEJ93kZ2uh3zbHTllbZw="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.Domain.Abstractions/Carbon.Domain.Abstractions.Attributes.SoftDeleteConstraint.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.Domain.Abstractions/Carbon.Domain.Abstractions.Attributes.SoftDeleteConstraint.html",
+          "hash": "FAXC3qShOEnMCvRlfWlR5ylpor6p8RN20GKnMQ2IW88="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.Domain.Abstractions/Carbon.Domain.Abstractions.Attributes.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.Domain.Abstractions/Carbon.Domain.Abstractions.Attributes.html",
+          "hash": "yH+BnsdgLJ39mkOiOkgocg3T14nF8K1UGEp2C+SVWAE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.Domain.Abstractions/Carbon.Domain.Abstractions.Data.IOrderableData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.Domain.Abstractions/Carbon.Domain.Abstractions.Data.IOrderableData.html",
+          "hash": "1Qtz/9m3Him8uxsklHRwI6jpzmVVGC9oNpXrsmzPtp0="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.Domain.Abstractions/Carbon.Domain.Abstractions.Data.IPageableData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.Domain.Abstractions/Carbon.Domain.Abstractions.Data.IPageableData.html",
+          "hash": "K85DsPVR8EvJNTKUBdwRTbnqCRG3tnN6tFOu+mN4tqk="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.Domain.Abstractions/Carbon.Domain.Abstractions.Data.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.Domain.Abstractions/Carbon.Domain.Abstractions.Data.html",
+          "hash": "GMJKLLuoqY+oXUEZ2Dkbw6AjwyYRMBw4N2dHgthF+v8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.Domain.Abstractions/Carbon.Domain.Abstractions.Entities.EntitySolutionRelation.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.Domain.Abstractions/Carbon.Domain.Abstractions.Entities.EntitySolutionRelation.html",
+          "hash": "Fl3baqUzbvRxq6djjDSiHOeL+P+O/sLhXQBXJs8XO14="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.Domain.Abstractions/Carbon.Domain.Abstractions.Entities.EntityStatus.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.Domain.Abstractions/Carbon.Domain.Abstractions.Entities.EntityStatus.html",
+          "hash": "PuHWDG/BP6biaozhR4ARUbYEBBWsv/940o0JD8Fv3eI="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.Domain.Abstractions/Carbon.Domain.Abstractions.Entities.IDeleteAuditing.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.Domain.Abstractions/Carbon.Domain.Abstractions.Entities.IDeleteAuditing.html",
+          "hash": "S58VQ+xcvlBQNxNkCcf0PyyzYXXTJy4ejpGSegarsMg="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.Domain.Abstractions/Carbon.Domain.Abstractions.Entities.IDoNotCascadeDelete.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.Domain.Abstractions/Carbon.Domain.Abstractions.Entities.IDoNotCascadeDelete.html",
+          "hash": "riChvTx2C7eITYkKNmv5FYpPLK/vMMq+OAaB7kvpPJM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.Domain.Abstractions/Carbon.Domain.Abstractions.Entities.IEntity-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.Domain.Abstractions/Carbon.Domain.Abstractions.Entities.IEntity-1.html",
+          "hash": "+hngSSJNCYc8CP5mb79bF4K8uZNubf9QSt0MJf4x9hQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.Domain.Abstractions/Carbon.Domain.Abstractions.Entities.IEntity.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.Domain.Abstractions/Carbon.Domain.Abstractions.Entities.IEntity.html",
+          "hash": "bZXnarHBBmDKHQm7ETB1JGtgFmyZ0Bp998U7F+afLB8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.Domain.Abstractions/Carbon.Domain.Abstractions.Entities.IEntityTranslation-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.Domain.Abstractions/Carbon.Domain.Abstractions.Entities.IEntityTranslation-1.html",
+          "hash": "0d+pLyGi3d/51OS/XEJCl15yusyVtxbQ+4Ny44ISU6w="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.Domain.Abstractions/Carbon.Domain.Abstractions.Entities.IEntityTranslation-2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.Domain.Abstractions/Carbon.Domain.Abstractions.Entities.IEntityTranslation-2.html",
+          "hash": "FiRRcFynIaJFdQfd0jCiu0PiTmCRTnuZAKF2Pp8nuI0="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.Domain.Abstractions/Carbon.Domain.Abstractions.Entities.IEntityTranslation.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.Domain.Abstractions/Carbon.Domain.Abstractions.Entities.IEntityTranslation.html",
+          "hash": "QwU4xtqexBWBqOQa9CED3Fd2juk6cQQBUmGdAxwJK7w="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.Domain.Abstractions/Carbon.Domain.Abstractions.Entities.IHaveOwnership-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.Domain.Abstractions/Carbon.Domain.Abstractions.Entities.IHaveOwnership-1.html",
+          "hash": "jWpvSmZAE/V0QlypHJ8EEgMmFO5My7AWLIU/VOecW70="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.Domain.Abstractions/Carbon.Domain.Abstractions.Entities.IHaveState.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.Domain.Abstractions/Carbon.Domain.Abstractions.Entities.IHaveState.html",
+          "hash": "t6A+UUOsWf41ZUgn9ctoMib23D9B/Q86f1NNw5UYPLY="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.Domain.Abstractions/Carbon.Domain.Abstractions.Entities.IInsertAuditing.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.Domain.Abstractions/Carbon.Domain.Abstractions.Entities.IInsertAuditing.html",
+          "hash": "IhTJ9Mqr+McUa0S4BoTEu0oFX3JFD9QyyCpusREI1uk="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.Domain.Abstractions/Carbon.Domain.Abstractions.Entities.IMayHaveTenant.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.Domain.Abstractions/Carbon.Domain.Abstractions.Entities.IMayHaveTenant.html",
+          "hash": "reTYFEt31RkD0AcnRatapaX5Bfu2xvMW+rMnazbhpuE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.Domain.Abstractions/Carbon.Domain.Abstractions.Entities.IMultiLingualEntity-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.Domain.Abstractions/Carbon.Domain.Abstractions.Entities.IMultiLingualEntity-1.html",
+          "hash": "MnSN2HBOd3ro/FN3UlcCtvvA45nAZu6D7LXS1MVg9ds="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.Domain.Abstractions/Carbon.Domain.Abstractions.Entities.IMustHaveTenant.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.Domain.Abstractions/Carbon.Domain.Abstractions.Entities.IMustHaveTenant.html",
+          "hash": "5CM9kWJlf1p2nLo3zL4C2lrA+mlvJu0RiYRV6GCHf7g="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.Domain.Abstractions/Carbon.Domain.Abstractions.Entities.IOwnerRelation.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.Domain.Abstractions/Carbon.Domain.Abstractions.Entities.IOwnerRelation.html",
+          "hash": "Y4vatrgz0NbfuDuGvC3w4xF5gCtbxM2OmYsDKDvsSfE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.Domain.Abstractions/Carbon.Domain.Abstractions.Entities.IPassivable.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.Domain.Abstractions/Carbon.Domain.Abstractions.Entities.IPassivable.html",
+          "hash": "vMOM+nr4Sn3zkhXTbZr6pyt+tP0s61dCsjr74BRQVek="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.Domain.Abstractions/Carbon.Domain.Abstractions.Entities.ISoftDelete.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.Domain.Abstractions/Carbon.Domain.Abstractions.Entities.ISoftDelete.html",
+          "hash": "9Dunmfq6kDPH4D15CEs1N4+nejwrCcgNm8niJ9Y+hVw="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.Domain.Abstractions/Carbon.Domain.Abstractions.Entities.ISortable.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.Domain.Abstractions/Carbon.Domain.Abstractions.Entities.ISortable.html",
+          "hash": "JIU57KW7oEpt8cDOEfrBZyd+RXiBYU1rMUmFN3J0eiU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.Domain.Abstractions/Carbon.Domain.Abstractions.Entities.IUpdateAuditing.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.Domain.Abstractions/Carbon.Domain.Abstractions.Entities.IUpdateAuditing.html",
+          "hash": "ywzQ6ha8pGDqywnRPecCaEOkSHH1WuiDqXVuvhQdRpM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.Domain.Abstractions/Carbon.Domain.Abstractions.Entities.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.Domain.Abstractions/Carbon.Domain.Abstractions.Entities.html",
+          "hash": "XfNdbl4RKZVJHHbyb5kXlGV86RQdI/CUgmh3PkPK62E="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.Domain.Abstractions/Carbon.Domain.Abstractions.Repositories.IRepository-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.Domain.Abstractions/Carbon.Domain.Abstractions.Repositories.IRepository-1.html",
+          "hash": "cxLZ8yh0D0T+wufVV6EK4f1hC0ESqC2qX3E/QwKU/u0="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.Domain.Abstractions/Carbon.Domain.Abstractions.Repositories.ITenantRepository-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.Domain.Abstractions/Carbon.Domain.Abstractions.Repositories.ITenantRepository-1.html",
+          "hash": "ZI/pdb9DBvx2bwXceRUyTeRLj7c1NR9/yPXUIaohl2c="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.Domain.Abstractions/Carbon.Domain.Abstractions.Repositories.TenantManagedRepositoryBase.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.Domain.Abstractions/Carbon.Domain.Abstractions.Repositories.TenantManagedRepositoryBase.html",
+          "hash": "fjYxaxjJyXL+96wNfOnxwE3Hcpsomh6DDYZjDzBgrZs="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.Domain.Abstractions/Carbon.Domain.Abstractions.Repositories.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.Domain.Abstractions/Carbon.Domain.Abstractions.Repositories.html",
+          "hash": "xvfi3BlrNBdHYk9QwZRT5rD8+uK9y/UVU3AtRX7HqRE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.Domain.Abstractions/Carbon.Domain.Abstractions.UOW.IUnitOfWork.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.Domain.Abstractions/Carbon.Domain.Abstractions.UOW.IUnitOfWork.html",
+          "hash": "lIPjfH8kpgxPP3/lEY/nXUJeFDxviv4KikqMC9WMBmw="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.Domain.Abstractions/Carbon.Domain.Abstractions.UOW.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.Domain.Abstractions/Carbon.Domain.Abstractions.UOW.html",
+          "hash": "WZGky7+0fffLNW3sw5SXLuwABb1VaQmzEIGO4SUNNtA="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.Domain.EntityFrameworkCore/Carbon.Domain.EntityFrameworkCore.CarbonContext-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.Domain.EntityFrameworkCore/Carbon.Domain.EntityFrameworkCore.CarbonContext-1.html",
+          "hash": "uB86rWdnvCumGn5fh2XWm5NKc/emGGwN6UqIM8BXRSI="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.Domain.EntityFrameworkCore/Carbon.Domain.EntityFrameworkCore.CarbonReadOnlyContext-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.Domain.EntityFrameworkCore/Carbon.Domain.EntityFrameworkCore.CarbonReadOnlyContext-1.html",
+          "hash": "stBJ4Z77RNGyn8O+ZwUUzg6aApiuBo5G+Fa8wotFuQM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.Domain.EntityFrameworkCore/Carbon.Domain.EntityFrameworkCore.CarbonTenantManagedContext-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.Domain.EntityFrameworkCore/Carbon.Domain.EntityFrameworkCore.CarbonTenantManagedContext-1.html",
+          "hash": "TQgDbdsfdJcKgwi/QkqOWXSBpQJjcQUrPah9/+h2H8U="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.Domain.EntityFrameworkCore/Carbon.Domain.EntityFrameworkCore.CarbonTenantManagedReadOnlyContext-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.Domain.EntityFrameworkCore/Carbon.Domain.EntityFrameworkCore.CarbonTenantManagedReadOnlyContext-1.html",
+          "hash": "OF17U6z1AsrkdkxLRD4kn8aRoF4KSXUT1KnEPnsWLFY="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.Domain.EntityFrameworkCore/Carbon.Domain.EntityFrameworkCore.EFExtensions.RelationEntity-2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.Domain.EntityFrameworkCore/Carbon.Domain.EntityFrameworkCore.EFExtensions.RelationEntity-2.html",
+          "hash": "K411sdZZvkCehe+SHbCHD276/I26kYHZPRg4E51W4Ac="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.Domain.EntityFrameworkCore/Carbon.Domain.EntityFrameworkCore.EFExtensions.RelationEntityPair-2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.Domain.EntityFrameworkCore/Carbon.Domain.EntityFrameworkCore.EFExtensions.RelationEntityPair-2.html",
+          "hash": "+e9uXfzWbWnZxnMV1EBkUT0Jv5NW9hzPlQz7CmUq5zc="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.Domain.EntityFrameworkCore/Carbon.Domain.EntityFrameworkCore.EFExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.Domain.EntityFrameworkCore/Carbon.Domain.EntityFrameworkCore.EFExtensions.html",
+          "hash": "5eBFg5AvlltMCT8az+FhI/HZALxPAR6jx87J6XXh2bE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.Domain.EntityFrameworkCore/Carbon.Domain.EntityFrameworkCore.EFRepository-2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.Domain.EntityFrameworkCore/Carbon.Domain.EntityFrameworkCore.EFRepository-2.html",
+          "hash": "hfyQtRHQ/NvD6htbgZpgYHRHwrrtGiRuViIQTe11QGY="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.Domain.EntityFrameworkCore/Carbon.Domain.EntityFrameworkCore.EFTenantManagedRepository-2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.Domain.EntityFrameworkCore/Carbon.Domain.EntityFrameworkCore.EFTenantManagedRepository-2.html",
+          "hash": "W6qfXYLjiSnI1NEanLxRwG/MiUvz7UbWW9VYcUuwymE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.Domain.EntityFrameworkCore/Carbon.Domain.EntityFrameworkCore.EFTenantManagedTenantRepository-2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.Domain.EntityFrameworkCore/Carbon.Domain.EntityFrameworkCore.EFTenantManagedTenantRepository-2.html",
+          "hash": "Ojn1viPpExpwj6pNsQBapeOQc63Vek5fF4NIdNH5geM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.Domain.EntityFrameworkCore/Carbon.Domain.EntityFrameworkCore.EFTenantManagedTenantWithReadOnlyRepository-3.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.Domain.EntityFrameworkCore/Carbon.Domain.EntityFrameworkCore.EFTenantManagedTenantWithReadOnlyRepository-3.html",
+          "hash": "ceAD6E6CHH6XIvbt+XBpCo81KHN+aJtP2L30a4g/hu8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.Domain.EntityFrameworkCore/Carbon.Domain.EntityFrameworkCore.EFTenantManagedWithReadOnlyRepository-3.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.Domain.EntityFrameworkCore/Carbon.Domain.EntityFrameworkCore.EFTenantManagedWithReadOnlyRepository-3.html",
+          "hash": "S0K5N9UwOex5BCWi1HyGqp8+SKD6M1pH/pc54auinaQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.Domain.EntityFrameworkCore/Carbon.Domain.EntityFrameworkCore.EFTenantRepository-2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.Domain.EntityFrameworkCore/Carbon.Domain.EntityFrameworkCore.EFTenantRepository-2.html",
+          "hash": "sV4WSyWve8lear2utBsx/EOr8ynyG3t10V6cuY2ChcE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.Domain.EntityFrameworkCore/Carbon.Domain.EntityFrameworkCore.EFTenantWithReadOnlyRepository-3.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.Domain.EntityFrameworkCore/Carbon.Domain.EntityFrameworkCore.EFTenantWithReadOnlyRepository-3.html",
+          "hash": "Peur7/3UmYk21+UkSrtVySyyWGZ3bn+wLSypdTNmfZA="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.Domain.EntityFrameworkCore/Carbon.Domain.EntityFrameworkCore.EFWithReadOnlyRepository-3.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.Domain.EntityFrameworkCore/Carbon.Domain.EntityFrameworkCore.EFWithReadOnlyRepository-3.html",
+          "hash": "7tCu2mfYq4nKKyImeQetcs+JWtqiT0e7kDC3ae65f5w="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.Domain.EntityFrameworkCore/Carbon.Domain.EntityFrameworkCore.EntitySolutionRelationEntityConfiguration.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.Domain.EntityFrameworkCore/Carbon.Domain.EntityFrameworkCore.EntitySolutionRelationEntityConfiguration.html",
+          "hash": "WCXrk3c6me7Y6d6r+A/h3DUuqJW+YedQUvx/Ta1PIBU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.Domain.EntityFrameworkCore/Carbon.Domain.EntityFrameworkCore.IContextSeed.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.Domain.EntityFrameworkCore/Carbon.Domain.EntityFrameworkCore.IContextSeed.html",
+          "hash": "UEDEHeZ67mNRW7T+lr7dtcArwvlyavunycBk5CbKj7E="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.Domain.EntityFrameworkCore/Carbon.Domain.EntityFrameworkCore.IReadOnlyContext.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.Domain.EntityFrameworkCore/Carbon.Domain.EntityFrameworkCore.IReadOnlyContext.html",
+          "hash": "I6OEJ/lzdkOqpbwATBGnqfZgrEHgpDiskHKHTXVPSH4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.Domain.EntityFrameworkCore/Carbon.Domain.EntityFrameworkCore.TenantManagedEFRepositoryBase.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.Domain.EntityFrameworkCore/Carbon.Domain.EntityFrameworkCore.TenantManagedEFRepositoryBase.html",
+          "hash": "2E2v3S5fWj1/nEg6AFuYFa9KZjghaat22YwjvWq6NVU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.Domain.EntityFrameworkCore/Carbon.Domain.EntityFrameworkCore.TenantManagedEntityConfigurationBase-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.Domain.EntityFrameworkCore/Carbon.Domain.EntityFrameworkCore.TenantManagedEntityConfigurationBase-1.html",
+          "hash": "+X/qMDnNVO2AHts1p9cmaHNgOMxD8ilVzWSKJJkPdbM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.Domain.EntityFrameworkCore/Carbon.Domain.EntityFrameworkCore.UnitOfWork-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.Domain.EntityFrameworkCore/Carbon.Domain.EntityFrameworkCore.UnitOfWork-1.html",
+          "hash": "Th9IYuYwHD3aN8aNsTbP6bOcUj8nIszZFfQzJZ0h4kk="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.Domain.EntityFrameworkCore/Carbon.Domain.EntityFrameworkCore.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.Domain.EntityFrameworkCore/Carbon.Domain.EntityFrameworkCore.html",
+          "hash": "zYyEQzHXY8zO3rsYs5TjhOwvlGVI5h+eRm6370OqTlA="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.ElasticSearch.Abstractions/Carbon.ElasticSearch.Abstractions.ElasticIndexMapping.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.ElasticSearch.Abstractions/Carbon.ElasticSearch.Abstractions.ElasticIndexMapping.html",
+          "hash": "10U/JZhiA9CeRxLPgzrjqL6SQvaWS8nmrHArbHzfDBU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.ElasticSearch.Abstractions/Carbon.ElasticSearch.Abstractions.IElasticReadOnlyRepository-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.ElasticSearch.Abstractions/Carbon.ElasticSearch.Abstractions.IElasticReadOnlyRepository-1.html",
+          "hash": "829h43AnYiIuVb+RGdJlOKOi01IQzuC/X182JY3Q65E="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.ElasticSearch.Abstractions/Carbon.ElasticSearch.Abstractions.IElasticRepository-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.ElasticSearch.Abstractions/Carbon.ElasticSearch.Abstractions.IElasticRepository-1.html",
+          "hash": "d9WnDYu77EQwHEJjnoNn8zRxiMed+in/6oZrFmK3qwo="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.ElasticSearch.Abstractions/Carbon.ElasticSearch.Abstractions.IElasticSettings.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.ElasticSearch.Abstractions/Carbon.ElasticSearch.Abstractions.IElasticSettings.html",
+          "hash": "sjXow4dP1/WjSGHLDjCN/nIAOcg3wVSc5YrRaFTYfR8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.ElasticSearch.Abstractions/Carbon.ElasticSearch.Abstractions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.ElasticSearch.Abstractions/Carbon.ElasticSearch.Abstractions.html",
+          "hash": "Z59W3sFyK1AqOqR8KUkb0WMq7FEc/9jFOIfdtVOAJ8k="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.ElasticSearch/Carbon.ElasticSearch.BaseElasticReadOnlyRepository-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.ElasticSearch/Carbon.ElasticSearch.BaseElasticReadOnlyRepository-1.html",
+          "hash": "3ZvFmBz+8pJgczYftM0hzAzBvhal8Ee8WNsPxdKYYTk="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.ElasticSearch/Carbon.ElasticSearch.BaseElasticRepository-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.ElasticSearch/Carbon.ElasticSearch.BaseElasticRepository-1.html",
+          "hash": "th0SsgnMbbTuw5aGUoJaJYzBpRL21Osetd6sb7XBxFY="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.ElasticSearch/Carbon.ElasticSearch.ElasticSettings.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.ElasticSearch/Carbon.ElasticSearch.ElasticSettings.html",
+          "hash": "1O5nJG60krfo8BO56hsA0/k4UYM3lRNmCOYV1bvc+oA="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.ElasticSearch/Carbon.ElasticSearch.ServiceCollectionExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.ElasticSearch/Carbon.ElasticSearch.ServiceCollectionExtensions.html",
+          "hash": "2H0jK5Ou8IdXIon3+jgD45d3I0ITk4mXA8XzdddXwS4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.ElasticSearch/Carbon.ElasticSearch.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.ElasticSearch/Carbon.ElasticSearch.html",
+          "hash": "Nkh3Uh691fM20MyyU5H5TkBwPoIAkk6MDVazGPseoqY="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.ExceptionHandling.Abstractions/Carbon.ExceptionHandling.Abstractions.AlreadyExistsException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.ExceptionHandling.Abstractions/Carbon.ExceptionHandling.Abstractions.AlreadyExistsException.html",
+          "hash": "KWwp4Yzv78+Uex8MoHS+jUIBAd80Z+iGoMGGbbVkB1c="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.ExceptionHandling.Abstractions/Carbon.ExceptionHandling.Abstractions.CarbonError.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.ExceptionHandling.Abstractions/Carbon.ExceptionHandling.Abstractions.CarbonError.html",
+          "hash": "X9RbZrc5pLErj0R4oI5FWNaLa8jfEGBUf6T08HjM/b4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.ExceptionHandling.Abstractions/Carbon.ExceptionHandling.Abstractions.CarbonException-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.ExceptionHandling.Abstractions/Carbon.ExceptionHandling.Abstractions.CarbonException-1.html",
+          "hash": "wFf9T/sPt5v3slFq0q8zIK1zrxVUB3b94ky1kYILJjQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.ExceptionHandling.Abstractions/Carbon.ExceptionHandling.Abstractions.CarbonException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.ExceptionHandling.Abstractions/Carbon.ExceptionHandling.Abstractions.CarbonException.html",
+          "hash": "KIb6BbJoDKmBO6PTU0/p7eTNlHudyHy/hPzriCKC968="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.ExceptionHandling.Abstractions/Carbon.ExceptionHandling.Abstractions.CarbonExceptionMessages.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.ExceptionHandling.Abstractions/Carbon.ExceptionHandling.Abstractions.CarbonExceptionMessages.html",
+          "hash": "Q+Hy1lfFuIiVP1D8qaatt4qi7tsXTxozp+GzcxdSlzU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.ExceptionHandling.Abstractions/Carbon.ExceptionHandling.Abstractions.ForbiddenOperationException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.ExceptionHandling.Abstractions/Carbon.ExceptionHandling.Abstractions.ForbiddenOperationException.html",
+          "hash": "nlIGm4beiheK3XJhrizZnXuzPR/wb+iNMZOL4iRnh7c="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.ExceptionHandling.Abstractions/Carbon.ExceptionHandling.Abstractions.NotFoundException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.ExceptionHandling.Abstractions/Carbon.ExceptionHandling.Abstractions.NotFoundException.html",
+          "hash": "TDAyPT9LsHRGo+w+cPf4ruOSRr5MGdXwKx7YNTcrswA="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.ExceptionHandling.Abstractions/Carbon.ExceptionHandling.Abstractions.UnauthorizedOperationException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.ExceptionHandling.Abstractions/Carbon.ExceptionHandling.Abstractions.UnauthorizedOperationException.html",
+          "hash": "zIE016qZvV6a21sH++YQ14SoUwFaiKuTtU3Qgf1LY0w="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.ExceptionHandling.Abstractions/Carbon.ExceptionHandling.Abstractions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.ExceptionHandling.Abstractions/Carbon.ExceptionHandling.Abstractions.html",
+          "hash": "hTobkjnGXBfHMqkPVBjis+WIgb48cmvH1qdNNPrfA8g="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.HttpClient.Auth/Carbon.HttpClient.Auth.GrpcAuthClientSupport.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.HttpClient.Auth/Carbon.HttpClient.Auth.GrpcAuthClientSupport.html",
+          "hash": "/QrdeF4fI7E8cXmaET71esmEdV17HH+9d/bxKgoLXe4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.HttpClient.Auth/Carbon.HttpClient.Auth.IServiceCollectionExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.HttpClient.Auth/Carbon.HttpClient.Auth.IServiceCollectionExtensions.html",
+          "hash": "f1T2nyg4xEAPqy9OoetB5oQ/ta3lgqDHtcUUopd+myE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.HttpClient.Auth/Carbon.HttpClient.Auth.IdentityServerSupport.AuthHttpClientAuthorization.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.HttpClient.Auth/Carbon.HttpClient.Auth.IdentityServerSupport.AuthHttpClientAuthorization.html",
+          "hash": "r+6JwXicfIJik0WoB4mpIpgh9igR0DLe0f7DpKy+bt0="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.HttpClient.Auth/Carbon.HttpClient.Auth.IdentityServerSupport.AuthHttpClientFactory.AuthHttpClient.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.HttpClient.Auth/Carbon.HttpClient.Auth.IdentityServerSupport.AuthHttpClientFactory.AuthHttpClient.html",
+          "hash": "4tHnLae7D5yDgk/Y0VllScpPLbb7bNuqjRn31H9aPZA="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.HttpClient.Auth/Carbon.HttpClient.Auth.IdentityServerSupport.AuthHttpClientFactory.AuthenticationInfo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.HttpClient.Auth/Carbon.HttpClient.Auth.IdentityServerSupport.AuthHttpClientFactory.AuthenticationInfo.html",
+          "hash": "ntz0lS9xSVj8mPTasKcd8RjzbQnA+Z5i9WyyagHC5qo="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.HttpClient.Auth/Carbon.HttpClient.Auth.IdentityServerSupport.AuthHttpClientFactory.AuthenticationType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.HttpClient.Auth/Carbon.HttpClient.Auth.IdentityServerSupport.AuthHttpClientFactory.AuthenticationType.html",
+          "hash": "83XrFguXnKjaCJjd7Fte33WBTdKJyDscAvtueumPkwQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.HttpClient.Auth/Carbon.HttpClient.Auth.IdentityServerSupport.AuthHttpClientFactory.BasicAuth.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.HttpClient.Auth/Carbon.HttpClient.Auth.IdentityServerSupport.AuthHttpClientFactory.BasicAuth.html",
+          "hash": "uk1TknVVxzDLdgE4/foC7GD2jnNQVF3YqTMx/A+QN2M="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.HttpClient.Auth/Carbon.HttpClient.Auth.IdentityServerSupport.AuthHttpClientFactory.Credentials.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.HttpClient.Auth/Carbon.HttpClient.Auth.IdentityServerSupport.AuthHttpClientFactory.Credentials.html",
+          "hash": "2oruPWec0iU9r9q8IH9zyzkEMGHzmtzvczypuTslCOs="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.HttpClient.Auth/Carbon.HttpClient.Auth.IdentityServerSupport.AuthHttpClientFactory.IBaseOneM2MAuth.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.HttpClient.Auth/Carbon.HttpClient.Auth.IdentityServerSupport.AuthHttpClientFactory.IBaseOneM2MAuth.html",
+          "hash": "GLp08XmAVDmU1Dph2Oi/KUWcwZtJLGn2+bZ3/lbbQWA="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.HttpClient.Auth/Carbon.HttpClient.Auth.IdentityServerSupport.AuthHttpClientFactory.OneM2MAuth.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.HttpClient.Auth/Carbon.HttpClient.Auth.IdentityServerSupport.AuthHttpClientFactory.OneM2MAuth.html",
+          "hash": "S2jjfxmhoRvc2bmsImlISUQZYcNRu8T16WJng0O2Y3o="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.HttpClient.Auth/Carbon.HttpClient.Auth.IdentityServerSupport.AuthHttpClientFactory.OneM2MConAuth.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.HttpClient.Auth/Carbon.HttpClient.Auth.IdentityServerSupport.AuthHttpClientFactory.OneM2MConAuth.html",
+          "hash": "ArqmhO8+92/fbUlheBZFq3tB5L+8q2K43I/UFk4q0bU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.HttpClient.Auth/Carbon.HttpClient.Auth.IdentityServerSupport.AuthHttpClientFactory.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.HttpClient.Auth/Carbon.HttpClient.Auth.IdentityServerSupport.AuthHttpClientFactory.html",
+          "hash": "/E8xvcaczwUML7/gE/4Siimvi0UMjAyVrbiS7wIrDno="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.HttpClient.Auth/Carbon.HttpClient.Auth.IdentityServerSupport.AuthHttpClientFactoryMiddleware.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.HttpClient.Auth/Carbon.HttpClient.Auth.IdentityServerSupport.AuthHttpClientFactoryMiddleware.html",
+          "hash": "d8CoUS+TZrinzAUBSD245o7dlS5j1kVszrrsjhbYBck="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.HttpClient.Auth/Carbon.HttpClient.Auth.IdentityServerSupport.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.HttpClient.Auth/Carbon.HttpClient.Auth.IdentityServerSupport.html",
+          "hash": "fIi+q7wPZyOrZ+u/gYvxAGmbUDU2RtSlTvxtm5+XQrw="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.HttpClient.Auth/Carbon.HttpClient.Auth.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.HttpClient.Auth/Carbon.HttpClient.Auth.html",
+          "hash": "uXRVb+eh/UxMflJ0Ymbtdvcpkguqg6mvAUNW1c+fHzU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "DuplicateUids"
+      ],
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.HttpClient/Carbon.HttpClients.IServiceCollectionExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.HttpClient/Carbon.HttpClients.IServiceCollectionExtensions.html",
+          "hash": "Ex25Soy+7S27gYCJfZx8WIMNFrTW58iiO1tQDS3H56w="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.HttpClient/Carbon.HttpClients.WebapiClient.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.HttpClient/Carbon.HttpClients.WebapiClient.html",
+          "hash": "lmLW0PdoubxyKlwhtr3vFs0PSqFFiN2hPtu/OStm5LM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "DuplicateUids"
+      ],
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.HttpClient/Carbon.HttpClients.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.HttpClient/Carbon.HttpClients.html",
+          "hash": "NsXdUgRz6vrxR/yN3MDySvlRrYPKO3CRs7qk3gIGtik="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.MassTransit.Abstractions/Carbon.MassTransit.Abstractions.MassTransitMessage-2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.MassTransit.Abstractions/Carbon.MassTransit.Abstractions.MassTransitMessage-2.html",
+          "hash": "G+ci3RD4uVhe1pRL1J0S9vEhtVAl1ZckNaQlp84agRM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.MassTransit.Abstractions/Carbon.MassTransit.Abstractions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.MassTransit.Abstractions/Carbon.MassTransit.Abstractions.html",
+          "hash": "/4EXzWgvrA4X/Tg7R6e7a79JntAQz7+LVjMnzmpxQho="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.MassTransit/Carbon.MassTransit.AsyncReqResp.Events.IRequestCarrierRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.MassTransit/Carbon.MassTransit.AsyncReqResp.Events.IRequestCarrierRequest.html",
+          "hash": "KEf5IQ9QTIYhoVlzxhlQ29SQkHboupjmqICDAbJSH4I="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.MassTransit/Carbon.MassTransit.AsyncReqResp.Events.IRequestSentFailed.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.MassTransit/Carbon.MassTransit.AsyncReqResp.Events.IRequestSentFailed.html",
+          "hash": "RlVL3Lfrpwn3Sj8C4QZN/M9aKUA9ZTc68iKZE/ScCzk="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.MassTransit/Carbon.MassTransit.AsyncReqResp.Events.IRequestSentSucceed.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.MassTransit/Carbon.MassTransit.AsyncReqResp.Events.IRequestSentSucceed.html",
+          "hash": "ebeEOJMmzvAA1zmJUQlyhqC4oRKl+tK9MjzmPh7vuqg="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.MassTransit/Carbon.MassTransit.AsyncReqResp.Events.IRequestStarterRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.MassTransit/Carbon.MassTransit.AsyncReqResp.Events.IRequestStarterRequest.html",
+          "hash": "4lVjSdUAptPj2D2eX7Y3Gfu7CrYPvTV7HTPCcmt1qqo="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.MassTransit/Carbon.MassTransit.AsyncReqResp.Events.IResponder.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.MassTransit/Carbon.MassTransit.AsyncReqResp.Events.IResponder.html",
+          "hash": "5QLBaZBYavp/vJoWPHnrg0ihilFH/6elzIquX/s/wKI="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.MassTransit/Carbon.MassTransit.AsyncReqResp.Events.IResponseCarrier.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.MassTransit/Carbon.MassTransit.AsyncReqResp.Events.IResponseCarrier.html",
+          "hash": "a7MbCWXzjAcUuOAverwxwROCuVwqHAy0OwqayxVe+Lk="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.MassTransit/Carbon.MassTransit.AsyncReqResp.Events.IResponseFailed.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.MassTransit/Carbon.MassTransit.AsyncReqResp.Events.IResponseFailed.html",
+          "hash": "uicLY2msc0XnywV70ifj0lvLE1YjUKppeYUxOQ2CzcE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.MassTransit/Carbon.MassTransit.AsyncReqResp.Events.IResponseSucceed.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.MassTransit/Carbon.MassTransit.AsyncReqResp.Events.IResponseSucceed.html",
+          "hash": "vbFhA285ik6MxxH9LVIZs8wCS6CyeK50KNe/rAHZEa0="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.MassTransit/Carbon.MassTransit.AsyncReqResp.Events.RequestCarrierRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.MassTransit/Carbon.MassTransit.AsyncReqResp.Events.RequestCarrierRequest.html",
+          "hash": "EKi/cSI55VmyT8vUPtMV3b4a5WD4zuxDi4UlpxQxJ9U="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.MassTransit/Carbon.MassTransit.AsyncReqResp.Events.RequestSentFailed.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.MassTransit/Carbon.MassTransit.AsyncReqResp.Events.RequestSentFailed.html",
+          "hash": "9cOMwOsCuYouGWhGFYxj4qtvH1stnkY3SZqOY5Od5Us="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.MassTransit/Carbon.MassTransit.AsyncReqResp.Events.RequestSentSucceed.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.MassTransit/Carbon.MassTransit.AsyncReqResp.Events.RequestSentSucceed.html",
+          "hash": "gEGkG2Y3P5XvKgf3kxRMJ3xnZlIWjyFePiWrzmepL7k="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.MassTransit/Carbon.MassTransit.AsyncReqResp.Events.RequestStarterRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.MassTransit/Carbon.MassTransit.AsyncReqResp.Events.RequestStarterRequest.html",
+          "hash": "YZhV33MRWy5lxpOmNrtdQifJ9D/plICaRJJ8lHQi0VA="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.MassTransit/Carbon.MassTransit.AsyncReqResp.Events.Responder.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.MassTransit/Carbon.MassTransit.AsyncReqResp.Events.Responder.html",
+          "hash": "M8MglZh/d6UHMoAGW4dNQW6PviVRblW9hXmamjBOtIg="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.MassTransit/Carbon.MassTransit.AsyncReqResp.Events.ResponseCarrier.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.MassTransit/Carbon.MassTransit.AsyncReqResp.Events.ResponseCarrier.html",
+          "hash": "A9KKYsGtllEQ8wx0jaB2xuhye7G0ed5tETHBSIaOaiA="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.MassTransit/Carbon.MassTransit.AsyncReqResp.Events.ResponseFailed.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.MassTransit/Carbon.MassTransit.AsyncReqResp.Events.ResponseFailed.html",
+          "hash": "umT+d/2kfgc1czcd5nCs5xlMPgBFCnvoy7gjEEs7Qzo="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.MassTransit/Carbon.MassTransit.AsyncReqResp.Events.ResponseSucceed.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.MassTransit/Carbon.MassTransit.AsyncReqResp.Events.ResponseSucceed.html",
+          "hash": "1ZNeYXGLM4Piqya81sg/NaDogNaP0EDoClYfKiC8mUg="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.MassTransit/Carbon.MassTransit.AsyncReqResp.Events.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.MassTransit/Carbon.MassTransit.AsyncReqResp.Events.html",
+          "hash": "aPYeBHueV3EJyw5nG3nFLUT9hRaOEzfiSROT9bH+Odw="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.MassTransit/Carbon.MassTransit.AsyncReqResp.IReqRespRequestorBus.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.MassTransit/Carbon.MassTransit.AsyncReqResp.IReqRespRequestorBus.html",
+          "hash": "Dybp3rLYgBWuQK5Hh2irRZD3ErbCmMeFmlqRC3cR/Pg="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.MassTransit/Carbon.MassTransit.AsyncReqResp.IReqRespResponderBus.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.MassTransit/Carbon.MassTransit.AsyncReqResp.IReqRespResponderBus.html",
+          "hash": "JG0boRw2pEkTppNz13tJWNTZO+vSGJ0QiTBQKggg90I="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.MassTransit/Carbon.MassTransit.AsyncReqResp.RequestHandlerActivity.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.MassTransit/Carbon.MassTransit.AsyncReqResp.RequestHandlerActivity.html",
+          "hash": "pAp1AVe7GDusGtFCooFaokm6kqVTr6SMcrLtVxd4LrM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.MassTransit/Carbon.MassTransit.AsyncReqResp.RequestResponseState.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.MassTransit/Carbon.MassTransit.AsyncReqResp.RequestResponseState.html",
+          "hash": "LDCUwN3D/kTFhwZBqJrkutPGRc3wXH/ZR/e7MDjGH/M="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.MassTransit/Carbon.MassTransit.AsyncReqResp.RequestResponseStateMachine.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.MassTransit/Carbon.MassTransit.AsyncReqResp.RequestResponseStateMachine.html",
+          "hash": "jLzOQoKvkYdU8uqoUlTKItIV20QPLEdnMwvq2v8D0RM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.MassTransit/Carbon.MassTransit.AsyncReqResp.ResponseHandlerActivity.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.MassTransit/Carbon.MassTransit.AsyncReqResp.ResponseHandlerActivity.html",
+          "hash": "gu+gPArwWN74/Q4zmVqmcHiMj9z5RipANlLr3k3SZag="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.MassTransit/Carbon.MassTransit.AsyncReqResp.StaticHelpers.ResponseCode.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.MassTransit/Carbon.MassTransit.AsyncReqResp.StaticHelpers.ResponseCode.html",
+          "hash": "S5OExTrvQkBLOnP2idGyXw9ufan+LL8l2LEMgcKWaHg="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.MassTransit/Carbon.MassTransit.AsyncReqResp.StaticHelpers.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.MassTransit/Carbon.MassTransit.AsyncReqResp.StaticHelpers.html",
+          "hash": "YPdjAWVX4LNYk3pxXNSZVHShoupsgtEilyFBMwEyIzo="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.MassTransit/Carbon.MassTransit.AsyncReqResp.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.MassTransit/Carbon.MassTransit.AsyncReqResp.html",
+          "hash": "jbKgeA7q+sqpFlyX5JDMxXuIm0qAF+WTQM/YYpchjOg="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.MassTransit/Carbon.MassTransit.CarbonSagaActivity-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.MassTransit/Carbon.MassTransit.CarbonSagaActivity-1.html",
+          "hash": "CdegolTL+giB/Puoo/RvHMtSX8Q0GWWDyre3MFVC8/M="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.MassTransit/Carbon.MassTransit.CarbonStateMachineInstance.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.MassTransit/Carbon.MassTransit.CarbonStateMachineInstance.html",
+          "hash": "iuyA5SEqCDvpa0xQ8bYzTm+v8SgPR+L5QEqYvOsOhso="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.MassTransit/Carbon.MassTransit.IServiceCollectionConfiguratorExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.MassTransit/Carbon.MassTransit.IServiceCollectionConfiguratorExtensions.html",
+          "hash": "edthELGLc8s2Ssdo4HnqGNVhiNp3rKVg2P7BfJx9DXk="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.MassTransit/Carbon.MassTransit.MassTransitBusType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.MassTransit/Carbon.MassTransit.MassTransitBusType.html",
+          "hash": "jZTim1DriEd1r1Epns7fQAIX1uBidv3+XxPJrnDHSss="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.MassTransit/Carbon.MassTransit.MassTransitHostedService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.MassTransit/Carbon.MassTransit.MassTransitHostedService.html",
+          "hash": "pf31Zm9TXOw+L1amsrGgLgYSVrDKt+jB0paq1cDvYFQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.MassTransit/Carbon.MassTransit.MassTransitSettings.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.MassTransit/Carbon.MassTransit.MassTransitSettings.html",
+          "hash": "GaPP1Udz/xQFGbdQO6tmZOx8tk8lRhvu5OFhlNoq/dQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.MassTransit/Carbon.MassTransit.RabbitMQReceiveEndpointObserver.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.MassTransit/Carbon.MassTransit.RabbitMQReceiveEndpointObserver.html",
+          "hash": "wkjFhQPGp7FAZNsCcZghSrbr0Y7mcdKXUKzyMTLD+WM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.MassTransit/Carbon.MassTransit.RabbitMqSettings.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.MassTransit/Carbon.MassTransit.RabbitMqSettings.html",
+          "hash": "72ABrPLLbfCxEhlqFjwhMLVx7w264EuqYJPwGwTB/RY="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.MassTransit/Carbon.MassTransit.RoutingSlip.IRoutingSlipBuilder.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.MassTransit/Carbon.MassTransit.RoutingSlip.IRoutingSlipBuilder.html",
+          "hash": "KN4+muJK0qJ3i4dDgtM8By/aUAHcMAHhnd3OInpbGRg="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.MassTransit/Carbon.MassTransit.RoutingSlip.IRoutingSlipInstance.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.MassTransit/Carbon.MassTransit.RoutingSlip.IRoutingSlipInstance.html",
+          "hash": "HBUem5CBHmrUONvbwR0vwyy/WIm48QRirJTZsqF9rWY="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.MassTransit/Carbon.MassTransit.RoutingSlip.IServiceRoutingSlipExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.MassTransit/Carbon.MassTransit.RoutingSlip.IServiceRoutingSlipExtensions.html",
+          "hash": "Yy7pXzpvsWpTN0GQLm+mKsnJXvdsVOIXGlAiq+cv2WM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.MassTransit/Carbon.MassTransit.RoutingSlip.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.MassTransit/Carbon.MassTransit.RoutingSlip.html",
+          "hash": "LI8Ab5zn2iVuPySXjVuRtjeZciVke8mgrzrHDHsQW08="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.MassTransit/Carbon.MassTransit.ServiceBusSettings.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.MassTransit/Carbon.MassTransit.ServiceBusSettings.html",
+          "hash": "oT8q7d8wG30R53npZDLFen35PnO2QG5+QbGMRaskYLo="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.MassTransit/Carbon.MassTransit.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.MassTransit/Carbon.MassTransit.html",
+          "hash": "U3XYLibC2WXiG+2hUk5AHYV/KcR1TpySr/ljxb68EMg="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.PagedList.EntityFrameworkCore/Carbon.PagedList.EntityFrameworkCore.PagedListExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.PagedList.EntityFrameworkCore/Carbon.PagedList.EntityFrameworkCore.PagedListExtensions.html",
+          "hash": "avyWgUDk4kxwiHxtkTPrw/4Q6E4C1wwqHnABW1D66ac="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.PagedList.EntityFrameworkCore/Carbon.PagedList.EntityFrameworkCore.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.PagedList.EntityFrameworkCore/Carbon.PagedList.EntityFrameworkCore.html",
+          "hash": "eAU3eBdy7gTFTJC5f9ATvwI8Q24oJX4dEUFTDBO6p2k="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.PagedList.Mapster/Carbon.PagedList.Mapster.PagedListExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.PagedList.Mapster/Carbon.PagedList.Mapster.PagedListExtensions.html",
+          "hash": "ldzmwhSC2Hs94I0tFOxB6kSVZlRWorHDmAZyoXD1IOQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.PagedList.Mapster/Carbon.PagedList.Mapster.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.PagedList.Mapster/Carbon.PagedList.Mapster.html",
+          "hash": "8j8/kBPMz7KUdNoMmrYAKdcbBCDyeTSekYcDR4BZW+M="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.PagedList/Carbon.PagedList.BasePagedList-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.PagedList/Carbon.PagedList.BasePagedList-1.html",
+          "hash": "2wZLZMJML06AFTyGiGZ82N6zHe0QQcgRR3sHBP3PYQs="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.PagedList/Carbon.PagedList.IPagedList-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.PagedList/Carbon.PagedList.IPagedList-1.html",
+          "hash": "8UoQtj+NaJ9l9PLbR1Unv4MB23bI7MIgU7yD5zhyZhw="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.PagedList/Carbon.PagedList.IPagedList.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.PagedList/Carbon.PagedList.IPagedList.html",
+          "hash": "MsTLM0xEXOz6hlhrDSobVo4V7P5NiAODeEeR4CKP+KA="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.PagedList/Carbon.PagedList.PagedList-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.PagedList/Carbon.PagedList.PagedList-1.html",
+          "hash": "a4NGV2bHaB6rhmLG+n5QV9rvMajlYrrxZ21FbrdkAwE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.PagedList/Carbon.PagedList.PagedListExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.PagedList/Carbon.PagedList.PagedListExtensions.html",
+          "hash": "EzegIEgcQAZo2fHiBVhYRP86Bzc23AFEHEY40Zh0gUU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.PagedList/Carbon.PagedList.PagedListMetaData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.PagedList/Carbon.PagedList.PagedListMetaData.html",
+          "hash": "IM8ogYHxGW6T9PPuvRl6WSY7AsVJ419Me/mLMZJLbJI="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.PagedList/Carbon.PagedList.StaticPagedList-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.PagedList/Carbon.PagedList.StaticPagedList-1.html",
+          "hash": "OVJwV1/6DwZ5vRUugK6DbYO1S0urmtD2q5Niyo5b78A="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.PagedList/Carbon.PagedList.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.PagedList/Carbon.PagedList.html",
+          "hash": "gYpbkW/n3Nk9+0Ah5Ct4It9lx9pUm3zUsJ5EkyLg9QI="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.Quartz.Migrate.Context/Carbon.Quartz.Migrate.Context.Extensions.IApplicationBuilderExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.Quartz.Migrate.Context/Carbon.Quartz.Migrate.Context.Extensions.IApplicationBuilderExtensions.html",
+          "hash": "iZjkc9i9gJQEYhfIg+s1JSthcfOkDzxhoLUCSLJZ9wA="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.Quartz.Migrate.Context/Carbon.Quartz.Migrate.Context.Extensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.Quartz.Migrate.Context/Carbon.Quartz.Migrate.Context.Extensions.html",
+          "hash": "a/ullCM6aSodK9XB+Ma5B72dLSJFKNQBRgIvXD3Ftyg="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.Quartz.Migrate.Context/Carbon.Quartz.Migrate.Context.QuartzMigrationContext.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.Quartz.Migrate.Context/Carbon.Quartz.Migrate.Context.QuartzMigrationContext.html",
+          "hash": "v8Fe5UfB0PNTpiJy9Rm/Tu79Ly781MBR4LH95dVr8xQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.Quartz.Migrate.Context/Carbon.Quartz.Migrate.Context.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.Quartz.Migrate.Context/Carbon.Quartz.Migrate.Context.html",
+          "hash": "WCnietU8XKyq0f5optvCvTUrnvLNj1/PddjAjhdoWec="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.Quartz.Migrate.MSSQL/Carbon.Quartz.Migrate.MSSQL.Migrations.mssqlinitialize.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.Quartz.Migrate.MSSQL/Carbon.Quartz.Migrate.MSSQL.Migrations.mssqlinitialize.html",
+          "hash": "Pfdb8k6Sv6OpeII0q7hqnKBdyQicWckwgg/A6Y6YSRo="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.Quartz.Migrate.MSSQL/Carbon.Quartz.Migrate.MSSQL.Migrations.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.Quartz.Migrate.MSSQL/Carbon.Quartz.Migrate.MSSQL.Migrations.html",
+          "hash": "ccQPsuYL2+2jWPlHfdsC74BAvFYN/X9AVUGdPUN2FwY="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.Quartz.Migrate.PostgreSQL/Carbon.Quartz.Migrate.PostgreSQL.Migrations.postgreinitialize.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.Quartz.Migrate.PostgreSQL/Carbon.Quartz.Migrate.PostgreSQL.Migrations.postgreinitialize.html",
+          "hash": "G6z/s9CW09vTHmN39C+ogdDf3L8f7HwyW3u11nrSSns="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.Quartz.Migrate.PostgreSQL/Carbon.Quartz.Migrate.PostgreSQL.Migrations.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.Quartz.Migrate.PostgreSQL/Carbon.Quartz.Migrate.PostgreSQL.Migrations.html",
+          "hash": "mG7fij/nNvde3IJ3aTlgj5fgYGcmzbz1kjNljQu4UzQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.Quartz/Carbon.Quartz.IQuartzClusterableService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.Quartz/Carbon.Quartz.IQuartzClusterableService.html",
+          "hash": "ZoXU8FHMTycS6YP2p6cnxd9Qh0N5jJL/dhLIno79JnE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.Quartz/Carbon.Quartz.QuartzExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.Quartz/Carbon.Quartz.QuartzExtensions.html",
+          "hash": "U9AOLmfKF4YGF+k/jNDisOAnKx68f/Jh8zCon9Cr/90="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.Quartz/Carbon.Quartz.QuartzService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.Quartz/Carbon.Quartz.QuartzService.html",
+          "hash": "Vz0PsUHUZEK58dl7PyEXhNZ71VPSSzlYcIVBuX29Jig="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.Quartz/Carbon.Quartz.QuartzServiceBuilder.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.Quartz/Carbon.Quartz.QuartzServiceBuilder.html",
+          "hash": "vQ6RyPZdvwZ95UTAUF6V3dE8MpbySevpZ7y8mmhr+fA="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.Quartz/Carbon.Quartz.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.Quartz/Carbon.Quartz.html",
+          "hash": "+WXOHuQ6+VCzKC5do0K3Sht9G3+vBKMACfd4kTKwLJc="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.Redis/Carbon.Caching.Abstractions.CarbonContentSerializationType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.Redis/Carbon.Caching.Abstractions.CarbonContentSerializationType.html",
+          "hash": "DYNFwuNIyJ29uKDw6ewNd8xVoO0DleN22j/QI+2obw4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.Redis/Carbon.Caching.Abstractions.Extensions.SerializationExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.Redis/Carbon.Caching.Abstractions.Extensions.SerializationExtensions.html",
+          "hash": "LeCX5HP58xBPd6jdRqDIV62KB9EX7qcxEFsQ+RWt2m0="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.Redis/Carbon.Caching.Abstractions.Extensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.Redis/Carbon.Caching.Abstractions.Extensions.html",
+          "hash": "RgFJCUulVKXd7h7TR8P9GBJbLdhPFsj+uqcbMqM/CiM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.Redis/Carbon.Caching.Abstractions.ICarbonCache.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.Redis/Carbon.Caching.Abstractions.ICarbonCache.html",
+          "hash": "7SiiUUCkDWlQSrlNGSendRm+smmMuHVZ6C4unqEpW3A="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.Redis/Carbon.Caching.Abstractions.ICarbonCacheExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.Redis/Carbon.Caching.Abstractions.ICarbonCacheExtensions.html",
+          "hash": "a/XT7MtqaHTUuCeBzuijYT838L28ruy4ugbupybfWl4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.Redis/Carbon.Caching.Abstractions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.Redis/Carbon.Caching.Abstractions.html",
+          "hash": "NOUlq0SVlz0SJU/4njC6Atlzgtf23M4iXGsclYNQzzk="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.Redis/Carbon.Caching.Redis.CarbonRedisCache.OnExpiredHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.Redis/Carbon.Caching.Redis.CarbonRedisCache.OnExpiredHandler.html",
+          "hash": "sxvD+I6hG9zqqsqhnZiZ/4hPK8vW0MTsH0u4IBAdMgk="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.Redis/Carbon.Caching.Redis.CarbonRedisCache.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.Redis/Carbon.Caching.Redis.CarbonRedisCache.html",
+          "hash": "fORlh8/+ig/dssn5iqtA25tnniyws5XsoWFM6yCHkCI="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.Redis/Carbon.Caching.Redis.CarbonRedisCacheOptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.Redis/Carbon.Caching.Redis.CarbonRedisCacheOptions.html",
+          "hash": "5o9au6443GyCmtSgXwgoUoV39G84jppJXDO4hTOdPoA="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.Redis/Carbon.Caching.Redis.ICarbonRedisBuilderExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.Redis/Carbon.Caching.Redis.ICarbonRedisBuilderExtensions.html",
+          "hash": "ZQw1YXW+AoMjx9nN7BijnNv44W2YSe83Selas8ZHvg4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.Redis/Carbon.Caching.Redis.ICarbonRedisCache.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.Redis/Carbon.Caching.Redis.ICarbonRedisCache.html",
+          "hash": "dfg8kj9zJTfks7cbDzaMxq7ZXHczX6kB8vcC6zJEp/I="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.Redis/Carbon.Caching.Redis.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.Redis/Carbon.Caching.Redis.html",
+          "hash": "jHa1Bfhp18qcwM+5hKcKa152AZjeYbVVENOKVGbPmeU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.Redis/Carbon.Redis.Builder.CarbonRedisBuilder.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.Redis/Carbon.Redis.Builder.CarbonRedisBuilder.html",
+          "hash": "cpFP/nAfR+GDtEPGfgGVMRKpTBOVvmgsJByrqD6wjL4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.Redis/Carbon.Redis.Builder.ICarbonRedisBuilder.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.Redis/Carbon.Redis.Builder.ICarbonRedisBuilder.html",
+          "hash": "dGjQRhlFukOO2y1E+p4xgU3E6R8IAeixyZRUpXm3MTQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.Redis/Carbon.Redis.Builder.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.Redis/Carbon.Redis.Builder.html",
+          "hash": "ykRfZ3uspmpaBwnixpNw1iOGCx6RSU/gDn2u1B/vlhM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.Redis/Carbon.Redis.CacheObject.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.Redis/Carbon.Redis.CacheObject.html",
+          "hash": "vebG22x14e6ZL3W99dhPiMpK5EZeCrHuKde83msihD0="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.Redis/Carbon.Redis.CustomRedisHealthCheck.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.Redis/Carbon.Redis.CustomRedisHealthCheck.html",
+          "hash": "oAK/6yfjgeYd1xjl0wZvFzHay2zAN6r4q9XR74o409c="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.Redis/Carbon.Redis.DummyConnectionMultiplexer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.Redis/Carbon.Redis.DummyConnectionMultiplexer.html",
+          "hash": "XO2By7B7vCePykyLYNLwEGYorzeAHO5Qw9LDpYlfEqw="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.Redis/Carbon.Redis.DummyRedisServer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.Redis/Carbon.Redis.DummyRedisServer.html",
+          "hash": "jqqohcmWAkzR/xx3LmopW23j/LEh2xJz7Du6pIlWMhM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.Redis/Carbon.Redis.ErrorMessageConstants.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.Redis/Carbon.Redis.ErrorMessageConstants.html",
+          "hash": "uGy6BjaS3TBDEkQk0tkwca2vavC6X4W2B3Irl+ljQ9Y="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.Redis/Carbon.Redis.IRedisSettings.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.Redis/Carbon.Redis.IRedisSettings.html",
+          "hash": "4+rBQgrr8PJxREFb6nIOr520GyDRcUWzU5oay5++RtA="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.Redis/Carbon.Redis.RedisConstants.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.Redis/Carbon.Redis.RedisConstants.html",
+          "hash": "iXKJTSeZy6B0YTm2DKYpA/vbCR8AEPXcECEmJHtjHpQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.Redis/Carbon.Redis.RedisDatabase.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.Redis/Carbon.Redis.RedisDatabase.html",
+          "hash": "jgrY4MC6hMV9poFrzPFxLkwpqEHI0ZevbrbFLmLhKD4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.Redis/Carbon.Redis.RedisExtension.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.Redis/Carbon.Redis.RedisExtension.html",
+          "hash": "kvmdrErh49DiNK3NKye+E+nhxQXn9VDy3GG8jQEcXrM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.Redis/Carbon.Redis.RedisHelper.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.Redis/Carbon.Redis.RedisHelper.html",
+          "hash": "7sli/KTC7XOyCqxNJes0k04QS+EzaXfSxFVQ7e3T0wM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.Redis/Carbon.Redis.RedisSettings.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.Redis/Carbon.Redis.RedisSettings.html",
+          "hash": "3xRauv93Nct1wq0K/m5aGZvcxPkxvKWz3c8Lf0ntb04="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.Redis/Carbon.Redis.Sentinel.ISentinelConnectionMultiplexer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.Redis/Carbon.Redis.Sentinel.ISentinelConnectionMultiplexer.html",
+          "hash": "+l2R+hFAgCOSGgMlLKloN2OBYiq0RnjqrzJ8rDBEhKI="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.Redis/Carbon.Redis.Sentinel.NonSentinelConnectionMultiplexer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.Redis/Carbon.Redis.Sentinel.NonSentinelConnectionMultiplexer.html",
+          "hash": "LXgxcil6zgpdaXb8Rne81+iCICukqMDA0N0TBPlW6qY="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.Redis/Carbon.Redis.Sentinel.SentinelConnectionMultiplexer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.Redis/Carbon.Redis.Sentinel.SentinelConnectionMultiplexer.html",
+          "hash": "neb6P8GDfUyWvM1mCDlynrWi1hAVEoBqUvZTdspR6K8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.Redis/Carbon.Redis.Sentinel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.Redis/Carbon.Redis.Sentinel.html",
+          "hash": "aQBAzSN6cETL3P6YYse3gvhrN68L2VID5ir2XPCQrOM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.Redis/Carbon.Redis.SerilogConstant.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.Redis/Carbon.Redis.SerilogConstant.html",
+          "hash": "FdWpEKmWsriJv3/xqZ8evk5UKZBwKt23EyWjDnE5xGU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.Redis/Carbon.Redis.ServiceCollectionExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.Redis/Carbon.Redis.ServiceCollectionExtensions.html",
+          "hash": "xwe/eXD6xrq86efpMX4067rfo0PFQlMB7gTLT7CTbIc="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.Redis/Carbon.Redis.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.Redis/Carbon.Redis.html",
+          "hash": "OrLIoZJuCo/n0DrYdezC7R5+yRLbc1buhJPImiRZGWI="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.Serilog/Carbon.Serilog.SerilogExtensions.GuidMaskingOperator.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.Serilog/Carbon.Serilog.SerilogExtensions.GuidMaskingOperator.html",
+          "hash": "yBK9vJkDVYoio/V1d6bDQDYz5jjpehvmJJ1fp4o63L0="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.Serilog/Carbon.Serilog.SerilogExtensions.IPMaskingOperator.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.Serilog/Carbon.Serilog.SerilogExtensions.IPMaskingOperator.html",
+          "hash": "Pt1+syQ5kNBh8B+LmvJD42/DcY+H8ckcvCQlvCx8NSc="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.Serilog/Carbon.Serilog.SerilogExtensions.PathMaskingOperator.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.Serilog/Carbon.Serilog.SerilogExtensions.PathMaskingOperator.html",
+          "hash": "zzOEhL5qWSKwe/AUi/Tk8176pr/2+oD8ynCR7mOcqak="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.Serilog/Carbon.Serilog.SerilogExtensions.PropertyMaskingOperatorCapsule.PropertyMaskingOperator.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.Serilog/Carbon.Serilog.SerilogExtensions.PropertyMaskingOperatorCapsule.PropertyMaskingOperator.html",
+          "hash": "23eNSUrMmpI1fM7bK5XLOZFO9OTYSA8lDB9HbJOf+Nk="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.Serilog/Carbon.Serilog.SerilogExtensions.PropertyMaskingOperatorCapsule.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.Serilog/Carbon.Serilog.SerilogExtensions.PropertyMaskingOperatorCapsule.html",
+          "hash": "iwCBPEZfyByPXZb3XaTMw+mtF1gAOgKRfVWPpvVbqec="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.Serilog/Carbon.Serilog.SerilogExtensions.URLMaskingOperator.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.Serilog/Carbon.Serilog.SerilogExtensions.URLMaskingOperator.html",
+          "hash": "WjgPymiu9oUkNIJCbOr9TExOAEFO+nqh1INDkl0m5cU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.Serilog/Carbon.Serilog.SerilogExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.Serilog/Carbon.Serilog.SerilogExtensions.html",
+          "hash": "XgMQtvYbxEuYwD8vBJl+nuFwsUmBH9FuQ1WBFJcPa8Q="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.Serilog/Carbon.Serilog.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.Serilog/Carbon.Serilog.html",
+          "hash": "i8/kMlSIg8SFv0oQHTTVNmAROF6ZJaWqTp0esuU+EUc="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.TimeScaleDb.EntityFrameworkCore/Carbon.TimeScaleDb.EntityFrameworkCore.ApplicationBuilderExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.TimeScaleDb.EntityFrameworkCore/Carbon.TimeScaleDb.EntityFrameworkCore.ApplicationBuilderExtensions.html",
+          "hash": "iZP5zGzdsGxJ3T3QSvIgLb+mwJ4jnwlwGaIX78c0L5M="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.TimeScaleDb.EntityFrameworkCore/Carbon.TimeScaleDb.EntityFrameworkCore.CarbonTimeScaleDbContext-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.TimeScaleDb.EntityFrameworkCore/Carbon.TimeScaleDb.EntityFrameworkCore.CarbonTimeScaleDbContext-1.html",
+          "hash": "h9i5uhbxkKW7afdsbhH+M7ATk4ue13jEORRQl+2EFBs="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.TimeScaleDb.EntityFrameworkCore/Carbon.TimeScaleDb.EntityFrameworkCore.CarbonTimeScaleDbReadOnlyContext-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.TimeScaleDb.EntityFrameworkCore/Carbon.TimeScaleDb.EntityFrameworkCore.CarbonTimeScaleDbReadOnlyContext-1.html",
+          "hash": "27BkJ8ZI2VEJcMq1uhMF4tLH+u/DEIn8L1xKJ8WkRso="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.TimeScaleDb.EntityFrameworkCore/Carbon.TimeScaleDb.EntityFrameworkCore.EFTimeScaleDbRepository-2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.TimeScaleDb.EntityFrameworkCore/Carbon.TimeScaleDb.EntityFrameworkCore.EFTimeScaleDbRepository-2.html",
+          "hash": "KeAZ5Wl+Gxq0UqHbYny3oDVrV84SY5g+ZDjlm3q4XJo="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.TimeScaleDb.EntityFrameworkCore/Carbon.TimeScaleDb.EntityFrameworkCore.EFTimeScaleDbWithReadOnlyRepository-3.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.TimeScaleDb.EntityFrameworkCore/Carbon.TimeScaleDb.EntityFrameworkCore.EFTimeScaleDbWithReadOnlyRepository-3.html",
+          "hash": "YMUPjS1IG5un8VRckW4OzuqIa2luScZNQgd5L4iFcCE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.TimeScaleDb.EntityFrameworkCore/Carbon.TimeScaleDb.EntityFrameworkCore.ITimeScaleDbReadOnlyContext.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.TimeScaleDb.EntityFrameworkCore/Carbon.TimeScaleDb.EntityFrameworkCore.ITimeScaleDbReadOnlyContext.html",
+          "hash": "cDEGHVScXIZAx0hnO8wG71aZupjF0sCY71D15aalK8U="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.TimeScaleDb.EntityFrameworkCore/Carbon.TimeScaleDb.EntityFrameworkCore.TimeSeriesEntityTypeConfiguration-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.TimeScaleDb.EntityFrameworkCore/Carbon.TimeScaleDb.EntityFrameworkCore.TimeSeriesEntityTypeConfiguration-1.html",
+          "hash": "EEPrM1sMVydRX6meDl5o8u2qDUSJDjjEbTk389RJN1A="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.TimeScaleDb.EntityFrameworkCore/Carbon.TimeScaleDb.EntityFrameworkCore.TimeSeriesTableInfo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.TimeScaleDb.EntityFrameworkCore/Carbon.TimeScaleDb.EntityFrameworkCore.TimeSeriesTableInfo.html",
+          "hash": "Dalg/GHH5UPaYCi5Yg+t6ue5XniWerPcmiJmphM4T+k="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.TimeScaleDb.EntityFrameworkCore/Carbon.TimeScaleDb.EntityFrameworkCore.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.TimeScaleDb.EntityFrameworkCore/Carbon.TimeScaleDb.EntityFrameworkCore.html",
+          "hash": "LOX9otkMy9DxvvgaWZheHbwADCid9XU8eA1YKiQsvkI="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.TimeScaleDb/Carbon.TimeScaleDb.IApplicationBuilderExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.TimeScaleDb/Carbon.TimeScaleDb.IApplicationBuilderExtensions.html",
+          "hash": "+umh8uVBfPELKeDRFCZffXEM9cb1eofakwVP5U7dJVA="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.TimeScaleDb/Carbon.TimeScaleDb.ITimeScaleDbHelper.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.TimeScaleDb/Carbon.TimeScaleDb.ITimeScaleDbHelper.html",
+          "hash": "XS3vfIvhSITZr56YUV5OhvkcL6o96THNqMQi8N7zoX0="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.TimeScaleDb/Carbon.TimeScaleDb.TimeScaleDbHelper.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.TimeScaleDb/Carbon.TimeScaleDb.TimeScaleDbHelper.html",
+          "hash": "Lboyv1JAyOWG1/DZCGp1sDDSN/olHE9PTCh5L6WGI4Y="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.TimeScaleDb/Carbon.TimeScaleDb.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.TimeScaleDb/Carbon.TimeScaleDb.html",
+          "hash": "RpnOWl6d5LzyldgmUwfMCOV8N8HyxbHbXSNH9hRXNnU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.TimeSeriesDb.Abstractions/Carbon.TimeSeriesDb.Abstractions.Attributes.TimeSerie.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.TimeSeriesDb.Abstractions/Carbon.TimeSeriesDb.Abstractions.Attributes.TimeSerie.html",
+          "hash": "TE2yDtrT3ca5BF2tIIkX40UO+uVtrmD505Y15Meh6xU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.TimeSeriesDb.Abstractions/Carbon.TimeSeriesDb.Abstractions.Attributes.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.TimeSeriesDb.Abstractions/Carbon.TimeSeriesDb.Abstractions.Attributes.html",
+          "hash": "MD+Omnrel4tZ1sSebvB2fMlXF48j2AHUBWL5JjVGFwQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.TimeSeriesDb.Abstractions/Carbon.TimeSeriesDb.Abstractions.Entities.ITimeSeriesEntity.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.TimeSeriesDb.Abstractions/Carbon.TimeSeriesDb.Abstractions.Entities.ITimeSeriesEntity.html",
+          "hash": "pl2z8UaCucJujsUJ7AsQU/hD7cHjXoUwtjeCKv4Gqls="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.TimeSeriesDb.Abstractions/Carbon.TimeSeriesDb.Abstractions.Entities.TimeSerieEntityBase.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.TimeSeriesDb.Abstractions/Carbon.TimeSeriesDb.Abstractions.Entities.TimeSerieEntityBase.html",
+          "hash": "uTdLXPBLgBXpKJ2ITpw3/1JYvr9nfe53oM5ibKdr3GU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.TimeSeriesDb.Abstractions/Carbon.TimeSeriesDb.Abstractions.Entities.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.TimeSeriesDb.Abstractions/Carbon.TimeSeriesDb.Abstractions.Entities.html",
+          "hash": "VzO+0vSpf29hgGaOtyjFCCfhHcmrnk+WpUAsIsOB/6U="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.TimeSeriesDb.Abstractions/Carbon.TimeSeriesDb.Abstractions.Repositories.ITimeSeriesEntityRepository-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.TimeSeriesDb.Abstractions/Carbon.TimeSeriesDb.Abstractions.Repositories.ITimeSeriesEntityRepository-1.html",
+          "hash": "/Fiw+t4Pu7tKIWiJLn/L3JtenQqb7ili3hw5t7rclV8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.TimeSeriesDb.Abstractions/Carbon.TimeSeriesDb.Abstractions.Repositories.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.TimeSeriesDb.Abstractions/Carbon.TimeSeriesDb.Abstractions.Repositories.html",
+          "hash": "sZsLsvWfOxhOXDDdyuyQdizXHw3JEcbLeQQjVDke8x8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.WebApplication.EntityFrameworkCore/Carbon.WebApplication.EntityFrameworkCore.IApplicationBuilderExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.WebApplication.EntityFrameworkCore/Carbon.WebApplication.EntityFrameworkCore.IApplicationBuilderExtensions.html",
+          "hash": "pssXvvebFRMTKvYWwyygDGb4NreYbTLJPyACoSRNPOQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.WebApplication.EntityFrameworkCore/Carbon.WebApplication.EntityFrameworkCore.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.WebApplication.EntityFrameworkCore/Carbon.WebApplication.EntityFrameworkCore.html",
+          "hash": "TzCkROQOSOF7Y4LAxXfrAn99Zs9EYyOzlyWjA+NcDSQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.WebApplication.Grpc.Client/Carbon.WebApplication.Grpc.Client.GrpcClientStaticValues.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.WebApplication.Grpc.Client/Carbon.WebApplication.Grpc.Client.GrpcClientStaticValues.html",
+          "hash": "HDrj7esJMznO4wima0gEJCbE1U3PzKkngM6KPrcycBs="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.WebApplication.Grpc.Client/Carbon.WebApplication.Grpc.Client.IGrpcClientExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.WebApplication.Grpc.Client/Carbon.WebApplication.Grpc.Client.IGrpcClientExtensions.html",
+          "hash": "SMv8k3eq2uCQqUQvqkqGQB2pP1uf4/x9+vcWY1g5k1Q="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.WebApplication.Grpc.Client/Carbon.WebApplication.Grpc.Client.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.WebApplication.Grpc.Client/Carbon.WebApplication.Grpc.Client.html",
+          "hash": "g4UJ66hdTu7Flw265zEqZ+gr7tTQjoT7Emo9b4Es5ts="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.WebApplication.Grpc/Carbon.WebApplication.Grpc.CarbonGrpcStartup-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.WebApplication.Grpc/Carbon.WebApplication.Grpc.CarbonGrpcStartup-1.html",
+          "hash": "cTBmtl+gx/N35pM3EY1v94QZnEgtNCgT2XCBBe/c1p0="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.WebApplication.Grpc/Carbon.WebApplication.Grpc.Interceptors.CarbonRequestDtoInterceptor.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.WebApplication.Grpc/Carbon.WebApplication.Grpc.Interceptors.CarbonRequestDtoInterceptor.html",
+          "hash": "teI5dEaU55DUUKaYZn8PoQUK8ioLjblgkbkTGm/Xp7Y="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.WebApplication.Grpc/Carbon.WebApplication.Grpc.Interceptors.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.WebApplication.Grpc/Carbon.WebApplication.Grpc.Interceptors.html",
+          "hash": "YRxR0iMIP398QkfecRfDV/A424bm2yqK7+kymWhTb/0="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.WebApplication.Grpc/Carbon.WebApplication.Grpc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.WebApplication.Grpc/Carbon.WebApplication.Grpc.html",
+          "hash": "nMZsEOJeY3xeNtUA80LIfpXr7u1OII/GBFy9MPnQpHU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.WebApplication.SolutionService/Carbon.WebApplication.SolutionService.Consumers.FeatureSetSagaCompletionFailedConsumer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.WebApplication.SolutionService/Carbon.WebApplication.SolutionService.Consumers.FeatureSetSagaCompletionFailedConsumer.html",
+          "hash": "RiV99sRollGG5OpYSYyJ+27dL9kFq0qQl20tBPe8a8o="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.WebApplication.SolutionService/Carbon.WebApplication.SolutionService.Consumers.FeatureSetSagaCompletionSucceedConsumer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.WebApplication.SolutionService/Carbon.WebApplication.SolutionService.Consumers.FeatureSetSagaCompletionSucceedConsumer.html",
+          "hash": "LDlSNhPH53l49ydI03YJB/yNC3EFhBMps4OvXfl48gI="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.WebApplication.SolutionService/Carbon.WebApplication.SolutionService.Consumers.SolutionSagaCompletionFailedConsumer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.WebApplication.SolutionService/Carbon.WebApplication.SolutionService.Consumers.SolutionSagaCompletionFailedConsumer.html",
+          "hash": "JGBOmKobV5rpYDWgBkApeau4/M2FECpxW8G91x+xVI8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.WebApplication.SolutionService/Carbon.WebApplication.SolutionService.Consumers.SolutionSagaCompletionSucceedConsumer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.WebApplication.SolutionService/Carbon.WebApplication.SolutionService.Consumers.SolutionSagaCompletionSucceedConsumer.html",
+          "hash": "ewNw/Dfwt2bcggPBMS1+y4RHbZL+/hgKqdQZKYlyHAE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.WebApplication.SolutionService/Carbon.WebApplication.SolutionService.Consumers.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.WebApplication.SolutionService/Carbon.WebApplication.SolutionService.Consumers.html",
+          "hash": "KlTeFdSr8DtW1R1sv5p/243mmlCPdr9zfuZf5cF25jE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.WebApplication.SolutionService/Carbon.WebApplication.SolutionService.Domain.Exceptions.ExceptionEnums.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.WebApplication.SolutionService/Carbon.WebApplication.SolutionService.Domain.Exceptions.ExceptionEnums.html",
+          "hash": "Eppr5EXQAVDfA6npPwZyvk16miaIZ5ewGmLN54NX8hw="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.WebApplication.SolutionService/Carbon.WebApplication.SolutionService.Domain.Exceptions.FeatureSetNullException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.WebApplication.SolutionService/Carbon.WebApplication.SolutionService.Domain.Exceptions.FeatureSetNullException.html",
+          "hash": "u6ful3u13bsCqhoXG4YSO36azypF5L1ohMEJhF/rys8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.WebApplication.SolutionService/Carbon.WebApplication.SolutionService.Domain.Exceptions.IncompatibleFeatureSetException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.WebApplication.SolutionService/Carbon.WebApplication.SolutionService.Domain.Exceptions.IncompatibleFeatureSetException.html",
+          "hash": "4dHJu5WF0SfCC1sG+DLw/cS5xFe54W3deXaw8Dt1ORk="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.WebApplication.SolutionService/Carbon.WebApplication.SolutionService.Domain.Exceptions.IncompatibleSolutionException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.WebApplication.SolutionService/Carbon.WebApplication.SolutionService.Domain.Exceptions.IncompatibleSolutionException.html",
+          "hash": "6lOeKiOcfFKuRlm3fjJVYoDL2pg1hslATwKt7MQbpAQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.WebApplication.SolutionService/Carbon.WebApplication.SolutionService.Domain.Exceptions.SolutionNullException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.WebApplication.SolutionService/Carbon.WebApplication.SolutionService.Domain.Exceptions.SolutionNullException.html",
+          "hash": "ljNRrjZSQsPLyRDb6rRHCHLikHVUq+Od7GEGota99xs="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.WebApplication.SolutionService/Carbon.WebApplication.SolutionService.Domain.Exceptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.WebApplication.SolutionService/Carbon.WebApplication.SolutionService.Domain.Exceptions.html",
+          "hash": "n0q5WhiCah3CHMt2FdVIOdyyqo198caGyxHTbv0xWAU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.WebApplication.SolutionService/Carbon.WebApplication.SolutionService.Domain.FeatureSetCreationRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.WebApplication.SolutionService/Carbon.WebApplication.SolutionService.Domain.FeatureSetCreationRequest.html",
+          "hash": "wUNgGq70CFx4wixMmv17CWn0sq3IS3AkvYCesSQxLLE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.WebApplication.SolutionService/Carbon.WebApplication.SolutionService.Domain.ISolutionRegistrationBus.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.WebApplication.SolutionService/Carbon.WebApplication.SolutionService.Domain.ISolutionRegistrationBus.html",
+          "hash": "ZYBD29p0dOjvdS689BjDtmSmymZ3VZUpHvGSA1Dm568="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.WebApplication.SolutionService/Carbon.WebApplication.SolutionService.Domain.RequestedObjects.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.WebApplication.SolutionService/Carbon.WebApplication.SolutionService.Domain.RequestedObjects.html",
+          "hash": "i5iwcu0gChQjBDhPfjZ7BiPzBeHtfe5DAtgCrvBGCY0="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.WebApplication.SolutionService/Carbon.WebApplication.SolutionService.Domain.SolutionCreationRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.WebApplication.SolutionService/Carbon.WebApplication.SolutionService.Domain.SolutionCreationRequest.html",
+          "hash": "o1gcpNfG8KSZyU5o00XdNg3CjLCycU//0JBWsJrx0tw="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.WebApplication.SolutionService/Carbon.WebApplication.SolutionService.Domain.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.WebApplication.SolutionService/Carbon.WebApplication.SolutionService.Domain.html",
+          "hash": "xyuxDSXnIcWbQvpyP3jJd8Hq4Xa1QPr1cMekQ8Sfo2M="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.WebApplication.SolutionService/Carbon.WebApplication.SolutionService.ISolutionServiceBuilderExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.WebApplication.SolutionService/Carbon.WebApplication.SolutionService.ISolutionServiceBuilderExtensions.html",
+          "hash": "E9pVHXaqNSPJFutNAeUl9N2fnd+gX5bpEpu3IOEqovM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.WebApplication.SolutionService/Carbon.WebApplication.SolutionService.Services.ISolutionRegistrationService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.WebApplication.SolutionService/Carbon.WebApplication.SolutionService.Services.ISolutionRegistrationService.html",
+          "hash": "TcwfgYenyJNAT6KwDc2OIlf8EtHpMDVifee0fiIIJ+I="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.WebApplication.SolutionService/Carbon.WebApplication.SolutionService.Services.SolutionRegistrationService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.WebApplication.SolutionService/Carbon.WebApplication.SolutionService.Services.SolutionRegistrationService.html",
+          "hash": "w4U2GrUaoqUkYklwUp/8vdeCSwdoLxTYISo1rJVVgZk="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.WebApplication.SolutionService/Carbon.WebApplication.SolutionService.Services.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.WebApplication.SolutionService/Carbon.WebApplication.SolutionService.Services.html",
+          "hash": "vGbpML9s37JsCcdVkHPvJoimXPzLD9YxCrkegIpon3I="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.WebApplication.SolutionService/Carbon.WebApplication.SolutionService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.WebApplication.SolutionService/Carbon.WebApplication.SolutionService.html",
+          "hash": "KS/A8hUKxFbKgbnHCkIAogtSBlql45q83JkC7YrYF3Y="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.WebApplication/Carbon.Common.HttpRequestExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.WebApplication/Carbon.Common.HttpRequestExtensions.html",
+          "hash": "1KZ7AgmKl03M7/DSpTn/aLVjqgs0VJZw6FfQi98fnDk="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "DuplicateUids"
+      ],
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.WebApplication/Carbon.Common.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.WebApplication/Carbon.Common.html",
+          "hash": "Hf4WrgOw1otiLDmtjs1Rd3ee6Q0XmwjTNoaGYn+5GDU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.WebApplication/Carbon.WebApplication.ApiPagedResponse-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.WebApplication/Carbon.WebApplication.ApiPagedResponse-1.html",
+          "hash": "T+Jxv4+QgNuAix2U4B0DzfmA2IXMAc4yqeQnah0ApZc="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.WebApplication/Carbon.WebApplication.BadRequestValidationResult.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.WebApplication/Carbon.WebApplication.BadRequestValidationResult.html",
+          "hash": "JIPEPU6AjGE7M3Cgv8mhHZYBYF+qJFlk/LqFPcGPkHY="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.WebApplication/Carbon.WebApplication.BaseDtoValidator-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.WebApplication/Carbon.WebApplication.BaseDtoValidator-1.html",
+          "hash": "zN/Bs3bVtuOdPSCeuOl70GSNumRbkXVkd8+K/TEUbA8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.WebApplication/Carbon.WebApplication.BaseRequestDto.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.WebApplication/Carbon.WebApplication.BaseRequestDto.html",
+          "hash": "YhMwTdx/9qgBPimt58BxM5SigQrP07t2H4DRmFypPoo="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.WebApplication/Carbon.WebApplication.CarbonController.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.WebApplication/Carbon.WebApplication.CarbonController.html",
+          "hash": "TBNmoDLfkAc1+VW0+39SpUzaVUPnFRlCOwnh6jPqV1g="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.WebApplication/Carbon.WebApplication.CarbonMinimalStartup.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.WebApplication/Carbon.WebApplication.CarbonMinimalStartup.html",
+          "hash": "WzL7cTFMvRMbC/bOI/A/yYxMKh1H6baOlHJbYI5kWuQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.WebApplication/Carbon.WebApplication.CarbonStartup-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.WebApplication/Carbon.WebApplication.CarbonStartup-1.html",
+          "hash": "XZy2UKCS8PlkSoP+qPzA/rHtz9XVs+MVB/N3ThIeDeI="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.WebApplication/Carbon.WebApplication.CarbonTenantManagedController.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.WebApplication/Carbon.WebApplication.CarbonTenantManagedController.html",
+          "hash": "hBvZxLgXDyht1L9y1jxR1lRJcDVeXPoFx0MtgIJbZvQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.WebApplication/Carbon.WebApplication.CarbonValidator-2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.WebApplication/Carbon.WebApplication.CarbonValidator-2.html",
+          "hash": "BzRIb9ZjJrkgYIINvuq7FgjApDWbjte7pKAZdWNZqXQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.WebApplication/Carbon.WebApplication.CorsPolicySettings.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.WebApplication/Carbon.WebApplication.CorsPolicySettings.html",
+          "hash": "O4VDNfYpFkEbf3CPNFMo+4sKpitbkqATY4LLuJmpeQk="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.WebApplication/Carbon.WebApplication.HttpAtrributes.HttpDeleteCarbonAttribute.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.WebApplication/Carbon.WebApplication.HttpAtrributes.HttpDeleteCarbonAttribute.html",
+          "hash": "jBi6MFlbPLKEmvxx+7cj7gJZ2LnzrnlIjwckaYRWsEs="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.WebApplication/Carbon.WebApplication.HttpAtrributes.HttpGetCarbonAttribute.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.WebApplication/Carbon.WebApplication.HttpAtrributes.HttpGetCarbonAttribute.html",
+          "hash": "9KGJmCqYhAeC6m/Mkvpl4L+o1FAz0IOsBlQmdC7tdlA="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.WebApplication/Carbon.WebApplication.HttpAtrributes.HttpGetListCarbonAttribute.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.WebApplication/Carbon.WebApplication.HttpAtrributes.HttpGetListCarbonAttribute.html",
+          "hash": "yzGtySAWSkZkKygnNMSfPBXtcZh/cE5NYce0yzCi11M="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.WebApplication/Carbon.WebApplication.HttpAtrributes.HttpPostCarbonAttribute.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.WebApplication/Carbon.WebApplication.HttpAtrributes.HttpPostCarbonAttribute.html",
+          "hash": "2fH60vm1bcDRxCRptKTStBxIqacCTbGbEWrjy/0Ymyo="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.WebApplication/Carbon.WebApplication.HttpAtrributes.HttpPutCarbonAttribute.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.WebApplication/Carbon.WebApplication.HttpAtrributes.HttpPutCarbonAttribute.html",
+          "hash": "FMRsEIF2KACeGgOh/dycYtvcqfuWq/tzgscvNaH+JWY="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.WebApplication/Carbon.WebApplication.HttpAtrributes.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.WebApplication/Carbon.WebApplication.HttpAtrributes.html",
+          "hash": "Qysj0+ppDTZfG1yAlO4HtCG10YTInkzNPeJncK9q6dQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.WebApplication/Carbon.WebApplication.HttpGlobalExceptionFilter.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.WebApplication/Carbon.WebApplication.HttpGlobalExceptionFilter.html",
+          "hash": "Ww6KgO76tgxJhy+7T0t9JSCyiDIu6Bt8giK+VDH2cwU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.WebApplication/Carbon.WebApplication.HybridOperationFilter.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.WebApplication/Carbon.WebApplication.HybridOperationFilter.html",
+          "hash": "4jOC2DzGTtY02Y2mUgrJP3/yFDxPnAZq6mDRhNwCeeM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.WebApplication/Carbon.WebApplication.IApplicationBuilderExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.WebApplication/Carbon.WebApplication.IApplicationBuilderExtensions.html",
+          "hash": "8AEWmlEHHNXxb5x5Wpby1fnCWQvm5uWXzQMsfZUMp0c="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.WebApplication/Carbon.WebApplication.IWebHostBuilderExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.WebApplication/Carbon.WebApplication.IWebHostBuilderExtensions.html",
+          "hash": "uTc+esShT6zH+6ZUehbSHfdnC78iUFhtxGRw/BKcH7s="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.WebApplication/Carbon.WebApplication.InternalServerErrorObjectResult.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.WebApplication/Carbon.WebApplication.InternalServerErrorObjectResult.html",
+          "hash": "FwsZoDShW9wN64AMr/OrSMGry/nCTwhaNebW9j54iok="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.WebApplication/Carbon.WebApplication.JwtSettings.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.WebApplication/Carbon.WebApplication.JwtSettings.html",
+          "hash": "hx85RFv3DfnqL3J+vHuOvFaku2vT4ZEDqHtWl3HP8dw="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.WebApplication/Carbon.WebApplication.Middlewares.BearerTokenClaimMapper.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.WebApplication/Carbon.WebApplication.Middlewares.BearerTokenClaimMapper.html",
+          "hash": "JUepWgpzU8MdUvGpsSxBlxmY2K63Y/VLbUyTc2cPPKQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.WebApplication/Carbon.WebApplication.Middlewares.BearerTokenMiddleware.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.WebApplication/Carbon.WebApplication.Middlewares.BearerTokenMiddleware.html",
+          "hash": "Dzdhef60NZiPxl4bHNqeuSxY616ceKLmNTj5aA0TgaM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.WebApplication/Carbon.WebApplication.Middlewares.BearerTokenMiddlewareExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.WebApplication/Carbon.WebApplication.Middlewares.BearerTokenMiddlewareExtensions.html",
+          "hash": "pK3Xg8VhRIFZ7MJAHYlPQBL1tc2zeln8DoiaUKpWrLk="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.WebApplication/Carbon.WebApplication.Middlewares.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.WebApplication/Carbon.WebApplication.Middlewares.html",
+          "hash": "Tb+xs6KRNDH/jAeYWUCN44DUhYL+bzQ3dxJS5VwvgqU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.WebApplication/Carbon.WebApplication.P360ControllerExtensionMethod.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.WebApplication/Carbon.WebApplication.P360ControllerExtensionMethod.html",
+          "hash": "5PligCZXGT5momtQZJAZnlVdIBXZOMm2qVIIJS+KxU8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.WebApplication/Carbon.WebApplication.RoleFilteredBaseDto-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.WebApplication/Carbon.WebApplication.RoleFilteredBaseDto-1.html",
+          "hash": "Sd+YsPemFAtH/1A6+p2XZv6LLLZJVgDGXMIHrQFbESU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.WebApplication/Carbon.WebApplication.ServiceCollectionExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.WebApplication/Carbon.WebApplication.ServiceCollectionExtensions.html",
+          "hash": "hpe5z+ClZC4hl0tkT9m8baVSTKx7tkc1jj74GJ4p8t0="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.WebApplication/Carbon.WebApplication.SwaggerSettings.OpenApiInformation.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.WebApplication/Carbon.WebApplication.SwaggerSettings.OpenApiInformation.html",
+          "hash": "LC7hcW3F6aiPmTYfO0kdjcnyxJFVtcVlJye84GOjGS4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.WebApplication/Carbon.WebApplication.SwaggerSettings.OpenApiScope.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.WebApplication/Carbon.WebApplication.SwaggerSettings.OpenApiScope.html",
+          "hash": "0e5uxavwfu1ZJSCYdND2U5OCzlX6Y7X0AOZVQcQJ5fU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.WebApplication/Carbon.WebApplication.SwaggerSettings.OpenApiSecurity.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.WebApplication/Carbon.WebApplication.SwaggerSettings.OpenApiSecurity.html",
+          "hash": "ILv1Mn5t68PW/WBtlkjnvdBnIBtaSENZsOQXAeyO8ww="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.WebApplication/Carbon.WebApplication.SwaggerSettings.SwaggerDocument.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.WebApplication/Carbon.WebApplication.SwaggerSettings.SwaggerDocument.html",
+          "hash": "actphFlqA6Or2ZY9py0V9O5rfYeYzc/YWzOaS87dwIo="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.WebApplication/Carbon.WebApplication.SwaggerSettings.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.WebApplication/Carbon.WebApplication.SwaggerSettings.html",
+          "hash": "3EC0Zo+KUjhkaAdV75ucCfrzxnzy/bCn1f5PTEZFXNo="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.WebApplication/Carbon.WebApplication.TenantManagementHandler.Abstracts.TenantManagedServiceBase.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.WebApplication/Carbon.WebApplication.TenantManagementHandler.Abstracts.TenantManagedServiceBase.html",
+          "hash": "A9XD9oH8JqwXPst9TrsRAVEfcCuhBEBlZ9SY9tYnosY="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.WebApplication/Carbon.WebApplication.TenantManagementHandler.Abstracts.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.WebApplication/Carbon.WebApplication.TenantManagementHandler.Abstracts.html",
+          "hash": "E9ihaMxRqWQgJnyLu9FRh8rbG0o+ugmxZuugyr5FQ6o="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.WebApplication/Carbon.WebApplication.TenantManagementHandler.ControllerAttributes.OwnershipFilter.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.WebApplication/Carbon.WebApplication.TenantManagementHandler.ControllerAttributes.OwnershipFilter.html",
+          "hash": "bZ0aH6D+1waE4JBwM3ovHWEo6yz6F6PI3mkcwcuIr9g="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.WebApplication/Carbon.WebApplication.TenantManagementHandler.ControllerAttributes.OwnershipType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.WebApplication/Carbon.WebApplication.TenantManagementHandler.ControllerAttributes.OwnershipType.html",
+          "hash": "KPzvPD87w4Da8pKaBNmHMgKynSoJb1EN60VtBwS7AV4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.WebApplication/Carbon.WebApplication.TenantManagementHandler.ControllerAttributes.SolutionFilter.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.WebApplication/Carbon.WebApplication.TenantManagementHandler.ControllerAttributes.SolutionFilter.html",
+          "hash": "pJ7R7SPCA6hkBTr2o0g0+R6cxBaXCSpW+Y33PvAi0bo="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.WebApplication/Carbon.WebApplication.TenantManagementHandler.ControllerAttributes.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.WebApplication/Carbon.WebApplication.TenantManagementHandler.ControllerAttributes.html",
+          "hash": "dy0moT+bOx3r+BRvUXJpAY/z8hyj0LE26L+xCMuk/Zo="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.WebApplication/Carbon.WebApplication.TenantManagementHandler.Dtos.EntitySolutionRelationDto.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.WebApplication/Carbon.WebApplication.TenantManagementHandler.Dtos.EntitySolutionRelationDto.html",
+          "hash": "UqKPqtmTHmj/fQZOefufvwnIz/i0gB1h4SIrbm7Hovs="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.WebApplication/Carbon.WebApplication.TenantManagementHandler.Dtos.ErrorHandling.ApplicationErrorRegisterRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.WebApplication/Carbon.WebApplication.TenantManagementHandler.Dtos.ErrorHandling.ApplicationErrorRegisterRequest.html",
+          "hash": "8aM7o02WE/WRa/9KCeAXPF7WJZj/EfAf9ATEhkXImqo="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.WebApplication/Carbon.WebApplication.TenantManagementHandler.Dtos.ErrorHandling.ApplicationErrorRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.WebApplication/Carbon.WebApplication.TenantManagementHandler.Dtos.ErrorHandling.ApplicationErrorRequest.html",
+          "hash": "Wcqu8+JgEHQSfJKfGgOxgDqWsI5o8iUSE3nebdgOs5s="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.WebApplication/Carbon.WebApplication.TenantManagementHandler.Dtos.ErrorHandling.ApplicationErrorTranslation.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.WebApplication/Carbon.WebApplication.TenantManagementHandler.Dtos.ErrorHandling.ApplicationErrorTranslation.html",
+          "hash": "Qw0N+6TNBpIv7ffMf+IprXLC5W4w6IHU/m3Q+YZRSXI="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.WebApplication/Carbon.WebApplication.TenantManagementHandler.Dtos.ErrorHandling.ErrorHandlingConfig.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.WebApplication/Carbon.WebApplication.TenantManagementHandler.Dtos.ErrorHandling.ErrorHandlingConfig.html",
+          "hash": "6cup2tnQYHIu/riLJs1lriQShEhoC6WS756DpbCPsos="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.WebApplication/Carbon.WebApplication.TenantManagementHandler.Dtos.ErrorHandling.ErrorResponse.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.WebApplication/Carbon.WebApplication.TenantManagementHandler.Dtos.ErrorHandling.ErrorResponse.html",
+          "hash": "VEq5nwHufvfdL6rnigHZoLBORJYuD69aqAxFFk5P2YI="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.WebApplication/Carbon.WebApplication.TenantManagementHandler.Dtos.ErrorHandling.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.WebApplication/Carbon.WebApplication.TenantManagementHandler.Dtos.ErrorHandling.html",
+          "hash": "SqEOzUog7d3P+DZGPm36tVKoJMMQQNIQ+cVcB/jKCa8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.WebApplication/Carbon.WebApplication.TenantManagementHandler.Dtos.PermissionDetailedFilterDto.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.WebApplication/Carbon.WebApplication.TenantManagementHandler.Dtos.PermissionDetailedFilterDto.html",
+          "hash": "/CatMrpiv9J5T27Ksmvdntg8fF9qzCd0s6y0ofQ27Co="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.WebApplication/Carbon.WebApplication.TenantManagementHandler.Dtos.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.WebApplication/Carbon.WebApplication.TenantManagementHandler.Dtos.html",
+          "hash": "oB0ejS++ao5nETtfLG6who2tW94w8JPeN9itXphmvYU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.WebApplication/Carbon.WebApplication.TenantManagementHandler.Extensions.ControllerExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.WebApplication/Carbon.WebApplication.TenantManagementHandler.Extensions.ControllerExtensions.html",
+          "hash": "I3SeJlWzuQ23l4ApIzyvQs77RiKgKsNsJG6fx+nQOTg="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.WebApplication/Carbon.WebApplication.TenantManagementHandler.Extensions.HeaderParameterExtension.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.WebApplication/Carbon.WebApplication.TenantManagementHandler.Extensions.HeaderParameterExtension.html",
+          "hash": "zyDyA4q8NxBJVMBkzr8HDvs5GASYlBWC/+21cBx8tms="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.WebApplication/Carbon.WebApplication.TenantManagementHandler.Extensions.HttpRequestExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.WebApplication/Carbon.WebApplication.TenantManagementHandler.Extensions.HttpRequestExtensions.html",
+          "hash": "6XemtplOUtPnj+sRLH3NBBcWwehfEml2bcHBmFKjIMo="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.WebApplication/Carbon.WebApplication.TenantManagementHandler.Extensions.RoleExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.WebApplication/Carbon.WebApplication.TenantManagementHandler.Extensions.RoleExtensions.html",
+          "hash": "+IfR0bNkH7gue1Voq3Sd83dlZD3bEoIkGo26nnjcnWM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.WebApplication/Carbon.WebApplication.TenantManagementHandler.Extensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.WebApplication/Carbon.WebApplication.TenantManagementHandler.Extensions.html",
+          "hash": "vXJCzvunxpaMO9PYlB4uLeFRfMrGlnOTGDkiJVEfnAY="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.WebApplication/Carbon.WebApplication.TenantManagementHandler.Interfaces.IOwnershipFilteredController.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.WebApplication/Carbon.WebApplication.TenantManagementHandler.Interfaces.IOwnershipFilteredController.html",
+          "hash": "vPYbQVh4zNO5qD0ScPT8YfWQkGAMJq9FeAbj3GBH2bY="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.WebApplication/Carbon.WebApplication.TenantManagementHandler.Interfaces.IOwnershipFilteredDto.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.WebApplication/Carbon.WebApplication.TenantManagementHandler.Interfaces.IOwnershipFilteredDto.html",
+          "hash": "dF49N7HwbS6CuVwzLpMDKtP/gIfgkowNWUxt8RqTk7E="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.WebApplication/Carbon.WebApplication.TenantManagementHandler.Interfaces.IOwnershipFilteredService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.WebApplication/Carbon.WebApplication.TenantManagementHandler.Interfaces.IOwnershipFilteredService.html",
+          "hash": "Vu0QO0kjkaL2BLChSFm+s3HI6iV12f+V01ppp1IZVQs="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.WebApplication/Carbon.WebApplication.TenantManagementHandler.Interfaces.IRoleFilteredDto.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.WebApplication/Carbon.WebApplication.TenantManagementHandler.Interfaces.IRoleFilteredDto.html",
+          "hash": "z2mBoUbMR4bl0zjhTItECF/0KGigXH5vyoFPj+SLuLo="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.WebApplication/Carbon.WebApplication.TenantManagementHandler.Interfaces.ISolutionFilteredController.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.WebApplication/Carbon.WebApplication.TenantManagementHandler.Interfaces.ISolutionFilteredController.html",
+          "hash": "NLAfPwWPb6vpExxXIwirm4BWGD920NdsH1/aLjNvirE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.WebApplication/Carbon.WebApplication.TenantManagementHandler.Interfaces.ISolutionFilteredDto.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.WebApplication/Carbon.WebApplication.TenantManagementHandler.Interfaces.ISolutionFilteredDto.html",
+          "hash": "+iagdmecl0y3TLPB7/W2q0AS0ZK0kNsAugkxjb8c9UY="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.WebApplication/Carbon.WebApplication.TenantManagementHandler.Interfaces.ISolutionFilteredService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.WebApplication/Carbon.WebApplication.TenantManagementHandler.Interfaces.ISolutionFilteredService.html",
+          "hash": "eAYN4I/Y8LPURKC3YW9E33steEyBPyb74I+dL3eZiP4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.WebApplication/Carbon.WebApplication.TenantManagementHandler.Interfaces.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.WebApplication/Carbon.WebApplication.TenantManagementHandler.Interfaces.html",
+          "hash": "E8RobOuiZgALL/32m9wwmWv/ZkkwQnRpGIIucbFR67o="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.WebApplication/Carbon.WebApplication.TenantManagementHandler.Services.ExternalService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.WebApplication/Carbon.WebApplication.TenantManagementHandler.Services.ExternalService.html",
+          "hash": "+nsh3lYJQMOXwEpH5MyglZSlwMbrAYfo+LffU8BE+ts="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.WebApplication/Carbon.WebApplication.TenantManagementHandler.Services.IExternalService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.WebApplication/Carbon.WebApplication.TenantManagementHandler.Services.IExternalService.html",
+          "hash": "TPy/d+nlKHMYPrf8eEv/WDBLyQcW/zzOrL0ej7M0dFw="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.WebApplication/Carbon.WebApplication.TenantManagementHandler.Services.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.WebApplication/Carbon.WebApplication.TenantManagementHandler.Services.html",
+          "hash": "GrFjRU++RTrD8ZPda60+hye0eO5BVrUQ55ywLL0XaBQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.WebApplication/Carbon.WebApplication.TokenValidationSettings.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.WebApplication/Carbon.WebApplication.TokenValidationSettings.html",
+          "hash": "f1b7fsJGPDlhXqwbp+QPoQHba9OOK4LRwVbWkCT8fAg="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.WebApplication/Carbon.WebApplication.ValidateModelFilter.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.WebApplication/Carbon.WebApplication.ValidateModelFilter.html",
+          "hash": "SieC27yAhlCK/RfhfSNXT7Al8wYy35f5LVvbhXl7vSY="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.WebApplication/Carbon.WebApplication.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.WebApplication/Carbon.WebApplication.html",
+          "hash": "SfVS5Qgch6GiVUbuxB/exx/lh5tWMyl1wWsqAmp4V0Q="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.Zipkin4Net/Carbon.HttpClients.IServiceCollectionExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.Zipkin4Net/Carbon.HttpClients.IServiceCollectionExtensions.html",
+          "hash": "EGiQmEHB7Qa3oa+JfucMVAGQL0B4flXHQUW42pxpgvw="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.Zipkin4Net/Carbon.HttpClients.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.Zipkin4Net/Carbon.HttpClients.html",
+          "hash": "0T7NjLg/JqrIzK6wvq0vs5JjHFWQJjHIxa0ub6d/B3U="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.Zipkin4Net/Carbon.Zipkin4Net.IApplicationBuilderExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.Zipkin4Net/Carbon.Zipkin4Net.IApplicationBuilderExtensions.html",
+          "hash": "FzGcxaTBxRAfpuoTqb4WCucjBsK8JwBgu4kMEEo6c0w="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.Zipkin4Net/Carbon.Zipkin4Net.ZipkinHttpClientOptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.Zipkin4Net/Carbon.Zipkin4Net.ZipkinHttpClientOptions.html",
+          "hash": "zq0+Jgc4NcF6dIySm3tquAKSFabdts7u+IUEsiy1zWo="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.Zipkin4Net/Carbon.Zipkin4Net.ZipkinHttpClientOptionsBuilder.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.Zipkin4Net/Carbon.Zipkin4Net.ZipkinHttpClientOptionsBuilder.html",
+          "hash": "L5UyYTWV0tk0/Z7twJIelA3LWPAzOIMqu5/2XtFILus="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_docs/Carbon.Zipkin4Net/Carbon.Zipkin4Net.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/Carbon.Zipkin4Net/Carbon.Zipkin4Net.html",
+          "hash": "25X/afZZxdbtSE32pgBMFkdqwgJTuGGbNWboU59QnAw="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api_docs/README.md",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/README.html",
+          "hash": "Coutfi/hOX8IXfmZNBHflkapm/t3yLXTwuusnE9f0oA="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "api_docs/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_docs/toc.html",
+          "hash": "fTolt3gv5eeZRNFAEckz4RFtRRnnMRtxs7d3yL18K9c="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/creating_webapi.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/creating_webapi.html",
+          "hash": "6dKaAWbV1k15R4HvlATSEAmv84X8ERSJFX316niOabY="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/getting_started.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/getting_started.html",
+          "hash": "ackTuBmp6HnGpKZw4msiZ4ntOebXVUxyhZl5bgXT63k="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Toc",
+      "source_relative_path": "articles/toc.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/toc.html",
+          "hash": "3gbMDFAVoyRZVoYPiIs6QyHjtAHG1Q7iKaUN0MpFx1I="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/logo.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/logo.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "index.md",
+      "output": {
+        ".html": {
+          "relative_path": "index.html",
+          "hash": "rcSukb5f0dBnketKq5HxSZjyq5Aurb1c3xLBmxiiC3I="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Toc",
+      "source_relative_path": "toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "toc.html",
+          "hash": "8k12Oq6kv3PHV9sE8/SVRs5C/FLYWycj45dFh5kN4qM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    }
+  ],
+  "incremental_info": [
+    {
+      "status": {
+        "can_incremental": false,
+        "details": "Cannot build incrementally because last build info is missing.",
+        "incrementalPhase": "build",
+        "total_file_count": 0,
+        "skipped_file_count": 0,
+        "full_build_reason_code": "NoAvailableBuildCache"
+      },
+      "processors": {
+        "ConceptualDocumentProcessor": {
+          "can_incremental": false,
+          "incrementalPhase": "build",
+          "total_file_count": 27,
+          "skipped_file_count": 0
+        },
+        "ManagedReferenceDocumentProcessor": {
+          "can_incremental": false,
+          "incrementalPhase": "build",
+          "total_file_count": 373,
+          "skipped_file_count": 0
+        },
+        "ResourceDocumentProcessor": {
+          "can_incremental": false,
+          "details": "Processor ResourceDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
+          "incrementalPhase": "build",
+          "total_file_count": 0,
+          "skipped_file_count": 0
+        },
+        "TocDocumentProcessor": {
+          "can_incremental": false,
+          "details": "Processor TocDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
+          "incrementalPhase": "build",
+          "total_file_count": 0,
+          "skipped_file_count": 0
+        }
+      }
+    },
+    {
+      "status": {
+        "can_incremental": false,
+        "details": "Cannot support incremental post processing, the reason is: should not trace intermediate info.",
+        "incrementalPhase": "postProcessing",
+        "total_file_count": 0,
+        "skipped_file_count": 0
+      },
+      "processors": {}
+    }
+  ],
+  "version_info": {},
+  "groups": [
+    {
+      "xrefmap": "xrefmap.yml"
+    }
+  ]
+}

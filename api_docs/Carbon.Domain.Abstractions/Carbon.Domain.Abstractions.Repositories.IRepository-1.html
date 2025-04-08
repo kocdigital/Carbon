@@ -1,0 +1,817 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Interface IRepository&lt;T&gt;
+   | Carbon Framework </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Interface IRepository&lt;T&gt;
+   | Carbon Framework ">
+    <meta name="generator" content="docfx 2.59.4.0">
+    
+    <link rel="shortcut icon" href="../../images/logo.png">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
+    
+    <meta property="docfx:rel" content="../../">
+    
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../images/logo.png" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Carbon.Domain.Abstractions.Repositories.IRepository`1">
+  
+  
+  <h1 id="Carbon_Domain_Abstractions_Repositories_IRepository_1" data-uid="Carbon.Domain.Abstractions.Repositories.IRepository`1" class="text-break">Interface IRepository&lt;T&gt;
+  </h1>
+  <div class="markdown level0 summary"><p>Defines a repository for an entity type.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Carbon.Domain.Abstractions.Repositories.html">Carbon.Domain.Abstractions.Repositories</a></h6>
+  <h6><strong>Assembly</strong>: Carbon.Domain.Abstractions.dll</h6>
+  <h5 id="Carbon_Domain_Abstractions_Repositories_IRepository_1_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public interface IRepository&lt;T&gt;
+    where T : class, IEntity</code></pre>
+  </div>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td><p>The entity type to operated worked on.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  <a id="Carbon_Domain_Abstractions_Repositories_IRepository_1_CreateAsync_" data-uid="Carbon.Domain.Abstractions.Repositories.IRepository`1.CreateAsync*"></a>
+  <h4 id="Carbon_Domain_Abstractions_Repositories_IRepository_1_CreateAsync__0_System_Threading_CancellationToken_" data-uid="Carbon.Domain.Abstractions.Repositories.IRepository`1.CreateAsync(`0,System.Threading.CancellationToken)">CreateAsync(T, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Creates and saves the given <code data-dev-comment-type="typeparamref" class="typeparamref">TEntity</code> object in the database.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;T&gt; CreateAsync(T entity, CancellationToken cancellationToken)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td><span class="parametername">entity</span></td>
+        <td><p>Object to be saved to the database</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;T&gt;</td>
+        <td><p>A task that returns the <code data-dev-comment-type="typeparamref" class="typeparamref">TEntity</code> object saved to database.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Carbon_Domain_Abstractions_Repositories_IRepository_1_CreateRangeAsync_" data-uid="Carbon.Domain.Abstractions.Repositories.IRepository`1.CreateRangeAsync*"></a>
+  <h4 id="Carbon_Domain_Abstractions_Repositories_IRepository_1_CreateRangeAsync_System_Collections_Generic_IEnumerable__0__System_Threading_CancellationToken_" data-uid="Carbon.Domain.Abstractions.Repositories.IRepository`1.CreateRangeAsync(System.Collections.Generic.IEnumerable{`0},System.Threading.CancellationToken)">CreateRangeAsync(IEnumerable&lt;T&gt;, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Creates and saves the <code data-dev-comment-type="typeparamref" class="typeparamref">TEntity</code> objects in the given <pre><code>IEnumerable</code></pre> to the database.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;List&lt;T&gt;&gt; CreateRangeAsync(IEnumerable&lt;T&gt; entities, CancellationToken cancellationToken)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;T&gt;</td>
+        <td><span class="parametername">entities</span></td>
+        <td><p>The collection that contains the entities to be created.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.Collections.Generic.List</span>&lt;T&gt;&gt;</td>
+        <td><p>A task which results in a list that contains the <code data-dev-comment-type="typeparamref" class="typeparamref">TEntity</code> objects created in the database.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Carbon_Domain_Abstractions_Repositories_IRepository_1_CreateRangeAsync_System_Collections_Generic_IEnumerable__0__System_Threading_CancellationToken__seealso">See Also</h5>
+  <div class="seealso">
+      <div><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;T&gt;</div>
+  </div>
+  <a id="Carbon_Domain_Abstractions_Repositories_IRepository_1_DeleteAsync_" data-uid="Carbon.Domain.Abstractions.Repositories.IRepository`1.DeleteAsync*"></a>
+  <h4 id="Carbon_Domain_Abstractions_Repositories_IRepository_1_DeleteAsync_System_Guid_System_Threading_CancellationToken_" data-uid="Carbon.Domain.Abstractions.Repositories.IRepository`1.DeleteAsync(System.Guid,System.Threading.CancellationToken)">DeleteAsync(Guid, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Deletes and returns the <code data-dev-comment-type="typeparamref" class="typeparamref">TEntity</code> specified by <code data-dev-comment-type="paramref" class="paramref">id</code> from the database context.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;T&gt; DeleteAsync(Guid id, CancellationToken cancellationToken)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Guid</span></td>
+        <td><span class="parametername">id</span></td>
+        <td><p>Id of the specified <code data-dev-comment-type="typeparamref" class="typeparamref">TEntity</code> object.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;T&gt;</td>
+        <td><p>A task whose result is the deleted <code data-dev-comment-type="typeparamref" class="typeparamref">TEntity</code> object. If no matching entry is found, returns null instead.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Carbon_Domain_Abstractions_Repositories_IRepository_1_DeleteRangeAsync_" data-uid="Carbon.Domain.Abstractions.Repositories.IRepository`1.DeleteRangeAsync*"></a>
+  <h4 id="Carbon_Domain_Abstractions_Repositories_IRepository_1_DeleteRangeAsync_System_Collections_Generic_IEnumerable__0__System_Threading_CancellationToken_" data-uid="Carbon.Domain.Abstractions.Repositories.IRepository`1.DeleteRangeAsync(System.Collections.Generic.IEnumerable{`0},System.Threading.CancellationToken)">DeleteRangeAsync(IEnumerable&lt;T&gt;, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Removes the <code data-dev-comment-type="typeparamref" class="typeparamref">TEntity</code> objects in the given <pre><code>IEnumerable</code></pre> from the database.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;List&lt;T&gt;&gt; DeleteRangeAsync(IEnumerable&lt;T&gt; entities, CancellationToken cancellationToken)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;T&gt;</td>
+        <td><span class="parametername">entities</span></td>
+        <td><p>The collection that contains the entities to be deleted.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.Collections.Generic.List</span>&lt;T&gt;&gt;</td>
+        <td><p>A task which results in a list that contains the <code data-dev-comment-type="typeparamref" class="typeparamref">TEntity</code> objects deleted from the database.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Carbon_Domain_Abstractions_Repositories_IRepository_1_DeleteRangeAsync_System_Collections_Generic_IEnumerable__0__System_Threading_CancellationToken__seealso">See Also</h5>
+  <div class="seealso">
+      <div><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;T&gt;</div>
+  </div>
+  <a id="Carbon_Domain_Abstractions_Repositories_IRepository_1_GetAllAsync_" data-uid="Carbon.Domain.Abstractions.Repositories.IRepository`1.GetAllAsync*"></a>
+  <h4 id="Carbon_Domain_Abstractions_Repositories_IRepository_1_GetAllAsync_System_Threading_CancellationToken_" data-uid="Carbon.Domain.Abstractions.Repositories.IRepository`1.GetAllAsync(System.Threading.CancellationToken)">GetAllAsync(CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Retrieves and returns all <code data-dev-comment-type="typeparamref" class="typeparamref">TEntity</code> objects related to the given <code data-dev-comment-type="paramref" class="paramref">tenantId</code> from the database.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;List&lt;T&gt;&gt; GetAllAsync(CancellationToken cancellationToken)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.Collections.Generic.List</span>&lt;T&gt;&gt;</td>
+        <td><p>A task which results in a list that contains all <code data-dev-comment-type="typeparamref" class="typeparamref">TEntity</code> objects in the database context.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Carbon_Domain_Abstractions_Repositories_IRepository_1_GetAllAsync_" data-uid="Carbon.Domain.Abstractions.Repositories.IRepository`1.GetAllAsync*"></a>
+  <h4 id="Carbon_Domain_Abstractions_Repositories_IRepository_1_GetAllAsync__1_System_Linq_Expressions_Expression_System_Func__0___0___System_Threading_CancellationToken_" data-uid="Carbon.Domain.Abstractions.Repositories.IRepository`1.GetAllAsync``1(System.Linq.Expressions.Expression{System.Func{`0,``0}},System.Threading.CancellationToken)">GetAllAsync&lt;TResult&gt;(Expression&lt;Func&lt;T, TResult&gt;&gt;, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Retrieves and returns all <code data-dev-comment-type="typeparamref" class="typeparamref">TEntity</code> objects related to the given <code data-dev-comment-type="paramref" class="paramref">tenantId</code> from the database.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;List&lt;TResult&gt;&gt; GetAllAsync&lt;TResult&gt;(Expression&lt;Func&lt;T, TResult&gt;&gt; selector, CancellationToken cancellationToken)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Linq.Expressions.Expression</span>&lt;<span class="xref">System.Func</span>&lt;T, TResult&gt;&gt;</td>
+        <td><span class="parametername">selector</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.Collections.Generic.List</span>&lt;TResult&gt;&gt;</td>
+        <td><p>A task which results in a list that contains all <code data-dev-comment-type="typeparamref" class="typeparamref">TEntity</code> objects in the database context.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">TResult</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Carbon_Domain_Abstractions_Repositories_IRepository_1_GetAsync_" data-uid="Carbon.Domain.Abstractions.Repositories.IRepository`1.GetAsync*"></a>
+  <h4 id="Carbon_Domain_Abstractions_Repositories_IRepository_1_GetAsync_System_Linq_Expressions_Expression_System_Func__0_System_Boolean___System_Threading_CancellationToken_" data-uid="Carbon.Domain.Abstractions.Repositories.IRepository`1.GetAsync(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Threading.CancellationToken)">GetAsync(Expression&lt;Func&lt;T, Boolean&gt;&gt;, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Retrieves and returns the first <code data-dev-comment-type="typeparamref" class="typeparamref">TEntity</code> element that satisfies the given <code data-dev-comment-type="paramref" class="paramref">predicate</code>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;T&gt; GetAsync(Expression&lt;Func&lt;T, bool&gt;&gt; predicate, CancellationToken cancellationToken)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Linq.Expressions.Expression</span>&lt;<span class="xref">System.Func</span>&lt;T, <span class="xref">System.Boolean</span>&gt;&gt;</td>
+        <td><span class="parametername">predicate</span></td>
+        <td><p>An expression that returns binary results for <code data-dev-comment-type="typeparamref" class="typeparamref">TEntity</code> objects.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;T&gt;</td>
+        <td><p>The first <code data-dev-comment-type="typeparamref" class="typeparamref">TEntity</code> element that is related to <code data-dev-comment-type="paramref" class="paramref">tenantId</code> and also satisfies the given <code data-dev-comment-type="paramref" class="paramref">predicate</code> in the database.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Carbon_Domain_Abstractions_Repositories_IRepository_1_GetByIdAsync_" data-uid="Carbon.Domain.Abstractions.Repositories.IRepository`1.GetByIdAsync*"></a>
+  <h4 id="Carbon_Domain_Abstractions_Repositories_IRepository_1_GetByIdAsync_System_Guid_System_Threading_CancellationToken_" data-uid="Carbon.Domain.Abstractions.Repositories.IRepository`1.GetByIdAsync(System.Guid,System.Threading.CancellationToken)">GetByIdAsync(Guid, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Retrieves and returns the <code data-dev-comment-type="typeparamref" class="typeparamref">TEntity</code> specified by <code data-dev-comment-type="paramref" class="paramref">id</code> from the database context.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;T&gt; GetByIdAsync(Guid id, CancellationToken cancellationToken)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Guid</span></td>
+        <td><span class="parametername">id</span></td>
+        <td><p>Id of the requested <code data-dev-comment-type="typeparamref" class="typeparamref">TEntity</code> object.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;T&gt;</td>
+        <td><p>A task whose result is the requested <code data-dev-comment-type="typeparamref" class="typeparamref">TEntity</code> object.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Carbon_Domain_Abstractions_Repositories_IRepository_1_GetByIdAsync_" data-uid="Carbon.Domain.Abstractions.Repositories.IRepository`1.GetByIdAsync*"></a>
+  <h4 id="Carbon_Domain_Abstractions_Repositories_IRepository_1_GetByIdAsync__1_System_Guid_System_Linq_Expressions_Expression_System_Func__0___0___System_Threading_CancellationToken_" data-uid="Carbon.Domain.Abstractions.Repositories.IRepository`1.GetByIdAsync``1(System.Guid,System.Linq.Expressions.Expression{System.Func{`0,``0}},System.Threading.CancellationToken)">GetByIdAsync&lt;TResult&gt;(Guid, Expression&lt;Func&lt;T, TResult&gt;&gt;, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Retrieves and returns the <code data-dev-comment-type="typeparamref" class="typeparamref">TEntity</code> specified by <code data-dev-comment-type="paramref" class="paramref">id</code> from the database context.
+If <code data-dev-comment-type="paramref" class="paramref">selector</code> is not null, returns the entity projected by the selector.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;TResult&gt; GetByIdAsync&lt;TResult&gt;(Guid id, Expression&lt;Func&lt;T, TResult&gt;&gt; selector, CancellationToken cancellationToken)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Guid</span></td>
+        <td><span class="parametername">id</span></td>
+        <td><p>Id of the requested <code data-dev-comment-type="typeparamref" class="typeparamref">TEntity</code> object.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Linq.Expressions.Expression</span>&lt;<span class="xref">System.Func</span>&lt;T, TResult&gt;&gt;</td>
+        <td><span class="parametername">selector</span></td>
+        <td><p>Optional selector to project the entity properties.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>Token to monitor for cancellation requests.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;TResult&gt;</td>
+        <td><p>A task whose result is the requested <code data-dev-comment-type="typeparamref" class="typeparamref">TEntity</code> object or the projection if <code data-dev-comment-type="paramref" class="paramref">selector</code> is not null.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">TResult</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Carbon_Domain_Abstractions_Repositories_IRepository_1_Query_" data-uid="Carbon.Domain.Abstractions.Repositories.IRepository`1.Query*"></a>
+  <h4 id="Carbon_Domain_Abstractions_Repositories_IRepository_1_Query" data-uid="Carbon.Domain.Abstractions.Repositories.IRepository`1.Query">Query()</h4>
+  <div class="markdown level1 summary"><p>Returns a query on the <code data-dev-comment-type="typeparamref" class="typeparamref">TEntity</code> items in the database.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IQueryable&lt;T&gt; Query()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Linq.IQueryable</span>&lt;T&gt;</td>
+        <td><p>A query on the entities related to the given tenant in the database.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Carbon_Domain_Abstractions_Repositories_IRepository_1_Query_seealso">See Also</h5>
+  <div class="seealso">
+      <div><span class="xref">System.Linq.IQueryable</span></div>
+  </div>
+  <a id="Carbon_Domain_Abstractions_Repositories_IRepository_1_QueryAsNoTracking_" data-uid="Carbon.Domain.Abstractions.Repositories.IRepository`1.QueryAsNoTracking*"></a>
+  <h4 id="Carbon_Domain_Abstractions_Repositories_IRepository_1_QueryAsNoTracking" data-uid="Carbon.Domain.Abstractions.Repositories.IRepository`1.QueryAsNoTracking">QueryAsNoTracking()</h4>
+  <div class="markdown level1 summary"><p>Returns a query that does not track changes on the <code data-dev-comment-type="typeparamref" class="typeparamref">TEntity</code> items in the database.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IQueryable&lt;T&gt; QueryAsNoTracking()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Linq.IQueryable</span>&lt;T&gt;</td>
+        <td><p>A no-tracking query on the entities related to the given tenant in the database.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Carbon_Domain_Abstractions_Repositories_IRepository_1_QueryAsNoTracking_seealso">See Also</h5>
+  <div class="seealso">
+      <div><span class="xref">System.Linq.IQueryable</span></div>
+  </div>
+  <a id="Carbon_Domain_Abstractions_Repositories_IRepository_1_SaveChangesAsync_" data-uid="Carbon.Domain.Abstractions.Repositories.IRepository`1.SaveChangesAsync*"></a>
+  <h4 id="Carbon_Domain_Abstractions_Repositories_IRepository_1_SaveChangesAsync_System_Threading_CancellationToken_" data-uid="Carbon.Domain.Abstractions.Repositories.IRepository`1.SaveChangesAsync(System.Threading.CancellationToken)">SaveChangesAsync(CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Saves changes made to the database.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;int&gt; SaveChangesAsync(CancellationToken cancellationToken)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.Int32</span>&gt;</td>
+        <td><p>A task that gives the number of state entries changed in the database as its result.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Carbon_Domain_Abstractions_Repositories_IRepository_1_UpdateAsync_" data-uid="Carbon.Domain.Abstractions.Repositories.IRepository`1.UpdateAsync*"></a>
+  <h4 id="Carbon_Domain_Abstractions_Repositories_IRepository_1_UpdateAsync__0_System_Threading_CancellationToken_" data-uid="Carbon.Domain.Abstractions.Repositories.IRepository`1.UpdateAsync(`0,System.Threading.CancellationToken)">UpdateAsync(T, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Updates and saves the given <code data-dev-comment-type="typeparamref" class="typeparamref">TEntity</code> object in the database.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;T&gt; UpdateAsync(T entity, CancellationToken cancellationToken)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td><span class="parametername">entity</span></td>
+        <td><p>Object to be updated to the database</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;T&gt;</td>
+        <td><p>A task that returns the <code data-dev-comment-type="typeparamref" class="typeparamref">TEntity</code> object updated in database.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Carbon_Domain_Abstractions_Repositories_IRepository_1_UpdateRangeAsync_" data-uid="Carbon.Domain.Abstractions.Repositories.IRepository`1.UpdateRangeAsync*"></a>
+  <h4 id="Carbon_Domain_Abstractions_Repositories_IRepository_1_UpdateRangeAsync_System_Collections_Generic_IEnumerable__0__System_Threading_CancellationToken_" data-uid="Carbon.Domain.Abstractions.Repositories.IRepository`1.UpdateRangeAsync(System.Collections.Generic.IEnumerable{`0},System.Threading.CancellationToken)">UpdateRangeAsync(IEnumerable&lt;T&gt;, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Updates and saves the <code data-dev-comment-type="typeparamref" class="typeparamref">TEntity</code> objects in the given <pre><code>IEnumerable</code></pre> to the database.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;List&lt;T&gt;&gt; UpdateRangeAsync(IEnumerable&lt;T&gt; entities, CancellationToken cancellationToken)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;T&gt;</td>
+        <td><span class="parametername">entities</span></td>
+        <td><p>The collection that contains the entities to be updated.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.Collections.Generic.List</span>&lt;T&gt;&gt;</td>
+        <td><p>A task which results in a list that contains the <code data-dev-comment-type="typeparamref" class="typeparamref">TEntity</code> objects updated in the database.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Carbon_Domain_Abstractions_Repositories_IRepository_1_UpdateRangeAsync_System_Collections_Generic_IEnumerable__0__System_Threading_CancellationToken__seealso">See Also</h5>
+  <div class="seealso">
+      <div><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;T&gt;</div>
+  </div>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            Carbon Framework
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>

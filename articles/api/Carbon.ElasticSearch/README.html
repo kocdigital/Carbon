@@ -1,0 +1,192 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Carbon.ElasticSearch  | Carbon Framework </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Carbon.ElasticSearch  | Carbon Framework ">
+    <meta name="generator" content="docfx 2.59.4.0">
+    
+    <link rel="shortcut icon" href="../../../images/logo.png">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="../../toc.html">
+    
+    <meta property="docfx:rel" content="../../../">
+    
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../images/logo.png" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="carbonelasticsearch-">Carbon.ElasticSearch <a href="https://www.nuget.org/packages/Carbon.ElasticSearch"><img alt="Nuget (with prereleases)" src="https://img.shields.io/nuget/vpre/Carbon.ElasticSearch"></a></h1>
+
+<blockquote>
+<p>Elasticsearch is a distributed, full-text search and analytics engine for all types of data, including textual, numerical, geospatial, structured, and unstructured.[**]</p>
+</blockquote>
+<p>[**] <a href="https://www.elastic.co/what-is/elasticsearch">https://www.elastic.co/what-is/elasticsearch</a></p>
+<p>This package wraps Nest library and provides handy ElasticSearch Based operations. It eases the configuration by decreasing the startup time. Provides CQRS over ElasticSearch.</p>
+<h2 id="add-carbonelasticsearch-support-to-your-project">Add Carbon.ElasticSearch Support to Your Project</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Related Package</th>
+<th style="text-align: center;">Required</th>
+<th style="text-align: center;">Auto-Included</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><a href="../Carbon.ElasticSearch.Abstractions/README.html">Carbon.ElasticSearch.Abstractions</a></td>
+<td style="text-align: center;">No</td>
+<td style="text-align: center;">No</td>
+</tr>
+</tbody>
+</table>
+<h3 id="basic-usage">Basic Usage</h3>
+<p>With Carbon.ElasticSearch package you can easly use ElasticSearch in your API.
+Integration steps are easy but if you want to see implementation example, you may want to look <a href="https://github.com/kocdigital/Carbon.Sample">Carbon Sample Apllication</a>.</p>
+<h4 id="1-create-your-index-mapping-optional">1. Create Your Index Mapping (Optional)</h4>
+<p><strong>Dynamic Mapping</strong>: One of the most important features of Elasticsearch is that it tries to get out of your way and let you start exploring your data as quickly as possible.
+To index a document, you don’t have to first create an index, define a mapping type, and define your fields — you can just index a document and the index, type, and fields will display automatically.</p>
+<p>But in some cases you may want to manage your index structure, in cases like those you should create mapping for your inxdex as shown below;</p>
+<pre><code class="lang-csharp">	public static void SetElasticConfiguration(this IElasticSettings options)
+	{
+		var mappings = new List&lt;ElasticIndexMapping&gt;();
+
+		mappings.Add(new ElasticIndexMapping(&quot;my_index&quot;, c =&gt;
+				c.Map&lt;MyEntity&gt;(m =&gt;
+						m.AutoMap().Properties(ps =&gt; ps.Keyword(s =&gt; s.Name(n =&gt; n.MyRelatedId)))
+						.Properties(ps =&gt; ps.Keyword(s =&gt; s.Name(n =&gt; n.CorrelationId)))
+				).Settings(x =&gt; x.Setting(&quot;mapping.total_fields.limit&quot;, &quot;100000&quot;))
+		));
+
+		options.SetIndexsAndAutoMappings(mappings.ToArray());
+	}
+</code></pre>
+<blockquote>
+<p>Note that we're adding a extension method to IElasticSettings interface!</p>
+</blockquote>
+<h4 id="2-create-your-repository">2. Create Your Repository</h4>
+<p>Carbon.ElasticSearch offers you base repository for ease of usage. You can create a reposity which derives from that base repo.</p>
+<pre><code class="lang-csharp">	public interface IMyEntityElasticRepository : IElasticRepository&lt;MyEntity&gt;
+	{
+	}
+
+	public class MyEntityElasticRepository : BaseElasticRepository&lt;MyEntity&gt;, IMyEntityElasticRepository
+	{
+		private readonly string _indexName;
+		public MyEntityElasticRepository(IElasticSettings elasticSettings) : base(elasticSettings)
+		{
+			_indexName = &quot;my_index&quot;;
+		}
+
+		public override string Index =&gt; _indexName;
+	}
+</code></pre>
+<h4 id="3-enable-elastic-search-within-startup">3. Enable Elastic Search Within Startup</h4>
+<p>To enable ElasticSearch, add code snipped below to your startup or if you're using .Net 6 minimal api; your program.cs file.</p>
+<pre><code class="lang-csharp">	services.AddElasticSearchPersister(Configuration, options =&gt;
+	{
+		options.SetElasticConfiguration();
+		options.Build();
+	});
+
+	services.AddScoped&lt;IMyEntityElasticRepository, MyEntityElasticRepository&gt;();
+
+</code></pre>
+<blockquote>
+<p>We're calling our extension method &quot;SetElasticConfiguration&quot; here for creating mappings.</p>
+</blockquote>
+<p>Thats it, you're ready to use ElasticSearch from your repository.</p>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            Carbon Framework
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>
