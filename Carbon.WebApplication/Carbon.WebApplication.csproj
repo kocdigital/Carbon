@@ -1,8 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
 		<TargetFrameworks>net8.0;net6.0</TargetFrameworks>
-		<Version>4.6.5</Version>
+		<Version>4.6.6</Version>
 		<Description>
+			4.6.6
+			- Refactored OwnershipFilter to use async/await for external service calls; improved Authorization header handling and permission checks.
 			4.6.5
 			- Microsoft.Extensions.Logging package added
 			4.6.4
