@@ -37,41 +37,50 @@ namespace Carbon.Common
         public static IQueryable<TEntity> OrderBy<TEntity>(this IQueryable<TEntity> query,
             ICollection<Orderable> ordination)
         {
-            if (ordination == null)
-            {
+            if (ordination is { Count: 0 })
                 return query;
-            }
+
+            var expression = query.Expression;
+            var parameter = Expression.Parameter(typeof(TEntity), "x");
 
             int count = 0;
-            var expression = query.Expression;
-
-            foreach (var item in ordination)
+            for (int i = 0; i < ordination.Count; i++)
             {
-                var parameter = Expression.Parameter(typeof(TEntity), "x");
-                Expression selector = parameter;
+                var item = ordination.ElementAt(i);
+                Expression propertyAccess = parameter;
 
-                foreach (var propName in item.Value.Split('.'))
+                foreach (var prop in item.Value.Split('.'))
                 {
-                    var propInfo = selector.Type.GetProperty(propName, BindingFlags.IgnoreCase | BindingFlags.Public | BindingFlags.Instance);
-                    if (propInfo == null) continue;
+                    var propInfo = propertyAccess.Type.GetProperty(prop, BindingFlags.IgnoreCase | BindingFlags.Public | BindingFlags.Instance);
+                    if (propInfo == null)
+                    {
+                        propertyAccess = null;
+                        break;
+                    }
 
-                    selector = Expression.Property(selector, propInfo);
+                    propertyAccess = Expression.Property(propertyAccess, propInfo);
                 }
 
-                if (selector == parameter) continue;
+                if (propertyAccess == null) continue;
 
-                var lambda = Expression.Lambda(selector, parameter);
+                var lambda = Expression.Lambda(propertyAccess, parameter);
 
-                var methodName = item.IsAscending ? "OrderBy" : "OrderByDescending";
-                var resultExpression = Expression.Call(
-                    typeof(Queryable), methodName,
-                    new Type[] { query.ElementType, selector.Type },
-                    expression, Expression.Quote(lambda));
+                string methodName;
 
-                expression = resultExpression;
+                if (i == 0)
+                    methodName = item.IsAscending ? "OrderBy" : "OrderByDescending";
+                else
+                    methodName = item.IsAscending ? "ThenBy" : "ThenByDescending";
+
+                expression = Expression.Call(
+                    typeof(Queryable),
+                    methodName,
+                    new Type[] { typeof(TEntity), propertyAccess.Type },
+                    expression,
+                    Expression.Quote(lambda)
+                );
                 count++;
             }
-
             return count > 0 ? query.Provider.CreateQuery<TEntity>(expression) : query;
         }
     }
