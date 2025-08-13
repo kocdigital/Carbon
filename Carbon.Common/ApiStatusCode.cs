@@ -21,6 +21,10 @@
         /// <remarks>Similar to <see cref="System.Net.HttpStatusCode.Unauthorized"/></remarks>
         UnAuthorized = 4001,
         /// <summary>
+        /// Indicates that the request is forbidden
+        /// </summary>
+        Forbidden = 4003,
+        /// <summary>
         /// Indicates that the requested resource is not exist
         /// </summary>
         /// <remarks>Similar to <see cref="System.Net.HttpStatusCode.NotFound"/></remarks>
