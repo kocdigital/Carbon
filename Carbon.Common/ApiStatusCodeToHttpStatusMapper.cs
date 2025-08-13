@@ -20,7 +20,8 @@ namespace Carbon.Common
             { ApiStatusCode.InternalServerError, HttpStatusCode.InternalServerError },
             { ApiStatusCode.NotFound, HttpStatusCode.NotFound },
             { ApiStatusCode.RequestTimeout, HttpStatusCode.RequestTimeout },
-            { ApiStatusCode.UnAuthorized, HttpStatusCode.Unauthorized }
+            { ApiStatusCode.UnAuthorized, HttpStatusCode.Unauthorized },
+            { ApiStatusCode.Forbidden, HttpStatusCode.Forbidden }
         };
 
         /// <summary>
@@ -60,8 +61,8 @@ namespace Carbon.Common
             { HttpStatusCode.NotFound, ApiStatusCode.NotFound},
             { HttpStatusCode.RequestTimeout, ApiStatusCode.RequestTimeout },
             { HttpStatusCode.Unauthorized, ApiStatusCode.UnAuthorized },
-            { HttpStatusCode.Forbidden, ApiStatusCode.UnAuthorized },
-            
+            { HttpStatusCode.Forbidden, ApiStatusCode.Forbidden },
+
         };
         /// <summary>
         /// Gets equivalent <see cref="HttpStatusCode"/> for given <see cref="ApiStatusCode"/>
