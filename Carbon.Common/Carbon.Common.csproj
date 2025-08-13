@@ -2,8 +2,10 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
-    <Version>1.6.0</Version>
+    <Version>1.6.2</Version>
 	  <Description>
+		  1.6.2
+		  - Added Forbidden Type into ApiStatusCode
 		  1.6.0
 		  - Added OrdinatedPageDto and IOrdinatedPageDto added
 		  1.5.1
