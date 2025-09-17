@@ -2,6 +2,7 @@
 using Carbon.WebApplication.TenantManagementHandler.Dtos;
 using Carbon.WebApplication.TenantManagementHandler.Dtos.ErrorHandling;
 using IdentityModel.Client;
+using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -22,17 +23,25 @@ namespace Carbon.WebApplication.TenantManagementHandler.Services
         private readonly IConfiguration _config;
         private readonly string _policyv2;
         private readonly string _errorHandling;
+        private readonly IMemoryCache _memoryCache;
 
-        public ExternalService(IConfiguration config, IHttpClientFactory httpClientFactory)
+        public ExternalService(IConfiguration config, IHttpClientFactory httpClientFactory, IMemoryCache memoryCache)
         {
             _config = config;
             _policyv2 = _config.GetValue<string>("PolicyServerUrlv2");
             _errorHandling = _config.GetValue<string>("ErrorHandling:Url");
             _clientFactory = httpClientFactory;
+            _memoryCache = memoryCache;
         }
 
 		public async Task<List<PermissionDetailedDto>> ExecuteInPolicyApi_GetRoles(PermissionDetailedFilterDto permissionDetailedFilterDto, string token)
-        {
+        { 
+            string cacheKey = $"UserRoles_{permissionDetailedFilterDto.UserId}_{JsonConvert.SerializeObject(permissionDetailedFilterDto).GetHashCode()}";
+             
+            if (_memoryCache.TryGetValue(cacheKey, out List<PermissionDetailedDto> cachedResult))
+            {
+                return cachedResult;
+            } 
 
             var clientForPolicy = _clientFactory.CreateClient();
             clientForPolicy.DefaultRequestHeaders.Accept.Clear();
@@ -56,6 +65,14 @@ namespace Carbon.WebApplication.TenantManagementHandler.Services
             {
                 JObject respJObj = JObject.Parse(respStr);
                 var respObj = respJObj["Data"].ToObject<List<PermissionDetailedDto>>();
+
+                var cacheEntryOptions = new MemoryCacheEntryOptions
+                {
+                    AbsoluteExpirationRelativeToNow = TimeSpan.FromSeconds(5),
+                    Priority = CacheItemPriority.Normal
+                };
+
+                _memoryCache.Set(cacheKey, respObj, cacheEntryOptions);
                 return respObj;
             }
             return null;
