@@ -2,8 +2,11 @@
 
   <PropertyGroup>
     <TargetFrameworks>net8.0;net6.0;netstandard2.1</TargetFrameworks>
-    <Version>3.6.1</Version>
+    <Version>3.6.2</Version>
     <Description>
+		- 3.6.2
+		* IncludeSolutionRelation query extension has been changed for performance.
+
 		- 3.6.1
 		* The input parameter type of the FindAsync method has been changed.
 
