@@ -92,14 +92,10 @@ namespace Carbon.Domain.EntityFrameworkCore
             where T : IHaveOwnership<U>, IEntity
             where U : class, IOwnerRelation, ISoftDelete
         {
-            //var daList = query.Join(ctx.Set<U>(), k => k.Id, k1 => k1.EntityId, (k, k1) => new RelationEntityPair<T, U> { Entity = k, Relation = k1 });
-            var daList = (from q in query
-                          join io in ctx.Set<U>().Where(k => !k.IsDeleted) on q.Id equals io.EntityId
-                              into ljoin
-                          from lj in ljoin.DefaultIfEmpty()
-                          select new RelationEntityPair<T, U> { Entity = q, Relation = lj });
+            return (from q in query
+                          from io in ctx.Set<U>().Where(k => k.EntityId == q.Id && !k.IsDeleted).DefaultIfEmpty()
+                          select new RelationEntityPair<T, U> { Entity = q, Relation = io });
 
-            return daList;
         }
 
         public static IEnumerable<RelationEntityPair<T, U>> IncludeSolutionRelation<T, U>(this IEnumerable<T> query,
@@ -107,13 +103,9 @@ namespace Carbon.Domain.EntityFrameworkCore
             where T : IHaveOwnership<U>, IEntity
             where U : class, IOwnerRelation, ISoftDelete
         {
-            var daList = (from q in query
-                          join io in ctx.Set<U>().Where(k => !k.IsDeleted) on q.Id equals io.EntityId
-                              into ljoin
-                          from lj in ljoin.DefaultIfEmpty()
-                          select new RelationEntityPair<T, U> { Entity = q, Relation = lj });
-
-            return daList;
+           return (from q in query
+                   from io in ctx.Set<U>().Where(k => k.EntityId == q.Id && !k.IsDeleted).DefaultIfEmpty()
+                   select new RelationEntityPair<T, U> { Entity = q, Relation = io });
         }
 
         public static async Task<T> EntityFirstOrDefaultIncludeOwnershipAsync<T, U>(this IQueryable<T> query,
