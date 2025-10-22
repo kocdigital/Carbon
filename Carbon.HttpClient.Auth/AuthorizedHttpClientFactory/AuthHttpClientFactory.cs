@@ -348,7 +348,11 @@ namespace Carbon.HttpClient.Auth.IdentityServerSupport
                 clone.Properties.Add(prop);
 
             foreach (KeyValuePair<string, IEnumerable<string>> header in req.Headers)
+            {
+                if (header.Key.Equals("Authorization", StringComparison.OrdinalIgnoreCase) || header.Key.Equals("token", StringComparison.OrdinalIgnoreCase))
+                    continue;
                 clone.Headers.TryAddWithoutValidation(header.Key, header.Value);
+            }
 
             return clone;
         }
