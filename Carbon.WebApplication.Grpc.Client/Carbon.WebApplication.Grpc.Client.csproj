@@ -2,23 +2,25 @@
 
   <PropertyGroup>
     <TargetFrameworks>net8.0;net6.0</TargetFrameworks>
-    <Version>2.6.2</Version>
+    <Version>2.6.3</Version>
     <Description>
-2.6.2
-- Dotnet 8.0 target framework added, older versions removed
-2.5.0
- - Dotnet 6.0 target framework added
-2.4.1
- - NetCore 3.1 target framework added
-2.4.0
-  - GRPC Client ReAuth and Resend request when unauthorized 401 from server automatically
-2.3.6
- - Dependency Injection Nuget 3.1.12 sync
-2.3.5
- - Added Authorized GRPC Client for Identity Server (Handles token retreival and header injection)
+		2.6.3
+		- Carbon.HttpClient.Auth version update
+		2.6.2
+		- Dotnet 8.0 target framework added, older versions removed
+		2.5.0
+		- Dotnet 6.0 target framework added
+		2.4.1
+		- NetCore 3.1 target framework added
+		2.4.0
+		- GRPC Client ReAuth and Resend request when unauthorized 401 from server automatically
+		2.3.6
+		- Dependency Injection Nuget 3.1.12 sync
+		2.3.5
+		- Added Authorized GRPC Client for Identity Server (Handles token retreival and header injection)
 
-2.2.10
-- GRPC Client Extension for Carbon.WebApplication or Carbon.ConsoleApplication</Description>
+		2.2.10
+		- GRPC Client Extension for Carbon.WebApplication or Carbon.ConsoleApplication</Description>
     <OpenApiGenerateDocuments>false</OpenApiGenerateDocuments>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
   </PropertyGroup>
