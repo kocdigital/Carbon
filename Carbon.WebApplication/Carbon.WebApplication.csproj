@@ -1,8 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
 		<TargetFrameworks>net8.0;net6.0</TargetFrameworks>
-		<Version>4.6.7</Version>
+		<Version>4.6.8</Version>
 		<Description>
+			4.6.8
+			- Carbon.HttpClient.Auth version update
 			4.6.7
 			- While fetching the user’s roles, caching was added.
 			4.6.6
