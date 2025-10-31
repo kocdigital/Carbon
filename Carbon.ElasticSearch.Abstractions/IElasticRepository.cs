@@ -143,5 +143,38 @@ namespace Carbon.ElasticSearch.Abstractions
         /// <param name="cancellationToken">The cancellation token.</param>
         /// <returns>The response of the bulk operation.</returns>
         Task<BulkResponse> BulkUpdateAsync(IEnumerable<T> items, bool? refresh = null, CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// Updates a document and removes specified fields using a script.
+        /// </summary>
+        /// <param name="item">The item whose id will be used for update.</param>
+        /// <param name="fieldsToRemove">Array of field names to remove (e.g., "nestedField").</param>
+        /// <param name="refresh">Force refresh after operation.</param>
+        UpdateResponse<T> UpdateWithFieldRemoval(T item, string[] fieldsToRemove, bool? refresh = null);
+
+        /// <summary>
+        /// Asynchronously updates a document and removes specified fields using a script.
+        /// </summary>
+        /// <param name="item">The item whose id will be used for update.</param>
+        /// <param name="fieldsToRemove">Array of field names to remove (e.g., "nestedField").</param>
+        /// <param name="refresh">Force refresh after operation.</param>
+        Task<UpdateResponse<T>> UpdateWithFieldRemovalAsync(T item, string[] fieldsToRemove, bool? refresh = null);
+
+        /// <summary>
+        /// Bulk updates documents and removes specified fields using a script.
+        /// </summary>
+        /// <param name="items">The items whose ids will be used for update.</param>
+        /// <param name="fieldsToRemove">Array of field names to remove.</param>
+        /// <param name="refresh">Force refresh after operation.</param>
+        BulkResponse BulkUpdateWithFieldRemoval(IEnumerable<T> items, string[] fieldsToRemove, bool? refresh = null);
+
+        /// <summary>
+        /// Asynchronously bulk updates documents and removes specified fields using a script.
+        /// </summary>
+        /// <param name="items">The items whose ids will be used for update.</param>
+        /// <param name="fieldsToRemove">Array of field names to remove.</param>
+        /// <param name="refresh">Force refresh after operation.</param>
+        /// <param name="cancellationToken">Cancellation token.</param>
+        Task<BulkResponse> BulkUpdateWithFieldRemovalAsync(IEnumerable<T> items, string[] fieldsToRemove, bool? refresh = null, CancellationToken cancellationToken = default);
     }
 }
