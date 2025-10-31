@@ -3,43 +3,45 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
     <ProjectGuid>{7AEAD788-E78D-4825-9761-AEB2570DE3E0}</ProjectGuid>
-    <Version>3.8.2</Version>
+    <Version>3.8.3</Version>
     <Description>
-	    3.8.2	
-		  - Fix bulkUpdate.
-	    3.8.1	
-		  - Added bulkUpdate new method.
-	    3.8.0	
-	    - Added bulkUpdate operations.
-      3.7.1
-      - Health check fixed
-      3.7.0
-      - DeleteAllAsync method is added IElasticRepository to clear all index data by tenantId
-      3.6.1
-      - Carbon.Common Bulk index operations had better get IEnumerable as parameter
-      3.6.0
-      - Carbon.Common Bulk index operations added (AddBulkAndReturn and AddBulkAndReturnAsync)
-      3.5.2
-      - Carbon.Common updated and IQueryable OrderBy extension method bug fixed
-      3.5.1
-      - Carbon.Common updated and nested ordering achieved
-      3.5.0
-      - Readonly Elastic repository implemented.
-      - Paging functions added to BaseElasticRepositories.
+		3.8.3
+		- UpdateWithFieldRemoval methods added.
+		3.8.2
+		- Fix bulkUpdate.
+		3.8.1
+		- Added bulkUpdate new method.
+		3.8.0
+		- Added bulkUpdate operations.
+		3.7.1
+		- Health check fixed
+		3.7.0
+		- DeleteAllAsync method is added IElasticRepository to clear all index data by tenantId
+		3.6.1
+		- Carbon.Common Bulk index operations had better get IEnumerable as parameter
+		3.6.0
+		- Carbon.Common Bulk index operations added (AddBulkAndReturn and AddBulkAndReturnAsync)
+		3.5.2
+		- Carbon.Common updated and IQueryable OrderBy extension method bug fixed
+		3.5.1
+		- Carbon.Common updated and nested ordering achieved
+		3.5.0
+		- Readonly Elastic repository implemented.
+		- Paging functions added to BaseElasticRepositories.
 
-      3.2.0
-      - Refresh parameter added to create, update and delete methods
-      3.1.3
-      Added Health Check
+		3.2.0
+		- Refresh parameter added to create, update and delete methods
+		3.1.3
+		Added Health Check
 
-      ** ElasticSearch 7 Library
-      ** For older versions, please use Platform360.ElasticSearch(Deprecated) from Cosmos Nuget Repo
+		** ElasticSearch 7 Library
+		** For older versions, please use Platform360.ElasticSearch(Deprecated) from Cosmos Nuget Repo
 
-      3.1.2
+		3.1.2
 
-      - FindAsync with Size added
-      - New Configuration added for force refresh on writing operations
-      -ElasticSearch.NET &amp; Nest Libraries Updated to 7.11.1
+		- FindAsync with Size added
+		- New Configuration added for force refresh on writing operations
+		-ElasticSearch.NET &amp; Nest Libraries Updated to 7.11.1
 		-Sort feature added for FilterAsync.
 	</Description>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
