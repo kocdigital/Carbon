@@ -3,14 +3,16 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
     <ProjectGuid>{bdcf1c00-d0d9-4328-8817-4d093f30cee1}</ProjectGuid>
-    <Version>3.8.1</Version>
+    <Version>3.8.2</Version>
     <Description>
-	    3.8.1	
+		3.8.2
+		- UpdateWithFieldRemoval methods added.
+		3.8.1
 		- Added bulkUpdate new method.
-	    3.8.0	
+		3.8.0
 		- Added bulkUpdate operations.
-	    3.7.0
-	    - DeleteAllAsync method is added IElasticRepository to clear all index data by tenantId
+		3.7.0
+		- DeleteAllAsync method is added IElasticRepository to clear all index data by tenantId
 		3.6.1
 		- Carbon.Common Bulk index operations had better get IEnumerable as parameter
 		3.6.0
