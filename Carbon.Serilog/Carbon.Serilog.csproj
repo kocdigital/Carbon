@@ -2,10 +2,12 @@
 
 	<PropertyGroup>
     <TargetFrameworks>net8.0;netstandard2.1</TargetFrameworks>
-		<Version>1.1.1</Version>
+		<Version>1.1.2</Version>
 		<PackageId>Carbon.Serilog</PackageId>
 		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <Description>
+	  1.1.2
+      - Carbon.Common version update
       1.1.1
       - Dotnet 8.0 support added
     </Description>

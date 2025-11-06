@@ -3,8 +3,10 @@
   <PropertyGroup>
     <TargetFrameworks>net8.0;net6.0</TargetFrameworks>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-    <Version>1.4.1</Version>
+    <Version>1.4.2</Version>
     <Description>
+	  1.4.2
+      - Carbon.Common version update
       1.4.1
 	  - Nuget package version fixed.
       1.4.0
