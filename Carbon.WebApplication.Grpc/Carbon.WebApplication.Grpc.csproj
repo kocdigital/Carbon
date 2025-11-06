@@ -2,8 +2,10 @@
 
   <PropertyGroup>
     <TargetFrameworks>net8.0;net6.0</TargetFrameworks>
-    <Version>3.3.5</Version>
+    <Version>3.3.6</Version>
     <Description>
+		3.3.6
+		- Carbon.Common version update
 		3.3.5
 		- Microsoft.Extensions.Logging package added
 		3.3.4
