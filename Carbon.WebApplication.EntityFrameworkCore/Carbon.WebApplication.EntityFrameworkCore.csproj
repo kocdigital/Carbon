@@ -4,18 +4,21 @@
     <TargetFrameworks>net8.0;net6.0;netstandard2.1</TargetFrameworks>
     <Version>2.5.0</Version>
     <Description>
+		2.5.1
+		Carbon.Common version update
+		
 		2.5.0
 		Dependent Carbon.Domain packages updated.
-		
+
 		2.4.2
 		Dotnet 8 and EntityFrameworkCore 8 support added.
 
 		2.3.5
 		Upgrade Carbon.Domain.EntityFrameworkCore (WhereContains extension method bug resolved)
-		
+
 		2.3.4
 		Upgrade Carbon.PagedList (Remove pageSize and pageNumber validation check)
-		
+
 		2.3.3
 		Upgrade Carbon.Domain.EntityFramework version (Added OwnerType.None in ownership filter)
 

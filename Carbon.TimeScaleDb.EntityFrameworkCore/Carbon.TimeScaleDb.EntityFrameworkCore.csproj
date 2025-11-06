@@ -3,22 +3,25 @@
   <PropertyGroup>
     <TargetFrameworks>net8.0;net6.0</TargetFrameworks>
     <LangVersion>8.0</LangVersion>
-    <Version>1.4.0</Version>
+    <Version>1.4.1</Version>
     <Description>
-1.4.0
-- Dependent Carbon.Domain packages updated.
-1.3.1
-- Dotnet 8.0 and 6.0 target framework added, older version support dropped!
-1.2.0 
-- Added CancellationToken to all applicable methods in ITimeSeriesEntityRepository 
-1.1.6
-- TimeScaleDb converts to existing tables to hypertables by migrating data
-1.1.3
-  -TimeScaleDb is disabled when no connection string found
-1.1.0
-- TimeScaleDb extension is now automatically enabled on the given database during migration
-1.0.5
-- Brings native EntityFramework Core support to TimeScaleDb as if you are using an SQL Database. Implements TimescaleDb logic based-on abstraction of Carbon.TimeSeriesDb.Abstractions.</Description>
+		1.4.1
+		- Carbon.Common version update
+		1.4.0
+		- Dependent Carbon.Domain packages updated.
+		1.3.1
+		- Dotnet 8.0 and 6.0 target framework added, older version support dropped!
+		1.2.0
+		- Added CancellationToken to all applicable methods in ITimeSeriesEntityRepository
+		1.1.6
+		- TimeScaleDb converts to existing tables to hypertables by migrating data
+		1.1.3
+		-TimeScaleDb is disabled when no connection string found
+		1.1.0
+		- TimeScaleDb extension is now automatically enabled on the given database during migration
+		1.0.5
+		- Brings native EntityFramework Core support to TimeScaleDb as if you are using an SQL Database. Implements TimescaleDb logic based-on abstraction of Carbon.TimeSeriesDb.Abstractions.
+	</Description>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
   </PropertyGroup>
 <ItemGroup Condition="'$(TargetFramework)' == 'net8.0'">

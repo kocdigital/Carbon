@@ -2,8 +2,10 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
-    <Version>1.6.3</Version>
+    <Version>1.6.4</Version>
 	  <Description>
+		  1.6.4
+		  - Refactored OrdinatedPageDto to synchronize Orderables and Ordination properties
 		  1.6.3
 		  - Forbidden Type Mapper error fixed
 		  1.6.2
