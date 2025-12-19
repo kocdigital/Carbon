@@ -3,8 +3,10 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
     <ProjectGuid>{7AEAD788-E78D-4825-9761-AEB2570DE3E0}</ProjectGuid>
-    <Version>3.8.4</Version>
+    <Version>3.8.5</Version>
     <Description>
+		3.8.5
+		- PrettyJson has been setted false
 		3.8.4
 		- Carbon.Common version update
 		3.8.3
