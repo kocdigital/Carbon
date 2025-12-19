@@ -44,6 +44,7 @@ namespace Carbon.ElasticSearch
             ConnectionSettings.DisablePing();
             ConnectionSettings.EnableDebugMode();
             ConnectionSettings.BasicAuthentication(settings.UserName, settings.Password)
+                               .PrettyJson(false)
                               .EnableHttpCompression()
                               .DisableDirectStreaming(true)
                               .RequestTimeout(TimeSpan.FromSeconds(settings.Timeout));
