@@ -107,7 +107,17 @@ namespace Carbon.WebApplication.TenantManagementHandler.Extensions
             if (context.HttpContext.Request.Headers.TryGetValue("p360-solution-id", out sv))
             {
                 var solutions = sv.FirstOrDefault().Split(',').ToList();
-                solutions.ForEach(k => solutionList.Add(new Guid(k)));
+                
+                solutions.ForEach(k =>
+                {
+                    var cleaned = k.Trim().Trim('[', ']', '"'); 
+
+                    if (Guid.TryParse(cleaned, out var guid)) 
+                    {
+                        solutionList.Add(guid);
+                    }
+                });
+                
                 return solutionList;
             }
             return null;
