@@ -106,7 +106,13 @@ namespace Carbon.WebApplication.TenantManagementHandler.Extensions
 
             if (context.HttpContext.Request.Headers.TryGetValue("p360-solution-id", out sv))
             {
-                var solutions = sv.FirstOrDefault().Split(',').ToList();
+                var rawSolutions = sv.FirstOrDefault();
+                if (string.IsNullOrEmpty(rawSolutions))
+                {
+                    return null;
+                }
+
+                var solutions = rawSolutions.Split(',').ToList();
                 
                 solutions.ForEach(k =>
                 {
