@@ -106,9 +106,25 @@ namespace Carbon.WebApplication.TenantManagementHandler.Extensions
 
             if (context.HttpContext.Request.Headers.TryGetValue("p360-solution-id", out sv))
             {
-                var solutions = sv.FirstOrDefault().Split(',').ToList();
-                solutions.ForEach(k => solutionList.Add(new Guid(k)));
-                return solutionList;
+                var rawSolutions = sv.FirstOrDefault();
+                if (string.IsNullOrWhiteSpace(rawSolutions))
+                {
+                    return null;
+                }
+
+                var solutions = rawSolutions.Split(',').ToList();
+                
+                solutions.ForEach(k =>
+                {
+                    var cleaned = k.Trim().Trim('[', ']', '"'); 
+
+                    if (Guid.TryParse(cleaned, out var guid)) 
+                    {
+                        solutionList.Add(guid);
+                    }
+                });
+                
+                return solutionList.Count > 0 ? solutionList : null;
             }
             return null;
         }
