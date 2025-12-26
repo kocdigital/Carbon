@@ -107,7 +107,7 @@ namespace Carbon.WebApplication.TenantManagementHandler.Extensions
             if (context.HttpContext.Request.Headers.TryGetValue("p360-solution-id", out sv))
             {
                 var rawSolutions = sv.FirstOrDefault();
-                if (string.IsNullOrEmpty(rawSolutions))
+                if (string.IsNullOrWhiteSpace(rawSolutions))
                 {
                     return null;
                 }
@@ -124,7 +124,7 @@ namespace Carbon.WebApplication.TenantManagementHandler.Extensions
                     }
                 });
                 
-                return solutionList;
+                return solutionList.Count > 0 ? solutionList : null;
             }
             return null;
         }
