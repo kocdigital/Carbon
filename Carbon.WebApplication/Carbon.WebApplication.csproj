@@ -1,8 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
 		<TargetFrameworks>net8.0;net6.0</TargetFrameworks>
-		<Version>4.6.9</Version>
+		<Version>4.6.10</Version>
 		<Description>
+            4.6.10
+            - Add defensive parsing for solution IDs in headers
 			4.6.9
 			- Carbon.Common version update
 			4.6.8
