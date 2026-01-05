@@ -1,16 +1,16 @@
 ﻿using Carbon.Common;
 using Carbon.Common.TenantManagementHandler.Classes;
 using Carbon.Domain.Abstractions.Entities;
+using Carbon.PagedList;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Threading.Tasks;
-using Carbon.Common.Extensions;
-using Carbon.PagedList;
 using System.Reflection;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Carbon.Domain.EntityFrameworkCore
 {
@@ -93,8 +93,8 @@ namespace Carbon.Domain.EntityFrameworkCore
             where U : class, IOwnerRelation, ISoftDelete
         {
             return (from q in query
-                          from io in ctx.Set<U>().Where(k => k.EntityId == q.Id && !k.IsDeleted).DefaultIfEmpty()
-                          select new RelationEntityPair<T, U> { Entity = q, Relation = io });
+                    from io in ctx.Set<U>().Where(k => k.EntityId == q.Id && !k.IsDeleted).DefaultIfEmpty()
+                    select new RelationEntityPair<T, U> { Entity = q, Relation = io });
 
         }
 
@@ -103,9 +103,9 @@ namespace Carbon.Domain.EntityFrameworkCore
             where T : IHaveOwnership<U>, IEntity
             where U : class, IOwnerRelation, ISoftDelete
         {
-           return (from q in query
-                   from io in ctx.Set<U>().Where(k => k.EntityId == q.Id && !k.IsDeleted).DefaultIfEmpty()
-                   select new RelationEntityPair<T, U> { Entity = q, Relation = io });
+            return (from q in query
+                    from io in ctx.Set<U>().Where(k => k.EntityId == q.Id && !k.IsDeleted).DefaultIfEmpty()
+                    select new RelationEntityPair<T, U> { Entity = q, Relation = io });
         }
 
         public static async Task<T> EntityFirstOrDefaultIncludeOwnershipAsync<T, U>(this IQueryable<T> query,
@@ -304,6 +304,7 @@ namespace Carbon.Domain.EntityFrameworkCore
         /// <param name="orderables">A list of Orderable objects specifying the ordering of the entities.</param>
         /// <param name="pageIndex">The index of the page to retrieve (starting from 0).</param>
         /// <param name="pageSize">The maximum number of entities per page.</param>
+        /// <param name="cancellationToken">The cancellation token to observe while waiting for the task to complete.</param>
         /// <returns>A PagedList containing the requested page of entities with filtered relations, based on the specified criteria.</returns>
         /// <remarks>
         /// This method retrieves a paged list of entities of type T that have ownership relationships with type U.
@@ -315,7 +316,8 @@ namespace Carbon.Domain.EntityFrameworkCore
             List<Guid> filter,
             IList<Orderable> orderables,
             int pageIndex,
-            int pageSize)
+            int pageSize,
+            CancellationToken cancellationToken = default)
             where T : IHaveOwnership<U>, IEntity
             where U : EntitySolutionRelation
         {
@@ -332,7 +334,7 @@ namespace Carbon.Domain.EntityFrameworkCore
                 filteredQuery = filteredQuery.SkipTake(pageIndex, pageSize);
             }
 
-            var entities = await filteredQuery.ToListAsync();
+            var entities = await filteredQuery.ToListAsync(cancellationToken);
 
             var relationEntitiesAsList =
                 relationEntities.Where(k => k.Relation != null).Select(k => k.Relation).ToList();
@@ -343,12 +345,14 @@ namespace Carbon.Domain.EntityFrameworkCore
                     .Where(rel => rel != null && rel.EntityId == entity.Id).ToList();
             });
 
-            var totalDataCount = await query.CountAsync();
+            var totalDataCount = await query.CountAsync(cancellationToken);
             var result = new PagedList<T>(entities, pageIndex, pageSize, totalDataCount);
             return result;
         }
         public static async Task<T> FirstOrDefaultEntityFilteredWithSolutionAsync<T, U>(
-            this IQueryable<RelationEntityPair<T, U>> relationEntities, List<Guid> filter)
+            this IQueryable<RelationEntityPair<T, U>> relationEntities,
+            List<Guid> filter,
+            CancellationToken cancellationToken = default)
             where T : IHaveOwnership<U>, IEntity
             where U : EntitySolutionRelation
         {
@@ -356,7 +360,7 @@ namespace Carbon.Domain.EntityFrameworkCore
 
             var list = await relationEntities
                 .Where(k => !filterContainsData || k.Relation == null || filter.Contains(k.Relation.SolutionId))
-                .ToListAsync();
+                .ToListAsync(cancellationToken);
             var groupedList = list.GroupBy(k => k.Entity, k => k.Relation,
                 (key, g) => new RelationEntity<T, U> { Entity = key, Relations = g.ToList() }).FirstOrDefault();
 
@@ -364,7 +368,7 @@ namespace Carbon.Domain.EntityFrameworkCore
             if (groupedList != null)
             {
                 groupedList.Entity.RelationalOwners = await relationEntities.Where(k => k.Relation != null)
-                    .Select(k => k.Relation).ToListAsync();
+                    .Select(k => k.Relation).ToListAsync(cancellationToken);
                 return groupedList.Entity;
             }
             else
@@ -555,12 +559,14 @@ namespace Carbon.Domain.EntityFrameworkCore
         /// <param name="orderables">A list of Orderable objects specifying the ordering of the entities.</param>
         /// <param name="pageIndex">The index of the page to retrieve (starting from 0).</param>
         /// <param name="pageSize">The maximum number of entities per page.</param>
+        /// <param name="cancellationToken">The cancellation token to observe while waiting for the task to complete.</param>
         /// <returns>A Task representing the asynchronous operation that returns a PagedList containing the requested page of entities.</returns>
         public static async Task<PagedList<T>> ToPagedListEntityAsync<T>(
             this IQueryable<T> query,
             IList<Orderable> orderables,
             int pageIndex,
-            int pageSize)
+            int pageSize,
+            CancellationToken cancellationToken = default)
             where T : IEntity
         {
             var filteredQuery = query.AsQueryable().OrderBy(orderables);
@@ -569,8 +575,8 @@ namespace Carbon.Domain.EntityFrameworkCore
                 filteredQuery = filteredQuery.SkipTake(pageIndex, pageSize);
             }
 
-            var data = await filteredQuery.ToListAsync();
-            var totalDataCount = await query.CountAsync();
+            var data = await filteredQuery.ToListAsync(cancellationToken);
+            var totalDataCount = await query.CountAsync(cancellationToken);
 
             var result = new PagedList<T>(data, pageIndex, pageSize, totalDataCount);
             return result;
