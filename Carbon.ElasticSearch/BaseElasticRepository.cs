@@ -30,19 +30,23 @@ namespace Carbon.ElasticSearch
         {
             return _client.Bulk(i => i.Index(Index).IndexMany(items));
         }
-        public async Task AddAsync(T item, bool? refresh = null)
+        public async Task AddAsync(T item, bool? refresh = null, CancellationToken cancellationToken = default)
         {
             var response = await _client.IndexAsync(item, i => i.Index(Index)
-            .Refresh((_forceRefresh || (refresh ?? false)) ? Elasticsearch.Net.Refresh.True : Elasticsearch.Net.Refresh.False));
+                .Refresh((_forceRefresh || (refresh ?? false))
+                    ? Elasticsearch.Net.Refresh.True
+                    : Elasticsearch.Net.Refresh.False), cancellationToken);
         }
-        public async Task<IndexResponse> AddAndReturnAsync(T item, bool? refresh = null)
+        public async Task<IndexResponse> AddAndReturnAsync(T item, bool? refresh = null, CancellationToken cancellationToken = default)
         {
             return await _client.IndexAsync(item, i => i.Index(Index)
-            .Refresh((_forceRefresh || (refresh ?? false)) ? Elasticsearch.Net.Refresh.True : Elasticsearch.Net.Refresh.False));
+                .Refresh((_forceRefresh || (refresh ?? false))
+                    ? Elasticsearch.Net.Refresh.True
+                    : Elasticsearch.Net.Refresh.False), cancellationToken);
         }
-        public async Task<BulkResponse> AddBulkAndReturnAsync(IEnumerable<T> items,CancellationToken cancellationToken = default)
+        public async Task<BulkResponse> AddBulkAndReturnAsync(IEnumerable<T> items, CancellationToken cancellationToken = default)
         {
-            return await _client.BulkAsync(b => b.Index(Index).IndexMany(items),cancellationToken);
+            return await _client.BulkAsync(b => b.Index(Index).IndexMany(items), cancellationToken);
         }
         public async Task<BulkResponse> AddBulkAndReturnAsync(IEnumerable<T> items, CancellationToken cancellationToken = default, bool? refresh = null)
         {
@@ -59,15 +63,19 @@ namespace Carbon.ElasticSearch
             return _client.Delete<T>(new DocumentPath<T>(id), x => x.Index(Index)
             .Refresh((_forceRefresh || (refresh ?? false)) ? Elasticsearch.Net.Refresh.True : Elasticsearch.Net.Refresh.False));
         }
-        public async Task DeleteByIdAsync(string id, bool? refresh = null)
+        public async Task DeleteByIdAsync(string id, bool? refresh = null, CancellationToken cancellationToken = default)
         {
             var response = await _client.DeleteAsync<T>(new DocumentPath<T>(id), x => x.Index(Index)
-            .Refresh((_forceRefresh || (refresh ?? false)) ? Elasticsearch.Net.Refresh.True : Elasticsearch.Net.Refresh.False));
+                .Refresh((_forceRefresh || (refresh ?? false))
+                    ? Elasticsearch.Net.Refresh.True
+                    : Elasticsearch.Net.Refresh.False), cancellationToken);
         }
-        public async Task<DeleteResponse> DeleteByIdAndReturnAsync(string id, bool? refresh = null)
+        public async Task<DeleteResponse> DeleteByIdAndReturnAsync(string id, bool? refresh = null, CancellationToken cancellationToken = default)
         {
             return await _client.DeleteAsync<T>(new DocumentPath<T>(id), x => x.Index(Index)
-            .Refresh((_forceRefresh || (refresh ?? false)) ? Elasticsearch.Net.Refresh.True : Elasticsearch.Net.Refresh.False));
+                .Refresh((_forceRefresh || (refresh ?? false))
+                    ? Elasticsearch.Net.Refresh.True
+                    : Elasticsearch.Net.Refresh.False), cancellationToken);
         }
         public async Task<DeleteByQueryResponse> DeleteAllAsync(string tenantId, CancellationToken cancellationToken = default)
         {
@@ -78,15 +86,19 @@ namespace Carbon.ElasticSearch
                 , cancellationToken);
         }
 
-        public async Task UpdateAsync(T item, bool? refresh = null)
+        public async Task UpdateAsync(T item, bool? refresh = null, CancellationToken cancellationToken = default)
         {
             var response = await _client.UpdateAsync<T>(item, u => u.Index(Index).Doc(item).RetryOnConflict(3)
-            .Refresh((_forceRefresh || (refresh ?? false)) ? Elasticsearch.Net.Refresh.True : Elasticsearch.Net.Refresh.False));
+                .Refresh((_forceRefresh || (refresh ?? false))
+                    ? Elasticsearch.Net.Refresh.True
+                    : Elasticsearch.Net.Refresh.False), cancellationToken);
         }
-        public async Task<UpdateResponse<T>> UpdateAndReturnAsync(T item, bool? refresh = null)
+        public async Task<UpdateResponse<T>> UpdateAndReturnAsync(T item, bool? refresh = null, CancellationToken cancellationToken = default)
         {
             return await _client.UpdateAsync<T>(item, u => u.Index(Index).Doc(item).RetryOnConflict(3)
-            .Refresh((_forceRefresh || (refresh ?? false)) ? Elasticsearch.Net.Refresh.True : Elasticsearch.Net.Refresh.False));
+                .Refresh((_forceRefresh || (refresh ?? false))
+                    ? Elasticsearch.Net.Refresh.True
+                    : Elasticsearch.Net.Refresh.False), cancellationToken);
         }
         public void Update(T item, bool? refresh = null)
         {
@@ -151,7 +163,7 @@ namespace Carbon.ElasticSearch
                 .Refresh((_forceRefresh || (refresh ?? false)) ? Elasticsearch.Net.Refresh.True : Elasticsearch.Net.Refresh.False));
         }
 
-        public async Task<UpdateResponse<T>> UpdateWithFieldRemovalAsync(T item, string[] fieldsToRemove, bool? refresh = null)
+        public async Task<UpdateResponse<T>> UpdateWithFieldRemovalAsync(T item, string[] fieldsToRemove, bool? refresh = null, CancellationToken cancellationToken = default)
         {
             var documentId = GetDocumentId(item);
             if (fieldsToRemove == null || fieldsToRemove.Length == 0)
@@ -163,7 +175,9 @@ namespace Carbon.ElasticSearch
                 .Index(Index)
                 .Script(s => s.Source(scriptSource))
                 .RetryOnConflict(3)
-                .Refresh((_forceRefresh || (refresh ?? false)) ? Elasticsearch.Net.Refresh.True : Elasticsearch.Net.Refresh.False));
+                .Refresh((_forceRefresh || (refresh ?? false))
+                    ? Elasticsearch.Net.Refresh.True
+                    : Elasticsearch.Net.Refresh.False), cancellationToken);
         }
 
         public BulkResponse BulkUpdateWithFieldRemoval(IEnumerable<T> items, string[] fieldsToRemove, bool? refresh = null)
