@@ -24,18 +24,20 @@ namespace Carbon.ElasticSearch.Abstractions
         DeleteResponse DeleteByIdAndReturn(string id, bool? refresh = null);
 
         /// <summary>
-        /// Deletes record with given id
+        /// Deletes record with given id asynchronously.
         /// </summary>
         /// <param name="id">id of a record to be deleted</param>
         /// <param name="refresh">if true; forces and waits for ElasticSearch to refresh the index after operation to make changes visible</param>
-        Task DeleteByIdAsync(string id, bool? refresh = null);
+        /// <param name="cancellationToken">Token that can be used to cancel the request</param>
+        Task DeleteByIdAsync(string id, bool? refresh = null, CancellationToken cancellationToken = default);
 
         /// <summary>
-        /// Deletes record with given id and returns record
+        /// Deletes record with given id and returns record asynchronously.
         /// </summary>
         /// <param name="id">id of a record to be deleted</param>
         /// <param name="refresh">if true; forces and waits for ElasticSearch to refresh the index after operation to make changes visible</param>
-        Task<DeleteResponse> DeleteByIdAndReturnAsync(string id, bool? refresh = null);
+        /// <param name="cancellationToken">Token that can be used to cancel the request</param>
+        Task<DeleteResponse> DeleteByIdAndReturnAsync(string id, bool? refresh = null, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Creates given record
@@ -57,21 +59,23 @@ namespace Carbon.ElasticSearch.Abstractions
         BulkResponse AddBulkAndReturn(IEnumerable<T> items);
 
         /// <summary>
-        /// Creates given record
+        /// Creates given record asynchronously.
         /// </summary>
         /// <param name="item">Record to be created</param>
         /// <param name="refresh">if true; forces and waits for ElasticSearch to refresh the index after operation to make changes visible</param>
-        Task AddAsync(T item, bool? refresh = null);
+        /// <param name="cancellationToken">Token that can be used to cancel the request</param>
+        Task AddAsync(T item, bool? refresh = null, CancellationToken cancellationToken = default);
 
         /// <summary>
-        /// Creates given record and returns ElastichSearch response
+        /// Creates given record and returns ElastichSearch response asynchronously.
         /// </summary>
         /// <param name="item">Record to be created</param>
         /// <param name="refresh">if true; forces and waits for ElasticSearch to refresh the index after operation to make changes visible</param>
-        Task<IndexResponse> AddAndReturnAsync(T item, bool? refresh = null);
+        /// <param name="cancellationToken">Token that can be used to cancel the request</param>
+        Task<IndexResponse> AddAndReturnAsync(T item, bool? refresh = null, CancellationToken cancellationToken = default);
 
         /// <summary>
-        /// Creates given records and returns BulkResponse
+        /// Creates given records and returns BulkResponse asynchronously.
         /// </summary>
         /// <param name="items">Record to be created</param>
         /// <param name="cancellationToken">Token that can be used to cancel the request</param>
@@ -79,10 +83,11 @@ namespace Carbon.ElasticSearch.Abstractions
         Task<BulkResponse> AddBulkAndReturnAsync(IEnumerable<T> items, CancellationToken cancellationToken = default);
 
         /// <summary>
-        /// Creates given records and returns BulkResponse
+        /// Creates given records and returns BulkResponse asynchronously.
         /// </summary>
         /// <param name="items">Record to be created</param>
         /// <param name="cancellationToken">Token that can be used to cancel the request</param>
+        /// <param name="refresh">if true; forces and waits for ElasticSearch to refresh the index after operation to make changes visible</param>
         /// <returns></returns>
         Task<BulkResponse> AddBulkAndReturnAsync(IEnumerable<T> items, CancellationToken cancellationToken = default, bool? refresh = null);
 
@@ -103,23 +108,25 @@ namespace Carbon.ElasticSearch.Abstractions
         UpdateResponse<T> UpdateAndReturn(T item, bool? refresh = null);
 
         /// <summary>
-        /// Updates given record
+        /// Updates given record asynchronously.
         /// </summary>
         /// <remarks>  Uses _id field for matching items, for detail <see href="https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-update.html"/> </remarks>
         /// <param name="item">Record to be updated</param>
         /// <param name="refresh">if true; forces and waits for ElasticSearch to refresh the index after operation to make changes visible</param>
-        Task UpdateAsync(T item, bool? refresh = null);
+        /// <param name="cancellationToken">Token that can be used to cancel the request</param>
+        Task UpdateAsync(T item, bool? refresh = null, CancellationToken cancellationToken = default);
 
         /// <summary>
-        /// Updates given record and returns ElastichSearch response
+        /// Updates given record and returns ElastichSearch response asynchronously.
         /// </summary>
         /// <remarks>  Uses _id field for matching items, for detail <see href="https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-update.html"/> </remarks>
         /// <param name="item">Record to be updated</param>
         /// <param name="refresh">if true; forces and waits for ElasticSearch to refresh the index after operation to make changes visible</param>
-        Task<UpdateResponse<T>> UpdateAndReturnAsync(T item, bool? refresh = null);
+        /// <param name="cancellationToken">Token that can be used to cancel the request</param>
+        Task<UpdateResponse<T>> UpdateAndReturnAsync(T item, bool? refresh = null, CancellationToken cancellationToken = default);
 
         /// <summary>
-        /// Deletes all records in the index
+        /// Deletes all records in the index asynchronously.
         /// </summary>
         /// <remarks>  Uses _id field for matching items, for detail <see href="https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-update.html"/> </remarks>
         /// <param name="tenantId">tenantId is for the delete all data to match on index</param>
@@ -158,7 +165,8 @@ namespace Carbon.ElasticSearch.Abstractions
         /// <param name="item">The item whose id will be used for update.</param>
         /// <param name="fieldsToRemove">Array of field names to remove (e.g., "nestedField").</param>
         /// <param name="refresh">Force refresh after operation.</param>
-        Task<UpdateResponse<T>> UpdateWithFieldRemovalAsync(T item, string[] fieldsToRemove, bool? refresh = null);
+        /// <param name="cancellationToken">Token that can be used to cancel the request</param>
+        Task<UpdateResponse<T>> UpdateWithFieldRemovalAsync(T item, string[] fieldsToRemove, bool? refresh = null, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Bulk updates documents and removes specified fields using a script.
