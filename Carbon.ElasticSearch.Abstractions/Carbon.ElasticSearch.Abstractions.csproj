@@ -3,8 +3,10 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
     <ProjectGuid>{bdcf1c00-d0d9-4328-8817-4d093f30cee1}</ProjectGuid>
-    <Version>3.8.3</Version>
+    <Version>3.8.4</Version>
     <Description>
+		3.8.4
+		- Added cancelation token to all elastic async methods
 		3.8.3
 		- Carbon.Common version update
 		3.8.2
