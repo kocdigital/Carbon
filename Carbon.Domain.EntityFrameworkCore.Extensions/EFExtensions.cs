@@ -700,5 +700,153 @@ namespace Carbon.Domain.EntityFrameworkCore
         {
             return condition ? query.WhereContains(predicate, search, searchByWords) : query;
         }
+
+        /// <summary>
+        /// Retrieves a limited list of entities with filtered relations based on specified criteria and ordering.
+        /// This method is optimized for bulk data retrieval without pagination overhead.
+        /// </summary> 
+        /// <returns>A PagedList containing the entities with filtered relations, based on the specified criteria.</returns>
+        public static async Task<PagedList<T>> ToLimitedListEntityFilteredWithSolutionAsync<T, U>(
+            this IQueryable<EFExtensions.RelationEntityPair<T, U>> relationEntities,
+            List<Guid> filter,
+            IList<Orderable> orderables,
+            int limit = 10000,
+            CancellationToken cancellationToken = default)
+            where T : IHaveOwnership<U>, IEntity
+            where U : EntitySolutionRelation
+        {
+            var filterContainsData = filter != null && filter.Count > 0;
+
+            var entities = await relationEntities
+                .Where(k => !filterContainsData || k.Relation == null || filter.Contains(k.Relation.SolutionId))
+                .Select(k => k.Entity)
+                .Distinct()
+                .OrderBy(orderables)
+                .Take(limit)
+                .ToListAsync(cancellationToken);
+
+            var entityCount = entities.Count;
+
+            if (entityCount == 0)
+            {
+                return new PagedList<T>(entities, 0, limit, 0);
+            }
+
+            var entityIds = new List<Guid>(entityCount);
+            foreach (var entity in entities)
+            {
+                entityIds.Add(entity.Id);
+            }
+             
+            var relations = await relationEntities
+                .Where(k => k.Relation != null &&
+                            entityIds.Contains(k.Relation.EntityId) &&
+                            (!filterContainsData || filter.Contains(k.Relation.SolutionId)))
+                .Select(k => k.Relation)
+                .ToListAsync(cancellationToken);
+
+            var relationsLookup = new Dictionary<Guid, List<U>>(entityCount);
+            foreach (var relation in relations)
+            {
+                var entityId = relation.EntityId;
+                if (!relationsLookup.TryGetValue(entityId, out var list))
+                {
+                    list = new List<U>(2);
+                    relationsLookup[entityId] = list;
+                }
+                list.Add(relation);
+            }
+
+            List<U> emptyList = null;
+            foreach (var entity in entities)
+            {
+                if (relationsLookup.TryGetValue(entity.Id, out var rels))
+                {
+                    entity.RelationalOwners = rels;
+                }
+                else
+                {
+                    if (emptyList == null)
+                        emptyList = new List<U>(0);
+                    entity.RelationalOwners = emptyList;
+                }
+            }
+
+            return new PagedList<T>(entities, 0, limit, entityCount);
+        }
+
+        /// <summary>
+        /// Retrieves a limited list of entities with filtered relations based on specified criteria and ordering. 
+        /// </summary>
+        /// <returns>A PagedList containing the entities with filtered relations, based on the specified criteria.</returns>
+        public static async Task<PagedList<T>> ToOptimizedLimitedListEntityFilteredWithSolutionAsync<T, U>(
+            this IQueryable<EFExtensions.RelationEntityPair<T, U>> relationEntities,
+            List<Guid> filter,
+            IList<Orderable> orderables,
+            int limit = 10000,
+            CancellationToken cancellationToken = default)
+            where T : IHaveOwnership<U>, IEntity
+            where U : EntitySolutionRelation
+        {
+            var filterContainsData = filter != null && filter.Count > 0;
+
+            var entities = await relationEntities
+                .Where(k => !filterContainsData || k.Relation == null || filter.Contains(k.Relation.SolutionId))
+                .Select(k => k.Entity)
+                .Distinct()
+                .OrderBy(orderables)
+                .Take(limit)
+                .ToListAsync(cancellationToken);
+
+            var entityCount = entities.Count;
+
+            if (entityCount == 0)
+            {
+                return new PagedList<T>(entities, 0, limit, 0);
+            }
+
+            var entityIds = new List<Guid>(entityCount);
+            foreach (var entity in entities)
+            {
+                entityIds.Add(entity.Id);
+            }
+
+            var relations = await relationEntities
+                .Where(k => k.Relation != null &&
+                            entityIds.Contains(k.Relation.EntityId) &&
+                            (!filterContainsData || filter.Contains(k.Relation.SolutionId)))
+                .Select(k => k.Relation)
+                .ToListAsync(cancellationToken);
+
+            var relationsLookup = new Dictionary<Guid, List<U>>(entityCount);
+            
+            foreach (var relation in relations)
+            {
+                var entityId = relation.EntityId;
+                if (!relationsLookup.TryGetValue(entityId, out var list))
+                {
+                    list = new List<U>(2);
+                    relationsLookup[entityId] = list;
+                }
+                list.Add(relation);
+            }
+
+            List<U> emptyList = null;
+            
+            foreach (var entity in entities)
+            {
+                if (relationsLookup.TryGetValue(entity.Id, out var rels))
+                {
+                    entity.RelationalOwners = rels;
+                }
+                else
+                {
+                    emptyList ??= new List<U>(0);
+                    entity.RelationalOwners = emptyList;
+                }
+            }
+
+            return new PagedList<T>(entities, 0, limit, entityCount);
+        }
     }
 }
