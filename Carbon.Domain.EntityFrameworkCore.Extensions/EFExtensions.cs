@@ -715,40 +715,64 @@ namespace Carbon.Domain.EntityFrameworkCore
             where T : IHaveOwnership<U>, IEntity
             where U : EntitySolutionRelation
         {
-            var filterContainsData = filter != null && filter.Any();
+            var filterContainsData = filter != null && filter.Count > 0;
 
-            var query = relationEntities
+            var entities = await relationEntities
                 .Where(k => !filterContainsData || k.Relation == null || filter.Contains(k.Relation.SolutionId))
                 .Select(k => k.Entity)
-                .Distinct();
-
-            var entities = await query
+                .Distinct()
                 .OrderBy(orderables)
                 .Take(limit)
                 .ToListAsync(cancellationToken);
 
-            if (entities.Any())
+            var entityCount = entities.Count;
+
+            if (entityCount == 0)
             {
-                var entityIds = entities.Select(e => e.Id).ToList();
+                return new PagedList<T>(entities, 0, limit, 0);
+            }
 
-                var relations = await relationEntities
-                    .Where(k => k.Relation != null && entityIds.Contains(k.Relation.EntityId))
-                    .Select(k => k.Relation)
-                    .ToListAsync(cancellationToken);
+            var entityIds = new List<Guid>(entityCount);
+            foreach (var entity in entities)
+            {
+                entityIds.Add(entity.Id);
+            }
+             
+            var relations = await relationEntities
+                .Where(k => k.Relation != null &&
+                            entityIds.Contains(k.Relation.EntityId) &&
+                            (!filterContainsData || filter.Contains(k.Relation.SolutionId)))
+                .Select(k => k.Relation)
+                .ToListAsync(cancellationToken);
 
-                var relationsLookup = relations
-                    .GroupBy(r => r.EntityId)
-                    .ToDictionary(g => g.Key, g => g.ToList());
-
-                foreach (var entity in entities)
+            var relationsLookup = new Dictionary<Guid, List<U>>(entityCount);
+            foreach (var relation in relations)
+            {
+                var entityId = relation.EntityId;
+                if (!relationsLookup.TryGetValue(entityId, out var list))
                 {
-                    entity.RelationalOwners = relationsLookup.TryGetValue(entity.Id, out var rels)
-                        ? rels.Cast<U>().ToList()
-                        : new List<U>();
+                    list = new List<U>(2);
+                    relationsLookup[entityId] = list;
+                }
+                list.Add(relation);
+            }
+
+            List<U> emptyList = null;
+            foreach (var entity in entities)
+            {
+                if (relationsLookup.TryGetValue(entity.Id, out var rels))
+                {
+                    entity.RelationalOwners = rels;
+                }
+                else
+                {
+                    if (emptyList == null)
+                        emptyList = new List<U>(0);
+                    entity.RelationalOwners = emptyList;
                 }
             }
 
-            return new PagedList<T>(entities, 0, limit, entities.Count);
+            return new PagedList<T>(entities, 0, limit, entityCount);
         }
 
         /// <summary>
@@ -788,12 +812,14 @@ namespace Carbon.Domain.EntityFrameworkCore
             }
 
             var relations = await relationEntities
-                .Where(k => k.Relation != null && entityIds.Contains(k.Relation.EntityId))
+                .Where(k => k.Relation != null &&
+                            entityIds.Contains(k.Relation.EntityId) &&
+                            (!filterContainsData || filter.Contains(k.Relation.SolutionId)))
                 .Select(k => k.Relation)
                 .ToListAsync(cancellationToken);
 
             var relationsLookup = new Dictionary<Guid, List<U>>(entityCount);
-
+            
             foreach (var relation in relations)
             {
                 var entityId = relation.EntityId;
@@ -806,7 +832,7 @@ namespace Carbon.Domain.EntityFrameworkCore
             }
 
             List<U> emptyList = null;
-
+            
             foreach (var entity in entities)
             {
                 if (relationsLookup.TryGetValue(entity.Id, out var rels))
