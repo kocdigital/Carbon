@@ -2,11 +2,14 @@
 
   <PropertyGroup>
     <TargetFrameworks>net8.0;net6.0;netstandard2.1</TargetFrameworks>
-    <Version>3.6.4</Version>
+    <Version>3.6.5</Version>
     <Description>
-	    - 3.6.4
-	    * Added cancellation token support to EFExtensions async methods.
-	    *ToPagedListEntityFilteredWithSolutionAsync, FirstOrDefaultEntityFilteredWithSolutionAsync, ToPagedListEntityAsync
+		- 3.6.5
+		* ToLimitedListEntityFilteredWithSolutionAsync,ToOptimizedLimitedListEntityFilteredWithSolutionAsync methods has been added.
+		
+		- 3.6.4
+		* Added cancellation token support to EFExtensions async methods.
+		*ToPagedListEntityFilteredWithSolutionAsync, FirstOrDefaultEntityFilteredWithSolutionAsync, ToPagedListEntityAsync
 
 		- 3.6.3
 		* Carbon.Common version update
