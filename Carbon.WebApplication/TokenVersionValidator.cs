@@ -70,7 +70,16 @@ namespace Carbon.WebApplication
             
             var key = BuildTokenVersionKey(tvs, tenantId, userId);
             
-            RedisValue redisValue = await redisDb.StringGetAsync(key);
+            RedisValue redisValue;
+            try
+            {
+                redisValue = await redisDb.StringGetAsync(key);
+            }
+            catch (Exception)
+            {
+                return; 
+            }
+            
             var currentStr = redisValue.HasValue ? redisValue.ToString() : null;
 
             if (!long.TryParse(currentStr, out var currentVersion))
