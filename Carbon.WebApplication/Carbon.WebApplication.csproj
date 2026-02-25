@@ -1,8 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
 		<TargetFrameworks>net8.0;net6.0</TargetFrameworks>
-		<Version>4.6.13</Version>
+		<Version>4.6.14</Version>
 		<Description>
+            4.6.14
+            - Prevent 401 unauthorized errors when the userId claim is missing(for client tokens).
             4.6.13
             - Added an optional OnTokenValidated step to JWT validation that checks the TokenVersion stored in Redis, ensuring tokens issued before a password change are rejected with 401.
 			4.6.12
