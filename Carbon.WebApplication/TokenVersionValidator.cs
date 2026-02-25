@@ -48,11 +48,15 @@ namespace Carbon.WebApplication
 
             var tenantId = principal?.FindFirst(tvs.TenantIdClaimName)?.Value;
             var userId = principal?.FindFirst(tvs.UserIdClaimName)?.Value;
+            var isGodUser = principal?.FindFirst("god-user")?.Value;
 
             if (string.IsNullOrWhiteSpace(tenantId) || string.IsNullOrWhiteSpace(userId))
             {
-                ctx.Fail("Missing tenantId/userId claim.");
-                return;
+                if (isGodUser != "true")
+                {
+                    ctx.Fail("Missing tenantId/userId claim.");
+                    return;
+                }
             }
 
             var tokenVersionClaim = principal?.FindFirst(tvs.TokenVersionClaimName);
