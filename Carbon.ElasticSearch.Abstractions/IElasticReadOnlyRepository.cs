@@ -13,26 +13,23 @@ namespace Carbon.ElasticSearch.Abstractions
         /// Returns one record for given query
         /// </summary>
         /// <param name="query">Nest query <see href="https://www.elastic.co/guide/en/elasticsearch/client/net-api/7.17/writing-queries.html"/></param>
-        /// <param name="trackTotalHits">Indicates whether to track the total number of hits.</param>
         /// <param name="cancellationToken">Token to cancel the operation.</param>
-        Task<T> FindOneAsync(Func<QueryContainerDescriptor<T>, QueryContainer> query, bool trackTotalHits = false, CancellationToken cancellationToken = default);
+        Task<T> FindOneAsync(Func<QueryContainerDescriptor<T>, QueryContainer> query, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Returns records found for given query. It's restricted with 1000 items
         /// </summary>
         /// <param name="query">Nest query <see href="https://www.elastic.co/guide/en/elasticsearch/client/net-api/7.17/writing-queries.html"/></param>
-        /// <param name="trackTotalHits">Indicates whether to track the total number of hits.</param>
         /// <param name="cancellationToken">Token to cancel the operation.</param>
-        Task<IEnumerable<T>> FindAsync(Func<QueryContainerDescriptor<T>, QueryContainer> query, bool trackTotalHits = false, CancellationToken cancellationToken = default);
+        Task<IEnumerable<T>> FindAsync(Func<QueryContainerDescriptor<T>, QueryContainer> query, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Returns records found for given query limited by size param
         /// </summary>
         /// <param name="query">Nest query <see href="https://www.elastic.co/guide/en/elasticsearch/client/net-api/7.17/writing-queries.html"/></param>
         /// <param name="size">Count of to be returned results. If it's 0 then changed as 1000 on the code</param>
-        /// <param name="trackTotalHits">Indicates whether to track the total number of hits.</param>
         /// <param name="cancellationToken">Token to cancel the operation.</param>
-        Task<IEnumerable<T>> FindAsync(Func<QueryContainerDescriptor<T>, QueryContainer> query, int size, bool trackTotalHits = false, CancellationToken cancellationToken = default);
+        Task<IEnumerable<T>> FindAsync(Func<QueryContainerDescriptor<T>, QueryContainer> query, int size, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Returns filtered records for given filters. Uses ElasticSearch's "Filter" for filtering. 
