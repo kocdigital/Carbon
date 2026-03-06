@@ -45,54 +45,56 @@ namespace Carbon.ElasticSearch
         {
             return await _client.SearchAsync<T>(selector, cancellationToken);
         }
-        public async Task<IList<T>> FilterAsync(List<Func<QueryContainerDescriptor<T>, QueryContainer>> filters, CancellationToken cancellationToken = default)
+        public async Task<IList<T>> FilterAsync(List<Func<QueryContainerDescriptor<T>, QueryContainer>> filters, bool trackTotalHits = false, CancellationToken cancellationToken = default)
         {
-            var response = await _client.SearchAsync<T>(x => x.Index(Index).Size(1000).Query(q => q.Bool(bq => bq.Filter(filters.ToArray()))), cancellationToken);
+            var response = await _client.SearchAsync<T>(x => x.Index(Index).Size(1000).Query(q => q.Bool(bq => bq.Filter(filters.ToArray()))).TrackTotalHits(trackTotalHits), cancellationToken);
             return response.Documents.ToList();
         }
-        public async Task<ISearchResponse<T>> FilterAsync(List<Func<QueryContainerDescriptor<T>, QueryContainer>> filters, int? offset, int? limit, CancellationToken cancellationToken = default)
+        public async Task<ISearchResponse<T>> FilterAsync(List<Func<QueryContainerDescriptor<T>, QueryContainer>> filters, int? offset, int? limit, bool trackTotalHits = false, CancellationToken cancellationToken = default)
         {
-            var response = await _client.SearchAsync<T>(x => x.Index(Index).From(offset).Size(limit).Query(q => q.Bool(bq => bq.Filter(filters.ToArray()))), cancellationToken);
+            var response = await _client.SearchAsync<T>(x => x.Index(Index).From(offset).Size(limit).Query(q => q.Bool(bq => bq.Filter(filters.ToArray()))).TrackTotalHits(trackTotalHits), cancellationToken);
             return response;
         }
 
-        public async Task<ISearchResponse<T>> FilterAsync(List<Func<QueryContainerDescriptor<T>, QueryContainer>> filters, int? offset, int? limit, string sortFieldName, bool? sortByDescending = null, CancellationToken cancellationToken = default)
+        public async Task<ISearchResponse<T>> FilterAsync(List<Func<QueryContainerDescriptor<T>, QueryContainer>> filters, int? offset, int? limit, string sortFieldName, bool? sortByDescending = null, bool trackTotalHits = false, CancellationToken cancellationToken = default)
         {
             var response = await _client.SearchAsync<T>(x => x.Index(Index)
                 .From(offset)
                 .Size(limit)
                 .Query(q => q.Bool(bq => bq.Filter(filters.ToArray())))
+                .TrackTotalHits(trackTotalHits)
                 .Sort(s => sortByDescending ?? false ? s.Descending($"{sortFieldName}.keyword") : s.Ascending($"{sortFieldName}.keyword")), cancellationToken);
             return response;
         }
-        
-        public async Task<ISearchResponse<T>> FilterAsync(List<Func<QueryContainerDescriptor<T>, QueryContainer>> filters,SortDescriptor<T> sort, int? offset, int? limit, CancellationToken cancellationToken = default)
+
+        public async Task<ISearchResponse<T>> FilterAsync(List<Func<QueryContainerDescriptor<T>, QueryContainer>> filters,SortDescriptor<T> sort, int? offset, int? limit, bool trackTotalHits = false, CancellationToken cancellationToken = default)
         {
             var response = await _client.SearchAsync<T>(x => x.Index(Index)
                 .From(offset)
                 .Size(limit)
                 .Query(q => q.Bool(bq => bq.Filter(filters.ToArray())))
+                .TrackTotalHits(trackTotalHits)
                 .Sort(s=> sort), cancellationToken);
             return response;
         }
 
-        public async Task<ISearchResponse<T>> FilterDiscoveryAsync(List<Func<QueryContainerDescriptor<T>, QueryContainer>> filters, int? offset, int? limit, CancellationToken cancellationToken = default)
+        public async Task<ISearchResponse<T>> FilterDiscoveryAsync(List<Func<QueryContainerDescriptor<T>, QueryContainer>> filters, int? offset, int? limit, bool trackTotalHits = false, CancellationToken cancellationToken = default)
         {
-            var response = await _client.SearchAsync<T>(x => x.Index(Index).From(offset).Size(limit).Query(q => q.Bool(bq => bq.Filter(filters.ToArray()))), cancellationToken);
+            var response = await _client.SearchAsync<T>(x => x.Index(Index).From(offset).Size(limit).Query(q => q.Bool(bq => bq.Filter(filters.ToArray()))).TrackTotalHits(trackTotalHits), cancellationToken);
             return response;
         }
-        public async Task<ISearchResponse<T>> FilterDiscoveryAsync(List<Func<QueryContainerDescriptor<T>, QueryContainer>> filters, SortDescriptor<T> sort, int? offset, int? limit, CancellationToken cancellationToken = default)
+        public async Task<ISearchResponse<T>> FilterDiscoveryAsync(List<Func<QueryContainerDescriptor<T>, QueryContainer>> filters, SortDescriptor<T> sort, int? offset, int? limit, bool trackTotalHits = false, CancellationToken cancellationToken = default)
         {
-            var response = await _client.SearchAsync<T>(x => x.Index(Index).From(offset).Size(limit).Query(q => q.Bool(bq => bq.Filter(filters.ToArray()))).Sort(s=> sort), cancellationToken);
+            var response = await _client.SearchAsync<T>(x => x.Index(Index).From(offset).Size(limit).Query(q => q.Bool(bq => bq.Filter(filters.ToArray()))).Sort(s=> sort).TrackTotalHits(trackTotalHits), cancellationToken);
             return response;
         }
-        public async Task<ISearchResponse<T>> DiscoverUrlAsync(List<Func<QueryContainerDescriptor<T>, QueryContainer>> filters, bool isHierarchical, int? offset, int? limit, CancellationToken cancellationToken = default)
+        public async Task<ISearchResponse<T>> DiscoverUrlAsync(List<Func<QueryContainerDescriptor<T>, QueryContainer>> filters, bool isHierarchical, int? offset, int? limit, bool trackTotalHits = false, CancellationToken cancellationToken = default)
         {
             var field = isHierarchical ? "hierarchicalUrl" : "id";
-            var response = await _client.SearchAsync<T>(x => x.Index(Index).From(offset).Size(limit).Source(sr => sr.Includes(fi => fi.Field(field))).Query(q => q.Bool(bq => bq.Filter(filters.ToArray()))), cancellationToken);
+            var response = await _client.SearchAsync<T>(x => x.Index(Index).From(offset).Size(limit).Source(sr => sr.Includes(fi => fi.Field(field))).Query(q => q.Bool(bq => bq.Filter(filters.ToArray()))).TrackTotalHits(trackTotalHits), cancellationToken);
             return response;
         }
-        public async Task<ISearchResponse<T>> DiscoverUrlAsync(List<Func<QueryContainerDescriptor<T>, QueryContainer>> filters, List<string> fieldNames, int? offset, int? limit, CancellationToken cancellationToken = default)
+        public async Task<ISearchResponse<T>> DiscoverUrlAsync(List<Func<QueryContainerDescriptor<T>, QueryContainer>> filters, List<string> fieldNames, int? offset, int? limit, bool trackTotalHits = false, CancellationToken cancellationToken = default)
         {
             var fieldList = new List<Field>();
             foreach (var fieldName in fieldNames)
@@ -100,7 +102,7 @@ namespace Carbon.ElasticSearch
                 fieldList.Add(new Field(fieldName));
             }
             var response = await _client.SearchAsync<T>(x => x.Index(Index).From(offset).Size(limit).Source(sr => sr.Includes(fi => fi.Fields(fieldList)))
-            .Query(q => q.Bool(bq => bq.Filter(filters.ToArray()))), cancellationToken);
+            .Query(q => q.Bool(bq => bq.Filter(filters.ToArray()))).TrackTotalHits(trackTotalHits), cancellationToken);
             return response;
         }
 
@@ -115,27 +117,29 @@ namespace Carbon.ElasticSearch
 
         #region SearchAsync
 
-        public async Task<ISearchResponse<T>> SearchAsync(Func<QueryContainerDescriptor<T>, QueryContainer> query, int? from, int? size, Func<SortDescriptor<T>, IPromise<IList<ISort>>> sortDescriptor, CancellationToken cancellationToken = default)
+        public async Task<ISearchResponse<T>> SearchAsync(Func<QueryContainerDescriptor<T>, QueryContainer> query, int? from, int? size, Func<SortDescriptor<T>, IPromise<IList<ISort>>> sortDescriptor, bool trackTotalHits = false, CancellationToken cancellationToken = default)
         {
             var response = await _client.SearchAsync<T>(x => x.Index(Index)
                 .Query(query)
                 .From(from)
                 .Size(size)
-                .Sort(sortDescriptor), cancellationToken);
+                .Sort(sortDescriptor)
+                .TrackTotalHits(trackTotalHits), cancellationToken);
 
             return response;
         }
-        public async Task<ISearchResponse<T>> SearchAsync(Func<QueryContainerDescriptor<T>, QueryContainer> query, int? from, int? size, IList<Orderable> orderables, CancellationToken cancellationToken = default)
+        public async Task<ISearchResponse<T>> SearchAsync(Func<QueryContainerDescriptor<T>, QueryContainer> query, int? from, int? size, IList<Orderable> orderables, bool trackTotalHits = false, CancellationToken cancellationToken = default)
         {
             var response = await _client.SearchAsync<T>(x => x.Index(Index)
                 .Query(query)
                 .From(from)
                 .Size(size)
-                .Sort(sd => GenerateSortDescriptorFromOrderables(sd, orderables)), cancellationToken);
+                .Sort(sd => GenerateSortDescriptorFromOrderables(sd, orderables))
+                .TrackTotalHits(trackTotalHits), cancellationToken);
 
             return response;
         }
-        public async Task<ISearchResponse<T>> SearchAsync(Func<QueryContainerDescriptor<T>, QueryContainer> query, int? from, int? size, Func<SortDescriptor<T>, IPromise<IList<ISort>>> sortDescriptor, string pitId, string pitTimeToLive, CancellationToken cancellationToken = default)
+        public async Task<ISearchResponse<T>> SearchAsync(Func<QueryContainerDescriptor<T>, QueryContainer> query, int? from, int? size, Func<SortDescriptor<T>, IPromise<IList<ISort>>> sortDescriptor, string pitId, string pitTimeToLive, bool trackTotalHits = false, CancellationToken cancellationToken = default)
         {
             var activePitId = pitId;
             if (string.IsNullOrEmpty(activePitId))
@@ -149,11 +153,12 @@ namespace Carbon.ElasticSearch
                 .Query(query)
                 .From(from)
                 .Size(size)
-                .Sort(sortDescriptor), cancellationToken);
+                .Sort(sortDescriptor)
+                .TrackTotalHits(trackTotalHits), cancellationToken);
 
             return response;
         }
-        public async Task<ISearchResponse<T>> SearchAsync(Func<QueryContainerDescriptor<T>, QueryContainer> query, int? from, int? size, IList<Orderable> orderables, string pitId, string pitTimeToLive, CancellationToken cancellationToken = default)
+        public async Task<ISearchResponse<T>> SearchAsync(Func<QueryContainerDescriptor<T>, QueryContainer> query, int? from, int? size, IList<Orderable> orderables, string pitId, string pitTimeToLive, bool trackTotalHits = false, CancellationToken cancellationToken = default)
         {
             var activePitId = pitId;
             if (string.IsNullOrEmpty(activePitId))
@@ -167,7 +172,8 @@ namespace Carbon.ElasticSearch
                 .Query(query)
                 .From(from)
                 .Size(size)
-                .Sort(sd => GenerateSortDescriptorFromOrderables(sd, orderables)), cancellationToken);
+                .Sort(sd => GenerateSortDescriptorFromOrderables(sd, orderables))
+                .TrackTotalHits(trackTotalHits), cancellationToken);
 
             return response;
         }
@@ -175,27 +181,29 @@ namespace Carbon.ElasticSearch
 
         #region SearchAfterAsync
 
-        public async Task<ISearchResponse<T>> SearchAfterAsync(Func<QueryContainerDescriptor<T>, QueryContainer> query, IList<object> searchAfter, int? size, Func<SortDescriptor<T>, IPromise<IList<ISort>>> sortDescriptor, CancellationToken cancellationToken = default)
+        public async Task<ISearchResponse<T>> SearchAfterAsync(Func<QueryContainerDescriptor<T>, QueryContainer> query, IList<object> searchAfter, int? size, Func<SortDescriptor<T>, IPromise<IList<ISort>>> sortDescriptor, bool trackTotalHits = false, CancellationToken cancellationToken = default)
         {
             var response = await _client.SearchAsync<T>(x => x.Index(Index)
                 .Query(query)
                 .SearchAfter(searchAfter)
                 .Size(size)
-                .Sort(sortDescriptor), cancellationToken);
+                .Sort(sortDescriptor)
+                .TrackTotalHits(trackTotalHits), cancellationToken);
 
             return response;
         }
-        public async Task<ISearchResponse<T>> SearchAfterAsync(Func<QueryContainerDescriptor<T>, QueryContainer> query, IList<object> searchAfter, int? size, IList<Orderable> orderables, CancellationToken cancellationToken = default)
+        public async Task<ISearchResponse<T>> SearchAfterAsync(Func<QueryContainerDescriptor<T>, QueryContainer> query, IList<object> searchAfter, int? size, IList<Orderable> orderables, bool trackTotalHits = false, CancellationToken cancellationToken = default)
         {
             var response = await _client.SearchAsync<T>(x => x.Index(Index)
                 .Query(query)
                 .SearchAfter(searchAfter)
                 .Size(size)
-                .Sort(sd => GenerateSortDescriptorFromOrderables(sd, orderables)), cancellationToken);
+                .Sort(sd => GenerateSortDescriptorFromOrderables(sd, orderables))
+                .TrackTotalHits(trackTotalHits), cancellationToken);
 
             return response;
         }
-        public async Task<ISearchResponse<T>> SearchAfterAsync(Func<QueryContainerDescriptor<T>, QueryContainer> query, IList<object> searchAfter, int? size, Func<SortDescriptor<T>, IPromise<IList<ISort>>> sortDescriptor, string pitId, string pitTimeToLive, CancellationToken cancellationToken = default)
+        public async Task<ISearchResponse<T>> SearchAfterAsync(Func<QueryContainerDescriptor<T>, QueryContainer> query, IList<object> searchAfter, int? size, Func<SortDescriptor<T>, IPromise<IList<ISort>>> sortDescriptor, string pitId, string pitTimeToLive, bool trackTotalHits = false, CancellationToken cancellationToken = default)
         {
             var activePitId = pitId;
             if (string.IsNullOrEmpty(activePitId))
@@ -209,12 +217,13 @@ namespace Carbon.ElasticSearch
                 .Query(query)
                 .SearchAfter(searchAfter)
                 .Size(size)
-                .Sort(sortDescriptor), cancellationToken);
+                .Sort(sortDescriptor)
+                .TrackTotalHits(trackTotalHits), cancellationToken);
 
             return response;
 
         }
-        public async Task<ISearchResponse<T>> SearchAfterAsync(Func<QueryContainerDescriptor<T>, QueryContainer> query, IList<object> searchAfter, int? size, IList<Orderable> orderables, string pitId, string pitTimeToLive, CancellationToken cancellationToken = default)
+        public async Task<ISearchResponse<T>> SearchAfterAsync(Func<QueryContainerDescriptor<T>, QueryContainer> query, IList<object> searchAfter, int? size, IList<Orderable> orderables, string pitId, string pitTimeToLive, bool trackTotalHits = false, CancellationToken cancellationToken = default)
         {
             var activePitId = pitId;
             if (string.IsNullOrEmpty(activePitId))
@@ -228,7 +237,8 @@ namespace Carbon.ElasticSearch
                 .Query(query)
                 .SearchAfter(searchAfter)
                 .Size(size)
-                .Sort(sd => GenerateSortDescriptorFromOrderables(sd, orderables)), cancellationToken);
+                .Sort(sd => GenerateSortDescriptorFromOrderables(sd, orderables))
+                .TrackTotalHits(trackTotalHits), cancellationToken);
 
             return response;
 
@@ -237,24 +247,26 @@ namespace Carbon.ElasticSearch
 
         #region Scrolling
 
-        public async Task<ISearchResponse<T>> CreateScrollingSearchAsync(Func<QueryContainerDescriptor<T>, QueryContainer> query, string scrollTimeToLive, int size, Func<SortDescriptor<T>, IPromise<IList<ISort>>> sortDescriptor, CancellationToken cancellationToken = default)
+        public async Task<ISearchResponse<T>> CreateScrollingSearchAsync(Func<QueryContainerDescriptor<T>, QueryContainer> query, string scrollTimeToLive, int size, Func<SortDescriptor<T>, IPromise<IList<ISort>>> sortDescriptor, bool trackTotalHits = false, CancellationToken cancellationToken = default)
         {
             var response = await _client.SearchAsync<T>(x => x.Index(Index)
                   .Query(query)
                   .Scroll(scrollTimeToLive)
                   .Size(size)
-                  .Sort(sortDescriptor), cancellationToken);
+                  .Sort(sortDescriptor)
+                  .TrackTotalHits(trackTotalHits), cancellationToken);
 
             return response;
         }
-        
-        public async Task<ISearchResponse<T>> CreateScrollingSearchAsync(Func<QueryContainerDescriptor<T>, QueryContainer> query, string scrollTimeToLive, int size, IList<Orderable> orderables, CancellationToken cancellationToken = default)
+
+        public async Task<ISearchResponse<T>> CreateScrollingSearchAsync(Func<QueryContainerDescriptor<T>, QueryContainer> query, string scrollTimeToLive, int size, IList<Orderable> orderables, bool trackTotalHits = false, CancellationToken cancellationToken = default)
         {
             var response = await _client.SearchAsync<T>(x => x.Index(Index)
                   .Query(query)
                   .Scroll(scrollTimeToLive)
                   .Size(size)
-                  .Sort(sd => GenerateSortDescriptorFromOrderables(sd, orderables)), cancellationToken);
+                  .Sort(sd => GenerateSortDescriptorFromOrderables(sd, orderables))
+                  .TrackTotalHits(trackTotalHits), cancellationToken);
 
             return response;
         }
