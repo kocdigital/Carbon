@@ -21,22 +21,22 @@ namespace Carbon.ElasticSearch
             _client = new ElasticClient(elasticSettings.ConnectionSettings);
             _elasticSettings = elasticSettings;
         }
-        public async Task<T> FindOneAsync(Func<QueryContainerDescriptor<T>, QueryContainer> query, bool trackTotalHits = false, CancellationToken cancellationToken = default)
+        public async Task<T> FindOneAsync(Func<QueryContainerDescriptor<T>, QueryContainer> query, CancellationToken cancellationToken = default)
         {
-            var response = await _client.SearchAsync<T>(x => x.Index(Index).From(0).Size(1).Query(query).TrackTotalHits(trackTotalHits), cancellationToken);
+            var response = await _client.SearchAsync<T>(x => x.Index(Index).From(0).Size(1).Query(query), cancellationToken);
 
             return response.Documents.FirstOrDefault();
         }
-        public async Task<IEnumerable<T>> FindAsync(Func<QueryContainerDescriptor<T>, QueryContainer> query, bool trackTotalHits = false, CancellationToken cancellationToken = default)
+        public async Task<IEnumerable<T>> FindAsync(Func<QueryContainerDescriptor<T>, QueryContainer> query, CancellationToken cancellationToken = default)
         {
-            var response = await _client.SearchAsync<T>(x => x.Index(Index).From(0).Size(1000).Query(query).TrackTotalHits(trackTotalHits), cancellationToken);
+            var response = await _client.SearchAsync<T>(x => x.Index(Index).From(0).Size(1000).Query(query), cancellationToken);
 
             return response.Documents.ToList();
         }
 
-        public async Task<IEnumerable<T>> FindAsync(Func<QueryContainerDescriptor<T>, QueryContainer> query, int size, bool trackTotalHits = false, CancellationToken cancellationToken = default)
+        public async Task<IEnumerable<T>> FindAsync(Func<QueryContainerDescriptor<T>, QueryContainer> query, int size, CancellationToken cancellationToken = default)
         {
-            var response = await _client.SearchAsync<T>(x => x.Index(Index).From(0).Size(size > 0 ? size : 1000).Query(query).TrackTotalHits(trackTotalHits), cancellationToken);
+            var response = await _client.SearchAsync<T>(x => x.Index(Index).From(0).Size(size > 0 ? size : 1000).Query(query), cancellationToken);
 
             return response.Documents.ToList();
         }
