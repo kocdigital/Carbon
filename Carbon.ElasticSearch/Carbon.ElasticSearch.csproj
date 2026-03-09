@@ -3,8 +3,10 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
     <ProjectGuid>{7AEAD788-E78D-4825-9761-AEB2570DE3E0}</ProjectGuid>
-    <Version>3.8.7</Version>
+    <Version>3.8.8</Version>
     <Description>
+		3.8.8
+		- tracktotalhits property is optional now for elastic search async methods
 		3.8.7
 		- Added tracktotalhits to all elastic search async methods
 		3.8.6
