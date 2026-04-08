@@ -112,6 +112,8 @@ namespace Carbon.WebApplication
             CustomConfigure(app, env);
 
             CommonStartup.AddAppAuths(app, _useAuthentication, _useAuthorization);
+            
+            CustomConfigureAfterAuth(app, env);
 
             app.UseEndpoints(endpoints =>
             {
@@ -132,6 +134,14 @@ namespace Carbon.WebApplication
         /// <param name="app">Defines a class that provides the mechanisms to configure an application's request pipeline.</param>
         /// <param name="env">Provides information about the web hosting environment an application is running in.</param>
         public abstract void CustomConfigure(IApplicationBuilder app, IWebHostEnvironment env);
+        
+        /// <summary>
+        /// Optional hook to add middlewares AFTER authentication/authorization middleware is registered
+        /// but BEFORE endpoints are mapped.
+        /// </summary>
+        public virtual void CustomConfigureAfterAuth(IApplicationBuilder app, IWebHostEnvironment env)
+        {
+        }
 
         public virtual void ConfigureEndpoints(IEndpointRouteBuilder endpoints)
         {
