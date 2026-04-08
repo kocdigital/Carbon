@@ -112,7 +112,6 @@ namespace Carbon.WebApplication
             CustomConfigure(app, env);
 
             CommonStartup.AddAppAuths(app, _useAuthentication, _useAuthorization);
-            
             CustomConfigureAfterAuth(app, env);
 
             app.UseEndpoints(endpoints =>
