@@ -15,6 +15,7 @@ public static class ServiceCollectionExtensions
     /// </summary>
     public static IServiceCollection AddCarbonAudit(this IServiceCollection services)
     {
+        services.AddHttpContextAccessor();
         services.AddScoped<RequestContext>();
         services.AddScoped<AuditInterceptor>();
         services.AddScoped<IAuditEventPublisher, RabbitMqAuditEventPublisher>();
