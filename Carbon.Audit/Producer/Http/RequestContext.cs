@@ -13,6 +13,8 @@ public sealed class RequestContext
     
     public ClientSource Source { get; set; } = ClientSource.Platform;
     public string? CorrelationId { get; set; }
+    public string? Endpoint { get; set; }
+    public string? Payload { get; set; }
 
     public bool IsHmiRequest => Source == ClientSource.HMI;
 }

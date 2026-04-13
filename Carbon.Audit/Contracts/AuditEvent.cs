@@ -25,6 +25,8 @@ public sealed class AuditEvent
     public string? EntityName { get; set; }
 
     public AuditAction Action { get; set; }
+    public string? Endpoint { get; set; } 
+    public string? Payload { get; set; }
     
     public object? Before { get; set; }
     public object? After { get; set; }
