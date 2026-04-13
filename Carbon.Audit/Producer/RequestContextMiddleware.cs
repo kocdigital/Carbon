@@ -1,3 +1,4 @@
+using System.Net;
 using System.Security.Claims;
 using Carbon.Audit.Contracts;
 using Carbon.Audit.Producer.Http;
@@ -61,7 +62,7 @@ public sealed class RequestContextMiddleware
         var remoteIp = http.Connection.RemoteIpAddress;
         string? ip = remoteIp?.ToString();
         
-        if (remoteIp == null || IpAddress.IsLoopback(remoteIp))
+        if (remoteIp == null || IPAddress.IsLoopback(remoteIp))
         {
             var forwardedHeader = http.Request.Headers["X-Forwarded-For"].FirstOrDefault();
             if (!string.IsNullOrWhiteSpace(forwardedHeader))
