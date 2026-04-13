@@ -61,7 +61,7 @@ public sealed class RequestContextMiddleware
         var remoteIp = http.Connection.RemoteIpAddress;
         string? ip = remoteIp?.ToString();
         
-        if (remoteIp == null || IPAddress.IsLoopback(remoteIp))
+        if (remoteIp == null || IpAddress.IsLoopback(remoteIp))
         {
             var forwardedHeader = http.Request.Headers["X-Forwarded-For"].FirstOrDefault();
             if (!string.IsNullOrWhiteSpace(forwardedHeader))
