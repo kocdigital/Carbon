@@ -2,6 +2,7 @@ using System.Security.Claims;
 using Carbon.Audit.Contracts;
 using Carbon.Audit.Producer.Http;
 using Microsoft.AspNetCore.Http;
+using System.Text;
 
 namespace Carbon.Audit.Producer;
 
@@ -16,6 +17,24 @@ public sealed class RequestContextMiddleware
 
     public async Task InvokeAsync(HttpContext http, RequestContext ctx)
     {
+        var endpoint = http.GetEndpoint();
+        ctx.Endpoint = endpoint?.DisplayName ?? http.Request.Path;
+        
+        var method = http.Request.Method.ToUpperInvariant();
+        
+        if (method is "POST" or "PUT" or "DELETE")
+        {
+            http.Request.EnableBuffering(); 
+            
+            using (var reader = new StreamReader(http.Request.Body, Encoding.UTF8, true, 1024, leaveOpen: true))
+            {
+                var body = await reader.ReadToEndAsync();
+                ctx.Payload = body;
+                
+                http.Request.Body.Position = 0;
+            }
+        }
+        
         var user = http.User;
 
         ctx.UserId =
@@ -38,8 +57,20 @@ public sealed class RequestContextMiddleware
             ClaimValue(user, "sid") ??
             ClaimValue(user, "jti") ??  
             string.Empty;
-
-        ctx.IpAddress = http.Connection.RemoteIpAddress?.ToString() ?? string.Empty;
+        
+        var remoteIp = http.Connection.RemoteIpAddress;
+        string? ip = remoteIp?.ToString();
+        
+        if (remoteIp == null || IPAddress.IsLoopback(remoteIp))
+        {
+            var forwardedHeader = http.Request.Headers["X-Forwarded-For"].FirstOrDefault();
+            if (!string.IsNullOrWhiteSpace(forwardedHeader))
+            {
+                ip = forwardedHeader.Split(',').FirstOrDefault()?.Trim();
+            }
+        }
+        
+        ctx.IpAddress = ip ?? string.Empty;
 
         var clientType = http.Request.Headers["X-Client-Type"].FirstOrDefault();
         ctx.Source = clientType?.Equals("HMI", StringComparison.OrdinalIgnoreCase) == true
