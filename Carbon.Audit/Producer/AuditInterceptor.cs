@@ -14,6 +14,8 @@ public sealed class AuditInterceptor : SaveChangesInterceptor
     private readonly IAuditEventPublisher _publisher;
     private readonly ILogger<AuditInterceptor> _logger;
 
+    private List<AuditEntryPending>? _pendingAudits;
+
     public AuditInterceptor(
         RequestContext ctx,
         IAuditEventPublisher publisher,
@@ -23,39 +25,83 @@ public sealed class AuditInterceptor : SaveChangesInterceptor
         _publisher = publisher;
         _logger = logger;
     }
-
-    public override async ValueTask<InterceptionResult<int>> SavingChangesAsync(
+    
+    public override ValueTask<InterceptionResult<int>> SavingChangesAsync(
         DbContextEventData eventData,
         InterceptionResult<int> result,
-        CancellationToken ct = default)
+        CancellationToken cancellationToken)
     {
         if (_requestContext.IsHmiRequest)
-            return await base.SavingChangesAsync(eventData, result, ct);
+            return base.SavingChangesAsync(eventData, result, cancellationToken); 
 
         try
         {
             if (eventData.Context is not { } db)
-                return await base.SavingChangesAsync(eventData, result, ct);
-
-            var events = BuildAuditEvents(db.ChangeTracker.Entries());
-
-            if (events.Count > 0)
-                _ = _publisher.PublishBatchAsync(events); // fire-and-forget
+                return base.SavingChangesAsync(eventData, result, cancellationToken); 
+            
+            _pendingAudits = BuildPendingAudits(db.ChangeTracker.Entries());
         }
         catch (Exception ex)
         {
-            _logger.LogError(ex, "[AUDIT] Failed to build audit events");
+            _logger.LogError(ex, "[AUDIT] Failed to build pending audit events");
         }
 
-        return await base.SavingChangesAsync(eventData, result, ct);
+        return base.SavingChangesAsync(eventData, result, cancellationToken); 
     }
+    
+    public override async ValueTask<int> SavedChangesAsync(
+        SaveChangesCompletedEventData eventData,
+        int result,
+        CancellationToken cancellationToken)
+    {
+        if (_pendingAudits != null && _pendingAudits.Count > 0)
+        {
+            try
+            {
+                var eventsToPublish = new List<AuditEvent>();
 
-    private List<AuditEvent> BuildAuditEvents(IEnumerable<EntityEntry> entries)
+                foreach (var pending in _pendingAudits)
+                {
+                    var evt = pending.Event;
+
+                    if (evt.Action == AuditAction.Created)
+                    {
+                        evt.EntityId = GetPrimaryKey(pending.Entry);
+                        evt.After = GetSnapshot(pending.Entry, original: false);
+                    }
+
+                    eventsToPublish.Add(evt);
+                }
+                
+                await _publisher.PublishBatchAsync(eventsToPublish);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "[AUDIT] Failed to publish audit events after save");
+            }
+            finally
+            {
+                _pendingAudits.Clear();
+            }
+        }
+
+        return await base.SavedChangesAsync(eventData, result, cancellationToken);
+    }
+    
+    public override Task SaveChangesFailedAsync(
+        DbContextErrorEventData eventData,
+        CancellationToken cancellationToken)
+    {
+        _pendingAudits?.Clear();
+        return base.SaveChangesFailedAsync(eventData, cancellationToken);
+    }
+    
+    private List<AuditEntryPending> BuildPendingAudits(IEnumerable<EntityEntry> entries)
     {
         return entries
             .Where(e => e.State is EntityState.Added or EntityState.Modified or EntityState.Deleted)
             .Where(e => e.Entity.GetType().IsDefined(typeof(AuditableAttribute), inherit: true))
-            .Select(BuildEvent)
+            .Select(e => new AuditEntryPending { Entry = e, Event = BuildEvent(e) }) 
             .ToList();
     }
 
@@ -85,7 +131,9 @@ public sealed class AuditInterceptor : SaveChangesInterceptor
             
             Action = action,
             Before = action != AuditAction.Created ? GetSnapshot(entry, original: true) : null,
-            After = action != AuditAction.Deleted ? GetSnapshot(entry, original: false) : null,
+            
+            After = action == AuditAction.Updated ? GetSnapshot(entry, original: false) : null,
+            
             Changes = action == AuditAction.Updated ? GetFieldDiffs(entry) : new(),
         };
     }
@@ -119,8 +167,8 @@ public sealed class AuditInterceptor : SaveChangesInterceptor
             .Select(p => new FieldChange
             {
                 Field = p.Metadata.Name,
-                Before = p.OriginalValue?.ToString(),
-                After = p.CurrentValue?.ToString()
+                Before = p.OriginalValue, 
+                After = p.CurrentValue
             })
             .ToList();
     }
