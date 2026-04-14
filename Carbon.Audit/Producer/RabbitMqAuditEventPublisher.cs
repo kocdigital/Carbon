@@ -21,23 +21,18 @@ public sealed class RabbitMqAuditEventPublisher : IAuditEventPublisher
     public Task PublishAsync(AuditEvent evt)
         => PublishBatchAsync(new[] { evt });
 
-    public Task PublishBatchAsync(IEnumerable<AuditEvent> events)
+    public async Task PublishBatchAsync(IEnumerable<AuditEvent> events)
     {
         var list = events?.ToList() ?? new List<AuditEvent>();
 
-        _ = Task.Run(async () =>
+        try
         {
-            try
-            {
-                foreach (var evt in list)
-                    await _bus.Publish(evt);
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, "[AUDIT_FALLBACK] {Events}", JsonSerializer.Serialize(list));
-            }
-        });
-
-        return Task.CompletedTask;
+            foreach (var evt in list)
+                await _bus.Publish(evt);
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "[AUDIT_FALLBACK] {Events}", JsonSerializer.Serialize(list));
+        }
     }
 }
