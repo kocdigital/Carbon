@@ -311,89 +311,42 @@ namespace Carbon.WebApplication
             endpoints.MapDefaultControllerRoute();
         }
 
-        private static readonly object CarbonAuditSettingsCacheLock = new object();
-        private static readonly CarbonAuditSettings DefaultCarbonAuditSettings = new CarbonAuditSettings
-        {
-            Enabled = false,
-            AllowedContentTypes = Array.Empty<string>(),
-            ExcludedPaths = Array.Empty<string>(),
-            MaxRequestBodyBytes = null
-        };
-        private static IConfiguration cachedCarbonAuditConfiguration;
-        private static CarbonAuditSettings cachedCarbonAuditSettings;
-        private static IDisposable cachedCarbonAuditSettingsChangeRegistration;
         private static bool ShouldUseCarbonAudit(HttpContext context)
         {
             var configuration = context.RequestServices.GetService<IConfiguration>();
-            var settings = GetCarbonAuditSettings(configuration);
-            if (!settings.Enabled)
+            var auditSection = configuration?.GetSection("CarbonAudit");
+            if (auditSection == null || !auditSection.Exists())
+            {
+                return true;
+            }
+            var isEnabled = auditSection.GetValue<bool?>("Enabled");
+            if (isEnabled.HasValue && !isEnabled.Value)
             {
                 return false;
             }
-            if (IsExcludedPath(context.Request.Path, settings.ExcludedPaths))
+            var excludedPaths = auditSection.GetSection("ExcludedPaths").Get<string[]>();
+            if (IsExcludedPath(context.Request.Path, excludedPaths))
             {
                 return false;
             }
-            if (!IsAllowedContentType(context.Request.ContentType, settings.AllowedContentTypes))
+            var allowedContentTypes = auditSection.GetSection("AllowedContentTypes").Get<string[]>();
+            if (!IsAllowedContentType(context.Request.ContentType, allowedContentTypes))
             {
                 return false;
             }
-            if (settings.MaxRequestBodyBytes.HasValue)
+            var maxRequestBodyBytes = auditSection.GetValue<long?>("MaxRequestBodyBytes");
+            if (maxRequestBodyBytes.HasValue)
             {
                 if (!context.Request.ContentLength.HasValue)
                 {
                     return false;
                 }
-                if (context.Request.ContentLength.Value > settings.MaxRequestBodyBytes.Value)
+                if (context.Request.ContentLength.Value > maxRequestBodyBytes.Value)
                 {
                     return false;
                 }
             }
             return true;
-        }
-        private static CarbonAuditSettings GetCarbonAuditSettings(IConfiguration configuration)
-        {
-            if (configuration == null)
-            {
-                return DefaultCarbonAuditSettings;
-            }
-            if (ReferenceEquals(cachedCarbonAuditConfiguration, configuration) && cachedCarbonAuditSettings != null)
-            {
-                return cachedCarbonAuditSettings;
-            }
-            lock (CarbonAuditSettingsCacheLock)
-            {
-                if (ReferenceEquals(cachedCarbonAuditConfiguration, configuration) && cachedCarbonAuditSettings != null)
-                {
-                    return cachedCarbonAuditSettings;
-                }
-                var auditSection = configuration.GetSection("CarbonAudit");
-                var settings = DefaultCarbonAuditSettings;
-                if (auditSection.Exists())
-                {
-                    settings = new CarbonAuditSettings();
-                    auditSection.Bind(settings);
-                }
-                cachedCarbonAuditSettingsChangeRegistration?.Dispose();
-                cachedCarbonAuditConfiguration = configuration;
-                cachedCarbonAuditSettings = settings;
-                cachedCarbonAuditSettingsChangeRegistration = configuration.GetReloadToken().RegisterChangeCallback(_ => InvalidateCarbonAuditSettingsCache(configuration), null);
-                return cachedCarbonAuditSettings;
-            }
-        }
-        private static void InvalidateCarbonAuditSettingsCache(IConfiguration configuration)
-        {
-            lock (CarbonAuditSettingsCacheLock)
-            {
-                if (!ReferenceEquals(cachedCarbonAuditConfiguration, configuration))
-                {
-                    return;
-                }
-                cachedCarbonAuditSettingsChangeRegistration?.Dispose();
-                cachedCarbonAuditSettingsChangeRegistration = null;
-                cachedCarbonAuditConfiguration = null;
-                cachedCarbonAuditSettings = null;
-            }
         }
         private static bool IsExcludedPath(PathString requestPath, IEnumerable<string> excludedPaths)
         {
