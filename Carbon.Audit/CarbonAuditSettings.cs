@@ -24,13 +24,13 @@ public class CarbonAuditSettings
     /// <summary>
     /// Gets or sets the list of request paths to exclude from auditing.
     /// </summary>
-    public string[] ExcludedPaths { get; set; }
+    public string[] ExcludedPaths { get; set; } = System.Array.Empty<string>();
 
     /// <summary>
     /// Gets or sets the list of allowed request content types for auditing.
     /// If empty or null, all content types are allowed.
     /// </summary>
-    public string[] AllowedContentTypes { get; set; }
+    public string[] AllowedContentTypes { get; set; } = System.Array.Empty<string>();
 
     /// <summary>
     /// Gets or sets the maximum allowed request body size (in bytes) for auditing.
