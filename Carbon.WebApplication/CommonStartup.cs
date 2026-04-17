@@ -28,6 +28,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
 using Serilog.Enrichers.Sensitive;
 using Carbon.Serilog;
+using Carbon.Audit;
 
 namespace Carbon.WebApplication
 {
@@ -39,6 +40,7 @@ namespace Carbon.WebApplication
         internal static IList<FilterDescriptor> _filterDescriptors = new List<FilterDescriptor>();
         private static bool _useAuthentication;
         private static bool _useAuthorization;
+        private static bool _useCarbonAudit;
         /// <summary>
         /// Adds operation filter.
         /// </summary>
@@ -55,6 +57,7 @@ namespace Carbon.WebApplication
 
         internal static void AddServiceBaseLogic(IServiceCollection services, IConfiguration Configuration)
         {
+            _useCarbonAudit = Configuration.GetValue<bool>("CarbonAudit:Enabled");
             services.AddHeaderPropagation();
 
             services.AddOptions();
@@ -77,6 +80,11 @@ namespace Carbon.WebApplication
 #endregion
 
             AddServiceCors(services, Configuration);
+
+            if (_useCarbonAudit)
+            {
+                services.AddCarbonAudit();
+            }
 
             services.AddHealthChecks();
             services.AddMvc(options =>
@@ -274,6 +282,14 @@ namespace Carbon.WebApplication
             {
                 app.UseAuthorization();
             }
+
+            if (_useCarbonAudit)
+            {
+                app.UseWhen(ShouldUseCarbonAudit, branch =>
+                {
+                    branch.UseCarbonAudit();
+                });
+            }
             
         }
 
@@ -295,5 +311,67 @@ namespace Carbon.WebApplication
             endpoints.MapDefaultControllerRoute();
         }
 
+        private static bool ShouldUseCarbonAudit(HttpContext context)
+        {
+            var configuration = context.RequestServices.GetService<IConfiguration>();
+            var auditSection = configuration?.GetSection("CarbonAudit");
+            if (auditSection == null || !auditSection.Exists())
+            {
+                return true;
+            }
+            var isEnabled = auditSection.GetValue<bool?>("Enabled");
+            if (isEnabled.HasValue && !isEnabled.Value)
+            {
+                return false;
+            }
+            var excludedPaths = auditSection.GetSection("ExcludedPaths").Get<string[]>();
+            if (IsExcludedPath(context.Request.Path, excludedPaths))
+            {
+                return false;
+            }
+            var allowedContentTypes = auditSection.GetSection("AllowedContentTypes").Get<string[]>();
+            if (!IsAllowedContentType(context.Request.ContentType, allowedContentTypes))
+            {
+                return false;
+            }
+            var maxRequestBodyBytes = auditSection.GetValue<long?>("MaxRequestBodyBytes");
+            if (maxRequestBodyBytes.HasValue)
+            {
+                if (!context.Request.ContentLength.HasValue)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+        private static bool IsExcludedPath(PathString requestPath, IEnumerable<string> excludedPaths)
+        {
+            if (excludedPaths == null)
+            {
+                return false;
+            }
+            foreach (var excludedPath in excludedPaths.Where(path => !string.IsNullOrWhiteSpace(path)))
+            {
+                if (requestPath.StartsWithSegments(excludedPath, StringComparison.OrdinalIgnoreCase))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+        private static bool IsAllowedContentType(string contentType, IEnumerable<string> allowedContentTypes)
+        {
+            if (allowedContentTypes == null || !allowedContentTypes.Any())
+            {
+                return true;
+            }
+            if (string.IsNullOrWhiteSpace(contentType))
+            {
+                return false;
+            }
+            return allowedContentTypes
+                .Where(value => !string.IsNullOrWhiteSpace(value))
+                .Any(value => contentType.StartsWith(value, StringComparison.OrdinalIgnoreCase));
+        }
     }
 }

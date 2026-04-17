@@ -1,8 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
 		<TargetFrameworks>net8.0;net6.0</TargetFrameworks>
-		<Version>4.6.15</Version>
+		<Version>4.6.16</Version>
 		<Description>
+            4.6.16
+            - Add Carbon.Audit package for auditing purposes.
             4.6.15
             - Added CustomConfigureAfterAuth hook (no behavior change unless overridden).
             4.6.14
@@ -139,6 +141,9 @@
 		<ProjectReference Include="..\Carbon.PagedList\Carbon.PagedList.csproj" />
 		<ProjectReference Include="..\Carbon.Serilog\Carbon.Serilog.csproj" />
 	</ItemGroup>
+    <ItemGroup Condition="'$(TargetFramework)' == 'net6.0' or '$(TargetFramework)' == 'net8.0'">
+        <ProjectReference Include="..\Carbon.Audit\Carbon.Audit.csproj" />
+    </ItemGroup>
 
 	<ItemGroup>
 		<Folder Include="TenantManagementHandler\Middlewares\" />
