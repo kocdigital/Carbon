@@ -335,11 +335,16 @@ namespace Carbon.WebApplication
                 return false;
             }
             var maxRequestBodyBytes = auditSection.GetValue<long?>("MaxRequestBodyBytes");
-            if (maxRequestBodyBytes.HasValue &&
-                context.Request.ContentLength.HasValue &&
-                context.Request.ContentLength.Value > maxRequestBodyBytes.Value)
+            if (maxRequestBodyBytes.HasValue)
             {
-                return false;
+                if (!context.Request.ContentLength.HasValue)
+                {
+                    return false;
+                }
+                if (context.Request.ContentLength.Value > maxRequestBodyBytes.Value)
+                {
+                    return false;
+                }
             }
             return true;
         }
