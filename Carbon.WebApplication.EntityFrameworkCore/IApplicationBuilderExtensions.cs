@@ -11,6 +11,9 @@ using System.IO;
 using System.Runtime.Loader;
 using Microsoft.Extensions.Logging;
 using Carbon.Domain.EntityFrameworkCore;
+#if NET6_0_OR_GREATER
+using Carbon.Audit.Producer;
+#endif
 using Microsoft.Extensions.Diagnostics.HealthChecks;
 
 namespace Carbon.WebApplication.EntityFrameworkCore
@@ -87,16 +90,34 @@ namespace Carbon.WebApplication.EntityFrameworkCore
             var target = configuration.GetConnectionString("ConnectionTarget") ?? "MSSQL";
             var connectionString = configuration.GetConnectionString("DefaultConnection");
 
+#if NET6_0_OR_GREATER
+            var useCarbonAudit = string.Equals(configuration["CarbonAudit:Enabled"], "true", StringComparison.OrdinalIgnoreCase);
+#endif
+
             var migrationsAssembly = typeof(TStartup).GetTypeInfo().Assembly.GetName().Name + "." + target;
             string path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
 
             switch (target.ToLower())
             {
                 case "postgresql":
-                    services.AddDbContext<TContext>(options => options.UseNpgsql(connectionString, sql => sql.MigrationsAssembly(migrationsAssembly)));
+                    services.AddDbContext<TContext>((sp, options) =>
+                    {
+                        options.UseNpgsql(connectionString, sql => sql.MigrationsAssembly(migrationsAssembly));
+#if NET6_0_OR_GREATER
+                        if (useCarbonAudit)
+                            options.AddInterceptors(sp.GetRequiredService<AuditInterceptor>());
+#endif
+                    });
                     break;
                 case "mssql":
-                    services.AddDbContext<TContext>(options => options.UseSqlServer(connectionString, sql => sql.MigrationsAssembly(migrationsAssembly)));
+                    services.AddDbContext<TContext>((sp, options) =>
+                    {
+                        options.UseSqlServer(connectionString, sql => sql.MigrationsAssembly(migrationsAssembly));
+#if NET6_0_OR_GREATER
+                        if (useCarbonAudit)
+                            options.AddInterceptors(sp.GetRequiredService<AuditInterceptor>());
+#endif
+                    });
                     break;
                 default:
                     throw new Exception("No Valid Connection Target Found");
@@ -131,16 +152,34 @@ namespace Carbon.WebApplication.EntityFrameworkCore
             var connectionString = configuration.GetConnectionString("DefaultConnection");
             var readReplicaEnabled = configuration.GetConnectionString("ReadReplicaEnabled");
 
+#if NET6_0_OR_GREATER
+            var useCarbonAudit = string.Equals(configuration["CarbonAudit:Enabled"], "true", StringComparison.OrdinalIgnoreCase);
+#endif
+
             var migrationsAssembly = typeof(TStartup).GetTypeInfo().Assembly.GetName().Name + "." + target;
             string path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
 
             switch (target.ToLower())
             {
                 case "postgresql":
-                    services.AddDbContext<TContext>(options => options.UseNpgsql(connectionString, sql => sql.MigrationsAssembly(migrationsAssembly)));
+                    services.AddDbContext<TContext>((sp, options) =>
+                    {
+                        options.UseNpgsql(connectionString, sql => sql.MigrationsAssembly(migrationsAssembly));
+#if NET6_0_OR_GREATER
+                        if (useCarbonAudit)
+                            options.AddInterceptors(sp.GetRequiredService<AuditInterceptor>());
+#endif
+                    });
                     break;
                 case "mssql":
-                    services.AddDbContext<TContext>(options => options.UseSqlServer(connectionString, sql => sql.MigrationsAssembly(migrationsAssembly)));
+                    services.AddDbContext<TContext>((sp, options) =>
+                    {
+                        options.UseSqlServer(connectionString, sql => sql.MigrationsAssembly(migrationsAssembly));
+#if NET6_0_OR_GREATER
+                        if (useCarbonAudit)
+                            options.AddInterceptors(sp.GetRequiredService<AuditInterceptor>());
+#endif
+                    });
                     break;
                 default:
                     throw new Exception("No Valid Connection Target Found");
@@ -215,3 +254,4 @@ namespace Carbon.WebApplication.EntityFrameworkCore
         }
     }
 }
+
