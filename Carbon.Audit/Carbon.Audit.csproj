@@ -4,8 +4,10 @@
     <TargetFrameworks>net8.0;net6.0</TargetFrameworks>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <Version>1.0.0</Version>
+    <Version>1.0.1</Version>
     <Description>
+      1.0.1
+      - Initial release. RequestContextMiddleware, AuditInterceptor and audit constants added.  
       1.0.0
       - Initial release. RequestContextMiddleware, AuditInterceptor and audit constants added.
     </Description>
