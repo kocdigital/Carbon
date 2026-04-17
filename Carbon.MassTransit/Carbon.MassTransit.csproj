@@ -2,8 +2,10 @@
 
 	<PropertyGroup>
 		<TargetFrameworks>net8.0;net6.0</TargetFrameworks>
-		<Version>3.10.2</Version>
+		<Version>3.10.3</Version>
 		<Description>
+      3.10.3
+      - Add Carbon.Audit package and GlobalConventionsExtensions class.
       3.10.2
       - Healthcheck for RabbitMQ fixed; special characters inthe username and password are now supported
       3.10.1
@@ -69,6 +71,7 @@
 	</PropertyGroup>
 
   <ItemGroup Condition="'$(TargetFramework)' == 'net8.0'">
+    <PackageReference Include="Carbon.Audit" Version="1.0.0" />
     <PackageReference Include="AspNetCore.HealthChecks.Rabbitmq" Version="8.0.2" />
     <PackageReference Include="MassTransit" Version="7.3.1" />
     <PackageReference Include="MassTransit.AspNetCore" Version="7.3.1" />
@@ -80,6 +83,7 @@
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.1" />
   </ItemGroup>
 	<ItemGroup Condition="'$(TargetFramework)' == 'net6.0'">
+    <PackageReference Include="Carbon.Audit" Version="1.0.0" />
     <PackageReference Include="AspNetCore.HealthChecks.Rabbitmq" Version="5.0.1" />
     <PackageReference Include="MassTransit" Version="7.3.1" />
     <PackageReference Include="MassTransit.AspNetCore" Version="7.3.1" />

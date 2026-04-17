@@ -28,6 +28,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
 using Serilog.Enrichers.Sensitive;
 using Carbon.Serilog;
+using Carbon.Audit;
 
 namespace Carbon.WebApplication
 {
@@ -39,6 +40,7 @@ namespace Carbon.WebApplication
         internal static IList<FilterDescriptor> _filterDescriptors = new List<FilterDescriptor>();
         private static bool _useAuthentication;
         private static bool _useAuthorization;
+        private static bool _useCarbonAudit;
         /// <summary>
         /// Adds operation filter.
         /// </summary>
@@ -55,6 +57,7 @@ namespace Carbon.WebApplication
 
         internal static void AddServiceBaseLogic(IServiceCollection services, IConfiguration Configuration)
         {
+            _useCarbonAudit = string.Equals(Configuration["CarbonAudit:Enabled"], "true", StringComparison.OrdinalIgnoreCase);
             services.AddHeaderPropagation();
 
             services.AddOptions();
@@ -77,6 +80,11 @@ namespace Carbon.WebApplication
 #endregion
 
             AddServiceCors(services, Configuration);
+
+            if (_useCarbonAudit)
+            {
+                services.AddCarbonAudit();
+            }
 
             services.AddHealthChecks();
             services.AddMvc(options =>
@@ -273,6 +281,11 @@ namespace Carbon.WebApplication
             if (_useAuthorization)
             {
                 app.UseAuthorization();
+            }
+
+            if (_useCarbonAudit)
+            {
+                app.UseCarbonAudit();
             }
             
         }

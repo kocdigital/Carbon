@@ -561,8 +561,9 @@ namespace Carbon.MassTransit
                         s.CertificateSelectionCallback = busSettings.CertificateSelectionCallback;
                     });
                 }
-                configurator(provider, x);
             });
+            x.ConfigureGlobalMessageMappings();
+            configurator(provider, x);
             return x;
         };
 
