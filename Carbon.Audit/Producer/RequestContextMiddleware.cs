@@ -4,14 +4,20 @@ using Carbon.Audit.Contracts;
 using Carbon.Audit.Producer.Http;
 using Microsoft.AspNetCore.Http;
 using System.Text;
+using Microsoft.Extensions.Configuration;
 
 namespace Carbon.Audit.Producer;
 
 public sealed class RequestContextMiddleware
 {
     private readonly RequestDelegate _next;
+    private readonly IConfiguration _configuration;
 
-    public RequestContextMiddleware(RequestDelegate next) => _next = next;
+    public RequestContextMiddleware(RequestDelegate next, IConfiguration configuration) // DI için EKLENDİ
+    {
+        _next = next;
+        _configuration = configuration;
+    }
 
     private static string? ClaimValue(ClaimsPrincipal principal, string claimType)
         => principal.FindFirst(claimType)?.Value;
@@ -26,14 +32,11 @@ public sealed class RequestContextMiddleware
         if (method is "POST" or "PUT" or "DELETE")
         {
             http.Request.EnableBuffering(); 
-            
-            using (var reader = new StreamReader(http.Request.Body, Encoding.UTF8, true, 1024, leaveOpen: true))
-            {
-                var body = await reader.ReadToEndAsync();
-                ctx.Payload = body;
-                
-                http.Request.Body.Position = 0;
-            }
+            var maxBytes = _configuration.GetSection("CarbonAudit").GetValue<int?>("MaxRequestBodyBytes") ?? 1024;
+            var buffer = new byte[maxBytes];
+            int readBytes = await http.Request.Body.ReadAsync(buffer, 0, maxBytes);
+            ctx.Payload = Encoding.UTF8.GetString(buffer, 0, readBytes);
+            http.Request.Body.Position = 0;
         }
         
         var user = http.User;
