@@ -341,10 +341,6 @@ namespace Carbon.WebApplication
                 {
                     return false;
                 }
-                if (context.Request.ContentLength.Value > maxRequestBodyBytes.Value)
-                {
-                    return false;
-                }
             }
             return true;
         }
