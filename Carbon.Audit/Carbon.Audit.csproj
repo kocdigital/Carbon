@@ -6,12 +6,10 @@
     <Nullable>enable</Nullable>
     <Version>1.0.4</Version>
     <Description>
-      1.0.4
+      1.0.2
       - TransactionId header is now also accepted as a case-insensitive fallback for CorrelationId
-      1.0.3
       - Synthesize a FailedRequest audit event for HTTP >= 400 responses that have no pending DB-change events (e.g. GET requests that are rejected)
       - Added AuditAction.FailedRequest = 3 enum value
-      1.0.2
       - Audit records are now emitted for all requests regardless of outcome (including HTTP 500 / DB errors)
       - AuditEvent now carries HttpStatusCode of the HTTP response
       1.0.1
