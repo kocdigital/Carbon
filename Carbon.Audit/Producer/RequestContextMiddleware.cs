@@ -93,6 +93,26 @@ public sealed class RequestContextMiddleware
 
         ctx.HttpStatusCode = http.Response.StatusCode;
 
+        if (ctx.PendingAuditEvents.Count == 0 && ctx.HttpStatusCode >= 400)
+        {
+            ctx.PendingAuditEvents.Add(new AuditEvent
+            {
+                Id = Guid.NewGuid(),
+                Timestamp = DateTime.UtcNow,
+                UserId = ctx.UserId,
+                UserName = ctx.UserName,
+                UserEmail = ctx.UserEmail,
+                IpAddress = ctx.IpAddress,
+                SessionId = ctx.SessionId,
+                ClientSource = ctx.Source,
+                CorrelationId = ctx.CorrelationId,
+                Endpoint = ctx.Endpoint,
+                Payload = ctx.Payload,
+                Action = AuditAction.FailedRequest,
+                HttpStatusCode = ctx.HttpStatusCode
+            });
+        }
+
         if (ctx.PendingAuditEvents.Count > 0)
         {
             foreach (var evt in ctx.PendingAuditEvents)
