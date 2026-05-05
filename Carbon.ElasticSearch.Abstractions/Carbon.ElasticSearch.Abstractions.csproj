@@ -3,9 +3,9 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
     <ProjectGuid>{bdcf1c00-d0d9-4328-8817-4d093f30cee1}</ProjectGuid>
-    <Version>3.8.6</Version>
+    <Version>3.9.0</Version>
     <Description>
-		3.8.6
+		3.9.0
 		- Introduce IsConfigured to IElasticSettings and use it to guard all repository operations
 		3.8.5
 		- Added tracktotalhits to all elastic search async methods

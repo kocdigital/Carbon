@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Elasticsearch.Net;
 using Microsoft.Extensions.Options;
@@ -24,7 +25,7 @@ namespace Carbon.ElasticSearch
         public string Password { get; set; }
         public int Timeout { get; set; } 
 		public bool ForceRefresh { get; set; }
-		public bool IsConfigured => Urls != null && Urls.Length > 0;
+		public bool IsConfigured => Urls != null && Urls.Length > 0 && Urls.Any(u => u != null && !string.IsNullOrWhiteSpace(u.OriginalString));
 
 		public ConnectionSettings ConnectionSettings { get; set; }
         protected IList<ElasticIndexMapping> Mappings { get; set; }
