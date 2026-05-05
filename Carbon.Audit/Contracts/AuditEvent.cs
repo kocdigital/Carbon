@@ -32,4 +32,6 @@ public sealed class AuditEvent
     public object? After { get; set; }
 
     public List<FieldChange> Changes { get; set; } = new();
+
+    public int? HttpStatusCode { get; set; }
 }
