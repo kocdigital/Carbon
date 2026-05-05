@@ -23,6 +23,10 @@ namespace Carbon.ElasticSearch.Abstractions
 		/// Forces elastic search to refresh after Create/Update/Delte operation. <see href="https://www.elastic.co/guide/en/elasticsearch/reference/7.17/indices-refresh.html"/>
 		/// </summary>
         bool ForceRefresh { get; set; }
+        /// <summary>
+        /// Returns true if the Elastic configuration contains at least one valid URL.
+        /// </summary>
+        bool IsConfigured { get; }
 
         #endregion
 
