@@ -85,7 +85,8 @@ public sealed class RequestContextMiddleware
             http.Request.Headers["X-CorrelationId"].FirstOrDefault()
             ?? http.Request.Headers["X-Correlation-Id"].FirstOrDefault()
             ?? http.Request.Headers["correlationId"].FirstOrDefault()
-            ?? http.Request.Headers["CorrelationId"].FirstOrDefault();
+            ?? http.Request.Headers["CorrelationId"].FirstOrDefault()
+            ?? http.Request.Headers["TransactionId"].FirstOrDefault();
 
         ctx.CorrelationId = string.IsNullOrWhiteSpace(corr) ? null : corr.Trim();
 
