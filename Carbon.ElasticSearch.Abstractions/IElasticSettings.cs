@@ -24,7 +24,7 @@ namespace Carbon.ElasticSearch.Abstractions
 		/// </summary>
         bool ForceRefresh { get; set; }
         /// <summary>
-        /// Returns true if the Elastic configuration contains at least one valid URL.
+        /// Returns true if the Elastic configuration has been provided.
         /// </summary>
         bool IsConfigured { get; }
 
