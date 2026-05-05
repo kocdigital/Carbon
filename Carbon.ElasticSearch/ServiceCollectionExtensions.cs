@@ -47,11 +47,14 @@ namespace Carbon.ElasticSearch
 
             services.AddOptions();
             services.Configure(setupAction);
-            setupAction?.Invoke(elasticSettings as ElasticSettings);
+
+            if (elasticSettings.IsConfigured)
+            {
+                setupAction?.Invoke(elasticSettings as ElasticSettings);
+                AddElasticSearchPersisterHealthCheck(services, elasticSettings);
+            }
+
             services.AddSingleton(elasticSettings);
-
-
-            AddElasticSearchPersisterHealthCheck(services, elasticSettings);
             return services;
         }
         /// <summary>
