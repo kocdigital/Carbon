@@ -11,18 +11,15 @@ namespace Carbon.Audit.Producer;
 public sealed class AuditInterceptor : SaveChangesInterceptor
 {
     private readonly RequestContext _requestContext;
-    private readonly IAuditEventPublisher _publisher;
     private readonly ILogger<AuditInterceptor> _logger;
 
     private List<AuditEntryPending>? _pendingAudits;
 
     public AuditInterceptor(
         RequestContext ctx,
-        IAuditEventPublisher publisher,
         ILogger<AuditInterceptor> logger)
     {
         _requestContext = ctx;
-        _publisher = publisher;
         _logger = logger;
     }
     
@@ -58,8 +55,6 @@ public sealed class AuditInterceptor : SaveChangesInterceptor
         {
             try
             {
-                var eventsToPublish = new List<AuditEvent>();
-
                 foreach (var pending in _pendingAudits)
                 {
                     var evt = pending.Event;
@@ -70,14 +65,12 @@ public sealed class AuditInterceptor : SaveChangesInterceptor
                         evt.After = GetSnapshot(pending.Entry, original: false);
                     }
 
-                    eventsToPublish.Add(evt);
+                    _requestContext.PendingAuditEvents.Add(evt);
                 }
-                
-                await _publisher.PublishBatchAsync(eventsToPublish);
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "[AUDIT] Failed to publish audit events after save");
+                _logger.LogError(ex, "[AUDIT] Failed to queue audit events after save");
             }
             finally
             {
@@ -92,7 +85,23 @@ public sealed class AuditInterceptor : SaveChangesInterceptor
         DbContextErrorEventData eventData,
         CancellationToken cancellationToken)
     {
-        _pendingAudits?.Clear();
+        if (_pendingAudits != null && _pendingAudits.Count > 0)
+        {
+            try
+            {
+                foreach (var pending in _pendingAudits)
+                    _requestContext.PendingAuditEvents.Add(pending.Event);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "[AUDIT] Failed to queue audit events after save failure");
+            }
+            finally
+            {
+                _pendingAudits.Clear();
+            }
+        }
+
         return base.SaveChangesFailedAsync(eventData, cancellationToken);
     }
     
