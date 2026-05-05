@@ -4,8 +4,14 @@
     <TargetFrameworks>net8.0;net6.0</TargetFrameworks>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <Version>1.0.1</Version>
+    <Version>1.0.2</Version>
     <Description>
+      1.0.2
+      - TransactionId header is now also accepted as a case-insensitive fallback for CorrelationId
+      - Synthesize a FailedRequest audit event for HTTP >= 400 responses that have no pending DB-change events (e.g. GET requests that are rejected)
+      - Added AuditAction.FailedRequest = 3 enum value
+      - Audit records are now emitted for all requests regardless of outcome (including HTTP 500 / DB errors)
+      - AuditEvent now carries HttpStatusCode of the HTTP response
       1.0.1
       - Add advanced audit filtering options to CarbonAudit settings  
       1.0.0

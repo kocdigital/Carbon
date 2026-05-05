@@ -13,7 +13,7 @@ public sealed class RequestContextMiddleware
     private readonly RequestDelegate _next;
     private readonly IConfiguration _configuration;
 
-    public RequestContextMiddleware(RequestDelegate next, IConfiguration configuration) // DI için EKLENDİ
+    public RequestContextMiddleware(RequestDelegate next, IConfiguration configuration)
     {
         _next = next;
         _configuration = configuration;
@@ -22,7 +22,7 @@ public sealed class RequestContextMiddleware
     private static string? ClaimValue(ClaimsPrincipal principal, string claimType)
         => principal.FindFirst(claimType)?.Value;
 
-    public async Task InvokeAsync(HttpContext http, RequestContext ctx)
+    public async Task InvokeAsync(HttpContext http, RequestContext ctx, IAuditEventPublisher publisher)
     {
         var endpoint = http.GetEndpoint();
         ctx.Endpoint = endpoint?.DisplayName ?? http.Request.Path;
@@ -85,10 +85,42 @@ public sealed class RequestContextMiddleware
             http.Request.Headers["X-CorrelationId"].FirstOrDefault()
             ?? http.Request.Headers["X-Correlation-Id"].FirstOrDefault()
             ?? http.Request.Headers["correlationId"].FirstOrDefault()
-            ?? http.Request.Headers["CorrelationId"].FirstOrDefault();
+            ?? http.Request.Headers["CorrelationId"].FirstOrDefault()
+            ?? http.Request.Headers["TransactionId"].FirstOrDefault();
 
         ctx.CorrelationId = string.IsNullOrWhiteSpace(corr) ? null : corr.Trim();
 
         await _next(http);
+
+        ctx.HttpStatusCode = http.Response.StatusCode;
+
+        if (ctx.PendingAuditEvents.Count == 0 && ctx.HttpStatusCode >= 400)
+        {
+            ctx.PendingAuditEvents.Add(new AuditEvent
+            {
+                Id = Guid.NewGuid(),
+                Timestamp = DateTime.UtcNow,
+                UserId = ctx.UserId,
+                UserName = ctx.UserName,
+                UserEmail = ctx.UserEmail,
+                IpAddress = ctx.IpAddress,
+                SessionId = ctx.SessionId,
+                ClientSource = ctx.Source,
+                CorrelationId = ctx.CorrelationId,
+                Endpoint = ctx.Endpoint,
+                Payload = ctx.Payload,
+                Action = AuditAction.FailedRequest,
+                HttpStatusCode = ctx.HttpStatusCode
+            });
+        }
+
+        if (ctx.PendingAuditEvents.Count > 0)
+        {
+            foreach (var evt in ctx.PendingAuditEvents)
+                evt.HttpStatusCode = ctx.HttpStatusCode;
+
+            await publisher.PublishBatchAsync(ctx.PendingAuditEvents);
+            ctx.PendingAuditEvents.Clear();
+        }
     }
 }
