@@ -17,4 +17,8 @@ public sealed class RequestContext
     public string? Payload { get; set; }
 
     public bool IsHmiRequest => Source == ClientSource.HMI;
+
+    public int? HttpStatusCode { get; set; }
+
+    public List<AuditEvent> PendingAuditEvents { get; } = new();
 }
