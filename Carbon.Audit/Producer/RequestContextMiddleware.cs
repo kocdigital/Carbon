@@ -113,7 +113,7 @@ public sealed class RequestContextMiddleware
             pipelineException = ex;
         }
 
-        ctx.HttpStatusCode = DetermineHttpStatusCode(http.Response.StatusCode);
+        ctx.HttpStatusCode = http.Response.StatusCode;
 
         if (ctx.PendingAuditEvents.Count > 0)
         {
@@ -184,8 +184,4 @@ public sealed class RequestContextMiddleware
         return result;
     }
 
-    private static int DetermineHttpStatusCode(int responseStatusCode)
-    {
-        return responseStatusCode;
-    }
 }
