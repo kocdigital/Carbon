@@ -113,7 +113,7 @@ public sealed class RequestContextMiddleware
             pipelineException = ex;
         }
 
-        ctx.HttpStatusCode = DetermineHttpStatusCode(http.Response.StatusCode, pipelineException);
+        ctx.HttpStatusCode = DetermineHttpStatusCode(http.Response.StatusCode);
 
         if (ctx.PendingAuditEvents.Count > 0)
         {
@@ -184,13 +184,8 @@ public sealed class RequestContextMiddleware
         return result;
     }
 
-    private static int DetermineHttpStatusCode(int responseStatusCode, Exception? pipelineException)
+    private static int DetermineHttpStatusCode(int responseStatusCode)
     {
-        if (pipelineException is null)
-            return responseStatusCode;
-
-        return responseStatusCode == StatusCodes.Status200OK
-            ? StatusCodes.Status500InternalServerError
-            : responseStatusCode;
+        return responseStatusCode;
     }
 }
