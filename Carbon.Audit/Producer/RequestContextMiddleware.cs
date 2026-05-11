@@ -165,7 +165,7 @@ public sealed class RequestContextMiddleware
         }
 
         if (publishException is not null)
-            _logger.LogError(publishException, "[AUDIT] Failed to publish request audit event for {Method} {Endpoint}", method, ctx.Endpoint);
+            _logger.LogError(publishException, "[AUDIT] Failed to publish request audit event");
 
         if (pipelineException is not null)
             ExceptionDispatchInfo.Capture(pipelineException).Throw();
