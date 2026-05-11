@@ -1,8 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
 		<TargetFrameworks>net8.0;net6.0</TargetFrameworks>
-		<Version>4.6.18</Version>
+		<Version>4.6.19</Version>
 		<Description>
+            4.6.19
+            - Carbon.Audit version update, token considered sensitive and redacted.
             4.6.18
             - Carbon.Audit version update, HttpAudit added
             4.6.17
