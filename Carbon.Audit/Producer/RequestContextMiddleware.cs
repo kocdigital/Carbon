@@ -14,6 +14,7 @@ public sealed class RequestContextMiddleware
 {
     private readonly RequestDelegate _next;
     private readonly IConfiguration _configuration;
+    private static readonly string? ApiName = Assembly.GetEntryAssembly()?.GetName().Name;
     private static readonly HashSet<string> SensitiveHeaders = new(StringComparer.OrdinalIgnoreCase)
     {
         "Authorization",
@@ -110,9 +111,12 @@ public sealed class RequestContextMiddleware
             pipelineException = ex;
         }
 
+        var responseStatusCode = http.Response.StatusCode;
         ctx.HttpStatusCode = pipelineException is null
-            ? http.Response.StatusCode
-            : StatusCodes.Status500InternalServerError;
+            ? responseStatusCode
+            : responseStatusCode == StatusCodes.Status200OK
+                ? StatusCodes.Status500InternalServerError
+                : responseStatusCode;
 
         if (ctx.PendingAuditEvents.Count > 0)
         {
@@ -123,27 +127,38 @@ public sealed class RequestContextMiddleware
             ctx.PendingAuditEvents.Clear();
         }
 
-        await publisher.PublishRequestAsync(new HttpRequestAuditEvent
+        Exception? publishException = null;
+        try
         {
-            Id = Guid.NewGuid(),
-            Timestamp = DateTime.UtcNow,
-            ApiName = Assembly.GetEntryAssembly()?.GetName().Name,
-            Endpoint = ctx.Endpoint,
-            HttpMethod = method,
-            HttpStatusCode = ctx.HttpStatusCode ?? StatusCodes.Status500InternalServerError,
-            CorrelationId = ctx.CorrelationId,
-            Payload = ctx.Payload,
-            Headers = BuildHeaders(http.Request.Headers),
-            UserId = ctx.UserId,
-            UserName = ctx.UserName,
-            UserEmail = ctx.UserEmail,
-            IpAddress = ctx.IpAddress,
-            SessionId = ctx.SessionId,
-            ClientSource = ctx.Source
-        });
+            await publisher.PublishRequestAsync(new HttpRequestAuditEvent
+            {
+                Id = Guid.NewGuid(),
+                Timestamp = DateTime.UtcNow,
+                ApiName = ApiName,
+                Endpoint = ctx.Endpoint,
+                HttpMethod = method,
+                HttpStatusCode = ctx.HttpStatusCode ?? StatusCodes.Status500InternalServerError,
+                CorrelationId = ctx.CorrelationId,
+                Payload = ctx.Payload,
+                Headers = BuildHeaders(http.Request.Headers),
+                UserId = ctx.UserId,
+                UserName = ctx.UserName,
+                UserEmail = ctx.UserEmail,
+                IpAddress = ctx.IpAddress,
+                SessionId = ctx.SessionId,
+                ClientSource = ctx.Source
+            });
+        }
+        catch (Exception ex)
+        {
+            publishException = ex;
+        }
 
         if (pipelineException is not null)
             ExceptionDispatchInfo.Capture(pipelineException).Throw();
+
+        if (publishException is not null)
+            ExceptionDispatchInfo.Capture(publishException).Throw();
     }
 
     private static Dictionary<string, string> BuildHeaders(IHeaderDictionary headers)
