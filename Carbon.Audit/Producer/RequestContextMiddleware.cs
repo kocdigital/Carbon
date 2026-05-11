@@ -22,7 +22,8 @@ public sealed class RequestContextMiddleware
         "Authorization",
         "Cookie",
         "Set-Cookie",
-        "X-Api-Key"
+        "X-Api-Key",
+        "Token"
     };
 
     public RequestContextMiddleware(RequestDelegate next, IConfiguration configuration, ILogger<RequestContextMiddleware> logger)

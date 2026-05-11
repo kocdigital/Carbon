@@ -4,8 +4,10 @@
     <TargetFrameworks>net8.0;net6.0</TargetFrameworks>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <Version>1.1.0</Version>
+    <Version>1.1.1</Version>
     <Description>
+      1.1.1
+      - Token header is now also considered sensitive and redacted.
       1.1.0
       - Dedicated HTTP request audit event publishing added.
       1.0.2
