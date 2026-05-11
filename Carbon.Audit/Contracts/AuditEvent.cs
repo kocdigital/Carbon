@@ -28,9 +28,12 @@ public sealed class AuditEvent
 
     public AuditAction Action { get; set; }
     public string? Endpoint { get; set; }
+    public string? Payload { get; set; }
 
     public object? Before { get; set; }
     public object? After { get; set; }
 
     public List<FieldChange> Changes { get; set; } = new();
+
+    public int? HttpStatusCode { get; set; }
 }
