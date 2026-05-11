@@ -111,12 +111,7 @@ public sealed class RequestContextMiddleware
             pipelineException = ex;
         }
 
-        var responseStatusCode = http.Response.StatusCode;
-        ctx.HttpStatusCode = pipelineException is null
-            ? responseStatusCode
-            : responseStatusCode == StatusCodes.Status200OK
-                ? StatusCodes.Status500InternalServerError
-                : responseStatusCode;
+        ctx.HttpStatusCode = DetermineHttpStatusCode(http.Response.StatusCode, pipelineException);
 
         if (ctx.PendingAuditEvents.Count > 0)
         {
@@ -154,6 +149,9 @@ public sealed class RequestContextMiddleware
             publishException = ex;
         }
 
+        if (pipelineException is not null && publishException is not null)
+            throw new AggregateException(pipelineException, publishException);
+
         if (pipelineException is not null)
             ExceptionDispatchInfo.Capture(pipelineException).Throw();
 
@@ -172,5 +170,15 @@ public sealed class RequestContextMiddleware
         }
 
         return result;
+    }
+
+    private static int DetermineHttpStatusCode(int responseStatusCode, Exception? pipelineException)
+    {
+        if (pipelineException is null)
+            return responseStatusCode;
+
+        return responseStatusCode == StatusCodes.Status200OK
+            ? StatusCodes.Status500InternalServerError
+            : responseStatusCode;
     }
 }
