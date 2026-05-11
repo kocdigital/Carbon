@@ -115,9 +115,6 @@ public sealed class RequestContextMiddleware
 
         if (ctx.PendingAuditEvents.Count > 0)
         {
-            foreach (var evt in ctx.PendingAuditEvents)
-                evt.HttpStatusCode = ctx.HttpStatusCode;
-
             await publisher.PublishBatchAsync(ctx.PendingAuditEvents);
             ctx.PendingAuditEvents.Clear();
         }
@@ -128,6 +125,7 @@ public sealed class RequestContextMiddleware
             await publisher.PublishRequestAsync(new HttpRequestAuditEvent
             {
                 Id = Guid.NewGuid(),
+                RequestAuditId = ctx.RequestAuditId,
                 Timestamp = DateTime.UtcNow,
                 ApiName = ApiName,
                 Endpoint = ctx.Endpoint,

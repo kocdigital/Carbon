@@ -24,14 +24,13 @@ public sealed class AuditEvent
     public string? EntityId { get; set; }
     public string? EntityName { get; set; }
 
+    public Guid? RequestAuditId { get; set; }
+
     public AuditAction Action { get; set; }
-    public string? Endpoint { get; set; } 
-    public string? Payload { get; set; }
-    
+    public string? Endpoint { get; set; }
+
     public object? Before { get; set; }
     public object? After { get; set; }
 
     public List<FieldChange> Changes { get; set; } = new();
-
-    public int? HttpStatusCode { get; set; }
 }
