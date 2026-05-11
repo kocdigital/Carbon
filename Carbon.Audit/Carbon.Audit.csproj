@@ -4,8 +4,10 @@
     <TargetFrameworks>net8.0;net6.0</TargetFrameworks>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <Version>1.0.2</Version>
+    <Version>1.1.0</Version>
     <Description>
+      1.1.0
+      - Dedicated HTTP request audit event publishing added.
       1.0.2
       - TransactionId header is now also accepted as a case-insensitive fallback for CorrelationId
       - Synthesize a FailedRequest audit event for HTTP >= 400 responses that have no pending DB-change events (e.g. GET requests that are rejected)

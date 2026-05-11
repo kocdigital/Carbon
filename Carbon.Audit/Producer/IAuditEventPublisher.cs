@@ -6,4 +6,5 @@ public interface IAuditEventPublisher
 {
     Task PublishAsync(AuditEvent evt);
     Task PublishBatchAsync(IEnumerable<AuditEvent> events);
+    Task PublishRequestAsync(HttpRequestAuditEvent evt);
 }

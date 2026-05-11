@@ -131,7 +131,8 @@ public sealed class AuditInterceptor : SaveChangesInterceptor
             ClientSource = _requestContext.Source,
             CorrelationId = _requestContext.CorrelationId,
             Endpoint = _requestContext.Endpoint,
-            Payload = _requestContext.Payload,
+            Payload = _requestContext.HttpRequestAuditEnabled ? null : _requestContext.Payload,
+            RequestAuditId = _requestContext.HttpRequestAuditEnabled ? _requestContext.RequestAuditId : null,
             
             Service = Assembly.GetEntryAssembly()?.GetName().Name,
             EntityType = entityType.Name,

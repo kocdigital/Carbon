@@ -4,6 +4,8 @@ namespace Carbon.Audit.Producer.Http;
 
 public sealed class RequestContext
 {
+    public Guid RequestAuditId { get; } = Guid.NewGuid();
+
     public string UserId { get; set; } = "system";
     public string UserName { get; set; } = "System";
     public string UserEmail { get; set; } = string.Empty;
@@ -17,6 +19,8 @@ public sealed class RequestContext
     public string? Payload { get; set; }
 
     public bool IsHmiRequest => Source == ClientSource.HMI;
+
+    public bool HttpRequestAuditEnabled { get; set; }
 
     public int? HttpStatusCode { get; set; }
 

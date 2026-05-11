@@ -2,8 +2,11 @@
 
   <PropertyGroup>
     <TargetFrameworks>net8.0;net6.0;netstandard2.1</TargetFrameworks>
-    <Version>2.5.3</Version>
+    <Version>2.5.4</Version>
     <Description>
+        2.5.4
+        Carbon.Audit version update, HttpAudit added
+
         2.5.3
         Carbon.Audit version update
 
