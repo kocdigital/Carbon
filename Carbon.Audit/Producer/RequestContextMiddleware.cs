@@ -1,4 +1,6 @@
 using System.Net;
+using System.Reflection;
+using System.Runtime.ExceptionServices;
 using System.Security.Claims;
 using Carbon.Audit.Contracts;
 using Carbon.Audit.Producer.Http;
@@ -12,6 +14,13 @@ public sealed class RequestContextMiddleware
 {
     private readonly RequestDelegate _next;
     private readonly IConfiguration _configuration;
+    private static readonly HashSet<string> SensitiveHeaders = new(StringComparer.OrdinalIgnoreCase)
+    {
+        "Authorization",
+        "Cookie",
+        "Set-Cookie",
+        "X-Api-Key"
+    };
 
     public RequestContextMiddleware(RequestDelegate next, IConfiguration configuration)
     {
@@ -29,7 +38,7 @@ public sealed class RequestContextMiddleware
         
         var method = http.Request.Method.ToUpperInvariant();
         
-        if (method is "POST" or "PUT" or "DELETE")
+        if (method is "POST" or "PUT" or "PATCH" or "DELETE")
         {
             http.Request.EnableBuffering(); 
             var maxBytes = _configuration.GetSection("CarbonAudit").GetValue<int?>("MaxRequestBodyBytes") ?? 1024;
@@ -90,29 +99,20 @@ public sealed class RequestContextMiddleware
 
         ctx.CorrelationId = string.IsNullOrWhiteSpace(corr) ? null : corr.Trim();
 
-        await _next(http);
-
-        ctx.HttpStatusCode = http.Response.StatusCode;
-
-        if (ctx.PendingAuditEvents.Count == 0 && ctx.HttpStatusCode >= 400)
+        Exception? pipelineException = null;
+        
+        try
         {
-            ctx.PendingAuditEvents.Add(new AuditEvent
-            {
-                Id = Guid.NewGuid(),
-                Timestamp = DateTime.UtcNow,
-                UserId = ctx.UserId,
-                UserName = ctx.UserName,
-                UserEmail = ctx.UserEmail,
-                IpAddress = ctx.IpAddress,
-                SessionId = ctx.SessionId,
-                ClientSource = ctx.Source,
-                CorrelationId = ctx.CorrelationId,
-                Endpoint = ctx.Endpoint,
-                Payload = ctx.Payload,
-                Action = AuditAction.FailedRequest,
-                HttpStatusCode = ctx.HttpStatusCode
-            });
+            await _next(http);
         }
+        catch (Exception ex)
+        {
+            pipelineException = ex;
+        }
+
+        ctx.HttpStatusCode = pipelineException is null
+            ? http.Response.StatusCode
+            : StatusCodes.Status500InternalServerError;
 
         if (ctx.PendingAuditEvents.Count > 0)
         {
@@ -122,5 +122,40 @@ public sealed class RequestContextMiddleware
             await publisher.PublishBatchAsync(ctx.PendingAuditEvents);
             ctx.PendingAuditEvents.Clear();
         }
+
+        await publisher.PublishRequestAsync(new HttpRequestAuditEvent
+        {
+            Id = Guid.NewGuid(),
+            Timestamp = DateTime.UtcNow,
+            ApiName = Assembly.GetEntryAssembly()?.GetName().Name,
+            Endpoint = ctx.Endpoint,
+            HttpMethod = method,
+            HttpStatusCode = ctx.HttpStatusCode ?? StatusCodes.Status500InternalServerError,
+            CorrelationId = ctx.CorrelationId,
+            Payload = ctx.Payload,
+            Headers = BuildHeaders(http.Request.Headers),
+            UserId = ctx.UserId,
+            UserName = ctx.UserName,
+            UserEmail = ctx.UserEmail,
+            IpAddress = ctx.IpAddress,
+            SessionId = ctx.SessionId,
+            ClientSource = ctx.Source
+        });
+
+        if (pipelineException is not null)
+            ExceptionDispatchInfo.Capture(pipelineException).Throw();
+    }
+
+    private static Dictionary<string, string> BuildHeaders(IHeaderDictionary headers)
+    {
+        var result = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
+        foreach (var header in headers)
+        {
+            result[header.Key] = SensitiveHeaders.Contains(header.Key)
+                ? "[REDACTED]"
+                : string.Join(",", header.Value.ToArray());
+        }
+
+        return result;
     }
 }

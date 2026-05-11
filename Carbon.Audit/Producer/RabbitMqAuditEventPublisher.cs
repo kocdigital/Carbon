@@ -21,6 +21,18 @@ public sealed class RabbitMqAuditEventPublisher : IAuditEventPublisher
     public Task PublishAsync(AuditEvent evt)
         => PublishBatchAsync(new[] { evt });
 
+    public async Task PublishRequestAsync(HttpRequestAuditEvent evt)
+    {
+        try
+        {
+            await _bus.Publish(evt);
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "[AUDIT_REQUEST_FALLBACK] {Event}", JsonSerializer.Serialize(evt));
+        }
+    }
+
     public async Task PublishBatchAsync(IEnumerable<AuditEvent> events)
     {
         var list = events?.ToList() ?? new List<AuditEvent>();
