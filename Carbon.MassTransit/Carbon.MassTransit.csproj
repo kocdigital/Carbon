@@ -2,8 +2,10 @@
 
 	<PropertyGroup>
 		<TargetFrameworks>net8.0;net6.0</TargetFrameworks>
-		<Version>3.10.5</Version>
+		<Version>3.10.6</Version>
 		<Description>
+      3.10.6
+      - HttpRequestAuditEvent exchange name standardized to "audit.httprequests"
       3.10.5
       - Carbon.Audit version update, HttpAudit added
       3.10.4
