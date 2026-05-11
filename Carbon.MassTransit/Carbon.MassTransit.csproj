@@ -2,8 +2,10 @@
 
 	<PropertyGroup>
 		<TargetFrameworks>net8.0;net6.0</TargetFrameworks>
-		<Version>3.10.4</Version>
+		<Version>3.10.5</Version>
 		<Description>
+      3.10.5
+      - Carbon.Audit version update
       3.10.4
       - Carbon.Audit version update
       3.10.3
