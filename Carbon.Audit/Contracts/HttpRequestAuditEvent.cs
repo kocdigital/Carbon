@@ -5,6 +5,7 @@ namespace Carbon.Audit.Contracts;
 public sealed class HttpRequestAuditEvent
 {
     public Guid Id { get; set; }
+    public Guid RequestAuditId { get; set; }
     public DateTime Timestamp { get; set; }
 
     public string? ApiName { get; set; }
