@@ -7,6 +7,7 @@ using Carbon.Audit.Producer.Http;
 using Microsoft.AspNetCore.Http;
 using System.Text;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
 
 namespace Carbon.Audit.Producer;
 
@@ -14,6 +15,7 @@ public sealed class RequestContextMiddleware
 {
     private readonly RequestDelegate _next;
     private readonly IConfiguration _configuration;
+    private readonly ILogger<RequestContextMiddleware> _logger;
     private static readonly string? ApiName = Assembly.GetEntryAssembly()?.GetName().Name;
     private static readonly HashSet<string> SensitiveHeaders = new(StringComparer.OrdinalIgnoreCase)
     {
@@ -23,10 +25,11 @@ public sealed class RequestContextMiddleware
         "X-Api-Key"
     };
 
-    public RequestContextMiddleware(RequestDelegate next, IConfiguration configuration)
+    public RequestContextMiddleware(RequestDelegate next, IConfiguration configuration, ILogger<RequestContextMiddleware> logger)
     {
         _next = next;
         _configuration = configuration;
+        _logger = logger;
     }
 
     private static string? ClaimValue(ClaimsPrincipal principal, string claimType)
@@ -161,14 +164,11 @@ public sealed class RequestContextMiddleware
             }
         }
 
-        if (pipelineException is not null && publishException is not null)
-            throw new AggregateException(pipelineException, publishException);
+        if (publishException is not null)
+            _logger.LogError(publishException, "[AUDIT] Failed to publish request audit event for {Method} {Endpoint}", method, ctx.Endpoint);
 
         if (pipelineException is not null)
             ExceptionDispatchInfo.Capture(pipelineException).Throw();
-
-        if (publishException is not null)
-            ExceptionDispatchInfo.Capture(publishException).Throw();
     }
 
     private static Dictionary<string, string> BuildHeaders(IHeaderDictionary headers)
