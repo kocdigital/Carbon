@@ -1,10 +1,13 @@
 using System.Net;
+using System.Reflection;
+using System.Runtime.ExceptionServices;
 using System.Security.Claims;
 using Carbon.Audit.Contracts;
 using Carbon.Audit.Producer.Http;
 using Microsoft.AspNetCore.Http;
 using System.Text;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
 
 namespace Carbon.Audit.Producer;
 
@@ -12,11 +15,21 @@ public sealed class RequestContextMiddleware
 {
     private readonly RequestDelegate _next;
     private readonly IConfiguration _configuration;
+    private readonly ILogger<RequestContextMiddleware> _logger;
+    private static readonly string? ApiName = Assembly.GetEntryAssembly()?.GetName().Name;
+    private static readonly HashSet<string> SensitiveHeaders = new(StringComparer.OrdinalIgnoreCase)
+    {
+        "Authorization",
+        "Cookie",
+        "Set-Cookie",
+        "X-Api-Key"
+    };
 
-    public RequestContextMiddleware(RequestDelegate next, IConfiguration configuration)
+    public RequestContextMiddleware(RequestDelegate next, IConfiguration configuration, ILogger<RequestContextMiddleware> logger)
     {
         _next = next;
         _configuration = configuration;
+        _logger = logger;
     }
 
     private static string? ClaimValue(ClaimsPrincipal principal, string claimType)
@@ -29,7 +42,7 @@ public sealed class RequestContextMiddleware
         
         var method = http.Request.Method.ToUpperInvariant();
         
-        if (method is "POST" or "PUT" or "DELETE")
+        if (method is "POST" or "PUT" or "PATCH" or "DELETE")
         {
             http.Request.EnableBuffering(); 
             var maxBytes = _configuration.GetSection("CarbonAudit").GetValue<int?>("MaxRequestBodyBytes") ?? 1024;
@@ -90,37 +103,85 @@ public sealed class RequestContextMiddleware
 
         ctx.CorrelationId = string.IsNullOrWhiteSpace(corr) ? null : corr.Trim();
 
-        await _next(http);
+        ctx.HttpRequestAuditEnabled = _configuration.GetSection("CarbonAudit").GetValue<bool>("HttpRequestAuditEnabled");
+
+        Exception? pipelineException = null;
+        
+        try
+        {
+            await _next(http);
+        }
+        catch (Exception ex)
+        {
+            pipelineException = ex;
+        }
 
         ctx.HttpStatusCode = http.Response.StatusCode;
 
-        if (ctx.PendingAuditEvents.Count == 0 && ctx.HttpStatusCode >= 400)
-        {
-            ctx.PendingAuditEvents.Add(new AuditEvent
-            {
-                Id = Guid.NewGuid(),
-                Timestamp = DateTime.UtcNow,
-                UserId = ctx.UserId,
-                UserName = ctx.UserName,
-                UserEmail = ctx.UserEmail,
-                IpAddress = ctx.IpAddress,
-                SessionId = ctx.SessionId,
-                ClientSource = ctx.Source,
-                CorrelationId = ctx.CorrelationId,
-                Endpoint = ctx.Endpoint,
-                Payload = ctx.Payload,
-                Action = AuditAction.FailedRequest,
-                HttpStatusCode = ctx.HttpStatusCode
-            });
-        }
-
         if (ctx.PendingAuditEvents.Count > 0)
         {
-            foreach (var evt in ctx.PendingAuditEvents)
-                evt.HttpStatusCode = ctx.HttpStatusCode;
+            if (!ctx.HttpRequestAuditEnabled)
+            {
+                foreach (var evt in ctx.PendingAuditEvents)
+                {
+                    evt.Payload = ctx.Payload;
+                    evt.HttpStatusCode = ctx.HttpStatusCode;
+                }
+            }
 
             await publisher.PublishBatchAsync(ctx.PendingAuditEvents);
             ctx.PendingAuditEvents.Clear();
         }
+
+        Exception? publishException = null;
+        if (ctx.HttpRequestAuditEnabled)
+        {
+            try
+            {
+                await publisher.PublishRequestAsync(new HttpRequestAuditEvent
+                {
+                    Id = Guid.NewGuid(),
+                    RequestAuditId = ctx.RequestAuditId,
+                    Timestamp = DateTime.UtcNow,
+                    ApiName = ApiName,
+                    Endpoint = ctx.Endpoint,
+                    HttpMethod = method,
+                    HttpStatusCode = http.Response.StatusCode,
+                    CorrelationId = ctx.CorrelationId,
+                    Payload = ctx.Payload,
+                    Headers = BuildHeaders(http.Request.Headers),
+                    UserId = ctx.UserId,
+                    UserName = ctx.UserName,
+                    UserEmail = ctx.UserEmail,
+                    IpAddress = ctx.IpAddress,
+                    SessionId = ctx.SessionId,
+                    ClientSource = ctx.Source
+                });
+            }
+            catch (Exception ex)
+            {
+                publishException = ex;
+            }
+        }
+
+        if (publishException is not null)
+            _logger.LogError(publishException, "[AUDIT] Failed to publish request audit event");
+
+        if (pipelineException is not null)
+            ExceptionDispatchInfo.Capture(pipelineException).Throw();
     }
+
+    private static Dictionary<string, string> BuildHeaders(IHeaderDictionary headers)
+    {
+        var result = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
+        foreach (var header in headers)
+        {
+            result[header.Key] = SensitiveHeaders.Contains(header.Key)
+                ? "[REDACTED]"
+                : string.Join(",", header.Value.ToArray());
+        }
+
+        return result;
+    }
+
 }
