@@ -20,6 +20,8 @@ public sealed class RequestContext
 
     public bool IsHmiRequest => Source == ClientSource.HMI;
 
+    public bool HttpRequestAuditEnabled { get; set; }
+
     public int? HttpStatusCode { get; set; }
 
     public List<AuditEvent> PendingAuditEvents { get; } = new();

@@ -100,6 +100,8 @@ public sealed class RequestContextMiddleware
 
         ctx.CorrelationId = string.IsNullOrWhiteSpace(corr) ? null : corr.Trim();
 
+        ctx.HttpRequestAuditEnabled = _configuration.GetSection("CarbonAudit").GetValue<bool>("HttpRequestAuditEnabled");
+
         Exception? pipelineException = null;
         
         try
@@ -115,36 +117,48 @@ public sealed class RequestContextMiddleware
 
         if (ctx.PendingAuditEvents.Count > 0)
         {
+            if (!ctx.HttpRequestAuditEnabled)
+            {
+                foreach (var evt in ctx.PendingAuditEvents)
+                {
+                    evt.Payload = ctx.Payload;
+                    evt.HttpStatusCode = ctx.HttpStatusCode;
+                }
+            }
+
             await publisher.PublishBatchAsync(ctx.PendingAuditEvents);
             ctx.PendingAuditEvents.Clear();
         }
 
         Exception? publishException = null;
-        try
+        if (ctx.HttpRequestAuditEnabled)
         {
-            await publisher.PublishRequestAsync(new HttpRequestAuditEvent
+            try
             {
-                Id = Guid.NewGuid(),
-                RequestAuditId = ctx.RequestAuditId,
-                Timestamp = DateTime.UtcNow,
-                ApiName = ApiName,
-                Endpoint = ctx.Endpoint,
-                HttpMethod = method,
-                HttpStatusCode = ctx.HttpStatusCode ?? StatusCodes.Status500InternalServerError,
-                CorrelationId = ctx.CorrelationId,
-                Payload = ctx.Payload,
-                Headers = BuildHeaders(http.Request.Headers),
-                UserId = ctx.UserId,
-                UserName = ctx.UserName,
-                UserEmail = ctx.UserEmail,
-                IpAddress = ctx.IpAddress,
-                SessionId = ctx.SessionId,
-                ClientSource = ctx.Source
-            });
-        }
-        catch (Exception ex)
-        {
-            publishException = ex;
+                await publisher.PublishRequestAsync(new HttpRequestAuditEvent
+                {
+                    Id = Guid.NewGuid(),
+                    RequestAuditId = ctx.RequestAuditId,
+                    Timestamp = DateTime.UtcNow,
+                    ApiName = ApiName,
+                    Endpoint = ctx.Endpoint,
+                    HttpMethod = method,
+                    HttpStatusCode = ctx.HttpStatusCode ?? StatusCodes.Status500InternalServerError,
+                    CorrelationId = ctx.CorrelationId,
+                    Payload = ctx.Payload,
+                    Headers = BuildHeaders(http.Request.Headers),
+                    UserId = ctx.UserId,
+                    UserName = ctx.UserName,
+                    UserEmail = ctx.UserEmail,
+                    IpAddress = ctx.IpAddress,
+                    SessionId = ctx.SessionId,
+                    ClientSource = ctx.Source
+                });
+            }
+            catch (Exception ex)
+            {
+                publishException = ex;
+            }
         }
 
         if (pipelineException is not null && publishException is not null)
