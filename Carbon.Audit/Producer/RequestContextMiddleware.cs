@@ -143,7 +143,7 @@ public sealed class RequestContextMiddleware
                     ApiName = ApiName,
                     Endpoint = ctx.Endpoint,
                     HttpMethod = method,
-                    HttpStatusCode = ctx.HttpStatusCode ?? StatusCodes.Status500InternalServerError,
+                    HttpStatusCode = http.Response.StatusCode,
                     CorrelationId = ctx.CorrelationId,
                     Payload = ctx.Payload,
                     Headers = BuildHeaders(http.Request.Headers),
