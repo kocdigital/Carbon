@@ -529,10 +529,6 @@ namespace Carbon.MassTransit
                                         IRabbitMqBusFactoryConfigurator,
                                         IRabbitMqBusFactoryConfigurator> rabbitMqBusFactory = (configurator, busSettings, provider, x) =>
         {
-            var configuration = provider.GetService<IConfiguration>();
-            var useCarbonAudit = configuration != null &&
-                                 string.Equals(configuration["CarbonAudit:Enabled"], "true", StringComparison.OrdinalIgnoreCase);
-            
             var host = $"rabbitmq://{busSettings.Host}:{busSettings.Port}{busSettings.VirtualHost}";
             x.Host(new Uri(host), (c) =>
             {
@@ -566,8 +562,6 @@ namespace Carbon.MassTransit
                     });
                 }
             });
-            if (useCarbonAudit)
-                x.ConfigureGlobalMessageMappings();
             configurator(provider, x);
             return x;
         };

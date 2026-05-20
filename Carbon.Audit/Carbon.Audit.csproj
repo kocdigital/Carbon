@@ -4,8 +4,11 @@
     <TargetFrameworks>net8.0;net6.0</TargetFrameworks>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <Version>1.1.1</Version>
+    <Version>1.2.0</Version>
     <Description>
+      1.2.0
+      - Carbon.MassTransit dependency added.
+      - Carbon.Audit adds It's own masstransit implementation.
       1.1.1
       - Token header is now also considered sensitive and redacted.
       1.1.0
@@ -33,6 +36,9 @@
     <FrameworkReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.25" />
     <PackageReference Include="MassTransit" Version="7.3.1" />
+  </ItemGroup>
+  <ItemGroup Condition="'$(TargetFramework)' == 'net6.0' or '$(TargetFramework)' == 'net8.0'">
+    <ProjectReference Include="..\Carbon.MassTransit\Carbon.MassTransit.csproj" />
   </ItemGroup>
 
 </Project>
