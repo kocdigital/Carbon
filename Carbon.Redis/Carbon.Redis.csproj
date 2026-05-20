@@ -3,8 +3,10 @@
   <PropertyGroup>
 	 <TargetFrameworks>net8.0;net6.0</TargetFrameworks>
 	 <LangVersion>latest</LangVersion>
-	 <Version>3.0.1</Version>
+	 <Version>3.0.2</Version>
      <Description>
+		 3.0.2
+		 Ambiguous method call issue fixed for JSonDeserializer.
 		 3.0.1
 		 Dotnet 8.0 target framework added, older versions removed.
 		 BinaryFormatter serialization removed, Json is used as master serializer/deserializer.

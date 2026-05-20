@@ -1,8 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
 		<TargetFrameworks>net8.0;net6.0</TargetFrameworks>
-		<Version>4.6.19</Version>
+		<Version>4.6.20</Version>
 		<Description>
+			4.6.20
+			- Carbon.Audit version update, adds its own masstransit implementation.
             4.6.19
             - Carbon.Audit version update, token considered sensitive and redacted.
             4.6.18
