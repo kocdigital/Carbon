@@ -31,6 +31,8 @@ public static class ServiceCollectionExtensions
         IConfiguration configuration)
     {
         if (configuration == null) throw new ArgumentNullException(nameof(configuration));
+        var _useCarbonAudit = configuration.GetValue<bool>("CarbonAudit:Enabled");
+        if (!_useCarbonAudit) return services;
 
         services.AddHttpContextAccessor();
         services.AddScoped<RequestContext>();

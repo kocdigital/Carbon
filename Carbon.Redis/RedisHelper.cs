@@ -40,7 +40,7 @@ namespace Carbon.Redis
             {
                 var value = await database.StringGetAsync(key);
                 if (!value.IsNull)
-                    return JsonSerializer.Deserialize<T>(value);
+                    return JsonSerializer.Deserialize<T>((string)value);
                 else
                 {
                     return default;
@@ -70,7 +70,7 @@ namespace Carbon.Redis
 
                 if (values != null)
                 {
-                    resultList.AddRange(values?.Select(value => JsonSerializer.Deserialize<T>(value)));
+                    resultList.AddRange(values?.Select(value => JsonSerializer.Deserialize<T>((string)value)));
                 }
 
                 return resultList;
