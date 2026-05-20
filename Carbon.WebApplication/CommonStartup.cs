@@ -40,7 +40,6 @@ namespace Carbon.WebApplication
         internal static IList<FilterDescriptor> _filterDescriptors = new List<FilterDescriptor>();
         private static bool _useAuthentication;
         private static bool _useAuthorization;
-        private static bool _useCarbonAudit;
         /// <summary>
         /// Adds operation filter.
         /// </summary>
@@ -57,7 +56,6 @@ namespace Carbon.WebApplication
 
         internal static void AddServiceBaseLogic(IServiceCollection services, IConfiguration Configuration)
         {
-            _useCarbonAudit = Configuration.GetValue<bool>("CarbonAudit:Enabled");
             services.AddHeaderPropagation();
 
             services.AddOptions();
@@ -77,14 +75,11 @@ namespace Carbon.WebApplication
 #if NET8_0
             services.AddSerilog(Log.Logger);
 #endif
-#endregion
+            #endregion
 
             AddServiceCors(services, Configuration);
 
-            if (_useCarbonAudit)
-            {
-                services.AddCarbonAudit();
-            }
+            services.AddCarbonAudit(Configuration);
 
             services.AddHealthChecks();
             services.AddMvc(options =>
@@ -178,7 +173,7 @@ namespace Carbon.WebApplication
             }
 
             #endregion
-            
+
         }
 
         public static void AddServiceSwagger(IServiceCollection services, IConfiguration Configuration)
@@ -270,7 +265,7 @@ namespace Carbon.WebApplication
             {
                 app.UseCors(MyAllowSpecificOrigins);
             }
-            
+
             _useAuthentication = useAuthentication;
             _useAuthorization = useAuthorization;
             if (_useAuthentication)
@@ -283,14 +278,11 @@ namespace Carbon.WebApplication
                 app.UseAuthorization();
             }
 
-            if (_useCarbonAudit)
+            app.UseWhen(ShouldUseCarbonAudit, branch =>
             {
-                app.UseWhen(ShouldUseCarbonAudit, branch =>
-                {
-                    branch.UseCarbonAudit();
-                });
-            }
-            
+                branch.UseCarbonAudit();
+            });
+
         }
 
         internal static void AddAppEndpoints(IEndpointRouteBuilder endpoints)
@@ -317,7 +309,7 @@ namespace Carbon.WebApplication
             var auditSection = configuration?.GetSection("CarbonAudit");
             if (auditSection == null || !auditSection.Exists())
             {
-                return true;
+                return false;
             }
             var isEnabled = auditSection.GetValue<bool?>("Enabled");
             if (isEnabled.HasValue && !isEnabled.Value)
