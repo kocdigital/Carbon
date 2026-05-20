@@ -1,7 +1,11 @@
+using Carbon.Audit.Bus;
 using Carbon.Audit.Producer;
 using Carbon.Audit.Producer.Http;
+using Carbon.MassTransit;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 
 namespace Carbon.Audit;
 
@@ -11,14 +15,34 @@ namespace Carbon.Audit;
 public static class ServiceCollectionExtensions
 {
     /// <summary>
-    /// Registers <see cref="RequestContext"/> as scoped and <see cref="AuditInterceptor"/> as scoped.
+    /// Registers Carbon.Audit services.
+    /// <para>
+    /// Always registers a dedicated <see cref="IAuditBus"/> for audit event publishing.
+    /// The bus is configured from the <c>MassTransit:RabbitMq</c> section of
+    /// <paramref name="configuration"/>. <paramref name="configuration"/> is required.
+    /// </para>
     /// </summary>
-    public static IServiceCollection AddCarbonAudit(this IServiceCollection services)
+    /// <param name="services">The service collection.</param>
+    /// <param name="configuration">
+    /// Required. Must contain a valid <c>MassTransit:RabbitMq</c> section.
+    /// </param>
+    public static IServiceCollection AddCarbonAudit(
+        this IServiceCollection services,
+        IConfiguration configuration)
     {
+        if (configuration == null) throw new ArgumentNullException(nameof(configuration));
+
         services.AddHttpContextAccessor();
         services.AddScoped<RequestContext>();
         services.AddScoped<AuditInterceptor>();
-        services.AddScoped<IAuditEventPublisher, RabbitMqAuditEventPublisher>();
+
+        RegisterAuditBus(services, configuration);
+
+        services.AddScoped<IAuditEventPublisher>(sp =>
+            new RabbitMqAuditEventPublisher(
+                sp.GetRequiredService<IAuditBus>(),
+                sp.GetRequiredService<ILogger<RabbitMqAuditEventPublisher>>()));
+
         return services;
     }
 
@@ -29,6 +53,22 @@ public static class ServiceCollectionExtensions
     {
         app.UseMiddleware<RequestContextMiddleware>();
         return app;
+    }
+
+    // -------------------------------------------------------------------------
+    // Internals
+    // -------------------------------------------------------------------------
+
+    private static void RegisterAuditBus(IServiceCollection services, IConfiguration configuration)
+    {
+        services.AddMassTransitBus<IAuditBus>(cfg =>
+        {
+            cfg.AddRabbitMqBus(configuration, (_, busFactoryConfig) =>
+            {
+                busFactoryConfig.PurgeOnStartup = false;
+                busFactoryConfig.ConfigureAuditPublisher();
+            });
+        });
     }
 }
 
