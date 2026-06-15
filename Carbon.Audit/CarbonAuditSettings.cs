@@ -8,7 +8,13 @@ namespace Carbon.Audit;
 ///   "Enabled": true,
 ///   "ExcludedPaths": [ "/health", "/swagger" ],
 ///   "AllowedContentTypes": [ "application/json", "text/json" ],
-///   "MaxRequestBodyBytes": 4096
+///   "MaxRequestBodyBytes": 4096,
+///   "HttpRequestAuditEnabled": true,
+///   "HttpStatusCodeFilter": {
+///     "ExactCodes": [ 401, 500 ],
+///     "RangeStart": 400,
+///     "RangeEnd": 499
+///   }
 /// }
 /// </code>
 /// </summary>
@@ -37,4 +43,59 @@ public class CarbonAuditSettings
     /// If null, size is unlimited.
     /// </summary>
     public long? MaxRequestBodyBytes { get; set; }
+
+    /// <summary>
+    /// Gets or sets the HTTP status code filter for HTTP request audit events.
+    /// When configured, only requests whose response status code matches are published.
+    /// If null or empty, all status codes are published.
+    /// <para>
+    /// You can combine <see cref="HttpStatusCodeFilter.ExactCodes"/> (e.g. 401, 500)
+    /// and/or a range via <see cref="HttpStatusCodeFilter.RangeStart"/> /
+    /// <see cref="HttpStatusCodeFilter.RangeEnd"/> (e.g. 400–499 for all 4xx).
+    /// </para>
+    /// </summary>
+    public HttpStatusCodeFilter? HttpStatusCodeFilter { get; set; }
+}
+
+/// <summary>
+/// Defines which HTTP status codes should be included in HTTP request audit events.
+/// </summary>
+public class HttpStatusCodeFilter
+{
+    /// <summary>
+    /// An explicit list of HTTP status codes to include (e.g. [401, 500]).
+    /// </summary>
+    public int[] ExactCodes { get; set; } = System.Array.Empty<int>();
+
+    /// <summary>
+    /// The inclusive lower bound of an HTTP status code range to include (e.g. 400).
+    /// Requires <see cref="RangeEnd"/> to be set.
+    /// </summary>
+    public int? RangeStart { get; set; }
+
+    /// <summary>
+    /// The inclusive upper bound of an HTTP status code range to include (e.g. 499).
+    /// Requires <see cref="RangeStart"/> to be set.
+    /// </summary>
+    public int? RangeEnd { get; set; }
+
+    /// <summary>
+    /// Returns <c>true</c> if the given status code satisfies this filter.
+    /// </summary>
+    public bool Matches(int statusCode)
+    {
+        if (ExactCodes.Length > 0 && System.Array.IndexOf(ExactCodes, statusCode) >= 0)
+            return true;
+
+        if (RangeStart.HasValue && RangeEnd.HasValue &&
+            statusCode >= RangeStart.Value && statusCode <= RangeEnd.Value)
+            return true;
+
+        return false;
+    }
+
+    /// <summary>
+    /// Returns <c>true</c> when no filter criteria are defined (pass-through).
+    /// </summary>
+    public bool IsEmpty => ExactCodes.Length == 0 && !RangeStart.HasValue && !RangeEnd.HasValue;
 }
