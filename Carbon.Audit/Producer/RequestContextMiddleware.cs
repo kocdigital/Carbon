@@ -109,8 +109,18 @@ public sealed class RequestContextMiddleware
         ctx.HttpRequestAuditEnabled = _configuration.GetSection("CarbonAudit").GetValue<bool>("HttpRequestAuditEnabled");
 
         var originalBody = http.Response.Body;
-        using var captureBuffer = new MemoryStream();
-        http.Response.Body = new TeeStream(originalBody, captureBuffer);
+        using var captureStream = new ConditionalCaptureStream(originalBody);
+        http.Response.OnStarting(() =>
+        {
+            var status = http.Response.StatusCode;
+            var contentType = http.Response.ContentType;
+            captureStream.ShouldCapture =
+                status >= 400 &&
+                contentType != null &&
+                contentType.Contains("application/json", StringComparison.OrdinalIgnoreCase);
+            return Task.CompletedTask;
+        });
+        http.Response.Body = captureStream;
 
         var stopwatch = Stopwatch.StartNew();
         Exception? pipelineException = null;
@@ -131,18 +141,13 @@ public sealed class RequestContextMiddleware
 
         ctx.HttpStatusCode = http.Response.StatusCode;
 
-        if (captureBuffer.Length > 0)
+        var capturedJson = captureStream.CapturedJson;
+        if (capturedJson != null)
         {
-            var contentType = http.Response.ContentType;
-            if (contentType != null && contentType.Contains("application/json", StringComparison.OrdinalIgnoreCase))
-            {
-                captureBuffer.Position = 0;
-                var responseBodyText = Encoding.UTF8.GetString(captureBuffer.GetBuffer(), 0, (int)captureBuffer.Length);
-                var (apiStatusCode, errorCode, messages) = ExtractResponseErrorInfo(responseBodyText);
-                ctx.ResponseApiStatusCode = apiStatusCode;
-                ctx.ResponseErrorCode = errorCode;
-                ctx.ResponseMessages = messages;
-            }
+            var (apiStatusCode, errorCode, messages) = ExtractResponseErrorInfo(capturedJson);
+            ctx.ResponseApiStatusCode = apiStatusCode;
+            ctx.ResponseErrorCode = errorCode;
+            ctx.ResponseMessages = messages;
         }
 
         if (ctx.PendingAuditEvents.Count > 0)
@@ -303,20 +308,55 @@ public sealed class RequestContextMiddleware
     }
 
     /// <summary>
-    /// A write-through stream that forwards all writes to the original response stream
-    /// while capturing up to <c>maxCaptureBytes</c> into a bounded in-memory buffer.
-    /// This avoids buffering the full response in memory and lets the client receive
-    /// data immediately, while still allowing a bounded prefix to be read for JSON parsing.
+    /// Wraps the response body stream and only captures content into memory when
+    /// the response is a JSON error (status >= 400). For all other responses the stream
+    /// is a zero-overhead pass-through, so large 2xx payloads never touch a second buffer.
+    /// The status code and content-type are inspected on the first write, at which point
+    /// ASP.NET Core guarantees they are already committed.
     /// </summary>
-    private sealed class TeeStream : Stream
+    private sealed class ConditionalCaptureStream : Stream
     {
         private readonly Stream _inner;
-        private readonly MemoryStream _capture;
+        private MemoryStream? _capture;
 
-        internal TeeStream(Stream inner, MemoryStream capture)
+        /// <summary>
+        /// Set by the <c>OnStarting</c> callback (which fires after all other OnStarting
+        /// callbacks, so the status code and content-type are already final).
+        /// </summary>
+        internal bool ShouldCapture
+        {
+            set { if (value) _capture = new MemoryStream(); }
+        }
+
+        internal ConditionalCaptureStream(Stream inner)
         {
             _inner = inner;
-            _capture = capture;
+        }
+
+        /// <summary>
+        /// Returns the captured JSON string when the response was a JSON error, otherwise null.
+        /// </summary>
+        internal string? CapturedJson =>
+            _capture is { Length: > 0 }
+                ? Encoding.UTF8.GetString(_capture.GetBuffer(), 0, (int)_capture.Length)
+                : null;
+
+        public override void Write(byte[] buffer, int offset, int count)
+        {
+            _inner.Write(buffer, offset, count);
+            _capture?.Write(buffer, offset, count);
+        }
+
+        public override async Task WriteAsync(byte[] buffer, int offset, int count, CancellationToken cancellationToken)
+        {
+            await _inner.WriteAsync(buffer, offset, count, cancellationToken);
+            _capture?.Write(buffer, offset, count);
+        }
+
+        public override async ValueTask WriteAsync(ReadOnlyMemory<byte> buffer, CancellationToken cancellationToken = default)
+        {
+            await _inner.WriteAsync(buffer, cancellationToken);
+            _capture?.Write(buffer.Span);
         }
 
         public override bool CanRead => false;
@@ -331,31 +371,13 @@ public sealed class RequestContextMiddleware
 
         public override void Flush() => _inner.Flush();
         public override Task FlushAsync(CancellationToken cancellationToken) => _inner.FlushAsync(cancellationToken);
-
-        public override void Write(byte[] buffer, int offset, int count)
-        {
-            _inner.Write(buffer, offset, count);
-            _capture.Write(buffer, offset, count);
-        }
-
-        public override async Task WriteAsync(byte[] buffer, int offset, int count, CancellationToken cancellationToken)
-        {
-            await _inner.WriteAsync(buffer, offset, count, cancellationToken);
-            _capture.Write(buffer, offset, count);
-        }
-
-        public override async ValueTask WriteAsync(ReadOnlyMemory<byte> buffer, CancellationToken cancellationToken = default)
-        {
-            await _inner.WriteAsync(buffer, cancellationToken);
-            _capture.Write(buffer.Span);
-        }
-
         public override int Read(byte[] buffer, int offset, int count) => throw new NotSupportedException();
         public override long Seek(long offset, SeekOrigin origin) => throw new NotSupportedException();
         public override void SetLength(long value) => throw new NotSupportedException();
 
         protected override void Dispose(bool disposing)
         {
+            if (disposing) _capture?.Dispose();
             // Do not dispose _inner — we do not own the original response stream.
             base.Dispose(disposing);
         }
