@@ -2,8 +2,12 @@
 
   <PropertyGroup>
     <TargetFrameworks>net8.0;net6.0;netstandard2.1</TargetFrameworks>
-    <Version>2.5.6</Version>
+    <Version>2.5.7</Version>
     <Description>
+		2.5.7
+		Carbon.Audit version update: response error info (ApiStatusCode, ErrorCode, Messages) and DurationMs added to audit events.
+		Carbon.Audit version update: HttpStatusCodeFilter added for HTTP request audit events.
+
 		2.5.6
 		Carbon.Audit version update, adds its own masstransit implementation.
 		
