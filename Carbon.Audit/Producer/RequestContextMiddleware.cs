@@ -108,10 +108,9 @@ public sealed class RequestContextMiddleware
 
         ctx.HttpRequestAuditEnabled = _configuration.GetSection("CarbonAudit").GetValue<bool>("HttpRequestAuditEnabled");
 
-        var maxResponseBytes = _configuration.GetSection("CarbonAudit").GetValue<int?>("MaxResponseBodyBytes") ?? 4096;
         var originalBody = http.Response.Body;
-        using var captureBuffer = new MemoryStream(maxResponseBytes);
-        http.Response.Body = new TeeStream(originalBody, captureBuffer, maxResponseBytes);
+        using var captureBuffer = new MemoryStream();
+        http.Response.Body = new TeeStream(originalBody, captureBuffer);
 
         var stopwatch = Stopwatch.StartNew();
         Exception? pipelineException = null;
@@ -313,15 +312,11 @@ public sealed class RequestContextMiddleware
     {
         private readonly Stream _inner;
         private readonly MemoryStream _capture;
-        private readonly int _maxCaptureBytes;
-        private readonly object _captureLock = new();
-        private int _capturedBytes;
 
-        internal TeeStream(Stream inner, MemoryStream capture, int maxCaptureBytes)
+        internal TeeStream(Stream inner, MemoryStream capture)
         {
             _inner = inner;
             _capture = capture;
-            _maxCaptureBytes = maxCaptureBytes;
         }
 
         public override bool CanRead => false;
@@ -340,30 +335,19 @@ public sealed class RequestContextMiddleware
         public override void Write(byte[] buffer, int offset, int count)
         {
             _inner.Write(buffer, offset, count);
-            CaptureBytes(new ReadOnlySpan<byte>(buffer, offset, count));
+            _capture.Write(buffer, offset, count);
         }
 
         public override async Task WriteAsync(byte[] buffer, int offset, int count, CancellationToken cancellationToken)
         {
             await _inner.WriteAsync(buffer, offset, count, cancellationToken);
-            CaptureBytes(new ReadOnlySpan<byte>(buffer, offset, count));
+            _capture.Write(buffer, offset, count);
         }
 
         public override async ValueTask WriteAsync(ReadOnlyMemory<byte> buffer, CancellationToken cancellationToken = default)
         {
             await _inner.WriteAsync(buffer, cancellationToken);
-            CaptureBytes(buffer.Span);
-        }
-
-        private void CaptureBytes(ReadOnlySpan<byte> data)
-        {
-            lock (_captureLock)
-            {
-                if (_capturedBytes >= _maxCaptureBytes) return;
-                var toCapture = Math.Min(data.Length, _maxCaptureBytes - _capturedBytes);
-                _capture.Write(data.Slice(0, toCapture));
-                _capturedBytes += toCapture;
-            }
+            _capture.Write(buffer.Span);
         }
 
         public override int Read(byte[] buffer, int offset, int count) => throw new NotSupportedException();
