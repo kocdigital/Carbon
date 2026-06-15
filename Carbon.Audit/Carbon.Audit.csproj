@@ -4,8 +4,12 @@
     <TargetFrameworks>net8.0;net6.0</TargetFrameworks>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <Version>1.2.0</Version>
+    <Version>1.3.0</Version>
     <Description>
+      1.3.0
+      - HttpRequestAuditEvent now includes ApiStatusCode, ErrorCode, Messages (parsed from response body) and DurationMs.
+      - AuditEvent now includes ApiStatusCode, ErrorCode and Messages.
+      - HttpStatusCodeFilter added: HTTP request audit events can now be filtered by response status code (exact codes and/or range).
       1.2.0
       - Carbon.MassTransit dependency added.
       - Carbon.Audit adds It's own masstransit implementation.
