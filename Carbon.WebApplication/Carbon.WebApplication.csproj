@@ -1,8 +1,11 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
 		<TargetFrameworks>net8.0;net6.0</TargetFrameworks>
-		<Version>4.6.20</Version>
+		<Version>4.6.21</Version>
 		<Description>
+			4.6.21
+			- Carbon.Audit version update: response error info (ApiStatusCode, ErrorCode, Messages) and DurationMs added to audit events.
+			- Carbon.Audit version update: HttpStatusCodeFilter added for HTTP request audit events.
 			4.6.20
 			- Carbon.Audit version update, adds its own masstransit implementation.
             4.6.19
