@@ -108,9 +108,10 @@ public sealed class RequestContextMiddleware
 
         ctx.HttpRequestAuditEnabled = _configuration.GetSection("CarbonAudit").GetValue<bool>("HttpRequestAuditEnabled");
 
+        var maxResponseBytes = _configuration.GetSection("CarbonAudit").GetValue<int?>("MaxResponseBodyBytes") ?? 4096;
         var originalBody = http.Response.Body;
-        using var responseBuffer = new MemoryStream();
-        http.Response.Body = responseBuffer;
+        using var captureBuffer = new MemoryStream(maxResponseBytes);
+        http.Response.Body = new TeeStream(originalBody, captureBuffer, maxResponseBytes);
 
         var stopwatch = Stopwatch.StartNew();
         Exception? pipelineException = null;
@@ -126,20 +127,18 @@ public sealed class RequestContextMiddleware
         finally
         {
             stopwatch.Stop();
-            responseBuffer.Position = 0;
-            if (originalBody is not null)
-                await responseBuffer.CopyToAsync(originalBody);
-            http.Response.Body = originalBody ?? Stream.Null;
+            http.Response.Body = originalBody;
         }
 
         ctx.HttpStatusCode = http.Response.StatusCode;
 
-        if (responseBuffer.Length > 0)
+        if (captureBuffer.Length > 0)
         {
             var contentType = http.Response.ContentType;
             if (contentType != null && contentType.Contains("application/json", StringComparison.OrdinalIgnoreCase))
             {
-                var responseBodyText = Encoding.UTF8.GetString(responseBuffer.ToArray());
+                captureBuffer.Position = 0;
+                var responseBodyText = Encoding.UTF8.GetString(captureBuffer.GetBuffer(), 0, (int)captureBuffer.Length);
                 var (apiStatusCode, errorCode, messages) = ExtractResponseErrorInfo(responseBodyText);
                 ctx.ResponseApiStatusCode = apiStatusCode;
                 ctx.ResponseErrorCode = errorCode;
@@ -302,6 +301,76 @@ public sealed class RequestContextMiddleware
             }
         }
         return list.Count > 0 ? list : null;
+    }
+
+    /// <summary>
+    /// A write-through stream that forwards all writes to the original response stream
+    /// while capturing up to <c>maxCaptureBytes</c> into a bounded in-memory buffer.
+    /// This avoids buffering the full response in memory and lets the client receive
+    /// data immediately, while still allowing a bounded prefix to be read for JSON parsing.
+    /// </summary>
+    private sealed class TeeStream : Stream
+    {
+        private readonly Stream _inner;
+        private readonly MemoryStream _capture;
+        private readonly int _maxCaptureBytes;
+        private int _capturedBytes;
+
+        internal TeeStream(Stream inner, MemoryStream capture, int maxCaptureBytes)
+        {
+            _inner = inner;
+            _capture = capture;
+            _maxCaptureBytes = maxCaptureBytes;
+        }
+
+        public override bool CanRead => false;
+        public override bool CanSeek => false;
+        public override bool CanWrite => true;
+        public override long Length => _inner.Length;
+        public override long Position
+        {
+            get => _inner.Position;
+            set => throw new NotSupportedException();
+        }
+
+        public override void Flush() => _inner.Flush();
+        public override Task FlushAsync(CancellationToken cancellationToken) => _inner.FlushAsync(cancellationToken);
+
+        public override void Write(byte[] buffer, int offset, int count)
+        {
+            _inner.Write(buffer, offset, count);
+            CaptureBytes(new ReadOnlySpan<byte>(buffer, offset, count));
+        }
+
+        public override async Task WriteAsync(byte[] buffer, int offset, int count, CancellationToken cancellationToken)
+        {
+            await _inner.WriteAsync(buffer, offset, count, cancellationToken);
+            CaptureBytes(new ReadOnlySpan<byte>(buffer, offset, count));
+        }
+
+        public override async ValueTask WriteAsync(ReadOnlyMemory<byte> buffer, CancellationToken cancellationToken = default)
+        {
+            await _inner.WriteAsync(buffer, cancellationToken);
+            CaptureBytes(buffer.Span);
+        }
+
+        private void CaptureBytes(ReadOnlySpan<byte> data)
+        {
+            if (_capturedBytes >= _maxCaptureBytes) return;
+            var toCapture = Math.Min(data.Length, _maxCaptureBytes - _capturedBytes);
+            _capture.Write(data.Slice(0, toCapture));
+            _capturedBytes += toCapture;
+        }
+
+        public override int Read(byte[] buffer, int offset, int count) => throw new NotSupportedException();
+        public override long Seek(long offset, SeekOrigin origin) => throw new NotSupportedException();
+        public override void SetLength(long value) => throw new NotSupportedException();
+
+        protected override void Dispose(bool disposing)
+        {
+            // Do not dispose _inner — we do not own the original response stream.
+            base.Dispose(disposing);
+        }
     }
 
 }
