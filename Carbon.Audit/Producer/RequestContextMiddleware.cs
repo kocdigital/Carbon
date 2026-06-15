@@ -172,45 +172,42 @@ public sealed class RequestContextMiddleware
         }
 
         Exception? publishException = null;
-        if (ctx.HttpRequestAuditEnabled)
+        var statusCodeFilter = _configuration.GetSection("CarbonAudit:HttpStatusCodeFilter").Get<HttpStatusCodeFilter>();
+        var shouldPublish = statusCodeFilter is null || statusCodeFilter.IsEmpty ||
+                            statusCodeFilter.Matches(http.Response.StatusCode);
+        if (ctx.HttpRequestAuditEnabled && shouldPublish)
         {
-            var statusCodeFilter = _configuration.GetSection("CarbonAudit:HttpStatusCodeFilter").Get<HttpStatusCodeFilter>();
-            var shouldPublish = statusCodeFilter is null || statusCodeFilter.IsEmpty ||
-                                statusCodeFilter.Matches(http.Response.StatusCode);
-
-            if (shouldPublish)
+            try
             {
-                try
+                await publisher.PublishRequestAsync(new HttpRequestAuditEvent
                 {
-                    await publisher.PublishRequestAsync(new HttpRequestAuditEvent
-                    {
-                        Id = Guid.NewGuid(),
-                        RequestAuditId = ctx.RequestAuditId,
-                        Timestamp = DateTime.UtcNow,
-                        ApiName = ApiName,
-                        Endpoint = ctx.Endpoint,
-                        HttpMethod = method,
-                        HttpStatusCode = http.Response.StatusCode,
-                        CorrelationId = ctx.CorrelationId,
-                        Payload = ctx.Payload,
-                        Headers = BuildHeaders(http.Request.Headers),
-                        UserId = ctx.UserId,
-                        UserName = ctx.UserName,
-                        UserEmail = ctx.UserEmail,
-                        IpAddress = ctx.IpAddress,
-                        SessionId = ctx.SessionId,
-                        ClientSource = ctx.Source,
-                        ApiStatusCode = ctx.ResponseApiStatusCode,
-                        ErrorCode = ctx.ResponseErrorCode,
-                        Messages = ctx.ResponseMessages,
-                        DurationMs = stopwatch.ElapsedMilliseconds
-                    });
-                }
-                catch (Exception ex)
-                {
-                    publishException = ex;
-                }
+                    Id = Guid.NewGuid(),
+                    RequestAuditId = ctx.RequestAuditId,
+                    Timestamp = DateTime.UtcNow,
+                    ApiName = ApiName,
+                    Endpoint = ctx.Endpoint,
+                    HttpMethod = method,
+                    HttpStatusCode = http.Response.StatusCode,
+                    CorrelationId = ctx.CorrelationId,
+                    Payload = ctx.Payload,
+                    Headers = BuildHeaders(http.Request.Headers),
+                    UserId = ctx.UserId,
+                    UserName = ctx.UserName,
+                    UserEmail = ctx.UserEmail,
+                    IpAddress = ctx.IpAddress,
+                    SessionId = ctx.SessionId,
+                    ClientSource = ctx.Source,
+                    ApiStatusCode = ctx.ResponseApiStatusCode,
+                    ErrorCode = ctx.ResponseErrorCode,
+                    Messages = ctx.ResponseMessages,
+                    DurationMs = stopwatch.ElapsedMilliseconds
+                });
             }
+            catch (Exception ex)
+            {
+                publishException = ex;
+            }
+
         }
 
         if (publishException is not null)
