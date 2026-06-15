@@ -36,4 +36,7 @@ public sealed class AuditEvent
     public List<FieldChange> Changes { get; set; } = new();
 
     public int? HttpStatusCode { get; set; }
+    public int? ApiStatusCode { get; set; }
+    public int? ErrorCode { get; set; }
+    public List<string>? Messages { get; set; }
 }
