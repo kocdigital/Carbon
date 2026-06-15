@@ -69,13 +69,13 @@ public class HttpStatusCodeFilter
 
     /// <summary>
     /// The inclusive lower bound of an HTTP status code range to include (e.g. 400).
-    /// Requires <see cref="RangeEnd"/> to be set.
+    /// When set without <see cref="RangeEnd"/>, matches all codes &gt;= this value.
     /// </summary>
     public int? RangeStart { get; set; }
 
     /// <summary>
     /// The inclusive upper bound of an HTTP status code range to include (e.g. 499).
-    /// Requires <see cref="RangeStart"/> to be set.
+    /// When set without <see cref="RangeStart"/>, matches all codes &lt;= this value.
     /// </summary>
     public int? RangeEnd { get; set; }
 
@@ -89,6 +89,12 @@ public class HttpStatusCodeFilter
 
         if (RangeStart.HasValue && RangeEnd.HasValue &&
             statusCode >= RangeStart.Value && statusCode <= RangeEnd.Value)
+            return true;
+
+        if (RangeStart.HasValue && !RangeEnd.HasValue && statusCode >= RangeStart.Value)
+            return true;
+
+        if (!RangeStart.HasValue && RangeEnd.HasValue && statusCode <= RangeEnd.Value)
             return true;
 
         return false;
