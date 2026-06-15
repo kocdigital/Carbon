@@ -25,4 +25,9 @@ public sealed class HttpRequestAuditEvent
 
     [JsonPropertyName("clientSource")]
     public ClientSource? ClientSource { get; set; }
+
+    public int? ApiStatusCode { get; set; }
+    public int? ErrorCode { get; set; }
+    public List<string>? Messages { get; set; }
+    public long? DurationMs { get; set; }
 }

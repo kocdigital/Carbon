@@ -23,6 +23,9 @@ public sealed class RequestContext
     public bool HttpRequestAuditEnabled { get; set; }
 
     public int? HttpStatusCode { get; set; }
+    public int? ResponseApiStatusCode { get; set; }
+    public int? ResponseErrorCode { get; set; }
+    public List<string>? ResponseMessages { get; set; }
 
     public List<AuditEvent> PendingAuditEvents { get; } = new();
 }
