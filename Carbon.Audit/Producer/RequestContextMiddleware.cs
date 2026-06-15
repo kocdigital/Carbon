@@ -314,6 +314,7 @@ public sealed class RequestContextMiddleware
         private readonly Stream _inner;
         private readonly MemoryStream _capture;
         private readonly int _maxCaptureBytes;
+        private readonly object _captureLock = new();
         private int _capturedBytes;
 
         internal TeeStream(Stream inner, MemoryStream capture, int maxCaptureBytes)
@@ -326,10 +327,10 @@ public sealed class RequestContextMiddleware
         public override bool CanRead => false;
         public override bool CanSeek => false;
         public override bool CanWrite => true;
-        public override long Length => _inner.Length;
+        public override long Length => throw new NotSupportedException();
         public override long Position
         {
-            get => _inner.Position;
+            get => throw new NotSupportedException();
             set => throw new NotSupportedException();
         }
 
@@ -356,10 +357,13 @@ public sealed class RequestContextMiddleware
 
         private void CaptureBytes(ReadOnlySpan<byte> data)
         {
-            if (_capturedBytes >= _maxCaptureBytes) return;
-            var toCapture = Math.Min(data.Length, _maxCaptureBytes - _capturedBytes);
-            _capture.Write(data.Slice(0, toCapture));
-            _capturedBytes += toCapture;
+            lock (_captureLock)
+            {
+                if (_capturedBytes >= _maxCaptureBytes) return;
+                var toCapture = Math.Min(data.Length, _maxCaptureBytes - _capturedBytes);
+                _capture.Write(data.Slice(0, toCapture));
+                _capturedBytes += toCapture;
+            }
         }
 
         public override int Read(byte[] buffer, int offset, int count) => throw new NotSupportedException();
