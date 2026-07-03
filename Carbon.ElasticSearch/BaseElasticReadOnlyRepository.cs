@@ -24,17 +24,12 @@ namespace Carbon.ElasticSearch
             {
                 _client = new ElasticClient(elasticSettings.ConnectionSettings);
             }
-            else
-            {
-                Console.WriteLine("Elasticsearch is not configured. All repository operations for {0} will be skipped.", GetType().Name);
-            }
         }
 
         private protected bool IsClientAvailable()
         {
             if (_client == null)
             {
-                Console.WriteLine("Elasticsearch client is unavailable for {0}. Skipping operation.", GetType().Name);
                 return false;
             }
             return true;
