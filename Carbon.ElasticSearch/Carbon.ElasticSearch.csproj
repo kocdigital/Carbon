@@ -3,8 +3,10 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
     <ProjectGuid>{7AEAD788-E78D-4825-9761-AEB2570DE3E0}</ProjectGuid>
-    <Version>3.9.0</Version>
+    <Version>3.9.1</Version>
     <Description>
+		3.9.1
+		- Added ElasticSearch is not configured message
 		3.9.0
 		- Introduce IsConfigured to IElasticSettings and use it to guard all repository operations
 		3.8.8
