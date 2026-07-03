@@ -41,7 +41,10 @@ namespace Carbon.ElasticSearch
             IElasticSettings settings = this as IElasticSettings;
 
             if (!settings.IsConfigured)
+            {
+                Console.WriteLine("ElasticSearch is not configured. All ElasticSearch repository operations will be skipped.");
                 return;
+            }
 
             var connectionPool = new StaticConnectionPool(settings.Urls);
             ConnectionSettings = new ConnectionSettings(connectionPool);
