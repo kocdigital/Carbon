@@ -1,9 +1,11 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>net8.0;net6.0</TargetFrameworks>
-    <Version>1.2.1</Version>
+    <TargetFrameworks>net8.0;net6.0;net10.0</TargetFrameworks>
+    <Version>1.3.0</Version>
     <Description>
+1.3.0
+.NET 10 (net10.0) target framework added; existing targets preserved. Npgsql 10.0.3 on net10.0.
 1.2.1
 Dotnet 8.0 target framework added, older versions removed
 1.1.2
@@ -26,6 +28,10 @@ Library for some specific TimeScaleDb methods</Description>
     <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
     <PackageReference Include="Npgsql" Version="6.0.13" />
     <PackageReference Include="System.Runtime.Loader" Version="4.3.0" />
+  </ItemGroup>
+  <ItemGroup  Condition="'$(TargetFramework)' == 'net10.0'">
+    <PackageReference Include="AspNetCore.HealthChecks.NpgSql" Version="8.0.2" />
+    <PackageReference Include="Npgsql" Version="10.0.3" />
   </ItemGroup>
 
 </Project>
