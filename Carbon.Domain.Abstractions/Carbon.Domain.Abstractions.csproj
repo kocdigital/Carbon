@@ -1,9 +1,11 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFramework>netstandard2.1</TargetFramework>
-		<Version>1.6.1</Version>
+		<TargetFrameworks>netstandard2.1;net10.0</TargetFrameworks>
+		<Version>1.7.0</Version>
 		<Description>
+			1.7.0
+			- .NET 10 (net10.0) target framework added; existing targets preserved.
 			1.6.1
 			- Carbon.Common version update
 			1.6.0
@@ -22,7 +24,7 @@
 		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 	</PropertyGroup>
 
-	<ItemGroup>
+	<ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.1'">
 		<PackageReference Include="System.ComponentModel.Annotations" Version="4.7.0" />
 	</ItemGroup>
 
