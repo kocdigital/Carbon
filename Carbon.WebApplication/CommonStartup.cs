@@ -72,7 +72,7 @@ namespace Carbon.WebApplication
             #region Serilog Settings
 
             Log.Logger = SerilogExtensions.CreateLogger(Configuration);
-#if NET8_0
+#if NET8_0_OR_GREATER
             services.AddSerilog(Log.Logger);
 #endif
             #endregion
