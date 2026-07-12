@@ -1,9 +1,12 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>net8.0;net6.0;netstandard2.1</TargetFrameworks>
-    <Version>3.6.5</Version>
+    <TargetFrameworks>net8.0;net6.0;netstandard2.1;net10.0</TargetFrameworks>
+    <Version>3.7.0</Version>
     <Description>
+		- 3.7.0
+		* .NET 10 (net10.0) target framework added; existing targets preserved. EF Core 10.0.9 on net10.0.
+
 		- 3.6.5
 		* ToLimitedListEntityFilteredWithSolutionAsync,ToOptimizedLimitedListEntityFilteredWithSolutionAsync methods has been added.
 		
@@ -144,6 +147,16 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="5.0.7" />
+  </ItemGroup>
+  <ItemGroup Condition="'$(TargetFramework)' == 'net10.0'">
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="10.0.9" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="10.0.9" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="10.0.9" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="10.0.9">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="10.0.3" />
   </ItemGroup>
 
 
