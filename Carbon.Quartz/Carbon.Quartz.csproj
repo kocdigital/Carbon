@@ -1,11 +1,13 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>net8.0;net6.0</TargetFrameworks>
+    <TargetFrameworks>net8.0;net6.0;net10.0</TargetFrameworks>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-    <Version>1.5.2</Version>
+    <Version>1.6.0</Version>
     <GenerateDocumentationFile>False</GenerateDocumentationFile>
     <Description>
+	  1.6.0
+      - .NET 10 (net10.0) target framework added; existing targets preserved.
 	  1.5.2
       - Carbon.Common version update
 	  1.5.1
