@@ -9,42 +9,20 @@
 			4.6.21
 			- Carbon.Audit version update: response error info (ApiStatusCode, ErrorCode, Messages) and DurationMs added to audit events.
 			- Carbon.Audit version update: HttpStatusCodeFilter added for HTTP request audit events.
-			4.6.20
-			- Carbon.Audit version update, adds its own masstransit implementation.
-            4.6.19
-            - Carbon.Audit version update, token considered sensitive and redacted.
-            4.6.18
-            - Carbon.Audit version update, HttpAudit added
-            4.6.17
-            - Carbon.Audit version update
-            4.6.16
-            - Add Carbon.Audit package for auditing purposes.
             4.6.15
             - Added CustomConfigureAfterAuth hook (no behavior change unless overridden).
             4.6.14
             - Prevent 401 unauthorized errors when the userId claim is missing(for client tokens).
             4.6.13
             - Added an optional OnTokenValidated step to JWT validation that checks the TokenVersion stored in Redis, ensuring tokens issued before a password change are rejected with 401.
-			4.6.12
-			- Undo the change made in 4.6.11 regarding the vulnerable packages for security issues.
 			4.6.11
 			- Updated vulnerable packages for security issues
 			4.6.10
 			- Add defensive parsing for solution IDs in headers
-			4.6.9
-			- Carbon.Common version update
-			4.6.8
-			- Carbon.HttpClient.Auth version update
 			4.6.7
 			- While fetching the user’s roles, caching was added.
 			4.6.6
 			- Refactored OwnershipFilter to use async/await for external service calls; improved Authorization header handling and permission checks.
-			4.6.5
-			- Microsoft.Extensions.Logging package added
-			4.6.4
-			- HybridModelBinding updated to 0.17.0 on net8.0 target framework
-			4.6.3
-			- Dotnet 8.0 target framework added for minimal api
 			4.6.2
 			- Dotnet 8.0 target framework added
 			4.5.6
@@ -62,22 +40,10 @@
 			- Carbon.Common updated and Serilog.Enrichers.Sensitive Enricher added for masking sensitive values within logs.
 			4.3.0
 			- OwnershipFilter check now disregards solution id header during endpoint permission check
-			4.2.1
-			- UnauthorizedOperationException response body is fixed
 			4.2.0
 			- UnauthorizedOperationException handling is added
-			4.1.9
-			- Carbon.Common updated and IQueryable OrderBy extension method bug fixed
 			4.1.8
 			- Carbon.Common updated and nested ordering achieved
-			4.1.7
-			- Add CorrelationId to log OnException
-			4.1.6
-			- Cors Policy changes(Location parameter is added to WithExposedHeaders)
-			4.1.5
-			- ApiPagedResponse is added for PagedListOk.
-			4.1.4
-			- Some dependencies updated.
 			4.1.3
 			- Cors Allow Credentials support added with any origin accepted
 			- Cors Wildcards accepted
