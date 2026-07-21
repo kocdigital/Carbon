@@ -49,8 +49,7 @@ namespace Carbon.Domain.EntityFrameworkCore.UnitTests
             Assert.IsType<int>(response);
         }
 
-        [Theory]
-        [EmptyData]
+        [Fact]
         public async Task Dispose_Successfully_Null()
         {
             var uow = new UnitOfWork<TestCarbonContext>(EFRepositoryFixture.CreateContext());
