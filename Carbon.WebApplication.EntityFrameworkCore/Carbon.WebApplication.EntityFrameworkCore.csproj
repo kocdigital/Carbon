@@ -1,9 +1,12 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>net8.0;net6.0;netstandard2.1</TargetFrameworks>
-    <Version>2.5.7</Version>
+    <TargetFrameworks>net8.0;net6.0;netstandard2.1;net10.0</TargetFrameworks>
+    <Version>2.6.0</Version>
     <Description>
+		2.6.0
+		.NET 10 (net10.0) target framework added; existing targets preserved.
+
 		2.5.7
 		Carbon.Audit version update: response error info (ApiStatusCode, ErrorCode, Messages) and DurationMs added to audit events.
 		Carbon.Audit version update: HttpStatusCodeFilter added for HTTP request audit events.
@@ -79,15 +82,21 @@
   <ItemGroup Condition="'$(TargetFramework)' == 'net6.0' Or '$(TargetFramework)' == 'netstandard2.1'">
     <PackageReference Include="AspNetCore.HealthChecks.NpgSql" Version="5.0.2" />
   </ItemGroup>
+  <ItemGroup Condition="'$(TargetFramework)' == 'net10.0'">
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="AspNetCore.HealthChecks.NpgSql" Version="8.0.2" />
+  </ItemGroup>
   <ItemGroup>
     <PackageReference Include="AspNetCore.HealthChecks.SqlServer" Version="5.0.3" />
+  </ItemGroup>
+  <ItemGroup Condition="'$(TargetFramework)' != 'net10.0'">
     <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
     <PackageReference Include="System.Runtime.Loader" Version="4.3.0" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Carbon.Domain.EntityFrameworkCore.Extensions\Carbon.Domain.EntityFrameworkCore.csproj" />
   </ItemGroup>
-  <ItemGroup Condition="'$(TargetFramework)' == 'net6.0' or '$(TargetFramework)' == 'net8.0'">
+  <ItemGroup Condition="'$(TargetFramework)' == 'net6.0' or '$(TargetFramework)' == 'net8.0' or '$(TargetFramework)' == 'net10.0'">
     <ProjectReference Include="..\Carbon.Audit\Carbon.Audit.csproj" />
   </ItemGroup>
 

@@ -1,11 +1,13 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-    <TargetFrameworks>net8.0;netstandard2.1</TargetFrameworks>
-		<Version>1.1.2</Version>
+    <TargetFrameworks>net8.0;netstandard2.1;net10.0</TargetFrameworks>
+		<Version>1.2.0</Version>
 		<PackageId>Carbon.Serilog</PackageId>
 		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <Description>
+	  1.2.0
+      - .NET 10 (net10.0) target framework added; existing targets preserved.
 	  1.1.2
       - Carbon.Common version update
       1.1.1
@@ -24,6 +26,12 @@
     <PackageReference Include="Serilog" Version="3.0.1" />
     <PackageReference Include="Serilog.Enrichers.Sensitive" Version="1.7.3" />
     <PackageReference Include="Serilog.Settings.Configuration" Version="7.0.1" />
+  </ItemGroup>
+  <ItemGroup Condition="'$(TargetFramework)' == 'net10.0'">
+    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="10.0.9" />
+    <PackageReference Include="Serilog" Version="4.4.0" />
+    <PackageReference Include="Serilog.Enrichers.Sensitive" Version="1.7.3" />
+    <PackageReference Include="Serilog.Settings.Configuration" Version="10.0.1" />
   </ItemGroup>
 
 	<ItemGroup>

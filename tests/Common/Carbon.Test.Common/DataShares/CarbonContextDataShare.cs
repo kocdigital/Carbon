@@ -9,14 +9,6 @@ using Xunit.Sdk;
 
 namespace Carbon.Test.Common.DataShares
 {
-    public class EmptyData : DataAttribute
-    {
-        public override IEnumerable<object[]> GetData(MethodInfo testMethod)
-        {
-            yield return new object[] {  };
-        }
-    }
-
     public class SaveChanges : DataAttribute
     {
         public override IEnumerable<object[]> GetData(MethodInfo testMethod)

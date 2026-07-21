@@ -1,10 +1,12 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.1</TargetFramework>
+    <TargetFrameworks>netstandard2.1;net10.0</TargetFrameworks>
     <ProjectGuid>{7AEAD788-E78D-4825-9761-AEB2570DE3E0}</ProjectGuid>
-    <Version>3.9.1</Version>
+    <Version>3.10.0</Version>
     <Description>
+		3.10.0
+		- .NET 10 (net10.0) target framework added; existing targets preserved.
 		3.9.1
 		- Added ElasticSearch is not configured message
 		3.9.0
@@ -63,12 +65,21 @@
 
   <ItemGroup>
 	<PackageReference Include="AspNetCore.HealthChecks.Elasticsearch" Version="3.0.1" />
+    <PackageReference Include="NEST" Version="7.11.1" />
+  </ItemGroup>
+  <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.1'">
 	<PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks" Version="3.1.0" />
 	<PackageReference Include="Microsoft.Extensions.Configuration" Version="3.1.4" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="3.1.4" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="3.1.4" />
     <PackageReference Include="Microsoft.Extensions.Options" Version="3.1.4" />
-    <PackageReference Include="NEST" Version="7.11.1" />
+  </ItemGroup>
+  <ItemGroup Condition="'$(TargetFramework)' == 'net10.0'">
+	<PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks" Version="10.0.9" />
+	<PackageReference Include="Microsoft.Extensions.Configuration" Version="10.0.9" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="10.0.9" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="10.0.9" />
+    <PackageReference Include="Microsoft.Extensions.Options" Version="10.0.9" />
   </ItemGroup>
 
   <ItemGroup>
