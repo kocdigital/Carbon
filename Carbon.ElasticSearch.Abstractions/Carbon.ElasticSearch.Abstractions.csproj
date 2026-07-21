@@ -1,10 +1,12 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.1</TargetFramework>
+    <TargetFrameworks>netstandard2.1;net10.0</TargetFrameworks>
     <ProjectGuid>{bdcf1c00-d0d9-4328-8817-4d093f30cee1}</ProjectGuid>
-    <Version>3.9.0</Version>
+    <Version>3.10.0</Version>
     <Description>
+		3.10.0
+		- .NET 10 (net10.0) target framework added; existing targets preserved.
 		3.9.0
 		- Introduce IsConfigured to IElasticSettings and use it to guard all repository operations
 		3.8.5
