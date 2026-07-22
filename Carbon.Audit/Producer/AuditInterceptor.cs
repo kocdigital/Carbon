@@ -1,10 +1,12 @@
 using System.Reflection;
 using Carbon.Audit.Contracts;
 using Carbon.Audit.Producer.Http;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 
 namespace Carbon.Audit.Producer;
 
@@ -13,98 +15,184 @@ public sealed class AuditInterceptor : SaveChangesInterceptor
     private readonly RequestContext _requestContext;
     private readonly ILogger<AuditInterceptor> _logger;
 
+    /// <summary>
+    /// Mirrors <c>CarbonAudit:Enabled</c>. The interceptor is registered in DI unconditionally
+    /// so that DbContexts taking it as a constructor dependency stay resolvable on environments
+    /// where auditing is turned off; this flag is what actually switches the behaviour off.
+    /// When <c>false</c> every interception point returns immediately, so no change tracker
+    /// traversal, reflection or allocation happens.
+    /// </summary>
+    private readonly bool _enabled;
+
+    private readonly IHttpContextAccessor? _httpContextAccessor;
+
     private List<AuditEntryPending>? _pendingAudits;
 
     public AuditInterceptor(
         RequestContext ctx,
-        ILogger<AuditInterceptor> logger)
+        ILogger<AuditInterceptor> logger,
+        IOptions<CarbonAuditSettings> settings,
+        IHttpContextAccessor httpContextAccessor)
     {
         _requestContext = ctx;
         _logger = logger;
+        _enabled = settings?.Value?.Enabled ?? false;
+        _httpContextAccessor = httpContextAccessor;
     }
-    
+
+    // -------------------------------------------------------------------------
+    // Interception points
+    //
+    // EF Core never bridges the synchronous and asynchronous interception paths:
+    // DbContext.SaveChanges() only triggers the sync overloads and SaveChangesAsync()
+    // only the async ones. Both pairs are therefore implemented, delegating to the
+    // shared handlers below - otherwise every synchronous save would silently produce
+    // no audit event at all.
+    // -------------------------------------------------------------------------
+
+    public override InterceptionResult<int> SavingChanges(
+        DbContextEventData eventData,
+        InterceptionResult<int> result)
+    {
+        PrepareAudits(eventData);
+        return base.SavingChanges(eventData, result);
+    }
+
     public override ValueTask<InterceptionResult<int>> SavingChangesAsync(
         DbContextEventData eventData,
         InterceptionResult<int> result,
         CancellationToken cancellationToken)
     {
-        if (_requestContext.IsHmiRequest)
-            return base.SavingChangesAsync(eventData, result, cancellationToken); 
+        PrepareAudits(eventData);
+        return base.SavingChangesAsync(eventData, result, cancellationToken);
+    }
+
+    public override int SavedChanges(
+        SaveChangesCompletedEventData eventData,
+        int result)
+    {
+        QueuePendingAudits();
+        return base.SavedChanges(eventData, result);
+    }
+
+    public override async ValueTask<int> SavedChangesAsync(
+        SaveChangesCompletedEventData eventData,
+        int result,
+        CancellationToken cancellationToken)
+    {
+        QueuePendingAudits();
+        return await base.SavedChangesAsync(eventData, result, cancellationToken);
+    }
+
+    public override void SaveChangesFailed(DbContextErrorEventData eventData)
+    {
+        QueuePendingAuditsAfterFailure();
+        base.SaveChangesFailed(eventData);
+    }
+
+    public override Task SaveChangesFailedAsync(
+        DbContextErrorEventData eventData,
+        CancellationToken cancellationToken)
+    {
+        QueuePendingAuditsAfterFailure();
+        return base.SaveChangesFailedAsync(eventData, cancellationToken);
+    }
+
+    // -------------------------------------------------------------------------
+    // Shared handlers
+    // -------------------------------------------------------------------------
+
+    /// <summary>
+    /// Snapshots the auditable entries of the change tracker before they are persisted.
+    /// </summary>
+    private void PrepareAudits(DbContextEventData eventData)
+    {
+        if (!_enabled) return;
+
+        // Audit events are published from a single place: RequestContextMiddleware, which only
+        // runs inside an HTTP request scope. Saves that happen outside a request - database
+        // seeding, Quartz jobs, MassTransit consumers - write into a RequestContext that is
+        // never drained, so their events are discarded when the scope ends. Skipping them here
+        // therefore changes nothing about what is actually published; it avoids the wasted
+        // change tracker traversal and keeps PendingAuditEvents from growing without bound in
+        // long-lived non-HTTP scopes.
+        // The accessor itself is only null when the interceptor was constructed outside DI; in
+        // that case collecting is the safer default.
+        if (_httpContextAccessor is not null && _httpContextAccessor.HttpContext is null) return;
+
+        if (_requestContext.IsHmiRequest) return;
 
         try
         {
-            if (eventData.Context is not { } db)
-                return base.SavingChangesAsync(eventData, result, cancellationToken); 
-            
+            if (eventData.Context is not { } db) return;
+
             _pendingAudits = BuildPendingAudits(db.ChangeTracker.Entries());
         }
         catch (Exception ex)
         {
             _logger.LogError(ex, "[AUDIT] Failed to build pending audit events");
         }
-
-        return base.SavingChangesAsync(eventData, result, cancellationToken); 
     }
-    
-    public override async ValueTask<int> SavedChangesAsync(
-        SaveChangesCompletedEventData eventData,
-        int result,
-        CancellationToken cancellationToken)
+
+    /// <summary>
+    /// Hands the pending audit events over to the request context after a successful save,
+    /// resolving the values that are only known once the database has assigned them.
+    /// </summary>
+    private void QueuePendingAudits()
     {
-        if (_pendingAudits != null && _pendingAudits.Count > 0)
+        if (!_enabled) return;
+        if (_pendingAudits == null || _pendingAudits.Count == 0) return;
+
+        try
         {
-            try
+            foreach (var pending in _pendingAudits)
             {
-                foreach (var pending in _pendingAudits)
+                var evt = pending.Event;
+
+                if (evt.Action == AuditAction.Created)
                 {
-                    var evt = pending.Event;
-
-                    if (evt.Action == AuditAction.Created)
-                    {
-                        evt.EntityId = GetPrimaryKey(pending.Entry);
-                        evt.After = GetSnapshot(pending.Entry, original: false);
-                    }
-
-                    _requestContext.PendingAuditEvents.Add(evt);
+                    evt.EntityId = GetPrimaryKey(pending.Entry);
+                    evt.After = GetSnapshot(pending.Entry, original: false);
                 }
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, "[AUDIT] Failed to queue audit events after save");
-            }
-            finally
-            {
-                _pendingAudits.Clear();
+
+                _requestContext.PendingAuditEvents.Add(evt);
             }
         }
-
-        return await base.SavedChangesAsync(eventData, result, cancellationToken);
-    }
-    
-    public override Task SaveChangesFailedAsync(
-        DbContextErrorEventData eventData,
-        CancellationToken cancellationToken)
-    {
-        if (_pendingAudits != null && _pendingAudits.Count > 0)
+        catch (Exception ex)
         {
-            try
-            {
-                foreach (var pending in _pendingAudits)
-                    _requestContext.PendingAuditEvents.Add(pending.Event);
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, "[AUDIT] Failed to queue audit events after save failure");
-            }
-            finally
-            {
-                _pendingAudits.Clear();
-            }
+            _logger.LogError(ex, "[AUDIT] Failed to queue audit events after save");
         }
-
-        return base.SaveChangesFailedAsync(eventData, cancellationToken);
+        finally
+        {
+            _pendingAudits.Clear();
+        }
     }
-    
+
+    /// <summary>
+    /// Hands the pending audit events over to the request context after a failed save,
+    /// so that rejected attempts are audited as well.
+    /// </summary>
+    private void QueuePendingAuditsAfterFailure()
+    {
+        if (!_enabled) return;
+        if (_pendingAudits == null || _pendingAudits.Count == 0) return;
+
+        try
+        {
+            foreach (var pending in _pendingAudits)
+                _requestContext.PendingAuditEvents.Add(pending.Event);
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "[AUDIT] Failed to queue audit events after save failure");
+        }
+        finally
+        {
+            _pendingAudits.Clear();
+        }
+    }
+
+
     private List<AuditEntryPending> BuildPendingAudits(IEnumerable<EntityEntry> entries)
     {
         return entries

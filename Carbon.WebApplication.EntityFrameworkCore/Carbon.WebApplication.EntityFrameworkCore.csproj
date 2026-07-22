@@ -2,8 +2,11 @@
 
   <PropertyGroup>
     <TargetFrameworks>net8.0;net6.0;netstandard2.1;net10.0</TargetFrameworks>
-    <Version>2.6.0</Version>
+    <Version>2.6.1</Version>
     <Description>
+		2.6.1
+		Carbon.Audit interceptor registration is now optional and driven by the "CarbonAudit:Enabled" configuration key; DbContext registrations use the service provider overload to resolve the interceptor.
+
 		2.6.0
 		.NET 10 (net10.0) target framework added; existing targets preserved.
 
