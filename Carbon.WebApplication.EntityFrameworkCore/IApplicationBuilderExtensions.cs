@@ -12,7 +12,7 @@ using System.Runtime.Loader;
 using Microsoft.Extensions.Logging;
 using Carbon.Domain.EntityFrameworkCore;
 #if NET6_0_OR_GREATER
-using Carbon.Audit.Producer;
+using Carbon.Audit;
 #endif
 using Microsoft.Extensions.Diagnostics.HealthChecks;
 
@@ -105,7 +105,7 @@ namespace Carbon.WebApplication.EntityFrameworkCore
                         options.UseNpgsql(connectionString, sql => sql.MigrationsAssembly(migrationsAssembly));
 #if NET6_0_OR_GREATER
                         if (useCarbonAudit)
-                            options.AddInterceptors(sp.GetRequiredService<AuditInterceptor>());
+                            options.AddCarbonAuditInterceptor(sp);
 #endif
                     });
                     break;
@@ -115,7 +115,7 @@ namespace Carbon.WebApplication.EntityFrameworkCore
                         options.UseSqlServer(connectionString, sql => sql.MigrationsAssembly(migrationsAssembly));
 #if NET6_0_OR_GREATER
                         if (useCarbonAudit)
-                            options.AddInterceptors(sp.GetRequiredService<AuditInterceptor>());
+                            options.AddCarbonAuditInterceptor(sp);
 #endif
                     });
                     break;
@@ -167,7 +167,7 @@ namespace Carbon.WebApplication.EntityFrameworkCore
                         options.UseNpgsql(connectionString, sql => sql.MigrationsAssembly(migrationsAssembly));
 #if NET6_0_OR_GREATER
                         if (useCarbonAudit)
-                            options.AddInterceptors(sp.GetRequiredService<AuditInterceptor>());
+                            options.AddCarbonAuditInterceptor(sp);
 #endif
                     });
                     break;
@@ -177,7 +177,7 @@ namespace Carbon.WebApplication.EntityFrameworkCore
                         options.UseSqlServer(connectionString, sql => sql.MigrationsAssembly(migrationsAssembly));
 #if NET6_0_OR_GREATER
                         if (useCarbonAudit)
-                            options.AddInterceptors(sp.GetRequiredService<AuditInterceptor>());
+                            options.AddCarbonAuditInterceptor(sp);
 #endif
                     });
                     break;

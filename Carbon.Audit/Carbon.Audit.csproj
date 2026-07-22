@@ -4,8 +4,34 @@
     <TargetFrameworks>net8.0;net6.0;net10.0</TargetFrameworks>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <Version>1.4.0</Version>
+    <Version>1.5.0</Version>
     <Description>
+      1.5.0
+      - DbContextOptionsBuilder.AddCarbonAuditInterceptor(serviceProvider) added. Services that
+        register their DbContext themselves can wire auditing in with a single line inside their
+        AddDbContext callback, instead of taking AuditInterceptor as a DbContext constructor
+        dependency. Safe to call unconditionally.
+      - AuditInterceptor no longer collects audit events for saves that happen outside an HTTP
+        request (database seeding, Quartz jobs, MassTransit consumers). Those events were never
+        published anyway - RequestContextMiddleware is the only publisher and it does not run in
+        such scopes - so nothing that used to be published is lost, while the wasted change
+        tracker traversal and the unbounded growth of RequestContext.PendingAuditEvents in
+        long-lived non-HTTP scopes are gone.
+        NOTE: if you publish RequestContext.PendingAuditEvents yourself from a non-HTTP code
+        path, that path will no longer receive events.
+      - AuditInterceptor now also intercepts synchronous saves. Previously only the ...Async
+        interception points were overridden, so every DbContext.SaveChanges() call silently
+        produced no audit event. Entities saved through synchronous code paths are audited now.
+      - RequestContext and AuditInterceptor are now registered in DI unconditionally, so DbContexts
+        that take AuditInterceptor as a constructor dependency stay resolvable when
+        "CarbonAudit:Enabled" is false (previously the application failed to start).
+      - AuditInterceptor is now genuinely inert when disabled: every interception point returns
+        immediately, so no change tracker traversal or reflection happens.
+      - CarbonAuditSettings is now bound from the "CarbonAudit" section; AuditInterceptor takes
+        IOptions&lt;CarbonAuditSettings&gt; as a third constructor argument.
+      - UseCarbonAudit() is now a no-op when the feature is disabled.
+      - The audit bus and IAuditEventPublisher registrations remain conditional: nothing connects
+        to RabbitMQ when auditing is disabled.
       1.4.0
       - .NET 10 (net10.0) target framework added; existing targets preserved.
       1.3.0
