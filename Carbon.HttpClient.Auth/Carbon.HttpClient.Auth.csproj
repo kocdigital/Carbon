@@ -2,9 +2,11 @@
 
 	<PropertyGroup>
 		<TargetFrameworks>netstandard2.1;net10.0</TargetFrameworks>
-		<Version>1.1.0</Version>
+		<Version>1.2.0</Version>
 		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 		<Description>
+			1.2.0
+			- feat: CancellationToken support added to AuthHttpClientFactory async methods
 			1.1.0
 			- .NET 10 (net10.0) target framework added; existing targets preserved.
 			1.0.4
