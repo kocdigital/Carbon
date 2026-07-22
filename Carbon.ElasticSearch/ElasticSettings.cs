@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Elasticsearch.Net;
 using Microsoft.Extensions.Options;
 using Nest;
+using Serilog;
 using Carbon.ElasticSearch.Abstractions;
 
 namespace Carbon.ElasticSearch
@@ -42,7 +43,7 @@ namespace Carbon.ElasticSearch
 
             if (!settings.IsConfigured)
             {
-                Console.WriteLine("ElasticSearch is not configured. All ElasticSearch repository operations will be skipped.");
+                Log.Debug("ElasticSearch is not configured. All ElasticSearch repository operations will be skipped.");
                 return;
             }
 
