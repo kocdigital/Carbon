@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Linq;
 using IdentityModel.Client;
@@ -59,10 +60,10 @@ namespace Carbon.HttpClient.Auth.IdentityServerSupport
 		/// Drops authentication and cretes new one using <see cref="CreateAuthentication"/>
 		/// </summary>
 		/// <param name="Name"><inheritdoc cref="CreateAuthentication(string, bool)"/></param>
-		public async Task<AuthenticationInfo> ReAuthenticate(string Name)
+		public async Task<AuthenticationInfo> ReAuthenticate(string Name, CancellationToken cancellationToken = default)
         {
             DropAuthentication(Name);
-            return await CreateAuthentication(Name);
+            return await CreateAuthentication(Name, cancellationToken: cancellationToken);
         }
 
         /// <summary>
@@ -97,7 +98,7 @@ namespace Carbon.HttpClient.Auth.IdentityServerSupport
 		/// <item>Otherwise returns <see cref="BasicAuth"/> which contains authentication informations like token etc</item>
 		/// </list>
         /// </returns>
-		public async Task<AuthenticationInfo> CreateAuthentication(string Name, bool reauth = false)
+		public async Task<AuthenticationInfo> CreateAuthentication(string Name, bool reauth = false, CancellationToken cancellationToken = default)
         {
             if (!reauth)
                 if (_authHttpClientAuthorization.Authentications.ContainsKey(Name) && _authHttpClientAuthorization.Authentications[Name] != null && _authHttpClientAuthorization.Authentications[Name].PrimaryAccessIdExpireDate > DateTime.Now)
@@ -133,12 +134,16 @@ namespace Carbon.HttpClient.Auth.IdentityServerSupport
                 bodyDict.Add("client_secret", credentials.Secret);
                 httpRequestMessage.Content = new FormUrlEncodedContent(bodyDict);
                 httpRequestMessage.RequestUri = new Uri(_identityServer.TokenUrl);
-                var res = await autherClient.SendAsync(httpRequestMessage);
+                var res = await autherClient.SendAsync(httpRequestMessage, cancellationToken);
 
 
                 if (res.IsSuccessStatusCode)
                 {
+#if NET5_0_OR_GREATER
+                    var resStr = await res.Content.ReadAsStringAsync(cancellationToken);
+#else
                     var resStr = await res.Content.ReadAsStringAsync();
+#endif
                     var daJObj = JObject.Parse(resStr);
                     var accToken = daJObj["access_token"].ToString();
                     var basicAuth = new BasicAuth(accToken, DateTime.Now.AddSeconds((double)daJObj["expires_in"]), Name);
@@ -161,7 +166,7 @@ namespace Carbon.HttpClient.Auth.IdentityServerSupport
                     ClientSecret = relatedSection["Secret"],
                     Scope = relatedSection["Scope"]
                 };
-                var tokenResponse = await autherClient.RequestClientCredentialsTokenAsync(clientCredentials);
+                var tokenResponse = await autherClient.RequestClientCredentialsTokenAsync(clientCredentials, cancellationToken);
 
                 if (tokenResponse.IsError)
                 {
@@ -203,7 +208,7 @@ namespace Carbon.HttpClient.Auth.IdentityServerSupport
                     ClientSecret = clientSecret,
                     Scope = scope
                 };
-                var tokenResponse = await autherClient.RequestClientCredentialsTokenAsync(clientCredentials);
+                var tokenResponse = await autherClient.RequestClientCredentialsTokenAsync(clientCredentials, cancellationToken);
 
                 if (tokenResponse.IsError)
                 {
@@ -266,19 +271,19 @@ namespace Carbon.HttpClient.Auth.IdentityServerSupport
         /// <summary>
         /// Sends Http Request using created <see cref="AuthHttpClient"/>. Renews authentication if needed
         /// </summary>
-        public virtual async Task<HttpResponseMessage> SendAsync(AuthHttpClient client, HttpRequestMessage request)
+        public virtual async Task<HttpResponseMessage> SendAsync(AuthHttpClient client, HttpRequestMessage request, CancellationToken cancellationToken = default)
         {
-            var resp = await client.HttpClient.SendAsync(request);
+            var resp = await client.HttpClient.SendAsync(request, cancellationToken);
             if (resp.StatusCode == System.Net.HttpStatusCode.Unauthorized)
             {
                 if (client.Name == null) throw new AuthenticationException("Client Name can not be null!");
                 //DropAuthentication(client.Name);
-                var isReAuthed = await CreateAuthentication(client.Name, true);
+                var isReAuthed = await CreateAuthentication(client.Name, true, cancellationToken);
                 if (isReAuthed != null)
                 {
                     client = CreateAuthClient(client.Name);
-                    var clonedRequest = await CloneHttpRequestMessageAsync(request);
-                    var reResp = await client.HttpClient.SendAsync(clonedRequest);
+                    var clonedRequest = await CloneHttpRequestMessageAsync(request, cancellationToken);
+                    var reResp = await client.HttpClient.SendAsync(clonedRequest, cancellationToken);
                     return reResp;
                 }
             }
@@ -290,13 +295,13 @@ namespace Carbon.HttpClient.Auth.IdentityServerSupport
 		/// </summary>
 		/// <param name="Name"><inheritdoc cref="CreateAuthentication(string, bool)"/></param>
 		/// <returns><see cref="AuthenticationInfo"/></returns>
-        public async Task<AuthenticationInfo> GetAuthentication(string Name)
+        public async Task<AuthenticationInfo> GetAuthentication(string Name, CancellationToken cancellationToken = default)
         {
             if (_authHttpClientAuthorization.Authentications.ContainsKey(Name) && _authHttpClientAuthorization.Authentications[Name] != null && _authHttpClientAuthorization.Authentications[Name].PrimaryAccessIdExpireDate > DateTime.Now)
             {
                 return _authHttpClientAuthorization.Authentications[Name];
             }
-            await ReAuthenticate(Name);
+            await ReAuthenticate(Name, cancellationToken);
             return _authHttpClientAuthorization.Authentications[Name];
         }
 
@@ -323,7 +328,7 @@ namespace Carbon.HttpClient.Auth.IdentityServerSupport
             }
             return new AuthHttpClient() { HttpClient = clnt, Name = Name };
         }
-        private static async Task<HttpRequestMessage> CloneHttpRequestMessageAsync(HttpRequestMessage req)
+        private static async Task<HttpRequestMessage> CloneHttpRequestMessageAsync(HttpRequestMessage req, CancellationToken cancellationToken = default)
         {
             HttpRequestMessage clone = new HttpRequestMessage(req.Method, req.RequestUri);
 
@@ -331,7 +336,11 @@ namespace Carbon.HttpClient.Auth.IdentityServerSupport
             var ms = new MemoryStream();
             if (req.Content != null)
             {
+#if NET5_0_OR_GREATER
+                await req.Content.CopyToAsync(ms, cancellationToken).ConfigureAwait(false);
+#else
                 await req.Content.CopyToAsync(ms).ConfigureAwait(false);
+#endif
                 ms.Position = 0;
                 clone.Content = new StreamContent(ms);
 
