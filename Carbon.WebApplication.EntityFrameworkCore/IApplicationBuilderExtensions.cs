@@ -33,7 +33,16 @@ namespace Carbon.WebApplication.EntityFrameworkCore
             using (var serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
             {
                 var context = serviceScope.ServiceProvider.GetRequiredService<TContext>();
-                context.Database.Migrate();
+
+                try
+                {
+                    context.Database.Migrate();
+                }
+                catch (InvalidOperationException ex) when (ex.Message.Contains("PendingModelChangesWarning"))
+                {
+                    var logger = serviceScope.ServiceProvider.GetService<ILogger<TContext>>();
+                    logger?.LogWarning(ex, "Pending model changes detected for {ContextType}. The current model no longer matches the last migration snapshot; add a new migration ('dotnet ef migrations add') to bring them back in sync. Startup is continuing, but be aware any real pending migrations were NOT applied because validation failed before Migrate() could run them.", typeof(TContext).Name);
+                }
             }
         }
 
