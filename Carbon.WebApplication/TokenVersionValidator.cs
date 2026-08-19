@@ -1,4 +1,4 @@
-using Microsoft.AspNetCore.Authentication.JwtBearer;
+﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.DependencyInjection;
 using StackExchange.Redis;
 using System;
@@ -17,6 +17,11 @@ namespace Carbon.WebApplication
 
         public async Task ValidateAsync(TokenValidatedContext ctx, TokenVersionValidationSettings tvs)
         {
+            var isGodUser = IsGodUser(ctx, tvs);
+
+            if (isGodUser && tvs.SkipForGodUser)
+                return;
+
             IConnectionMultiplexer mux = null;
             if (tvs.SkipWhenRedisDisabled || tvs.SkipIfRedisNotRegistered)
             {
@@ -48,11 +53,10 @@ namespace Carbon.WebApplication
 
             var tenantId = principal?.FindFirst(tvs.TenantIdClaimName)?.Value;
             var userId = principal?.FindFirst(tvs.UserIdClaimName)?.Value;
-            var isGodUser = principal?.FindFirst("god-user")?.Value;
 
             if (string.IsNullOrWhiteSpace(tenantId) || string.IsNullOrWhiteSpace(userId))
             {
-                if (isGodUser != "true")
+                if (!isGodUser)
                 {
                     ctx.Fail("Missing tenantId/userId claim.");
                     return;
@@ -102,6 +106,17 @@ namespace Carbon.WebApplication
                 ctx.Fail("Token revoked.");
                 return;
             }
+        }
+
+        private static bool IsGodUser(TokenValidatedContext ctx, TokenVersionValidationSettings tvs)
+        {
+            var claimName = string.IsNullOrWhiteSpace(tvs.GodUserClaimName)
+                ? "god-user"
+                : tvs.GodUserClaimName;
+
+            var value = ctx.Principal?.FindFirst(claimName)?.Value;
+
+            return string.Equals(value, "true", StringComparison.OrdinalIgnoreCase);
         }
 
         private string BuildTokenVersionKey(TokenVersionValidationSettings tvs, string tenantId, string userId)
