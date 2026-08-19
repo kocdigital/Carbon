@@ -1,8 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
 		<TargetFrameworks>net8.0;net6.0;net10.0</TargetFrameworks>
-		<Version>4.7.0</Version>
+		<Version>4.7.1</Version>
 		<Description>
+            4.7.1
+            - exempt god users from token version validation
 			4.7.0
 			- .NET 10 (net10.0) target framework added; existing targets preserved.
 			- On net10.0 the legacy Microsoft.AspNetCore.Mvc 2.2 packages are replaced by the ASP.NET Core shared framework (FrameworkReference); zipkin4net packages (unused in code) are not carried to net10.0.
