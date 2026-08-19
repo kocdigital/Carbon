@@ -128,5 +128,22 @@ namespace Carbon.WebApplication
         /// Useful for APIs that do not use Redis even if Redis is enabled globally.
         /// </summary>
         public bool SkipIfRedisNotRegistered { get; set; } = false;
+
+        /// <summary>
+        /// When true, tokens belonging to a God User are exempted from token version validation.
+        /// <para>
+        /// God User tokens are not tenant scoped, so the tenant based Redis key cannot be built for them.
+        /// Set to <c>false</c> only if God User tokens are also versioned in Redis with the same key format.
+        /// </para>
+        /// </summary>
+        public bool SkipForGodUser { get; set; } = true;
+
+        /// <summary>
+        /// The JWT claim name that marks a token as belonging to a God User.
+        /// <para>
+        /// The claim is considered set when its value equals <c>true</c> (case insensitive).
+        /// </para>
+        /// </summary>
+        public string GodUserClaimName { get; set; } = "god-user";
     }
 }
