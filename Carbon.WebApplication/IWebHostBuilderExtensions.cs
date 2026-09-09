@@ -19,7 +19,7 @@ namespace Carbon.WebApplication
         /// Applies Carbon Framework settings such as Environment, Consul Address, Assembly Name etc.
         /// </summary>
         /// <param name="builder"></param>
-        public static void UseCarbonFeatures(this IWebHostBuilder builder)
+        public static void UseCarbonFeatures(this IWebHostBuilder builder, bool useExternalConfiguration = true)
         {
             var assemblyName = Assembly.GetEntryAssembly().GetName().Name;
             var currentEnviroment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
@@ -38,79 +38,90 @@ namespace Carbon.WebApplication
             {
                 builder.UseKestrel();
             }
-            builder.ConfigureAppConfiguration((c) =>
-            {
-                #region Configuration
 
-                //Suitable for Standalone or IIS Applications
-                if (String.IsNullOrEmpty(confType) || confType?.ToUpper() == "CONSUL")
+            if (!useExternalConfiguration)
+            {
+#if DEBUG
+                Console.WriteLine("External configuration sources are disabled.");
+#endif
+            }
+            else
+            {
+                builder.ConfigureAppConfiguration((c) =>
                 {
-                    var consulEnabled = !string.IsNullOrEmpty(consulAddress);
-                    if (consulEnabled)
+                    #region Configuration
+
+                    //Suitable for Standalone or IIS Applications
+                    if (String.IsNullOrEmpty(confType) || confType?.ToUpper() == "CONSUL")
                     {
-                        Console.WriteLine("Configuration Type: CONSUL");
-                        if (!string.IsNullOrEmpty(consulKeysValue))
+                        var consulEnabled = !string.IsNullOrEmpty(consulAddress);
+                        if (consulEnabled)
                         {
-                            var consulKeys = consulKeysValue.Split(',').ToArray();
-                            foreach (var consulKey in consulKeys)
+                            Console.WriteLine("Configuration Type: CONSUL");
+                            if (!string.IsNullOrEmpty(consulKeysValue))
+                            {
+                                var consulKeys = consulKeysValue.Split(',').ToArray();
+                                foreach (var consulKey in consulKeys)
+                                {
+                                    c.AddConsul(
+                                       $"{consulKey}/{currentEnviroment}", (options) =>
+                                       {
+                                           options.ConsulConfigurationOptions = cco => { cco.Address = new Uri(consulAddress); };
+                                           options.Optional = false;
+                                           options.ReloadOnChange = true;
+                                           options.OnLoadException = exceptionContext => { exceptionContext.Ignore = false; };
+                                       });
+                                }
+                            }
+                            else
                             {
                                 c.AddConsul(
-                                   $"{consulKey}/{currentEnviroment}", (options) =>
-                                   {
-                                       options.ConsulConfigurationOptions = cco => { cco.Address = new Uri(consulAddress); };
-                                       options.Optional = false;
-                                       options.ReloadOnChange = true;
-                                       options.OnLoadException = exceptionContext => { exceptionContext.Ignore = false; };
-                                   });
+                                            $"{assemblyName}/{currentEnviroment}", (options) =>
+                                            {
+                                                options.ConsulConfigurationOptions = cco => { cco.Address = new Uri(consulAddress); };
+                                                options.Optional = false;
+                                                options.ReloadOnChange = true;
+                                                options.OnLoadException = exceptionContext => { exceptionContext.Ignore = false; };
+                                            });
                             }
                         }
-                        else
-                        {
-                            c.AddConsul(
-                                        $"{assemblyName}/{currentEnviroment}", (options) =>
-                                        {
-                                            options.ConsulConfigurationOptions = cco => { cco.Address = new Uri(consulAddress); };
-                                            options.Optional = false;
-                                            options.ReloadOnChange = true;
-                                            options.OnLoadException = exceptionContext => { exceptionContext.Ignore = false; };
-                                        });
-                        }
                     }
-                }
-                //Suitable for Kubernetes or Dockerized Applications
-                else if (confType?.ToUpper() == "FILE" || confType == "file" || confType == "File")
-                {
-                    Console.WriteLine("Configuration Type: FILE");
-                    var kubConfigPath = Environment.GetEnvironmentVariable("FILE_CONFIG_PATHS") ?? "config/appsettings.main.file.json";
-                    Console.WriteLine("Config Paths => " + kubConfigPath);
-
-                    var kubConfigPaths = kubConfigPath.Split(',').ToArray();
-
-                    foreach (var kubCnf in kubConfigPaths)
+                    //Suitable for Kubernetes or Dockerized Applications
+                    else if (confType?.ToUpper() == "FILE" || confType == "file" || confType == "File")
                     {
-                        Console.WriteLine("Adding Config =>  " + kubCnf);
-                        try
+                        Console.WriteLine("Configuration Type: FILE");
+                        var kubConfigPath = Environment.GetEnvironmentVariable("FILE_CONFIG_PATHS") ?? "config/appsettings.main.file.json";
+                        Console.WriteLine("Config Paths => " + kubConfigPath);
+
+                        var kubConfigPaths = kubConfigPath.Split(',').ToArray();
+
+                        foreach (var kubCnf in kubConfigPaths)
                         {
-                            var configToRead = File.ReadAllText(kubCnf);
+                            Console.WriteLine("Adding Config =>  " + kubCnf);
+                            try
+                            {
+                                var configToRead = File.ReadAllText(kubCnf);
 #if DEBUG
-                            Console.WriteLine("Inserting Config => \n" + configToRead);
+                                Console.WriteLine("Inserting Config => \n" + configToRead);
 #endif
+                            }
+                            catch
+                            {
+                                Console.WriteLine("Config File not found! No configurations may be loaded!");
+                            }
+                            c.AddJsonFile(kubCnf, optional: true, reloadOnChange: true);
                         }
-                        catch
-                        {
-                            Console.WriteLine("Config File not found! No configurations may be loaded!");
-                        }
-                        c.AddJsonFile(kubCnf, optional: true, reloadOnChange: true);
                     }
-                }
-                else
-                {
-                    Console.WriteLine("No Configuration Source Specified!");
-                }
+                    else
+                    {
+                        Console.WriteLine("No Configuration Source Specified!");
+                    }
 
 
-                #endregion
-            });
+                    #endregion
+                });
+            }
+
 #if NET6_0
             builder.UseSerilog();
 #endif
