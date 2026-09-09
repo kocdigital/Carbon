@@ -19,7 +19,7 @@ namespace Carbon.WebApplication
         /// Applies Carbon Framework settings such as Environment, Consul Address, Assembly Name etc.
         /// </summary>
         /// <param name="builder"></param>
-        public static void UseCarbonFeatures(this IWebHostBuilder builder, bool useExternalConfiguration = true)
+        public static void UseCarbonFeatures(this IWebHostBuilder builder, bool useLocalConfiguration = false)
         {
             var assemblyName = Assembly.GetEntryAssembly().GetName().Name;
             var currentEnviroment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
@@ -39,7 +39,7 @@ namespace Carbon.WebApplication
                 builder.UseKestrel();
             }
 
-            if (!useExternalConfiguration)
+            if (useLocalConfiguration)
             {
 #if DEBUG
                 Console.WriteLine("External configuration sources are disabled.");
