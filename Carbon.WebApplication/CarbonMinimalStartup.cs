@@ -40,9 +40,9 @@ namespace Carbon.WebApplication
         public static IConfiguration Configuration { get; set; }
 
 
-        public static void AddCarbonServices(this WebApplicationBuilder builder, Func<IServiceCollection, IServiceCollection> serviceCollector, bool useExternalConfiguration = true)
+        public static void AddCarbonServices(this WebApplicationBuilder builder, Func<IServiceCollection, IServiceCollection> serviceCollector, bool useLocalConfiguration = false)
         {
-            builder.WebHost.UseCarbonFeatures(useExternalConfiguration);
+            builder.WebHost.UseCarbonFeatures(useLocalConfiguration);
             var services = builder.Services;
             Configuration = builder.Configuration;
 #if NET10_0

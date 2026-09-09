@@ -40,7 +40,7 @@ namespace Carbon.WebApplication.Grpc
         public static IConfiguration Configuration { get; set; }
 
 
-        public static void AddCarbonGrpcServices(this WebApplicationBuilder builder, Func<IServiceCollection, IServiceCollection> serviceCollector, bool useAuthentication = true, bool useAuthorization = true, List<Type> interceptors = null)
+        public static void AddCarbonGrpcServices(this WebApplicationBuilder builder, Func<IServiceCollection, IServiceCollection> serviceCollector, bool useAuthentication = true, bool useAuthorization = true, List<Type> interceptors = null, bool useLocalConfiguration = false)
         {
             _useAuthorization = useAuthorization;
             _useAuthentication = useAuthentication;
@@ -58,7 +58,7 @@ namespace Carbon.WebApplication.Grpc
             CommonStartup.AddServiceBaseLogic(services, Configuration, _useAuthorization, interceptors);
 
             serviceCollector(services);
-            builder.WebHost.UseCarbonFeatures();
+            builder.WebHost.UseCarbonFeatures(useLocalConfiguration);
         }
 
         public static void AddCarbonGrpcApplication(this Microsoft.AspNetCore.Builder.WebApplication app, Func<Microsoft.AspNetCore.Builder.WebApplication, Microsoft.AspNetCore.Builder.WebApplication> applicationCollector, Func<IEndpointRouteBuilder, IEndpointRouteBuilder> endpointRouteCollector = null)

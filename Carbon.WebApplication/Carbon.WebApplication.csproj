@@ -1,9 +1,9 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
 		<TargetFrameworks>net8.0;net6.0;net10.0</TargetFrameworks>
-		<Version>4.7.2</Version>
+		<Version>4.8.0</Version>
 		<Description>
-			4.7.2
+			4.8.0
 			- Configuration sources can now be enabled or disabled via flags.
 			4.7.1
 			- exempt god users from token version validation
