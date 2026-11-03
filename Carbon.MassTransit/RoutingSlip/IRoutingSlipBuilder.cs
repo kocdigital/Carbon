@@ -1,12 +1,5 @@
 ﻿using Carbon.MassTransit.AsyncReqResp;
 using MassTransit;
-using MassTransit.Azure.ServiceBus.Core;
-using MassTransit.Courier;
-using MassTransit.ExtensionsDependencyInjectionIntegration;
-using MassTransit.ExtensionsDependencyInjectionIntegration.MultiBus;
-using MassTransit.MultiBus;
-using MassTransit.RabbitMqTransport;
-using MassTransit.Registration;
 
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;

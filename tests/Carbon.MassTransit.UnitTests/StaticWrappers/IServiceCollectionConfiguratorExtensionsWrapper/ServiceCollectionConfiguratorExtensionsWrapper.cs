@@ -1,8 +1,4 @@
 ﻿using MassTransit;
-using MassTransit.Azure.ServiceBus.Core;
-using MassTransit.ExtensionsDependencyInjectionIntegration;
-using MassTransit.ExtensionsDependencyInjectionIntegration.MultiBus;
-using MassTransit.RabbitMqTransport;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -11,27 +7,27 @@ namespace Carbon.MassTransit.UnitTests.StaticWrappers.IServiceCollectionConfigur
 {
     public class ServiceCollectionConfiguratorExtensionsWrapper : IServiceCollectionConfiguratorExtensionsWrapper
     {
-        public void AddMassTransitBus(IServiceCollection services, Action<IServiceCollectionBusConfigurator> configurator)
+        public void AddMassTransitBus(IServiceCollection services, Action<IBusRegistrationConfigurator> configurator)
         {
             IServiceCollectionConfiguratorExtensions.AddMassTransitBus(services, configurator);
         }
 
-        public void AddMassTransitBus<T>(IServiceCollection services, Action<IServiceCollectionBusConfigurator<T>> configurator) where T: class, IBus
+        public void AddMassTransitBus<T>(IServiceCollection services, Action<IBusRegistrationConfigurator<T>> configurator) where T: class, IBus
         {
             IServiceCollectionConfiguratorExtensions.AddMassTransitBus<T>(services, configurator);
         }
 
-        public void AddRabbitMqBus(IServiceCollectionBusConfigurator serviceCollection, IConfiguration configuration, Action<IServiceProvider, IRabbitMqBusFactoryConfigurator> configurator)
+        public void AddRabbitMqBus(IBusRegistrationConfigurator serviceCollection, IConfiguration configuration, Action<IServiceProvider, IRabbitMqBusFactoryConfigurator> configurator)
         {
             IServiceCollectionConfiguratorExtensions.AddRabbitMqBus(serviceCollection, configuration, configurator);
         }
 
-        public void AddRabbitMqBus<T>(IServiceCollectionBusConfigurator<T> serviceCollection, IConfiguration configuration, Action<IServiceProvider, IRabbitMqBusFactoryConfigurator> configurator) where T : class, IBus
+        public void AddRabbitMqBus<T>(IBusRegistrationConfigurator<T> serviceCollection, IConfiguration configuration, Action<IServiceProvider, IRabbitMqBusFactoryConfigurator> configurator) where T : class, IBus
         {
             IServiceCollectionConfiguratorExtensions.AddRabbitMqBus<T>(serviceCollection, configuration, configurator);
         }
 
-        public void AddServiceBus(IServiceCollectionBusConfigurator serviceCollection, IConfiguration configuration, Action<IServiceProvider, IServiceBusBusFactoryConfigurator> configurator)
+        public void AddServiceBus(IBusRegistrationConfigurator serviceCollection, IConfiguration configuration, Action<IServiceProvider, IServiceBusBusFactoryConfigurator> configurator)
         {
             IServiceCollectionConfiguratorExtensions.AddServiceBus(serviceCollection, configuration, configurator);
         }

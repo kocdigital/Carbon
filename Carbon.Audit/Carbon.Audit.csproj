@@ -4,8 +4,10 @@
     <TargetFrameworks>net8.0;net6.0;net10.0</TargetFrameworks>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <Version>1.5.0</Version>
+    <Version>2.0.0</Version>
     <Description>
+      2.0.0
+      - MassTransit upgraded to 8.5.8 together with Carbon.MassTransit 4.0.0 (BREAKING: MassTransit 8).
       1.5.0
       - DbContextOptionsBuilder.AddCarbonAuditInterceptor(serviceProvider) added. Services that
         register their DbContext themselves can wire auditing in with a single line inside their
@@ -62,17 +64,17 @@
   <ItemGroup Condition="'$(TargetFramework)' == 'net8.0'">
     <FrameworkReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.11" />
-    <PackageReference Include="MassTransit" Version="7.3.1" />
+    <PackageReference Include="MassTransit" Version="8.5.8" />
   </ItemGroup>
   <ItemGroup Condition="'$(TargetFramework)' == 'net6.0'">
     <FrameworkReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.25" />
-    <PackageReference Include="MassTransit" Version="7.3.1" />
+    <PackageReference Include="MassTransit" Version="8.5.8" />
   </ItemGroup>
   <ItemGroup Condition="'$(TargetFramework)' == 'net10.0'">
     <FrameworkReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="10.0.9" />
-    <PackageReference Include="MassTransit" Version="7.3.1" />
+    <PackageReference Include="MassTransit" Version="8.5.8" />
   </ItemGroup>
   <ItemGroup Condition="'$(TargetFramework)' == 'net6.0' or '$(TargetFramework)' == 'net8.0' or '$(TargetFramework)' == 'net10.0'">
     <ProjectReference Include="..\Carbon.MassTransit\Carbon.MassTransit.csproj" />

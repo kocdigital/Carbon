@@ -3,7 +3,7 @@ using Azure;
 using Azure.Core;
 using Azure.Messaging.ServiceBus;
 using Azure.Messaging.ServiceBus.Administration;
-using MassTransit.Azure.ServiceBus.Core;
+using MassTransit;
 
 namespace Carbon.MassTransit
 {
