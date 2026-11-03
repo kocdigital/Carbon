@@ -2,8 +2,11 @@
 
   <PropertyGroup>
     <TargetFrameworks>net8.0;net6.0;netstandard2.1;net10.0</TargetFrameworks>
-    <Version>2.6.1</Version>
+    <Version>2.6.2</Version>
     <Description>
+		2.6.2
+		MigrateDatabase now catches the PendingModelChangesWarning-induced InvalidOperationException and logs it as a warning instead of crashing the application on startup; other InvalidOperationExceptions are still thrown.
+
 		2.6.1
 		Carbon.Audit interceptor registration is now optional and driven by the "CarbonAudit:Enabled" configuration key; DbContext registrations use the service provider overload to resolve the interceptor.
 
