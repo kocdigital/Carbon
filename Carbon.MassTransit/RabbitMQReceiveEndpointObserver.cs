@@ -17,18 +17,18 @@ namespace Carbon.MassTransit
             return Task.FromResult(true);
         }
 
-        public Task Faulted(ReceiveEndpointFaulted faulted)
+        public async Task Faulted(ReceiveEndpointFaulted faulted)
         {
             //queue-type based exceptions handled here
             if (faulted.Exception.InnerException is RabbitMQ.Client.Exceptions.OperationInterruptedException)
             {
                 var fault = ((RabbitMQ.Client.Exceptions.OperationInterruptedException)faulted.Exception.InnerException);
-                ushort faultCode = fault.ShutdownReason.ReplyCode;
-                string faultMessage = fault.ShutdownReason.ReplyText;
+                ushort? faultCode = fault.ShutdownReason?.ReplyCode;
+                string faultMessage = fault.ShutdownReason?.ReplyText;
                 //If it is an existing queue with different type, delete it and let MassTransit create again
-                if (faultCode == 406 && faultMessage.Contains("x-queue-type"))
+                if (faultCode == 406 && faultMessage != null && faultMessage.Contains("x-queue-type"))
                 {
-                    var rabbitMqUql = $"amqp://{_rabbitMqSettings.Username}:{_rabbitMqSettings.Password}@{_rabbitMqSettings.Host}:{_rabbitMqSettings.Port}{_rabbitMqSettings.VirtualHost}";
+                    var rabbitMqUql = $"amqp://{Uri.EscapeDataString(_rabbitMqSettings.Username)}:{Uri.EscapeDataString(_rabbitMqSettings.Password)}@{_rabbitMqSettings.Host}:{_rabbitMqSettings.Port}{_rabbitMqSettings.VirtualHost}";
 
                     var factory = new RabbitMQ.Client.ConnectionFactory()
                     {
@@ -36,14 +36,13 @@ namespace Carbon.MassTransit
                     };
                     var absolutePath = faulted.ReceiveEndpoint.InputAddress.AbsolutePath.Split('/');
                     var queueName = absolutePath[absolutePath.Length - 1];
-                    using (var connection = factory.CreateConnection())
+                    using (var connection = await factory.CreateConnectionAsync().ConfigureAwait(false))
                     {
-                        using (var channel = connection.CreateModel())
-                            channel.QueueDelete(queueName, false, false);
+                        using (var channel = await connection.CreateChannelAsync().ConfigureAwait(false))
+                            await channel.QueueDeleteAsync(queueName, false, false).ConfigureAwait(false);
                     }
                 }
             }
-            return Task.FromResult(true);
         }
 
         public Task Ready(ReceiveEndpointReady ready)

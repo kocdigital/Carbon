@@ -1,10 +1,7 @@
-using Carbon.MassTransit.UnitTests.StaticWrappers.IBusWrapper;
+﻿using Carbon.MassTransit.UnitTests.StaticWrappers.IBusWrapper;
 using Carbon.MassTransit.UnitTests.StaticWrappers.IServiceCollectionConfiguratorExtensionsWrapper;
 using Carbon.Test.Common.Fixtures;
-using MassTransit.Azure.ServiceBus.Core;
-using MassTransit.ExtensionsDependencyInjectionIntegration;
-using MassTransit.ExtensionsDependencyInjectionIntegration.MultiBus;
-using MassTransit.RabbitMqTransport;
+using MassTransit;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -17,10 +14,10 @@ namespace Carbon.MassTransit.UnitTests
     public class IServiceCollectionConfiguratorExtensionsTest : IClassFixture<ConfigFixture>
     {
         private readonly Mock<IServiceCollection> _serviceCollectionMock;
-        private readonly Mock<Action<IServiceCollectionBusConfigurator>> _serviceCollectionConfiguratorMock;
-        private readonly Mock<Action<IServiceCollectionConfigurator<ITestBus>>> _serviceCollectionConfiguratorGenericMock;
-        private readonly Mock<IServiceCollectionBusConfigurator> _configuratorMock;
-        private readonly Mock<IServiceCollectionConfigurator<ITestBus>> _configuratorMockGeneric;
+        private readonly Mock<Action<IBusRegistrationConfigurator>> _serviceCollectionConfiguratorMock;
+        private readonly Mock<Action<IBusRegistrationConfigurator<ITestBus>>> _serviceCollectionConfiguratorGenericMock;
+        private readonly Mock<IBusRegistrationConfigurator> _configuratorMock;
+        private readonly Mock<IBusRegistrationConfigurator<ITestBus>> _configuratorMockGeneric;
         private readonly Mock<IConfiguration> _configurationMock;
         private readonly Mock<Action<IServiceProvider, IRabbitMqBusFactoryConfigurator>> _actionRabbitMqBusFactoryConfiguratorMock;
         private readonly Mock<Action<IServiceProvider, IServiceBusBusFactoryConfigurator>> _actionServiceBusBusFactoryConfiguratorMock;
@@ -28,13 +25,13 @@ namespace Carbon.MassTransit.UnitTests
         public IServiceCollectionConfiguratorExtensionsTest(ConfigFixture configFixture)
         {
             _serviceCollectionMock = new Mock<IServiceCollection>();
-            _serviceCollectionConfiguratorMock = new Mock<Action<IServiceCollectionBusConfigurator>>();
-            _serviceCollectionConfiguratorGenericMock = new Mock<Action<IServiceCollectionConfigurator<ITestBus>>>();
+            _serviceCollectionConfiguratorMock = new Mock<Action<IBusRegistrationConfigurator>>();
+            _serviceCollectionConfiguratorGenericMock = new Mock<Action<IBusRegistrationConfigurator<ITestBus>>>();
             _configurationMock = new Mock<IConfiguration>();
             _actionRabbitMqBusFactoryConfiguratorMock = new Mock<Action<IServiceProvider, IRabbitMqBusFactoryConfigurator>>();
             _actionServiceBusBusFactoryConfiguratorMock = new Mock<Action<IServiceProvider, IServiceBusBusFactoryConfigurator>>();
-            _configuratorMock = new Mock<IServiceCollectionBusConfigurator>();
-            _configuratorMockGeneric = new Mock<IServiceCollectionConfigurator<ITestBus>>();
+            _configuratorMock = new Mock<IBusRegistrationConfigurator>();
+            _configuratorMockGeneric = new Mock<IBusRegistrationConfigurator<ITestBus>>();
             _configFixture = configFixture;
         }
 

@@ -1,22 +1,7 @@
-﻿using GreenPipes;
-using MassTransit;
-using MassTransit.Azure.ServiceBus.Core;
-using MassTransit.Courier;
-using MassTransit.ExtensionsDependencyInjectionIntegration;
-using MassTransit.ExtensionsDependencyInjectionIntegration.MultiBus;
-using MassTransit.MultiBus;
-using MassTransit.RabbitMqTransport;
-using MassTransit.Registration;
-
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Diagnostics.HealthChecks;
-using Microsoft.Extensions.Hosting;
+﻿using MassTransit;
 
 using System;
 using System.Linq;
-
-using MassTransitNS = MassTransit;
 
 namespace Carbon.MassTransit.RoutingSlip
 {
@@ -32,14 +17,14 @@ namespace Carbon.MassTransit.RoutingSlip
             string executionQueuePath = "rs-" + typeof(TArguments).Name.ToLowerInvariant();
             cfg.ReceiveEndpoint(executionQueuePath, e =>
               {
-                  e.ExecuteActivityHost<TActivity, TArguments>(new Uri(e.InputAddress.AbsoluteUri + compensationSuffix), provider);
+                  e.ExecuteActivityHost<TActivity, TArguments>(new Uri(e.InputAddress.AbsoluteUri + compensationSuffix), AsRegistrationContext(provider));
                   if (configurator != null)
                       configurator(e);
               });
 
             cfg.ReceiveEndpoint(executionQueuePath + compensationSuffix, e =>
             {
-                e.CompensateActivityHost<TActivity, TLogs>(provider);
+                e.CompensateActivityHost<TActivity, TLogs>(AsRegistrationContext(provider));
                 if (configurator != null)
                     configurator(e);
             });
@@ -53,7 +38,7 @@ namespace Carbon.MassTransit.RoutingSlip
             string executionQueuePath = "rs-" + typeof(TArguments).Name.ToLowerInvariant();
             cfg.ReceiveEndpoint(executionQueuePath, e =>
             {
-                e.ExecuteActivityHost<TActivity, TArguments>(provider);
+                e.ExecuteActivityHost<TActivity, TArguments>(AsRegistrationContext(provider));
                 if (configurator != null)
                     configurator(e);
             });
@@ -69,14 +54,14 @@ namespace Carbon.MassTransit.RoutingSlip
             string executionQueuePath = "rs-" + typeof(TArguments).Name.ToLowerInvariant();
             cfg.ReceiveEndpoint(executionQueuePath, e =>
             {
-                e.ExecuteActivityHost<TActivity, TArguments>(new Uri(e.InputAddress.AbsoluteUri + compensationSuffix), provider);
+                e.ExecuteActivityHost<TActivity, TArguments>(new Uri(e.InputAddress.AbsoluteUri + compensationSuffix), AsRegistrationContext(provider));
                 if (configurator != null)
                     configurator(e);
             });
 
             cfg.ReceiveEndpoint(executionQueuePath + compensationSuffix, e =>
             {
-                e.CompensateActivityHost<TActivity, TLogs>(provider);
+                e.CompensateActivityHost<TActivity, TLogs>(AsRegistrationContext(provider));
                 if (configurator != null)
                     configurator(e);
             });
@@ -90,11 +75,23 @@ namespace Carbon.MassTransit.RoutingSlip
             string executionQueuePath = "rs-" + typeof(TArguments).Name.ToLowerInvariant();
             cfg.ReceiveEndpoint(executionQueuePath, e =>
             {
-                e.ExecuteActivityHost<TActivity, TArguments>(provider);
+                e.ExecuteActivityHost<TActivity, TArguments>(AsRegistrationContext(provider));
                 if (configurator != null)
                     configurator(e);
             });
         }
 
+        /// <summary>
+        /// MassTransit 8 resolves activities through <see cref="IRegistrationContext"/>. The provider given to the bus
+        /// configuration callbacks (AddRabbitMqBus / AddServiceBus) is already an <see cref="IBusRegistrationContext"/>.
+        /// </summary>
+        private static IRegistrationContext AsRegistrationContext(IServiceProvider provider)
+        {
+            if (provider is IRegistrationContext registrationContext)
+                return registrationContext;
+
+            return provider?.GetService(typeof(IBusRegistrationContext)) as IRegistrationContext
+                ?? throw new ArgumentException("The provider must be the IBusRegistrationContext supplied by the bus configuration callback.", nameof(provider));
+        }
     }
 }
