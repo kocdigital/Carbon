@@ -1,7 +1,5 @@
-﻿using Automatonymous;
-using Carbon.MassTransit.AsyncReqResp.Events;
+﻿using Carbon.MassTransit.AsyncReqResp.Events;
 using Microsoft.Extensions.Logging;
-using GreenPipes;
 using MassTransit;
 namespace Carbon.MassTransit.AsyncReqResp
 {
@@ -31,14 +29,15 @@ namespace Carbon.MassTransit.AsyncReqResp
                             .Then(ctx =>
                             {
                                 var payload = ctx.GetPayload<ConsumeContext<IRequestStarterRequest>>();
-                                _logger.LogInformation($"Request retrieved, now starting! CorrelationId: {ctx.Data.CorrelationId} To: {ctx.Data.DestinationEndpointName} RespAddress: {payload.ResponseAddress}");
-                                ctx.Instance.RequestData = new RequestStarterRequest(ctx.Data.CorrelationId, ctx.Data.RequestBody, ctx.Data.DestinationEndpointName, payload.ResponseAddress);
+                                _logger.LogInformation($"Request retrieved, now starting! CorrelationId: {ctx.Message.CorrelationId} To: {ctx.Message.DestinationEndpointName} RespAddress: {payload.ResponseAddress}");
+                                ctx.Saga.RequestId = ctx.RequestId;
+                                ctx.Saga.RequestData = new RequestStarterRequest(ctx.Message.CorrelationId, ctx.Message.RequestBody, ctx.Message.DestinationEndpointName, payload.ResponseAddress);
                             })
                            .TransitionTo(ResponsePendingState)
                            .Activity(x => x.OfInstanceType<RequestHandlerActivity>())
                            .Then(ctx =>
                            {
-                               _logger.LogInformation($"Request sent, now pending response! CorrelationId: {ctx.Data.CorrelationId} To: {ctx.Data.DestinationEndpointName}");
+                               _logger.LogInformation($"Request sent, now pending response! CorrelationId: {ctx.Message.CorrelationId} To: {ctx.Message.DestinationEndpointName}");
                            })
                      );
 
@@ -47,9 +46,9 @@ namespace Carbon.MassTransit.AsyncReqResp
                     .TransitionTo(ResponseSucceedState)
                     .Then(ctx =>
                     {
-                        _logger.LogInformation($"Response has been successfully received, finalizing! State : CorrelationId: {ctx.Data.CorrelationId} From: {ctx.Instance.RequestData.DestinationEndpointName}");
-                        ctx.Instance.ResponseCode = StaticHelpers.ResponseCode.Ok;
-                        ctx.Instance.Response = ctx.Data.ResponseBody;
+                        _logger.LogInformation($"Response has been successfully received, finalizing! State : CorrelationId: {ctx.Message.CorrelationId} From: {ctx.Saga.RequestData.DestinationEndpointName}");
+                        ctx.Saga.ResponseCode = StaticHelpers.ResponseCode.Ok;
+                        ctx.Saga.Response = ctx.Message.ResponseBody;
                     })
                     .TransitionTo(RequestFinalizingState)
                     .Activity(x => x.OfInstanceType<ResponseHandlerActivity>())
@@ -58,9 +57,9 @@ namespace Carbon.MassTransit.AsyncReqResp
                     .TransitionTo(ResponseFailedState)
                     .Then(ctx =>
                     {
-                        _logger.LogInformation($"Response has failed, finalizing! State : CorrelationId: {ctx.Data.CorrelationId} From: {ctx.Instance.RequestData.DestinationEndpointName}");
-                        ctx.Instance.ResponseCode = StaticHelpers.ResponseCode.ServerError;
-                        ctx.Instance.Response = ctx.Data.ResponseBody;
+                        _logger.LogInformation($"Response has failed, finalizing! State : CorrelationId: {ctx.Message.CorrelationId} From: {ctx.Saga.RequestData.DestinationEndpointName}");
+                        ctx.Saga.ResponseCode = StaticHelpers.ResponseCode.ServerError;
+                        ctx.Saga.Response = ctx.Message.ResponseBody;
                     })
                     .TransitionTo(RequestFinalizingState)
                     .Activity(x => x.OfInstanceType<ResponseHandlerActivity>())
@@ -69,9 +68,9 @@ namespace Carbon.MassTransit.AsyncReqResp
                     .TransitionTo(ResponseFailedState)
                     .Then(ctx =>
                     {
-                        _logger.LogInformation($"Request cannot be sent, no response will be expected, finalizing! State : CorrelationId: {ctx.Data.CorrelationId} From: {ctx.Instance.RequestData.DestinationEndpointName} Exc: {ctx.Data.ErrorMessage}");
-                        ctx.Instance.ResponseCode = StaticHelpers.ResponseCode.BadRequest;
-                        ctx.Instance.Response = ctx.Data.ErrorMessage;
+                        _logger.LogInformation($"Request cannot be sent, no response will be expected, finalizing! State : CorrelationId: {ctx.Message.CorrelationId} From: {ctx.Saga.RequestData.DestinationEndpointName} Exc: {ctx.Message.ErrorMessage}");
+                        ctx.Saga.ResponseCode = StaticHelpers.ResponseCode.BadRequest;
+                        ctx.Saga.Response = ctx.Message.ErrorMessage;
                     })
                     .TransitionTo(RequestFinalizingState)
                     .Activity(x => x.OfInstanceType<ResponseHandlerActivity>())

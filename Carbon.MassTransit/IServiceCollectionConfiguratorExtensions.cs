@@ -1,31 +1,19 @@
 ﻿using Carbon.MassTransit.AsyncReqResp;
 using Carbon.MassTransit.AsyncReqResp.Events;
 using MassTransit;
-using MassTransit.AspNetCoreIntegration.HealthChecks;
-using MassTransit.Azure.ServiceBus.Core;
-using MassTransit.ExtensionsDependencyInjectionIntegration;
-using MassTransit.ExtensionsDependencyInjectionIntegration.MultiBus;
-using MassTransit.MultiBus;
-using MassTransit.RabbitMqTransport;
-using MassTransit.RedisIntegration;
-using MassTransit.Registration;
 
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
-using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Options;
 using StackExchange.Redis;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-using MassTransitNS = MassTransit;
-
 namespace Carbon.MassTransit
 {
     /// <summary>
-	/// Contains extension methods like AddRabbitMqBus, AddServiceBus for <see cref="IServiceCollectionBusConfigurator"/> and <see cref="IServiceCollection"/>
+	/// Contains extension methods like AddRabbitMqBus, AddServiceBus for <see cref="IBusRegistrationConfigurator"/> and <see cref="IServiceCollection"/>
 	/// </summary>
     public static class IServiceCollectionConfiguratorExtensions
     {
@@ -38,17 +26,19 @@ namespace Carbon.MassTransit
         /// </remarks>
         /// <param name="services">Service Collection</param>
         /// <param name="configurator">Configuration Action</param>
-        public static void AddMassTransitBus(this IServiceCollection services, Action<IServiceCollectionBusConfigurator> configurator, bool useDefaultHostedService = true)
+        /// <param name="useDefaultHostedService">
+        /// When <c>true</c> (default) the application starts while the bus connects in the background.
+        /// When <c>false</c> the application start-up waits until the bus is started (MassTransitHostOptions.WaitUntilStarted).
+        /// </param>
+        /// <remarks>
+        /// Since MassTransit 8 the hosted service and the bus health checks (tags: "ready", "masstransit") are registered by
+        /// AddMassTransit itself, so no additional hosted service registration is required.
+        /// </remarks>
+        public static void AddMassTransitBus(this IServiceCollection services, Action<IBusRegistrationConfigurator> configurator, bool useDefaultHostedService = true)
         {
             services.AddMassTransit(configurator);
-            if (useDefaultHostedService)
-                services.AddMassTransitHostedService();
-            else
-            {
-                services.AddSingleton<IConfigureOptions<HealthCheckServiceOptions>>(provider =>
-                new ConfigureBusHealthCheckServiceOptions(provider.GetServices<IBusInstance>(), new[] { "ready", "masstransit" }));
-                services.AddSingleton<IHostedService, MassTransitHostedService>();
-            }
+            if (!useDefaultHostedService)
+                services.Configure<MassTransitHostOptions>(options => options.WaitUntilStarted = true);
         }
 
         /// <summary>
@@ -59,22 +49,10 @@ namespace Carbon.MassTransit
         /// </remarks>
         /// <param name="services">Service Collection</param>
         /// <param name="configurator">Configuration Action</param>
-        public static void AddMassTransitBus<T>(this IServiceCollection services, Action<IServiceCollectionBusConfigurator<T>> configurator) where T : class, IBus
+        public static void AddMassTransitBus<T>(this IServiceCollection services, Action<IBusRegistrationConfigurator<T>> configurator) where T : class, IBus
         {
+            // MassTransit 8 registers a single hosted service (backed by IBusDepot) for all bus instances.
             services.AddMassTransit<T>(configurator);
-
-            //HACK: Hosted service for consumers, contains bus depot
-            //BusDepot is registered as single instance and it handles multiple IBus instances so only one hosted service is enough
-            //NOTE: Composed from Masstransit source code v7.1.5, so watch out while upgrading masstansit
-            if (!services.Any(descriptor => descriptor?.ImplementationFactory?.Method?.ReturnType == typeof(MassTransitNS.AspNetCoreIntegration.MassTransitHostedService)))
-            {
-                MassTransitNS.AspNetCoreIntegration.MassTransitHostedService HostedServiceFactory(IServiceProvider provider)
-                {
-                    var busDepot = provider.GetRequiredService<IBusDepot>();
-                    return new MassTransitNS.AspNetCoreIntegration.MassTransitHostedService(busDepot, false);
-                }
-                services.AddHostedService(HostedServiceFactory);
-            }
         }
 
         #region AddRabbitMqBus
@@ -89,7 +67,7 @@ namespace Carbon.MassTransit
         /// <param name="configuration">API Configuration Item with MassTransit Section</param>
         /// <param name="configurator">Service provider's Configuration Action</param>
         /// <param name="healthCheckTag">Name to display in health check section</param>
-        public static void AddRabbitMqBus(this IServiceCollectionBusConfigurator serviceCollection,
+        public static void AddRabbitMqBus(this IBusRegistrationConfigurator serviceCollection,
                                        IConfiguration configuration,
                                        Action<IServiceProvider, IRabbitMqBusFactoryConfigurator> configurator,
                                        string healthCheckTag = "RabbitMqConnection")
@@ -116,7 +94,7 @@ namespace Carbon.MassTransit
         /// <param name="configuration">API Configuration Item with MassTransit Section</param>
         /// <param name="configurator">Service provider's Configuration Action</param>
         /// <param name="healthCheckTag">Name to display in health check section. If left empty name will be assigned as typeof(T).Name</param>
-        public static void AddRabbitMqBus<T>(this IServiceCollectionBusConfigurator<T> serviceCollection,
+        public static void AddRabbitMqBus<T>(this IBusRegistrationConfigurator<T> serviceCollection,
                                        IConfiguration configuration,
                                        Action<IServiceProvider, IRabbitMqBusFactoryConfigurator> configurator,
                                        string healthCheckTag = "") where T : class, IBus
@@ -143,7 +121,7 @@ namespace Carbon.MassTransit
         /// <param name="rabbitMqSettings">RabbitMQ Settings for Host Configuration</param>
         /// <param name="configurator">Service provider's Configuration Action</param>
         /// <param name="healthCheckTag">Name to display in health check section</param>
-        public static void AddRabbitMqBus(this IServiceCollectionBusConfigurator serviceCollection,
+        public static void AddRabbitMqBus(this IBusRegistrationConfigurator serviceCollection,
                                        RabbitMqSettings rabbitMqSettings,
                                        Action<IServiceProvider, IRabbitMqBusFactoryConfigurator> configurator,
                                        string healthCheckTag = "RabbitMqConnection")
@@ -154,7 +132,7 @@ namespace Carbon.MassTransit
             serviceCollection.UsingRabbitMq((cfg, x) => rabbitMqBusFactory(configurator, rabbitMqSettings, cfg, x));
             StaticHelpers.SetStaticHelperBusType(MassTransitBusType.RabbitMQ);
 
-            serviceCollection.Collection.AddRabbitMqBusHealthCheck($"amqp://{Uri.EscapeDataString(rabbitMqSettings.Username)}:{Uri.EscapeDataString(rabbitMqSettings.Password)}@{rabbitMqSettings.Host}:{rabbitMqSettings.Port}{rabbitMqSettings.VirtualHost}", HealthStatus.Unhealthy, healthCheckTag);
+            serviceCollection.AddRabbitMqBusHealthCheck($"amqp://{Uri.EscapeDataString(rabbitMqSettings.Username)}:{Uri.EscapeDataString(rabbitMqSettings.Password)}@{rabbitMqSettings.Host}:{rabbitMqSettings.Port}{rabbitMqSettings.VirtualHost}", HealthStatus.Unhealthy, healthCheckTag);
         }
 
         /// <summary>
@@ -167,7 +145,7 @@ namespace Carbon.MassTransit
         /// <param name="rabbitMqSettings">RabbitMQ Settings for Host Configuration</param>
         /// <param name="configurator">Service provider's Configuration Action</param>
         /// <param name="healthCheckTag">Name to display in health check section. If left empty name will be assigned as typeof(T).Name</param>
-        public static void AddRabbitMqBus<T>(this IServiceCollectionBusConfigurator<T> serviceCollection,
+        public static void AddRabbitMqBus<T>(this IBusRegistrationConfigurator<T> serviceCollection,
                                        RabbitMqSettings rabbitMqSettings,
                                        Action<IServiceProvider, IRabbitMqBusFactoryConfigurator> configurator,
                                        string healthCheckTag = "") where T : class, IBus
@@ -181,13 +159,14 @@ namespace Carbon.MassTransit
                 healthCheckTag = typeof(T).Name;
 
             StaticHelpers.SetStaticHelperBusType(MassTransitBusType.RabbitMQ);
-            serviceCollection.Collection.AddRabbitMqBusHealthCheck($"amqp://{Uri.EscapeDataString(rabbitMqSettings.Username)}:{Uri.EscapeDataString(rabbitMqSettings.Password)}@{rabbitMqSettings.Host}:{rabbitMqSettings.Port}{rabbitMqSettings.VirtualHost}", name: healthCheckTag);
+            serviceCollection.AddRabbitMqBusHealthCheck($"amqp://{Uri.EscapeDataString(rabbitMqSettings.Username)}:{Uri.EscapeDataString(rabbitMqSettings.Password)}@{rabbitMqSettings.Host}:{rabbitMqSettings.Port}{rabbitMqSettings.VirtualHost}", name: healthCheckTag);
         }
 
         public static void AddRabbitMqBusHealthCheck(this IServiceCollection services,
                                        string host, HealthStatus failureStatus = HealthStatus.Unhealthy, string name = null)
         {
-            services.AddHealthChecks().AddRabbitMQ(new Uri(host), name: name, failureStatus: failureStatus);
+            var healthCheck = new RabbitMqConnectionHealthCheck(new Uri(host));
+            services.AddHealthChecks().Add(new HealthCheckRegistration(name ?? "rabbitmq", _ => healthCheck, failureStatus, null));
         }
 
         #endregion
@@ -203,7 +182,7 @@ namespace Carbon.MassTransit
         /// <param name="serviceCollection">Service Collection Configurator</param>
         /// <param name="configuration">API Configuration Item with MassTransit Section</param>
         /// <param name="configurator">Service provider's Configuration Action</param>
-        public static void AddServiceBus(this IServiceCollectionBusConfigurator serviceCollection,
+        public static void AddServiceBus(this IBusRegistrationConfigurator serviceCollection,
                                        IConfiguration configuration,
                                        Action<IServiceProvider, IServiceBusBusFactoryConfigurator> configurator)
         {
@@ -228,7 +207,7 @@ namespace Carbon.MassTransit
         /// <param name="serviceCollection">Service Collection Configurator</param>
         /// <param name="configuration">API Configuration Item with MassTransit Section</param>
         /// <param name="configurator">Service provider's Configuration Action</param>
-        public static void AddServiceBus<T>(this IServiceCollectionBusConfigurator<T> serviceCollection,
+        public static void AddServiceBus<T>(this IBusRegistrationConfigurator<T> serviceCollection,
                                        IConfiguration configuration,
                                        Action<IServiceProvider, IServiceBusBusFactoryConfigurator> configurator) where T : class, IBus
         {
@@ -253,7 +232,7 @@ namespace Carbon.MassTransit
         /// <param name="serviceCollection">Service Collection Configurator</param>
         /// <param name="serviceBusSettings">Azure Service Bus Settings for Host Configuration</param>
         /// <param name="configurator">Service provider's Configuration Action</param>
-        public static void AddServiceBus(this IServiceCollectionBusConfigurator serviceCollection,
+        public static void AddServiceBus(this IBusRegistrationConfigurator serviceCollection,
                                        ServiceBusSettings serviceBusSettings,
                                        Action<IServiceProvider, IServiceBusBusFactoryConfigurator> configurator)
         {
@@ -261,7 +240,7 @@ namespace Carbon.MassTransit
                 throw new ArgumentNullException(nameof(serviceBusSettings));
 
             StaticHelpers.SetStaticHelperBusType(MassTransitBusType.AzureServiceBus);
-            serviceCollection.AddBus(cfg => serviceBusFactory(configurator, serviceBusSettings, cfg));
+            serviceCollection.UsingAzureServiceBus((cfg, x) => serviceBusFactory(configurator, serviceBusSettings, cfg, x));
         }
 
         /// <summary>
@@ -273,7 +252,7 @@ namespace Carbon.MassTransit
         /// <param name="serviceCollection">Service Collection Configurator</param>
         /// <param name="serviceBusSettings">Azure Service Bus Settings for Host Configuration</param>
         /// <param name="configurator">Service provider's Configuration Action</param>
-        public static void AddServiceBus<T>(this IServiceCollectionBusConfigurator<T> serviceCollection,
+        public static void AddServiceBus<T>(this IBusRegistrationConfigurator<T> serviceCollection,
                                        ServiceBusSettings serviceBusSettings,
                                        Action<IServiceProvider, IServiceBusBusFactoryConfigurator> configurator) where T : class, IBus
         {
@@ -281,7 +260,7 @@ namespace Carbon.MassTransit
                 throw new ArgumentNullException(nameof(serviceBusSettings));
 
             StaticHelpers.SetStaticHelperBusType(MassTransitBusType.AzureServiceBus);
-            serviceCollection.AddBus(cfg => serviceBusFactory(configurator, serviceBusSettings, cfg));
+            serviceCollection.UsingAzureServiceBus((cfg, x) => serviceBusFactory(configurator, serviceBusSettings, cfg, x));
         }
 
         #endregion
@@ -305,11 +284,10 @@ namespace Carbon.MassTransit
                 cfg.AddSagaStateMachine<RequestResponseStateMachine, RequestResponseState>()
                 .RedisRepository(x =>
                 {
-                    x.ConnectionFactory(k => (ConnectionMultiplexer)k.GetRequiredService<IConnectionMultiplexer>());
+                    x.ConnectionFactory(k => k.GetRequiredService<IConnectionMultiplexer>());
                     x.KeyPrefix = "exdata";
                     x.Expiry = new System.TimeSpan(0, 30, 0);
                     x.ConcurrencyMode = ConcurrencyMode.Pessimistic;
-                    x.LockRetryTimeout = new System.TimeSpan(0, 0, 2);
                     x.LockTimeout = new System.TimeSpan(0, 0, 30);
                 }
                 );
@@ -327,7 +305,7 @@ namespace Carbon.MassTransit
                     busFactoryConfig.ReceiveEndpoint(apiname + "-Req.Resp.Async-RespHandler", configurator =>
                     {
                         configurator.AddAsHighAvailableQueue(configuration);
-                        configurator.Consumer<T>(provider);
+                        configurator.ConfigureConsumer<T>((IBusRegistrationContext)provider);
                     });
                 });
 
@@ -342,7 +320,7 @@ namespace Carbon.MassTransit
 
                     busFactoryConfig.ReceiveEndpoint(apiname + "-Req.Resp.Async-RespHandler", configurator =>
                     {
-                        configurator.Consumer<T>(provider);
+                        configurator.ConfigureConsumer<T>((IBusRegistrationContext)provider);
                     });
                 });
             });
@@ -373,7 +351,7 @@ namespace Carbon.MassTransit
                     busFactoryConfig.ReceiveEndpoint("Req.Resp.Async-" + responseDestinationPath, configurator =>
                     {
                         configurator.AddAsHighAvailableQueue(configuration);
-                        configurator.Consumer<T>(provider);
+                        configurator.ConfigureConsumer<T>((IBusRegistrationContext)provider);
                     });
 
                 });
@@ -382,7 +360,7 @@ namespace Carbon.MassTransit
                 {
                     busFactoryConfig.ReceiveEndpoint("Req.Resp.Async-" + responseDestinationPath, configurator =>
                     {
-                        configurator.Consumer<T>(provider);
+                        configurator.ConfigureConsumer<T>((IBusRegistrationContext)provider);
                     });
                 });
             });
@@ -420,7 +398,7 @@ namespace Carbon.MassTransit
                         busFactoryConfig.ReceiveEndpoint("Req.Resp.Async-" + responseDestinationPath.Key, configurator =>
                         {
                             configurator.AddAsHighAvailableQueue(configuration);
-                            configurator.ConfigureConsumer((IRegistration)provider, consumerType);
+                            configurator.ConfigureConsumer((IBusRegistrationContext)provider, consumerType);
                         });
                     }
                 });
@@ -432,7 +410,7 @@ namespace Carbon.MassTransit
                         var consumerType = responseDestinationPath.Value;
                         busFactoryConfig.ReceiveEndpoint("Req.Resp.Async-" + responseDestinationPath, configurator =>
                         {
-                            configurator.ConfigureConsumer((IRegistration)provider, consumerType);
+                            configurator.ConfigureConsumer((IBusRegistrationContext)provider, consumerType);
                         });
                     }
                 });
@@ -502,25 +480,23 @@ namespace Carbon.MassTransit
         private static Func<Action<IServiceProvider, IServiceBusBusFactoryConfigurator>,
                                         ServiceBusSettings,
                                         IBusRegistrationContext,
-                                        IBusControl> serviceBusFactory = (configurator, busSettings, provider) =>
+                                        IServiceBusBusFactoryConfigurator,
+                                        IServiceBusBusFactoryConfigurator> serviceBusFactory = (configurator, busSettings, provider, x) =>
         {
-            return Bus.Factory.CreateUsingAzureServiceBus(x =>
+            x.Host(busSettings.ConnectionString, (c) =>
             {
-                x.Host(busSettings.ConnectionString, (c) =>
-                {
-                    c.RetryLimit = busSettings.RetryLimit == 0 ? 1 : busSettings.RetryLimit;
+                c.RetryLimit = busSettings.RetryLimit == 0 ? 1 : busSettings.RetryLimit;
 
+                if (busSettings.RetryMaxBackoff != TimeSpan.Zero)
+                    c.RetryMaxBackoff = busSettings.RetryMaxBackoff;
+                if (busSettings.RetryMinBackoff != TimeSpan.Zero)
+                    c.RetryMinBackoff = busSettings.RetryMinBackoff;
 
-                    if (busSettings.RetryMaxBackoff != TimeSpan.Zero)
-                        c.RetryMaxBackoff = busSettings.RetryMaxBackoff;
-                    if (busSettings.RetryMinBackoff != TimeSpan.Zero)
-                        c.RetryMinBackoff = busSettings.RetryMinBackoff;
-
-                    c.TransportType = busSettings.TransportType;
-                });
-
-                configurator(provider, x);
+                c.TransportType = busSettings.TransportType;
             });
+
+            configurator(provider, x);
+            return x;
         };
 
         private static Func<Action<IServiceProvider, IRabbitMqBusFactoryConfigurator>,

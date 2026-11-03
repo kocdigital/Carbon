@@ -1,5 +1,4 @@
-﻿using Automatonymous;
-using Carbon.MassTransit.AsyncReqResp.Events;
+﻿using Carbon.MassTransit.AsyncReqResp.Events;
 using MassTransit;
 using Microsoft.Extensions.Logging;
 using System;
@@ -15,11 +14,11 @@ namespace Carbon.MassTransit.AsyncReqResp
             _logger = logger;
         }
 
-        public async override Task Execute(BehaviorContext<RequestResponseState> context, Behavior<RequestResponseState> next)
+        public async override Task Execute(BehaviorContext<RequestResponseState> context, IBehavior<RequestResponseState> next)
         {
             var apiname = System.Reflection.Assembly.GetEntryAssembly().GetName().Name;
             _logger.LogInformation($"Response is now passing to the ResponseHandler To: {apiname}-Req.Resp.Async-RespHandler");
-            var message = context.Instance;
+            var message = context.Saga;
             var requestData = message.RequestData;
 
             ResponseCarrier responseCarrier = new ResponseCarrier();
@@ -30,7 +29,7 @@ namespace Carbon.MassTransit.AsyncReqResp
 
 
             var sendEp = await context.GetSendEndpoint(new Uri(StaticHelpers.GetSendEndpointPrefix() + apiname + "-Req.Resp.Async-RespHandler"));
-            await sendEp.Send(responseCarrier);
+            await sendEp.Send(responseCarrier, sendContext => sendContext.RequestId = message.RequestId ?? context.RequestId);
 
             await next.Execute(context).ConfigureAwait(false);
         }
