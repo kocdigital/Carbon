@@ -2,7 +2,10 @@
 using System.Net.Security;
 using System.Security.Authentication;
 using System.Security.Cryptography.X509Certificates;
+using System.Threading.Tasks;
+using MassTransit;
 using MassTransit.RabbitMqTransport;
+using RabbitMQ.Client;
 
 namespace Carbon.MassTransit
 {
@@ -89,7 +92,7 @@ namespace Carbon.MassTransit
         /// </summary>
         public string[] ClusterMembers { get; set; }
         /// <summary>
-        /// Host Name Selector od type <see cref="IRabbitMqEndpointResolver"/>
+        /// Host Name Selector of type <see cref="IRabbitMqEndpointResolver"/>
         /// </summary>
         public IRabbitMqEndpointResolver EndpointResolver { get; set; }
         /// <summary>
@@ -120,8 +123,31 @@ namespace Carbon.MassTransit
         /// </summary>
         public ushort PrefetchCount { get; set; }
 
-        public BatchSettings BatchSettings { get; set; }
+        public global::MassTransit.RabbitMqTransport.Configuration.BatchSettings BatchSettings { get; set; }
 
         public TimeSpan ContinuationTimeout { get; set; }
+
+        /// <summary>
+        /// Maximum message size in bytes accepted by the RabbitMQ client
+        /// </summary>
+        public uint? MaxMessageSize { get; set; }
+
+        /// <summary>
+        /// Credentials provider used by the RabbitMQ client
+        /// </summary>
+        public ICredentialsProvider CredentialsProvider { get; set; }
+
+        /// <summary>
+        /// Requested maximum frame size
+        /// </summary>
+        public uint? RequestedFrameMax { get; set; }
+
+        /// <summary>
+        /// Called by MassTransit before a new connection is created. Nothing to refresh for static settings.
+        /// </summary>
+        public Task Refresh(ConnectionFactory connectionFactory)
+        {
+            return Task.CompletedTask;
+        }
     }
 }

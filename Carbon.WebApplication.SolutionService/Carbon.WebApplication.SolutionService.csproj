@@ -54,6 +54,12 @@ Supports Masstransit 7.1.x and Carbon.MassTransit 3.0.2
 
   <ItemGroup>
     <PackageReference Include="Carbon.Domain.Messages" Version="1.9.25" />
+    <!--
+      Stays on MassTransit 7 (Carbon.MassTransit 3.11.0 package) until Carbon.Domain.Messages is republished
+      against MassTransit 8: 1.9.25 references CorrelatedBy<> from the MassTransit 7 assembly, which moved to
+      MassTransit.Abstractions in v8. Switch back to the Carbon.MassTransit ProjectReference afterwards.
+    -->
+    <PackageReference Include="Carbon.MassTransit" Version="3.11.0" />
   </ItemGroup>
   <ItemGroup Condition="'$(TargetFramework)' == 'net6.0' or '$(TargetFramework)' == 'net8.0'">
     <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
@@ -65,7 +71,6 @@ Supports Masstransit 7.1.x and Carbon.MassTransit 3.0.2
 
   <ItemGroup>
     <ProjectReference Include="..\Carbon.ExceptionHandling\Carbon.ExceptionHandling.Abstractions.csproj" />
-    <ProjectReference Include="..\Carbon.MassTransit\Carbon.MassTransit.csproj" />
   </ItemGroup>
 
 </Project>

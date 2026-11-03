@@ -1,6 +1,4 @@
-﻿using Automatonymous;
-using Carbon.MassTransit.UnitTests.DataShares;
-using GreenPipes;
+﻿using Carbon.MassTransit.UnitTests.DataShares;
 using MassTransit;
 using Microsoft.Extensions.Logging;
 using Moq;
@@ -13,14 +11,20 @@ using Xunit;
 namespace Carbon.MassTransit.UnitTests
 {
 
-    public class DigitFacts : CarbonSagaActivityTest<decimal, decimal>
+    public class TestSagaInstance : CarbonStateMachineInstance
+    { }
+    public class TestSagaMessage
+    { }
+    public class DigitFacts : CarbonSagaActivityTest<TestSagaInstance, TestSagaMessage>
     { }
     public abstract class CarbonSagaActivityTest<T, T1>
+        where T : class, SagaStateMachineInstance
+        where T1 : class
     {
         private readonly Mock<BehaviorExceptionContext<T, T1, Exception>> _behaviorExceptionContextFaultedMock;
         private readonly Mock<BehaviorExceptionContext<T, Exception>> _behaviorExceptionContextMock;
-        private readonly Mock<Behavior<T, T1>> _behaviorFaultedMock;
-        private readonly Mock<Behavior<T>> _behaviorMock;
+        private readonly Mock<IBehavior<T, T1>> _behaviorFaultedMock;
+        private readonly Mock<IBehavior<T>> _behaviorMock;
         private readonly Mock<BehaviorContext<T, T1>> _behaviorContextExecuteMock;
         private readonly Mock<BehaviorContext<T>> _behaviorContextMock;
         private readonly Mock<StateMachineVisitor> _stateMachineVisitorMock;
@@ -31,7 +35,7 @@ namespace Carbon.MassTransit.UnitTests
 
         public CarbonSagaActivityTest()
         {
-            _behaviorFaultedMock = new Mock<Behavior<T, T1>>();
+            _behaviorFaultedMock = new Mock<IBehavior<T, T1>>();
             _behaviorExceptionContextFaultedMock = new Mock<BehaviorExceptionContext<T, T1, Exception>>();
             _behaviorExceptionContextMock = new Mock<BehaviorExceptionContext<T, Exception>>();
             _loggerMock = new Mock<ILogger<T>>();
@@ -40,7 +44,7 @@ namespace Carbon.MassTransit.UnitTests
             _stateMachineVisitorMock = new Mock<StateMachineVisitor>();
             _probeContextMock = new Mock<ProbeContext>();
             _behaviorContextMock = new Mock<BehaviorContext<T>>();
-            _behaviorMock = new Mock<Behavior<T>>();
+            _behaviorMock = new Mock<IBehavior<T>>();
             _behaviorContextExecuteMock = new Mock<BehaviorContext<T, T1>>();
         }
         [Fact]
@@ -83,6 +87,23 @@ namespace Carbon.MassTransit.UnitTests
             // Assert      
             Assert.Null(exception);
         }
+        [Fact]
+        public async Task ExecuteT1_ForwardsTo_Execute_CarbonSagaActivity()
+        {
+            // Arrange
+            _carbonSagaActivityMock
+                .Setup(a => a.Execute(It.IsAny<BehaviorContext<T>>(), It.IsAny<IBehavior<T>>()))
+                .Returns<BehaviorContext<T>, IBehavior<T>>((context, next) => next.Execute(context));
+            _behaviorFaultedMock
+                .Setup(b => b.Execute(It.IsAny<BehaviorContext<T, T1>>()))
+                .Returns(Task.CompletedTask);
+            // Act
+            await _carbonSagaActivityMock.Object.Execute(_behaviorContextExecuteMock.Object, _behaviorFaultedMock.Object);
+            // Assert
+            _carbonSagaActivityMock.Verify(a => a.Execute(_behaviorContextExecuteMock.Object, It.IsAny<IBehavior<T>>()), Times.Once);
+            _behaviorFaultedMock.Verify(b => b.Execute(_behaviorContextExecuteMock.Object), Times.Once);
+        }
+
         [Fact]
         public async Task Faulted_Successfully_CarbonSagaActivity()
         {
