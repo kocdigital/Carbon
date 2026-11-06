@@ -5,25 +5,12 @@
 		<Version>4.0.0</Version>
 		<Description>
       4.0.0 (BREAKING - MassTransit 8)
-      - MassTransit upgraded from 7.3.1 to 8.5.8 (Apache 2.0 licensed 8.x line). RabbitMQ.Client is now 7.x (async API).
-      - MassTransit.AspNetCore and MassTransit.Extensions.DependencyInjection removed; they are part of the MassTransit package in v8.
-      - GreenPipes / Automatonymous namespaces are gone, everything lives in the MassTransit namespace.
-      - Extension signatures: IServiceCollectionBusConfigurator -> IBusRegistrationConfigurator,
-        IServiceCollectionBusConfigurator&lt;T&gt; -> IBusRegistrationConfigurator&lt;T&gt;. Lambda based callers need no change.
-      - AddMassTransitBus: MassTransit 8 registers the hosted service and bus health checks itself.
-        useDefaultHostedService = false now maps to MassTransitHostOptions.WaitUntilStarted = true.
-      - CarbonSagaActivity&lt;T&gt; implements IStateMachineActivity&lt;T&gt; (T : class, SagaStateMachineInstance).
-        Execute/Faulted take IBehavior instead of Behavior. Events with data are forwarded to Execute(BehaviorContext&lt;T&gt;, IBehavior&lt;T&gt;)
-        exactly like MassTransit 7 did, so existing derived activities keep running.
-      - ReqRespAsync: RequestId is stored on the saga and set explicitly on the sent messages
-        (MassTransit 8 does not copy RequestId to messages sent from a consume context anymore).
-      - RequestResponseState implements ISagaVersion (was IVersionedSaga). Redis LockRetryTimeout option removed by MassTransit.
-      - RabbitMQ connection health check is now built in (RabbitMqConnectionHealthCheck); AspNetCore.HealthChecks.Rabbitmq dependency removed.
-      - Routing slip activity hosts use the IRegistrationContext overloads.
-      - Default message serializer is System.Text.Json (MassTransit 8 default). The envelope is wire compatible with MassTransit 7;
-        call UseNewtonsoftJsonSerializer (MassTransit.Newtonsoft package) in your bus configurator if your contracts need Newtonsoft.
-      - Requires StackExchange.Redis &gt;= 2.10.14; on net6.0 Microsoft.Extensions.* &gt;= 8.0.0.
-      3.11.0
+      - MassTransit 7.3.1 -> 8.5.8, RabbitMQ.Client 7. MassTransit.AspNetCore / Extensions.DependencyInjection / AspNetCore.HealthChecks.Rabbitmq removed.
+      - IServiceCollectionBusConfigurator(&lt;T&gt;) -> IBusRegistrationConfigurator(&lt;T&gt;). GreenPipes / Automatonymous namespaces -> MassTransit.
+      - AddMassTransitBus: useDefaultHostedService = false -> MassTransitHostOptions.WaitUntilStarted = true.
+      - CarbonSagaActivity&lt;T&gt; : IStateMachineActivity&lt;T&gt; (IBehavior, T : class, SagaStateMachineInstance).
+      - Default serializer is System.Text.Json; use UseNewtonsoftJsonSerializer if needed.
+      - Requires StackExchange.Redis &gt;= 2.10.14; net6.0 Microsoft.Extensions.* &gt;= 8.0.0.
       3.11.0
       - .NET 10 (net10.0) target framework added; existing targets preserved. MassTransit stays at 7.3.1.
       3.10.7
