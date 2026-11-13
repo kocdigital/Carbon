@@ -344,7 +344,7 @@ namespace Carbon.Redis
             bool isSuccess;
             try
             {
-                isSuccess = await redisDb.StringSetAsync(key, data.ConvertObjectToJson(), expiry);
+                isSuccess = await redisDb.StringSetAsync(key, data.ConvertObjectToJson(), expiry, When.Always);
             }
             catch (Exception ex)
             {
