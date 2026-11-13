@@ -15,7 +15,7 @@ namespace Carbon.Redis
 	/// This dummy server does nothing, just returns default values
 	/// </para>
 	/// </summary>
-    public class DummyRedisServer : IServer
+    public partial class DummyRedisServer : IServer
     {
         public ClusterConfiguration ClusterConfiguration { get; }
         public EndPoint EndPoint { get; }
@@ -641,7 +641,6 @@ namespace Carbon.Redis
         {
             return default;
         }
-#if NET8_0_OR_GREATER
         public long ClientKill(ClientKillFilter filter, CommandFlags flags = CommandFlags.None)
         {
             return default;
@@ -651,6 +650,5 @@ namespace Carbon.Redis
         {
             return default;
         }
-#endif
     }
 }

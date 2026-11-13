@@ -3,8 +3,10 @@
   <PropertyGroup>
 	 <TargetFrameworks>net8.0;net6.0;net10.0</TargetFrameworks>
 	 <LangVersion>latest</LangVersion>
-	 <Version>3.1.0</Version>
+	 <Version>3.1.1</Version>
      <Description>
+		 3.1.1
+		 StackExchange.Redis updated to 2.10.14 across all target frameworks to align with MassTransit.Redis and Carbon.WebApplication.
 		 3.1.0
 		 .NET 10 (net10.0) target framework added; existing targets preserved.
 		 3.0.2
@@ -83,7 +85,7 @@
     <PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks" Version="8.0.11" />
     <PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions" Version="8.0.11" />
     <PackageReference Include="RedLock.net" Version="2.3.2" />
-    <PackageReference Include="StackExchange.Redis" Version="2.8.22" />
+	<PackageReference Include="StackExchange.Redis" Version="2.10.14" />
     <PackageReference Include="System.Text.Json" Version="8.0.5" />
   </ItemGroup>
 <ItemGroup Condition="'$(TargetFramework)' == 'net6.0'">
@@ -96,7 +98,7 @@
     <PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks" Version="6.0.11" />
     <PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions" Version="6.0.11" />
     <PackageReference Include="RedLock.net" Version="2.3.2" />
-    <PackageReference Include="StackExchange.Redis" Version="2.7.17" />
+	<PackageReference Include="StackExchange.Redis" Version="2.10.14" />
     <PackageReference Include="System.Text.Json" Version="6.0.11" />
   </ItemGroup>
 <ItemGroup Condition="'$(TargetFramework)' == 'net10.0'">
@@ -104,7 +106,7 @@
     <PackageReference Include="FastMember" Version="1.5.0" />
     <PackageReference Include="Microsoft.Extensions.Caching.StackExchangeRedis" Version="10.0.9" />
     <PackageReference Include="RedLock.net" Version="2.3.2" />
-    <PackageReference Include="StackExchange.Redis" Version="2.8.22" />
+	<PackageReference Include="StackExchange.Redis" Version="2.10.14" />
   </ItemGroup>
 <ItemGroup>
   <PackageReference Include="protobuf-net" Version="3.2.45" />
