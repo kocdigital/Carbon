@@ -15,7 +15,7 @@ namespace Carbon.Redis
 	/// This dummy database does nothing, just returns default values
 	/// </para>
 	/// </summary>
-    public class RedisDatabase : IDatabase
+    public partial class RedisDatabase : IDatabase
     {
         public int Database
         {

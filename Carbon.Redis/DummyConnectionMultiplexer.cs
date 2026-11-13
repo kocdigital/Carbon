@@ -14,7 +14,7 @@ namespace Carbon.Redis
 	/// This dummy connection multiplexer does nothing, just returns default values and uses <see cref="DummyRedisServer"/> 
 	/// </para>
 	/// </summary>
-    public class DummyConnectionMultiplexer : IConnectionMultiplexer
+    public partial class DummyConnectionMultiplexer : IConnectionMultiplexer
     {
         public string ClientName  { get; set; }
 
