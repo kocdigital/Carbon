@@ -6,6 +6,8 @@
 			5.1.0
 			- Consul ACL token support added. The token is supplied via CONSUL_ACL_TOKEN_ENCRYPTED (RSA-OAEP/SHA256 ciphertext, base64) and decrypted at startup using the private key of a certificate installed on the host, located via CONSUL_ACL_CERT_THUMBPRINT or CONSUL_ACL_CERT_SUBJECT (optional CONSUL_ACL_CERT_STORE_LOCATION/CONSUL_ACL_CERT_STORE_NAME); the plaintext token is never stored in the environment.
 			- Consul long-poll (watch) traffic can now be tuned/disabled via CONSUL_RELOAD_ON_CHANGE (default true) and CONSUL_POLL_WAIT_TIME_SECONDS.
+			5.0.1
+			- Replaced #if DEBUG compile-time checks with a runtime ASPNETCORE_ENVIRONMENT=Development check in UseCarbonFeatures.
 			5.0.0
 			- Carbon.Audit / Carbon.MassTransit updated to MassTransit 8 (8.5.8).
 			- StackExchange.Redis raised to 2.10.14 (required by MassTransit.Redis 8.5.8).
