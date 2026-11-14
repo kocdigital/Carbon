@@ -5,8 +5,10 @@
     <ApplicationIcon />
     <OutputType>Library</OutputType>
     <StartupObject />
-    <Version>1.6.0</Version>
+    <Version>1.6.1</Version>
     <Description>
+	  1.6.1
+      - Replaced #if DEBUG compile-time check with a runtime ASPNETCORE_ENVIRONMENT=Development check in UseFeatures.
 	  1.6.0
       - .NET 10 (net10.0) target framework added; existing targets preserved.
 	  1.5.1
