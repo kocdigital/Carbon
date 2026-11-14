@@ -1,8 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
 		<TargetFrameworks>net8.0;net6.0;net10.0</TargetFrameworks>
-		<Version>5.0.0</Version>
+		<Version>5.0.1</Version>
 		<Description>
+			5.0.1
+			- Replaced #if DEBUG compile-time checks with a runtime ASPNETCORE_ENVIRONMENT=Development check in UseCarbonFeatures.
 			5.0.0
 			- Carbon.Audit / Carbon.MassTransit updated to MassTransit 8 (8.5.8).
 			- StackExchange.Redis raised to 2.10.14 (required by MassTransit.Redis 8.5.8).
