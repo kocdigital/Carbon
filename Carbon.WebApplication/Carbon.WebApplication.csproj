@@ -3,77 +3,35 @@
 		<TargetFrameworks>net8.0;net6.0;net10.0</TargetFrameworks>
 		<Version>5.2.0</Version>
 		<Description>
-			5.2.0
-			- All Consul secret encrypt/decrypt logic (ACL token, Basic Auth, whole-document, field-level) extracted to the shared Carbon.ConsulSecretEncryptor.Core library (also used by Carbon.ConsoleApplication.Extensions and the Carbon.ConsulSecretEncryptor CLI/Windows Forms tools); this project no longer contains any local crypto logic, only env-var wiring and host-pipeline integration.
-			- Consul-sourced JSON configuration can now be encrypted at two granularities, usable together: (1) whole-document, as a single "CarbonEncryptedConfig" key, or (2) field-level, as individual "ENC(&lt;base64 envelope&gt;)" values that leave the rest of the structure readable. Both use the same hybrid envelope (random AES-256-GCM key encrypting the value, that key wrapped with RSA-OAEP/SHA256 against the same certificate as the ACL token/Basic Auth) so there is no size limit per value. Decrypted and merged into configuration in place automatically (before any options binding) and re-checked on every Consul reload-on-change; resolving the decryption certificate is only required if either is actually present. See Carbon.ConsulSecretEncryptor --mode json / --mode field to produce the envelopes.
-			- Consul HTTP Basic Auth support added for deployments where Consul sits behind a reverse proxy (e.g. nginx) that enforces Basic Auth. Configured via a single CONSUL_BASIC_AUTH_ENCRYPTED variable (RSA-OAEP/SHA256 ciphertext, base64) that decrypts to a "username:password" value, decrypted the same way as the Consul ACL token using the certificate located via CONSUL_ACL_CERT_THUMBPRINT/CONSUL_ACL_CERT_SUBJECT; neither the username nor the password is ever stored in the environment as plaintext.
-			5.1.0
-			- Consul ACL token support added. The token is supplied via CONSUL_ACL_TOKEN_ENCRYPTED (RSA-OAEP/SHA256 ciphertext, base64) and decrypted at startup using the private key of a certificate installed on the host, located via CONSUL_ACL_CERT_THUMBPRINT or CONSUL_ACL_CERT_SUBJECT (optional CONSUL_ACL_CERT_STORE_LOCATION/CONSUL_ACL_CERT_STORE_NAME); the plaintext token is never stored in the environment.
-			- Consul long-poll (watch) traffic can now be tuned/disabled via CONSUL_RELOAD_ON_CHANGE (default true) and CONSUL_POLL_WAIT_TIME_SECONDS.
-			5.0.1
-			- Replaced #if DEBUG compile-time checks with a runtime ASPNETCORE_ENVIRONMENT=Development check in UseCarbonFeatures.
-			5.0.0
-			- Carbon.Audit / Carbon.MassTransit updated to MassTransit 8 (8.5.8).
-			- StackExchange.Redis raised to 2.10.14 (required by MassTransit.Redis 8.5.8).
-			- net6.0: Microsoft.Extensions.Logging.Abstractions and Microsoft.Extensions.Configuration.Abstractions raised to 8.0.x (required by MassTransit 8).
-			4.8.0
-			- Configuration sources can now be enabled or disabled via flags.
-			4.7.1
-			- exempt god users from token version validation
-			4.7.0
-			- .NET 10 (net10.0) target framework added; existing targets preserved.
-			- On net10.0 the legacy Microsoft.AspNetCore.Mvc 2.2 packages are replaced by the ASP.NET Core shared framework (FrameworkReference); zipkin4net packages (unused in code) are not carried to net10.0.
-			4.6.21
-			- Carbon.Audit version update: response error info (ApiStatusCode, ErrorCode, Messages) and DurationMs added to audit events.
-			- Carbon.Audit version update: HttpStatusCodeFilter added for HTTP request audit events.
-			4.6.15
-			- Added CustomConfigureAfterAuth hook (no behavior change unless overridden).
-			4.6.14
-			- Prevent 401 unauthorized errors when the userId claim is missing(for client tokens).
-			4.6.13
-			- Added an optional OnTokenValidated step to JWT validation that checks the TokenVersion stored in Redis, ensuring tokens issued before a password change are rejected with 401.
-			4.6.11
-			- Updated vulnerable packages for security issues
-			4.6.10
-			- Add defensive parsing for solution IDs in headers
-			4.6.7
-			- While fetching the user’s roles, caching was added.
-			4.6.6
-			- Refactored OwnershipFilter to use async/await for external service calls; improved Authorization header handling and permission checks.
-			4.6.2
-			- Dotnet 8.0 target framework added
-			4.5.6
-			- Added a property named overrideMessageAndCode to the CarbonException class. The default value of this property is set to true. In the constructor of CarbonException, check this property to determine whether the message and code are overridden or not.
-			- Update IPageableDto validator for assign PageSize 0. When PageSize 0 the datas returns without pagination with development in version 4.5.3.
-			4.5.3
-			- Upgrade Carbon.PagedList (Remove pageSize and pageNumber validation check)
-			4.5.2
-			- Updated Carbon.Common nuget package (Added StringExtensions class with ReplaceTurkishChars and ContainsTurkishIgnoreCase methods)
-			4.5.0
-			- Degraded health check HTTP status code changed as custom 218 (This Is Fine) status code. Because even if system is degraed it should be working normally, so returning 5XX status code is not right for degraded state.
-			4.4.1
-			- Cors should come first before authentication and authorization in startup pipeline
-			4.4.0
-			- Carbon.Common updated and Serilog.Enrichers.Sensitive Enricher added for masking sensitive values within logs.
-			4.3.0
-			- OwnershipFilter check now disregards solution id header during endpoint permission check
-			4.2.0
-			- UnauthorizedOperationException handling is added
-			4.1.8
-			- Carbon.Common updated and nested ordering achieved
-			4.1.3
-			- Cors Allow Credentials support added with any origin accepted
-			- Cors Wildcards accepted
-			4.1.1
-			- CarbonException messages are take arguments for dynamic exception messages
-			4.1.0
-			- Critical bug fixed for Directory separator char to specific platform (Windows,Linux)
-			4.0.0
-			- Carbon now supports Dotnet 6 in terms of both minimal and not minimal
-			- Fluent Validation Upgraded
-			- Swagger Upgraded
-			- BodyRewind deprecated, thus RoleFilteredDto is now unsupported as it is unnecessary just after repository-level validation introduced
-			- Some Performance Improvements
+			5.2.0 - Consul crypto logic moved to shared Carbon.ConsulSecretEncryptor.Core (used by Console/Web tools). Consul JSON config supports whole-document ("CarbonEncryptedConfig") and field-level ("ENC(...)") encryption via AES-256-GCM+RSA-OAEP/SHA256 envelope, auto-decrypted on load and on reload-on-change. Consul HTTP Basic Auth support via CONSUL_BASIC_AUTH_ENCRYPTED.
+			5.1.0 - Consul ACL token support via CONSUL_ACL_TOKEN_ENCRYPTED, decrypted using a host cert (CONSUL_ACL_CERT_THUMBPRINT/SUBJECT). Consul watch traffic tunable via CONSUL_RELOAD_ON_CHANGE/CONSUL_POLL_WAIT_TIME_SECONDS.
+			5.0.1 - Replaced #if DEBUG checks with runtime ASPNETCORE_ENVIRONMENT=Development check in UseCarbonFeatures.
+			5.0.0 - Carbon.Audit/MassTransit updated to MassTransit 8; StackExchange.Redis 2.10.14; net6.0 logging/config abstractions raised to 8.0.x.
+			4.8.0 - Configuration sources can be enabled/disabled via flags.
+			4.7.1 - Exempt god users from token version validation.
+			4.7.0 - net10.0 target added; uses ASP.NET Core shared framework instead of legacy Mvc 2.2 packages; zipkin4net excluded on net10.0.
+			4.6.21 - Carbon.Audit: response error info (ApiStatusCode, ErrorCode, Messages) + DurationMs added; HttpStatusCodeFilter added for HTTP audit events.
+			4.6.15 - Added CustomConfigureAfterAuth hook.
+			4.6.14 - Prevent 401s when userId claim missing (client tokens).
+			4.6.13 - Optional OnTokenValidated step checks Redis TokenVersion, rejecting tokens issued before a password change.
+			4.6.11 - Updated vulnerable packages.
+			4.6.10 - Defensive parsing for solution IDs in headers.
+			4.6.7 - Caching added for fetching user roles.
+			4.6.6 - OwnershipFilter refactored to async/await; improved auth header handling and permission checks.
+			4.6.2 - .NET 8.0 target added.
+			4.5.6 - Added overrideMessageAndCode property to CarbonException (default true). Fixed IPageableDto validator for PageSize 0.
+			4.5.3 - Removed pageSize/pageNumber validation in Carbon.PagedList.
+			4.5.2 - Carbon.Common: added StringExtensions (ReplaceTurkishChars, ContainsTurkishIgnoreCase).
+			4.5.0 - Degraded health check now returns custom 218 (This Is Fine) instead of 5XX.
+			4.4.1 - Cors now runs before authentication/authorization in pipeline.
+			4.4.0 - Carbon.Common updated; Serilog.Enrichers.Sensitive added for masking sensitive log values.
+			4.3.0 - OwnershipFilter disregards solution id header during endpoint permission check.
+			4.2.0 - UnauthorizedOperationException handling added.
+			4.1.8 - Carbon.Common updated; nested ordering supported.
+			4.1.3 - Cors Allow Credentials with any origin + wildcard support.
+			4.1.1 - CarbonException messages take arguments for dynamic messages.
+			4.1.0 - Fixed directory separator char bug across platforms.
+			4.0.0 - .NET 6 support (minimal and non-minimal); FluentValidation/Swagger upgraded; BodyRewind/RoleFilteredDto removed; performance improvements.
 		</Description>
 		<OpenApiGenerateDocuments>false</OpenApiGenerateDocuments>
 		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>

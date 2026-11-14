@@ -7,34 +7,18 @@
     <StartupObject />
     <Version>1.8.0</Version>
     <Description>
-	  1.8.0
-      - All Consul secret encrypt/decrypt logic (ACL token, Basic Auth, whole-document, field-level) extracted to the shared Carbon.ConsulSecretEncryptor.Core library (also used by Carbon.WebApplication and the Carbon.ConsulSecretEncryptor CLI/Windows Forms tools); this project no longer contains any local crypto logic, only env-var wiring and host-pipeline integration.
-      - Consul-sourced JSON configuration can now be encrypted at two granularities, usable together: (1) whole-document, as a single "CarbonEncryptedConfig" key, or (2) field-level, as individual "ENC(&lt;base64 envelope&gt;)" values that leave the rest of the structure readable. Both use the same hybrid envelope (random AES-256-GCM key encrypting the value, that key wrapped with RSA-OAEP/SHA256 against the same certificate as the ACL token/Basic Auth) so there is no size limit per value. Decrypted and merged into configuration in place automatically (before any options binding) and re-checked on every Consul reload-on-change; resolving the decryption certificate is only required if either is actually present. See Carbon.ConsulSecretEncryptor --mode json / --mode field to produce the envelopes.
-      - Consul HTTP Basic Auth support added for deployments where Consul sits behind a reverse proxy (e.g. nginx) that enforces Basic Auth. Configured via a single CONSUL_BASIC_AUTH_ENCRYPTED variable (RSA-OAEP/SHA256 ciphertext, base64) that decrypts to a "username:password" value, decrypted the same way as the Consul ACL token using the certificate located via CONSUL_ACL_CERT_THUMBPRINT/CONSUL_ACL_CERT_SUBJECT; neither the username nor the password is ever stored in the environment as plaintext.
-	  1.7.0
-      - Consul ACL token support added. The token is supplied via CONSUL_ACL_TOKEN_ENCRYPTED (RSA-OAEP/SHA256 ciphertext, base64) and decrypted at startup using the private key of a certificate installed on the host, located via CONSUL_ACL_CERT_THUMBPRINT or CONSUL_ACL_CERT_SUBJECT (optional CONSUL_ACL_CERT_STORE_LOCATION/CONSUL_ACL_CERT_STORE_NAME); the plaintext token is never stored in the environment.
-      - Consul long-poll (watch) traffic can now be tuned/disabled via CONSUL_RELOAD_ON_CHANGE (default true) and CONSUL_POLL_WAIT_TIME_SECONDS.
-	  1.6.1
-      - Replaced #if DEBUG compile-time check with a runtime ASPNETCORE_ENVIRONMENT=Development check in UseFeatures.
-	  1.6.0
-      - .NET 10 (net10.0) target framework added; existing targets preserved.
-	  1.5.1
-      - Carbon.Common version update
-      1.5.0
-      - Dotnet 8.0 target framework added, older versions removed
-      1.4.0
-      - Carbon.Serilog added and Serilog.Enrichers.Sensitive Enricher added for masking sensitive values within logs.
-      1.3.3
-      - Carbon.Common updated and IQueryable OrderBy extension method bug fixed
-      1.3.2
-      - Carbon.Common updated and nested ordering achieved
-      1.3.1
-      - Minor code refactorings, typos
-      1.3.0
-      - Multiple Consul Support Added, File Config support added for Kubernetes Apps
-      1.2.0
-      - Serilog.Sinks.ElasticSearch package removed.Reason =&amp;gt; ElasticSearch.Net Dependency problem for 7.x update of ElasticSearch.
-          note : add if your app uses ElasticSearch for logging
+	  1.8.0 - Consul crypto logic moved to shared Carbon.ConsulSecretEncryptor.Core (used by Console/Web tools). Consul JSON config supports whole-document ("CarbonEncryptedConfig") and field-level ("ENC(...)") encryption via AES-256-GCM+RSA-OAEP/SHA256 envelope, auto-decrypted on load and on reload-on-change. Consul HTTP Basic Auth support via CONSUL_BASIC_AUTH_ENCRYPTED.
+	  1.7.0 - Consul ACL token support via CONSUL_ACL_TOKEN_ENCRYPTED, decrypted using a host cert (CONSUL_ACL_CERT_THUMBPRINT/SUBJECT). Consul watch traffic tunable via CONSUL_RELOAD_ON_CHANGE/CONSUL_POLL_WAIT_TIME_SECONDS.
+	  1.6.1 - Replaced #if DEBUG check with runtime ASPNETCORE_ENVIRONMENT=Development check in UseFeatures.
+	  1.6.0 - net10.0 target added; existing targets preserved.
+	  1.5.1 - Carbon.Common version update.
+      1.5.0 - .NET 8.0 target added, older versions removed.
+      1.4.0 - Carbon.Serilog added; Serilog.Enrichers.Sensitive added for masking sensitive log values.
+      1.3.3 - Carbon.Common updated; IQueryable OrderBy extension bug fixed.
+      1.3.2 - Carbon.Common updated; nested ordering supported.
+      1.3.1 - Minor refactorings, typos.
+      1.3.0 - Multiple Consul support added; file config support for Kubernetes apps.
+      1.2.0 - Removed Serilog.Sinks.ElasticSearch (ElasticSearch.Net dependency conflict with ES 7.x); add it back manually if your app logs to ElasticSearch.
 </Description>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
   </PropertyGroup>
