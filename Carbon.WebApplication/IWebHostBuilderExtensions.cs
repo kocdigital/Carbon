@@ -23,6 +23,7 @@ namespace Carbon.WebApplication
         {
             var assemblyName = Assembly.GetEntryAssembly().GetName().Name;
             var currentEnviroment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
+            var isDevelopmentEnvironment = string.Equals(currentEnviroment, "Development", StringComparison.OrdinalIgnoreCase);
             var consulAddress = Environment.GetEnvironmentVariable("CONSUL_ADDRESS");
             var consulKeysValue = Environment.GetEnvironmentVariable(assemblyName + "_CONSUL_KEYS");
             var environmentType = Environment.GetEnvironmentVariable("ENVIRONMENT_TYPE");
@@ -41,9 +42,10 @@ namespace Carbon.WebApplication
 
             if (useLocalConfiguration)
             {
-#if DEBUG
-                Console.WriteLine("External configuration sources are disabled.");
-#endif
+                if (isDevelopmentEnvironment)
+                {
+                    Console.WriteLine("External configuration sources are disabled.");
+                }
             }
             else
             {
@@ -101,9 +103,10 @@ namespace Carbon.WebApplication
                             try
                             {
                                 var configToRead = File.ReadAllText(kubCnf);
-#if DEBUG
-                                Console.WriteLine("Inserting Config => \n" + configToRead);
-#endif
+                                if (isDevelopmentEnvironment)
+                                {
+                                    Console.WriteLine("Inserting Config => \n" + configToRead);
+                                }
                             }
                             catch
                             {
