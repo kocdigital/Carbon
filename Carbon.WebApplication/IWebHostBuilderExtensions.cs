@@ -3,12 +3,15 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Primitives;
 using Serilog;
 using System;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Reflection;
 using System.Security.Cryptography.X509Certificates;
+using Carbon.ConsulSecretEncryptor.Core;
 using Winton.Extensions.Configuration.Consul;
 
 namespace Carbon.WebApplication
@@ -62,6 +65,7 @@ namespace Carbon.WebApplication
                         {
                             Console.WriteLine("Configuration Type: CONSUL");
                             var consulAclToken = ResolveConsulAclToken();
+                            var consulBasicAuthCredential = ResolveConsulBasicAuthCredential();
                             var consulReloadOnChange = !bool.TryParse(Environment.GetEnvironmentVariable("CONSUL_RELOAD_ON_CHANGE"), out var parsedReloadOnChange) || parsedReloadOnChange;
                             var consulPollWaitTime = int.TryParse(Environment.GetEnvironmentVariable("CONSUL_POLL_WAIT_TIME_SECONDS"), out var parsedPollWaitTimeSeconds)
                                 ? TimeSpan.FromSeconds(parsedPollWaitTimeSeconds)
@@ -83,6 +87,13 @@ namespace Carbon.WebApplication
                                                cco.Address = new Uri(consulAddress);
                                                if (!string.IsNullOrEmpty(consulAclToken))
                                                    cco.Token = consulAclToken;
+                                               if (consulBasicAuthCredential != null)
+                                               {
+                                                   // Winton's wrapper does not expose the HttpHandler override Consul.NET recommends instead of HttpAuth.
+#pragma warning disable CS0618
+                                                   cco.HttpAuth = consulBasicAuthCredential;
+#pragma warning restore CS0618
+                                               }
                                            };
                                            options.Optional = false;
                                            options.ReloadOnChange = consulReloadOnChange;
@@ -102,6 +113,13 @@ namespace Carbon.WebApplication
                                                     cco.Address = new Uri(consulAddress);
                                                     if (!string.IsNullOrEmpty(consulAclToken))
                                                         cco.Token = consulAclToken;
+                                                    if (consulBasicAuthCredential != null)
+                                                    {
+                                                        // Winton's wrapper does not expose the HttpHandler override Consul.NET recommends instead of HttpAuth.
+#pragma warning disable CS0618
+                                                        cco.HttpAuth = consulBasicAuthCredential;
+#pragma warning restore CS0618
+                                                    }
                                                 };
                                                 options.Optional = false;
                                                 options.ReloadOnChange = consulReloadOnChange;
@@ -149,6 +167,13 @@ namespace Carbon.WebApplication
                 });
             }
 
+            builder.ConfigureServices((context, services) =>
+            {
+                void DecryptConsulConfigValues() => ConsulConfigValueProtector.DecryptInPlace(context.Configuration, BuildConsulSecretCertificateSelection);
+                DecryptConsulConfigValues();
+                ChangeToken.OnChange(() => context.Configuration.GetReloadToken(), DecryptConsulConfigValues);
+            });
+
 #if NET6_0
             builder.UseSerilog();
 #endif
@@ -165,10 +190,48 @@ namespace Carbon.WebApplication
             if (string.IsNullOrWhiteSpace(encryptedToken))
                 return null;
 
+            var selection = BuildConsulSecretCertificateSelection();
+            Console.WriteLine($"Consul ACL Token: ENCRYPTED (decrypting via certificate)");
+            using var certificate = CertificateResolver.Resolve(selection, requirePrivateKey: true);
+            using var rsa = certificate.GetRSAPrivateKey()
+                ?? throw new InvalidOperationException($"Certificate '{certificate.Thumbprint}' does not expose an accessible RSA private key.");
+            return ConsulSecretCrypto.DecryptPlain(encryptedToken, rsa);
+        }
+
+        /// <summary>
+        /// Resolves HTTP Basic Auth credentials used when Consul sits behind a reverse proxy (e.g. nginx) that
+        /// enforces Basic Auth in front of it. Neither the username nor the password is ever placed in the
+        /// environment as plaintext: CONSUL_BASIC_AUTH_ENCRYPTED must hold an RSA-OAEP/SHA256 (base64) ciphertext
+        /// that decrypts to a single "username:password" value, and is only decrypted here using the private key
+        /// of a certificate installed on this machine.
+        /// </summary>
+        private static NetworkCredential ResolveConsulBasicAuthCredential()
+        {
+            var encryptedCredential = Environment.GetEnvironmentVariable("CONSUL_BASIC_AUTH_ENCRYPTED");
+            if (string.IsNullOrWhiteSpace(encryptedCredential))
+                return null;
+
+            var selection = BuildConsulSecretCertificateSelection();
+            Console.WriteLine($"Consul Basic Auth: ENABLED (credential decrypted via certificate)");
+            using var certificate = CertificateResolver.Resolve(selection, requirePrivateKey: true);
+            using var rsa = certificate.GetRSAPrivateKey()
+                ?? throw new InvalidOperationException($"Certificate '{certificate.Thumbprint}' does not expose an accessible RSA private key.");
+            var decryptedCredential = ConsulSecretCrypto.DecryptPlain(encryptedCredential, rsa);
+            var (username, password) = ConsulSecretCrypto.SplitBasicAuthCredential(decryptedCredential);
+            return new NetworkCredential(username, password);
+        }
+
+        /// <summary>
+        /// Builds the certificate selection (by thumbprint or subject, in the given store) used to decrypt Consul
+        /// secrets. Shared by the ACL token, Basic Auth, and config-value resolution so all rely on the same
+        /// machine-installed certificate.
+        /// </summary>
+        private static CertificateSelection BuildConsulSecretCertificateSelection()
+        {
             var thumbprint = Environment.GetEnvironmentVariable("CONSUL_ACL_CERT_THUMBPRINT");
             var subjectName = Environment.GetEnvironmentVariable("CONSUL_ACL_CERT_SUBJECT");
             if (string.IsNullOrWhiteSpace(thumbprint) && string.IsNullOrWhiteSpace(subjectName))
-                throw new InvalidOperationException("CONSUL_ACL_TOKEN_ENCRYPTED is set but neither CONSUL_ACL_CERT_THUMBPRINT nor CONSUL_ACL_CERT_SUBJECT is set. A certificate installed on this machine is required to decrypt the Consul ACL token.");
+                throw new InvalidOperationException("Neither CONSUL_ACL_CERT_THUMBPRINT nor CONSUL_ACL_CERT_SUBJECT is set. A certificate installed on this machine is required to decrypt Consul secrets.");
 
             var storeLocation = Enum.TryParse<StoreLocation>(Environment.GetEnvironmentVariable("CONSUL_ACL_CERT_STORE_LOCATION"), true, out var parsedLocation)
                 ? parsedLocation
@@ -177,8 +240,7 @@ namespace Carbon.WebApplication
                 ? parsedName
                 : StoreName.My;
 
-            Console.WriteLine($"Consul ACL Token: ENCRYPTED (decrypting via certificate '{thumbprint ?? subjectName}' from {storeLocation}/{storeName})");
-            return ConsulAclTokenProtector.Decrypt(encryptedToken, thumbprint, subjectName, storeName, storeLocation);
+            return new CertificateSelection { Thumbprint = thumbprint, SubjectName = subjectName, StoreLocation = storeLocation, StoreName = storeName };
         }
 
     }
