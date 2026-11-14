@@ -2,8 +2,10 @@
 
   <PropertyGroup>
     <TargetFrameworks>net8.0;net6.0;net10.0</TargetFrameworks>
-    <Version>3.5.0</Version>
+    <Version>3.5.1</Version>
     <Description>
+		3.5.1
+		- Carbon.WebApplication updated to 5.0.1 (runtime environment check replaces #if DEBUG in UseCarbonFeatures).
 		3.5.0
 		- Configuration sources can now be enabled or disabled via flags.
 		3.4.0

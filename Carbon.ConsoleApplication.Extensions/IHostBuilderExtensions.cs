@@ -30,6 +30,7 @@ namespace Carbon.ConsoleApplication
         {
             var assemblyName = typeof(TProgram).Assembly.GetName().Name;
             var currentEnvironment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
+            var isDevelopmentEnvironment = string.Equals(currentEnvironment, "Development", StringComparison.OrdinalIgnoreCase);
             var consulAddress = Environment.GetEnvironmentVariable("CONSUL_ADDRESS");
             var consulKeysValue = Environment.GetEnvironmentVariable(assemblyName + "_CONSUL_KEYS");
             var confType = Environment.GetEnvironmentVariable("CONFIGURATION_TYPE");
@@ -88,9 +89,10 @@ namespace Carbon.ConsoleApplication
                         try
                         {
                             var configToRead = File.ReadAllText(kubCnf);
-#if DEBUG
-                            Console.WriteLine("Inserting Config => \n" + configToRead);
-#endif
+                            if (isDevelopmentEnvironment)
+                            {
+                                Console.WriteLine("Inserting Config => \n" + configToRead);
+                            }
                         }
                         catch
                         {
