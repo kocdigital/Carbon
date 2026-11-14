@@ -5,8 +5,11 @@
     <ApplicationIcon />
     <OutputType>Library</OutputType>
     <StartupObject />
-    <Version>1.6.1</Version>
+    <Version>1.7.0</Version>
     <Description>
+	  1.7.0
+      - Consul ACL token support added. The token is supplied via CONSUL_ACL_TOKEN_ENCRYPTED (RSA-OAEP/SHA256 ciphertext, base64) and decrypted at startup using the private key of a certificate installed on the host, located via CONSUL_ACL_CERT_THUMBPRINT or CONSUL_ACL_CERT_SUBJECT (optional CONSUL_ACL_CERT_STORE_LOCATION/CONSUL_ACL_CERT_STORE_NAME); the plaintext token is never stored in the environment.
+      - Consul long-poll (watch) traffic can now be tuned/disabled via CONSUL_RELOAD_ON_CHANGE (default true) and CONSUL_POLL_WAIT_TIME_SECONDS.
 	  1.6.1
       - Replaced #if DEBUG compile-time check with a runtime ASPNETCORE_ENVIRONMENT=Development check in UseFeatures.
 	  1.6.0
@@ -39,6 +42,7 @@
     <PackageReference Include="Serilog.AspNetCore" Version="3.2.0" />
     <PackageReference Include="Serilog.Sinks.Console" Version="3.1.1" />
     <PackageReference Include="Serilog.Sinks.File" Version="4.1.0" />
+    <PackageReference Include="System.Security.Cryptography.ProtectedData" Version="8.0.0" />
     <PackageReference Include="Winton.Extensions.Configuration.Consul" Version="3.0.1" />
   </ItemGroup>
   <ItemGroup Condition="'$(TargetFramework)' == 'net10.0'">
@@ -48,6 +52,7 @@
     <PackageReference Include="Serilog.AspNetCore" Version="10.0.0" />
     <PackageReference Include="Serilog.Sinks.Console" Version="6.1.1" />
     <PackageReference Include="Serilog.Sinks.File" Version="7.0.0" />
+    <PackageReference Include="System.Security.Cryptography.ProtectedData" Version="8.0.0" />
     <PackageReference Include="Winton.Extensions.Configuration.Consul" Version="3.0.1" />
   </ItemGroup>
 
