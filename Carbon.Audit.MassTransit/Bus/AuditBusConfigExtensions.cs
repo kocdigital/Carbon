@@ -1,5 +1,8 @@
 using Carbon.Audit.Contracts;
 using MassTransit;
+#if CARBON_MASSTRANSIT7
+using MassTransit.RabbitMqTransport;
+#endif
 
 namespace Carbon.Audit.Bus;
 

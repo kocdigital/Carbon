@@ -1,8 +1,9 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
 		<TargetFrameworks>net8.0;net6.0;net10.0</TargetFrameworks>
-		<Version>5.2.0</Version>
+		<Version>6.0.0</Version>
 		<Description>
+			6.0.0 - BREAKING: Carbon.Audit 3.0.0, which no longer depends on MassTransit. Carbon.WebApplication now restores and runs alongside MassTransit 7 or 8, so services on MassTransit 7 get the 5.x features (Consul ACL/encryption, configuration source flags) without migrating. Services that set "CarbonAudit:Enabled" to true must reference Carbon.Audit.MassTransit (MassTransit 8) or Carbon.Audit.MassTransit7 (MassTransit 7) and call services.AddCarbonAuditMassTransit(Configuration); otherwise startup fails with an explicit error instead of losing audit events.
 			5.2.0 - Consul crypto logic moved to shared Carbon.ConsulSecretEncryptor.Core (used by Console/Web tools). Consul JSON config supports whole-document ("CarbonEncryptedConfig") and field-level ("ENC(...)") encryption via AES-256-GCM+RSA-OAEP/SHA256 envelope, auto-decrypted on load and on reload-on-change. Consul HTTP Basic Auth support via CONSUL_BASIC_AUTH_ENCRYPTED.
 			5.1.0 - Consul ACL token support via CONSUL_ACL_TOKEN_ENCRYPTED, decrypted using a host cert (CONSUL_ACL_CERT_THUMBPRINT/SUBJECT). Consul watch traffic tunable via CONSUL_RELOAD_ON_CHANGE/CONSUL_POLL_WAIT_TIME_SECONDS.
 			5.0.1 - Replaced #if DEBUG checks with runtime ASPNETCORE_ENVIRONMENT=Development check in UseCarbonFeatures.

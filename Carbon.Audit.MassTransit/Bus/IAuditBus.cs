@@ -4,7 +4,7 @@ namespace Carbon.Audit.Bus;
 
 /// <summary>
 /// Dedicated MassTransit bus for publishing audit events.
-/// Registered automatically by <see cref="Carbon.Audit.ServiceCollectionExtensions.AddCarbonAudit"/>
-/// when no other <see cref="IBus"/> is found in the DI container.
+/// Registered by <see cref="Carbon.Audit.AuditMassTransitServiceCollectionExtensions.AddCarbonAuditMassTransit"/>
+/// when <c>CarbonAudit:Enabled</c> is <c>true</c>.
 /// </summary>
 public interface IAuditBus : IBus { }

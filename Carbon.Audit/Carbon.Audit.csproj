@@ -4,8 +4,22 @@
     <TargetFrameworks>net8.0;net6.0;net10.0</TargetFrameworks>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <Version>2.0.0</Version>
+    <Version>3.0.0</Version>
     <Description>
+      3.0.0 (BREAKING - transport split out)
+      - Carbon.Audit no longer depends on MassTransit or Carbon.MassTransit. It now carries only the
+        audit contracts, AuditInterceptor, RequestContextMiddleware, RequestContext,
+        CarbonAuditSettings and the IAuditEventPublisher abstraction. A service can therefore
+        reference Carbon.Audit (and Carbon.WebApplication, which depends on it) whatever
+        MassTransit major it runs on.
+      - IAuditBus, AuditBusConfigExtensions and RabbitMqAuditEventPublisher moved, with unchanged
+        namespaces, to the transport packages:
+        Carbon.Audit.MassTransit (MassTransit 8) and Carbon.Audit.MassTransit7 (MassTransit 7).
+      - AddCarbonAudit no longer registers a message bus. With "CarbonAudit:Enabled" set to true,
+        call services.AddCarbonAuditMassTransit(configuration) from the transport package that
+        matches the service's MassTransit version.
+      - UseCarbonAudit fails at startup with an InvalidOperationException when auditing is
+        enabled but no IAuditEventPublisher is registered, instead of losing audit events.
       2.0.0
       - MassTransit upgraded to 8.5.8 together with Carbon.MassTransit 4.0.0 (BREAKING: MassTransit 8).
       1.5.0
@@ -64,20 +78,14 @@
   <ItemGroup Condition="'$(TargetFramework)' == 'net8.0'">
     <FrameworkReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.11" />
-    <PackageReference Include="MassTransit" Version="8.5.8" />
   </ItemGroup>
   <ItemGroup Condition="'$(TargetFramework)' == 'net6.0'">
     <FrameworkReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.25" />
-    <PackageReference Include="MassTransit" Version="8.5.8" />
   </ItemGroup>
   <ItemGroup Condition="'$(TargetFramework)' == 'net10.0'">
     <FrameworkReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="10.0.9" />
-    <PackageReference Include="MassTransit" Version="8.5.8" />
-  </ItemGroup>
-  <ItemGroup Condition="'$(TargetFramework)' == 'net6.0' or '$(TargetFramework)' == 'net8.0' or '$(TargetFramework)' == 'net10.0'">
-    <ProjectReference Include="..\Carbon.MassTransit\Carbon.MassTransit.csproj" />
   </ItemGroup>
 
 </Project>

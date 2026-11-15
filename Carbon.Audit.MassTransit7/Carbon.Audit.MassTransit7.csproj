@@ -1,0 +1,39 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>net8.0;net6.0;net10.0</TargetFrameworks>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <Version>1.0.0</Version>
+    <!-- Same assembly name and namespaces as Carbon.Audit.MassTransit, so switching a service from
+         MassTransit 7 to 8 is a package swap with no code change. Reference only one of the two. -->
+    <AssemblyName>Carbon.Audit.MassTransit</AssemblyName>
+    <RootNamespace>Carbon.Audit</RootNamespace>
+    <PackageId>Carbon.Audit.MassTransit7</PackageId>
+    <DefineConstants>$(DefineConstants);CARBON_MASSTRANSIT7</DefineConstants>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+    <Description>
+      MassTransit 7 / RabbitMQ transport for Carbon.Audit, for services that have not moved to
+      MassTransit 8 yet. Built from the same sources as Carbon.Audit.MassTransit, against
+      Carbon.MassTransit 3.11.0 (MassTransit 7.3.1). Reference only one of the two packages.
+      1.0.0
+      - services.AddCarbonAuditMassTransit(configuration) registers the dedicated audit bus and
+        IAuditEventPublisher when "CarbonAudit:Enabled" is true, and does nothing otherwise.
+    </Description>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="..\Carbon.Audit.MassTransit\**\*.cs" Exclude="..\Carbon.Audit.MassTransit\bin\**;..\Carbon.Audit.MassTransit\obj\**" LinkBase="Shared" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Carbon.Audit\Carbon.Audit.csproj" />
+    <PackageReference Include="Carbon.MassTransit" Version="3.11.0" />
+  </ItemGroup>
+
+</Project>

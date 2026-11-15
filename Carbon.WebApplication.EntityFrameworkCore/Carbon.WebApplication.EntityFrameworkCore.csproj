@@ -2,8 +2,11 @@
 
   <PropertyGroup>
     <TargetFrameworks>net8.0;net6.0;netstandard2.1;net10.0</TargetFrameworks>
-    <Version>2.6.1</Version>
+    <Version>3.0.0</Version>
     <Description>
+		3.0.0
+		BREAKING: depends on Carbon.Audit 3.0.0, which no longer carries the MassTransit audit transport. No API change in this package; services with "CarbonAudit:Enabled" set to true must register the transport (see Carbon.WebApplication 6.0.0).
+
 		2.6.1
 		Carbon.Audit interceptor registration is now optional and driven by the "CarbonAudit:Enabled" configuration key; DbContext registrations use the service provider overload to resolve the interceptor.
 
