@@ -19,6 +19,8 @@ public static class AuditMassTransitServiceCollectionExtensions
     /// <para>
     /// No-op when <c>CarbonAudit:Enabled</c> is <c>false</c>: nothing connects to RabbitMQ when
     /// auditing is disabled. Safe to call more than once; only the first call registers.
+    /// Also a no-op when an <see cref="IAuditEventPublisher"/> is already registered, so a
+    /// service-provided publisher is kept and no unused audit bus is started.
     /// </para>
     /// <para>
     /// The bus is configured from the <c>MassTransit:RabbitMq</c> section of
@@ -40,6 +42,8 @@ public static class AuditMassTransitServiceCollectionExtensions
 
         if (!configuration.IsCarbonAuditEnabled()) return services;
         if (services.Any(d => d.ServiceType == typeof(IAuditBus))) return services;
+        // A service that brings its own publisher keeps it, and no unused bus connects to RabbitMQ.
+        if (services.Any(d => d.ServiceType == typeof(IAuditEventPublisher))) return services;
 
         services.AddMassTransitBus<IAuditBus>(cfg =>
         {

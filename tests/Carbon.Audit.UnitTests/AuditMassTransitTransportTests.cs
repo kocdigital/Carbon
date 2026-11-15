@@ -95,4 +95,20 @@ public class AuditMassTransitTransportTests
 
         Assert.IsType<RabbitMqAuditEventPublisher>(publisher);
     }
+
+    [Fact]
+    public void AddCarbonAuditMassTransit_keeps_a_service_provided_publisher_and_starts_no_bus()
+    {
+        var configuration = TestHost.Configuration(auditEnabled: true);
+        var services = TestHost.Services(configuration);
+        var custom = Moq.Mock.Of<IAuditEventPublisher>();
+        services.AddScoped(_ => custom);
+
+        services.AddCarbonAuditMassTransit(configuration);
+
+        Assert.DoesNotContain(services, d => d.ServiceType == typeof(IAuditBus));
+        using var provider = services.BuildServiceProvider();
+        using var scope = provider.CreateScope();
+        Assert.Same(custom, scope.ServiceProvider.GetRequiredService<IAuditEventPublisher>());
+    }
 }

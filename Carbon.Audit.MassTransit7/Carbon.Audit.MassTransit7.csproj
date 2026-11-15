@@ -33,7 +33,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Carbon.Audit\Carbon.Audit.csproj" />
-    <PackageReference Include="Carbon.MassTransit" Version="3.11.0" />
+    <!-- Upper bound keeps MassTransit 8 (Carbon.MassTransit 4.x) out of the graph: this assembly is compiled against MassTransit 7. -->
+    <PackageReference Include="Carbon.MassTransit" Version="[3.11.0,4.0.0)" />
   </ItemGroup>
 
 </Project>

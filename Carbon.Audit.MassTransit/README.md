@@ -31,9 +31,19 @@ section and the `IAuditEventPublisher` that publishes to the `audit.events` and
 `audit.httprequests` fanout exchanges. It does nothing when auditing is disabled and is safe to
 call more than once.
 
-## Upgrading from Carbon.WebApplication 4.6.21 – 5.2.0
+## Upgrading from Carbon.WebApplication 4.6.20 – 5.2.0
 
 Those versions registered the audit transport automatically. From 6.0.0, a service with
 `CarbonAudit:Enabled: true` and no transport package stops at startup with an
 `InvalidOperationException` naming the package to add — it does not run and silently drop audit
 events. Services with auditing disabled need no change.
+
+Carbon.WebApplication.Grpc 4.0.0 and Carbon.WebApplication.EntityFrameworkCore 3.0.0 move to the
+same Carbon.Audit 3.0.0 and follow the same rule.
+
+If the service registers its own `IAuditEventPublisher`, `AddCarbonAuditMassTransit` leaves it in
+place and does not start the audit bus.
+
+Upgrading can lower the resolved Carbon.MassTransit version: a MassTransit 7 service that only got
+Carbon.MassTransit 3.11.0 through Carbon.Audit 1.5.0 falls back to the version its other packages
+ask for. Reference Carbon.MassTransit 3.11.0 directly to keep it (it carries the net10.0 build).

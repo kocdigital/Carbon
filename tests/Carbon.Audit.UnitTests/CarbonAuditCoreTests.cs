@@ -83,4 +83,31 @@ public class CarbonAuditCoreTests
 
         Assert.Null(ex);
     }
+
+    [Theory]
+    [InlineData(true)]
+    [InlineData(false)]
+    public void UseCarbonAudit_falls_back_to_resolving_when_the_container_cannot_answer_IsService(bool publisherRegistered)
+    {
+        var configuration = TestHost.Configuration(auditEnabled: true);
+        var services = TestHost.Services(configuration);
+        services.AddCarbonAudit(configuration);
+        if (publisherRegistered)
+            services.AddScoped(_ => Mock.Of<IAuditEventPublisher>());
+        var app = new ApplicationBuilder(new ProviderWithoutIsService(services.BuildServiceProvider()));
+
+        var ex = Record.Exception(() => app.UseCarbonAudit());
+
+        if (publisherRegistered) Assert.Null(ex);
+        else Assert.IsType<InvalidOperationException>(ex);
+    }
+
+    // Stands in for a third-party container that does not implement IServiceProviderIsService.
+    private sealed class ProviderWithoutIsService : IServiceProvider
+    {
+        private readonly IServiceProvider _inner;
+        public ProviderWithoutIsService(IServiceProvider inner) => _inner = inner;
+        public object? GetService(Type serviceType)
+            => serviceType == typeof(IServiceProviderIsService) ? null : _inner.GetService(serviceType);
+    }
 }
