@@ -1,5 +1,6 @@
 using Carbon.Audit.Contracts;
 using MassTransit;
+using MassTransit.RabbitMqTransport;
 
 namespace Carbon.Audit.Bus;
 

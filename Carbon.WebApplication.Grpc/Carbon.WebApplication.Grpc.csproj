@@ -2,8 +2,10 @@
 
   <PropertyGroup>
     <TargetFrameworks>net8.0;net6.0;net10.0</TargetFrameworks>
-    <Version>3.5.1</Version>
+    <Version>4.0.0</Version>
     <Description>
+		4.0.0
+		- Carbon.WebApplication updated to 6.0.0 (Carbon.Audit on Carbon.MassTransit [3.11.0,4.0.0) / MassTransit 7); services on MassTransit 8 should stay on 3.5.1.
 		3.5.1
 		- Carbon.WebApplication updated to 5.0.1 (runtime environment check replaces #if DEBUG in UseCarbonFeatures).
 		3.5.0

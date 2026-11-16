@@ -57,6 +57,7 @@ public static class ServiceCollectionExtensions
         var _useCarbonAudit = configuration.GetValue<bool>($"{SectionName}:Enabled");
         if (!_useCarbonAudit) return services;
 
+        EnsureSupportedMassTransit(LoadedMassTransitVersion());
         RegisterAuditBus(services, configuration);
 
         services.AddScoped<IAuditEventPublisher>(sp =>
@@ -65,6 +66,41 @@ public static class ServiceCollectionExtensions
                 sp.GetRequiredService<ILogger<RabbitMqAuditEventPublisher>>()));
 
         return services;
+    }
+
+    /// <summary>
+    /// The MassTransit major version Carbon.Audit is compiled against.
+    /// </summary>
+    internal const int SupportedMassTransitMajor = 7;
+
+    // Reads the version of the MassTransit assembly the application actually loads, by name only,
+    // so that nothing here binds to a MassTransit type before the check has run.
+    private static Version? LoadedMassTransitVersion()
+    {
+        try
+        {
+            return System.Reflection.Assembly.Load(new System.Reflection.AssemblyName("MassTransit")).GetName().Version;
+        }
+        catch (Exception ex) when (ex is FileNotFoundException or FileLoadException or BadImageFormatException)
+        {
+            return null;
+        }
+    }
+
+    /// <summary>
+    /// Fails with an actionable message when the application runs a MassTransit major other than
+    /// the one Carbon.Audit is built against. Without it a MassTransit 8 application restores with
+    /// only an NU1608 warning and then dies here with an opaque TypeLoadException on MassTransit.IBus.
+    /// </summary>
+    internal static void EnsureSupportedMassTransit(Version? loaded)
+    {
+        if (loaded == null || loaded.Major == SupportedMassTransitMajor) return;
+
+        throw new InvalidOperationException(
+            $"\"{SectionName}:Enabled\" is true, but Carbon.Audit 3.x publishes through Carbon.MassTransit 3.11+ " +
+            $"on MassTransit {SupportedMassTransitMajor} and this application loads MassTransit {loaded}. " +
+            "Applications on MassTransit 8 should stay on Carbon.Audit 2.0.0 / Carbon.WebApplication 5.2.0, " +
+            $"or set \"{SectionName}:Enabled\" to false.");
     }
 
     /// <summary>
