@@ -4,8 +4,18 @@
     <TargetFrameworks>net8.0;net6.0;net10.0</TargetFrameworks>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <Version>2.0.0</Version>
+    <Version>3.0.0</Version>
     <Description>
+      3.0.0
+      - Carbon.MassTransit dependency set to [3.11.0,4.0.0) (MassTransit 7.3.1) as a package reference.
+        Carbon.Audit publishes through Carbon.MassTransit, so a service that uses Carbon.Audit uses
+        Carbon.MassTransit; it now does so on MassTransit 7, the version services that use
+        Carbon.WebApplication run on. MassTransit is also bounded to [7.3.1,8.0.0): a service on
+        MassTransit 8 gets NU1608 at restore, and with "CarbonAudit:Enabled" true AddCarbonAudit
+        throws an InvalidOperationException naming the mismatch instead of a TypeLoadException.
+        Services on MassTransit 8 should stay on Carbon.Audit 2.0.0.
+      - A direct reference to Carbon.Audit 2.0.0 or to Carbon.MassTransit below 3.11.0 becomes an
+        NU1605 downgrade error; raise it (Carbon.MassTransit 3.11.0) or remove it.
       2.0.0
       - MassTransit upgraded to 8.5.8 together with Carbon.MassTransit 4.0.0 (BREAKING: MassTransit 8).
       1.5.0
@@ -61,23 +71,30 @@
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
   </PropertyGroup>
 
+  <ItemGroup>
+    <InternalsVisibleTo Include="Carbon.Audit.UnitTests" />
+  </ItemGroup>
+
   <ItemGroup Condition="'$(TargetFramework)' == 'net8.0'">
     <FrameworkReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.11" />
-    <PackageReference Include="MassTransit" Version="8.5.8" />
   </ItemGroup>
   <ItemGroup Condition="'$(TargetFramework)' == 'net6.0'">
     <FrameworkReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.25" />
-    <PackageReference Include="MassTransit" Version="8.5.8" />
   </ItemGroup>
   <ItemGroup Condition="'$(TargetFramework)' == 'net10.0'">
     <FrameworkReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="10.0.9" />
-    <PackageReference Include="MassTransit" Version="8.5.8" />
   </ItemGroup>
   <ItemGroup Condition="'$(TargetFramework)' == 'net6.0' or '$(TargetFramework)' == 'net8.0' or '$(TargetFramework)' == 'net10.0'">
-    <ProjectReference Include="..\Carbon.MassTransit\Carbon.MassTransit.csproj" />
+    <!-- Package reference, not the in-repo project: the project is on MassTransit 8 (4.x).
+         The upper bound keeps Carbon.MassTransit 4.x out of the graph, because this assembly is
+         compiled against MassTransit 7 and would fail at runtime against 8. -->
+    <PackageReference Include="Carbon.MassTransit" Version="[3.11.0,4.0.0)" />
+    <!-- Carbon.MassTransit 3.x accepts MassTransit >= 7.3.1 with no upper bound, so without this a
+         MassTransit 8 service restores silently and fails with TypeLoadException once audit is enabled. -->
+    <PackageReference Include="MassTransit" Version="[7.3.1,8.0.0)" />
   </ItemGroup>
 
 </Project>
