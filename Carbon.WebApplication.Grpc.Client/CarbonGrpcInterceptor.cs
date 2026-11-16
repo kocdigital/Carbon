@@ -9,7 +9,6 @@ namespace Carbon.WebApplication.Grpc.Client
 		{
 
 		}
-		//static string token = "***REMOVED-SENSITIVE-TOKEN***";
 
 		public override AsyncUnaryCall<TResponse> AsyncUnaryCall<TRequest, TResponse>(TRequest request, ClientInterceptorContext<TRequest, TResponse> context, AsyncUnaryCallContinuation<TRequest, TResponse> continuation)
 		{
